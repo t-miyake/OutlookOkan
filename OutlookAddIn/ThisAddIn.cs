@@ -7,25 +7,25 @@ namespace OutlookAddIn
     {
         private void ThisAddIn_Startup(object sender, System.EventArgs e)
         {
-            Application.ItemSend +=  new Outlook.ApplicationEvents_11_ItemSendEventHandler(Application_ItemSend);
+            Application.ItemSend +=  Application_ItemSend;
         }
 
-        public void Application_ItemSend(object Item, ref bool Cancel)
+        public void Application_ItemSend(object item, ref bool cancel)
         {
 
-            Outlook.MailItem mail = Item as Outlook.MailItem;
+            var mail = item as Outlook.MailItem;
 
-            var ConfirmWindow = new ConfirmWindow(mail);
-            var DialogResult = ConfirmWindow.ShowDialog();
+            var confirmWindow = new ConfirmWindow(mail);
+            var dialogResult = confirmWindow.ShowDialog();
 
-            ConfirmWindow.Dispose();
+            confirmWindow.Dispose();
 
-            if(DialogResult == DialogResult.OK)
+            if(dialogResult == DialogResult.OK)
             {
                 //メールを送信。
-            }else if (DialogResult == DialogResult.Cancel)
+            }else if (dialogResult == DialogResult.Cancel)
             {
-                Cancel = true;
+                cancel = true;
             }
         }
 

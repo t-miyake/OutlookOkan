@@ -11,16 +11,16 @@ namespace OutlookAddIn
         {
             InitializeComponent();
 
-            string[] ToAddresses = mail.To.Split(';');
-            foreach(string to in ToAddresses)
+            var toAddresses = mail.To.Split(';');
+            foreach(var to in toAddresses)
             {
                 ToAddressList.Items.Add(to);
             }
 
             if (mail.CC != null)
             {
-                string[] ccAdresses = mail.CC.Split(';');
-                foreach (string cc in ccAdresses)
+                var ccAdresses = mail.CC.Split(';');
+                foreach (var cc in ccAdresses)
                 {
                     CcAddressList.Items.Add(cc);
                 }
@@ -28,8 +28,8 @@ namespace OutlookAddIn
 
             if (mail.BCC != null)
             {
-                string[] bccAdresses = mail.BCC.Split(';');
-                foreach (string bcc in bccAdresses)
+                var bccAdresses = mail.BCC.Split(';');
+                foreach (var bcc in bccAdresses)
                 {
                     BccAddressList.Items.Add(bcc);
                 }
