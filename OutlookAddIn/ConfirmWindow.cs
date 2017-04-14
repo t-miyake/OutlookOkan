@@ -1,38 +1,53 @@
 ﻿using Outlook = Microsoft.Office.Interop.Outlook;
 using System;
 using System.Windows.Forms;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace OutlookAddIn
 {
     public partial class ConfirmWindow : Form
     {
 
-        public ConfirmWindow(Outlook.MailItem mail)
+        public ConfirmWindow(Outlook._MailItem mail)
         {
             InitializeComponent();
 
-            var toAddresses = mail.To.Split(';');
-            foreach(var to in toAddresses)
+            GetRecipient(mail);
+        }
+
+        public void GetRecipient(Outlook._MailItem mail)
+        {
+            var displayNameAndRecipient = new Dictionary<string, string>();
+
+            foreach (Outlook.Recipient recip in mail.Recipients)
             {
-                ToAddressList.Items.Add(to);
+                var exchangedUser = recip.AddressEntry.GetExchangeUser();
+                var registeredUser = recip.AddressEntry.GetContact();
+
+                var nameAndMailAddress = exchangedUser != null
+                    ? exchangedUser.Name + @" (" + exchangedUser.PrimarySmtpAddress + @")"
+                    : registeredUser != null
+                        ? recip.Name
+                        : recip.Address;
+
+                displayNameAndRecipient[recip.Name] = nameAndMailAddress;
             }
 
-            if (mail.CC != null)
-            {
-                var ccAdresses = mail.CC.Split(';');
-                foreach (var cc in ccAdresses)
-                {
-                    CcAddressList.Items.Add(cc);
-                }
-            }
+            var toAdresses = mail.To?.Split(';') ?? new string[] { };
+            var ccAdresses = mail.CC?.Split(';') ?? new string[] { };
+            var bccAdresses = mail.BCC?.Split(';') ?? new string[] { };
 
-            if (mail.BCC != null)
+            foreach (var i in displayNameAndRecipient)
             {
-                var bccAdresses = mail.BCC.Split(';');
-                foreach (var bcc in bccAdresses)
-                {
-                    BccAddressList.Items.Add(bcc);
-                }
+                if (toAdresses.Any(address => address.Contains(i.Key)))
+                    ToAddressList.Items.Add(i.Value);
+
+                if (ccAdresses.Any(address => address.Contains(i.Key)))
+                    CcAddressList.Items.Add(i.Value);
+
+                if (bccAdresses.Any(address => address.Contains(i.Key)))
+                    BccAddressList.Items.Add(i.Value);
             }
         }
 
