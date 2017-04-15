@@ -36,14 +36,14 @@
     <PublishUrl>C:\</PublishUrl>
     <InstallUrl />
     <TargetCulture>ja</TargetCulture>
-    <ApplicationVersion>2.0.0.10</ApplicationVersion>
+    <ApplicationVersion>0.2.0.0</ApplicationVersion>
     <AutoIncrementApplicationRevision>true</AutoIncrementApplicationRevision>
     <UpdateEnabled>false</UpdateEnabled>
     <UpdateInterval>0</UpdateInterval>
     <UpdateIntervalUnits>days</UpdateIntervalUnits>
     <ProductName>メール誤送信防止アドイン</ProductName>
     <PublisherName>株式会社のらねこ</PublisherName>
-    <SupportUrl />
+    <SupportUrl>https://www.noraneko.co.jp/</SupportUrl>
     <FriendlyName>メール誤送信防止アドイン</FriendlyName>
     <OfficeApplicationDescription>メールの送信時に確認画面を表示します。</OfficeApplicationDescription>
     <LoadBehavior>3</LoadBehavior>
