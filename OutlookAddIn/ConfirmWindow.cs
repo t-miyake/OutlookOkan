@@ -30,14 +30,14 @@ namespace OutlookAddIn
             foreach (Outlook.Recipient recip in mail.Recipients)
             {
                 // Exchangeの連絡先に登録された情報を取得。
-                var exchangedUser = recip.AddressEntry.GetExchangeUser();
+                var exchangeUser = recip.AddressEntry.GetExchangeUser();
 
                 // ローカルの連絡先に登録された情報を取得。
                 var registeredUser = recip.AddressEntry.GetContact();
 
                 // 登録されたメールアドレスの場合、登録名のみが表示されるため、メールアドレスと共に表示されるよう表示用テキストを生成。
-                var nameAndMailAddress = exchangedUser != null
-                    ? exchangedUser.Name + @" (" + exchangedUser.PrimarySmtpAddress + @")"
+                var nameAndMailAddress = exchangeUser != null
+                    ? exchangeUser.Name + @" (" + exchangeUser.PrimarySmtpAddress + @")"
                     : registeredUser != null
                         ? recip.Name
                         : recip.Address;
