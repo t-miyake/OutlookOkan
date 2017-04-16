@@ -53,8 +53,11 @@ namespace OutlookAddIn
             // 宛先や登録名から、表示用テキスト(メールアドレスや登録名)を各エリアに表示。
             foreach (var i in displayNameAndRecipient)
             {
+                //TODO ColoerFlagを送信者のドメインに合わせてオンオフするようにする。(送信者とドメインが異なる宛先の描画色を変える)
+                //TODO ListにAddする際に、確実にColorFlagにもboolを入れる。
                 if (toAdresses.Any(address => address.Contains(i.Key)))
                     ToAddressList.Items.Add(i.Value);
+                    ToAddressList.ColorFlag.Add(true);
 
                 if (ccAdresses.Any(address => address.Contains(i.Key)))
                     CcAddressList.Items.Add(i.Value);
