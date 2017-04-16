@@ -50,20 +50,29 @@ namespace OutlookAddIn
             var ccAdresses = mail.CC?.Split(';') ?? new string[] { };
             var bccAdresses = mail.BCC?.Split(';') ?? new string[] { };
 
+            var senderDomain = mail.SendUsingAccount.SmtpAddress.Substring(mail.SendUsingAccount.SmtpAddress.IndexOf("@", StringComparison.Ordinal));
+
             // 宛先や登録名から、表示用テキスト(メールアドレスや登録名)を各エリアに表示。
+            // 宛先ドメインが送信元ドメインと異なる場合、色を変更するフラグをtrue、そうでない場合falseとする。
             foreach (var i in displayNameAndRecipient)
             {
-                //TODO ColoerFlagを送信者のドメインに合わせてオンオフするようにする。(送信者とドメインが異なる宛先の描画色を変える)
-                //TODO ListにAddする際に、確実にColorFlagにもboolを入れる。
                 if (toAdresses.Any(address => address.Contains(i.Key)))
+                {
                     ToAddressList.Items.Add(i.Value);
-                    ToAddressList.ColorFlag.Add(true);
+                    ToAddressList.ColorFlag.Add(!i.Value.Contains(senderDomain));
+                }
 
                 if (ccAdresses.Any(address => address.Contains(i.Key)))
+                {
                     CcAddressList.Items.Add(i.Value);
+                    CcAddressList.ColorFlag.Add(!i.Value.Contains(senderDomain));
+                }
 
                 if (bccAdresses.Any(address => address.Contains(i.Key)))
+                {
                     BccAddressList.Items.Add(i.Value);
+                    BccAddressList.ColorFlag.Add(!i.Value.Contains(senderDomain));
+                }
             }
         }
 
