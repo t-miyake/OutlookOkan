@@ -12,7 +12,6 @@ namespace OutlookAddIn
 
         public void Application_ItemSend(object item, ref bool cancel)
         {
-
             var mail = item as Outlook.MailItem;
 
             var confirmWindow = new ConfirmWindow(mail);

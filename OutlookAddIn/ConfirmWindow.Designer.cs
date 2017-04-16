@@ -30,13 +30,13 @@
         {
             this.sendButton = new System.Windows.Forms.Button();
             this.cancelButton = new System.Windows.Forms.Button();
-            this.ToAddressList = new System.Windows.Forms.CheckedListBox();
+            this.ToAddressList = new CustomCheckedListBox();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
-            this.CcAddressList = new System.Windows.Forms.CheckedListBox();
+            this.CcAddressList = new CustomCheckedListBox();
             this.label4 = new System.Windows.Forms.Label();
-            this.BccAddressList = new System.Windows.Forms.CheckedListBox();
+            this.BccAddressList = new CustomCheckedListBox();
             this.label5 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
@@ -162,13 +162,13 @@
 
         private System.Windows.Forms.Button sendButton;
         private System.Windows.Forms.Button cancelButton;
-        private System.Windows.Forms.CheckedListBox ToAddressList;
+        private CustomCheckedListBox ToAddressList;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.CheckedListBox CcAddressList;
+        private CustomCheckedListBox CcAddressList;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.CheckedListBox BccAddressList;
+        private CustomCheckedListBox BccAddressList;
         private System.Windows.Forms.Label label5;
     }
 }
