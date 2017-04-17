@@ -1,10 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.IO;
-using System.Linq;
 using System.Reflection;
 using System.Runtime.InteropServices;
-using System.Text;
 using System.Windows.Forms;
 using Office = Microsoft.Office.Core;
 
@@ -15,9 +12,7 @@ namespace OutlookAddIn
     {
         private Office.IRibbonUI _ribbon;
 
-        public Ribbon()
-        {
-        }
+        public Ribbon(){}
 
         #region IRibbonExtensibility のメンバー
 
