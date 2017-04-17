@@ -1,5 +1,4 @@
-﻿using System;
-using System.Reflection;
+﻿using System.Reflection;
 using System.Windows.Forms;
 
 namespace OutlookAddIn
@@ -9,12 +8,13 @@ namespace OutlookAddIn
         public AboutBox()
         {
             InitializeComponent();
-            this.Text = $"{AssemblyTitle} のバージョン情報";
-            this.labelProductName.Text = AssemblyProduct;
-            this.labelVersion.Text = $"バージョン {AssemblyVersion}";
-            this.labelCopyright.Text = AssemblyCopyright;
-            this.labelCompanyName.Text = AssemblyCompany;
-            this.textBoxDescription.Text = AssemblyDescription;
+            Text = $"{AssemblyTitle} のバージョン情報";
+            labelProductName.Text = AssemblyProduct;
+            labelVersion.Text = $"バージョン {AssemblyVersion}";
+            labelCopyright.Text = AssemblyCopyright;
+            labelCompanyName.Text = AssemblyCompany;
+            //textBoxDescription.Text = AssemblyDescription;
+            textBoxDescription.Text = "Third-Party Software Usage and Licenses\r\n\r\nCsvHelper\r\nCopyright © 2009-2017 Josh Close and Contributors\r\nDual licensed under Microsoft Public License and Apache License Version 2.0\r\nhttps://github.com/JoshClose/CsvHelper/blob/master/LICENSE.txt";
         }
 
         #region アセンブリ属性アクセサー
