@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<customUI xmlns="http://schemas.microsoft.com/office/2009/07/customui" onLoad="Ribbon_Load">
+  <ribbon>
+    <tabs>
+      <tab idMso="TabSendReceive">
+        <group id="MyAddinGroup" insertAfterMso="GroupPreferences" label="誤送信防止アドイン" autoScale="true">
+          <button id="Setting" label="設定" size="large" imageMso="AssetSettings" onAction="temp"/>
+          <button id="VersionInfo" label="バージョン情報" size="large" imageMso="About" onAction="temp"/>
+        </group>
+      </tab>
+    </tabs>
+  </ribbon>
+</customUI>
