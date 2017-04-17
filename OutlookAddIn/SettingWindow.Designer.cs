@@ -30,12 +30,12 @@
         {
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
-            this.OkButton = new System.Windows.Forms.Button();
-            this.CancelButton = new System.Windows.Forms.Button();
-            this.ApplyButton = new System.Windows.Forms.Button();
             this.NameAndDomains = new System.Windows.Forms.DataGridView();
             this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.OkButton = new System.Windows.Forms.Button();
+            this.CancelButton = new System.Windows.Forms.Button();
+            this.ApplyButton = new System.Windows.Forms.Button();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.NameAndDomains)).BeginInit();
@@ -62,6 +62,31 @@
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "ドメインと名称";
             this.tabPage1.UseVisualStyleBackColor = true;
+            // 
+            // NameAndDomains
+            // 
+            this.NameAndDomains.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.NameAndDomains.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
+            this.NameAndDomains.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.NameAndDomains.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.Column1,
+            this.Column2});
+            this.NameAndDomains.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.NameAndDomains.Location = new System.Drawing.Point(3, 3);
+            this.NameAndDomains.Name = "NameAndDomains";
+            this.NameAndDomains.RowTemplate.Height = 24;
+            this.NameAndDomains.Size = new System.Drawing.Size(598, 258);
+            this.NameAndDomains.TabIndex = 0;
+            // 
+            // Column1
+            // 
+            this.Column1.HeaderText = "ドメイン";
+            this.Column1.Name = "Column1";
+            // 
+            // Column2
+            // 
+            this.Column2.HeaderText = "名称";
+            this.Column2.Name = "Column2";
             // 
             // OkButton
             // 
@@ -98,31 +123,6 @@
             this.ApplyButton.UseVisualStyleBackColor = true;
             this.ApplyButton.Click += new System.EventHandler(this.ApplyButton_Click);
             // 
-            // NameAndDomains
-            // 
-            this.NameAndDomains.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.NameAndDomains.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
-            this.NameAndDomains.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.NameAndDomains.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.Column1,
-            this.Column2});
-            this.NameAndDomains.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.NameAndDomains.Location = new System.Drawing.Point(3, 3);
-            this.NameAndDomains.Name = "NameAndDomains";
-            this.NameAndDomains.RowTemplate.Height = 24;
-            this.NameAndDomains.Size = new System.Drawing.Size(598, 258);
-            this.NameAndDomains.TabIndex = 0;
-            // 
-            // Column1
-            // 
-            this.Column1.HeaderText = "ドメイン";
-            this.Column1.Name = "Column1";
-            // 
-            // Column2
-            // 
-            this.Column2.HeaderText = "名称";
-            this.Column2.Name = "Column2";
-            // 
             // SettingWindow
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
@@ -134,6 +134,7 @@
             this.Controls.Add(this.tabControl1);
             this.Name = "SettingWindow";
             this.ShowIcon = false;
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "設定";
             this.tabControl1.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);

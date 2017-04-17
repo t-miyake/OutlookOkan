@@ -45,7 +45,7 @@
             this.sendButton.DialogResult = System.Windows.Forms.DialogResult.Yes;
             this.sendButton.Enabled = false;
             this.sendButton.Location = new System.Drawing.Point(442, 429);
-            this.sendButton.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.sendButton.Margin = new System.Windows.Forms.Padding(2);
             this.sendButton.Name = "sendButton";
             this.sendButton.Size = new System.Drawing.Size(83, 30);
             this.sendButton.TabIndex = 0;
@@ -56,7 +56,7 @@
             // 
             this.cancelButton.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.cancelButton.Location = new System.Drawing.Point(544, 429);
-            this.cancelButton.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.cancelButton.Margin = new System.Windows.Forms.Padding(2);
             this.cancelButton.Name = "cancelButton";
             this.cancelButton.Size = new System.Drawing.Size(83, 30);
             this.cancelButton.TabIndex = 1;
@@ -67,7 +67,7 @@
             // 
             this.ToAddressList.FormattingEnabled = true;
             this.ToAddressList.Location = new System.Drawing.Point(28, 91);
-            this.ToAddressList.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.ToAddressList.Margin = new System.Windows.Forms.Padding(2);
             this.ToAddressList.Name = "ToAddressList";
             this.ToAddressList.ScrollAlwaysVisible = true;
             this.ToAddressList.Size = new System.Drawing.Size(579, 55);
@@ -108,7 +108,7 @@
             // 
             this.CcAddressList.FormattingEnabled = true;
             this.CcAddressList.Location = new System.Drawing.Point(28, 201);
-            this.CcAddressList.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.CcAddressList.Margin = new System.Windows.Forms.Padding(2);
             this.CcAddressList.Name = "CcAddressList";
             this.CcAddressList.ScrollAlwaysVisible = true;
             this.CcAddressList.Size = new System.Drawing.Size(579, 55);
@@ -129,7 +129,7 @@
             // 
             this.BccAddressList.FormattingEnabled = true;
             this.BccAddressList.Location = new System.Drawing.Point(28, 318);
-            this.BccAddressList.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.BccAddressList.Margin = new System.Windows.Forms.Padding(2);
             this.BccAddressList.Name = "BccAddressList";
             this.BccAddressList.ScrollAlwaysVisible = true;
             this.BccAddressList.Size = new System.Drawing.Size(579, 55);
@@ -161,9 +161,10 @@
             this.Controls.Add(this.ToAddressList);
             this.Controls.Add(this.cancelButton);
             this.Controls.Add(this.sendButton);
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "ConfirmWindow";
             this.ShowIcon = false;
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "メール送信前の確認です。";
             this.ResumeLayout(false);
             this.PerformLayout();
