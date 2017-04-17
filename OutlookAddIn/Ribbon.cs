@@ -33,7 +33,9 @@ namespace OutlookAddIn
 
         public void ShowVersion(Office.IRibbonControl control)
         {
-            MessageBox.Show(@"誤送信防止アドイン"+ Environment.NewLine + @"Version 0.2" + Environment.NewLine + @"(株)のらねこ", @"バージョン情報", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            var aboutBox = new AboutBox();
+            var temp = aboutBox.ShowDialog();
+            aboutBox.Dispose();
         }
 
         #endregion
