@@ -16,14 +16,14 @@ namespace OutlookAddIn
         {
             InitializeComponent();
 
-            GetRecipient(mail);
+            DrawRecipient(mail);
         }
 
         /// <summary>
         /// 送信先メールアドレスを取得し、画面に表示する。
         /// </summary>
         /// <param name="mail">送信するメールに関する情報</param>
-        public void GetRecipient(Outlook._MailItem mail)
+        public void DrawRecipient(Outlook._MailItem mail)
         {
             var displayNameAndRecipient = new Dictionary<string, string>();
 
