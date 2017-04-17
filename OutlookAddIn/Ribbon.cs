@@ -31,6 +31,13 @@ namespace OutlookAddIn
             this._ribbon = ribbonUi;
         }
 
+        public void ShowSettings(Office.IRibbonControl control)
+        {
+            var settingWindow = new SettingWindow();
+            var temp = settingWindow.ShowDialog();
+            settingWindow.Dispose();
+        }
+
         public void ShowVersion(Office.IRibbonControl control)
         {
             var aboutBox = new AboutBox();
