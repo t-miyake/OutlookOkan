@@ -5,7 +5,7 @@
       <tab idMso="TabSendReceive">
         <group id="MyAddinGroup" insertAfterMso="GroupPreferences" label="誤送信防止アドイン" autoScale="true">
           <button id="Setting" label="設定" size="large" imageMso="AssetSettings" onAction="temp"/>
-          <button id="VersionInfo" label="バージョン情報" size="large" imageMso="About" onAction="temp"/>
+          <button id="VersionInfo" label="バージョン情報" size="large" imageMso="About" onAction="ShowVersion"/>
         </group>
       </tab>
     </tabs>

@@ -5,26 +5,8 @@ using System.Linq;
 using System.Reflection;
 using System.Runtime.InteropServices;
 using System.Text;
+using System.Windows.Forms;
 using Office = Microsoft.Office.Core;
-
-// TODO:  リボン (XML) アイテムを有効にするには、次の手順に従います。
-
-// 1: 次のコード ブロックを ThisAddin、ThisWorkbook、ThisDocument のいずれかのクラスにコピーします。
-
-//  protected override Microsoft.Office.Core.IRibbonExtensibility CreateRibbonExtensibilityObject()
-//  {
-//      return new Ribbon();
-//  }
-
-// 2. ボタンのクリックなど、ユーザーの操作を処理するためのコールバック メソッドを、このクラスの
-//    "リボンのコールバック" 領域に作成します。メモ: このリボンがリボン デザイナーからエクスポートされたものである場合は、
-//    イベント ハンドラー内のコードをコールバック メソッドに移動し、リボン拡張機能 (RibbonX) のプログラミング モデルで
-//    動作するように、コードを変更します。
-
-// 3. リボン XML ファイルのコントロール タグに、コードで適切なコールバック メソッドを識別するための属性を割り当てます。  
-
-// 詳細については、Visual Studio Tools for Office ヘルプにあるリボン XML のドキュメントを参照してください。
-
 
 namespace OutlookAddIn
 {
@@ -52,6 +34,11 @@ namespace OutlookAddIn
         public void Ribbon_Load(Office.IRibbonUI ribbonUi)
         {
             this._ribbon = ribbonUi;
+        }
+
+        public void ShowVersion(Office.IRibbonControl control)
+        {
+            MessageBox.Show(@"誤送信防止アドイン"+ Environment.NewLine + @"Version 0.2" + Environment.NewLine + @"(株)のらねこ", @"バージョン情報", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
         #endregion
