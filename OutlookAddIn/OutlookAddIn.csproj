@@ -259,7 +259,7 @@
     <ManifestKeyFile>OutlookAddIn_TemporaryKey.pfx</ManifestKeyFile>
   </PropertyGroup>
   <PropertyGroup>
-    <ManifestCertificateThumbprint>ABB097595D22F0A005BE783846ABFB85D5DCFBE0</ManifestCertificateThumbprint>
+    <ManifestCertificateThumbprint>B78D9FD874B7D87886367ADA138789D34C270D81</ManifestCertificateThumbprint>
   </PropertyGroup>
   <!-- Include the build rules for a C# project. -->
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
