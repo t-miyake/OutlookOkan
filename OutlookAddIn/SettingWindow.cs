@@ -17,13 +17,20 @@ namespace OutlookAddIn
         }
 
         public BindingSource BindableNameAdnDomainList { get; set; }
-
+        readonly string SettingPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "Noraneko\\OutlookAddin\\");
+        private const string SettingFile = "NameAndDomains.csv";
 
         //TODO CSV読み込み/書き込みを他でも使う可能性があるため、それぞの機能はメソッドとして分離させる。
         public void SetNameAndDomainsListToGrid()
         {
+            if (!Directory.Exists(SettingPath))
+                Directory.CreateDirectory(SettingPath);
+
+            if (!File.Exists(SettingPath + SettingFile))
+                File.Create(SettingPath + SettingFile).Close();
+
             using (var csvParser =
-                new CsvParser(new StreamReader(@"c:\test\test.csv", Encoding.GetEncoding("Shift_JIS"))))
+                new CsvParser(new StreamReader(SettingPath + SettingFile, Encoding.GetEncoding("Shift_JIS"))))
             {
                 csvParser.Configuration.HasHeaderRecord = false;
                 csvParser.Configuration.RegisterClassMap<NameAndDomainsMap>();
@@ -40,7 +47,7 @@ namespace OutlookAddIn
         public void SaveNameAndDomainsListToCsv()
         {
             using (var csvWriter = 
-                new CsvWriter(new StreamWriter(@"c:\test\test.csv", false, Encoding.GetEncoding("Shift_JIS"))))
+                new CsvWriter(new StreamWriter(SettingPath + SettingFile, false, Encoding.GetEncoding("Shift_JIS"))))
             {
                 csvWriter.Configuration.HasHeaderRecord = false;
                 csvWriter.Configuration.RegisterClassMap<NameAndDomainsMap>();
