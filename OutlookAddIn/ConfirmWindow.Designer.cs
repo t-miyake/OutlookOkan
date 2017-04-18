@@ -39,6 +39,7 @@
             this.BccAddressList = new OutlookAddIn.CustomCheckedListBox();
             this.label5 = new System.Windows.Forms.Label();
             this.AlertBox = new OutlookAddIn.CustomCheckedListBox();
+            this.label6 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // sendButton
@@ -67,7 +68,7 @@
             // ToAddressList
             // 
             this.ToAddressList.FormattingEnabled = true;
-            this.ToAddressList.Location = new System.Drawing.Point(35, 243);
+            this.ToAddressList.Location = new System.Drawing.Point(35, 270);
             this.ToAddressList.Margin = new System.Windows.Forms.Padding(2);
             this.ToAddressList.Name = "ToAddressList";
             this.ToAddressList.ScrollAlwaysVisible = true;
@@ -98,7 +99,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(32, 217);
+            this.label3.Location = new System.Drawing.Point(32, 244);
             this.label3.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(28, 18);
@@ -108,7 +109,7 @@
             // CcAddressList
             // 
             this.CcAddressList.FormattingEnabled = true;
-            this.CcAddressList.Location = new System.Drawing.Point(35, 351);
+            this.CcAddressList.Location = new System.Drawing.Point(35, 369);
             this.CcAddressList.Margin = new System.Windows.Forms.Padding(2);
             this.CcAddressList.Name = "CcAddressList";
             this.CcAddressList.ScrollAlwaysVisible = true;
@@ -119,7 +120,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(32, 324);
+            this.label4.Location = new System.Drawing.Point(32, 342);
             this.label4.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(32, 18);
@@ -129,7 +130,7 @@
             // BccAddressList
             // 
             this.BccAddressList.FormattingEnabled = true;
-            this.BccAddressList.Location = new System.Drawing.Point(35, 464);
+            this.BccAddressList.Location = new System.Drawing.Point(35, 467);
             this.BccAddressList.Margin = new System.Windows.Forms.Padding(2);
             this.BccAddressList.Name = "BccAddressList";
             this.BccAddressList.ScrollAlwaysVisible = true;
@@ -140,7 +141,7 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(32, 437);
+            this.label5.Location = new System.Drawing.Point(32, 440);
             this.label5.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(43, 18);
@@ -149,19 +150,33 @@
             // 
             // AlertBox
             // 
+            this.AlertBox.BackColor = System.Drawing.SystemColors.Window;
+            this.AlertBox.Font = new System.Drawing.Font("MS UI Gothic", 10F, System.Drawing.FontStyle.Bold);
             this.AlertBox.FormattingEnabled = true;
-            this.AlertBox.Location = new System.Drawing.Point(35, 121);
+            this.AlertBox.HorizontalScrollbar = true;
+            this.AlertBox.Location = new System.Drawing.Point(35, 131);
             this.AlertBox.Name = "AlertBox";
             this.AlertBox.ScrollAlwaysVisible = true;
-            this.AlertBox.Size = new System.Drawing.Size(723, 64);
+            this.AlertBox.Size = new System.Drawing.Size(723, 92);
             this.AlertBox.TabIndex = 12;
             this.AlertBox.SelectedIndexChanged += new System.EventHandler(this.AlertBox_SelectedIndexChanged);
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Font = new System.Drawing.Font("MS UI Gothic", 9F, System.Drawing.FontStyle.Bold);
+            this.label6.Location = new System.Drawing.Point(32, 103);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(410, 18);
+            this.label6.TabIndex = 13;
+            this.label6.Text = "重要な警告 (念のため、メールを再確認してください。)";
             // 
             // ConfirmWindow
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 18F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 592);
+            this.Controls.Add(this.label6);
             this.Controls.Add(this.AlertBox);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.BccAddressList);
@@ -196,5 +211,6 @@
         private CustomCheckedListBox BccAddressList;
         private System.Windows.Forms.Label label5;
         private CustomCheckedListBox AlertBox;
+        private System.Windows.Forms.Label label6;
     }
 }
