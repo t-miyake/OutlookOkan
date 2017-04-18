@@ -193,6 +193,7 @@
     <Compile Include="CustomCheckedListBox.cs">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="NameAndDomains.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -258,7 +259,7 @@
     <ManifestKeyFile>OutlookAddIn_TemporaryKey.pfx</ManifestKeyFile>
   </PropertyGroup>
   <PropertyGroup>
-    <ManifestCertificateThumbprint>0F8F98039C0C8F555F2ECBA7F527097757766205</ManifestCertificateThumbprint>
+    <ManifestCertificateThumbprint>ABB097595D22F0A005BE783846ABFB85D5DCFBE0</ManifestCertificateThumbprint>
   </PropertyGroup>
   <!-- Include the build rules for a C# project. -->
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
