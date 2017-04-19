@@ -68,11 +68,11 @@
             // ToAddressList
             // 
             this.ToAddressList.FormattingEnabled = true;
-            this.ToAddressList.Location = new System.Drawing.Point(32, 285);
+            this.ToAddressList.Location = new System.Drawing.Point(32, 287);
             this.ToAddressList.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.ToAddressList.Name = "ToAddressList";
             this.ToAddressList.ScrollAlwaysVisible = true;
-            this.ToAddressList.Size = new System.Drawing.Size(651, 48);
+            this.ToAddressList.Size = new System.Drawing.Size(651, 54);
             this.ToAddressList.TabIndex = 3;
             this.ToAddressList.SelectedIndexChanged += new System.EventHandler(this.ToAddressList_SelectedIndexChanged);
             // 
@@ -83,7 +83,7 @@
             this.label1.Location = new System.Drawing.Point(29, 20);
             this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(214, 22);
+            this.label1.Size = new System.Drawing.Size(264, 26);
             this.label1.TabIndex = 4;
             this.label1.Text = "本当にメールを送信しますか？";
             // 
@@ -94,7 +94,7 @@
             this.label2.Location = new System.Drawing.Point(29, 48);
             this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(396, 19);
+            this.label2.Size = new System.Drawing.Size(477, 23);
             this.label2.TabIndex = 5;
             this.label2.Text = "すべてのアドレスを確認し、チェックを入れて、送信を押してください。";
             // 
@@ -104,18 +104,18 @@
             this.label3.Location = new System.Drawing.Point(29, 257);
             this.label3.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(26, 19);
+            this.label3.Size = new System.Drawing.Size(30, 23);
             this.label3.TabIndex = 6;
             this.label3.Text = "To";
             // 
             // CcAddressList
             // 
             this.CcAddressList.FormattingEnabled = true;
-            this.CcAddressList.Location = new System.Drawing.Point(32, 389);
+            this.CcAddressList.Location = new System.Drawing.Point(32, 391);
             this.CcAddressList.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.CcAddressList.Name = "CcAddressList";
             this.CcAddressList.ScrollAlwaysVisible = true;
-            this.CcAddressList.Size = new System.Drawing.Size(651, 48);
+            this.CcAddressList.Size = new System.Drawing.Size(651, 54);
             this.CcAddressList.TabIndex = 8;
             this.CcAddressList.SelectedIndexChanged += new System.EventHandler(this.CcAddressList_SelectedIndexChanged_1);
             // 
@@ -125,18 +125,18 @@
             this.label4.Location = new System.Drawing.Point(29, 361);
             this.label4.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(29, 19);
+            this.label4.Size = new System.Drawing.Size(34, 23);
             this.label4.TabIndex = 9;
             this.label4.Text = "CC";
             // 
             // BccAddressList
             // 
             this.BccAddressList.FormattingEnabled = true;
-            this.BccAddressList.Location = new System.Drawing.Point(32, 493);
+            this.BccAddressList.Location = new System.Drawing.Point(32, 495);
             this.BccAddressList.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.BccAddressList.Name = "BccAddressList";
             this.BccAddressList.ScrollAlwaysVisible = true;
-            this.BccAddressList.Size = new System.Drawing.Size(651, 48);
+            this.BccAddressList.Size = new System.Drawing.Size(651, 54);
             this.BccAddressList.TabIndex = 10;
             this.BccAddressList.SelectedIndexChanged += new System.EventHandler(this.BccAddressList_SelectedIndexChanged);
             // 
@@ -146,7 +146,7 @@
             this.label5.Location = new System.Drawing.Point(29, 465);
             this.label5.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(39, 19);
+            this.label5.Size = new System.Drawing.Size(46, 23);
             this.label5.TabIndex = 11;
             this.label5.Text = "BCC";
             // 
@@ -160,7 +160,7 @@
             this.AlertBox.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.AlertBox.Name = "AlertBox";
             this.AlertBox.ScrollAlwaysVisible = true;
-            this.AlertBox.Size = new System.Drawing.Size(651, 80);
+            this.AlertBox.Size = new System.Drawing.Size(651, 88);
             this.AlertBox.TabIndex = 12;
             this.AlertBox.SelectedIndexChanged += new System.EventHandler(this.AlertBox_SelectedIndexChanged);
             // 
@@ -171,13 +171,13 @@
             this.label6.Location = new System.Drawing.Point(29, 109);
             this.label6.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(327, 19);
+            this.label6.Size = new System.Drawing.Size(392, 23);
             this.label6.TabIndex = 13;
             this.label6.Text = "重要な警告 (念のため、メールを再確認してください。)";
             // 
             // ConfirmWindow
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 19F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(11F, 23F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(720, 624);
             this.Controls.Add(this.label6);
