@@ -225,6 +225,7 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Settings.settings</DependentUpon>
     </Compile>
+    <Compile Include="ReadAndWriteCsv.cs" />
     <Compile Include="Ribbon.cs" />
     <Compile Include="SettingWindow.cs">
       <SubType>Form</SubType>
@@ -259,7 +260,7 @@
     <ManifestKeyFile>OutlookAddIn_TemporaryKey.pfx</ManifestKeyFile>
   </PropertyGroup>
   <PropertyGroup>
-    <ManifestCertificateThumbprint>B78D9FD874B7D87886367ADA138789D34C270D81</ManifestCertificateThumbprint>
+    <ManifestCertificateThumbprint>BCA27B869C79BAA7319048BEBA13615223632333</ManifestCertificateThumbprint>
   </PropertyGroup>
   <!-- Include the build rules for a C# project. -->
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
