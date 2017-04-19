@@ -2,10 +2,7 @@
 using System;
 using System.Windows.Forms;
 using System.Collections.Generic;
-using System.IO;
 using System.Linq;
-using System.Text;
-using CsvHelper;
 
 namespace OutlookAddIn
 {
@@ -31,28 +28,11 @@ namespace OutlookAddIn
         /// <param name="mail"></param>
         public void CheckMailbodyAndRecipient(Outlook._MailItem mail)
         {
-            List<NameAndDomains> nameAndDomainsList;
-
-            var settingPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "Noraneko\\OutlookAddin\\");
-            const string settingFile = "NameAndDomains.csv";
-
-            if (!Directory.Exists(settingPath))
-                Directory.CreateDirectory(settingPath);
-
-            if (!File.Exists(settingPath + settingFile))
-                File.Create(settingPath + settingFile).Close();
-
-            using (var csvParser =
-                new CsvParser(new StreamReader(settingPath + settingFile, Encoding.GetEncoding("Shift_JIS"))))
-            {
-                csvParser.Configuration.HasHeaderRecord = false;
-                csvParser.Configuration.RegisterClassMap<NameAndDomainsMap>();
-
-                nameAndDomainsList = new CsvReader(csvParser).GetRecords<NameAndDomains>().ToList();
-            }
+            var readCsv = new ReadAndWriteCsv("NameAndDomains.csv");
+            var nameAndDomainsList = readCsv.ReadCsv<NameAndDomains>(readCsv.ParseCsv<NameAndDomainsMap>());
 
             //メールの本文中に、登録された名称があるか確認。
-            var recipientCandidateNames = (from nameAnddomain in nameAndDomainsList where mail.Body.Contains(nameAnddomain.Name) select nameAnddomain.Name).ToList();
+            //var recipientCandidateNames = (from nameAnddomain in nameAndDomainsList where mail.Body.Contains(nameAnddomain.Name) select nameAnddomain.Name).ToList();
             var recipientCandidateDomains = (from nameAnddomain in nameAndDomainsList where mail.Body.Contains(nameAnddomain.Name) select nameAnddomain.Domain).ToList();
 
             //登録された名称かつ本文中に登場した名称以外のドメインが宛先に含まれている場合、警告を表示。
