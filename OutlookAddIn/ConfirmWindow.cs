@@ -133,7 +133,8 @@ namespace OutlookAddIn
         /// </summary>
         private void SendButtonSwitch()
         {
-            if (ToAddressList.CheckedItems.Count == ToAddressList.Items.Count && CcAddressList.CheckedItems.Count == CcAddressList.Items.Count && BccAddressList.CheckedItems.Count == BccAddressList.Items.Count)
+            //TODO この判定方法はそのうち直す。
+            if (ToAddressList.CheckedItems.Count == ToAddressList.Items.Count && CcAddressList.CheckedItems.Count == CcAddressList.Items.Count && BccAddressList.CheckedItems.Count == BccAddressList.Items.Count && AlertBox.CheckedItems.Count == AlertBox.Items.Count)
             {
                 sendButton.Enabled = true;
             }
