@@ -18,8 +18,23 @@ namespace OutlookAddIn
         {
             InitializeComponent();
 
+            SubjectTextBox.Text = mail.Subject;
             DrawRecipient(mail);
+            DrawAttachments(mail);
             CheckMailbodyAndRecipient(mail);
+        }
+
+        /// <summary>
+        /// 添付ファイルとそのファイルサイズを取得し、画面に表示する。
+        /// </summary>
+        /// <param name="mail"></param>
+        public void DrawAttachments(Outlook._MailItem mail)
+        {
+            if (mail.Attachments.Count == 0) return;
+            for (var i = 0; i <  mail.Attachments.Count; i++)
+            {
+                AttachmentsList.Items.Add(mail.Attachments[i+1].FileName + "  (" +(mail.Attachments[i + 1].Size/1024).ToString("##,###") + "kB)");
+            }
         }
 
         /// <summary>
@@ -128,13 +143,17 @@ namespace OutlookAddIn
             SendButtonSwitch();
         }
 
+        private void AttachmentsList_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            SendButtonSwitch();
+        }
         /// <summary>
         /// 全てのチェックボックスにチェックされた場合のみ、送信ボタンを有効とする。
         /// </summary>
         private void SendButtonSwitch()
         {
             //TODO この判定方法はそのうち直す。
-            if (ToAddressList.CheckedItems.Count == ToAddressList.Items.Count && CcAddressList.CheckedItems.Count == CcAddressList.Items.Count && BccAddressList.CheckedItems.Count == BccAddressList.Items.Count && AlertBox.CheckedItems.Count == AlertBox.Items.Count)
+            if (ToAddressList.CheckedItems.Count == ToAddressList.Items.Count && CcAddressList.CheckedItems.Count == CcAddressList.Items.Count && BccAddressList.CheckedItems.Count == BccAddressList.Items.Count && AlertBox.CheckedItems.Count == AlertBox.Items.Count && AttachmentsList.Items.Count == AttachmentsList.CheckedItems.Count)
             {
                 sendButton.Enabled = true;
             }
