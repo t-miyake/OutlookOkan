@@ -19,7 +19,17 @@ namespace OutlookAddIn
             InitializeComponent();
 
             DrawRecipient(mail);
+
+            DrawAttachments(mail);
+
+            SubjectTextBox.Text = mail.Subject;
+
             CheckMailbodyAndRecipient(mail);
+        }
+
+        public void DrawAttachments(Outlook._MailItem mail)
+        {
+            //これからつくる。
         }
 
         /// <summary>
@@ -128,13 +138,17 @@ namespace OutlookAddIn
             SendButtonSwitch();
         }
 
+        private void AttachmentsList_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            SendButtonSwitch();
+        }
         /// <summary>
         /// 全てのチェックボックスにチェックされた場合のみ、送信ボタンを有効とする。
         /// </summary>
         private void SendButtonSwitch()
         {
             //TODO この判定方法はそのうち直す。
-            if (ToAddressList.CheckedItems.Count == ToAddressList.Items.Count && CcAddressList.CheckedItems.Count == CcAddressList.Items.Count && BccAddressList.CheckedItems.Count == BccAddressList.Items.Count && AlertBox.CheckedItems.Count == AlertBox.Items.Count)
+            if (ToAddressList.CheckedItems.Count == ToAddressList.Items.Count && CcAddressList.CheckedItems.Count == CcAddressList.Items.Count && BccAddressList.CheckedItems.Count == BccAddressList.Items.Count && AlertBox.CheckedItems.Count == AlertBox.Items.Count && AttachmentsList.Items.Count == AttachmentsList.CheckedItems.Count)
             {
                 sendButton.Enabled = true;
             }

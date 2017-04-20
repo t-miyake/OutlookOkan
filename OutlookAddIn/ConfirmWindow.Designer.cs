@@ -43,7 +43,7 @@
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.label6 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.SubjectTextBox = new System.Windows.Forms.TextBox();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
             this.AttachmentsList = new OutlookAddIn.CustomCheckedListBox();
             this.groupBox1.SuspendLayout();
@@ -205,7 +205,7 @@
             // groupBox3
             // 
             this.groupBox3.Controls.Add(this.label6);
-            this.groupBox3.Controls.Add(this.textBox1);
+            this.groupBox3.Controls.Add(this.SubjectTextBox);
             this.groupBox3.Location = new System.Drawing.Point(594, 235);
             this.groupBox3.Margin = new System.Windows.Forms.Padding(3, 3, 9, 4);
             this.groupBox3.Name = "groupBox3";
@@ -224,14 +224,14 @@
             this.label6.TabIndex = 17;
             this.label6.Text = "件名";
             // 
-            // textBox1
+            // SubjectTextBox
             // 
-            this.textBox1.ImeMode = System.Windows.Forms.ImeMode.Off;
-            this.textBox1.Location = new System.Drawing.Point(64, 34);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.ReadOnly = true;
-            this.textBox1.Size = new System.Drawing.Size(594, 30);
-            this.textBox1.TabIndex = 0;
+            this.SubjectTextBox.ImeMode = System.Windows.Forms.ImeMode.Off;
+            this.SubjectTextBox.Location = new System.Drawing.Point(64, 34);
+            this.SubjectTextBox.Name = "SubjectTextBox";
+            this.SubjectTextBox.ReadOnly = true;
+            this.SubjectTextBox.Size = new System.Drawing.Size(594, 30);
+            this.SubjectTextBox.TabIndex = 0;
             // 
             // groupBox4
             // 
@@ -253,6 +253,7 @@
             this.AttachmentsList.ScrollAlwaysVisible = true;
             this.AttachmentsList.Size = new System.Drawing.Size(647, 179);
             this.AttachmentsList.TabIndex = 0;
+            this.AttachmentsList.SelectedIndexChanged += new System.EventHandler(this.AttachmentsList_SelectedIndexChanged);
             // 
             // ConfirmWindow
             // 
@@ -303,7 +304,7 @@
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.GroupBox groupBox3;
         private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox SubjectTextBox;
         private System.Windows.Forms.GroupBox groupBox4;
         private CustomCheckedListBox AttachmentsList;
     }
