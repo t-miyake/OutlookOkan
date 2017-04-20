@@ -18,18 +18,23 @@ namespace OutlookAddIn
         {
             InitializeComponent();
 
-            DrawRecipient(mail);
-
-            DrawAttachments(mail);
-
             SubjectTextBox.Text = mail.Subject;
-
+            DrawRecipient(mail);
+            DrawAttachments(mail);
             CheckMailbodyAndRecipient(mail);
         }
 
+        /// <summary>
+        /// 添付ファイルとそのファイルサイズを取得し、画面に表示する。
+        /// </summary>
+        /// <param name="mail"></param>
         public void DrawAttachments(Outlook._MailItem mail)
         {
-            //これからつくる。
+            if (mail.Attachments.Count == 0) return;
+            for (var i = 0; i <  mail.Attachments.Count; i++)
+            {
+                AttachmentsList.Items.Add(mail.Attachments[i+1].FileName + "  (" +(mail.Attachments[i + 1].Size/1024).ToString("##,###") + "kB)");
+            }
         }
 
         /// <summary>
