@@ -54,11 +54,11 @@
             // tabPage1
             // 
             this.tabPage1.Controls.Add(this.NameAndDomainsGrid);
-            this.tabPage1.Location = new System.Drawing.Point(4, 28);
+            this.tabPage1.Location = new System.Drawing.Point(4, 32);
             this.tabPage1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.tabPage1.Size = new System.Drawing.Size(680, 339);
+            this.tabPage1.Size = new System.Drawing.Size(680, 335);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "ドメインと名称";
             this.tabPage1.UseVisualStyleBackColor = true;
@@ -74,7 +74,7 @@
             this.NameAndDomainsGrid.Name = "NameAndDomainsGrid";
             this.NameAndDomainsGrid.RowTemplate.DefaultCellStyle.Font = new System.Drawing.Font("MS UI Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
             this.NameAndDomainsGrid.RowTemplate.Height = 24;
-            this.NameAndDomainsGrid.Size = new System.Drawing.Size(674, 331);
+            this.NameAndDomainsGrid.Size = new System.Drawing.Size(674, 327);
             this.NameAndDomainsGrid.TabIndex = 0;
             // 
             // OkButton
@@ -114,7 +114,7 @@
             // 
             // SettingWindow
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 19F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(11F, 23F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(714, 437);
             this.Controls.Add(this.ApplyButton);
@@ -123,6 +123,8 @@
             this.Controls.Add(this.tabControl1);
             this.Font = new System.Drawing.Font("Meiryo UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
             this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "SettingWindow";
             this.ShowIcon = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
