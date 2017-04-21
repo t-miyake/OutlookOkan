@@ -41,10 +41,10 @@
     <UpdateEnabled>false</UpdateEnabled>
     <UpdateInterval>0</UpdateInterval>
     <UpdateIntervalUnits>days</UpdateIntervalUnits>
-    <ProductName>メール誤送信防止アドイン</ProductName>
+    <ProductName>Outlook誤送信防止アドイン</ProductName>
     <PublisherName>株式会社のらねこ</PublisherName>
     <SupportUrl>https://www.noraneko.co.jp/</SupportUrl>
-    <FriendlyName>メール誤送信防止アドイン</FriendlyName>
+    <FriendlyName>Outlook誤送信防止アドイン</FriendlyName>
     <OfficeApplicationDescription>メールの送信時に確認画面を表示します。</OfficeApplicationDescription>
     <LoadBehavior>3</LoadBehavior>
   </PropertyGroup>
