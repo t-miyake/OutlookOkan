@@ -6,7 +6,7 @@ using System.Linq;
 
 namespace OutlookAddIn
 {
-    public partial class ConfirmWindow : Form
+    public partial class ConfirmationWindow : Form
     {
         public Dictionary<string, string> DisplayNameAndRecipient = new Dictionary<string, string>();
 
@@ -14,7 +14,7 @@ namespace OutlookAddIn
         /// メール送信の確認画面を表示。
         /// </summary>
         /// <param name="mail">送信するメールに関する情報</param>
-        public ConfirmWindow(Outlook._MailItem mail)
+        public ConfirmationWindow(Outlook._MailItem mail)
         {
             InitializeComponent();
 

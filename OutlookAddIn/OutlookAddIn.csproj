@@ -184,11 +184,11 @@
     <Compile Include="AboutBox.Designer.cs">
       <DependentUpon>AboutBox.cs</DependentUpon>
     </Compile>
-    <Compile Include="ConfirmWindow.cs">
+    <Compile Include="ConfirmationWindow.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="ConfirmWindow.Designer.cs">
-      <DependentUpon>ConfirmWindow.cs</DependentUpon>
+    <Compile Include="ConfirmationWindow.Designer.cs">
+      <DependentUpon>ConfirmationWindow.cs</DependentUpon>
     </Compile>
     <Compile Include="CustomCheckedListBox.cs">
       <SubType>Component</SubType>
@@ -200,8 +200,8 @@
     <EmbeddedResource Include="AboutBox.resx">
       <DependentUpon>AboutBox.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="ConfirmWindow.resx">
-      <DependentUpon>ConfirmWindow.cs</DependentUpon>
+    <EmbeddedResource Include="ConfirmationWindow.resx">
+      <DependentUpon>ConfirmationWindow.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -260,7 +260,7 @@
     <ManifestKeyFile>OutlookAddIn_TemporaryKey.pfx</ManifestKeyFile>
   </PropertyGroup>
   <PropertyGroup>
-    <ManifestCertificateThumbprint>960D3E66F1E150FEF3FC71E6A94EDAD63A2376BC</ManifestCertificateThumbprint>
+    <ManifestCertificateThumbprint>C97F682BF79332119A1A2B072290595983E1309B</ManifestCertificateThumbprint>
   </PropertyGroup>
   <!-- Include the build rules for a C# project. -->
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

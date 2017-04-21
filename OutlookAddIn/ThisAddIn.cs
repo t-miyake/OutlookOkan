@@ -19,10 +19,10 @@ namespace OutlookAddIn
         {
             var mail = item as Outlook.MailItem;
 
-            var confirmWindow = new ConfirmWindow(mail);
-            var dialogResult = confirmWindow.ShowDialog();
+            var confirmationWindow = new ConfirmationWindow(mail);
+            var dialogResult = confirmationWindow.ShowDialog();
 
-            confirmWindow.Dispose();
+            confirmationWindow.Dispose();
 
             if(dialogResult == DialogResult.OK)
             {

@@ -1,6 +1,6 @@
 ﻿namespace OutlookAddIn
 {
-    partial class ConfirmWindow
+    partial class ConfirmationWindow
     {
         /// <summary>
         /// Required designer variable.
@@ -255,7 +255,7 @@
             this.AttachmentsList.TabIndex = 0;
             this.AttachmentsList.SelectedIndexChanged += new System.EventHandler(this.AttachmentsList_SelectedIndexChanged);
             // 
-            // ConfirmWindow
+            // ConfirmationWindow
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(11F, 23F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -272,7 +272,7 @@
             this.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.MaximizeBox = false;
             this.MinimizeBox = false;
-            this.Name = "ConfirmWindow";
+            this.Name = "ConfirmationWindow";
             this.ShowIcon = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "メール送信前の確認";
