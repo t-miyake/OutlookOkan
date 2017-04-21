@@ -72,7 +72,7 @@
             this.NameAndDomainsGrid.Location = new System.Drawing.Point(3, 4);
             this.NameAndDomainsGrid.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.NameAndDomainsGrid.Name = "NameAndDomainsGrid";
-            this.NameAndDomainsGrid.RowTemplate.DefaultCellStyle.Font = new System.Drawing.Font("MS UI Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.NameAndDomainsGrid.RowTemplate.DefaultCellStyle.Font = new System.Drawing.Font("Meiryo UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
             this.NameAndDomainsGrid.RowTemplate.Height = 24;
             this.NameAndDomainsGrid.Size = new System.Drawing.Size(674, 327);
             this.NameAndDomainsGrid.TabIndex = 0;
