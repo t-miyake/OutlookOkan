@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.tabControl = new System.Windows.Forms.TabControl();
-            this.WhiteList = new System.Windows.Forms.TabPage();
+            this.WhiteListTab = new System.Windows.Forms.TabPage();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
             this.label2 = new System.Windows.Forms.Label();
             this.WhitelistGroupBox = new System.Windows.Forms.GroupBox();
@@ -37,7 +37,7 @@
             this.groupBox5 = new System.Windows.Forms.GroupBox();
             this.WhitelistCsvExportButton = new System.Windows.Forms.Button();
             this.WhitelistCsvImportButton = new System.Windows.Forms.Button();
-            this.NameAndDomains = new System.Windows.Forms.TabPage();
+            this.NameAndDomainsTab = new System.Windows.Forms.TabPage();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.label1 = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
@@ -45,7 +45,7 @@
             this.NameAndDomainsCsvImportButton = new System.Windows.Forms.Button();
             this.NameAndDomainsGroupBox = new System.Windows.Forms.GroupBox();
             this.NameAndDomainsGrid = new System.Windows.Forms.DataGridView();
-            this.AlertKeywords = new System.Windows.Forms.TabPage();
+            this.AlertKeywordTab = new System.Windows.Forms.TabPage();
             this.groupBox7 = new System.Windows.Forms.GroupBox();
             this.label3 = new System.Windows.Forms.Label();
             this.AlertAndMessageGroupBox = new System.Windows.Forms.GroupBox();
@@ -53,7 +53,7 @@
             this.groupBox8 = new System.Windows.Forms.GroupBox();
             this.AlertAndMessageCsvExportButton = new System.Windows.Forms.Button();
             this.AlertAndMessageCsvImportButton = new System.Windows.Forms.Button();
-            this.AlertAddress = new System.Windows.Forms.TabPage();
+            this.AlertAddressTab = new System.Windows.Forms.TabPage();
             this.groupBox10 = new System.Windows.Forms.GroupBox();
             this.label4 = new System.Windows.Forms.Label();
             this.AlertAddressGroupBox = new System.Windows.Forms.GroupBox();
@@ -61,7 +61,7 @@
             this.groupBox12 = new System.Windows.Forms.GroupBox();
             this.AlertAddressCsvExportButton = new System.Windows.Forms.Button();
             this.AlertAddressCsvImportButton = new System.Windows.Forms.Button();
-            this.AutoCcBccKeywords = new System.Windows.Forms.TabPage();
+            this.AutoCcBccKeywordTab = new System.Windows.Forms.TabPage();
             this.groupBox13 = new System.Windows.Forms.GroupBox();
             this.label5 = new System.Windows.Forms.Label();
             this.AutoCcBccKeywordGroupBox = new System.Windows.Forms.GroupBox();
@@ -69,7 +69,7 @@
             this.groupBox15 = new System.Windows.Forms.GroupBox();
             this.AutoCcBccKeywordExportButton = new System.Windows.Forms.Button();
             this.AutoCcBccKeywordImportButton = new System.Windows.Forms.Button();
-            this.AutoCcBccAddress = new System.Windows.Forms.TabPage();
+            this.AutoCcBccRecipientTab = new System.Windows.Forms.TabPage();
             this.groupBox16 = new System.Windows.Forms.GroupBox();
             this.label6 = new System.Windows.Forms.Label();
             this.AutoCcBccRecipientGroupBox = new System.Windows.Forms.GroupBox();
@@ -81,32 +81,32 @@
             this.CancelButton = new System.Windows.Forms.Button();
             this.ApplyButton = new System.Windows.Forms.Button();
             this.tabControl.SuspendLayout();
-            this.WhiteList.SuspendLayout();
+            this.WhiteListTab.SuspendLayout();
             this.groupBox4.SuspendLayout();
             this.WhitelistGroupBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.WhitelistGrid)).BeginInit();
             this.groupBox5.SuspendLayout();
-            this.NameAndDomains.SuspendLayout();
+            this.NameAndDomainsTab.SuspendLayout();
             this.groupBox3.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.NameAndDomainsGroupBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.NameAndDomainsGrid)).BeginInit();
-            this.AlertKeywords.SuspendLayout();
+            this.AlertKeywordTab.SuspendLayout();
             this.groupBox7.SuspendLayout();
             this.AlertAndMessageGroupBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.AlertAndMessageGrid)).BeginInit();
             this.groupBox8.SuspendLayout();
-            this.AlertAddress.SuspendLayout();
+            this.AlertAddressTab.SuspendLayout();
             this.groupBox10.SuspendLayout();
             this.AlertAddressGroupBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.AlertAddressGrid)).BeginInit();
             this.groupBox12.SuspendLayout();
-            this.AutoCcBccKeywords.SuspendLayout();
+            this.AutoCcBccKeywordTab.SuspendLayout();
             this.groupBox13.SuspendLayout();
             this.AutoCcBccKeywordGroupBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.AutoCcBccKeywordGrid)).BeginInit();
             this.groupBox15.SuspendLayout();
-            this.AutoCcBccAddress.SuspendLayout();
+            this.AutoCcBccRecipientTab.SuspendLayout();
             this.groupBox16.SuspendLayout();
             this.AutoCcBccRecipientGroupBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.AutoCcBccRecipientGrid)).BeginInit();
@@ -117,12 +117,12 @@
             // 
             this.tabControl.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.tabControl.Controls.Add(this.WhiteList);
-            this.tabControl.Controls.Add(this.NameAndDomains);
-            this.tabControl.Controls.Add(this.AlertKeywords);
-            this.tabControl.Controls.Add(this.AlertAddress);
-            this.tabControl.Controls.Add(this.AutoCcBccKeywords);
-            this.tabControl.Controls.Add(this.AutoCcBccAddress);
+            this.tabControl.Controls.Add(this.WhiteListTab);
+            this.tabControl.Controls.Add(this.NameAndDomainsTab);
+            this.tabControl.Controls.Add(this.AlertKeywordTab);
+            this.tabControl.Controls.Add(this.AlertAddressTab);
+            this.tabControl.Controls.Add(this.AutoCcBccKeywordTab);
+            this.tabControl.Controls.Add(this.AutoCcBccRecipientTab);
             this.tabControl.Location = new System.Drawing.Point(14, 7);
             this.tabControl.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.tabControl.Name = "tabControl";
@@ -130,17 +130,17 @@
             this.tabControl.Size = new System.Drawing.Size(924, 371);
             this.tabControl.TabIndex = 0;
             // 
-            // WhiteList
+            // WhiteListTab
             // 
-            this.WhiteList.Controls.Add(this.groupBox4);
-            this.WhiteList.Controls.Add(this.WhitelistGroupBox);
-            this.WhiteList.Controls.Add(this.groupBox5);
-            this.WhiteList.Location = new System.Drawing.Point(4, 28);
-            this.WhiteList.Name = "WhiteList";
-            this.WhiteList.Size = new System.Drawing.Size(916, 339);
-            this.WhiteList.TabIndex = 1;
-            this.WhiteList.Text = "ホワイトリスト";
-            this.WhiteList.UseVisualStyleBackColor = true;
+            this.WhiteListTab.Controls.Add(this.groupBox4);
+            this.WhiteListTab.Controls.Add(this.WhitelistGroupBox);
+            this.WhiteListTab.Controls.Add(this.groupBox5);
+            this.WhiteListTab.Location = new System.Drawing.Point(4, 28);
+            this.WhiteListTab.Name = "WhiteListTab";
+            this.WhiteListTab.Size = new System.Drawing.Size(916, 339);
+            this.WhiteListTab.TabIndex = 1;
+            this.WhiteListTab.Text = "ホワイトリスト";
+            this.WhiteListTab.UseVisualStyleBackColor = true;
             // 
             // groupBox4
             // 
@@ -218,19 +218,19 @@
             this.WhitelistCsvImportButton.Text = "CSVインポート";
             this.WhitelistCsvImportButton.UseVisualStyleBackColor = true;
             // 
-            // NameAndDomains
+            // NameAndDomainsTab
             // 
-            this.NameAndDomains.Controls.Add(this.groupBox3);
-            this.NameAndDomains.Controls.Add(this.groupBox2);
-            this.NameAndDomains.Controls.Add(this.NameAndDomainsGroupBox);
-            this.NameAndDomains.Location = new System.Drawing.Point(4, 28);
-            this.NameAndDomains.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.NameAndDomains.Name = "NameAndDomains";
-            this.NameAndDomains.Padding = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.NameAndDomains.Size = new System.Drawing.Size(916, 339);
-            this.NameAndDomains.TabIndex = 0;
-            this.NameAndDomains.Text = "名称/ドメイン";
-            this.NameAndDomains.UseVisualStyleBackColor = true;
+            this.NameAndDomainsTab.Controls.Add(this.groupBox3);
+            this.NameAndDomainsTab.Controls.Add(this.groupBox2);
+            this.NameAndDomainsTab.Controls.Add(this.NameAndDomainsGroupBox);
+            this.NameAndDomainsTab.Location = new System.Drawing.Point(4, 28);
+            this.NameAndDomainsTab.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.NameAndDomainsTab.Name = "NameAndDomainsTab";
+            this.NameAndDomainsTab.Padding = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.NameAndDomainsTab.Size = new System.Drawing.Size(916, 339);
+            this.NameAndDomainsTab.TabIndex = 0;
+            this.NameAndDomainsTab.Text = "名称/ドメイン";
+            this.NameAndDomainsTab.UseVisualStyleBackColor = true;
             // 
             // groupBox3
             // 
@@ -309,17 +309,17 @@
             this.NameAndDomainsGrid.Size = new System.Drawing.Size(657, 295);
             this.NameAndDomainsGrid.TabIndex = 0;
             // 
-            // AlertKeywords
+            // AlertKeywordTab
             // 
-            this.AlertKeywords.Controls.Add(this.groupBox7);
-            this.AlertKeywords.Controls.Add(this.AlertAndMessageGroupBox);
-            this.AlertKeywords.Controls.Add(this.groupBox8);
-            this.AlertKeywords.Location = new System.Drawing.Point(4, 28);
-            this.AlertKeywords.Name = "AlertKeywords";
-            this.AlertKeywords.Size = new System.Drawing.Size(916, 339);
-            this.AlertKeywords.TabIndex = 2;
-            this.AlertKeywords.Text = "警告キーワード";
-            this.AlertKeywords.UseVisualStyleBackColor = true;
+            this.AlertKeywordTab.Controls.Add(this.groupBox7);
+            this.AlertKeywordTab.Controls.Add(this.AlertAndMessageGroupBox);
+            this.AlertKeywordTab.Controls.Add(this.groupBox8);
+            this.AlertKeywordTab.Location = new System.Drawing.Point(4, 28);
+            this.AlertKeywordTab.Name = "AlertKeywordTab";
+            this.AlertKeywordTab.Size = new System.Drawing.Size(916, 339);
+            this.AlertKeywordTab.TabIndex = 2;
+            this.AlertKeywordTab.Text = "警告キーワード";
+            this.AlertKeywordTab.UseVisualStyleBackColor = true;
             // 
             // groupBox7
             // 
@@ -396,17 +396,17 @@
             this.AlertAndMessageCsvImportButton.Text = "CSVインポート";
             this.AlertAndMessageCsvImportButton.UseVisualStyleBackColor = true;
             // 
-            // AlertAddress
+            // AlertAddressTab
             // 
-            this.AlertAddress.Controls.Add(this.groupBox10);
-            this.AlertAddress.Controls.Add(this.AlertAddressGroupBox);
-            this.AlertAddress.Controls.Add(this.groupBox12);
-            this.AlertAddress.Location = new System.Drawing.Point(4, 28);
-            this.AlertAddress.Name = "AlertAddress";
-            this.AlertAddress.Size = new System.Drawing.Size(916, 339);
-            this.AlertAddress.TabIndex = 3;
-            this.AlertAddress.Text = "警告アドレス";
-            this.AlertAddress.UseVisualStyleBackColor = true;
+            this.AlertAddressTab.Controls.Add(this.groupBox10);
+            this.AlertAddressTab.Controls.Add(this.AlertAddressGroupBox);
+            this.AlertAddressTab.Controls.Add(this.groupBox12);
+            this.AlertAddressTab.Location = new System.Drawing.Point(4, 28);
+            this.AlertAddressTab.Name = "AlertAddressTab";
+            this.AlertAddressTab.Size = new System.Drawing.Size(916, 339);
+            this.AlertAddressTab.TabIndex = 3;
+            this.AlertAddressTab.Text = "警告アドレス";
+            this.AlertAddressTab.UseVisualStyleBackColor = true;
             // 
             // groupBox10
             // 
@@ -484,17 +484,17 @@
             this.AlertAddressCsvImportButton.Text = "CSVインポート";
             this.AlertAddressCsvImportButton.UseVisualStyleBackColor = true;
             // 
-            // AutoCcBccKeywords
+            // AutoCcBccKeywordTab
             // 
-            this.AutoCcBccKeywords.Controls.Add(this.groupBox13);
-            this.AutoCcBccKeywords.Controls.Add(this.AutoCcBccKeywordGroupBox);
-            this.AutoCcBccKeywords.Controls.Add(this.groupBox15);
-            this.AutoCcBccKeywords.Location = new System.Drawing.Point(4, 28);
-            this.AutoCcBccKeywords.Name = "AutoCcBccKeywords";
-            this.AutoCcBccKeywords.Size = new System.Drawing.Size(916, 339);
-            this.AutoCcBccKeywords.TabIndex = 4;
-            this.AutoCcBccKeywords.Text = "自動CC/BCC追加(キーワード)";
-            this.AutoCcBccKeywords.UseVisualStyleBackColor = true;
+            this.AutoCcBccKeywordTab.Controls.Add(this.groupBox13);
+            this.AutoCcBccKeywordTab.Controls.Add(this.AutoCcBccKeywordGroupBox);
+            this.AutoCcBccKeywordTab.Controls.Add(this.groupBox15);
+            this.AutoCcBccKeywordTab.Location = new System.Drawing.Point(4, 28);
+            this.AutoCcBccKeywordTab.Name = "AutoCcBccKeywordTab";
+            this.AutoCcBccKeywordTab.Size = new System.Drawing.Size(916, 339);
+            this.AutoCcBccKeywordTab.TabIndex = 4;
+            this.AutoCcBccKeywordTab.Text = "自動CC/BCC追加(キーワード)";
+            this.AutoCcBccKeywordTab.UseVisualStyleBackColor = true;
             // 
             // groupBox13
             // 
@@ -572,17 +572,17 @@
             this.AutoCcBccKeywordImportButton.Text = "CSVインポート";
             this.AutoCcBccKeywordImportButton.UseVisualStyleBackColor = true;
             // 
-            // AutoCcBccAddress
+            // AutoCcBccRecipientTab
             // 
-            this.AutoCcBccAddress.Controls.Add(this.groupBox16);
-            this.AutoCcBccAddress.Controls.Add(this.AutoCcBccRecipientGroupBox);
-            this.AutoCcBccAddress.Controls.Add(this.groupBox18);
-            this.AutoCcBccAddress.Location = new System.Drawing.Point(4, 28);
-            this.AutoCcBccAddress.Name = "AutoCcBccAddress";
-            this.AutoCcBccAddress.Size = new System.Drawing.Size(916, 339);
-            this.AutoCcBccAddress.TabIndex = 5;
-            this.AutoCcBccAddress.Text = "自動CC/BCC追加(宛先)";
-            this.AutoCcBccAddress.UseVisualStyleBackColor = true;
+            this.AutoCcBccRecipientTab.Controls.Add(this.groupBox16);
+            this.AutoCcBccRecipientTab.Controls.Add(this.AutoCcBccRecipientGroupBox);
+            this.AutoCcBccRecipientTab.Controls.Add(this.groupBox18);
+            this.AutoCcBccRecipientTab.Location = new System.Drawing.Point(4, 28);
+            this.AutoCcBccRecipientTab.Name = "AutoCcBccRecipientTab";
+            this.AutoCcBccRecipientTab.Size = new System.Drawing.Size(916, 339);
+            this.AutoCcBccRecipientTab.TabIndex = 5;
+            this.AutoCcBccRecipientTab.Text = "自動CC/BCC追加(宛先)";
+            this.AutoCcBccRecipientTab.UseVisualStyleBackColor = true;
             // 
             // groupBox16
             // 
@@ -713,37 +713,37 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "設定";
             this.tabControl.ResumeLayout(false);
-            this.WhiteList.ResumeLayout(false);
+            this.WhiteListTab.ResumeLayout(false);
             this.groupBox4.ResumeLayout(false);
             this.groupBox4.PerformLayout();
             this.WhitelistGroupBox.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.WhitelistGrid)).EndInit();
             this.groupBox5.ResumeLayout(false);
-            this.NameAndDomains.ResumeLayout(false);
+            this.NameAndDomainsTab.ResumeLayout(false);
             this.groupBox3.ResumeLayout(false);
             this.groupBox3.PerformLayout();
             this.groupBox2.ResumeLayout(false);
             this.NameAndDomainsGroupBox.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.NameAndDomainsGrid)).EndInit();
-            this.AlertKeywords.ResumeLayout(false);
+            this.AlertKeywordTab.ResumeLayout(false);
             this.groupBox7.ResumeLayout(false);
             this.groupBox7.PerformLayout();
             this.AlertAndMessageGroupBox.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.AlertAndMessageGrid)).EndInit();
             this.groupBox8.ResumeLayout(false);
-            this.AlertAddress.ResumeLayout(false);
+            this.AlertAddressTab.ResumeLayout(false);
             this.groupBox10.ResumeLayout(false);
             this.groupBox10.PerformLayout();
             this.AlertAddressGroupBox.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.AlertAddressGrid)).EndInit();
             this.groupBox12.ResumeLayout(false);
-            this.AutoCcBccKeywords.ResumeLayout(false);
+            this.AutoCcBccKeywordTab.ResumeLayout(false);
             this.groupBox13.ResumeLayout(false);
             this.groupBox13.PerformLayout();
             this.AutoCcBccKeywordGroupBox.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.AutoCcBccKeywordGrid)).EndInit();
             this.groupBox15.ResumeLayout(false);
-            this.AutoCcBccAddress.ResumeLayout(false);
+            this.AutoCcBccRecipientTab.ResumeLayout(false);
             this.groupBox16.ResumeLayout(false);
             this.groupBox16.PerformLayout();
             this.AutoCcBccRecipientGroupBox.ResumeLayout(false);
@@ -756,7 +756,7 @@
         #endregion
 
         private System.Windows.Forms.TabControl tabControl;
-        private System.Windows.Forms.TabPage NameAndDomains;
+        private System.Windows.Forms.TabPage NameAndDomainsTab;
         private System.Windows.Forms.Button OkButton;
         private new System.Windows.Forms.Button CancelButton;
         private System.Windows.Forms.Button ApplyButton;
@@ -767,11 +767,11 @@
         private System.Windows.Forms.GroupBox NameAndDomainsGroupBox;
         private System.Windows.Forms.GroupBox groupBox3;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.TabPage WhiteList;
-        private System.Windows.Forms.TabPage AlertKeywords;
-        private System.Windows.Forms.TabPage AlertAddress;
-        private System.Windows.Forms.TabPage AutoCcBccKeywords;
-        private System.Windows.Forms.TabPage AutoCcBccAddress;
+        private System.Windows.Forms.TabPage WhiteListTab;
+        private System.Windows.Forms.TabPage AlertKeywordTab;
+        private System.Windows.Forms.TabPage AlertAddressTab;
+        private System.Windows.Forms.TabPage AutoCcBccKeywordTab;
+        private System.Windows.Forms.TabPage AutoCcBccRecipientTab;
         private System.Windows.Forms.GroupBox groupBox4;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.GroupBox WhitelistGroupBox;
