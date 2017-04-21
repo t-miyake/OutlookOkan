@@ -190,6 +190,7 @@
     <Compile Include="ConfirmationWindow.Designer.cs">
       <DependentUpon>ConfirmationWindow.cs</DependentUpon>
     </Compile>
+    <Compile Include="CsvImportAndExport.cs" />
     <Compile Include="CustomCheckedListBox.cs">
       <SubType>Component</SubType>
     </Compile>

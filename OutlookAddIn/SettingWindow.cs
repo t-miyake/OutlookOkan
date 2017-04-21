@@ -12,6 +12,7 @@ namespace OutlookAddIn
             SetNameAndDomainsListToGrid();
         }
 
+        #region NameAndDomainsList Setting.
         public BindingSource BindableNameAdnDomainList { get; set; }
 
         public void SetNameAndDomainsListToGrid()
@@ -28,11 +29,35 @@ namespace OutlookAddIn
         public void SaveNameAndDomainsListToCsv()
         {
             var writeCsv = new ReadAndWriteCsv("NameAndDomains.csv");
-
             writeCsv.WriteBindableDataToCsv<NameAndDomainsMap>(BindableNameAdnDomainList);
         }
 
+        private void NameAndDomainsCsvImportButton_Click(object sender, EventArgs e)
+        {
+            var importAction = new CsvImportAndExport();
+            var filePath = importAction.ImportCsv();
 
+            if (filePath != null)
+            {
+                var importData = new BindingSource(importAction.ReadCsv<NameAndDomains>(importAction.ParseCsv<NameAndDomainsMap>(filePath)), string.Empty);
+                foreach (var data in importData)
+                {
+                    BindableNameAdnDomainList.Add(data);
+                }
+
+                MessageBox.Show("インポートが完了しました。");
+            }
+        }
+
+        private void NameAndDomainsCsvExportButton_Click(object sender, EventArgs e)
+        {
+            var exportAction = new CsvImportAndExport();
+            exportAction.CsvExport<NameAndDomainsMap>(BindableNameAdnDomainList,"名称とドメインのリスト.csv");
+        }
+        #endregion
+
+
+        #region Buttons.
         private void OkButton_Click(object sender, EventArgs e)
         {
             SaveNameAndDomainsListToCsv();
@@ -47,5 +72,7 @@ namespace OutlookAddIn
         {
             SaveNameAndDomainsListToCsv();
         }
+        #endregion
+
     }
 }

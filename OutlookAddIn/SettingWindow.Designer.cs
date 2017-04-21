@@ -273,6 +273,7 @@
             this.NameAndDomainsCsvExportButton.TabIndex = 3;
             this.NameAndDomainsCsvExportButton.Text = "CSVエクスポート";
             this.NameAndDomainsCsvExportButton.UseVisualStyleBackColor = true;
+            this.NameAndDomainsCsvExportButton.Click += new System.EventHandler(this.NameAndDomainsCsvExportButton_Click);
             // 
             // NameAndDomainsCsvImportButton
             // 
@@ -282,6 +283,7 @@
             this.NameAndDomainsCsvImportButton.TabIndex = 2;
             this.NameAndDomainsCsvImportButton.Text = "CSVインポート";
             this.NameAndDomainsCsvImportButton.UseVisualStyleBackColor = true;
+            this.NameAndDomainsCsvImportButton.Click += new System.EventHandler(this.NameAndDomainsCsvImportButton_Click);
             // 
             // NameAndDomainsGroupBox
             // 
