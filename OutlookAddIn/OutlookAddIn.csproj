@@ -194,7 +194,8 @@
     <Compile Include="CustomCheckedListBox.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="NameAndDomains.cs" />
+    <Compile Include="DataStyle\NameAndDomains.cs" />
+    <Compile Include="DataStyle\Whitelist.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>
