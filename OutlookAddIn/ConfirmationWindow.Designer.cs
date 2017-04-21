@@ -113,7 +113,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(11, 27);
+            this.label3.Location = new System.Drawing.Point(9, 27);
             this.label3.Margin = new System.Windows.Forms.Padding(8, 3, 8, 2);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(26, 19);
@@ -134,7 +134,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(11, 126);
+            this.label4.Location = new System.Drawing.Point(9, 126);
             this.label4.Margin = new System.Windows.Forms.Padding(8, 3, 8, 2);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(29, 19);
@@ -144,7 +144,7 @@
             // BccAddressList
             // 
             this.BccAddressList.FormattingEnabled = true;
-            this.BccAddressList.Location = new System.Drawing.Point(11, 249);
+            this.BccAddressList.Location = new System.Drawing.Point(11, 248);
             this.BccAddressList.Margin = new System.Windows.Forms.Padding(8, 3, 8, 10);
             this.BccAddressList.Name = "BccAddressList";
             this.BccAddressList.ScrollAlwaysVisible = true;
@@ -155,7 +155,7 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(11, 225);
+            this.label5.Location = new System.Drawing.Point(9, 224);
             this.label5.Margin = new System.Windows.Forms.Padding(8, 3, 8, 2);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(39, 19);
@@ -270,7 +270,7 @@
             // AttachmentsList
             // 
             this.AttachmentsList.FormattingEnabled = true;
-            this.AttachmentsList.Location = new System.Drawing.Point(11, 35);
+            this.AttachmentsList.Location = new System.Drawing.Point(11, 34);
             this.AttachmentsList.Margin = new System.Windows.Forms.Padding(8, 3, 8, 8);
             this.AttachmentsList.Name = "AttachmentsList";
             this.AttachmentsList.ScrollAlwaysVisible = true;
