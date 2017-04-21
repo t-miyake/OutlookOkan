@@ -42,6 +42,8 @@
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.OtherInfoTextBox = new System.Windows.Forms.TextBox();
+            this.label7 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.SubjectTextBox = new System.Windows.Forms.TextBox();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
@@ -78,11 +80,11 @@
             // ToAddressList
             // 
             this.ToAddressList.FormattingEnabled = true;
-            this.ToAddressList.Location = new System.Drawing.Point(11, 67);
+            this.ToAddressList.Location = new System.Drawing.Point(11, 51);
             this.ToAddressList.Margin = new System.Windows.Forms.Padding(8, 3, 8, 8);
             this.ToAddressList.Name = "ToAddressList";
             this.ToAddressList.ScrollAlwaysVisible = true;
-            this.ToAddressList.Size = new System.Drawing.Size(525, 54);
+            this.ToAddressList.Size = new System.Drawing.Size(525, 70);
             this.ToAddressList.TabIndex = 3;
             this.ToAddressList.SelectedIndexChanged += new System.EventHandler(this.ToAddressList_SelectedIndexChanged);
             // 
@@ -93,7 +95,7 @@
             this.label1.Location = new System.Drawing.Point(20, 12);
             this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(264, 26);
+            this.label1.Size = new System.Drawing.Size(214, 22);
             this.label1.TabIndex = 4;
             this.label1.Text = "本当にメールを送信しますか？";
             // 
@@ -104,59 +106,59 @@
             this.label2.Location = new System.Drawing.Point(20, 42);
             this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(498, 23);
+            this.label2.Size = new System.Drawing.Size(415, 19);
             this.label2.TabIndex = 5;
             this.label2.Text = "すべての項目を確認し、チェックを入れて、送信ボタンを押してください。";
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(11, 37);
-            this.label3.Margin = new System.Windows.Forms.Padding(8, 3, 8, 4);
+            this.label3.Location = new System.Drawing.Point(11, 27);
+            this.label3.Margin = new System.Windows.Forms.Padding(8, 3, 8, 2);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(30, 23);
+            this.label3.Size = new System.Drawing.Size(26, 19);
             this.label3.TabIndex = 6;
             this.label3.Text = "To";
             // 
             // CcAddressList
             // 
             this.CcAddressList.FormattingEnabled = true;
-            this.CcAddressList.Location = new System.Drawing.Point(11, 166);
+            this.CcAddressList.Location = new System.Drawing.Point(11, 149);
             this.CcAddressList.Margin = new System.Windows.Forms.Padding(8, 3, 8, 8);
             this.CcAddressList.Name = "CcAddressList";
             this.CcAddressList.ScrollAlwaysVisible = true;
-            this.CcAddressList.Size = new System.Drawing.Size(525, 54);
+            this.CcAddressList.Size = new System.Drawing.Size(525, 70);
             this.CcAddressList.TabIndex = 8;
             this.CcAddressList.SelectedIndexChanged += new System.EventHandler(this.CcAddressList_SelectedIndexChanged_1);
             // 
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(11, 136);
-            this.label4.Margin = new System.Windows.Forms.Padding(8, 3, 8, 4);
+            this.label4.Location = new System.Drawing.Point(11, 126);
+            this.label4.Margin = new System.Windows.Forms.Padding(8, 3, 8, 2);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(34, 23);
+            this.label4.Size = new System.Drawing.Size(29, 19);
             this.label4.TabIndex = 9;
             this.label4.Text = "CC";
             // 
             // BccAddressList
             // 
             this.BccAddressList.FormattingEnabled = true;
-            this.BccAddressList.Location = new System.Drawing.Point(11, 265);
+            this.BccAddressList.Location = new System.Drawing.Point(11, 249);
             this.BccAddressList.Margin = new System.Windows.Forms.Padding(8, 3, 8, 10);
             this.BccAddressList.Name = "BccAddressList";
             this.BccAddressList.ScrollAlwaysVisible = true;
-            this.BccAddressList.Size = new System.Drawing.Size(525, 54);
+            this.BccAddressList.Size = new System.Drawing.Size(525, 70);
             this.BccAddressList.TabIndex = 10;
             this.BccAddressList.SelectedIndexChanged += new System.EventHandler(this.BccAddressList_SelectedIndexChanged);
             // 
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(11, 235);
-            this.label5.Margin = new System.Windows.Forms.Padding(8, 3, 8, 4);
+            this.label5.Location = new System.Drawing.Point(11, 225);
+            this.label5.Margin = new System.Windows.Forms.Padding(8, 3, 8, 2);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(46, 23);
+            this.label5.Size = new System.Drawing.Size(39, 19);
             this.label5.TabIndex = 11;
             this.label5.Text = "BCC";
             // 
@@ -169,7 +171,7 @@
             this.AlertBox.Margin = new System.Windows.Forms.Padding(8, 3, 8, 8);
             this.AlertBox.Name = "AlertBox";
             this.AlertBox.ScrollAlwaysVisible = true;
-            this.AlertBox.Size = new System.Drawing.Size(1208, 88);
+            this.AlertBox.Size = new System.Drawing.Size(1208, 76);
             this.AlertBox.TabIndex = 12;
             this.AlertBox.SelectedIndexChanged += new System.EventHandler(this.AlertBox_SelectedIndexChanged);
             // 
@@ -204,42 +206,63 @@
             // 
             // groupBox3
             // 
+            this.groupBox3.Controls.Add(this.OtherInfoTextBox);
+            this.groupBox3.Controls.Add(this.label7);
             this.groupBox3.Controls.Add(this.label6);
             this.groupBox3.Controls.Add(this.SubjectTextBox);
             this.groupBox3.Location = new System.Drawing.Point(594, 235);
             this.groupBox3.Margin = new System.Windows.Forms.Padding(3, 3, 9, 4);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(669, 83);
+            this.groupBox3.Size = new System.Drawing.Size(669, 115);
             this.groupBox3.TabIndex = 16;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "メール情報";
             // 
+            // OtherInfoTextBox
+            // 
+            this.OtherInfoTextBox.ImeMode = System.Windows.Forms.ImeMode.Off;
+            this.OtherInfoTextBox.Location = new System.Drawing.Point(64, 73);
+            this.OtherInfoTextBox.Name = "OtherInfoTextBox";
+            this.OtherInfoTextBox.ReadOnly = true;
+            this.OtherInfoTextBox.Size = new System.Drawing.Size(594, 27);
+            this.OtherInfoTextBox.TabIndex = 19;
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(11, 76);
+            this.label7.Margin = new System.Windows.Forms.Padding(8, 3, 4, 4);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(47, 19);
+            this.label7.TabIndex = 18;
+            this.label7.Text = "その他";
+            // 
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(11, 37);
+            this.label6.Location = new System.Drawing.Point(11, 34);
             this.label6.Margin = new System.Windows.Forms.Padding(8, 3, 4, 4);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(46, 23);
+            this.label6.Size = new System.Drawing.Size(39, 19);
             this.label6.TabIndex = 17;
             this.label6.Text = "件名";
             // 
             // SubjectTextBox
             // 
             this.SubjectTextBox.ImeMode = System.Windows.Forms.ImeMode.Off;
-            this.SubjectTextBox.Location = new System.Drawing.Point(64, 34);
+            this.SubjectTextBox.Location = new System.Drawing.Point(64, 31);
             this.SubjectTextBox.Name = "SubjectTextBox";
             this.SubjectTextBox.ReadOnly = true;
-            this.SubjectTextBox.Size = new System.Drawing.Size(594, 30);
+            this.SubjectTextBox.Size = new System.Drawing.Size(594, 27);
             this.SubjectTextBox.TabIndex = 0;
             // 
             // groupBox4
             // 
             this.groupBox4.Controls.Add(this.AttachmentsList);
-            this.groupBox4.Location = new System.Drawing.Point(594, 339);
+            this.groupBox4.Location = new System.Drawing.Point(594, 361);
             this.groupBox4.Margin = new System.Windows.Forms.Padding(3, 3, 9, 4);
             this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Size = new System.Drawing.Size(669, 228);
+            this.groupBox4.Size = new System.Drawing.Size(669, 206);
             this.groupBox4.TabIndex = 17;
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "添付ファイル";
@@ -247,17 +270,17 @@
             // AttachmentsList
             // 
             this.AttachmentsList.FormattingEnabled = true;
-            this.AttachmentsList.Location = new System.Drawing.Point(11, 36);
+            this.AttachmentsList.Location = new System.Drawing.Point(11, 35);
             this.AttachmentsList.Margin = new System.Windows.Forms.Padding(8, 3, 8, 8);
             this.AttachmentsList.Name = "AttachmentsList";
             this.AttachmentsList.ScrollAlwaysVisible = true;
-            this.AttachmentsList.Size = new System.Drawing.Size(647, 179);
+            this.AttachmentsList.Size = new System.Drawing.Size(647, 158);
             this.AttachmentsList.TabIndex = 0;
             this.AttachmentsList.SelectedIndexChanged += new System.EventHandler(this.AttachmentsList_SelectedIndexChanged);
             // 
             // ConfirmationWindow
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(11F, 23F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 19F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1281, 624);
             this.Controls.Add(this.groupBox4);
@@ -307,5 +330,7 @@
         private System.Windows.Forms.TextBox SubjectTextBox;
         private System.Windows.Forms.GroupBox groupBox4;
         private CustomCheckedListBox AttachmentsList;
+        private System.Windows.Forms.TextBox OtherInfoTextBox;
+        private System.Windows.Forms.Label label7;
     }
 }

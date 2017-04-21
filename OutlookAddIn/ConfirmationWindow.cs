@@ -19,9 +19,32 @@ namespace OutlookAddIn
             InitializeComponent();
 
             SubjectTextBox.Text = mail.Subject;
+            OtherInfoTextBox.Text = "メール種別："+ GetMailBodyFormat(mail)+ "   メールサイズ："+(mail.Size/1024).ToString("N") + "kB";
             DrawRecipient(mail);
             DrawAttachments(mail);
             CheckMailbodyAndRecipient(mail);
+        }
+
+        /// <summary>
+        /// メールの形式を取得し、表示用の文字列を返す。
+        /// </summary>
+        /// <param name="mail"></param>
+        /// <returns>メールの形式</returns>
+        public string GetMailBodyFormat(Outlook._MailItem mail)
+        {
+            switch (mail.BodyFormat)
+            {
+                case Outlook.OlBodyFormat.olFormatUnspecified:
+                    return "不明";
+                case Outlook.OlBodyFormat.olFormatPlain:
+                    return "テキスト形式";
+                case Outlook.OlBodyFormat.olFormatHTML:
+                    return "HTML形式";
+                case Outlook.OlBodyFormat.olFormatRichText:
+                    return "リッチテキスト形式";
+                default:
+                    throw new ArgumentOutOfRangeException();
+            }
         }
 
         /// <summary>
@@ -33,7 +56,7 @@ namespace OutlookAddIn
             if (mail.Attachments.Count == 0) return;
             for (var i = 0; i <  mail.Attachments.Count; i++)
             {
-                AttachmentsList.Items.Add(mail.Attachments[i+1].FileName + "  (" +(mail.Attachments[i + 1].Size/1024).ToString("##,###") + "kB)");
+                AttachmentsList.Items.Add(mail.Attachments[i+1].FileName + "  (" +(mail.Attachments[i + 1].Size/1024).ToString("N") + "kB)");
             }
         }
 
