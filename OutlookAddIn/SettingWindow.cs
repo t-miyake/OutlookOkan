@@ -32,6 +32,7 @@ namespace OutlookAddIn
             writeCsv.WriteBindableDataToCsv<NameAndDomainsMap>(BindableNameAdnDomainList);
         }
 
+
         private void OkButton_Click(object sender, EventArgs e)
         {
             SaveNameAndDomainsListToCsv();
