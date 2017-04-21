@@ -10,11 +10,37 @@ namespace OutlookAddIn
             InitializeComponent();
 
             SetNameAndDomainsListToGrid();
+            WhitelistToGrid();
         }
 
-        #region NameAndDomainsList Setting.
+        public BindingSource BindableWhitelist { get; set; }
         public BindingSource BindableNameAdnDomainList { get; set; }
+        public BindingSource BindableAlertAndMessage { get; set; }
+        public BindingSource BindableAlertAddress { get; set; }
+        public BindingSource BindableAutoCcBccKeyword { get; set; }
+        public BindingSource BindableAutoCcBccRecipient { get; set; }
 
+
+        //TODO 共通処理のMethod化。
+        #region Whitelist setting
+        public void WhitelistToGrid()
+        {
+            var readCsv = new ReadAndWriteCsv("Whitelist.csv");
+
+            BindableWhitelist = new BindingSource(readCsv.ReadCsv<Whitelist>(readCsv.ParseCsv<WhitelistMap>()), string.Empty);
+            WhitelistGrid.DataSource = BindableWhitelist;
+
+            WhitelistGrid.Columns[0].HeaderText = @"アドレスまたはドメイン";
+        }
+
+        public void SaveWhitelistToCsv()
+        {
+            var writeCsv = new ReadAndWriteCsv("Whitelist.csv");
+            writeCsv.WriteBindableDataToCsv<WhitelistMap>(BindableWhitelist);
+        }
+        #endregion
+
+        #region NameAndDomainsList setting
         public void SetNameAndDomainsListToGrid()
         {            
             var readCsv = new ReadAndWriteCsv("NameAndDomains.csv");
@@ -60,7 +86,7 @@ namespace OutlookAddIn
         #region Buttons.
         private void OkButton_Click(object sender, EventArgs e)
         {
-            SaveNameAndDomainsListToCsv();
+            DoSaveSettings();
         }
 
         private void CancelButton_Click(object sender, EventArgs e)
@@ -70,9 +96,13 @@ namespace OutlookAddIn
 
         private void ApplyButton_Click(object sender, EventArgs e)
         {
+            DoSaveSettings();
+        }
+        private void DoSaveSettings()
+        {
             SaveNameAndDomainsListToCsv();
+            SaveWhitelistToCsv();
         }
         #endregion
-
     }
 }
