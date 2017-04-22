@@ -49,10 +49,10 @@
             this.groupBox7 = new System.Windows.Forms.GroupBox();
             this.label3 = new System.Windows.Forms.Label();
             this.AlertAndMessageGroupBox = new System.Windows.Forms.GroupBox();
-            this.AlertAndMessageGrid = new System.Windows.Forms.DataGridView();
+            this.AlertKeywordAndMessageGrid = new System.Windows.Forms.DataGridView();
             this.groupBox8 = new System.Windows.Forms.GroupBox();
-            this.AlertAndMessageCsvExportButton = new System.Windows.Forms.Button();
-            this.AlertAndMessageCsvImportButton = new System.Windows.Forms.Button();
+            this.AlertKeywordAndMessageCsvExportButton = new System.Windows.Forms.Button();
+            this.AlertKeywordAndMessageCsvImportButton = new System.Windows.Forms.Button();
             this.AlertAddressTab = new System.Windows.Forms.TabPage();
             this.groupBox10 = new System.Windows.Forms.GroupBox();
             this.label4 = new System.Windows.Forms.Label();
@@ -94,7 +94,7 @@
             this.AlertKeywordTab.SuspendLayout();
             this.groupBox7.SuspendLayout();
             this.AlertAndMessageGroupBox.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.AlertAndMessageGrid)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.AlertKeywordAndMessageGrid)).BeginInit();
             this.groupBox8.SuspendLayout();
             this.AlertAddressTab.SuspendLayout();
             this.groupBox10.SuspendLayout();
@@ -171,7 +171,7 @@
             this.WhitelistGroupBox.Size = new System.Drawing.Size(663, 321);
             this.WhitelistGroupBox.TabIndex = 5;
             this.WhitelistGroupBox.TabStop = false;
-            this.WhitelistGroupBox.Text = "ホワイトリスト";
+            this.WhitelistGroupBox.Text = "設定";
             // 
             // WhitelistGrid
             // 
@@ -208,6 +208,7 @@
             this.WhitelistCsvExportButton.TabIndex = 3;
             this.WhitelistCsvExportButton.Text = "CSVエクスポート";
             this.WhitelistCsvExportButton.UseVisualStyleBackColor = true;
+            this.WhitelistCsvExportButton.Click += new System.EventHandler(this.WhitelistCsvExportButton_Click);
             // 
             // WhitelistCsvImportButton
             // 
@@ -217,6 +218,7 @@
             this.WhitelistCsvImportButton.TabIndex = 2;
             this.WhitelistCsvImportButton.Text = "CSVインポート";
             this.WhitelistCsvImportButton.UseVisualStyleBackColor = true;
+            this.WhitelistCsvImportButton.Click += new System.EventHandler(this.WhitelistCsvImportButton_Click);
             // 
             // NameAndDomainsTab
             // 
@@ -293,7 +295,7 @@
             this.NameAndDomainsGroupBox.Size = new System.Drawing.Size(663, 321);
             this.NameAndDomainsGroupBox.TabIndex = 1;
             this.NameAndDomainsGroupBox.TabStop = false;
-            this.NameAndDomainsGroupBox.Text = "名称 / ドメイン";
+            this.NameAndDomainsGroupBox.Text = "設定";
             // 
             // NameAndDomainsGrid
             // 
@@ -343,32 +345,32 @@
             // 
             // AlertAndMessageGroupBox
             // 
-            this.AlertAndMessageGroupBox.Controls.Add(this.AlertAndMessageGrid);
+            this.AlertAndMessageGroupBox.Controls.Add(this.AlertKeywordAndMessageGrid);
             this.AlertAndMessageGroupBox.Location = new System.Drawing.Point(6, 7);
             this.AlertAndMessageGroupBox.Name = "AlertAndMessageGroupBox";
             this.AlertAndMessageGroupBox.Size = new System.Drawing.Size(663, 321);
             this.AlertAndMessageGroupBox.TabIndex = 5;
             this.AlertAndMessageGroupBox.TabStop = false;
-            this.AlertAndMessageGroupBox.Text = "キーワード / 警告文";
+            this.AlertAndMessageGroupBox.Text = "設定";
             // 
-            // AlertAndMessageGrid
+            // AlertKeywordAndMessageGrid
             // 
-            this.AlertAndMessageGrid.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.AlertAndMessageGrid.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
-            this.AlertAndMessageGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.AlertAndMessageGrid.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.AlertAndMessageGrid.Location = new System.Drawing.Point(3, 23);
-            this.AlertAndMessageGrid.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.AlertAndMessageGrid.Name = "AlertAndMessageGrid";
-            this.AlertAndMessageGrid.RowTemplate.DefaultCellStyle.Font = new System.Drawing.Font("Meiryo UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.AlertAndMessageGrid.RowTemplate.Height = 24;
-            this.AlertAndMessageGrid.Size = new System.Drawing.Size(657, 295);
-            this.AlertAndMessageGrid.TabIndex = 0;
+            this.AlertKeywordAndMessageGrid.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.AlertKeywordAndMessageGrid.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
+            this.AlertKeywordAndMessageGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.AlertKeywordAndMessageGrid.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.AlertKeywordAndMessageGrid.Location = new System.Drawing.Point(3, 23);
+            this.AlertKeywordAndMessageGrid.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.AlertKeywordAndMessageGrid.Name = "AlertKeywordAndMessageGrid";
+            this.AlertKeywordAndMessageGrid.RowTemplate.DefaultCellStyle.Font = new System.Drawing.Font("Meiryo UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.AlertKeywordAndMessageGrid.RowTemplate.Height = 24;
+            this.AlertKeywordAndMessageGrid.Size = new System.Drawing.Size(657, 295);
+            this.AlertKeywordAndMessageGrid.TabIndex = 0;
             // 
             // groupBox8
             // 
-            this.groupBox8.Controls.Add(this.AlertAndMessageCsvExportButton);
-            this.groupBox8.Controls.Add(this.AlertAndMessageCsvImportButton);
+            this.groupBox8.Controls.Add(this.AlertKeywordAndMessageCsvExportButton);
+            this.groupBox8.Controls.Add(this.AlertKeywordAndMessageCsvImportButton);
             this.groupBox8.Location = new System.Drawing.Point(675, 183);
             this.groupBox8.Name = "groupBox8";
             this.groupBox8.Padding = new System.Windows.Forms.Padding(8);
@@ -377,24 +379,26 @@
             this.groupBox8.TabStop = false;
             this.groupBox8.Text = "インポート/エクスポート";
             // 
-            // AlertAndMessageCsvExportButton
+            // AlertKeywordAndMessageCsvExportButton
             // 
-            this.AlertAndMessageCsvExportButton.Location = new System.Drawing.Point(34, 89);
-            this.AlertAndMessageCsvExportButton.Margin = new System.Windows.Forms.Padding(3, 8, 3, 3);
-            this.AlertAndMessageCsvExportButton.Name = "AlertAndMessageCsvExportButton";
-            this.AlertAndMessageCsvExportButton.Size = new System.Drawing.Size(166, 38);
-            this.AlertAndMessageCsvExportButton.TabIndex = 3;
-            this.AlertAndMessageCsvExportButton.Text = "CSVエクスポート";
-            this.AlertAndMessageCsvExportButton.UseVisualStyleBackColor = true;
+            this.AlertKeywordAndMessageCsvExportButton.Location = new System.Drawing.Point(34, 89);
+            this.AlertKeywordAndMessageCsvExportButton.Margin = new System.Windows.Forms.Padding(3, 8, 3, 3);
+            this.AlertKeywordAndMessageCsvExportButton.Name = "AlertKeywordAndMessageCsvExportButton";
+            this.AlertKeywordAndMessageCsvExportButton.Size = new System.Drawing.Size(166, 38);
+            this.AlertKeywordAndMessageCsvExportButton.TabIndex = 3;
+            this.AlertKeywordAndMessageCsvExportButton.Text = "CSVエクスポート";
+            this.AlertKeywordAndMessageCsvExportButton.UseVisualStyleBackColor = true;
+            this.AlertKeywordAndMessageCsvExportButton.Click += new System.EventHandler(this.AlertKeywordAndMessageCsvExportButton_Click);
             // 
-            // AlertAndMessageCsvImportButton
+            // AlertKeywordAndMessageCsvImportButton
             // 
-            this.AlertAndMessageCsvImportButton.Location = new System.Drawing.Point(34, 37);
-            this.AlertAndMessageCsvImportButton.Name = "AlertAndMessageCsvImportButton";
-            this.AlertAndMessageCsvImportButton.Size = new System.Drawing.Size(166, 38);
-            this.AlertAndMessageCsvImportButton.TabIndex = 2;
-            this.AlertAndMessageCsvImportButton.Text = "CSVインポート";
-            this.AlertAndMessageCsvImportButton.UseVisualStyleBackColor = true;
+            this.AlertKeywordAndMessageCsvImportButton.Location = new System.Drawing.Point(34, 37);
+            this.AlertKeywordAndMessageCsvImportButton.Name = "AlertKeywordAndMessageCsvImportButton";
+            this.AlertKeywordAndMessageCsvImportButton.Size = new System.Drawing.Size(166, 38);
+            this.AlertKeywordAndMessageCsvImportButton.TabIndex = 2;
+            this.AlertKeywordAndMessageCsvImportButton.Text = "CSVインポート";
+            this.AlertKeywordAndMessageCsvImportButton.UseVisualStyleBackColor = true;
+            this.AlertKeywordAndMessageCsvImportButton.Click += new System.EventHandler(this.AlertKeywordAndMessageCsvImportButton_Click);
             // 
             // AlertAddressTab
             // 
@@ -437,7 +441,7 @@
             this.AlertAddressGroupBox.Size = new System.Drawing.Size(663, 321);
             this.AlertAddressGroupBox.TabIndex = 8;
             this.AlertAddressGroupBox.TabStop = false;
-            this.AlertAddressGroupBox.Text = "警告アドレス or ドメイン";
+            this.AlertAddressGroupBox.Text = "設定";
             // 
             // AlertAddressGrid
             // 
@@ -474,6 +478,7 @@
             this.AlertAddressCsvExportButton.TabIndex = 3;
             this.AlertAddressCsvExportButton.Text = "CSVエクスポート";
             this.AlertAddressCsvExportButton.UseVisualStyleBackColor = true;
+            this.AlertAddressCsvExportButton.Click += new System.EventHandler(this.AlertAddressCsvExportButton_Click);
             // 
             // AlertAddressCsvImportButton
             // 
@@ -483,6 +488,7 @@
             this.AlertAddressCsvImportButton.TabIndex = 2;
             this.AlertAddressCsvImportButton.Text = "CSVインポート";
             this.AlertAddressCsvImportButton.UseVisualStyleBackColor = true;
+            this.AlertAddressCsvImportButton.Click += new System.EventHandler(this.AlertAddressCsvImportButton_Click);
             // 
             // AutoCcBccKeywordTab
             // 
@@ -525,7 +531,7 @@
             this.AutoCcBccKeywordGroupBox.Size = new System.Drawing.Size(663, 321);
             this.AutoCcBccKeywordGroupBox.TabIndex = 8;
             this.AutoCcBccKeywordGroupBox.TabStop = false;
-            this.AutoCcBccKeywordGroupBox.Text = "CC or BCC/キーワード/自動追加アドレス";
+            this.AutoCcBccKeywordGroupBox.Text = "設定";
             // 
             // AutoCcBccKeywordGrid
             // 
@@ -562,6 +568,7 @@
             this.AutoCcBccKeywordExportButton.TabIndex = 3;
             this.AutoCcBccKeywordExportButton.Text = "CSVエクスポート";
             this.AutoCcBccKeywordExportButton.UseVisualStyleBackColor = true;
+            this.AutoCcBccKeywordExportButton.Click += new System.EventHandler(this.AutoCcBccKeywordExportButton_Click);
             // 
             // AutoCcBccKeywordImportButton
             // 
@@ -571,6 +578,7 @@
             this.AutoCcBccKeywordImportButton.TabIndex = 2;
             this.AutoCcBccKeywordImportButton.Text = "CSVインポート";
             this.AutoCcBccKeywordImportButton.UseVisualStyleBackColor = true;
+            this.AutoCcBccKeywordImportButton.Click += new System.EventHandler(this.AutoCcBccKeywordImportButton_Click);
             // 
             // AutoCcBccRecipientTab
             // 
@@ -613,7 +621,7 @@
             this.AutoCcBccRecipientGroupBox.Size = new System.Drawing.Size(663, 321);
             this.AutoCcBccRecipientGroupBox.TabIndex = 8;
             this.AutoCcBccRecipientGroupBox.TabStop = false;
-            this.AutoCcBccRecipientGroupBox.Text = "CC or BCC/宛先/自動追加アドレス";
+            this.AutoCcBccRecipientGroupBox.Text = "設定";
             // 
             // AutoCcBccRecipientGrid
             // 
@@ -650,6 +658,7 @@
             this.AutoCcBccRecipientExportCsvButton.TabIndex = 3;
             this.AutoCcBccRecipientExportCsvButton.Text = "CSVエクスポート";
             this.AutoCcBccRecipientExportCsvButton.UseVisualStyleBackColor = true;
+            this.AutoCcBccRecipientExportCsvButton.Click += new System.EventHandler(this.AutoCcBccRecipientExportCsvButton_Click);
             // 
             // AutoCcBccRecipientImportCsvButton
             // 
@@ -659,6 +668,7 @@
             this.AutoCcBccRecipientImportCsvButton.TabIndex = 2;
             this.AutoCcBccRecipientImportCsvButton.Text = "CSVインポート";
             this.AutoCcBccRecipientImportCsvButton.UseVisualStyleBackColor = true;
+            this.AutoCcBccRecipientImportCsvButton.Click += new System.EventHandler(this.AutoCcBccRecipientImportCsvButton_Click);
             // 
             // OkButton
             // 
@@ -729,7 +739,7 @@
             this.groupBox7.ResumeLayout(false);
             this.groupBox7.PerformLayout();
             this.AlertAndMessageGroupBox.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.AlertAndMessageGrid)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.AlertKeywordAndMessageGrid)).EndInit();
             this.groupBox8.ResumeLayout(false);
             this.AlertAddressTab.ResumeLayout(false);
             this.groupBox10.ResumeLayout(false);
@@ -782,10 +792,10 @@
         private System.Windows.Forms.GroupBox groupBox7;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.GroupBox AlertAndMessageGroupBox;
-        private System.Windows.Forms.DataGridView AlertAndMessageGrid;
+        private System.Windows.Forms.DataGridView AlertKeywordAndMessageGrid;
         private System.Windows.Forms.GroupBox groupBox8;
-        private System.Windows.Forms.Button AlertAndMessageCsvExportButton;
-        private System.Windows.Forms.Button AlertAndMessageCsvImportButton;
+        private System.Windows.Forms.Button AlertKeywordAndMessageCsvExportButton;
+        private System.Windows.Forms.Button AlertKeywordAndMessageCsvImportButton;
         private System.Windows.Forms.GroupBox groupBox10;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.GroupBox AlertAddressGroupBox;

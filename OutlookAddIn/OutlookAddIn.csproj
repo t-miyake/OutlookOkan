@@ -194,6 +194,10 @@
     <Compile Include="CustomCheckedListBox.cs">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="DataStyle\AlertAddress.cs" />
+    <Compile Include="DataStyle\AlertKeywordAndMessage.cs" />
+    <Compile Include="DataStyle\AutoCcBccKeyword.cs" />
+    <Compile Include="DataStyle\AutoCcBccRecipient.cs" />
     <Compile Include="DataStyle\NameAndDomains.cs" />
     <Compile Include="DataStyle\Whitelist.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
