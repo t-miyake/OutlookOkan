@@ -221,7 +221,7 @@
     <EmbeddedResource Include="SettingWindow.resx">
       <DependentUpon>SettingWindow.cs</DependentUpon>
     </EmbeddedResource>
-    <None Include="OutlookAddIn_TemporaryKey.pfx" />
+    <None Include="OutlookOkan_TemporaryKey.pfx" />
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -263,10 +263,10 @@
     <SignManifests>true</SignManifests>
   </PropertyGroup>
   <PropertyGroup>
-    <ManifestKeyFile>OutlookAddIn_TemporaryKey.pfx</ManifestKeyFile>
+    <ManifestKeyFile>OutlookOkan_TemporaryKey.pfx</ManifestKeyFile>
   </PropertyGroup>
   <PropertyGroup>
-    <ManifestCertificateThumbprint>CFE1A0684DF505DFE7C91E35B649246C393B61A4</ManifestCertificateThumbprint>
+    <ManifestCertificateThumbprint>D40638E377F54FFFDF2E9A34004EC1DC53B99B28</ManifestCertificateThumbprint>
   </PropertyGroup>
   <!-- Include the build rules for a C# project. -->
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
