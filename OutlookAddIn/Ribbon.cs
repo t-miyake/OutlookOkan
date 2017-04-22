@@ -44,6 +44,11 @@ namespace OutlookAddIn
             aboutBox.Dispose();
         }
 
+        public void ShowHelp(Office.IRibbonControl control)
+        {
+
+        }
+
         #endregion
 
         #region ヘルパー
