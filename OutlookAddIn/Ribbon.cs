@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Diagnostics;
 using System.IO;
 using System.Reflection;
 using System.Runtime.InteropServices;
@@ -46,7 +47,7 @@ namespace OutlookAddIn
 
         public void ShowHelp(Office.IRibbonControl control)
         {
-
+            Process.Start("https://noraneko.co.jp/outlookokan/");
         }
 
         #endregion
