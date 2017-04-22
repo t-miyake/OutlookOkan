@@ -6,6 +6,7 @@ using System.Linq;
 
 namespace OutlookAddIn
 {
+    // TODO 高速化のため、処理を簡潔にする。
     public partial class ConfirmationWindow : Form
     {
         public Dictionary<string, string> DisplayNameAndRecipient = new Dictionary<string, string>();
@@ -13,21 +14,51 @@ namespace OutlookAddIn
         /// <summary>
         /// メール送信の確認画面を表示。
         /// </summary>
-        /// <param name="mail">送信するメールに関する情報</param>
+        /// <param name="mail">送信するメールに関する情報</param>aaaa
         public ConfirmationWindow(Outlook._MailItem mail)
         {
             InitializeComponent();
+            MakeDisplayNameAndRecipient(mail);
 
             SubjectTextBox.Text = mail.Subject;
             OtherInfoTextBox.Text = "メール種別："+ GetMailBodyFormat(mail)+ "   メールサイズ："+(mail.Size/1024).ToString("N") + "kB";
             CheckForgotAttach(mail);
 
+            CheckKeyword(mail);
+
+            //TODO 暫定処置だよ！手抜きなだけだよ！
+            MakeDisplayNameAndRecipient(mail);
+
             DrawRecipient(mail);
             DrawAttachments(mail);
             CheckMailbodyAndRecipient(mail);
-            CheckAlertKeyword(mail);
-
+            
             SendButtonSwitch();
+        }
+
+        /// <summary>
+        /// 送信先の表示名と表示名とメールアドレスを対応させるDictionary。(Outlookの仕様上、表示名にメールアドレスが含まれない事がある。)
+        /// </summary>
+        /// <param name="mail"></param>
+        public void MakeDisplayNameAndRecipient(Outlook._MailItem mail)
+        {
+            foreach (Outlook.Recipient recip in mail.Recipients)
+            {
+                // Exchangeの連絡先に登録された情報を取得。
+                var exchangeUser = recip.AddressEntry.GetExchangeUser();
+
+                // ローカルの連絡先に登録された情報を取得。
+                var registeredUser = recip.AddressEntry.GetContact();
+
+                // 登録されたメールアドレスの場合、登録名のみが表示されるため、メールアドレスと共に表示されるよう表示用テキストを生成。
+                var nameAndMailAddress = exchangeUser != null
+                    ? exchangeUser.Name + @" (" + exchangeUser.PrimarySmtpAddress + @")"
+                    : registeredUser != null
+                        ? recip.Name
+                        : recip.Address;
+
+                DisplayNameAndRecipient[recip.Name] = nameAndMailAddress;
+            }
         }
 
         /// <summary>
@@ -66,7 +97,7 @@ namespace OutlookAddIn
         /// 本文に登録したキーワードがある場合、登録した警告文を表示する。
         /// </summary>
         /// <param name="mail"></param>
-        public void CheckAlertKeyword(Outlook._MailItem mail)
+        public void CheckKeyword(Outlook._MailItem mail)
         {
             //Load AlertKeywordAndMessage
             var readCsv = new ReadAndWriteCsv("AlertKeywordAndMessageList.csv");
@@ -79,6 +110,40 @@ namespace OutlookAddIn
                 AlertBox.Items.Add(i.Message);
                 AlertBox.ColorFlag.Add(true);
             }
+
+            //Load AutoCcBccKeywordList
+            //TODO CCやBCCの重複回避。
+            //TODO 自動追加されたことが分かるようにする。
+            readCsv = new ReadAndWriteCsv("AutoCcBccKeywordList.csv");
+            var autoCcBccKeywordList = readCsv.ReadCsv<AutoCcBccKeyword>(readCsv.ParseCsv<AutoCcBccKeywordMap>());
+
+            if (autoCcBccKeywordList.Count == 0) return;
+            foreach (var i in autoCcBccKeywordList)
+            {
+                if (!mail.Body.Contains(i.Keyword)) continue;
+                var recip = mail.Recipients.Add(i.AutoAddAddress);
+                recip.Type = i.CcOrBcc == CcOrBcc.CC
+                    ? (int)Outlook.OlMailRecipientType.olCC
+                    : (int)Outlook.OlMailRecipientType.olBCC;
+            }
+
+            //Load AutoCcBccRecipientList
+            //TODO CCやBCCの重複回避。
+            //TODO 自動追加されたことが分かるようにする。
+            readCsv = new ReadAndWriteCsv("AutoCcBccRecipientList.csv");
+            var autoCcBccRecipientList = readCsv.ReadCsv<AutoCcBccRecipient>(readCsv.ParseCsv<AutoCcBccRecipientMap>());
+
+            if (autoCcBccRecipientList.Count == 0) return;
+            foreach (var i in autoCcBccRecipientList)
+            {
+                if (!DisplayNameAndRecipient.Values.Contains(i.TargetRecipient)) continue;
+                var recip = mail.Recipients.Add(i.AutoAddAddress);
+                recip.Type = i.CcOrBcc == CcOrBcc.CC
+                    ? (int)Outlook.OlMailRecipientType.olCC
+                    : (int)Outlook.OlMailRecipientType.olBCC;
+            }
+
+            mail.Recipients.ResolveAll();
         }
 
         /// <summary>
@@ -133,6 +198,8 @@ namespace OutlookAddIn
         /// <param name="mail">送信するメールに関する情報</param>
         public void DrawRecipient(Outlook._MailItem mail)
         {
+            // TODO ここでいろいろやりすぎなので、直す。
+
             //Load Whitelist
             var readCsv = new ReadAndWriteCsv("Whitelist.csv");
             var whitelist = readCsv.ReadCsv<Whitelist>(readCsv.ParseCsv<WhitelistMap>());
@@ -140,24 +207,6 @@ namespace OutlookAddIn
             //Load AlertAddressList
             readCsv = new ReadAndWriteCsv("AlertAddressList.csv");
             var alertAddresslist = readCsv.ReadCsv<AlertAddress>(readCsv.ParseCsv<AlertAddressMap>());
-
-            foreach (Outlook.Recipient recip in mail.Recipients)
-            {
-                // Exchangeの連絡先に登録された情報を取得。
-                var exchangeUser = recip.AddressEntry.GetExchangeUser();
-
-                // ローカルの連絡先に登録された情報を取得。
-                var registeredUser = recip.AddressEntry.GetContact();
-
-                // 登録されたメールアドレスの場合、登録名のみが表示されるため、メールアドレスと共に表示されるよう表示用テキストを生成。
-                var nameAndMailAddress = exchangeUser != null
-                    ? exchangeUser.Name + @" (" + exchangeUser.PrimarySmtpAddress + @")"
-                    : registeredUser != null
-                        ? recip.Name
-                        : recip.Address;
-
-                DisplayNameAndRecipient[recip.Name] = nameAndMailAddress;
-            }
 
             // 宛先(To,CC,BCC)に登録された宛先又は登録名を配列に格納。
             var toAdresses = mail.To?.Split(';') ?? new string[] { };
