@@ -17,6 +17,8 @@ namespace OutlookOkan
         /// <returns>インポートするCSVファイルのパス</returns>
         public string ImportCsv()
         {
+            MessageBox.Show("書式の合わないCSVをインポートするとエラーになります。気を付けてください。");
+
             var openFileDialog = new OpenFileDialog
             {
                 Title = "CSVファイルを選択してください。",

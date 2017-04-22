@@ -54,13 +54,22 @@ namespace OutlookOkan
 
             if (filePath != null)
             {
-                var importData = new BindingSource(importAction.ReadCsv<Whitelist>(importAction.ParseCsv<WhitelistMap>(filePath)), string.Empty);
-                foreach (var data in importData)
+                try
                 {
-                    BindableWhitelist.Add(data);
-                }
+                    var importData = new BindingSource(
+                        importAction.ReadCsv<Whitelist>(importAction.ParseCsv<WhitelistMap>(filePath)), string.Empty);
 
-                MessageBox.Show("インポートが完了しました。");
+                    foreach (var data in importData)
+                    {
+                        BindableWhitelist.Add(data);
+                    }
+
+                    MessageBox.Show("インポートが完了しました。");
+                }
+                catch (Exception)
+                {
+                    MessageBox.Show("インポートに失敗しました。");
+                }
             }
         }
 
@@ -96,13 +105,22 @@ namespace OutlookOkan
 
             if (filePath != null)
             {
-                var importData = new BindingSource(importAction.ReadCsv<NameAndDomains>(importAction.ParseCsv<NameAndDomainsMap>(filePath)), string.Empty);
-                foreach (var data in importData)
+                try
                 {
-                    BindableNameAdnDomainList.Add(data);
-                }
+                    var importData = new BindingSource(
+                        importAction.ReadCsv<NameAndDomains>(importAction.ParseCsv<NameAndDomainsMap>(filePath)),
+                        string.Empty);
+                    foreach (var data in importData)
+                    {
+                        BindableNameAdnDomainList.Add(data);
+                    }
 
-                MessageBox.Show("インポートが完了しました。");
+                    MessageBox.Show("インポートが完了しました。");
+                }
+                catch (Exception)
+                {
+                    MessageBox.Show("インポートに失敗しました。");
+                }
             }
         }
 
@@ -138,13 +156,22 @@ namespace OutlookOkan
 
             if (filePath != null)
             {
-                var importData = new BindingSource(importAction.ReadCsv<AlertKeywordAndMessage>(importAction.ParseCsv<AlertKeywordAndMessageMap>(filePath)), string.Empty);
-                foreach (var data in importData)
+                try
                 {
-                    BindableAlertKeywordAndMessageList.Add(data);
-                }
+                    var importData = new BindingSource(
+                        importAction.ReadCsv<AlertKeywordAndMessage>(
+                            importAction.ParseCsv<AlertKeywordAndMessageMap>(filePath)), string.Empty);
+                    foreach (var data in importData)
+                    {
+                        BindableAlertKeywordAndMessageList.Add(data);
+                    }
 
-                MessageBox.Show("インポートが完了しました。");
+                    MessageBox.Show("インポートが完了しました。");
+                }
+                catch (Exception)
+                {
+                    MessageBox.Show("インポートに失敗しました。");
+                }
             }
         }
 
@@ -179,13 +206,22 @@ namespace OutlookOkan
 
             if (filePath != null)
             {
-                var importData = new BindingSource(importAction.ReadCsv<AlertAddress>(importAction.ParseCsv<AlertAddressMap>(filePath)), string.Empty);
-                foreach (var data in importData)
+                try
                 {
-                    BindableAlertAddressList.Add(data);
-                }
+                    var importData = new BindingSource(
+                        importAction.ReadCsv<AlertAddress>(importAction.ParseCsv<AlertAddressMap>(filePath)),
+                        string.Empty);
+                    foreach (var data in importData)
+                    {
+                        BindableAlertAddressList.Add(data);
+                    }
 
-                MessageBox.Show("インポートが完了しました。");
+                    MessageBox.Show("インポートが完了しました。");
+                }
+                catch (Exception)
+                {
+                    MessageBox.Show("インポートに失敗しました。");
+                }
             }
         }
 
@@ -195,7 +231,6 @@ namespace OutlookOkan
             exportAction.CsvExport<AlertAddressMap>(BindableAlertAddressList, "警告アドレス.csv");
         }
         #endregion
-
 
         #region AutoCcBccKeywordList setting
         public void AutoCcBccKeywordListToGrid()
@@ -223,13 +258,22 @@ namespace OutlookOkan
 
             if (filePath != null)
             {
-                var importData = new BindingSource(importAction.ReadCsv<AutoCcBccKeyword>(importAction.ParseCsv<AutoCcBccKeywordMap>(filePath)), string.Empty);
-                foreach (var data in importData)
+                try
                 {
-                    BindableAutoCcBccKeywordList.Add(data);
-                }
+                    var importData = new BindingSource(
+                        importAction.ReadCsv<AutoCcBccKeyword>(importAction.ParseCsv<AutoCcBccKeywordMap>(filePath)),
+                        string.Empty);
+                    foreach (var data in importData)
+                    {
+                        BindableAutoCcBccKeywordList.Add(data);
+                    }
 
-                MessageBox.Show("インポートが完了しました。");
+                    MessageBox.Show("インポートが完了しました。");
+                }
+                catch (Exception)
+                {
+                    MessageBox.Show("インポートに失敗しました。");
+                }
             }
         }
 
@@ -266,13 +310,22 @@ namespace OutlookOkan
 
             if (filePath != null)
             {
-                var importData = new BindingSource(importAction.ReadCsv<AutoCcBccRecipient>(importAction.ParseCsv<AutoCcBccRecipientMap>(filePath)), string.Empty);
-                foreach (var data in importData)
+                try
                 {
-                    BindableAutoCcBccRecipientList.Add(data);
-                }
+                    var importData = new BindingSource(
+                        importAction.ReadCsv<AutoCcBccRecipient>(
+                            importAction.ParseCsv<AutoCcBccRecipientMap>(filePath)), string.Empty);
+                    foreach (var data in importData)
+                    {
+                        BindableAutoCcBccRecipientList.Add(data);
+                    }
 
-                MessageBox.Show("インポートが完了しました。");
+                    MessageBox.Show("インポートが完了しました。");
+                }
+                catch (Exception)
+                {
+                    MessageBox.Show("インポートに失敗しました。");
+                }
             }
         }
 
