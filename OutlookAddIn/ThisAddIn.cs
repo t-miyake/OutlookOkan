@@ -12,7 +12,7 @@ namespace OutlookAddIn
 
         private void ThisAddIn_Startup(object sender, System.EventArgs e)
         {
-            Application.ItemSend +=  Application_ItemSend;
+            Application.ItemSend += Application_ItemSend;
         }
 
         public void Application_ItemSend(object item, ref bool cancel)
