@@ -20,9 +20,21 @@ namespace OutlookAddIn
 
             SubjectTextBox.Text = mail.Subject;
             OtherInfoTextBox.Text = "メール種別："+ GetMailBodyFormat(mail)+ "   メールサイズ："+(mail.Size/1024).ToString("N") + "kB";
+            CheckForgotAttach(mail);
+
             DrawRecipient(mail);
             DrawAttachments(mail);
             CheckMailbodyAndRecipient(mail);
+        }
+
+        /// <summary>
+        /// ファイルの添付忘れを確認。
+        /// </summary>
+        /// <param name="mail"></param>
+        public void CheckForgotAttach(Outlook._MailItem mail)
+        {
+            if (mail.Body.Contains("添付") && mail.Attachments.Count == 0)
+                AlertBox.Items.Add(@"本文中に 添付 という文言があるのに添付ファイルがありません。");
         }
 
         /// <summary>
