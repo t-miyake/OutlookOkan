@@ -25,6 +25,9 @@ namespace OutlookAddIn
             DrawRecipient(mail);
             DrawAttachments(mail);
             CheckMailbodyAndRecipient(mail);
+            CheckAlertKeyword(mail);
+
+            SendButtonSwitch();
         }
 
         /// <summary>
@@ -60,6 +63,25 @@ namespace OutlookAddIn
         }
 
         /// <summary>
+        /// 本文に登録したキーワードがある場合、登録した警告文を表示する。
+        /// </summary>
+        /// <param name="mail"></param>
+        public void CheckAlertKeyword(Outlook._MailItem mail)
+        {
+            //Load AlertKeywordAndMessage
+            var readCsv = new ReadAndWriteCsv("AlertKeywordAndMessageList.csv");
+            var alertKeywordAndMessageList = readCsv.ReadCsv<AlertKeywordAndMessage>(readCsv.ParseCsv<AlertKeywordAndMessageMap>());
+
+            if (alertKeywordAndMessageList.Count == 0) return;
+            foreach (var i in alertKeywordAndMessageList)
+            {
+                if (!mail.Body.Contains(i.AlertKeyword)) continue;
+                AlertBox.Items.Add(i.Message);
+                AlertBox.ColorFlag.Add(true);
+            }
+        }
+
+        /// <summary>
         /// 添付ファイルとそのファイルサイズを取得し、画面に表示する。
         /// </summary>
         /// <param name="mail"></param>
@@ -78,6 +100,7 @@ namespace OutlookAddIn
         /// <param name="mail"></param>
         public void CheckMailbodyAndRecipient(Outlook._MailItem mail)
         {
+            //Load NameAndDomainsList
             var readCsv = new ReadAndWriteCsv("NameAndDomains.csv");
             var nameAndDomainsList = readCsv.ReadCsv<NameAndDomains>(readCsv.ParseCsv<NameAndDomainsMap>());
             
@@ -110,9 +133,13 @@ namespace OutlookAddIn
         /// <param name="mail">送信するメールに関する情報</param>
         public void DrawRecipient(Outlook._MailItem mail)
         {
-            //Read Whitelist
+            //Load Whitelist
             var readCsv = new ReadAndWriteCsv("Whitelist.csv");
             var whitelist = readCsv.ReadCsv<Whitelist>(readCsv.ParseCsv<WhitelistMap>());
+
+            //Load AlertAddressList
+            readCsv = new ReadAndWriteCsv("AlertAddressList.csv");
+            var alertAddresslist = readCsv.ReadCsv<AlertAddress>(readCsv.ParseCsv<AlertAddressMap>());
 
             foreach (Outlook.Recipient recip in mail.Recipients)
             {
@@ -142,33 +169,47 @@ namespace OutlookAddIn
             // 宛先や登録名から、表示用テキスト(メールアドレスや登録名)を各エリアに表示。
             // 宛先ドメインが送信元ドメインと異なる場合、色を変更するフラグをtrue、そうでない場合falseとする。
             // ホワイトリストに含まれる宛先の場合、ListのIsCheckedフラグをtrueにして、最初からチェック済みとする。
+            // 警告アドレスリストに含まれる宛先の場合、AlertBoxにその旨を追加する。
             foreach (var i in DisplayNameAndRecipient)
             {
                 if (toAdresses.Any(address => address.Contains(i.Key)))
                 {
                     ToAddressList.Items.Add(i.Value, whitelist.Count != 0 && whitelist.Any(address => i.Value.Contains(address.WhiteName)));
                     ToAddressList.ColorFlag.Add(!i.Value.Contains(senderDomain));
+
+                    if (alertAddresslist.Count != 0 && alertAddresslist.Any(address => i.Value.Contains(address.TartgetAddress)))
+                        AlertBox.Items.Add($"警告対象として登録されたアドレス/ドメインが宛先(To)に含まれています。 ({i.Value})");
+                        AlertBox.ColorFlag.Add(true);
                 }
 
                 if (ccAdresses.Any(address => address.Contains(i.Key)))
                 {
                     CcAddressList.Items.Add(i.Value, whitelist.Count != 0 && whitelist.Any(address => i.Value.Contains(address.WhiteName)));
                     CcAddressList.ColorFlag.Add(!i.Value.Contains(senderDomain));
+
+                    if (alertAddresslist.Count != 0 && alertAddresslist.Any(address => i.Value.Contains(address.TartgetAddress)))
+                        AlertBox.Items.Add($"警告対象として登録されたアドレス/ドメインが宛先(CC)に含まれています。 ({i.Value})");
+                        AlertBox.ColorFlag.Add(true);
                 }
 
                 if (bccAdresses.Any(address => address.Contains(i.Key)))
                 {
                     BccAddressList.Items.Add(i.Value, whitelist.Count != 0 && whitelist.Any(address => i.Value.Contains(address.WhiteName)));
                     BccAddressList.ColorFlag.Add(!i.Value.Contains(senderDomain));
+
+                    if (alertAddresslist.Count != 0 && alertAddresslist.Any(address => i.Value.Contains(address.TartgetAddress)))
+                        AlertBox.Items.Add($"警告対象として登録されたアドレス/ドメインが宛先(BCC)に含まれています。 ({i.Value})");
+                        AlertBox.ColorFlag.Add(true);
                 }
             }
 
             //宛先の件数をそれぞれ表示
-            ToLabel.Text = "To (" + ToAddressList.Items.Count +")";
-            CcLabel.Text = "CC (" + CcAddressList.Items.Count + ")";
-            BccLabel.Text = "BCC (" + BccAddressList.Items.Count + ")";
+            ToLabel.Text = $@"To ({ToAddressList.Items.Count})";
+            CcLabel.Text = $@"CC ({CcAddressList.Items.Count})";
+            BccLabel.Text = $@"BCC ({BccAddressList.Items.Count})";
         }
 
+        #region BoxSelectedIndexChanged events
         private void AlertBox_SelectedIndexChanged(object sender, EventArgs e)
         {
             SendButtonSwitch();
@@ -193,6 +234,8 @@ namespace OutlookAddIn
         {
             SendButtonSwitch();
         }
+        #endregion
+
         /// <summary>
         /// 全てのチェックボックスにチェックされた場合のみ、送信ボタンを有効とする。
         /// </summary>
