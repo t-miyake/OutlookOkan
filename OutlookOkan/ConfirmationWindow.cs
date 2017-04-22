@@ -139,11 +139,13 @@ namespace OutlookOkan
             if (autoCcBccRecipientList.Count == 0) return;
             foreach (var i in autoCcBccRecipientList)
             {
-                if (!DisplayNameAndRecipient.Values.Contains(i.TargetRecipient)) continue;
-                var recip = mail.Recipients.Add(i.AutoAddAddress);
-                recip.Type = i.CcOrBcc == CcOrBcc.CC
-                    ? (int)Outlook.OlMailRecipientType.olCC
-                    : (int)Outlook.OlMailRecipientType.olBCC;
+                if (DisplayNameAndRecipient.Any(recipient => recipient.Value.Contains(i.TargetRecipient)))
+                {
+                    var recip = mail.Recipients.Add(i.AutoAddAddress);
+                    recip.Type = i.CcOrBcc == CcOrBcc.CC
+                        ? (int) Outlook.OlMailRecipientType.olCC
+                        : (int) Outlook.OlMailRecipientType.olBCC;
+                }
             }
 
             mail.Recipients.ResolveAll();
