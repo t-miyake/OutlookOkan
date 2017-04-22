@@ -62,7 +62,7 @@
             this.sendButton.Margin = new System.Windows.Forms.Padding(2, 3, 9, 4);
             this.sendButton.Name = "sendButton";
             this.sendButton.Size = new System.Drawing.Size(93, 38);
-            this.sendButton.TabIndex = 0;
+            this.sendButton.TabIndex = 19;
             this.sendButton.Text = "送信";
             this.sendButton.UseVisualStyleBackColor = true;
             // 
@@ -73,7 +73,7 @@
             this.cancelButton.Margin = new System.Windows.Forms.Padding(2, 3, 9, 4);
             this.cancelButton.Name = "cancelButton";
             this.cancelButton.Size = new System.Drawing.Size(93, 38);
-            this.cancelButton.TabIndex = 1;
+            this.cancelButton.TabIndex = 20;
             this.cancelButton.Text = "キャンセル";
             this.cancelButton.UseVisualStyleBackColor = true;
             // 
@@ -85,7 +85,7 @@
             this.ToAddressList.Name = "ToAddressList";
             this.ToAddressList.ScrollAlwaysVisible = true;
             this.ToAddressList.Size = new System.Drawing.Size(525, 70);
-            this.ToAddressList.TabIndex = 3;
+            this.ToAddressList.TabIndex = 7;
             this.ToAddressList.SelectedIndexChanged += new System.EventHandler(this.ToAddressList_SelectedIndexChanged);
             // 
             // label1
@@ -96,7 +96,7 @@
             this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(214, 22);
-            this.label1.TabIndex = 4;
+            this.label1.TabIndex = 1;
             this.label1.Text = "本当にメールを送信しますか？";
             // 
             // label2
@@ -107,7 +107,7 @@
             this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(415, 19);
-            this.label2.TabIndex = 5;
+            this.label2.TabIndex = 2;
             this.label2.Text = "すべての項目を確認し、チェックを入れて、送信ボタンを押してください。";
             // 
             // ToLabel
@@ -128,7 +128,7 @@
             this.CcAddressList.Name = "CcAddressList";
             this.CcAddressList.ScrollAlwaysVisible = true;
             this.CcAddressList.Size = new System.Drawing.Size(525, 70);
-            this.CcAddressList.TabIndex = 8;
+            this.CcAddressList.TabIndex = 9;
             this.CcAddressList.SelectedIndexChanged += new System.EventHandler(this.CcAddressList_SelectedIndexChanged_1);
             // 
             // CcLabel
@@ -138,7 +138,7 @@
             this.CcLabel.Margin = new System.Windows.Forms.Padding(8, 3, 8, 2);
             this.CcLabel.Name = "CcLabel";
             this.CcLabel.Size = new System.Drawing.Size(29, 19);
-            this.CcLabel.TabIndex = 9;
+            this.CcLabel.TabIndex = 8;
             this.CcLabel.Text = "CC";
             // 
             // BccAddressList
@@ -149,7 +149,7 @@
             this.BccAddressList.Name = "BccAddressList";
             this.BccAddressList.ScrollAlwaysVisible = true;
             this.BccAddressList.Size = new System.Drawing.Size(525, 70);
-            this.BccAddressList.TabIndex = 10;
+            this.BccAddressList.TabIndex = 11;
             this.BccAddressList.SelectedIndexChanged += new System.EventHandler(this.BccAddressList_SelectedIndexChanged);
             // 
             // BccLabel
@@ -159,7 +159,7 @@
             this.BccLabel.Margin = new System.Windows.Forms.Padding(8, 3, 8, 2);
             this.BccLabel.Name = "BccLabel";
             this.BccLabel.Size = new System.Drawing.Size(39, 19);
-            this.BccLabel.TabIndex = 11;
+            this.BccLabel.TabIndex = 10;
             this.BccLabel.Text = "BCC";
             // 
             // AlertBox
@@ -172,7 +172,7 @@
             this.AlertBox.Name = "AlertBox";
             this.AlertBox.ScrollAlwaysVisible = true;
             this.AlertBox.Size = new System.Drawing.Size(1208, 76);
-            this.AlertBox.TabIndex = 12;
+            this.AlertBox.TabIndex = 4;
             this.AlertBox.SelectedIndexChanged += new System.EventHandler(this.AlertBox_SelectedIndexChanged);
             // 
             // groupBox1
@@ -190,7 +190,7 @@
             this.groupBox1.Margin = new System.Windows.Forms.Padding(3, 3, 9, 4);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(549, 332);
-            this.groupBox1.TabIndex = 14;
+            this.groupBox1.TabIndex = 5;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "送信先アドレス";
             // 
@@ -200,7 +200,7 @@
             this.groupBox2.Location = new System.Drawing.Point(33, 84);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(1230, 135);
-            this.groupBox2.TabIndex = 15;
+            this.groupBox2.TabIndex = 3;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "重要な警告 (念のためメールを再確認してください。)";
             // 
@@ -214,7 +214,7 @@
             this.groupBox3.Margin = new System.Windows.Forms.Padding(3, 3, 9, 4);
             this.groupBox3.Name = "groupBox3";
             this.groupBox3.Size = new System.Drawing.Size(669, 115);
-            this.groupBox3.TabIndex = 16;
+            this.groupBox3.TabIndex = 12;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "メール情報";
             // 
@@ -225,7 +225,7 @@
             this.OtherInfoTextBox.Name = "OtherInfoTextBox";
             this.OtherInfoTextBox.ReadOnly = true;
             this.OtherInfoTextBox.Size = new System.Drawing.Size(594, 27);
-            this.OtherInfoTextBox.TabIndex = 19;
+            this.OtherInfoTextBox.TabIndex = 16;
             // 
             // label7
             // 
@@ -234,7 +234,7 @@
             this.label7.Margin = new System.Windows.Forms.Padding(8, 3, 4, 4);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(47, 19);
-            this.label7.TabIndex = 18;
+            this.label7.TabIndex = 15;
             this.label7.Text = "その他";
             // 
             // label6
@@ -244,7 +244,7 @@
             this.label6.Margin = new System.Windows.Forms.Padding(8, 3, 4, 4);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(39, 19);
-            this.label6.TabIndex = 17;
+            this.label6.TabIndex = 13;
             this.label6.Text = "件名";
             // 
             // SubjectTextBox
@@ -254,7 +254,7 @@
             this.SubjectTextBox.Name = "SubjectTextBox";
             this.SubjectTextBox.ReadOnly = true;
             this.SubjectTextBox.Size = new System.Drawing.Size(594, 27);
-            this.SubjectTextBox.TabIndex = 0;
+            this.SubjectTextBox.TabIndex = 14;
             // 
             // groupBox4
             // 
@@ -275,7 +275,7 @@
             this.AttachmentsList.Name = "AttachmentsList";
             this.AttachmentsList.ScrollAlwaysVisible = true;
             this.AttachmentsList.Size = new System.Drawing.Size(647, 158);
-            this.AttachmentsList.TabIndex = 0;
+            this.AttachmentsList.TabIndex = 18;
             this.AttachmentsList.SelectedIndexChanged += new System.EventHandler(this.AttachmentsList_SelectedIndexChanged);
             // 
             // ConfirmationWindow

@@ -148,7 +148,7 @@
             this.groupBox4.Location = new System.Drawing.Point(675, 7);
             this.groupBox4.Name = "groupBox4";
             this.groupBox4.Size = new System.Drawing.Size(235, 170);
-            this.groupBox4.TabIndex = 7;
+            this.groupBox4.TabIndex = 3;
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "設定例";
             // 
@@ -159,7 +159,7 @@
             this.label2.Location = new System.Drawing.Point(8, 32);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(208, 108);
-            this.label2.TabIndex = 0;
+            this.label2.TabIndex = 4;
             this.label2.Text = "アドレス：info@noraneko.co.jp\r\nまたは、\r\nドメイン：@noraneko.co.jp\r\n\r\n上記のように、\r\nアドレスまたはドメインを登録しま" +
     "す。";
             // 
@@ -169,7 +169,7 @@
             this.WhitelistGroupBox.Location = new System.Drawing.Point(6, 7);
             this.WhitelistGroupBox.Name = "WhitelistGroupBox";
             this.WhitelistGroupBox.Size = new System.Drawing.Size(663, 321);
-            this.WhitelistGroupBox.TabIndex = 5;
+            this.WhitelistGroupBox.TabIndex = 1;
             this.WhitelistGroupBox.TabStop = false;
             this.WhitelistGroupBox.Text = "設定";
             // 
@@ -185,7 +185,7 @@
             this.WhitelistGrid.RowTemplate.DefaultCellStyle.Font = new System.Drawing.Font("Meiryo UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
             this.WhitelistGrid.RowTemplate.Height = 24;
             this.WhitelistGrid.Size = new System.Drawing.Size(657, 295);
-            this.WhitelistGrid.TabIndex = 0;
+            this.WhitelistGrid.TabIndex = 2;
             // 
             // groupBox5
             // 
@@ -195,7 +195,7 @@
             this.groupBox5.Name = "groupBox5";
             this.groupBox5.Padding = new System.Windows.Forms.Padding(8);
             this.groupBox5.Size = new System.Drawing.Size(235, 145);
-            this.groupBox5.TabIndex = 6;
+            this.groupBox5.TabIndex = 5;
             this.groupBox5.TabStop = false;
             this.groupBox5.Text = "インポート/エクスポート";
             // 
@@ -205,7 +205,7 @@
             this.WhitelistCsvExportButton.Margin = new System.Windows.Forms.Padding(3, 8, 3, 3);
             this.WhitelistCsvExportButton.Name = "WhitelistCsvExportButton";
             this.WhitelistCsvExportButton.Size = new System.Drawing.Size(166, 38);
-            this.WhitelistCsvExportButton.TabIndex = 3;
+            this.WhitelistCsvExportButton.TabIndex = 7;
             this.WhitelistCsvExportButton.Text = "CSVエクスポート";
             this.WhitelistCsvExportButton.UseVisualStyleBackColor = true;
             this.WhitelistCsvExportButton.Click += new System.EventHandler(this.WhitelistCsvExportButton_Click);
@@ -215,7 +215,7 @@
             this.WhitelistCsvImportButton.Location = new System.Drawing.Point(34, 37);
             this.WhitelistCsvImportButton.Name = "WhitelistCsvImportButton";
             this.WhitelistCsvImportButton.Size = new System.Drawing.Size(166, 38);
-            this.WhitelistCsvImportButton.TabIndex = 2;
+            this.WhitelistCsvImportButton.TabIndex = 6;
             this.WhitelistCsvImportButton.Text = "CSVインポート";
             this.WhitelistCsvImportButton.UseVisualStyleBackColor = true;
             this.WhitelistCsvImportButton.Click += new System.EventHandler(this.WhitelistCsvImportButton_Click);
@@ -240,7 +240,7 @@
             this.groupBox3.Location = new System.Drawing.Point(675, 7);
             this.groupBox3.Name = "groupBox3";
             this.groupBox3.Size = new System.Drawing.Size(235, 170);
-            this.groupBox3.TabIndex = 4;
+            this.groupBox3.TabIndex = 13;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "設定例";
             // 
@@ -251,7 +251,7 @@
             this.label1.Location = new System.Drawing.Point(8, 32);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(179, 108);
-            this.label1.TabIndex = 0;
+            this.label1.TabIndex = 14;
             this.label1.Text = "名称：のらねこ\r\nドメイン：@noraneko.co.jp\r\n\r\n上記のように、\r\n名称(社名等)とドメインを\r\n登録します。";
             // 
             // groupBox2
@@ -262,7 +262,7 @@
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Padding = new System.Windows.Forms.Padding(8);
             this.groupBox2.Size = new System.Drawing.Size(235, 145);
-            this.groupBox2.TabIndex = 3;
+            this.groupBox2.TabIndex = 15;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "インポート/エクスポート";
             // 
@@ -272,7 +272,7 @@
             this.NameAndDomainsCsvExportButton.Margin = new System.Windows.Forms.Padding(3, 8, 3, 3);
             this.NameAndDomainsCsvExportButton.Name = "NameAndDomainsCsvExportButton";
             this.NameAndDomainsCsvExportButton.Size = new System.Drawing.Size(166, 38);
-            this.NameAndDomainsCsvExportButton.TabIndex = 3;
+            this.NameAndDomainsCsvExportButton.TabIndex = 17;
             this.NameAndDomainsCsvExportButton.Text = "CSVエクスポート";
             this.NameAndDomainsCsvExportButton.UseVisualStyleBackColor = true;
             this.NameAndDomainsCsvExportButton.Click += new System.EventHandler(this.NameAndDomainsCsvExportButton_Click);
@@ -282,7 +282,7 @@
             this.NameAndDomainsCsvImportButton.Location = new System.Drawing.Point(34, 37);
             this.NameAndDomainsCsvImportButton.Name = "NameAndDomainsCsvImportButton";
             this.NameAndDomainsCsvImportButton.Size = new System.Drawing.Size(166, 38);
-            this.NameAndDomainsCsvImportButton.TabIndex = 2;
+            this.NameAndDomainsCsvImportButton.TabIndex = 16;
             this.NameAndDomainsCsvImportButton.Text = "CSVインポート";
             this.NameAndDomainsCsvImportButton.UseVisualStyleBackColor = true;
             this.NameAndDomainsCsvImportButton.Click += new System.EventHandler(this.NameAndDomainsCsvImportButton_Click);
@@ -293,7 +293,7 @@
             this.NameAndDomainsGroupBox.Location = new System.Drawing.Point(6, 7);
             this.NameAndDomainsGroupBox.Name = "NameAndDomainsGroupBox";
             this.NameAndDomainsGroupBox.Size = new System.Drawing.Size(663, 321);
-            this.NameAndDomainsGroupBox.TabIndex = 1;
+            this.NameAndDomainsGroupBox.TabIndex = 11;
             this.NameAndDomainsGroupBox.TabStop = false;
             this.NameAndDomainsGroupBox.Text = "設定";
             // 
@@ -309,7 +309,7 @@
             this.NameAndDomainsGrid.RowTemplate.DefaultCellStyle.Font = new System.Drawing.Font("Meiryo UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
             this.NameAndDomainsGrid.RowTemplate.Height = 24;
             this.NameAndDomainsGrid.Size = new System.Drawing.Size(657, 295);
-            this.NameAndDomainsGrid.TabIndex = 0;
+            this.NameAndDomainsGrid.TabIndex = 12;
             // 
             // AlertKeywordTab
             // 
@@ -329,7 +329,7 @@
             this.groupBox7.Location = new System.Drawing.Point(675, 7);
             this.groupBox7.Name = "groupBox7";
             this.groupBox7.Size = new System.Drawing.Size(235, 170);
-            this.groupBox7.TabIndex = 7;
+            this.groupBox7.TabIndex = 20;
             this.groupBox7.TabStop = false;
             this.groupBox7.Text = "設定例";
             // 
@@ -340,7 +340,7 @@
             this.label3.Location = new System.Drawing.Point(8, 32);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(205, 108);
-            this.label3.TabIndex = 0;
+            this.label3.TabIndex = 21;
             this.label3.Text = "キーワード：機密\r\n警告文：\r\n  機密という言葉が含まれています。\r\n\r\n警告するキーワードと\r\nその警告文を登録します。";
             // 
             // AlertAndMessageGroupBox
@@ -349,7 +349,7 @@
             this.AlertAndMessageGroupBox.Location = new System.Drawing.Point(6, 7);
             this.AlertAndMessageGroupBox.Name = "AlertAndMessageGroupBox";
             this.AlertAndMessageGroupBox.Size = new System.Drawing.Size(663, 321);
-            this.AlertAndMessageGroupBox.TabIndex = 5;
+            this.AlertAndMessageGroupBox.TabIndex = 18;
             this.AlertAndMessageGroupBox.TabStop = false;
             this.AlertAndMessageGroupBox.Text = "設定";
             // 
@@ -365,7 +365,7 @@
             this.AlertKeywordAndMessageGrid.RowTemplate.DefaultCellStyle.Font = new System.Drawing.Font("Meiryo UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
             this.AlertKeywordAndMessageGrid.RowTemplate.Height = 24;
             this.AlertKeywordAndMessageGrid.Size = new System.Drawing.Size(657, 295);
-            this.AlertKeywordAndMessageGrid.TabIndex = 0;
+            this.AlertKeywordAndMessageGrid.TabIndex = 19;
             // 
             // groupBox8
             // 
@@ -375,7 +375,7 @@
             this.groupBox8.Name = "groupBox8";
             this.groupBox8.Padding = new System.Windows.Forms.Padding(8);
             this.groupBox8.Size = new System.Drawing.Size(235, 145);
-            this.groupBox8.TabIndex = 6;
+            this.groupBox8.TabIndex = 22;
             this.groupBox8.TabStop = false;
             this.groupBox8.Text = "インポート/エクスポート";
             // 
@@ -385,7 +385,7 @@
             this.AlertKeywordAndMessageCsvExportButton.Margin = new System.Windows.Forms.Padding(3, 8, 3, 3);
             this.AlertKeywordAndMessageCsvExportButton.Name = "AlertKeywordAndMessageCsvExportButton";
             this.AlertKeywordAndMessageCsvExportButton.Size = new System.Drawing.Size(166, 38);
-            this.AlertKeywordAndMessageCsvExportButton.TabIndex = 3;
+            this.AlertKeywordAndMessageCsvExportButton.TabIndex = 24;
             this.AlertKeywordAndMessageCsvExportButton.Text = "CSVエクスポート";
             this.AlertKeywordAndMessageCsvExportButton.UseVisualStyleBackColor = true;
             this.AlertKeywordAndMessageCsvExportButton.Click += new System.EventHandler(this.AlertKeywordAndMessageCsvExportButton_Click);
@@ -395,7 +395,7 @@
             this.AlertKeywordAndMessageCsvImportButton.Location = new System.Drawing.Point(34, 37);
             this.AlertKeywordAndMessageCsvImportButton.Name = "AlertKeywordAndMessageCsvImportButton";
             this.AlertKeywordAndMessageCsvImportButton.Size = new System.Drawing.Size(166, 38);
-            this.AlertKeywordAndMessageCsvImportButton.TabIndex = 2;
+            this.AlertKeywordAndMessageCsvImportButton.TabIndex = 23;
             this.AlertKeywordAndMessageCsvImportButton.Text = "CSVインポート";
             this.AlertKeywordAndMessageCsvImportButton.UseVisualStyleBackColor = true;
             this.AlertKeywordAndMessageCsvImportButton.Click += new System.EventHandler(this.AlertKeywordAndMessageCsvImportButton_Click);
@@ -418,7 +418,7 @@
             this.groupBox10.Location = new System.Drawing.Point(675, 7);
             this.groupBox10.Name = "groupBox10";
             this.groupBox10.Size = new System.Drawing.Size(235, 170);
-            this.groupBox10.TabIndex = 10;
+            this.groupBox10.TabIndex = 27;
             this.groupBox10.TabStop = false;
             this.groupBox10.Text = "設定例";
             // 
@@ -429,7 +429,7 @@
             this.label4.Location = new System.Drawing.Point(8, 32);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(208, 126);
-            this.label4.TabIndex = 0;
+            this.label4.TabIndex = 28;
             this.label4.Text = "アドレス：info@noraneko.co.jp\r\nまたは、\r\nドメイン：@noraneko.co.jp\r\n\r\n上記のように、\r\nアドレスまたはドメインを登録しま" +
     "す。\r\n登録すると警告が表示されます。";
             // 
@@ -439,7 +439,7 @@
             this.AlertAddressGroupBox.Location = new System.Drawing.Point(6, 7);
             this.AlertAddressGroupBox.Name = "AlertAddressGroupBox";
             this.AlertAddressGroupBox.Size = new System.Drawing.Size(663, 321);
-            this.AlertAddressGroupBox.TabIndex = 8;
+            this.AlertAddressGroupBox.TabIndex = 25;
             this.AlertAddressGroupBox.TabStop = false;
             this.AlertAddressGroupBox.Text = "設定";
             // 
@@ -455,7 +455,7 @@
             this.AlertAddressGrid.RowTemplate.DefaultCellStyle.Font = new System.Drawing.Font("Meiryo UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
             this.AlertAddressGrid.RowTemplate.Height = 24;
             this.AlertAddressGrid.Size = new System.Drawing.Size(657, 295);
-            this.AlertAddressGrid.TabIndex = 0;
+            this.AlertAddressGrid.TabIndex = 26;
             // 
             // groupBox12
             // 
@@ -465,7 +465,7 @@
             this.groupBox12.Name = "groupBox12";
             this.groupBox12.Padding = new System.Windows.Forms.Padding(8);
             this.groupBox12.Size = new System.Drawing.Size(235, 145);
-            this.groupBox12.TabIndex = 9;
+            this.groupBox12.TabIndex = 29;
             this.groupBox12.TabStop = false;
             this.groupBox12.Text = "インポート/エクスポート";
             // 
@@ -475,7 +475,7 @@
             this.AlertAddressCsvExportButton.Margin = new System.Windows.Forms.Padding(3, 8, 3, 3);
             this.AlertAddressCsvExportButton.Name = "AlertAddressCsvExportButton";
             this.AlertAddressCsvExportButton.Size = new System.Drawing.Size(166, 38);
-            this.AlertAddressCsvExportButton.TabIndex = 3;
+            this.AlertAddressCsvExportButton.TabIndex = 31;
             this.AlertAddressCsvExportButton.Text = "CSVエクスポート";
             this.AlertAddressCsvExportButton.UseVisualStyleBackColor = true;
             this.AlertAddressCsvExportButton.Click += new System.EventHandler(this.AlertAddressCsvExportButton_Click);
@@ -485,7 +485,7 @@
             this.AlertAddressCsvImportButton.Location = new System.Drawing.Point(34, 37);
             this.AlertAddressCsvImportButton.Name = "AlertAddressCsvImportButton";
             this.AlertAddressCsvImportButton.Size = new System.Drawing.Size(166, 38);
-            this.AlertAddressCsvImportButton.TabIndex = 2;
+            this.AlertAddressCsvImportButton.TabIndex = 30;
             this.AlertAddressCsvImportButton.Text = "CSVインポート";
             this.AlertAddressCsvImportButton.UseVisualStyleBackColor = true;
             this.AlertAddressCsvImportButton.Click += new System.EventHandler(this.AlertAddressCsvImportButton_Click);
@@ -508,7 +508,7 @@
             this.groupBox13.Location = new System.Drawing.Point(675, 7);
             this.groupBox13.Name = "groupBox13";
             this.groupBox13.Size = new System.Drawing.Size(235, 170);
-            this.groupBox13.TabIndex = 10;
+            this.groupBox13.TabIndex = 34;
             this.groupBox13.TabStop = false;
             this.groupBox13.Text = "設定例";
             // 
@@ -519,7 +519,7 @@
             this.label5.Location = new System.Drawing.Point(8, 32);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(224, 126);
-            this.label5.TabIndex = 0;
+            this.label5.TabIndex = 35;
             this.label5.Text = "種別：CC または BCC\r\nキーワード：機密情報\r\nアドレス：joushi@noraneko.co.jp\r\n\r\nキーワードにが本文に含まれる場合、\r\nCCまたは" +
     "BCCに自動で指定した\r\nアドレスが追加されます。";
             // 
@@ -529,7 +529,7 @@
             this.AutoCcBccKeywordGroupBox.Location = new System.Drawing.Point(6, 7);
             this.AutoCcBccKeywordGroupBox.Name = "AutoCcBccKeywordGroupBox";
             this.AutoCcBccKeywordGroupBox.Size = new System.Drawing.Size(663, 321);
-            this.AutoCcBccKeywordGroupBox.TabIndex = 8;
+            this.AutoCcBccKeywordGroupBox.TabIndex = 32;
             this.AutoCcBccKeywordGroupBox.TabStop = false;
             this.AutoCcBccKeywordGroupBox.Text = "設定";
             // 
@@ -545,7 +545,7 @@
             this.AutoCcBccKeywordGrid.RowTemplate.DefaultCellStyle.Font = new System.Drawing.Font("Meiryo UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
             this.AutoCcBccKeywordGrid.RowTemplate.Height = 24;
             this.AutoCcBccKeywordGrid.Size = new System.Drawing.Size(657, 295);
-            this.AutoCcBccKeywordGrid.TabIndex = 0;
+            this.AutoCcBccKeywordGrid.TabIndex = 33;
             // 
             // groupBox15
             // 
@@ -555,7 +555,7 @@
             this.groupBox15.Name = "groupBox15";
             this.groupBox15.Padding = new System.Windows.Forms.Padding(8);
             this.groupBox15.Size = new System.Drawing.Size(235, 145);
-            this.groupBox15.TabIndex = 9;
+            this.groupBox15.TabIndex = 36;
             this.groupBox15.TabStop = false;
             this.groupBox15.Text = "インポート/エクスポート";
             // 
@@ -565,7 +565,7 @@
             this.AutoCcBccKeywordExportButton.Margin = new System.Windows.Forms.Padding(3, 8, 3, 3);
             this.AutoCcBccKeywordExportButton.Name = "AutoCcBccKeywordExportButton";
             this.AutoCcBccKeywordExportButton.Size = new System.Drawing.Size(166, 38);
-            this.AutoCcBccKeywordExportButton.TabIndex = 3;
+            this.AutoCcBccKeywordExportButton.TabIndex = 38;
             this.AutoCcBccKeywordExportButton.Text = "CSVエクスポート";
             this.AutoCcBccKeywordExportButton.UseVisualStyleBackColor = true;
             this.AutoCcBccKeywordExportButton.Click += new System.EventHandler(this.AutoCcBccKeywordExportButton_Click);
@@ -575,7 +575,7 @@
             this.AutoCcBccKeywordImportButton.Location = new System.Drawing.Point(34, 37);
             this.AutoCcBccKeywordImportButton.Name = "AutoCcBccKeywordImportButton";
             this.AutoCcBccKeywordImportButton.Size = new System.Drawing.Size(166, 38);
-            this.AutoCcBccKeywordImportButton.TabIndex = 2;
+            this.AutoCcBccKeywordImportButton.TabIndex = 37;
             this.AutoCcBccKeywordImportButton.Text = "CSVインポート";
             this.AutoCcBccKeywordImportButton.UseVisualStyleBackColor = true;
             this.AutoCcBccKeywordImportButton.Click += new System.EventHandler(this.AutoCcBccKeywordImportButton_Click);
@@ -598,7 +598,7 @@
             this.groupBox16.Location = new System.Drawing.Point(675, 7);
             this.groupBox16.Name = "groupBox16";
             this.groupBox16.Size = new System.Drawing.Size(235, 170);
-            this.groupBox16.TabIndex = 10;
+            this.groupBox16.TabIndex = 41;
             this.groupBox16.TabStop = false;
             this.groupBox16.Text = "設定案内";
             // 
@@ -609,7 +609,7 @@
             this.label6.Location = new System.Drawing.Point(8, 32);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(224, 126);
-            this.label6.TabIndex = 0;
+            this.label6.TabIndex = 42;
             this.label6.Text = "種別：CC または BCC\r\n宛先：tyui@xxxxxxx.com\r\nアドレス：joushi@noraneko.co.jp\r\n\r\n登録した宛先へのメール送信時に" +
     "、\r\nCCまたはBCCに自動で指定した\r\nアドレスが追加されます。";
             // 
@@ -619,7 +619,7 @@
             this.AutoCcBccRecipientGroupBox.Location = new System.Drawing.Point(6, 7);
             this.AutoCcBccRecipientGroupBox.Name = "AutoCcBccRecipientGroupBox";
             this.AutoCcBccRecipientGroupBox.Size = new System.Drawing.Size(663, 321);
-            this.AutoCcBccRecipientGroupBox.TabIndex = 8;
+            this.AutoCcBccRecipientGroupBox.TabIndex = 39;
             this.AutoCcBccRecipientGroupBox.TabStop = false;
             this.AutoCcBccRecipientGroupBox.Text = "設定";
             // 
@@ -635,7 +635,7 @@
             this.AutoCcBccRecipientGrid.RowTemplate.DefaultCellStyle.Font = new System.Drawing.Font("Meiryo UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
             this.AutoCcBccRecipientGrid.RowTemplate.Height = 24;
             this.AutoCcBccRecipientGrid.Size = new System.Drawing.Size(657, 295);
-            this.AutoCcBccRecipientGrid.TabIndex = 0;
+            this.AutoCcBccRecipientGrid.TabIndex = 40;
             // 
             // groupBox18
             // 
@@ -645,7 +645,7 @@
             this.groupBox18.Name = "groupBox18";
             this.groupBox18.Padding = new System.Windows.Forms.Padding(8);
             this.groupBox18.Size = new System.Drawing.Size(235, 145);
-            this.groupBox18.TabIndex = 9;
+            this.groupBox18.TabIndex = 43;
             this.groupBox18.TabStop = false;
             this.groupBox18.Text = "インポート/エクスポート";
             // 
@@ -655,7 +655,7 @@
             this.AutoCcBccRecipientExportCsvButton.Margin = new System.Windows.Forms.Padding(3, 8, 3, 3);
             this.AutoCcBccRecipientExportCsvButton.Name = "AutoCcBccRecipientExportCsvButton";
             this.AutoCcBccRecipientExportCsvButton.Size = new System.Drawing.Size(166, 38);
-            this.AutoCcBccRecipientExportCsvButton.TabIndex = 3;
+            this.AutoCcBccRecipientExportCsvButton.TabIndex = 45;
             this.AutoCcBccRecipientExportCsvButton.Text = "CSVエクスポート";
             this.AutoCcBccRecipientExportCsvButton.UseVisualStyleBackColor = true;
             this.AutoCcBccRecipientExportCsvButton.Click += new System.EventHandler(this.AutoCcBccRecipientExportCsvButton_Click);
@@ -665,7 +665,7 @@
             this.AutoCcBccRecipientImportCsvButton.Location = new System.Drawing.Point(34, 37);
             this.AutoCcBccRecipientImportCsvButton.Name = "AutoCcBccRecipientImportCsvButton";
             this.AutoCcBccRecipientImportCsvButton.Size = new System.Drawing.Size(166, 38);
-            this.AutoCcBccRecipientImportCsvButton.TabIndex = 2;
+            this.AutoCcBccRecipientImportCsvButton.TabIndex = 44;
             this.AutoCcBccRecipientImportCsvButton.Text = "CSVインポート";
             this.AutoCcBccRecipientImportCsvButton.UseVisualStyleBackColor = true;
             this.AutoCcBccRecipientImportCsvButton.Click += new System.EventHandler(this.AutoCcBccRecipientImportCsvButton_Click);
@@ -677,7 +677,7 @@
             this.OkButton.Margin = new System.Windows.Forms.Padding(9, 4, 9, 4);
             this.OkButton.Name = "OkButton";
             this.OkButton.Size = new System.Drawing.Size(93, 38);
-            this.OkButton.TabIndex = 1;
+            this.OkButton.TabIndex = 8;
             this.OkButton.Text = "OK";
             this.OkButton.UseVisualStyleBackColor = true;
             this.OkButton.Click += new System.EventHandler(this.OkButton_Click);
@@ -689,7 +689,7 @@
             this.CancelButton.Margin = new System.Windows.Forms.Padding(9, 4, 9, 4);
             this.CancelButton.Name = "CancelButton";
             this.CancelButton.Size = new System.Drawing.Size(93, 38);
-            this.CancelButton.TabIndex = 2;
+            this.CancelButton.TabIndex = 9;
             this.CancelButton.Text = "キャンセル";
             this.CancelButton.UseVisualStyleBackColor = true;
             this.CancelButton.Click += new System.EventHandler(this.CancelButton_Click);
@@ -700,7 +700,7 @@
             this.ApplyButton.Margin = new System.Windows.Forms.Padding(9, 4, 9, 4);
             this.ApplyButton.Name = "ApplyButton";
             this.ApplyButton.Size = new System.Drawing.Size(93, 38);
-            this.ApplyButton.TabIndex = 3;
+            this.ApplyButton.TabIndex = 10;
             this.ApplyButton.Text = "適用";
             this.ApplyButton.UseVisualStyleBackColor = true;
             this.ApplyButton.Click += new System.EventHandler(this.ApplyButton_Click);
