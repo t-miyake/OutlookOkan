@@ -1,7 +1,6 @@
-# Outlook誤送信防止アドイン
+# おかん for Outlook (メール誤送信防止アドイン)
   
-### 誤送信を防止するために、メールの送信先確認画面を表示するOutlookアドイン。  
-
+### 誤送信を防止するために、メールの送信先の確認画面を表示するOutlookアドイン。  
 
 社外(ドメインが異なる)宛先は、赤色で表示します。  
 ![Screenshot01](https://github.com/t-miyake/OutlookAddIn/blob/master/Screenshots/Screenshot_v0.4_01.png)  

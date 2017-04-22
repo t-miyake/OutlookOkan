@@ -26,7 +26,7 @@
     <OutputType>Library</OutputType>
     <NoStandardLibraries>false</NoStandardLibraries>
     <RootNamespace>OutlookAddIn</RootNamespace>
-    <AssemblyName>Outlook誤送信防止アドイン</AssemblyName>
+    <AssemblyName>OutlookOkan</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <DefineConstants>VSTO40</DefineConstants>
     <IsWebBootstrapper>False</IsWebBootstrapper>
@@ -41,10 +41,10 @@
     <UpdateEnabled>false</UpdateEnabled>
     <UpdateInterval>0</UpdateInterval>
     <UpdateIntervalUnits>days</UpdateIntervalUnits>
-    <ProductName>Outlook誤送信防止アドイン</ProductName>
+    <ProductName>おかん for Outlook %28メール誤送信防止アドイン%29</ProductName>
     <PublisherName>株式会社のらねこ</PublisherName>
     <SupportUrl>https://www.noraneko.co.jp/</SupportUrl>
-    <FriendlyName>Outlook誤送信防止アドイン</FriendlyName>
+    <FriendlyName>おかん for Outlook %28メール誤送信防止アドイン%29</FriendlyName>
     <OfficeApplicationDescription>メールの送信時に確認画面を表示します。</OfficeApplicationDescription>
     <LoadBehavior>3</LoadBehavior>
   </PropertyGroup>

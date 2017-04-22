@@ -3,7 +3,7 @@ using System.Windows.Forms;
 
 namespace OutlookAddIn
 {
-    partial class AboutBox : Form
+    internal partial class AboutBox : Form
     {
         public AboutBox()
         {
