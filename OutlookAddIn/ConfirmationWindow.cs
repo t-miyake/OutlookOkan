@@ -80,7 +80,7 @@ namespace OutlookAddIn
         {
             var readCsv = new ReadAndWriteCsv("NameAndDomains.csv");
             var nameAndDomainsList = readCsv.ReadCsv<NameAndDomains>(readCsv.ParseCsv<NameAndDomainsMap>());
-
+            
             //メールの本文中に、登録された名称があるか確認。
             //var recipientCandidateNames = (from nameAnddomain in nameAndDomainsList where mail.Body.Contains(nameAnddomain.Name) select nameAnddomain.Name).ToList();
             var recipientCandidateDomains = (from nameAnddomain in nameAndDomainsList where mail.Body.Contains(nameAnddomain.Name) select nameAnddomain.Domain).ToList();
@@ -110,6 +110,10 @@ namespace OutlookAddIn
         /// <param name="mail">送信するメールに関する情報</param>
         public void DrawRecipient(Outlook._MailItem mail)
         {
+            //Read Whitelist
+            var readCsv = new ReadAndWriteCsv("Whitelist.csv");
+            var whitelist = readCsv.ReadCsv<Whitelist>(readCsv.ParseCsv<WhitelistMap>());
+
             foreach (Outlook.Recipient recip in mail.Recipients)
             {
                 // Exchangeの連絡先に登録された情報を取得。
@@ -137,27 +141,34 @@ namespace OutlookAddIn
 
             // 宛先や登録名から、表示用テキスト(メールアドレスや登録名)を各エリアに表示。
             // 宛先ドメインが送信元ドメインと異なる場合、色を変更するフラグをtrue、そうでない場合falseとする。
+            // ホワイトリストに含まれる宛先の場合、ListのIsCheckedフラグをtrueにして、最初からチェック済みとする。
             foreach (var i in DisplayNameAndRecipient)
             {
                 if (toAdresses.Any(address => address.Contains(i.Key)))
                 {
-                    ToAddressList.Items.Add(i.Value);
+                    ToAddressList.Items.Add(i.Value, whitelist.Count != 0 && whitelist.Any(address => i.Value.Contains(address.WhiteName)));
                     ToAddressList.ColorFlag.Add(!i.Value.Contains(senderDomain));
                 }
 
                 if (ccAdresses.Any(address => address.Contains(i.Key)))
                 {
-                    CcAddressList.Items.Add(i.Value);
+                    CcAddressList.Items.Add(i.Value, whitelist.Count != 0 && whitelist.Any(address => i.Value.Contains(address.WhiteName)));
                     CcAddressList.ColorFlag.Add(!i.Value.Contains(senderDomain));
                 }
 
                 if (bccAdresses.Any(address => address.Contains(i.Key)))
                 {
-                    BccAddressList.Items.Add(i.Value);
+                    BccAddressList.Items.Add(i.Value, whitelist.Count != 0 && whitelist.Any(address => i.Value.Contains(address.WhiteName)));
                     BccAddressList.ColorFlag.Add(!i.Value.Contains(senderDomain));
                 }
             }
+
+            //宛先の件数をそれぞれ表示
+            ToLabel.Text = "To (" + ToAddressList.Items.Count +")";
+            CcLabel.Text = "CC (" + CcAddressList.Items.Count + ")";
+            BccLabel.Text = "BCC (" + BccAddressList.Items.Count + ")";
         }
+
         private void AlertBox_SelectedIndexChanged(object sender, EventArgs e)
         {
             SendButtonSwitch();

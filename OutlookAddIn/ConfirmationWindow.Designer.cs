@@ -33,11 +33,11 @@
             this.ToAddressList = new OutlookAddIn.CustomCheckedListBox();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
+            this.ToLabel = new System.Windows.Forms.Label();
             this.CcAddressList = new OutlookAddIn.CustomCheckedListBox();
-            this.label4 = new System.Windows.Forms.Label();
+            this.CcLabel = new System.Windows.Forms.Label();
             this.BccAddressList = new OutlookAddIn.CustomCheckedListBox();
-            this.label5 = new System.Windows.Forms.Label();
+            this.BccLabel = new System.Windows.Forms.Label();
             this.AlertBox = new OutlookAddIn.CustomCheckedListBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
@@ -110,15 +110,15 @@
             this.label2.TabIndex = 5;
             this.label2.Text = "すべての項目を確認し、チェックを入れて、送信ボタンを押してください。";
             // 
-            // label3
+            // ToLabel
             // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(9, 27);
-            this.label3.Margin = new System.Windows.Forms.Padding(8, 3, 8, 2);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(26, 19);
-            this.label3.TabIndex = 6;
-            this.label3.Text = "To";
+            this.ToLabel.AutoSize = true;
+            this.ToLabel.Location = new System.Drawing.Point(9, 27);
+            this.ToLabel.Margin = new System.Windows.Forms.Padding(8, 3, 8, 2);
+            this.ToLabel.Name = "ToLabel";
+            this.ToLabel.Size = new System.Drawing.Size(26, 19);
+            this.ToLabel.TabIndex = 6;
+            this.ToLabel.Text = "To";
             // 
             // CcAddressList
             // 
@@ -131,15 +131,15 @@
             this.CcAddressList.TabIndex = 8;
             this.CcAddressList.SelectedIndexChanged += new System.EventHandler(this.CcAddressList_SelectedIndexChanged_1);
             // 
-            // label4
+            // CcLabel
             // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(9, 126);
-            this.label4.Margin = new System.Windows.Forms.Padding(8, 3, 8, 2);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(29, 19);
-            this.label4.TabIndex = 9;
-            this.label4.Text = "CC";
+            this.CcLabel.AutoSize = true;
+            this.CcLabel.Location = new System.Drawing.Point(9, 126);
+            this.CcLabel.Margin = new System.Windows.Forms.Padding(8, 3, 8, 2);
+            this.CcLabel.Name = "CcLabel";
+            this.CcLabel.Size = new System.Drawing.Size(29, 19);
+            this.CcLabel.TabIndex = 9;
+            this.CcLabel.Text = "CC";
             // 
             // BccAddressList
             // 
@@ -152,15 +152,15 @@
             this.BccAddressList.TabIndex = 10;
             this.BccAddressList.SelectedIndexChanged += new System.EventHandler(this.BccAddressList_SelectedIndexChanged);
             // 
-            // label5
+            // BccLabel
             // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(9, 224);
-            this.label5.Margin = new System.Windows.Forms.Padding(8, 3, 8, 2);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(39, 19);
-            this.label5.TabIndex = 11;
-            this.label5.Text = "BCC";
+            this.BccLabel.AutoSize = true;
+            this.BccLabel.Location = new System.Drawing.Point(9, 224);
+            this.BccLabel.Margin = new System.Windows.Forms.Padding(8, 3, 8, 2);
+            this.BccLabel.Name = "BccLabel";
+            this.BccLabel.Size = new System.Drawing.Size(39, 19);
+            this.BccLabel.TabIndex = 11;
+            this.BccLabel.Text = "BCC";
             // 
             // AlertBox
             // 
@@ -179,10 +179,10 @@
             // 
             this.groupBox1.BackColor = System.Drawing.SystemColors.Control;
             this.groupBox1.Controls.Add(this.BccAddressList);
-            this.groupBox1.Controls.Add(this.label5);
+            this.groupBox1.Controls.Add(this.BccLabel);
             this.groupBox1.Controls.Add(this.CcAddressList);
-            this.groupBox1.Controls.Add(this.label3);
-            this.groupBox1.Controls.Add(this.label4);
+            this.groupBox1.Controls.Add(this.ToLabel);
+            this.groupBox1.Controls.Add(this.CcLabel);
             this.groupBox1.Controls.Add(this.ToAddressList);
             this.groupBox1.Font = new System.Drawing.Font("Meiryo UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
             this.groupBox1.ForeColor = System.Drawing.Color.Black;
@@ -317,11 +317,11 @@
         private CustomCheckedListBox ToAddressList;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label ToLabel;
         private CustomCheckedListBox CcAddressList;
-        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label CcLabel;
         private CustomCheckedListBox BccAddressList;
-        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Label BccLabel;
         private CustomCheckedListBox AlertBox;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.GroupBox groupBox2;
