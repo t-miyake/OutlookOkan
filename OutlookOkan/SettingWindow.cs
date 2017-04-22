@@ -5,7 +5,6 @@ namespace OutlookOkan
 {
     //TODO 全体を簡潔に修正する。
     //TODO 入力規則を付ける。
-    //TODO CSVインポート時のフォーマットチェック。
     public partial class SettingWindow : Form
     {
         public SettingWindow()

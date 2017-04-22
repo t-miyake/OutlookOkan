@@ -18,8 +18,10 @@ namespace OutlookOkan
         {
             var foreColor = Color.Black;
 
-            if (ColorFlag.Count==0?false:ColorFlag[e.Index])
+            if (ColorFlag.Count == 0 ? false : ColorFlag[e.Index])
+            {
                 foreColor = Color.Red;
+            }
 
             var tweakedEventArgs = new DrawItemEventArgs(
                 e.Graphics,

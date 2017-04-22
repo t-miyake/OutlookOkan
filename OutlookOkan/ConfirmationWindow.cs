@@ -10,6 +10,7 @@ namespace OutlookOkan
     public partial class ConfirmationWindow : Form
     {
         public Dictionary<string, string> DisplayNameAndRecipient = new Dictionary<string, string>();
+        public List<Whitelist> Whitelists = new List<Whitelist>();
 
         /// <summary>
         /// メール送信の確認画面を表示。
@@ -18,6 +19,7 @@ namespace OutlookOkan
         public ConfirmationWindow(Outlook._MailItem mail)
         {
             InitializeComponent();
+
             MakeDisplayNameAndRecipient(mail);
 
             SubjectTextBox.Text = mail.Subject;
@@ -25,14 +27,15 @@ namespace OutlookOkan
             CheckForgotAttach(mail);
 
             CheckKeyword(mail);
+            AutoAddCcAndBcc(mail);
 
             //TODO 暫定処置だよ！手抜きなだけだよ！
             MakeDisplayNameAndRecipient(mail);
-
             DrawRecipient(mail);
+
             DrawAttachments(mail);
             CheckMailbodyAndRecipient(mail);
-            
+
             SendButtonSwitch();
         }
 
@@ -104,47 +107,91 @@ namespace OutlookOkan
         {
             //Load AlertKeywordAndMessage
             var readCsv = new ReadAndWriteCsv("AlertKeywordAndMessageList.csv");
-            var alertKeywordAndMessageList = readCsv.ReadCsv<AlertKeywordAndMessage>(readCsv.ParseCsv<AlertKeywordAndMessageMap>());
+            var alertKeywordAndMessageList =
+                readCsv.ReadCsv<AlertKeywordAndMessage>(readCsv.ParseCsv<AlertKeywordAndMessageMap>());
 
-            if (alertKeywordAndMessageList.Count == 0) return;
-            foreach (var i in alertKeywordAndMessageList)
+            if (alertKeywordAndMessageList.Count != 0)
             {
-                if (!mail.Body.Contains(i.AlertKeyword)) continue;
-                AlertBox.Items.Add(i.Message);
-                AlertBox.ColorFlag.Add(true);
+                foreach (var i in alertKeywordAndMessageList)
+                {
+                    if (!mail.Body.Contains(i.AlertKeyword)) continue;
+                    AlertBox.Items.Add(i.Message);
+                    AlertBox.ColorFlag.Add(true);
+                }
             }
+        }
+
+        public void AutoAddCcAndBcc(Outlook._MailItem mail)
+        {
+            var autoAddedCcAddressList = new List<string>();
+            var autoAddedBccAddressList = new List<string>();
 
             //Load AutoCcBccKeywordList
-            //TODO CCやBCCの重複回避。
-            //TODO 自動追加されたことが分かるようにする。
-            readCsv = new ReadAndWriteCsv("AutoCcBccKeywordList.csv");
+            var readCsv = new ReadAndWriteCsv("AutoCcBccKeywordList.csv");
             var autoCcBccKeywordList = readCsv.ReadCsv<AutoCcBccKeyword>(readCsv.ParseCsv<AutoCcBccKeywordMap>());
 
-            if (autoCcBccKeywordList.Count == 0) return;
-            foreach (var i in autoCcBccKeywordList)
+            if (autoCcBccKeywordList.Count != 0)
             {
-                if (!mail.Body.Contains(i.Keyword)) continue;
-                var recip = mail.Recipients.Add(i.AutoAddAddress);
-                recip.Type = i.CcOrBcc == CcOrBcc.CC
-                    ? (int)Outlook.OlMailRecipientType.olCC
-                    : (int)Outlook.OlMailRecipientType.olBCC;
+                foreach (var i in autoCcBccKeywordList)
+                {
+                    if (mail.Body.Contains(i.Keyword) && !DisplayNameAndRecipient.Any(recip => recip.Key.Contains(i.AutoAddAddress)))
+                    {
+                        var recip = mail.Recipients.Add(i.AutoAddAddress);
+                        recip.Type = i.CcOrBcc == CcOrBcc.CC
+                            ? (int)Outlook.OlMailRecipientType.olCC
+                            : (int)Outlook.OlMailRecipientType.olBCC;
+                        AlertBox.Items.Add($@"自動で {i.CcOrBcc} に {i.AutoAddAddress} が追加されました。(該当キーワード 「{i.Keyword}」)", true);
+                        AlertBox.ColorFlag.Add(false);
+
+                        if (i.CcOrBcc == CcOrBcc.CC)
+                        {
+                            autoAddedCcAddressList.Add(i.AutoAddAddress);
+                        }else
+                        {
+                            autoAddedBccAddressList.Add(i.AutoAddAddress);
+                        }
+
+                        Whitelists.Add(new Whitelist { WhiteName = i.AutoAddAddress });
+                    }
+                }
             }
 
             //Load AutoCcBccRecipientList
-            //TODO CCやBCCの重複回避。
-            //TODO 自動追加されたことが分かるようにする。
+            // TODO 流石にひどいので直す。
             readCsv = new ReadAndWriteCsv("AutoCcBccRecipientList.csv");
             var autoCcBccRecipientList = readCsv.ReadCsv<AutoCcBccRecipient>(readCsv.ParseCsv<AutoCcBccRecipientMap>());
 
-            if (autoCcBccRecipientList.Count == 0) return;
-            foreach (var i in autoCcBccRecipientList)
+            if (autoCcBccRecipientList.Count != 0)
             {
-                if (DisplayNameAndRecipient.Any(recipient => recipient.Value.Contains(i.TargetRecipient)))
+                foreach (var i in autoCcBccRecipientList)
                 {
-                    var recip = mail.Recipients.Add(i.AutoAddAddress);
-                    recip.Type = i.CcOrBcc == CcOrBcc.CC
-                        ? (int) Outlook.OlMailRecipientType.olCC
-                        : (int) Outlook.OlMailRecipientType.olBCC;
+                    if (DisplayNameAndRecipient.Any(recipient => recipient.Value.Contains(i.TargetRecipient)) && !DisplayNameAndRecipient.Any(recip => recip.Key.Contains(i.AutoAddAddress)))
+                    {
+                        if (i.CcOrBcc == CcOrBcc.CC)
+                        {
+                            if (!autoAddedCcAddressList.Contains(i.AutoAddAddress))
+                            {
+                                var recip = mail.Recipients.Add(i.AutoAddAddress);
+                                recip.Type = (int) Outlook.OlMailRecipientType.olCC;
+
+                                autoAddedCcAddressList.Add(i.AutoAddAddress);
+                            }
+                        }else
+                        {
+                            if (!autoAddedBccAddressList.Contains(i.AutoAddAddress))
+                            {
+                                var recip = mail.Recipients.Add(i.AutoAddAddress);
+                                recip.Type = (int)Outlook.OlMailRecipientType.olBCC;
+
+                                autoAddedBccAddressList.Add(i.AutoAddAddress);
+                            }
+                        }
+
+                        AlertBox.Items.Add($@"自動で {i.CcOrBcc} に {i.AutoAddAddress} が追加されました。(該当宛先 「{i.TargetRecipient}」)", true);
+                        AlertBox.ColorFlag.Add(false);
+
+                        Whitelists.Add(new Whitelist { WhiteName = i.AutoAddAddress });
+                    }
                 }
             }
 
@@ -157,10 +204,13 @@ namespace OutlookOkan
         /// <param name="mail"></param>
         public void DrawAttachments(Outlook._MailItem mail)
         {
-            if (mail.Attachments.Count == 0) return;
-            for (var i = 0; i <  mail.Attachments.Count; i++)
+            if (mail.Attachments.Count != 0)
             {
-                AttachmentsList.Items.Add(mail.Attachments[i+1].FileName + "  (" +(mail.Attachments[i + 1].Size/1024).ToString("N") + "kB)");
+                for (var i = 0; i < mail.Attachments.Count; i++)
+                {
+                    AttachmentsList.Items.Add(mail.Attachments[i + 1].FileName + "  (" +
+                                              (mail.Attachments[i + 1].Size / 1024).ToString("N") + "kB)");
+                }
             }
         }
 
@@ -180,20 +230,26 @@ namespace OutlookOkan
 
             //登録された名称かつ本文中に登場した名称以外のドメインが宛先に含まれている場合、警告を表示。
             //送信先の候補が見つからない場合、何もしない。(見つからない場合の方が多いため、警告ばかりになってしまう。) 
-            if (recipientCandidateDomains.Count == 0) return;
-            foreach (var recipients in DisplayNameAndRecipient)
+            if (recipientCandidateDomains.Count != 0)
             {
-                if (recipientCandidateDomains.Any(domains => domains.Equals(recipients.Value.Substring(recipients.Value.IndexOf("@", StringComparison.Ordinal)))))
+                foreach (var recipients in DisplayNameAndRecipient)
                 {
-                    //正常なのでとりあえず何もしない。
-                }
-                else
-                {
-                    //送信者ドメインは警告対象外。
-                    if (!recipients.Value.Contains(mail.SendUsingAccount.SmtpAddress.Substring(mail.SendUsingAccount.SmtpAddress.IndexOf("@", StringComparison.Ordinal))))
+                    if (recipientCandidateDomains.Any(
+                        domains => domains.Equals(
+                            recipients.Value.Substring(recipients.Value.IndexOf("@", StringComparison.Ordinal)))))
                     {
-                        AlertBox.Items.Add(recipients.Key + @" : このアドレスは意図した宛先とは無関係の可能性があります！");
-                        AlertBox.ColorFlag.Add(true);
+                        //正常なのでとりあえず何もしない。
+                    }
+                    else
+                    {
+                        //送信者ドメインは警告対象外。
+                        if (!recipients.Value.Contains(
+                            mail.SendUsingAccount.SmtpAddress.Substring(
+                                mail.SendUsingAccount.SmtpAddress.IndexOf("@", StringComparison.Ordinal))))
+                        {
+                            AlertBox.Items.Add(recipients.Key + @" : このアドレスは意図した宛先とは無関係の可能性があります！");
+                            AlertBox.ColorFlag.Add(true);
+                        }
                     }
                 }
             }
@@ -209,7 +265,8 @@ namespace OutlookOkan
 
             //Load Whitelist
             var readCsv = new ReadAndWriteCsv("Whitelist.csv");
-            var whitelist = readCsv.ReadCsv<Whitelist>(readCsv.ParseCsv<WhitelistMap>());
+            Whitelists.AddRange(readCsv.ReadCsv<Whitelist>(readCsv.ParseCsv<WhitelistMap>()));
+            var whitelist = Whitelists;
 
             //Load AlertAddressList
             readCsv = new ReadAndWriteCsv("AlertAddressList.csv");
