@@ -68,7 +68,10 @@ namespace OutlookAddIn
         public void CheckForgotAttach(Outlook._MailItem mail)
         {
             if (mail.Body.Contains("添付") && mail.Attachments.Count == 0)
+            {
                 AlertBox.Items.Add(@"本文中に 添付 という文言があるのに添付ファイルがありません。");
+                AlertBox.ColorFlag.Add(false);
+            }
         }
 
         /// <summary>
@@ -185,9 +188,11 @@ namespace OutlookAddIn
                 else
                 {
                     //送信者ドメインは警告対象外。
-                    if (recipients.Value.Contains(mail.SendUsingAccount.SmtpAddress.Substring(mail.SendUsingAccount.SmtpAddress.IndexOf("@", StringComparison.Ordinal)))) continue;
-                    AlertBox.Items.Add(recipients.Key + @" : このアドレスは意図した宛先とは無関係の可能性があります！");
-                    AlertBox.ColorFlag.Add(true);
+                    if (!recipients.Value.Contains(mail.SendUsingAccount.SmtpAddress.Substring(mail.SendUsingAccount.SmtpAddress.IndexOf("@", StringComparison.Ordinal))))
+                    {
+                        AlertBox.Items.Add(recipients.Key + @" : このアドレスは意図した宛先とは無関係の可能性があります！");
+                        AlertBox.ColorFlag.Add(true);
+                    }
                 }
             }
         }
@@ -227,8 +232,10 @@ namespace OutlookAddIn
                     ToAddressList.ColorFlag.Add(!i.Value.Contains(senderDomain));
 
                     if (alertAddresslist.Count != 0 && alertAddresslist.Any(address => i.Value.Contains(address.TartgetAddress)))
+                    {
                         AlertBox.Items.Add($"警告対象として登録されたアドレス/ドメインが宛先(To)に含まれています。 ({i.Value})");
                         AlertBox.ColorFlag.Add(true);
+                    }
                 }
 
                 if (ccAdresses.Any(address => address.Contains(i.Key)))
@@ -237,8 +244,10 @@ namespace OutlookAddIn
                     CcAddressList.ColorFlag.Add(!i.Value.Contains(senderDomain));
 
                     if (alertAddresslist.Count != 0 && alertAddresslist.Any(address => i.Value.Contains(address.TartgetAddress)))
+                    {
                         AlertBox.Items.Add($"警告対象として登録されたアドレス/ドメインが宛先(CC)に含まれています。 ({i.Value})");
                         AlertBox.ColorFlag.Add(true);
+                    }
                 }
 
                 if (bccAdresses.Any(address => address.Contains(i.Key)))
@@ -247,8 +256,10 @@ namespace OutlookAddIn
                     BccAddressList.ColorFlag.Add(!i.Value.Contains(senderDomain));
 
                     if (alertAddresslist.Count != 0 && alertAddresslist.Any(address => i.Value.Contains(address.TartgetAddress)))
+                    {
                         AlertBox.Items.Add($"警告対象として登録されたアドレス/ドメインが宛先(BCC)に含まれています。 ({i.Value})");
                         AlertBox.ColorFlag.Add(true);
+                    }
                 }
             }
 
