@@ -1,4 +1,4 @@
-﻿namespace OutlookAddIn
+﻿namespace OutlookOkan
 {
     partial class SettingWindow
     {

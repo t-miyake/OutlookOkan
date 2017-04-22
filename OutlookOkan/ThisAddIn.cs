@@ -1,7 +1,7 @@
 ﻿using Outlook = Microsoft.Office.Interop.Outlook;
 using System.Windows.Forms;
 
-namespace OutlookAddIn
+namespace OutlookOkan
 {
     public partial class ThisAddIn
     {

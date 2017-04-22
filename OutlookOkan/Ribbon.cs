@@ -5,7 +5,7 @@ using System.Reflection;
 using System.Runtime.InteropServices;
 using Office = Microsoft.Office.Core;
 
-namespace OutlookAddIn
+namespace OutlookOkan
 {
     [ComVisible(true)]
     public class Ribbon : Office.IRibbonExtensibility
@@ -18,7 +18,7 @@ namespace OutlookAddIn
 
         public string GetCustomUI(string ribbonId)
         {
-            return GetResourceText("OutlookAddIn.Ribbon.xml");
+            return GetResourceText("OutlookOkan.Ribbon.xml");
         }
 
         #endregion

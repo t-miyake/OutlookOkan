@@ -6,7 +6,7 @@ using System.Text;
 using System.Windows.Forms;
 using CsvHelper;
 
-namespace OutlookAddIn
+namespace OutlookOkan
 {
     //TODO ReadAndWriteCsv Class との重複処理を無くすように2つのクラスを整理する。
     public class CsvImportAndExport

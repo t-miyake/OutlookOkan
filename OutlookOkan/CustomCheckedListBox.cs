@@ -2,7 +2,7 @@
 using System.Windows.Forms;
 using System.Drawing;
 
-namespace OutlookAddIn
+namespace OutlookOkan
 {
     /// <summary>
     /// 項目の描画色を赤にする、CustomCheckedListBoxのカスタムコントロール

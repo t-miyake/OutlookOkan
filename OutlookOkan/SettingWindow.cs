@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Windows.Forms;
 
-namespace OutlookAddIn
+namespace OutlookOkan
 {
     //TODO 全体を簡潔に修正する。
     //TODO 入力規則を付ける。

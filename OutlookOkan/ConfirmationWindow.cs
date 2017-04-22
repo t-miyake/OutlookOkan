@@ -4,7 +4,7 @@ using System.Windows.Forms;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace OutlookAddIn
+namespace OutlookOkan
 {
     // TODO 高速化のため、処理を簡潔にする。
     public partial class ConfirmationWindow : Form

@@ -6,7 +6,7 @@ using System.Text;
 using System.Windows.Forms;
 using CsvHelper;
 
-namespace OutlookAddIn
+namespace OutlookOkan
 {
     public class ReadAndWriteCsv
     {

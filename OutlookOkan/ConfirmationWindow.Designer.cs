@@ -1,4 +1,4 @@
-﻿namespace OutlookAddIn
+﻿namespace OutlookOkan
 {
     partial class ConfirmationWindow
     {
@@ -30,15 +30,15 @@
         {
             this.sendButton = new System.Windows.Forms.Button();
             this.cancelButton = new System.Windows.Forms.Button();
-            this.ToAddressList = new OutlookAddIn.CustomCheckedListBox();
+            this.ToAddressList = new OutlookOkan.CustomCheckedListBox();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.ToLabel = new System.Windows.Forms.Label();
-            this.CcAddressList = new OutlookAddIn.CustomCheckedListBox();
+            this.CcAddressList = new OutlookOkan.CustomCheckedListBox();
             this.CcLabel = new System.Windows.Forms.Label();
-            this.BccAddressList = new OutlookAddIn.CustomCheckedListBox();
+            this.BccAddressList = new OutlookOkan.CustomCheckedListBox();
             this.BccLabel = new System.Windows.Forms.Label();
-            this.AlertBox = new OutlookAddIn.CustomCheckedListBox();
+            this.AlertBox = new OutlookOkan.CustomCheckedListBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
@@ -47,7 +47,7 @@
             this.label6 = new System.Windows.Forms.Label();
             this.SubjectTextBox = new System.Windows.Forms.TextBox();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
-            this.AttachmentsList = new OutlookAddIn.CustomCheckedListBox();
+            this.AttachmentsList = new OutlookOkan.CustomCheckedListBox();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();

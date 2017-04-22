@@ -1,6 +1,6 @@
 ﻿using CsvHelper.Configuration;
 
-namespace OutlookAddIn
+namespace OutlookOkan
 {
     public enum CcOrBcc
     {
