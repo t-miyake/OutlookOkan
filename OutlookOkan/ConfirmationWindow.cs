@@ -115,9 +115,11 @@ namespace OutlookOkan
             {
                 foreach (var i in alertKeywordAndMessageList)
                 {
-                    if (!mail.Body.Contains(i.AlertKeyword)) continue;
-                    AlertBox.Items.Add(i.Message);
-                    AlertBox.ColorFlag.Add(true);
+                    if (mail.Body.Contains(i.AlertKeyword))
+                    {
+                        AlertBox.Items.Add(i.Message);
+                        AlertBox.ColorFlag.Add(true);
+                    }
                 }
             }
         }

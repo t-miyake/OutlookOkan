@@ -38,6 +38,15 @@ namespace OutlookOkan
             WhitelistGrid.DataSource = BindableWhitelist;
 
             WhitelistGrid.Columns[0].HeaderText = @"アドレスまたはドメイン";
+            WhitelistGrid.Columns[0].CellTemplate.ToolTipText = "@から入力";
+            WhitelistGrid.CellValidating += (sender, e) =>
+            {
+                if (!string.IsNullOrEmpty(e.FormattedValue.ToString()) && !e.FormattedValue.ToString().Contains("@"))
+                {
+                    MessageBox.Show("@は必須です。");
+                    e.Cancel = true;
+                }
+            };
         }
 
         public void SaveWhitelistToCsv()
@@ -242,6 +251,14 @@ namespace OutlookOkan
             AutoCcBccKeywordGrid.Columns[0].HeaderText = @"キーワード";
             AutoCcBccKeywordGrid.Columns[1].HeaderText = @"CCまたはBCC";
             AutoCcBccKeywordGrid.Columns[2].HeaderText = @"追加アドレス";
+
+            AutoCcBccKeywordGrid.Columns[1].CellTemplate.ToolTipText = "CC または BCCと入力";
+
+            AutoCcBccKeywordGrid.DataError += (sender, e) =>
+            {
+                MessageBox.Show("CC または BCCと入力してください。");
+                e.Cancel = true;
+            };
         }
 
         public void SaveAutoCcBccKeywordListToCsv()
@@ -294,6 +311,14 @@ namespace OutlookOkan
             AutoCcBccRecipientGrid.Columns[0].HeaderText = @"宛先アドレスまたはドメイン";
             AutoCcBccRecipientGrid.Columns[1].HeaderText = @"CCまたはBCC";
             AutoCcBccRecipientGrid.Columns[2].HeaderText = @"追加アドレス";
+
+            AutoCcBccKeywordGrid.Columns[1].CellTemplate.ToolTipText = "CC または BCCと入力";
+
+            AutoCcBccKeywordGrid.DataError += (sender, e) =>
+            {
+                MessageBox.Show("CC または BCCと入力してください。");
+                e.Cancel = true;
+            };
         }
 
         public void SaveAutoCcBccRecipientListToCsv()
