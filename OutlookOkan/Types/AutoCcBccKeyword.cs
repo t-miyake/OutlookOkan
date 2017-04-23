@@ -2,12 +2,6 @@
 
 namespace OutlookOkan
 {
-    public enum CcOrBcc
-    {
-        BCC,
-        CC
-    }
-
     public class AutoCcBccKeyword
     {
         public string Keyword { get; set; }
