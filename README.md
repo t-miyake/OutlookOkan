@@ -8,9 +8,12 @@
 また、キーワードによる警告や、自動CC/BCC追加機能など、便利なオプション機能があります。  
 
 オープンソースかつ無料でご利用いただけますが、無サポート、無保証です。  
-カスタマイズやサポートが必要な場合は、[(株)のらねこ](https://www.noraneko.co.jp/) までお問い合わせください。
+カスタマイズやサポートが必要な場合は、[(株)のらねこ](https://www.noraneko.co.jp/) までお問い合わせください。  
 
-![Screenshot](https://github.com/t-miyake/OutlookOkan/blob/master/Screenshots/Screenshot_v0.9_01.png)  
+確認ウインドウ  
+![Screenshot](https://github.com/t-miyake/OutlookOkan/blob/master/Screenshots/Screenshot_v0.9_01.png)  
+
+設定ウィンドウ
 ![Screenshot](https://github.com/t-miyake/OutlookOkan/blob/master/Screenshots/Screenshot_v0.9_02.png) 
 
 ## 機能一覧(概要)
