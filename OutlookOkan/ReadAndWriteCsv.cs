@@ -6,15 +6,15 @@ using System.Text;
 using System.Windows.Forms;
 using CsvHelper;
 
-namespace OutlookAddIn
+namespace OutlookOkan
 {
     public class ReadAndWriteCsv
     {
         /// <summary>
         /// 設定ファイル(CSV)の設置個所は下記で固定。
-        /// C:\Users\USERNAME\AppData\Roaming\Noraneko\OutlookAddin\
+        /// C:\Users\USERNAME\AppData\Roaming\Noraneko\OutlookOkan\
         /// </summary>
-        private readonly string _directoryPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "Noraneko\\OutlookAddin\\");
+        private readonly string _directoryPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "Noraneko\\OutlookOkan\\");
 
         private readonly string _filePath;
 

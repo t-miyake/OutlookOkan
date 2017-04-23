@@ -1,9 +1,9 @@
 ﻿using System.Reflection;
 using System.Windows.Forms;
 
-namespace OutlookAddIn
+namespace OutlookOkan
 {
-    partial class AboutBox : Form
+    internal partial class AboutBox : Form
     {
         public AboutBox()
         {

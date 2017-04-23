@@ -6,11 +6,11 @@ using System.Security;
 // アセンブリに関する一般情報は、以下の属性セットによって
 // 制御されます。アセンブリに関連付けられている情報を変更するには、
 // これらの属性値を変更します。
-[assembly: AssemblyTitle("Outlook誤送信防止アドイン")]
+[assembly: AssemblyTitle("おかん for Outlook (メール誤送信防止アドイン)")]
 [assembly: AssemblyDescription("メールの送信時に確認画面を出すアドインです。")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("株式会社のらねこ")]
-[assembly: AssemblyProduct("メール誤送信防止アドイン")]
+[assembly: AssemblyProduct("おかん for Outlook (メール誤送信防止アドイン)")]
 [assembly: AssemblyCopyright("© 2017 Noraneko Inc.")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
@@ -33,6 +33,6 @@ using System.Security;
 // すべての値を指定するか、以下のように '*' を使ってビルドおよびリビジョン番号を
 // 既定値にすることができます。
 // [assembly: AssemblyVersion("1.0.*")]
-[assembly: AssemblyVersion("0.4.0.0")]
-[assembly: AssemblyFileVersion("0.4.0.0")]
+[assembly: AssemblyVersion("0.9.0.0")]
+[assembly: AssemblyFileVersion("0.9.0.0")]
 

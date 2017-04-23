@@ -1,7 +1,7 @@
 ﻿using Outlook = Microsoft.Office.Interop.Outlook;
 using System.Windows.Forms;
 
-namespace OutlookAddIn
+namespace OutlookOkan
 {
     public partial class ThisAddIn
     {
@@ -12,17 +12,17 @@ namespace OutlookAddIn
 
         private void ThisAddIn_Startup(object sender, System.EventArgs e)
         {
-            Application.ItemSend +=  Application_ItemSend;
+            Application.ItemSend += Application_ItemSend;
         }
 
         public void Application_ItemSend(object item, ref bool cancel)
         {
             var mail = item as Outlook.MailItem;
 
-            var confirmWindow = new ConfirmWindow(mail);
-            var dialogResult = confirmWindow.ShowDialog();
+            var confirmationWindow = new ConfirmationWindow(mail);
+            var dialogResult = confirmationWindow.ShowDialog();
 
-            confirmWindow.Dispose();
+            confirmationWindow.Dispose();
 
             if(dialogResult == DialogResult.OK)
             {

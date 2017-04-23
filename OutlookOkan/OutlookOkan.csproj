@@ -25,8 +25,8 @@
     <ProjectGuid>{E10D32D4-EB76-4532-868F-7AA8309B6C0F}</ProjectGuid>
     <OutputType>Library</OutputType>
     <NoStandardLibraries>false</NoStandardLibraries>
-    <RootNamespace>OutlookAddIn</RootNamespace>
-    <AssemblyName>メール誤送信防止アドイン</AssemblyName>
+    <RootNamespace>OutlookOkan</RootNamespace>
+    <AssemblyName>OutlookOkan</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <DefineConstants>VSTO40</DefineConstants>
     <IsWebBootstrapper>False</IsWebBootstrapper>
@@ -36,15 +36,15 @@
     <PublishUrl>C:\</PublishUrl>
     <InstallUrl />
     <TargetCulture>ja</TargetCulture>
-    <ApplicationVersion>0.4.0.0</ApplicationVersion>
+    <ApplicationVersion>0.9.0.0</ApplicationVersion>
     <AutoIncrementApplicationRevision>true</AutoIncrementApplicationRevision>
     <UpdateEnabled>false</UpdateEnabled>
     <UpdateInterval>0</UpdateInterval>
     <UpdateIntervalUnits>days</UpdateIntervalUnits>
-    <ProductName>メール誤送信防止アドイン</ProductName>
+    <ProductName>おかん for Outlook %28メール誤送信防止アドイン%29</ProductName>
     <PublisherName>株式会社のらねこ</PublisherName>
     <SupportUrl>https://www.noraneko.co.jp/</SupportUrl>
-    <FriendlyName>メール誤送信防止アドイン</FriendlyName>
+    <FriendlyName>おかん for Outlook %28メール誤送信防止アドイン%29</FriendlyName>
     <OfficeApplicationDescription>メールの送信時に確認画面を表示します。</OfficeApplicationDescription>
     <LoadBehavior>3</LoadBehavior>
   </PropertyGroup>
@@ -184,24 +184,31 @@
     <Compile Include="AboutBox.Designer.cs">
       <DependentUpon>AboutBox.cs</DependentUpon>
     </Compile>
-    <Compile Include="ConfirmWindow.cs">
+    <Compile Include="ConfirmationWindow.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="ConfirmWindow.Designer.cs">
-      <DependentUpon>ConfirmWindow.cs</DependentUpon>
+    <Compile Include="ConfirmationWindow.Designer.cs">
+      <DependentUpon>ConfirmationWindow.cs</DependentUpon>
     </Compile>
+    <Compile Include="CsvImportAndExport.cs" />
     <Compile Include="CustomCheckedListBox.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="NameAndDomains.cs" />
+    <Compile Include="Types\AlertAddress.cs" />
+    <Compile Include="Types\AlertKeywordAndMessage.cs" />
+    <Compile Include="Types\AutoCcBccKeyword.cs" />
+    <Compile Include="Types\AutoCcBccRecipient.cs" />
+    <Compile Include="Types\CcOrBcc.cs" />
+    <Compile Include="Types\NameAndDomains.cs" />
+    <Compile Include="Types\Whitelist.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>
     <EmbeddedResource Include="AboutBox.resx">
       <DependentUpon>AboutBox.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="ConfirmWindow.resx">
-      <DependentUpon>ConfirmWindow.cs</DependentUpon>
+    <EmbeddedResource Include="ConfirmationWindow.resx">
+      <DependentUpon>ConfirmationWindow.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -215,7 +222,7 @@
     <EmbeddedResource Include="SettingWindow.resx">
       <DependentUpon>SettingWindow.cs</DependentUpon>
     </EmbeddedResource>
-    <None Include="OutlookAddIn_TemporaryKey.pfx" />
+    <None Include="OutlookOkan_TemporaryKey.pfx" />
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -257,10 +264,10 @@
     <SignManifests>true</SignManifests>
   </PropertyGroup>
   <PropertyGroup>
-    <ManifestKeyFile>OutlookAddIn_TemporaryKey.pfx</ManifestKeyFile>
+    <ManifestKeyFile>OutlookOkan_TemporaryKey.pfx</ManifestKeyFile>
   </PropertyGroup>
   <PropertyGroup>
-    <ManifestCertificateThumbprint>960D3E66F1E150FEF3FC71E6A94EDAD63A2376BC</ManifestCertificateThumbprint>
+    <ManifestCertificateThumbprint>D40638E377F54FFFDF2E9A34004EC1DC53B99B28</ManifestCertificateThumbprint>
   </PropertyGroup>
   <!-- Include the build rules for a C# project. -->
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
@@ -271,7 +278,7 @@
     <VisualStudio>
       <FlavorProperties GUID="{BAA0C2D2-18E2-41B9-852F-F413020CAA33}">
         <ProjectProperties HostName="Outlook" HostPackage="{29A7B9D7-A7F1-4328-8EF0-6B2D1A56B2C1}" OfficeVersion="15.0" VstxVersion="4.0" ApplicationType="Outlook" Language="cs" TemplatesPath="" DebugInfoExeName="#Software\Microsoft\Office\16.0\Outlook\InstallRoot\Path#outlook.exe" AddItemTemplatesGuid="{A58A78EB-1C92-4DDD-80CF-E8BD872ABFC4}" />
-        <Host Name="Outlook" GeneratedCodeNamespace="OutlookAddIn" PublishedHash="69C324AB27932AA2FBF2B7EA72250886FF164DE6" IconIndex="0">
+        <Host Name="Outlook" GeneratedCodeNamespace="OutlookOkan" PublishedHash="69C324AB27932AA2FBF2B7EA72250886FF164DE6" IconIndex="0">
           <HostItem Name="ThisAddIn" Code="ThisAddIn.cs" CanonicalName="AddIn" PublishedHash="25EAB5BA3273B8E61FFF7FBEE4F844F4E0B75B2D" CanActivate="false" IconIndex="1" Blueprint="ThisAddIn.Designer.xml" GeneratedCode="ThisAddIn.Designer.cs" />
         </Host>
       </FlavorProperties>

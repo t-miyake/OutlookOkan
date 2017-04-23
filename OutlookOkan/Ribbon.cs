@@ -1,10 +1,11 @@
 ﻿using System;
+using System.Diagnostics;
 using System.IO;
 using System.Reflection;
 using System.Runtime.InteropServices;
 using Office = Microsoft.Office.Core;
 
-namespace OutlookAddIn
+namespace OutlookOkan
 {
     [ComVisible(true)]
     public class Ribbon : Office.IRibbonExtensibility
@@ -17,7 +18,7 @@ namespace OutlookAddIn
 
         public string GetCustomUI(string ribbonId)
         {
-            return GetResourceText("OutlookAddIn.Ribbon.xml");
+            return GetResourceText("OutlookOkan.Ribbon.xml");
         }
 
         #endregion
@@ -42,6 +43,11 @@ namespace OutlookAddIn
             var aboutBox = new AboutBox();
             var temp = aboutBox.ShowDialog();
             aboutBox.Dispose();
+        }
+
+        public void ShowHelp(Office.IRibbonControl control)
+        {
+            Process.Start("https://noraneko.co.jp/outlookokan/");
         }
 
         #endregion

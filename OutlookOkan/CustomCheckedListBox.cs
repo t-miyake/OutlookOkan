@@ -2,7 +2,7 @@
 using System.Windows.Forms;
 using System.Drawing;
 
-namespace OutlookAddIn
+namespace OutlookOkan
 {
     /// <summary>
     /// 項目の描画色を赤にする、CustomCheckedListBoxのカスタムコントロール
@@ -18,8 +18,10 @@ namespace OutlookAddIn
         {
             var foreColor = Color.Black;
 
-            if (ColorFlag.Count==0?false:ColorFlag[e.Index])
+            if (ColorFlag.Count == 0 ? false : ColorFlag[e.Index])
+            {
                 foreColor = Color.Red;
+            }
 
             var tweakedEventArgs = new DrawItemEventArgs(
                 e.Graphics,
