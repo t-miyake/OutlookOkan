@@ -80,6 +80,7 @@
             this.OkButton = new System.Windows.Forms.Button();
             this.CancelButton = new System.Windows.Forms.Button();
             this.ApplyButton = new System.Windows.Forms.Button();
+            this.label7 = new System.Windows.Forms.Label();
             this.tabControl.SuspendLayout();
             this.WhiteListTab.SuspendLayout();
             this.groupBox4.SuspendLayout();
@@ -705,11 +706,23 @@
             this.ApplyButton.UseVisualStyleBackColor = true;
             this.ApplyButton.Click += new System.EventHandler(this.ApplyButton_Click);
             // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Font = new System.Drawing.Font("Meiryo UI", 8F);
+            this.label7.ForeColor = System.Drawing.SystemColors.WindowFrame;
+            this.label7.Location = new System.Drawing.Point(17, 380);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(189, 18);
+            this.label7.TabIndex = 11;
+            this.label7.Text = "行の削除：選択してDeleteキー";
+            // 
             // SettingWindow
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 19F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(950, 437);
+            this.Controls.Add(this.label7);
             this.Controls.Add(this.ApplyButton);
             this.Controls.Add(this.CancelButton);
             this.Controls.Add(this.OkButton);
@@ -760,6 +773,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.AutoCcBccRecipientGrid)).EndInit();
             this.groupBox18.ResumeLayout(false);
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -817,5 +831,6 @@
         private System.Windows.Forms.GroupBox groupBox18;
         private System.Windows.Forms.Button AutoCcBccRecipientExportCsvButton;
         private System.Windows.Forms.Button AutoCcBccRecipientImportCsvButton;
+        private System.Windows.Forms.Label label7;
     }
 }
