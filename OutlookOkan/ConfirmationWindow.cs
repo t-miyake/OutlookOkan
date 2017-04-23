@@ -23,7 +23,7 @@ namespace OutlookOkan
             MakeDisplayNameAndRecipient(mail);
 
             SubjectTextBox.Text = mail.Subject;
-            OtherInfoTextBox.Text = "メール種別："+ GetMailBodyFormat(mail)+ "   メールサイズ："+(mail.Size/1024).ToString("N") + "kB";
+            OtherInfoTextBox.Text = $@"メール種別：{GetMailBodyFormat(mail)}";
             CheckForgotAttach(mail);
 
             CheckKeyword(mail);
@@ -36,6 +36,7 @@ namespace OutlookOkan
             DrawAttachments(mail);
             CheckMailbodyAndRecipient(mail);
 
+            UpdateItemsCount();
             SendButtonSwitch();
         }
 
@@ -208,8 +209,7 @@ namespace OutlookOkan
             {
                 for (var i = 0; i < mail.Attachments.Count; i++)
                 {
-                    AttachmentsList.Items.Add(mail.Attachments[i + 1].FileName + "  (" +
-                                              (mail.Attachments[i + 1].Size / 1024).ToString("N") + "kB)");
+                    AttachmentsList.Items.Add(mail.Attachments[i + 1].FileName + $@" ({(mail.Attachments[i + 1].Size / 1024):N}kB)");
                 }
             }
         }
@@ -369,6 +369,13 @@ namespace OutlookOkan
             {
                 sendButton.Enabled = false;
             }
+        }
+
+        private void UpdateItemsCount()
+        {
+            AlertAreaGroupBox.Text = $@"重要な警告 ({AlertBox.Items.Count})";
+            RecipientGroupBox.Text = $@"送信先アドレス ({ToAddressList.Items.Count + CcAddressList.Items.Count + BccAddressList.Items.Count})";
+            AttachmentGroupBox.Text = $@"添付ファイル ({AttachmentsList.Items.Count})";
         }
     }
 }

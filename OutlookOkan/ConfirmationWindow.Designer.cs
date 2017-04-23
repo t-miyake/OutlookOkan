@@ -39,19 +39,19 @@
             this.BccAddressList = new OutlookOkan.CustomCheckedListBox();
             this.BccLabel = new System.Windows.Forms.Label();
             this.AlertBox = new OutlookOkan.CustomCheckedListBox();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.RecipientGroupBox = new System.Windows.Forms.GroupBox();
+            this.AlertAreaGroupBox = new System.Windows.Forms.GroupBox();
+            this.MailInfoGroupBox = new System.Windows.Forms.GroupBox();
             this.OtherInfoTextBox = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.SubjectTextBox = new System.Windows.Forms.TextBox();
-            this.groupBox4 = new System.Windows.Forms.GroupBox();
+            this.AttachmentGroupBox = new System.Windows.Forms.GroupBox();
             this.AttachmentsList = new OutlookOkan.CustomCheckedListBox();
-            this.groupBox1.SuspendLayout();
-            this.groupBox2.SuspendLayout();
-            this.groupBox3.SuspendLayout();
-            this.groupBox4.SuspendLayout();
+            this.RecipientGroupBox.SuspendLayout();
+            this.AlertAreaGroupBox.SuspendLayout();
+            this.MailInfoGroupBox.SuspendLayout();
+            this.AttachmentGroupBox.SuspendLayout();
             this.SuspendLayout();
             // 
             // sendButton
@@ -175,48 +175,48 @@
             this.AlertBox.TabIndex = 4;
             this.AlertBox.SelectedIndexChanged += new System.EventHandler(this.AlertBox_SelectedIndexChanged);
             // 
-            // groupBox1
+            // RecipientGroupBox
             // 
-            this.groupBox1.BackColor = System.Drawing.SystemColors.Control;
-            this.groupBox1.Controls.Add(this.BccAddressList);
-            this.groupBox1.Controls.Add(this.BccLabel);
-            this.groupBox1.Controls.Add(this.CcAddressList);
-            this.groupBox1.Controls.Add(this.ToLabel);
-            this.groupBox1.Controls.Add(this.CcLabel);
-            this.groupBox1.Controls.Add(this.ToAddressList);
-            this.groupBox1.Font = new System.Drawing.Font("Meiryo UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.groupBox1.ForeColor = System.Drawing.Color.Black;
-            this.groupBox1.Location = new System.Drawing.Point(33, 235);
-            this.groupBox1.Margin = new System.Windows.Forms.Padding(3, 3, 9, 4);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(549, 332);
-            this.groupBox1.TabIndex = 5;
-            this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "送信先アドレス";
+            this.RecipientGroupBox.BackColor = System.Drawing.SystemColors.Control;
+            this.RecipientGroupBox.Controls.Add(this.BccAddressList);
+            this.RecipientGroupBox.Controls.Add(this.BccLabel);
+            this.RecipientGroupBox.Controls.Add(this.CcAddressList);
+            this.RecipientGroupBox.Controls.Add(this.ToLabel);
+            this.RecipientGroupBox.Controls.Add(this.CcLabel);
+            this.RecipientGroupBox.Controls.Add(this.ToAddressList);
+            this.RecipientGroupBox.Font = new System.Drawing.Font("Meiryo UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.RecipientGroupBox.ForeColor = System.Drawing.Color.Black;
+            this.RecipientGroupBox.Location = new System.Drawing.Point(33, 235);
+            this.RecipientGroupBox.Margin = new System.Windows.Forms.Padding(3, 3, 9, 4);
+            this.RecipientGroupBox.Name = "RecipientGroupBox";
+            this.RecipientGroupBox.Size = new System.Drawing.Size(549, 332);
+            this.RecipientGroupBox.TabIndex = 5;
+            this.RecipientGroupBox.TabStop = false;
+            this.RecipientGroupBox.Text = "送信先アドレス";
             // 
-            // groupBox2
+            // AlertAreaGroupBox
             // 
-            this.groupBox2.Controls.Add(this.AlertBox);
-            this.groupBox2.Location = new System.Drawing.Point(33, 84);
-            this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(1230, 135);
-            this.groupBox2.TabIndex = 3;
-            this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "重要な警告 (念のためメールを再確認してください。)";
+            this.AlertAreaGroupBox.Controls.Add(this.AlertBox);
+            this.AlertAreaGroupBox.Location = new System.Drawing.Point(33, 84);
+            this.AlertAreaGroupBox.Name = "AlertAreaGroupBox";
+            this.AlertAreaGroupBox.Size = new System.Drawing.Size(1230, 135);
+            this.AlertAreaGroupBox.TabIndex = 3;
+            this.AlertAreaGroupBox.TabStop = false;
+            this.AlertAreaGroupBox.Text = "重要な警告";
             // 
-            // groupBox3
+            // MailInfoGroupBox
             // 
-            this.groupBox3.Controls.Add(this.OtherInfoTextBox);
-            this.groupBox3.Controls.Add(this.label7);
-            this.groupBox3.Controls.Add(this.label6);
-            this.groupBox3.Controls.Add(this.SubjectTextBox);
-            this.groupBox3.Location = new System.Drawing.Point(594, 235);
-            this.groupBox3.Margin = new System.Windows.Forms.Padding(3, 3, 9, 4);
-            this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(669, 115);
-            this.groupBox3.TabIndex = 12;
-            this.groupBox3.TabStop = false;
-            this.groupBox3.Text = "メール情報";
+            this.MailInfoGroupBox.Controls.Add(this.OtherInfoTextBox);
+            this.MailInfoGroupBox.Controls.Add(this.label7);
+            this.MailInfoGroupBox.Controls.Add(this.label6);
+            this.MailInfoGroupBox.Controls.Add(this.SubjectTextBox);
+            this.MailInfoGroupBox.Location = new System.Drawing.Point(594, 235);
+            this.MailInfoGroupBox.Margin = new System.Windows.Forms.Padding(3, 3, 9, 4);
+            this.MailInfoGroupBox.Name = "MailInfoGroupBox";
+            this.MailInfoGroupBox.Size = new System.Drawing.Size(669, 115);
+            this.MailInfoGroupBox.TabIndex = 12;
+            this.MailInfoGroupBox.TabStop = false;
+            this.MailInfoGroupBox.Text = "メール情報";
             // 
             // OtherInfoTextBox
             // 
@@ -256,16 +256,16 @@
             this.SubjectTextBox.Size = new System.Drawing.Size(594, 27);
             this.SubjectTextBox.TabIndex = 14;
             // 
-            // groupBox4
+            // AttachmentGroupBox
             // 
-            this.groupBox4.Controls.Add(this.AttachmentsList);
-            this.groupBox4.Location = new System.Drawing.Point(594, 361);
-            this.groupBox4.Margin = new System.Windows.Forms.Padding(3, 3, 9, 4);
-            this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Size = new System.Drawing.Size(669, 206);
-            this.groupBox4.TabIndex = 17;
-            this.groupBox4.TabStop = false;
-            this.groupBox4.Text = "添付ファイル";
+            this.AttachmentGroupBox.Controls.Add(this.AttachmentsList);
+            this.AttachmentGroupBox.Location = new System.Drawing.Point(594, 361);
+            this.AttachmentGroupBox.Margin = new System.Windows.Forms.Padding(3, 3, 9, 4);
+            this.AttachmentGroupBox.Name = "AttachmentGroupBox";
+            this.AttachmentGroupBox.Size = new System.Drawing.Size(669, 206);
+            this.AttachmentGroupBox.TabIndex = 17;
+            this.AttachmentGroupBox.TabStop = false;
+            this.AttachmentGroupBox.Text = "添付ファイル";
             // 
             // AttachmentsList
             // 
@@ -283,10 +283,10 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 19F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1281, 624);
-            this.Controls.Add(this.groupBox4);
-            this.Controls.Add(this.groupBox3);
-            this.Controls.Add(this.groupBox2);
-            this.Controls.Add(this.groupBox1);
+            this.Controls.Add(this.AttachmentGroupBox);
+            this.Controls.Add(this.MailInfoGroupBox);
+            this.Controls.Add(this.AlertAreaGroupBox);
+            this.Controls.Add(this.RecipientGroupBox);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.cancelButton);
@@ -299,12 +299,12 @@
             this.ShowIcon = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "メール送信前の確認";
-            this.groupBox1.ResumeLayout(false);
-            this.groupBox1.PerformLayout();
-            this.groupBox2.ResumeLayout(false);
-            this.groupBox3.ResumeLayout(false);
-            this.groupBox3.PerformLayout();
-            this.groupBox4.ResumeLayout(false);
+            this.RecipientGroupBox.ResumeLayout(false);
+            this.RecipientGroupBox.PerformLayout();
+            this.AlertAreaGroupBox.ResumeLayout(false);
+            this.MailInfoGroupBox.ResumeLayout(false);
+            this.MailInfoGroupBox.PerformLayout();
+            this.AttachmentGroupBox.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -323,12 +323,12 @@
         private CustomCheckedListBox BccAddressList;
         private System.Windows.Forms.Label BccLabel;
         private CustomCheckedListBox AlertBox;
-        private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.GroupBox groupBox2;
-        private System.Windows.Forms.GroupBox groupBox3;
+        private System.Windows.Forms.GroupBox RecipientGroupBox;
+        private System.Windows.Forms.GroupBox AlertAreaGroupBox;
+        private System.Windows.Forms.GroupBox MailInfoGroupBox;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.TextBox SubjectTextBox;
-        private System.Windows.Forms.GroupBox groupBox4;
+        private System.Windows.Forms.GroupBox AttachmentGroupBox;
         private CustomCheckedListBox AttachmentsList;
         private System.Windows.Forms.TextBox OtherInfoTextBox;
         private System.Windows.Forms.Label label7;
