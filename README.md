@@ -53,6 +53,3 @@
 ## 注意事項
 現在、公開しているバージョンは、最低限の動作確認を行ったプレビュー版です。  
 既知の不具合や課題は、[Wiki](https://github.com/t-miyake/OutlookOkan/wiki/Known-Issues)に記載しています。  
-
-また、Windows10 Pro Creators Updade (15063) と Office 2016 (32bit版) でのみ、  
-動作確認を行っています。
