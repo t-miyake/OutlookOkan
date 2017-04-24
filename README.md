@@ -44,6 +44,9 @@
 - 自動CC/BCC追加(宛先)
     - 指定した宛先へのメールに、指定したアドレスを自動でCCやBCCに追加
 
+- 設定のインポート/エクスポート
+    - 設定内容をCSVファイルでインポート/エクスポート
+
 ## 使い方
 [Wiki](https://github.com/t-miyake/OutlookOkan/wiki/Manual)に記載します。
 
