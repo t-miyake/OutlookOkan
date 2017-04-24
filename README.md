@@ -9,8 +9,8 @@
 機密の関わるメールにおいて、完全なオープンソースのため、安心してご利用いただけます。  
 また、キーワードによる警告や、自動CC/BCC追加機能など、便利なオプション機能もあります。  
 
-オープンソースかつ無料でご利用いただけますが、無サポート、無保証です。  
-専用のカスタマイズやサポートが必要な場合は、[(株)のらねこ](https://www.noraneko.co.jp/) までお問い合わせください。  
+オープンソースかつ無料でご利用いただけますが、無サポート、無保証です。([ライセンス](https://github.com/t-miyake/OutlookOkan/blob/master/LICENSE))  
+専用のカスタマイズやサポートが必要な場合は、個別にご相談ください。  
 
 送信前の確認ウインドウ  
 ![Screenshot](https://github.com/t-miyake/OutlookOkan/blob/master/Screenshots/Screenshot_v0.9_01.png)  
@@ -44,9 +44,15 @@
 - 自動CC/BCC追加(宛先)
     - 指定した宛先へのメールに、指定したアドレスを自動でCCやBCCに追加
 
+- 設定のインポート/エクスポート
+    - 設定内容をCSVファイルでインポート/エクスポート
+
 ## 使い方
 [Wiki](https://github.com/t-miyake/OutlookOkan/wiki/Manual)に記載します。
 
 ## 注意事項
 現在、公開しているバージョンは、最低限の動作確認を行ったプレビュー版です。  
 既知の不具合や課題は、[Wiki](https://github.com/t-miyake/OutlookOkan/wiki/Known-Issues)に記載しています。  
+
+また、Windows10 Pro Creators Updade (15063) と Office 2016 (32bit版) でのみ、  
+動作確認を行っています。

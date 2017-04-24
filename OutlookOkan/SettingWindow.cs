@@ -38,13 +38,21 @@ namespace OutlookOkan
             WhitelistGrid.DataSource = BindableWhitelist;
 
             WhitelistGrid.Columns[0].HeaderText = @"アドレスまたはドメイン";
-            WhitelistGrid.Columns[0].CellTemplate.ToolTipText = "@から入力";
-            WhitelistGrid.CellValidating += (sender, e) =>
+            WhitelistGrid.Columns[0].CellTemplate.ToolTipText = "アドレスまたはドメイン(@から)を登録";
+
+            WhitelistGrid.CellValidating += (sender, args) =>
             {
-                if (!string.IsNullOrEmpty(e.FormattedValue.ToString()) && !e.FormattedValue.ToString().Contains("@"))
+                if (!string.IsNullOrEmpty(args.FormattedValue.ToString()) && !args.FormattedValue.ToString().Contains("@"))
                 {
                     MessageBox.Show("@は必須です。");
-                    e.Cancel = true;
+                    args.Cancel = true;
+                }
+
+                // @のみの登録を許すと全てのメールアドレスがホワイトリスト該当扱いになる。
+                if (args.FormattedValue.ToString().Equals("@"))
+                {
+                    MessageBox.Show("メールアドレスかドメインを登録してください。");
+                    args.Cancel = true;
                 }
             };
         }
@@ -97,7 +105,9 @@ namespace OutlookOkan
             NameAndDomainsGrid.DataSource = BindableNameAdnDomainList;
 
             NameAndDomainsGrid.Columns[0].HeaderText = @"名称";
+            NameAndDomainsGrid.Columns[0].CellTemplate.ToolTipText = @"社名等の宛先名を入力";
             NameAndDomainsGrid.Columns[1].HeaderText = @"ドメイン (@から)";
+            NameAndDomainsGrid.Columns[1].CellTemplate.ToolTipText = @"@から入力";
         }
 
         public void SaveNameAndDomainsListToCsv()
@@ -148,7 +158,9 @@ namespace OutlookOkan
             AlertKeywordAndMessageGrid.DataSource = BindableAlertKeywordAndMessageList;
 
             AlertKeywordAndMessageGrid.Columns[0].HeaderText = @"警告するキーワード";
+            AlertKeywordAndMessageGrid.Columns[0].CellTemplate.ToolTipText = @"警告するキーワード";
             AlertKeywordAndMessageGrid.Columns[1].HeaderText = @"警告文";
+            AlertKeywordAndMessageGrid.Columns[1].CellTemplate.ToolTipText = @"警告文";
         }
 
         public void SaveAlertKeywordAndMessageListToCsv()
@@ -199,6 +211,23 @@ namespace OutlookOkan
             AlertAddressGrid.DataSource = BindableAlertAddressList;
 
             AlertAddressGrid.Columns[0].HeaderText = @"警告するアドレスまたはドメイン";
+            AlertAddressGrid.Columns[0].CellTemplate.ToolTipText = "アドレスまたはドメイン(@から)を登録";
+
+            AlertAddressGrid.CellValidating += (sender, args) =>
+            {
+                if (!string.IsNullOrEmpty(args.FormattedValue.ToString()) && !args.FormattedValue.ToString().Contains("@"))
+                {
+                    MessageBox.Show("@は必須です。");
+                    args.Cancel = true;
+                }
+
+                // @のみの登録を許すと全てのメールアドレスが警告アドレス該当扱いになる。
+                if (args.FormattedValue.ToString().Equals("@"))
+                {
+                    MessageBox.Show("メールアドレスかドメインを登録してください。");
+                    args.Cancel = true;
+                }
+            };
         }
 
         public void SaveAlertAddressListToCsv()
@@ -249,15 +278,16 @@ namespace OutlookOkan
             AutoCcBccKeywordGrid.DataSource = BindableAutoCcBccKeywordList;
 
             AutoCcBccKeywordGrid.Columns[0].HeaderText = @"キーワード";
+            AutoCcBccKeywordGrid.Columns[0].CellTemplate.ToolTipText = @"キーワード";
             AutoCcBccKeywordGrid.Columns[1].HeaderText = @"CCまたはBCC";
+            AutoCcBccKeywordGrid.Columns[1].CellTemplate.ToolTipText = @"CC または BCCと入力";
             AutoCcBccKeywordGrid.Columns[2].HeaderText = @"追加アドレス";
+            AutoCcBccKeywordGrid.Columns[2].CellTemplate.ToolTipText = @"メールアドレス";
 
-            AutoCcBccKeywordGrid.Columns[1].CellTemplate.ToolTipText = "CC または BCCと入力";
-
-            AutoCcBccKeywordGrid.DataError += (sender, e) =>
+            AutoCcBccKeywordGrid.DataError += (sender, args) =>
             {
                 MessageBox.Show("CC または BCCと入力してください。");
-                e.Cancel = true;
+                args.Cancel = true;
             };
         }
 
@@ -309,16 +339,19 @@ namespace OutlookOkan
             AutoCcBccRecipientGrid.DataSource = BindableAutoCcBccRecipientList;
 
             AutoCcBccRecipientGrid.Columns[0].HeaderText = @"宛先アドレスまたはドメイン";
+            AutoCcBccRecipientGrid.Columns[0].CellTemplate.ToolTipText = "アドレスまたはドメイン(@から)を登録";
             AutoCcBccRecipientGrid.Columns[1].HeaderText = @"CCまたはBCC";
+            AutoCcBccRecipientGrid.Columns[1].CellTemplate.ToolTipText = "CC または BCCと入力";
             AutoCcBccRecipientGrid.Columns[2].HeaderText = @"追加アドレス";
+            AutoCcBccRecipientGrid.Columns[2].CellTemplate.ToolTipText = @"メールアドレス";
 
-            AutoCcBccKeywordGrid.Columns[1].CellTemplate.ToolTipText = "CC または BCCと入力";
-
-            AutoCcBccKeywordGrid.DataError += (sender, e) =>
+            AutoCcBccKeywordGrid.DataError += (sender, args) =>
             {
                 MessageBox.Show("CC または BCCと入力してください。");
-                e.Cancel = true;
+                args.Cancel = true;
             };
+
+            // 裏ワザとして、宛先アドレスまたはドメインに@だけの登録で、常にCC/BCCに追加。というのはありな気がするので、あえてバリデーションしない。
         }
 
         public void SaveAutoCcBccRecipientListToCsv()
