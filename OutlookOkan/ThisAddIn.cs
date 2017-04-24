@@ -15,7 +15,7 @@ namespace OutlookOkan
             Application.ItemSend += Application_ItemSend;
         }
 
-        public void Application_ItemSend(object item, ref bool cancel)
+        private static void Application_ItemSend(object item, ref bool cancel)
         {
             var mail = item as Outlook.MailItem;
 

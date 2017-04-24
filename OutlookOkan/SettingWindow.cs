@@ -30,7 +30,7 @@ namespace OutlookOkan
         #endregion
 
         #region Whitelist setting
-        public void WhitelistToGrid()
+        private void WhitelistToGrid()
         {
             var readCsv = new ReadAndWriteCsv("Whitelist.csv");
 
@@ -57,7 +57,7 @@ namespace OutlookOkan
             };
         }
 
-        public void SaveWhitelistToCsv()
+        private void SaveWhitelistToCsv()
         {
             var writeCsv = new ReadAndWriteCsv("Whitelist.csv");
             writeCsv.WriteBindableDataToCsv<WhitelistMap>(BindableWhitelist);
@@ -97,7 +97,7 @@ namespace OutlookOkan
         #endregion
 
         #region NameAndDomainsList setting
-        public void SetNameAndDomainsListToGrid()
+        private void SetNameAndDomainsListToGrid()
         {            
             var readCsv = new ReadAndWriteCsv("NameAndDomains.csv");
 
@@ -110,7 +110,7 @@ namespace OutlookOkan
             NameAndDomainsGrid.Columns[1].CellTemplate.ToolTipText = @"@から入力";
         }
 
-        public void SaveNameAndDomainsListToCsv()
+        private void SaveNameAndDomainsListToCsv()
         {
             var writeCsv = new ReadAndWriteCsv("NameAndDomains.csv");
             writeCsv.WriteBindableDataToCsv<NameAndDomainsMap>(BindableNameAdnDomainList);
@@ -150,7 +150,7 @@ namespace OutlookOkan
         #endregion
 
         #region AlertKeywordAndMessageList setting
-        public void AlertKeywordAndMessageListToGrid()
+        private void AlertKeywordAndMessageListToGrid()
         {
             var readCsv = new ReadAndWriteCsv("AlertKeywordAndMessageList.csv");
 
@@ -163,7 +163,7 @@ namespace OutlookOkan
             AlertKeywordAndMessageGrid.Columns[1].CellTemplate.ToolTipText = @"警告文";
         }
 
-        public void SaveAlertKeywordAndMessageListToCsv()
+        private void SaveAlertKeywordAndMessageListToCsv()
         {
             var writeCsv = new ReadAndWriteCsv("AlertKeywordAndMessageList.csv");
             writeCsv.WriteBindableDataToCsv<AlertKeywordAndMessageMap>(BindableAlertKeywordAndMessageList);
@@ -203,7 +203,7 @@ namespace OutlookOkan
         #endregion
 
         #region AlertAddressList setting
-        public void AlertAddressListToGrid()
+        private void AlertAddressListToGrid()
         {
             var readCsv = new ReadAndWriteCsv("AlertAddressList.csv");
 
@@ -230,7 +230,7 @@ namespace OutlookOkan
             };
         }
 
-        public void SaveAlertAddressListToCsv()
+        private void SaveAlertAddressListToCsv()
         {
             var writeCsv = new ReadAndWriteCsv("AlertAddressList.csv");
             writeCsv.WriteBindableDataToCsv<AlertAddressMap>(BindableAlertAddressList);
@@ -270,7 +270,7 @@ namespace OutlookOkan
         #endregion
 
         #region AutoCcBccKeywordList setting
-        public void AutoCcBccKeywordListToGrid()
+        private void AutoCcBccKeywordListToGrid()
         {
             var readCsv = new ReadAndWriteCsv("AutoCcBccKeywordList.csv");
 
@@ -291,7 +291,7 @@ namespace OutlookOkan
             };
         }
 
-        public void SaveAutoCcBccKeywordListToCsv()
+        private void SaveAutoCcBccKeywordListToCsv()
         {
             var writeCsv = new ReadAndWriteCsv("AutoCcBccKeywordList.csv");
             writeCsv.WriteBindableDataToCsv<AutoCcBccKeywordMap>(BindableAutoCcBccKeywordList);
@@ -331,7 +331,7 @@ namespace OutlookOkan
         #endregion
 
         #region AutoCcBccRecipientList setting
-        public void AutoCcBccRecipientListToGrid()
+        private void AutoCcBccRecipientListToGrid()
         {
             var readCsv = new ReadAndWriteCsv("AutoCcBccRecipientList.csv");
 
@@ -354,7 +354,7 @@ namespace OutlookOkan
             // 裏ワザとして、宛先アドレスまたはドメインに@だけの登録で、常にCC/BCCに追加。というのはありな気がするので、あえてバリデーションしない。
         }
 
-        public void SaveAutoCcBccRecipientListToCsv()
+        private void SaveAutoCcBccRecipientListToCsv()
         {
             var writeCsv = new ReadAndWriteCsv("AutoCcBccRecipientList.csv");
             writeCsv.WriteBindableDataToCsv<AutoCcBccRecipientMap>(BindableAutoCcBccRecipientList);
