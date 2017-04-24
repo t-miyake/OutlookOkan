@@ -15,7 +15,7 @@ namespace OutlookOkan
         /// <summary>
         /// メール送信の確認画面を表示。
         /// </summary>
-        /// <param name="mail">送信するメールに関する情報</param>aaaa
+        /// <param name="mail">送信するメールに関する情報</param>
         public ConfirmationWindow(Outlook._MailItem mail)
         {
             InitializeComponent();
@@ -154,6 +154,7 @@ namespace OutlookOkan
                             autoAddedBccAddressList.Add(i.AutoAddAddress);
                         }
 
+                        // 自動追加されたアドレスはホワイトリスト登録アドレス扱い。
                         Whitelists.Add(new Whitelist { WhiteName = i.AutoAddAddress });
                     }
                 }
@@ -193,6 +194,7 @@ namespace OutlookOkan
                         AlertBox.Items.Add($@"自動で {i.CcOrBcc} に {i.AutoAddAddress} が追加されました。(該当宛先 「{i.TargetRecipient}」)", true);
                         AlertBox.ColorFlag.Add(false);
 
+                        // 自動追加されたアドレスはホワイトリスト登録アドレス扱い。
                         Whitelists.Add(new Whitelist { WhiteName = i.AutoAddAddress });
                     }
                 }
@@ -323,11 +325,6 @@ namespace OutlookOkan
                     }
                 }
             }
-
-            //宛先の件数をそれぞれ表示
-            ToLabel.Text = $@"To ({ToAddressList.Items.Count})";
-            CcLabel.Text = $@"CC ({CcAddressList.Items.Count})";
-            BccLabel.Text = $@"BCC ({BccAddressList.Items.Count})";
         }
 
         #region BoxSelectedIndexChanged events
@@ -375,6 +372,10 @@ namespace OutlookOkan
 
         private void UpdateItemsCount()
         {
+            ToLabel.Text = $@"To ({ToAddressList.Items.Count})";
+            CcLabel.Text = $@"CC ({CcAddressList.Items.Count})";
+            BccLabel.Text = $@"BCC ({BccAddressList.Items.Count})";
+
             AlertAreaGroupBox.Text = $@"重要な警告 ({AlertBox.Items.Count})";
             RecipientGroupBox.Text = $@"送信先アドレス ({ToAddressList.Items.Count + CcAddressList.Items.Count + BccAddressList.Items.Count})";
             AttachmentGroupBox.Text = $@"添付ファイル ({AttachmentsList.Items.Count})";

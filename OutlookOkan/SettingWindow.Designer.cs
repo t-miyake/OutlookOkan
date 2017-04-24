@@ -601,7 +601,7 @@
             this.groupBox16.Size = new System.Drawing.Size(235, 170);
             this.groupBox16.TabIndex = 41;
             this.groupBox16.TabStop = false;
-            this.groupBox16.Text = "設定案内";
+            this.groupBox16.Text = "設定例";
             // 
             // label6
             // 
@@ -713,9 +713,9 @@
             this.label7.ForeColor = System.Drawing.SystemColors.WindowFrame;
             this.label7.Location = new System.Drawing.Point(17, 380);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(189, 18);
+            this.label7.Size = new System.Drawing.Size(214, 18);
             this.label7.TabIndex = 11;
-            this.label7.Text = "行の削除：選択してDeleteキー";
+            this.label7.Text = "行の削除：行を選択してDeleteキー";
             // 
             // SettingWindow
             // 
