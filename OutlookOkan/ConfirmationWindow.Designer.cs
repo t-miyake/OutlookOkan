@@ -56,7 +56,7 @@
             // 
             // sendButton
             // 
-            this.sendButton.DialogResult = System.Windows.Forms.DialogResult.Yes;
+            this.sendButton.DialogResult = System.Windows.Forms.DialogResult.OK;
             this.sendButton.Enabled = false;
             this.sendButton.Location = new System.Drawing.Point(1062, 573);
             this.sendButton.Margin = new System.Windows.Forms.Padding(2, 3, 9, 4);
