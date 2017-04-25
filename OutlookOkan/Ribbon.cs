@@ -24,7 +24,6 @@ namespace OutlookOkan
         #endregion
 
         #region リボンのコールバック
-        //ここでコールバック メソッドを作成します。コールバック メソッドの追加について詳しくは https://go.microsoft.com/fwlink/?LinkID=271226 をご覧ください
 
         public void Ribbon_Load(Office.IRibbonUI ribbonUi)
         {
@@ -47,7 +46,7 @@ namespace OutlookOkan
 
         public void ShowHelp(Office.IRibbonControl control)
         {
-            Process.Start("https://noraneko.co.jp/outlookokan/");
+            Process.Start("https://github.com/t-miyake/OutlookOkan/wiki");
         }
 
         #endregion

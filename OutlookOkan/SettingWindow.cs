@@ -3,8 +3,7 @@ using System.Windows.Forms;
 
 namespace OutlookOkan
 {
-    //TODO 全体を簡潔に修正する。
-    //TODO 入力規則を付ける。
+    //TODO 全体を簡潔に修正する。\
     public partial class SettingWindow : Form
     {
         public SettingWindow()

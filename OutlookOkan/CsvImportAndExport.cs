@@ -12,7 +12,7 @@ namespace OutlookOkan
     public class CsvImportAndExport
     {
         /// <summary>
-        /// 
+        /// CSVファイルをインポートする。
         /// </summary>
         /// <returns>インポートするCSVファイルのパス</returns>
         public string ImportCsv()

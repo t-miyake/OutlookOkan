@@ -267,7 +267,7 @@
     <ManifestKeyFile>OutlookOkan_TemporaryKey.pfx</ManifestKeyFile>
   </PropertyGroup>
   <PropertyGroup>
-    <ManifestCertificateThumbprint>D16779FF7837328ADB937D9932B8D03AC00BB251</ManifestCertificateThumbprint>
+    <ManifestCertificateThumbprint>FB8551A3CC7A36B129FAC3BF54FC880E7AF6BC21</ManifestCertificateThumbprint>
   </PropertyGroup>
   <PropertyGroup />
   <!-- Include the build rules for a C# project. -->

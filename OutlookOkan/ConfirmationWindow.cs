@@ -56,7 +56,7 @@ namespace OutlookOkan
 
                 // 登録されたメールアドレスの場合、登録名のみが表示されるため、メールアドレスと共に表示されるよう表示用テキストを生成。
                 var nameAndMailAddress = exchangeUser != null
-                    ? exchangeUser.Name + @" (" + exchangeUser.PrimarySmtpAddress + @")"
+                    ? exchangeUser.Name + $@" ({exchangeUser.PrimarySmtpAddress})"
                     : registeredUser != null
                         ? recip.Name
                         : recip.Address;

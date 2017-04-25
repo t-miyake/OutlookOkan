@@ -31,12 +31,6 @@ namespace OutlookOkan
             }
         }
 
-        private void ThisAddIn_Shutdown(object sender, System.EventArgs e)
-        {
-            //注: Outlook はこのイベントを発行しなくなりました。Outlook が
-            //    シャットダウンする際に実行が必要なコードがある場合は、http://go.microsoft.com/fwlink/?LinkId=506785 を参照してください。
-        }
-
         #region VSTO で生成されたコード
 
         /// <summary>
@@ -45,8 +39,7 @@ namespace OutlookOkan
         /// </summary>
         private void InternalStartup()
         {
-            this.Startup += new System.EventHandler(ThisAddIn_Startup);
-            this.Shutdown += new System.EventHandler(ThisAddIn_Shutdown);
+            Startup += ThisAddIn_Startup;
         }
 
         #endregion
