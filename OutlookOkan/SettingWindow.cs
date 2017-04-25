@@ -37,7 +37,7 @@ namespace OutlookOkan
             BindableWhitelist = new BindingSource(readCsv.ReadCsv<Whitelist>(readCsv.ParseCsv<WhitelistMap>()), string.Empty);
             WhitelistGrid.DataSource = BindableWhitelist;
 
-            WhitelistGrid.Columns[0].HeaderText = @"アドレスまたはドメイン";
+            WhitelistGrid.Columns[0].HeaderText = @"アドレス/ドメイン";
             WhitelistGrid.Columns[0].CellTemplate.ToolTipText = "アドレスまたはドメイン(@から)を登録";
 
             WhitelistGrid.CellValidating += (sender, args) =>
@@ -210,7 +210,7 @@ namespace OutlookOkan
             BindableAlertAddressList = new BindingSource(readCsv.ReadCsv<AlertAddress>(readCsv.ParseCsv<AlertAddressMap>()), string.Empty);
             AlertAddressGrid.DataSource = BindableAlertAddressList;
 
-            AlertAddressGrid.Columns[0].HeaderText = @"警告するアドレスまたはドメイン";
+            AlertAddressGrid.Columns[0].HeaderText = @"警告するアドレス/ドメイン";
             AlertAddressGrid.Columns[0].CellTemplate.ToolTipText = "アドレスまたはドメイン(@から)を登録";
 
             AlertAddressGrid.CellValidating += (sender, args) =>
@@ -338,7 +338,7 @@ namespace OutlookOkan
             BindableAutoCcBccRecipientList = new BindingSource(readCsv.ReadCsv<AutoCcBccRecipient>(readCsv.ParseCsv<AutoCcBccRecipientMap>()), string.Empty);
             AutoCcBccRecipientGrid.DataSource = BindableAutoCcBccRecipientList;
 
-            AutoCcBccRecipientGrid.Columns[0].HeaderText = @"宛先アドレスまたはドメイン";
+            AutoCcBccRecipientGrid.Columns[0].HeaderText = @"宛先アドレス/ドメイン";
             AutoCcBccRecipientGrid.Columns[0].CellTemplate.ToolTipText = "アドレスまたはドメイン(@から)を登録";
             AutoCcBccRecipientGrid.Columns[1].HeaderText = @"CCまたはBCC";
             AutoCcBccRecipientGrid.Columns[1].CellTemplate.ToolTipText = "CC または BCCと入力";

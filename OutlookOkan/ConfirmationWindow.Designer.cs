@@ -80,11 +80,11 @@
             // ToAddressList
             // 
             this.ToAddressList.FormattingEnabled = true;
-            this.ToAddressList.Location = new System.Drawing.Point(11, 51);
+            this.ToAddressList.Location = new System.Drawing.Point(11, 63);
             this.ToAddressList.Margin = new System.Windows.Forms.Padding(8, 3, 8, 8);
             this.ToAddressList.Name = "ToAddressList";
             this.ToAddressList.ScrollAlwaysVisible = true;
-            this.ToAddressList.Size = new System.Drawing.Size(525, 70);
+            this.ToAddressList.Size = new System.Drawing.Size(525, 54);
             this.ToAddressList.TabIndex = 7;
             this.ToAddressList.SelectedIndexChanged += new System.EventHandler(this.ToAddressList_SelectedIndexChanged);
             // 
@@ -95,7 +95,7 @@
             this.label1.Location = new System.Drawing.Point(20, 12);
             this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(214, 22);
+            this.label1.Size = new System.Drawing.Size(264, 26);
             this.label1.TabIndex = 1;
             this.label1.Text = "本当にメールを送信しますか？";
             // 
@@ -106,59 +106,59 @@
             this.label2.Location = new System.Drawing.Point(20, 42);
             this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(415, 19);
+            this.label2.Size = new System.Drawing.Size(498, 23);
             this.label2.TabIndex = 2;
             this.label2.Text = "すべての項目を確認し、チェックを入れて、送信ボタンを押してください。";
             // 
             // ToLabel
             // 
             this.ToLabel.AutoSize = true;
-            this.ToLabel.Location = new System.Drawing.Point(9, 27);
+            this.ToLabel.Location = new System.Drawing.Point(9, 34);
             this.ToLabel.Margin = new System.Windows.Forms.Padding(8, 3, 8, 2);
             this.ToLabel.Name = "ToLabel";
-            this.ToLabel.Size = new System.Drawing.Size(26, 19);
+            this.ToLabel.Size = new System.Drawing.Size(30, 23);
             this.ToLabel.TabIndex = 6;
             this.ToLabel.Text = "To";
             // 
             // CcAddressList
             // 
             this.CcAddressList.FormattingEnabled = true;
-            this.CcAddressList.Location = new System.Drawing.Point(11, 149);
+            this.CcAddressList.Location = new System.Drawing.Point(11, 161);
             this.CcAddressList.Margin = new System.Windows.Forms.Padding(8, 3, 8, 8);
             this.CcAddressList.Name = "CcAddressList";
             this.CcAddressList.ScrollAlwaysVisible = true;
-            this.CcAddressList.Size = new System.Drawing.Size(525, 70);
+            this.CcAddressList.Size = new System.Drawing.Size(525, 54);
             this.CcAddressList.TabIndex = 9;
             this.CcAddressList.SelectedIndexChanged += new System.EventHandler(this.CcAddressList_SelectedIndexChanged_1);
             // 
             // CcLabel
             // 
             this.CcLabel.AutoSize = true;
-            this.CcLabel.Location = new System.Drawing.Point(9, 126);
+            this.CcLabel.Location = new System.Drawing.Point(9, 132);
             this.CcLabel.Margin = new System.Windows.Forms.Padding(8, 3, 8, 2);
             this.CcLabel.Name = "CcLabel";
-            this.CcLabel.Size = new System.Drawing.Size(29, 19);
+            this.CcLabel.Size = new System.Drawing.Size(34, 23);
             this.CcLabel.TabIndex = 8;
             this.CcLabel.Text = "CC";
             // 
             // BccAddressList
             // 
             this.BccAddressList.FormattingEnabled = true;
-            this.BccAddressList.Location = new System.Drawing.Point(11, 248);
+            this.BccAddressList.Location = new System.Drawing.Point(11, 260);
             this.BccAddressList.Margin = new System.Windows.Forms.Padding(8, 3, 8, 10);
             this.BccAddressList.Name = "BccAddressList";
             this.BccAddressList.ScrollAlwaysVisible = true;
-            this.BccAddressList.Size = new System.Drawing.Size(525, 70);
+            this.BccAddressList.Size = new System.Drawing.Size(525, 54);
             this.BccAddressList.TabIndex = 11;
             this.BccAddressList.SelectedIndexChanged += new System.EventHandler(this.BccAddressList_SelectedIndexChanged);
             // 
             // BccLabel
             // 
             this.BccLabel.AutoSize = true;
-            this.BccLabel.Location = new System.Drawing.Point(9, 224);
+            this.BccLabel.Location = new System.Drawing.Point(9, 231);
             this.BccLabel.Margin = new System.Windows.Forms.Padding(8, 3, 8, 2);
             this.BccLabel.Name = "BccLabel";
-            this.BccLabel.Size = new System.Drawing.Size(39, 19);
+            this.BccLabel.Size = new System.Drawing.Size(46, 23);
             this.BccLabel.TabIndex = 10;
             this.BccLabel.Text = "BCC";
             // 
@@ -171,7 +171,7 @@
             this.AlertBox.Margin = new System.Windows.Forms.Padding(8, 3, 8, 8);
             this.AlertBox.Name = "AlertBox";
             this.AlertBox.ScrollAlwaysVisible = true;
-            this.AlertBox.Size = new System.Drawing.Size(1208, 76);
+            this.AlertBox.Size = new System.Drawing.Size(1208, 88);
             this.AlertBox.TabIndex = 4;
             this.AlertBox.SelectedIndexChanged += new System.EventHandler(this.AlertBox_SelectedIndexChanged);
             // 
@@ -224,26 +224,26 @@
             this.OtherInfoTextBox.Location = new System.Drawing.Point(64, 73);
             this.OtherInfoTextBox.Name = "OtherInfoTextBox";
             this.OtherInfoTextBox.ReadOnly = true;
-            this.OtherInfoTextBox.Size = new System.Drawing.Size(594, 27);
+            this.OtherInfoTextBox.Size = new System.Drawing.Size(594, 30);
             this.OtherInfoTextBox.TabIndex = 16;
             // 
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(11, 76);
+            this.label7.Location = new System.Drawing.Point(9, 76);
             this.label7.Margin = new System.Windows.Forms.Padding(8, 3, 4, 4);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(47, 19);
+            this.label7.Size = new System.Drawing.Size(56, 23);
             this.label7.TabIndex = 15;
             this.label7.Text = "その他";
             // 
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(11, 34);
+            this.label6.Location = new System.Drawing.Point(9, 34);
             this.label6.Margin = new System.Windows.Forms.Padding(8, 3, 4, 4);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(39, 19);
+            this.label6.Size = new System.Drawing.Size(46, 23);
             this.label6.TabIndex = 13;
             this.label6.Text = "件名";
             // 
@@ -253,7 +253,7 @@
             this.SubjectTextBox.Location = new System.Drawing.Point(64, 31);
             this.SubjectTextBox.Name = "SubjectTextBox";
             this.SubjectTextBox.ReadOnly = true;
-            this.SubjectTextBox.Size = new System.Drawing.Size(594, 27);
+            this.SubjectTextBox.Size = new System.Drawing.Size(594, 30);
             this.SubjectTextBox.TabIndex = 14;
             // 
             // AttachmentGroupBox
@@ -274,13 +274,13 @@
             this.AttachmentsList.Margin = new System.Windows.Forms.Padding(8, 3, 8, 8);
             this.AttachmentsList.Name = "AttachmentsList";
             this.AttachmentsList.ScrollAlwaysVisible = true;
-            this.AttachmentsList.Size = new System.Drawing.Size(647, 158);
+            this.AttachmentsList.Size = new System.Drawing.Size(647, 154);
             this.AttachmentsList.TabIndex = 18;
             this.AttachmentsList.SelectedIndexChanged += new System.EventHandler(this.AttachmentsList_SelectedIndexChanged);
             // 
             // ConfirmationWindow
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 19F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(11F, 23F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1281, 624);
             this.Controls.Add(this.AttachmentGroupBox);

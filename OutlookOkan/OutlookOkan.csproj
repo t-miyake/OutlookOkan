@@ -267,8 +267,9 @@
     <ManifestKeyFile>OutlookOkan_TemporaryKey.pfx</ManifestKeyFile>
   </PropertyGroup>
   <PropertyGroup>
-    <ManifestCertificateThumbprint>D40638E377F54FFFDF2E9A34004EC1DC53B99B28</ManifestCertificateThumbprint>
+    <ManifestCertificateThumbprint>D16779FF7837328ADB937D9932B8D03AC00BB251</ManifestCertificateThumbprint>
   </PropertyGroup>
+  <PropertyGroup />
   <!-- Include the build rules for a C# project. -->
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- Include additional build rules for an Office application add-in. -->

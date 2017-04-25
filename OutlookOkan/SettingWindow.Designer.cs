@@ -136,9 +136,9 @@
             this.WhiteListTab.Controls.Add(this.groupBox4);
             this.WhiteListTab.Controls.Add(this.WhitelistGroupBox);
             this.WhiteListTab.Controls.Add(this.groupBox5);
-            this.WhiteListTab.Location = new System.Drawing.Point(4, 28);
+            this.WhiteListTab.Location = new System.Drawing.Point(4, 32);
             this.WhiteListTab.Name = "WhiteListTab";
-            this.WhiteListTab.Size = new System.Drawing.Size(916, 339);
+            this.WhiteListTab.Size = new System.Drawing.Size(916, 335);
             this.WhiteListTab.TabIndex = 1;
             this.WhiteListTab.Text = "ホワイトリスト";
             this.WhiteListTab.UseVisualStyleBackColor = true;
@@ -156,7 +156,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Meiryo UI", 8F);
+            this.label2.Font = new System.Drawing.Font("Meiryo UI", 7F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
             this.label2.Location = new System.Drawing.Point(8, 32);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(208, 108);
@@ -180,12 +180,12 @@
             this.WhitelistGrid.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
             this.WhitelistGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.WhitelistGrid.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.WhitelistGrid.Location = new System.Drawing.Point(3, 23);
+            this.WhitelistGrid.Location = new System.Drawing.Point(3, 26);
             this.WhitelistGrid.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.WhitelistGrid.Name = "WhitelistGrid";
             this.WhitelistGrid.RowTemplate.DefaultCellStyle.Font = new System.Drawing.Font("Meiryo UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
             this.WhitelistGrid.RowTemplate.Height = 24;
-            this.WhitelistGrid.Size = new System.Drawing.Size(657, 295);
+            this.WhitelistGrid.Size = new System.Drawing.Size(657, 292);
             this.WhitelistGrid.TabIndex = 2;
             // 
             // groupBox5
@@ -226,11 +226,11 @@
             this.NameAndDomainsTab.Controls.Add(this.groupBox3);
             this.NameAndDomainsTab.Controls.Add(this.groupBox2);
             this.NameAndDomainsTab.Controls.Add(this.NameAndDomainsGroupBox);
-            this.NameAndDomainsTab.Location = new System.Drawing.Point(4, 28);
+            this.NameAndDomainsTab.Location = new System.Drawing.Point(4, 32);
             this.NameAndDomainsTab.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.NameAndDomainsTab.Name = "NameAndDomainsTab";
             this.NameAndDomainsTab.Padding = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.NameAndDomainsTab.Size = new System.Drawing.Size(916, 339);
+            this.NameAndDomainsTab.Size = new System.Drawing.Size(916, 335);
             this.NameAndDomainsTab.TabIndex = 0;
             this.NameAndDomainsTab.Text = "名称/ドメイン";
             this.NameAndDomainsTab.UseVisualStyleBackColor = true;
@@ -248,7 +248,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Meiryo UI", 8F);
+            this.label1.Font = new System.Drawing.Font("Meiryo UI", 7F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
             this.label1.Location = new System.Drawing.Point(8, 32);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(179, 108);
@@ -304,12 +304,12 @@
             this.NameAndDomainsGrid.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
             this.NameAndDomainsGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.NameAndDomainsGrid.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.NameAndDomainsGrid.Location = new System.Drawing.Point(3, 23);
+            this.NameAndDomainsGrid.Location = new System.Drawing.Point(3, 26);
             this.NameAndDomainsGrid.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.NameAndDomainsGrid.Name = "NameAndDomainsGrid";
             this.NameAndDomainsGrid.RowTemplate.DefaultCellStyle.Font = new System.Drawing.Font("Meiryo UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
             this.NameAndDomainsGrid.RowTemplate.Height = 24;
-            this.NameAndDomainsGrid.Size = new System.Drawing.Size(657, 295);
+            this.NameAndDomainsGrid.Size = new System.Drawing.Size(657, 292);
             this.NameAndDomainsGrid.TabIndex = 12;
             // 
             // AlertKeywordTab
@@ -317,9 +317,9 @@
             this.AlertKeywordTab.Controls.Add(this.groupBox7);
             this.AlertKeywordTab.Controls.Add(this.AlertAndMessageGroupBox);
             this.AlertKeywordTab.Controls.Add(this.groupBox8);
-            this.AlertKeywordTab.Location = new System.Drawing.Point(4, 28);
+            this.AlertKeywordTab.Location = new System.Drawing.Point(4, 32);
             this.AlertKeywordTab.Name = "AlertKeywordTab";
-            this.AlertKeywordTab.Size = new System.Drawing.Size(916, 339);
+            this.AlertKeywordTab.Size = new System.Drawing.Size(916, 335);
             this.AlertKeywordTab.TabIndex = 2;
             this.AlertKeywordTab.Text = "警告キーワード";
             this.AlertKeywordTab.UseVisualStyleBackColor = true;
@@ -337,7 +337,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Meiryo UI", 8F);
+            this.label3.Font = new System.Drawing.Font("Meiryo UI", 7F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
             this.label3.Location = new System.Drawing.Point(8, 32);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(205, 108);
@@ -360,12 +360,12 @@
             this.AlertKeywordAndMessageGrid.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
             this.AlertKeywordAndMessageGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.AlertKeywordAndMessageGrid.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.AlertKeywordAndMessageGrid.Location = new System.Drawing.Point(3, 23);
+            this.AlertKeywordAndMessageGrid.Location = new System.Drawing.Point(3, 26);
             this.AlertKeywordAndMessageGrid.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.AlertKeywordAndMessageGrid.Name = "AlertKeywordAndMessageGrid";
             this.AlertKeywordAndMessageGrid.RowTemplate.DefaultCellStyle.Font = new System.Drawing.Font("Meiryo UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
             this.AlertKeywordAndMessageGrid.RowTemplate.Height = 24;
-            this.AlertKeywordAndMessageGrid.Size = new System.Drawing.Size(657, 295);
+            this.AlertKeywordAndMessageGrid.Size = new System.Drawing.Size(657, 292);
             this.AlertKeywordAndMessageGrid.TabIndex = 19;
             // 
             // groupBox8
@@ -406,9 +406,9 @@
             this.AlertAddressTab.Controls.Add(this.groupBox10);
             this.AlertAddressTab.Controls.Add(this.AlertAddressGroupBox);
             this.AlertAddressTab.Controls.Add(this.groupBox12);
-            this.AlertAddressTab.Location = new System.Drawing.Point(4, 28);
+            this.AlertAddressTab.Location = new System.Drawing.Point(4, 32);
             this.AlertAddressTab.Name = "AlertAddressTab";
-            this.AlertAddressTab.Size = new System.Drawing.Size(916, 339);
+            this.AlertAddressTab.Size = new System.Drawing.Size(916, 335);
             this.AlertAddressTab.TabIndex = 3;
             this.AlertAddressTab.Text = "警告アドレス";
             this.AlertAddressTab.UseVisualStyleBackColor = true;
@@ -426,7 +426,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Meiryo UI", 8F);
+            this.label4.Font = new System.Drawing.Font("Meiryo UI", 7F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
             this.label4.Location = new System.Drawing.Point(8, 32);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(208, 126);
@@ -450,12 +450,12 @@
             this.AlertAddressGrid.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
             this.AlertAddressGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.AlertAddressGrid.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.AlertAddressGrid.Location = new System.Drawing.Point(3, 23);
+            this.AlertAddressGrid.Location = new System.Drawing.Point(3, 26);
             this.AlertAddressGrid.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.AlertAddressGrid.Name = "AlertAddressGrid";
             this.AlertAddressGrid.RowTemplate.DefaultCellStyle.Font = new System.Drawing.Font("Meiryo UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
             this.AlertAddressGrid.RowTemplate.Height = 24;
-            this.AlertAddressGrid.Size = new System.Drawing.Size(657, 295);
+            this.AlertAddressGrid.Size = new System.Drawing.Size(657, 292);
             this.AlertAddressGrid.TabIndex = 26;
             // 
             // groupBox12
@@ -496,9 +496,9 @@
             this.AutoCcBccKeywordTab.Controls.Add(this.groupBox13);
             this.AutoCcBccKeywordTab.Controls.Add(this.AutoCcBccKeywordGroupBox);
             this.AutoCcBccKeywordTab.Controls.Add(this.groupBox15);
-            this.AutoCcBccKeywordTab.Location = new System.Drawing.Point(4, 28);
+            this.AutoCcBccKeywordTab.Location = new System.Drawing.Point(4, 32);
             this.AutoCcBccKeywordTab.Name = "AutoCcBccKeywordTab";
-            this.AutoCcBccKeywordTab.Size = new System.Drawing.Size(916, 339);
+            this.AutoCcBccKeywordTab.Size = new System.Drawing.Size(916, 335);
             this.AutoCcBccKeywordTab.TabIndex = 4;
             this.AutoCcBccKeywordTab.Text = "自動CC/BCC追加(キーワード)";
             this.AutoCcBccKeywordTab.UseVisualStyleBackColor = true;
@@ -516,7 +516,7 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("Meiryo UI", 8F);
+            this.label5.Font = new System.Drawing.Font("Meiryo UI", 7F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
             this.label5.Location = new System.Drawing.Point(8, 32);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(224, 126);
@@ -540,12 +540,12 @@
             this.AutoCcBccKeywordGrid.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
             this.AutoCcBccKeywordGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.AutoCcBccKeywordGrid.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.AutoCcBccKeywordGrid.Location = new System.Drawing.Point(3, 23);
+            this.AutoCcBccKeywordGrid.Location = new System.Drawing.Point(3, 26);
             this.AutoCcBccKeywordGrid.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.AutoCcBccKeywordGrid.Name = "AutoCcBccKeywordGrid";
             this.AutoCcBccKeywordGrid.RowTemplate.DefaultCellStyle.Font = new System.Drawing.Font("Meiryo UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
             this.AutoCcBccKeywordGrid.RowTemplate.Height = 24;
-            this.AutoCcBccKeywordGrid.Size = new System.Drawing.Size(657, 295);
+            this.AutoCcBccKeywordGrid.Size = new System.Drawing.Size(657, 292);
             this.AutoCcBccKeywordGrid.TabIndex = 33;
             // 
             // groupBox15
@@ -586,9 +586,9 @@
             this.AutoCcBccRecipientTab.Controls.Add(this.groupBox16);
             this.AutoCcBccRecipientTab.Controls.Add(this.AutoCcBccRecipientGroupBox);
             this.AutoCcBccRecipientTab.Controls.Add(this.groupBox18);
-            this.AutoCcBccRecipientTab.Location = new System.Drawing.Point(4, 28);
+            this.AutoCcBccRecipientTab.Location = new System.Drawing.Point(4, 32);
             this.AutoCcBccRecipientTab.Name = "AutoCcBccRecipientTab";
-            this.AutoCcBccRecipientTab.Size = new System.Drawing.Size(916, 339);
+            this.AutoCcBccRecipientTab.Size = new System.Drawing.Size(916, 335);
             this.AutoCcBccRecipientTab.TabIndex = 5;
             this.AutoCcBccRecipientTab.Text = "自動CC/BCC追加(宛先)";
             this.AutoCcBccRecipientTab.UseVisualStyleBackColor = true;
@@ -606,7 +606,7 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Font = new System.Drawing.Font("Meiryo UI", 8F);
+            this.label6.Font = new System.Drawing.Font("Meiryo UI", 7F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
             this.label6.Location = new System.Drawing.Point(8, 32);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(224, 126);
@@ -630,12 +630,12 @@
             this.AutoCcBccRecipientGrid.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
             this.AutoCcBccRecipientGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.AutoCcBccRecipientGrid.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.AutoCcBccRecipientGrid.Location = new System.Drawing.Point(3, 23);
+            this.AutoCcBccRecipientGrid.Location = new System.Drawing.Point(3, 26);
             this.AutoCcBccRecipientGrid.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.AutoCcBccRecipientGrid.Name = "AutoCcBccRecipientGrid";
             this.AutoCcBccRecipientGrid.RowTemplate.DefaultCellStyle.Font = new System.Drawing.Font("Meiryo UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
             this.AutoCcBccRecipientGrid.RowTemplate.Height = 24;
-            this.AutoCcBccRecipientGrid.Size = new System.Drawing.Size(657, 295);
+            this.AutoCcBccRecipientGrid.Size = new System.Drawing.Size(657, 292);
             this.AutoCcBccRecipientGrid.TabIndex = 40;
             // 
             // groupBox18
@@ -713,13 +713,13 @@
             this.label7.ForeColor = System.Drawing.SystemColors.WindowFrame;
             this.label7.Location = new System.Drawing.Point(17, 380);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(214, 18);
+            this.label7.Size = new System.Drawing.Size(246, 20);
             this.label7.TabIndex = 11;
             this.label7.Text = "行の削除：行を選択してDeleteキー";
             // 
             // SettingWindow
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 19F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(11F, 23F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(950, 437);
             this.Controls.Add(this.label7);
