@@ -13,10 +13,10 @@
 専用のカスタマイズやサポートが必要な場合は、個別にご相談ください。  
 
 送信前の確認ウインドウ  
-![Screenshot](https://github.com/t-miyake/OutlookOkan/blob/master/Screenshots/Screenshot_v0.9_01.png)  
+![Screenshot](https://github.com/t-miyake/OutlookOkan/blob/master/Screenshots/Screenshot_v0.9.2_01.png)  
 
 設定ウィンドウ  
-![Screenshot](https://github.com/t-miyake/OutlookOkan/blob/master/Screenshots/Screenshot_v0.9_02.png) 
+![Screenshot](https://github.com/t-miyake/OutlookOkan/blob/master/Screenshots/Screenshot_v0.9.2_02.png) 
 
 ## 機能一覧(概要)
 
@@ -48,8 +48,10 @@
     - 設定内容をCSVファイルでインポート/エクスポート
 
 ## 使い方
-[Wiki](https://github.com/t-miyake/OutlookOkan/wiki/Manual)に記載します。
+[Wiki(Manual)](https://github.com/t-miyake/OutlookOkan/wiki/Manual) に記載します。
 
-## 注意事項
-現在、公開しているバージョンは、最低限の動作確認を行ったプレビュー版です。  
-既知の不具合や課題は、[Wiki](https://github.com/t-miyake/OutlookOkan/wiki/Known-Issues)に記載しています。  
+## 既知の不具合や課題
+[Wiki(Known Issues)](https://github.com/t-miyake/OutlookOkan/wiki/Known-Issues) に記載します。
+
+## ロードマップ
+[Wiki(Roadmap)](https://github.com/t-miyake/OutlookOkan/wiki/Roadmap) に記載します。
