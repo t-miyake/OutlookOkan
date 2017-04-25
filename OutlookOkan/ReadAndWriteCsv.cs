@@ -15,7 +15,6 @@ namespace OutlookOkan
         /// C:\Users\USERNAME\AppData\Roaming\Noraneko\OutlookOkan\
         /// </summary>
         private readonly string _directoryPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "Noraneko\\OutlookOkan\\");
-
         private readonly string _filePath;
 
         public ReadAndWriteCsv(string filename)

@@ -15,11 +15,9 @@ namespace OutlookOkan
             Application.ItemSend += Application_ItemSend;
         }
 
-        public void Application_ItemSend(object item, ref bool cancel)
+        private static void Application_ItemSend(object item, ref bool cancel)
         {
-            var mail = item as Outlook.MailItem;
-
-            var confirmationWindow = new ConfirmationWindow(mail);
+            var confirmationWindow = new ConfirmationWindow(item as Outlook._MailItem);
             var dialogResult = confirmationWindow.ShowDialog();
 
             confirmationWindow.Dispose();
@@ -27,16 +25,10 @@ namespace OutlookOkan
             if(dialogResult == DialogResult.OK)
             {
                 //メールを送信。
-            }else if (dialogResult == DialogResult.Cancel)
+            }else
             {
                 cancel = true;
             }
-        }
-
-        private void ThisAddIn_Shutdown(object sender, System.EventArgs e)
-        {
-            //注: Outlook はこのイベントを発行しなくなりました。Outlook が
-            //    シャットダウンする際に実行が必要なコードがある場合は、http://go.microsoft.com/fwlink/?LinkId=506785 を参照してください。
         }
 
         #region VSTO で生成されたコード
@@ -47,8 +39,7 @@ namespace OutlookOkan
         /// </summary>
         private void InternalStartup()
         {
-            this.Startup += new System.EventHandler(ThisAddIn_Startup);
-            this.Shutdown += new System.EventHandler(ThisAddIn_Shutdown);
+            Startup += ThisAddIn_Startup;
         }
 
         #endregion

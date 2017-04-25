@@ -12,12 +12,12 @@ namespace OutlookOkan
     public class CsvImportAndExport
     {
         /// <summary>
-        /// 
+        /// CSVファイルをインポートする。
         /// </summary>
         /// <returns>インポートするCSVファイルのパス</returns>
         public string ImportCsv()
         {
-            MessageBox.Show("書式の合わないCSVをインポートするとエラーになります。気を付けてください。");
+            MessageBox.Show("書式の異なるCSVをインポートするとエラーになります。気を付けてください。");
 
             var openFileDialog = new OpenFileDialog
             {
@@ -28,6 +28,7 @@ namespace OutlookOkan
 
             var importPath =  openFileDialog.ShowDialog() == DialogResult.OK ? openFileDialog.FileName : null;
             openFileDialog.Dispose();
+
             return importPath;
         }
 

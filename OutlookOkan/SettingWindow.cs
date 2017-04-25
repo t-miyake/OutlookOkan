@@ -3,8 +3,7 @@ using System.Windows.Forms;
 
 namespace OutlookOkan
 {
-    //TODO 全体を簡潔に修正する。
-    //TODO 入力規則を付ける。
+    //TODO 全体を簡潔に修正する。\
     public partial class SettingWindow : Form
     {
         public SettingWindow()
@@ -30,14 +29,14 @@ namespace OutlookOkan
         #endregion
 
         #region Whitelist setting
-        public void WhitelistToGrid()
+        private void WhitelistToGrid()
         {
             var readCsv = new ReadAndWriteCsv("Whitelist.csv");
 
             BindableWhitelist = new BindingSource(readCsv.ReadCsv<Whitelist>(readCsv.ParseCsv<WhitelistMap>()), string.Empty);
             WhitelistGrid.DataSource = BindableWhitelist;
 
-            WhitelistGrid.Columns[0].HeaderText = @"アドレスまたはドメイン";
+            WhitelistGrid.Columns[0].HeaderText = @"アドレス/ドメイン";
             WhitelistGrid.Columns[0].CellTemplate.ToolTipText = "アドレスまたはドメイン(@から)を登録";
 
             WhitelistGrid.CellValidating += (sender, args) =>
@@ -47,8 +46,7 @@ namespace OutlookOkan
                     MessageBox.Show("@は必須です。");
                     args.Cancel = true;
                 }
-
-                // @のみの登録を許すと全てのメールアドレスがホワイトリスト該当扱いになる。
+                // @のみの登録を許すと全てのメールアドレスがホワイトリスト該当扱いになるので禁止。
                 if (args.FormattedValue.ToString().Equals("@"))
                 {
                     MessageBox.Show("メールアドレスかドメインを登録してください。");
@@ -57,7 +55,7 @@ namespace OutlookOkan
             };
         }
 
-        public void SaveWhitelistToCsv()
+        private void SaveWhitelistToCsv()
         {
             var writeCsv = new ReadAndWriteCsv("Whitelist.csv");
             writeCsv.WriteBindableDataToCsv<WhitelistMap>(BindableWhitelist);
@@ -97,7 +95,7 @@ namespace OutlookOkan
         #endregion
 
         #region NameAndDomainsList setting
-        public void SetNameAndDomainsListToGrid()
+        private void SetNameAndDomainsListToGrid()
         {            
             var readCsv = new ReadAndWriteCsv("NameAndDomains.csv");
 
@@ -110,7 +108,7 @@ namespace OutlookOkan
             NameAndDomainsGrid.Columns[1].CellTemplate.ToolTipText = @"@から入力";
         }
 
-        public void SaveNameAndDomainsListToCsv()
+        private void SaveNameAndDomainsListToCsv()
         {
             var writeCsv = new ReadAndWriteCsv("NameAndDomains.csv");
             writeCsv.WriteBindableDataToCsv<NameAndDomainsMap>(BindableNameAdnDomainList);
@@ -150,7 +148,7 @@ namespace OutlookOkan
         #endregion
 
         #region AlertKeywordAndMessageList setting
-        public void AlertKeywordAndMessageListToGrid()
+        private void AlertKeywordAndMessageListToGrid()
         {
             var readCsv = new ReadAndWriteCsv("AlertKeywordAndMessageList.csv");
 
@@ -163,7 +161,7 @@ namespace OutlookOkan
             AlertKeywordAndMessageGrid.Columns[1].CellTemplate.ToolTipText = @"警告文";
         }
 
-        public void SaveAlertKeywordAndMessageListToCsv()
+        private void SaveAlertKeywordAndMessageListToCsv()
         {
             var writeCsv = new ReadAndWriteCsv("AlertKeywordAndMessageList.csv");
             writeCsv.WriteBindableDataToCsv<AlertKeywordAndMessageMap>(BindableAlertKeywordAndMessageList);
@@ -203,14 +201,14 @@ namespace OutlookOkan
         #endregion
 
         #region AlertAddressList setting
-        public void AlertAddressListToGrid()
+        private void AlertAddressListToGrid()
         {
             var readCsv = new ReadAndWriteCsv("AlertAddressList.csv");
 
             BindableAlertAddressList = new BindingSource(readCsv.ReadCsv<AlertAddress>(readCsv.ParseCsv<AlertAddressMap>()), string.Empty);
             AlertAddressGrid.DataSource = BindableAlertAddressList;
 
-            AlertAddressGrid.Columns[0].HeaderText = @"警告するアドレスまたはドメイン";
+            AlertAddressGrid.Columns[0].HeaderText = @"警告するアドレス/ドメイン";
             AlertAddressGrid.Columns[0].CellTemplate.ToolTipText = "アドレスまたはドメイン(@から)を登録";
 
             AlertAddressGrid.CellValidating += (sender, args) =>
@@ -230,7 +228,7 @@ namespace OutlookOkan
             };
         }
 
-        public void SaveAlertAddressListToCsv()
+        private void SaveAlertAddressListToCsv()
         {
             var writeCsv = new ReadAndWriteCsv("AlertAddressList.csv");
             writeCsv.WriteBindableDataToCsv<AlertAddressMap>(BindableAlertAddressList);
@@ -270,7 +268,7 @@ namespace OutlookOkan
         #endregion
 
         #region AutoCcBccKeywordList setting
-        public void AutoCcBccKeywordListToGrid()
+        private void AutoCcBccKeywordListToGrid()
         {
             var readCsv = new ReadAndWriteCsv("AutoCcBccKeywordList.csv");
 
@@ -291,7 +289,7 @@ namespace OutlookOkan
             };
         }
 
-        public void SaveAutoCcBccKeywordListToCsv()
+        private void SaveAutoCcBccKeywordListToCsv()
         {
             var writeCsv = new ReadAndWriteCsv("AutoCcBccKeywordList.csv");
             writeCsv.WriteBindableDataToCsv<AutoCcBccKeywordMap>(BindableAutoCcBccKeywordList);
@@ -331,14 +329,14 @@ namespace OutlookOkan
         #endregion
 
         #region AutoCcBccRecipientList setting
-        public void AutoCcBccRecipientListToGrid()
+        private void AutoCcBccRecipientListToGrid()
         {
             var readCsv = new ReadAndWriteCsv("AutoCcBccRecipientList.csv");
 
             BindableAutoCcBccRecipientList = new BindingSource(readCsv.ReadCsv<AutoCcBccRecipient>(readCsv.ParseCsv<AutoCcBccRecipientMap>()), string.Empty);
             AutoCcBccRecipientGrid.DataSource = BindableAutoCcBccRecipientList;
 
-            AutoCcBccRecipientGrid.Columns[0].HeaderText = @"宛先アドレスまたはドメイン";
+            AutoCcBccRecipientGrid.Columns[0].HeaderText = @"宛先アドレス/ドメイン";
             AutoCcBccRecipientGrid.Columns[0].CellTemplate.ToolTipText = "アドレスまたはドメイン(@から)を登録";
             AutoCcBccRecipientGrid.Columns[1].HeaderText = @"CCまたはBCC";
             AutoCcBccRecipientGrid.Columns[1].CellTemplate.ToolTipText = "CC または BCCと入力";
@@ -354,7 +352,7 @@ namespace OutlookOkan
             // 裏ワザとして、宛先アドレスまたはドメインに@だけの登録で、常にCC/BCCに追加。というのはありな気がするので、あえてバリデーションしない。
         }
 
-        public void SaveAutoCcBccRecipientListToCsv()
+        private void SaveAutoCcBccRecipientListToCsv()
         {
             var writeCsv = new ReadAndWriteCsv("AutoCcBccRecipientList.csv");
             writeCsv.WriteBindableDataToCsv<AutoCcBccRecipientMap>(BindableAutoCcBccRecipientList);
