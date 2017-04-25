@@ -230,7 +230,7 @@
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(9, 76);
+            this.label7.Location = new System.Drawing.Point(10, 76);
             this.label7.Margin = new System.Windows.Forms.Padding(8, 3, 4, 4);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(47, 19);
@@ -240,7 +240,7 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(9, 34);
+            this.label6.Location = new System.Drawing.Point(10, 34);
             this.label6.Margin = new System.Windows.Forms.Padding(8, 3, 4, 4);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(39, 19);

@@ -27,7 +27,7 @@ namespace OutlookOkan
 
         public void Ribbon_Load(Office.IRibbonUI ribbonUi)
         {
-            this._ribbon = ribbonUi;
+            _ribbon = ribbonUi;
         }
 
         public void ShowSettings(Office.IRibbonControl control)
@@ -55,13 +55,13 @@ namespace OutlookOkan
 
         private static string GetResourceText(string resourceName)
         {
-            Assembly asm = Assembly.GetExecutingAssembly();
-            string[] resourceNames = asm.GetManifestResourceNames();
-            for (int i = 0; i < resourceNames.Length; ++i)
+            var asm = Assembly.GetExecutingAssembly();
+            var resourceNames = asm.GetManifestResourceNames();
+            for (var i = 0; i < resourceNames.Length; ++i)
             {
                 if (string.Compare(resourceName, resourceNames[i], StringComparison.OrdinalIgnoreCase) == 0)
                 {
-                    using (StreamReader resourceReader = new StreamReader(asm.GetManifestResourceStream(resourceNames[i])))
+                    using (var resourceReader = new StreamReader(asm.GetManifestResourceStream(resourceNames[i])))
                     {
                         if (resourceReader != null)
                         {
