@@ -87,6 +87,7 @@
             this.ToAddressList.Size = new System.Drawing.Size(525, 48);
             this.ToAddressList.TabIndex = 7;
             this.ToAddressList.SelectedIndexChanged += new System.EventHandler(this.ToAddressList_SelectedIndexChanged);
+            this.ToAddressList.MouseLeave += new System.EventHandler(this.ToAddressList_MouseLeave);
             // 
             // label1
             // 
@@ -130,6 +131,7 @@
             this.CcAddressList.Size = new System.Drawing.Size(525, 48);
             this.CcAddressList.TabIndex = 9;
             this.CcAddressList.SelectedIndexChanged += new System.EventHandler(this.CcAddressList_SelectedIndexChanged_1);
+            this.CcAddressList.MouseLeave += new System.EventHandler(this.CcAddressList_MouseLeave);
             // 
             // CcLabel
             // 
@@ -151,6 +153,7 @@
             this.BccAddressList.Size = new System.Drawing.Size(525, 48);
             this.BccAddressList.TabIndex = 11;
             this.BccAddressList.SelectedIndexChanged += new System.EventHandler(this.BccAddressList_SelectedIndexChanged);
+            this.BccAddressList.MouseLeave += new System.EventHandler(this.BccAddressList_MouseLeave);
             // 
             // BccLabel
             // 
@@ -174,6 +177,7 @@
             this.AlertBox.Size = new System.Drawing.Size(1208, 76);
             this.AlertBox.TabIndex = 4;
             this.AlertBox.SelectedIndexChanged += new System.EventHandler(this.AlertBox_SelectedIndexChanged);
+            this.AlertBox.MouseLeave += new System.EventHandler(this.AlertBox_MouseLeave);
             // 
             // RecipientGroupBox
             // 
@@ -277,6 +281,7 @@
             this.AttachmentsList.Size = new System.Drawing.Size(647, 136);
             this.AttachmentsList.TabIndex = 18;
             this.AttachmentsList.SelectedIndexChanged += new System.EventHandler(this.AttachmentsList_SelectedIndexChanged);
+            this.AttachmentsList.MouseLeave += new System.EventHandler(this.AttachmentsList_MouseLeave);
             // 
             // ConfirmationWindow
             // 
