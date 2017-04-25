@@ -13,7 +13,6 @@ namespace OutlookOkan
             labelVersion.Text = $"バージョン {AssemblyVersion}";
             labelCopyright.Text = AssemblyCopyright;
             labelCompanyName.Text = AssemblyCompany;
-            //textBoxDescription.Text = AssemblyDescription;
             textBoxDescription.Text = "Third-Party Software Usage and Licenses\r\n\r\nCsvHelper\r\nCopyright © 2009-2017 Josh Close and Contributors\r\nDual licensed under Microsoft Public License and Apache License Version 2.0\r\nhttps://github.com/JoshClose/CsvHelper/blob/master/LICENSE.txt";
         }
 

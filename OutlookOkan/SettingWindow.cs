@@ -47,8 +47,7 @@ namespace OutlookOkan
                     MessageBox.Show("@は必須です。");
                     args.Cancel = true;
                 }
-
-                // @のみの登録を許すと全てのメールアドレスがホワイトリスト該当扱いになる。
+                // @のみの登録を許すと全てのメールアドレスがホワイトリスト該当扱いになるので禁止。
                 if (args.FormattedValue.ToString().Equals("@"))
                 {
                     MessageBox.Show("メールアドレスかドメインを登録してください。");

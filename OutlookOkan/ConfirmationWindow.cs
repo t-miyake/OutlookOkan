@@ -96,7 +96,7 @@ namespace OutlookOkan
                 case Outlook.OlBodyFormat.olFormatRichText:
                     return "リッチテキスト形式";
                 default:
-                    throw new ArgumentOutOfRangeException();
+                    return "不明";
             }
         }
 
@@ -176,21 +176,18 @@ namespace OutlookOkan
                             if (!autoAddedCcAddressList.Contains(i.AutoAddAddress))
                             {
                                 var recip = mail.Recipients.Add(i.AutoAddAddress);
-                                recip.Type = (int) Outlook.OlMailRecipientType.olCC;
+                                recip.Type = (int)Outlook.OlMailRecipientType.olCC;
 
                                 autoAddedCcAddressList.Add(i.AutoAddAddress);
                             }
-                        }else
-                        {
-                            if (!autoAddedBccAddressList.Contains(i.AutoAddAddress))
+                        }else if (!autoAddedBccAddressList.Contains(i.AutoAddAddress))
                             {
                                 var recip = mail.Recipients.Add(i.AutoAddAddress);
                                 recip.Type = (int)Outlook.OlMailRecipientType.olBCC;
 
                                 autoAddedBccAddressList.Add(i.AutoAddAddress);
                             }
-                        }
-
+                        
                         AlertBox.Items.Add($@"自動で {i.CcOrBcc} に {i.AutoAddAddress} が追加されました。(該当宛先 「{i.TargetRecipient}」)", true);
                         AlertBox.ColorFlag.Add(false);
 
@@ -229,7 +226,6 @@ namespace OutlookOkan
             var nameAndDomainsList = readCsv.ReadCsv<NameAndDomains>(readCsv.ParseCsv<NameAndDomainsMap>());
             
             //メールの本文中に、登録された名称があるか確認。
-            //var recipientCandidateNames = (from nameAnddomain in nameAndDomainsList where mail.Body.Contains(nameAnddomain.Name) select nameAnddomain.Name).ToList();
             var recipientCandidateDomains = (from nameAnddomain in nameAndDomainsList where mail.Body.Contains(nameAnddomain.Name) select nameAnddomain.Domain).ToList();
 
             //登録された名称かつ本文中に登場した名称以外のドメインが宛先に含まれている場合、警告を表示。
@@ -238,13 +234,9 @@ namespace OutlookOkan
             {
                 foreach (var recipients in _displayNameAndRecipient)
                 {
-                    if (recipientCandidateDomains.Any(
+                    if (!recipientCandidateDomains.Any(
                         domains => domains.Equals(
                             recipients.Value.Substring(recipients.Value.IndexOf("@", StringComparison.Ordinal)))))
-                    {
-                        //正常なのでとりあえず何もしない。
-                    }
-                    else
                     {
                         //送信者ドメインは警告対象外。
                         if (!recipients.Value.Contains(
@@ -270,7 +262,6 @@ namespace OutlookOkan
             //Load Whitelist
             var readCsv = new ReadAndWriteCsv("Whitelist.csv");
             _whitelists.AddRange(readCsv.ReadCsv<Whitelist>(readCsv.ParseCsv<WhitelistMap>()));
-            var whitelist = _whitelists;
 
             //Load AlertAddressList
             readCsv = new ReadAndWriteCsv("AlertAddressList.csv");
@@ -291,7 +282,7 @@ namespace OutlookOkan
             {
                 if (toAdresses.Any(address => address.Contains(i.Key)))
                 {
-                    ToAddressList.Items.Add(i.Value, whitelist.Count != 0 && whitelist.Any(address => i.Value.Contains(address.WhiteName)));
+                    ToAddressList.Items.Add(i.Value, _whitelists.Count != 0 && _whitelists.Any(address => i.Value.Contains(address.WhiteName)));
                     ToAddressList.ColorFlag.Add(!i.Value.Contains(senderDomain));
 
                     if (alertAddresslist.Count != 0 && alertAddresslist.Any(address => i.Value.Contains(address.TartgetAddress)))
@@ -303,7 +294,7 @@ namespace OutlookOkan
 
                 if (ccAdresses.Any(address => address.Contains(i.Key)))
                 {
-                    CcAddressList.Items.Add(i.Value, whitelist.Count != 0 && whitelist.Any(address => i.Value.Contains(address.WhiteName)));
+                    CcAddressList.Items.Add(i.Value, _whitelists.Count != 0 && _whitelists.Any(address => i.Value.Contains(address.WhiteName)));
                     CcAddressList.ColorFlag.Add(!i.Value.Contains(senderDomain));
 
                     if (alertAddresslist.Count != 0 && alertAddresslist.Any(address => i.Value.Contains(address.TartgetAddress)))
@@ -315,7 +306,7 @@ namespace OutlookOkan
 
                 if (bccAdresses.Any(address => address.Contains(i.Key)))
                 {
-                    BccAddressList.Items.Add(i.Value, whitelist.Count != 0 && whitelist.Any(address => i.Value.Contains(address.WhiteName)));
+                    BccAddressList.Items.Add(i.Value, _whitelists.Count != 0 && _whitelists.Any(address => i.Value.Contains(address.WhiteName)));
                     BccAddressList.ColorFlag.Add(!i.Value.Contains(senderDomain));
 
                     if (alertAddresslist.Count != 0 && alertAddresslist.Any(address => i.Value.Contains(address.TartgetAddress)))

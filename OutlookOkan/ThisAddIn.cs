@@ -17,9 +17,7 @@ namespace OutlookOkan
 
         private static void Application_ItemSend(object item, ref bool cancel)
         {
-            var mail = item as Outlook.MailItem;
-
-            var confirmationWindow = new ConfirmationWindow(mail);
+            var confirmationWindow = new ConfirmationWindow(item as Outlook._MailItem);
             var dialogResult = confirmationWindow.ShowDialog();
 
             confirmationWindow.Dispose();
@@ -27,7 +25,7 @@ namespace OutlookOkan
             if(dialogResult == DialogResult.OK)
             {
                 //メールを送信。
-            }else if (dialogResult == DialogResult.Cancel)
+            }else
             {
                 cancel = true;
             }
