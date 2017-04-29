@@ -1,5 +1,7 @@
 ﻿using System;
+using System.Net.Mail;
 using System.Windows.Forms;
+using Exception = System.Exception;
 
 namespace OutlookOkan
 {
@@ -282,11 +284,7 @@ namespace OutlookOkan
             AutoCcBccKeywordGrid.Columns[2].HeaderText = @"追加アドレス";
             AutoCcBccKeywordGrid.Columns[2].CellTemplate.ToolTipText = @"メールアドレス";
 
-            AutoCcBccKeywordGrid.DataError += (sender, args) =>
-            {
-                MessageBox.Show("CC または BCCと入力してください。");
-                args.Cancel = true;
-            };
+            AutoCcBccKeywordGrid.CellValidating += (sender, args) => AutoAddEmailAddressValidation(args);
         }
 
         private void SaveAutoCcBccKeywordListToCsv()
@@ -343,11 +341,7 @@ namespace OutlookOkan
             AutoCcBccRecipientGrid.Columns[2].HeaderText = @"追加アドレス";
             AutoCcBccRecipientGrid.Columns[2].CellTemplate.ToolTipText = @"メールアドレス";
 
-            AutoCcBccKeywordGrid.DataError += (sender, args) =>
-            {
-                MessageBox.Show("CC または BCCと入力してください。");
-                args.Cancel = true;
-            };
+            AutoCcBccRecipientGrid.CellValidating += (sender, args) => AutoAddEmailAddressValidation(args);
 
             // 裏ワザとして、宛先アドレスまたはドメインに@だけの登録で、常にCC/BCCに追加。というのはありな気がするので、あえてバリデーションしない。
         }
@@ -415,6 +409,34 @@ namespace OutlookOkan
             SaveAlertAddressListToCsv();
             SaveAutoCcBccKeywordListToCsv();
             SaveAutoCcBccRecipientListToCsv();
+        }
+        #endregion
+
+        #region Validations.
+        private void AutoAddEmailAddressValidation(DataGridViewCellValidatingEventArgs args)
+        {
+            if (args.ColumnIndex == 1)
+            {
+                if (args.FormattedValue.ToString() != "CC" && args.FormattedValue.ToString() != "BCC")
+                {
+                    MessageBox.Show("CCまたはBCCを入力してください。");
+                    args.Cancel = true;
+                }
+            }
+
+            if (args.ColumnIndex == 2)
+            {
+                try
+                {
+                    if (string.IsNullOrEmpty(args.FormattedValue.ToString())) return;
+                    var tempValidationMailAddress = new MailAddress(args.FormattedValue.ToString());
+                }
+                catch (FormatException)
+                {
+                    MessageBox.Show("メールアドレスを入力してください。");
+                    args.Cancel = true;
+                }   
+            }
         }
         #endregion
     }
