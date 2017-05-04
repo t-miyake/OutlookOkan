@@ -9,6 +9,8 @@
 機密の関わるメールにおいて、完全なオープンソースのため、安心してご利用いただけます。  
 また、キーワードによる警告や、自動CC/BCC追加機能など、便利なオプション機能もあります。  
 
+ダウンロードは[releases](https://github.com/t-miyake/OutlookOkan/releases)からできます。
+
 オープンソースかつ無料でご利用いただけますが、無サポート、無保証です。([ライセンス](https://github.com/t-miyake/OutlookOkan/blob/master/LICENSE))  
 専用のカスタマイズやサポートが必要な場合は、個別にご相談ください。  
 
