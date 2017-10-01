@@ -5,7 +5,7 @@ using Exception = System.Exception;
 
 namespace OutlookOkan
 {
-    //TODO 全体を簡潔に修正する。\
+    //TODO 全体を簡潔に修正する。
     public partial class SettingWindow : Form
     {
         public SettingWindow()
