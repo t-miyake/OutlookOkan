@@ -51,14 +51,19 @@ namespace OutlookOkan
                 // Exchangeの連絡先に登録された情報を取得。
                 var exchangeUser = recip.AddressEntry.GetExchangeUser();
 
+                // Exchangeの配布リスト(ML)として登録された情報を取得。
+                var exchangeDistributionList = recip.AddressEntry.GetExchangeDistributionList();
+
                 // ローカルの連絡先に登録された情報を取得。
                 var registeredUser = recip.AddressEntry.GetContact();
 
                 // 登録されたメールアドレスの場合、登録名のみが表示されるため、メールアドレスと共に表示されるよう表示用テキストを生成。
                 var nameAndMailAddress = exchangeUser != null
-                    ? exchangeUser.Name + $@" ({exchangeUser.PrimarySmtpAddress})"
-                    : registeredUser != null
-                        ? recip.Name
+                        ? exchangeUser.Name + $@" ({exchangeUser.PrimarySmtpAddress})" :
+                    exchangeDistributionList != null
+                        ? exchangeDistributionList.Name + $@" ({exchangeDistributionList.PrimarySmtpAddress})" :
+                    registeredUser != null
+                        ? recip.Name + $@" ({recip.Address})"
                         : recip.Address;
 
                 _displayNameAndRecipient[recip.Name] = nameAndMailAddress;
