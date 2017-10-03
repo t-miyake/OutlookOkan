@@ -24,7 +24,7 @@ namespace OutlookOkan
 
             if(dialogResult == DialogResult.OK)
             {
-                //メールを送信。
+                //Send Mail.
             }else
             {
                 cancel = true;

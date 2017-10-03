@@ -8,7 +8,7 @@ using CsvHelper;
 
 namespace OutlookOkan
 {
-    //TODO ReadAndWriteCsv Class との重複処理を無くすように2つのクラスを整理する。
+    //TODO To be improved
     public class CsvImportAndExport
     {
         /// <summary>

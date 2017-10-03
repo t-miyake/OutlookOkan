@@ -6,7 +6,7 @@ using System.Linq;
 
 namespace OutlookOkan
 {
-    // TODO 高速化のため、処理を簡潔にする。
+    // TODO Simplify processing.
     public partial class ConfirmationWindow : Form
     {
         private readonly Dictionary<string, string> _displayNameAndRecipient = new Dictionary<string, string>();
@@ -29,7 +29,7 @@ namespace OutlookOkan
             CheckKeyword(mail);
             AutoAddCcAndBcc(mail);
 
-            //TODO 暫定処置だよ！手抜きなだけだよ！
+            //TODO Temporary processing. It will be improved.
             MakeDisplayNameAndRecipient(mail);
             DrawRecipient(mail);
 
@@ -166,7 +166,7 @@ namespace OutlookOkan
             }
 
             //Load AutoCcBccRecipientList
-            // TODO 流石にひどいので直す。
+            // TODO To be improved
             readCsv = new ReadAndWriteCsv("AutoCcBccRecipientList.csv");
             var autoCcBccRecipientList = readCsv.ReadCsv<AutoCcBccRecipient>(readCsv.ParseCsv<AutoCcBccRecipientMap>());
 
@@ -262,7 +262,7 @@ namespace OutlookOkan
         /// <param name="mail">送信するメールに関する情報</param>
         private void DrawRecipient(Outlook._MailItem mail)
         {
-            // TODO ここでいろいろやりすぎなので、直す。
+            // TODO To be improved
 
             //Load Whitelist
             var readCsv = new ReadAndWriteCsv("Whitelist.csv");
@@ -355,7 +355,7 @@ namespace OutlookOkan
         /// </summary>
         private void SendButtonSwitch()
         {
-            //TODO この判定方法はそのうち直す。
+            //TODO To be improved
             if (ToAddressList.CheckedItems.Count == ToAddressList.Items.Count && CcAddressList.CheckedItems.Count == CcAddressList.Items.Count && BccAddressList.CheckedItems.Count == BccAddressList.Items.Count && AlertBox.CheckedItems.Count == AlertBox.Items.Count && AttachmentsList.Items.Count == AttachmentsList.CheckedItems.Count)
             {
                 sendButton.Enabled = true;
