@@ -30,7 +30,8 @@ namespace OutlookOkan
                 e.Index,
                 e.State,
                 foreColor,
-                e.BackColor);
+                e.BackColor
+                );
 
             base.OnDrawItem(tweakedEventArgs);
         } 

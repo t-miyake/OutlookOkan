@@ -113,8 +113,7 @@ namespace OutlookOkan
         {
             //Load AlertKeywordAndMessage
             var readCsv = new ReadAndWriteCsv("AlertKeywordAndMessageList.csv");
-            var alertKeywordAndMessageList =
-                readCsv.ReadCsv<AlertKeywordAndMessage>(readCsv.ParseCsv<AlertKeywordAndMessageMap>());
+            var alertKeywordAndMessageList = readCsv.ReadCsv<AlertKeywordAndMessage>(readCsv.ParseCsv<AlertKeywordAndMessageMap>());
 
             if (alertKeywordAndMessageList.Count != 0)
             {
@@ -324,30 +323,15 @@ namespace OutlookOkan
         }
 
         #region BoxSelectedIndexChanged events
-        private void AlertBox_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            SendButtonSwitch();
-        }
+        private void AlertBox_SelectedIndexChanged(object sender, EventArgs e) => SendButtonSwitch();
 
-        private void ToAddressList_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            SendButtonSwitch();
-        }
+        private void ToAddressList_SelectedIndexChanged(object sender, EventArgs e) => SendButtonSwitch();
+        
+        private void CcAddressList_SelectedIndexChanged_1(object sender, EventArgs e) => SendButtonSwitch();
 
-        private void CcAddressList_SelectedIndexChanged_1(object sender, EventArgs e)
-        {
-            SendButtonSwitch();
-        }
+        private void BccAddressList_SelectedIndexChanged(object sender, EventArgs e) => SendButtonSwitch();
 
-        private void BccAddressList_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            SendButtonSwitch();
-        }
-
-        private void AttachmentsList_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            SendButtonSwitch();
-        }
+        private void AttachmentsList_SelectedIndexChanged(object sender, EventArgs e) =>  SendButtonSwitch();
         #endregion
 
         /// <summary>
@@ -377,31 +361,16 @@ namespace OutlookOkan
             AttachmentGroupBox.Text = $@"添付ファイル ({AttachmentsList.Items.Count})";
         }
 
-        // チェックボックスの切り替えを連続して行うと、たまにチェックしていなくても送信ボタンが有効になるので、それを回避。
+        // チェックボックスの切り替えを素早く連続して行うと、まれにチェックしていなくても送信ボタンが有効になるので、それを回避。
         // マウスカーソルがエリアから外れた瞬間に再判定する。
-        private void AlertBox_MouseLeave(object sender, EventArgs e)
-        {
-            SendButtonSwitch();
-        }
+        private void AlertBox_MouseLeave(object sender, EventArgs e) => SendButtonSwitch();
 
-        private void ToAddressList_MouseLeave(object sender, EventArgs e)
-        {
-            SendButtonSwitch();
-        }
+        private void ToAddressList_MouseLeave(object sender, EventArgs e) => SendButtonSwitch();
 
-        private void CcAddressList_MouseLeave(object sender, EventArgs e)
-        {
-            SendButtonSwitch();
-        }
+        private void CcAddressList_MouseLeave(object sender, EventArgs e) => SendButtonSwitch();
 
-        private void BccAddressList_MouseLeave(object sender, EventArgs e)
-        {
-            SendButtonSwitch();
-        }
+        private void BccAddressList_MouseLeave(object sender, EventArgs e) =>  SendButtonSwitch();
 
-        private void AttachmentsList_MouseLeave(object sender, EventArgs e)
-        {
-            SendButtonSwitch();
-        }
+        private void AttachmentsList_MouseLeave(object sender, EventArgs e) => SendButtonSwitch();
     }
 }

@@ -44,10 +44,10 @@ namespace OutlookOkan
         public CsvParser ParseCsv<TMaptype>() where TMaptype : CsvHelper.Configuration.CsvClassMap
         {
             var csvParser = new CsvParser(new StreamReader(_filePath, Encoding.GetEncoding("Shift_JIS")));
-                csvParser.Configuration.HasHeaderRecord = false;
-                csvParser.Configuration.RegisterClassMap<TMaptype>();
+            csvParser.Configuration.HasHeaderRecord = false;
+            csvParser.Configuration.RegisterClassMap<TMaptype>();
 
-                return csvParser;
+            return csvParser;
         }
 
         /// <summary>
