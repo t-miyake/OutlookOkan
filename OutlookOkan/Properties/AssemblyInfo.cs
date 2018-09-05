@@ -1,40 +1,38 @@
 ﻿using System.Resources;
 using System.Reflection;
-using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
-using System.Security;
 
-// アセンブリに関する一般情報は、以下の属性セットによって
-// 制御されます。アセンブリに関連付けられている情報を変更するには、
-// これらの属性値を変更します。
-[assembly: AssemblyTitle("おかん for Outlook (メール誤送信防止アドイン)")]
-[assembly: AssemblyDescription("メールの送信時に確認画面を出すアドインです。")]
+// General Information about an assembly is controlled through the following 
+// set of attributes. Change these attribute values to modify the information
+// associated with an assembly.
+[assembly: AssemblyTitle("OutlookOkan")]
+[assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("株式会社のらねこ")]
-[assembly: AssemblyProduct("おかん for Outlook (メール誤送信防止アドイン)")]
-[assembly: AssemblyCopyright("© 2017 Noraneko Inc.")]
+[assembly: AssemblyCompany("Noraneko Inc.")]
+[assembly: AssemblyProduct("OutlookOkan")]
+[assembly: AssemblyCopyright("Copyright © Noraneko Inc. 2018")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
-// ComVisible を false に設定すると、その型はこのアセンブリ内で COM コンポーネントから
-// 参照不可能になります。COM からこのアセンブリ内の型にアクセスする場合は、
-// その型の ComVisible 属性を true に設定してください。
+// Setting ComVisible to false makes the types in this assembly not visible 
+// to COM components.  If you need to access a type in this assembly from 
+// COM, set the ComVisible attribute to true on that type.
 [assembly: ComVisible(false)]
 
-// このプロジェクトが COM に公開される場合、次の GUID が typelib の ID になります
-[assembly: Guid("014dfb4b-12bf-4515-847e-5e34eb45b99d")]
+// The following GUID is for the ID of the typelib if this project is exposed to COM
+[assembly: Guid("c5f60da0-7bab-46fa-ac16-d7f6924396f6")]
 
-// アセンブリのバージョン情報は次の 4 つの値で構成されています:
+// Version information for an assembly consists of the following four values:
 //
-//      メジャー バージョン
-//      マイナー バージョン 
-//      ビルド番号
-//      リビジョン
+//      Major Version
+//      Minor Version 
+//      Build Number
+//      Revision
 //
-// すべての値を指定するか、以下のように '*' を使ってビルドおよびリビジョン番号を
-// 既定値にすることができます。
+// You can specify all the values or you can default the Build and Revision Numbers 
+// by using the '*' as shown below:
 // [assembly: AssemblyVersion("1.0.*")]
-[assembly: AssemblyVersion("1.0.3.0")]
-[assembly: AssemblyFileVersion("1.0.3.0")]
-[assembly: NeutralResourcesLanguage("ja-JP")]
+[assembly: AssemblyVersion("2.0.0.0")]
+[assembly: AssemblyFileVersion("2.0.0.0")]
+[assembly: NeutralResourcesLanguage("en-US")]
 

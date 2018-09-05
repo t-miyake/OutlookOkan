@@ -4,6 +4,7 @@ using System.IO;
 using System.Reflection;
 using System.Runtime.InteropServices;
 using Office = Microsoft.Office.Core;
+using OutlookOkan.Views;
 
 namespace OutlookOkan
 {
@@ -14,7 +15,52 @@ namespace OutlookOkan
 
         public Ribbon(){}
 
-        #region IRibbonExtensibility のメンバー
+        public void ShowHelp(Office.IRibbonControl control)
+        {
+            Process.Start("https://github.com/t-miyake/OutlookOkan/wiki");
+        }
+
+        public void ShowSettings(Office.IRibbonControl control)
+        {
+            var settingsWindow = new SettingsWindow();
+            settingsWindow.ShowDialog();
+        }
+
+        public void ShowAbout(Office.IRibbonControl control)
+        {
+            var aboutWindow = new AboutWindow();
+            aboutWindow.ShowDialog();
+        }
+
+        /// <summary>
+        /// リボンの多言語化処理
+        /// </summary>
+        /// <param name="control"></param>
+        /// <returns></returns>
+        public string GetLabel(Office.IRibbonControl control)
+        {
+            string result = null;
+            switch (control.Id)
+            {
+                case "Settings":
+                    result = Properties.Resources.Settings;
+                    break;
+                case "About":
+                    result = Properties.Resources.About;
+                    break;
+                case "Help":
+                    result = Properties.Resources.Help;
+                    break;
+                case "MyAddinGroup":
+                    result = Properties.Resources.AppName;
+                    break;
+                default:
+                    break;
+            }
+            return result;
+        }
+
+        #region IRibbonExtensibility Members
 
         public string GetCustomUI(string ribbonId)
         {
@@ -23,45 +69,26 @@ namespace OutlookOkan
 
         #endregion
 
-        #region リボンのコールバック
+        #region Ribbon Callbacks
 
         public void Ribbon_Load(Office.IRibbonUI ribbonUi)
         {
-            _ribbon = ribbonUi;
-        }
-
-        public void ShowSettings(Office.IRibbonControl control)
-        {
-            var settingWindow = new SettingWindow();
-            var temp = settingWindow.ShowDialog();
-            settingWindow.Dispose();
-        }
-
-        public void ShowVersion(Office.IRibbonControl control)
-        {
-            var aboutBox = new AboutBox();
-            var temp = aboutBox.ShowDialog();
-            aboutBox.Dispose();
-        }
-
-        public void ShowHelp(Office.IRibbonControl control)
-        {
-            Process.Start("https://github.com/t-miyake/OutlookOkan/wiki");
+            this._ribbon = ribbonUi;
         }
 
         #endregion
 
-        #region ヘルパー
+        #region Helpers
 
         private static string GetResourceText(string resourceName)
         {
             var asm = Assembly.GetExecutingAssembly();
             var resourceNames = asm.GetManifestResourceNames();
-            for (var i = 0; i < resourceNames.Length; ++i)
+            foreach (var t in resourceNames)
             {
-                if (string.Compare(resourceName, resourceNames[i], StringComparison.OrdinalIgnoreCase) == 0)
+                if (string.Compare(resourceName, t, StringComparison.OrdinalIgnoreCase) == 0)
                 {
-                    using (var resourceReader = new StreamReader(asm.GetManifestResourceStream(resourceNames[i])))
+                    using (var resourceReader = new StreamReader(asm.GetManifestResourceStream(t)))
                     {
                         if (resourceReader != null)
                         {

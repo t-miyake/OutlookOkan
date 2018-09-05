@@ -1,12 +1,12 @@
-﻿using System;
+﻿using CsvHelper;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
-using CsvHelper;
 
-namespace OutlookOkan
+namespace OutlookOkan.CsvTools
 {
     public class ReadAndWriteCsv
     {
@@ -37,29 +37,30 @@ namespace OutlookOkan
         }
 
         /// <summary>
-        /// CSVファイルを読み込みパースする。
+        /// CSVファイルを読み込む
         /// </summary>
         /// <typeparam name="TMaptype">CsvClassMap型</typeparam>
-        /// <returns>パースされたCSV</returns>
-        public CsvParser ParseCsv<TMaptype>() where TMaptype : CsvHelper.Configuration.CsvClassMap
+        /// <returns>読み込んだCSVデータ</returns>
+        public CsvReader LoadCsv<TMaptype>() where TMaptype : CsvHelper.Configuration.ClassMap
         {
-            var csvParser = new CsvParser(new StreamReader(_filePath, Encoding.GetEncoding("Shift_JIS")));
-            csvParser.Configuration.HasHeaderRecord = false;
-            csvParser.Configuration.RegisterClassMap<TMaptype>();
 
-            return csvParser;
+            var csvReader = new CsvReader(new StreamReader(_filePath, Encoding.UTF8));
+            csvReader.Configuration.HasHeaderRecord = false;
+            csvReader.Configuration.RegisterClassMap<TMaptype>();
+
+            return csvReader;
         }
 
         /// <summary>
-        /// パースされたCSVをもとに、List<T/>を変えす。
+        /// 読み込んだCSVから、List<T/>を変えす。
         /// </summary>
         /// <typeparam name="TCsvType"></typeparam>
-        /// <param name="csvPerser">パースされたCSV</param>
+        /// <param name="loadedCsv">読み込んだCSVデータ</param>
         /// <returns>CSVデータ(List<T/>)</returns>
-        public List<TCsvType> ReadCsv<TCsvType>(CsvParser csvPerser)
-        { 
-            var list = new CsvReader(csvPerser).GetRecords<TCsvType>().ToList();
-            csvPerser.Dispose();
+        public List<TCsvType> GetCsvRecords<TCsvType>(CsvReader loadedCsv)
+        {
+            var list = loadedCsv.GetRecords<TCsvType>().ToList();
+            loadedCsv.Dispose();
 
             return list;
         }
@@ -69,9 +70,9 @@ namespace OutlookOkan
         /// </summary>
         /// <typeparam name="TMaptype">CsvClassMap型</typeparam>
         /// <param name="bindableData">BindingSource型のデータ</param>
-        public void WriteBindableDataToCsv<TMaptype>(BindingSource bindableData) where TMaptype : CsvHelper.Configuration.CsvClassMap
+        public void WriteBindableDataToCsv<TMaptype>(BindingSource bindableData) where TMaptype : CsvHelper.Configuration.ClassMap
         {
-            var csvWriter = new CsvWriter(new StreamWriter(_filePath, false, Encoding.GetEncoding("Shift_JIS")));
+            var csvWriter = new CsvWriter(new StreamWriter(_filePath, false, Encoding.UTF8));
             csvWriter.Configuration.HasHeaderRecord = false;
             csvWriter.Configuration.RegisterClassMap<TMaptype>();
 

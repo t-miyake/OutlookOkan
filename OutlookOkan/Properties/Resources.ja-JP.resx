@@ -118,298 +118,298 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="About" xml:space="preserve">
-    <value>About</value>
+    <value>バージョン情報</value>
   </data>
   <data name="AlertKeyword" xml:space="preserve">
-    <value>Alert keyword</value>
+    <value>警告キーワード</value>
   </data>
   <data name="AlertKeywordInfo" xml:space="preserve">
-    <value>Warning keywords</value>
+    <value>警告するキーワード</value>
   </data>
   <data name="AlertMailAddress" xml:space="preserve">
-    <value>Alert Emailaddress</value>
+    <value>警告アドレス</value>
   </data>
   <data name="AlertMailddressAndDomain" xml:space="preserve">
-    <value>Alert EMailaddress / Domain</value>
+    <value>警告するアドレス / ドメイン(@から)</value>
   </data>
   <data name="ApplicableDestination" xml:space="preserve">
-    <value>Applicable destination</value>
+    <value>該当宛先</value>
   </data>
   <data name="ApplicableKeywords" xml:space="preserve">
-    <value>Applicable keywords</value>
+    <value>該当キーワード</value>
   </data>
   <data name="Apply" xml:space="preserve">
-    <value>Apply</value>
+    <value>適用</value>
   </data>
   <data name="AppName" xml:space="preserve">
-    <value>OutlookOkan</value>
+    <value>おかん for Outlook</value>
   </data>
   <data name="Attachments" xml:space="preserve">
-    <value>Attachments</value>
+    <value>添付ファイル</value>
   </data>
   <data name="AutoAddCCorBCCByKeyword" xml:space="preserve">
-    <value>Auto add CC/BCC (Keyword)</value>
+    <value>自動CC/BCC追加(キーワード)</value>
   </data>
   <data name="AutoAddCCorBCCByKeywordInfo" xml:space="preserve">
-    <value>Automatically add CC or BCC by keyword</value>
+    <value>自動でCCやBCCを追加したいキーワード</value>
   </data>
   <data name="AutoAddCCorBCCByMailAddressOrDomain" xml:space="preserve">
-    <value>Auto add CC/BCC (Dest)</value>
+    <value>自動CC/BCC追加(宛先)</value>
   </data>
   <data name="AutoAddCCorBCCByMailAddressOrDomainInfo" xml:space="preserve">
-    <value>Automatically add CC or BCC by the Emailaddress or domain</value>
+    <value>自動でCCやBCCを追加したいアドレスまたはドメイン(@から)</value>
   </data>
   <data name="AutoAddDestination" xml:space="preserve">
-    <value>Auto add destination</value>
+    <value>自動で宛先に追加されました。</value>
   </data>
   <data name="AutoAddMailAddress" xml:space="preserve">
-    <value>Auto add Emailaddress</value>
+    <value>追加するメールアドレス</value>
   </data>
   <data name="AutoCheckConfig" xml:space="preserve">
-    <value>Auto check</value>
+    <value>自動チェック設定</value>
   </data>
   <data name="AutoCheckSameDomain" xml:space="preserve">
-    <value>Automatically check the mail address (company address) in the same domain as the source address.</value>
+    <value>送信元アドレスと同一のドメインのメールアドレス(社内アドレス)は、あらかじめチェックを自動付与する。</value>
   </data>
   <data name="BerforeCSVImportAlert" xml:space="preserve">
-    <value>Don't import CSV file with wrong format.</value>
+    <value>書式の異なるCSVをインポートするとエラーになります。気を付けてください。</value>
   </data>
   <data name="Cancel" xml:space="preserve">
-    <value>Cancel</value>
+    <value>キャンセル</value>
   </data>
   <data name="CCorBCC" xml:space="preserve">
-    <value>CC/BCC</value>
+    <value>CCまたはBCC</value>
   </data>
   <data name="ChangeLanguage" xml:space="preserve">
-    <value>Change Language</value>
+    <value>表示言語の変更</value>
   </data>
   <data name="Confirmation" xml:space="preserve">
-    <value>Confirmation before sending mail.</value>
+    <value>メール送信前の確認</value>
   </data>
   <data name="ConfirmationMessage1" xml:space="preserve">
-    <value>Do you want to send mail?</value>
+    <value>本当にメールを送信しますか？</value>
   </data>
   <data name="ConfirmationMessage2" xml:space="preserve">
-    <value>After checking all items, you can press send button.</value>
+    <value>全ての項目を確認し、チェックを入れて、送信ボタンを押してください。</value>
   </data>
   <data name="CSVExport" xml:space="preserve">
-    <value>CSV Export</value>
+    <value>CSVエクスポート</value>
   </data>
   <data name="CSVImport" xml:space="preserve">
-    <value>CSV Import</value>
+    <value>CSVインポート</value>
   </data>
   <data name="DestinationEmailaddress" xml:space="preserve">
-    <value>Destination Emailaddress</value>
+    <value>送信先アドレス</value>
   </data>
   <data name="Domain" xml:space="preserve">
-    <value>Domain</value>
+    <value>ドメイン (@から)</value>
   </data>
   <data name="DontShowConfirmationScreen" xml:space="preserve">
-    <value>Don't show confirmation screen</value>
+    <value>確認画面の非表示設定</value>
   </data>
   <data name="ExportFailed" xml:space="preserve">
-    <value>Export Failed</value>
+    <value>エクスポートに失敗しました。</value>
   </data>
   <data name="FailedToGetInformation" xml:space="preserve">
-    <value>Failed to get information.</value>
+    <value>情報取得エラー</value>
   </data>
   <data name="ForgottenToAttachAlert" xml:space="preserve">
-    <value>ForgottenToAttachAlert</value>
+    <value>本文中に 添付 という文言があるのに添付ファイルがありません。</value>
   </data>
   <data name="General" xml:space="preserve">
-    <value>General</value>
+    <value>一般</value>
   </data>
   <data name="Help" xml:space="preserve">
-    <value>Help</value>
+    <value>ヘルプ</value>
   </data>
   <data name="HowToDaleteRow" xml:space="preserve">
-    <value>* Delete row: Select the row and press the Delete key</value>
+    <value>※行の削除：行を選択してDeleteキー</value>
   </data>
   <data name="HTML" xml:space="preserve">
-    <value>HTML</value>
+    <value>HTML形式</value>
   </data>
   <data name="IfAllSameDomain" xml:space="preserve">
-    <value>If all destinations are in the same domain as the source address, do not display the confirmation screen.</value>
+    <value>宛先が全て送信元アドレスと同一ドメインの場合、確認画面を表示しない。</value>
   </data>
   <data name="IfAllWhite" xml:space="preserve">
-    <value>If there is no check target in the destination, do not display the confirmation screen.</value>
+    <value>宛先にチェック対象が存在しない場合、確認画面を表示しない。(全ての宛先がホワイトリストに含まれる場合など)</value>
   </data>
   <data name="ImportAndExport" xml:space="preserve">
-    <value>Import/Export</value>
+    <value>インポート/エクスポート</value>
   </data>
   <data name="ImportantAlert" xml:space="preserve">
-    <value>Important Alert</value>
+    <value>重要な警告</value>
   </data>
   <data name="ImportFailed" xml:space="preserve">
-    <value>Import Failed</value>
+    <value>インポートに失敗しました。</value>
   </data>
   <data name="InputCCorBCC" xml:space="preserve">
-    <value>Input CC or BCC</value>
+    <value>CC または BCCと入力</value>
   </data>
   <data name="InputDomainInfo" xml:space="preserve">
-    <value>Input domain(from @)</value>
+    <value>@からドメインを入力</value>
   </data>
   <data name="InputMailaddressOrDomain" xml:space="preserve">
-    <value>Please Input Emailaddress or Domain.</value>
+    <value>メールアドレスかドメインを登録してください。</value>
   </data>
   <data name="InputNameInfo" xml:space="preserve">
-    <value>Input name(ex. Company name)</value>
+    <value>社名等の宛先名を入力</value>
   </data>
   <data name="IsAlertAddressBccAlert" xml:space="preserve">
-    <value>The address/domain registered as a warning target is included in the destination (BCC). </value>
+    <value>警告対象として登録されたアドレス/ドメインが宛先(BCC)に含まれています。</value>
   </data>
   <data name="IsAlertAddressCcAlert" xml:space="preserve">
-    <value>The address/domain registered as a warning target is included in the destination (CC). </value>
+    <value>警告対象として登録されたアドレス/ドメインが宛先(CC)に含まれています。</value>
   </data>
   <data name="IsAlertAddressMaybeIrrelevant" xml:space="preserve">
-    <value>This address may be irrelevant to the intended destination.</value>
+    <value>このアドレスは意図した宛先とは無関係の可能性があります。</value>
   </data>
   <data name="IsAlertAddressToAlert" xml:space="preserve">
-    <value>The address/domain registered as a warning target is included in the destination (To). </value>
+    <value>警告対象として登録されたアドレス/ドメインが宛先(To)に含まれています。</value>
   </data>
   <data name="IsAttachedExe" xml:space="preserve">
-    <value>An executable file (.exe) is attached.</value>
+    <value>実行ファイル(.exe)を添付しています。</value>
   </data>
   <data name="IsBigAttachedFile" xml:space="preserve">
-    <value>There are attached files of 10 Mbyte or more.</value>
+    <value>10Mbyte以上の添付ファイルがあります。</value>
   </data>
   <data name="Keyword" xml:space="preserve">
-    <value>Keyword</value>
+    <value>キーワード</value>
   </data>
   <data name="MailBody" xml:space="preserve">
-    <value>Mail Body(Text Style)</value>
+    <value>メール本文 (Text形式で表示)</value>
   </data>
   <data name="MailddressAndDomain" xml:space="preserve">
-    <value>EMailaddress / Domain</value>
+    <value>宛先アドレス / ドメイン(@から)</value>
   </data>
   <data name="MailInfo" xml:space="preserve">
-    <value>Mail Infomation</value>
+    <value>メール情報</value>
   </data>
   <data name="MailType" xml:space="preserve">
-    <value>Type</value>
+    <value>種別</value>
   </data>
   <data name="Name" xml:space="preserve">
-    <value>Name</value>
+    <value>名称</value>
   </data>
   <data name="NameAndDomain" xml:space="preserve">
-    <value>Name/Domain</value>
+    <value>名称/ドメイン</value>
   </data>
   <data name="NoAlert" xml:space="preserve">
-    <value>There is no warning.</value>
+    <value>重要な警告はありません。</value>
   </data>
   <data name="OK" xml:space="preserve">
     <value>OK</value>
   </data>
   <data name="RichText" xml:space="preserve">
-    <value>RichText</value>
+    <value>リッチテキスト形式</value>
   </data>
   <data name="SaveSettings" xml:space="preserve">
-    <value>The setting was updated.</value>
+    <value>設定を保存しました。</value>
   </data>
   <data name="SelectCSVFile" xml:space="preserve">
-    <value>Please select a CSV file.</value>
+    <value>CSVファイルを選択してください。</value>
   </data>
   <data name="SelectSaveDestination" xml:space="preserve">
-    <value>Please select a save destination.</value>
+    <value>保存先を選択してください。</value>
   </data>
   <data name="Send" xml:space="preserve">
-    <value>Send</value>
+    <value>送信</value>
   </data>
   <data name="Sender" xml:space="preserve">
-    <value>Sender</value>
+    <value>差出人</value>
   </data>
   <data name="SendingForbid" xml:space="preserve">
-    <value>Sending forbid</value>
+    <value>送信禁止</value>
   </data>
   <data name="SendingForbidInfo" xml:space="preserve">
-    <value>EMail sending is forbidden when checked</value>
+    <value>チェックを入れると送信を禁止できます</value>
   </data>
   <data name="SettingExample" xml:space="preserve">
-    <value>Setting Example</value>
+    <value>設定例</value>
   </data>
   <data name="Settings" xml:space="preserve">
-    <value>Settings</value>
+    <value>設定</value>
   </data>
   <data name="Subject" xml:space="preserve">
-    <value>Subject</value>
+    <value>件名</value>
   </data>
   <data name="SuccessfulExport" xml:space="preserve">
-    <value>Successful Export</value>
+    <value>エクスポートが完了しました。</value>
   </data>
   <data name="SuccessfulImport" xml:space="preserve">
-    <value>Successful Import</value>
+    <value>インポートが完了しました。</value>
   </data>
   <data name="Text" xml:space="preserve">
-    <value>Plain Text</value>
+    <value>テキスト形式</value>
   </data>
   <data name="Unknown" xml:space="preserve">
-    <value>Unknown</value>
+    <value>不明</value>
   </data>
   <data name="WarningText" xml:space="preserve">
-    <value>Warning text</value>
+    <value>警告文</value>
   </data>
   <data name="WarningTextInfo" xml:space="preserve">
-    <value>Warning text on confirmation</value>
+    <value>確認画面に表示される警告文</value>
   </data>
   <data name="WhiteList" xml:space="preserve">
-    <value>WhiteList</value>
+    <value>ホワイトリスト</value>
   </data>
   <data name="CompanyName" xml:space="preserve">
-    <value>Noraneko Inc.</value>
+    <value>株式会社のらねこ</value>
   </data>
   <data name="Copyright" xml:space="preserve">
     <value>Copyright (C) 2018 Noraneko Inc.</value>
   </data>
   <data name="Version" xml:space="preserve">
-    <value>Version 2.0.0 (β1)</value>
+    <value>バージョン 2.0.0 (β1)</value>
   </data>
   <data name="VersionInfo" xml:space="preserve">
-    <value>About</value>
+    <value>バージョン情報</value>
   </data>
   <data name="SendingForbidAddress" xml:space="preserve">
-    <value>Mail Sending forbid Email address.</value>
+    <value>送信禁止アドレス</value>
   </data>
   <data name="SettingExampleAlertKeyword" xml:space="preserve">
-    <value>Keywords: confidential
-Warning text: Contains confidential word.
+    <value>キーワード：機密
+警告文：機密という言葉が含まれています。
 
-Register keywords to be warned and their warnings.</value>
+警告するキーワードとその警告文を登録します。</value>
   </data>
   <data name="SettingExampleAlertMailAddress" xml:space="preserve">
-    <value>EMailAddress: info@noraneko.co.jp
-or
-Domain: @noraneko.co.jp
+    <value>アドレス：info@noraneko.co.jp
+または、
+ドメイン：@noraneko.co.jp
 
-Register address or domain.
-When registering, a warning will be displayed when sending to that address.</value>
+アドレスまたはドメインを登録します。
+登録するとそのアドレスへの送信時に警告が表示されます。</value>
   </data>
   <data name="SettingExampleAutoAddCCorBCCByKeyword" xml:space="preserve">
-    <value>Type: CC or BCC
-Keywords: confidential
-Address: boss@noraneko.co.jp
+    <value>種別：CC または BCC
+キーワード：機密情報
+アドレス：boss@noraneko.co.jp
 
-When the keyword is included in the mail,
-The address specified for CC or BCC is automatically added.</value>
+キーワードに本文に含まれる場合、
+CCあるいはBCCに指定したアドレスが自動で追加されます。</value>
   </data>
   <data name="SettingExampleAutoAddCCorBCCByMailAddressOrDomain" xml:space="preserve">
-    <value>Type: CC or BCC
-To: warning@xxxxxxx.com
-Address: boss@noraneko.co.jp
+    <value>種別：CC または BCC
+宛先：warning@xxxxxxx.com
+アドレス：boss@noraneko.co.jp
 
-When sending mail to registered destinations and domains,
-The address specified for CC or BCC is automatically added.</value>
+登録した宛先やドメインへのメール送信時に、
+CCあるいはBCCに指定したアドレスが自動で追加されます。</value>
   </data>
   <data name="SettingExampleNameAndDomain" xml:space="preserve">
-    <value>Name: Noraneko Inc
-Domain: @noraneko.co.jp
+    <value>名称：のらねこ
+ドメイン：@noraneko.co.jp
 
-Register the name (company name etc.) and domain.</value>
+名称(社名等)とドメインを登録します。</value>
   </data>
   <data name="SettingExampleWhiteList" xml:space="preserve">
-    <value>EMailAddress: info@noraneko.co.jp
-or
-Domain: @noraneko.co.jp
+    <value>アドレス：info@noraneko.co.jp
+または、
+ドメイン：@noraneko.co.jp
 
-Register EMailAddress or domain.</value>
+アドレスまたはドメインを登録します。</value>
   </data>
 </root>

@@ -9,6 +9,7 @@
 //------------------------------------------------------------------------------
 
 namespace OutlookOkan.Properties {
+    using System;
     
     
     /// <summary>
@@ -18,10 +19,10 @@ namespace OutlookOkan.Properties {
     // class via a tool like ResGen or Visual Studio.
     // To add or remove a member, edit your .ResX file then rerun ResGen
     // with the /str option, or rebuild your VS project.
-    
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "15.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    internal class Resources {
+    public class Resources {
         
         private static global::System.Resources.ResourceManager resourceMan;
         
@@ -35,7 +36,7 @@ namespace OutlookOkan.Properties {
         ///   Returns the cached ResourceManager instance used by this class.
         /// </summary>
         [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        internal static global::System.Resources.ResourceManager ResourceManager {
+        public static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
                     global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("OutlookOkan.Properties.Resources", typeof(Resources).Assembly);
@@ -50,12 +51,847 @@ namespace OutlookOkan.Properties {
         ///   resource lookups using this strongly typed resource class.
         /// </summary>
         [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        internal static global::System.Globalization.CultureInfo Culture {
+        public static global::System.Globalization.CultureInfo Culture {
             get {
                 return resourceCulture;
             }
             set {
                 resourceCulture = value;
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to About.
+        /// </summary>
+        public static string About {
+            get {
+                return ResourceManager.GetString("About", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Alert keyword.
+        /// </summary>
+        public static string AlertKeyword {
+            get {
+                return ResourceManager.GetString("AlertKeyword", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Warning keywords.
+        /// </summary>
+        public static string AlertKeywordInfo {
+            get {
+                return ResourceManager.GetString("AlertKeywordInfo", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Alert Emailaddress.
+        /// </summary>
+        public static string AlertMailAddress {
+            get {
+                return ResourceManager.GetString("AlertMailAddress", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Alert EMailaddress / Domain.
+        /// </summary>
+        public static string AlertMailddressAndDomain {
+            get {
+                return ResourceManager.GetString("AlertMailddressAndDomain", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Applicable destination.
+        /// </summary>
+        public static string ApplicableDestination {
+            get {
+                return ResourceManager.GetString("ApplicableDestination", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Applicable keywords.
+        /// </summary>
+        public static string ApplicableKeywords {
+            get {
+                return ResourceManager.GetString("ApplicableKeywords", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Apply.
+        /// </summary>
+        public static string Apply {
+            get {
+                return ResourceManager.GetString("Apply", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to OutlookOkan.
+        /// </summary>
+        public static string AppName {
+            get {
+                return ResourceManager.GetString("AppName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Attachments.
+        /// </summary>
+        public static string Attachments {
+            get {
+                return ResourceManager.GetString("Attachments", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Auto add CC/BCC (Keyword).
+        /// </summary>
+        public static string AutoAddCCorBCCByKeyword {
+            get {
+                return ResourceManager.GetString("AutoAddCCorBCCByKeyword", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Automatically add CC or BCC by keyword.
+        /// </summary>
+        public static string AutoAddCCorBCCByKeywordInfo {
+            get {
+                return ResourceManager.GetString("AutoAddCCorBCCByKeywordInfo", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Auto add CC/BCC (Dest).
+        /// </summary>
+        public static string AutoAddCCorBCCByMailAddressOrDomain {
+            get {
+                return ResourceManager.GetString("AutoAddCCorBCCByMailAddressOrDomain", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Automatically add CC or BCC by the Emailaddress or domain.
+        /// </summary>
+        public static string AutoAddCCorBCCByMailAddressOrDomainInfo {
+            get {
+                return ResourceManager.GetString("AutoAddCCorBCCByMailAddressOrDomainInfo", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Auto add destination.
+        /// </summary>
+        public static string AutoAddDestination {
+            get {
+                return ResourceManager.GetString("AutoAddDestination", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Auto add Emailaddress.
+        /// </summary>
+        public static string AutoAddMailAddress {
+            get {
+                return ResourceManager.GetString("AutoAddMailAddress", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Auto check.
+        /// </summary>
+        public static string AutoCheckConfig {
+            get {
+                return ResourceManager.GetString("AutoCheckConfig", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Automatically check the mail address (company address) in the same domain as the source address..
+        /// </summary>
+        public static string AutoCheckSameDomain {
+            get {
+                return ResourceManager.GetString("AutoCheckSameDomain", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Don&apos;t import CSV file with wrong format..
+        /// </summary>
+        public static string BerforeCSVImportAlert {
+            get {
+                return ResourceManager.GetString("BerforeCSVImportAlert", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Cancel.
+        /// </summary>
+        public static string Cancel {
+            get {
+                return ResourceManager.GetString("Cancel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to CC/BCC.
+        /// </summary>
+        public static string CCorBCC {
+            get {
+                return ResourceManager.GetString("CCorBCC", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Change Language.
+        /// </summary>
+        public static string ChangeLanguage {
+            get {
+                return ResourceManager.GetString("ChangeLanguage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Noraneko Inc..
+        /// </summary>
+        public static string CompanyName {
+            get {
+                return ResourceManager.GetString("CompanyName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Confirmation before sending mail..
+        /// </summary>
+        public static string Confirmation {
+            get {
+                return ResourceManager.GetString("Confirmation", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Do you want to send mail?.
+        /// </summary>
+        public static string ConfirmationMessage1 {
+            get {
+                return ResourceManager.GetString("ConfirmationMessage1", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to After checking all items, you can press send button..
+        /// </summary>
+        public static string ConfirmationMessage2 {
+            get {
+                return ResourceManager.GetString("ConfirmationMessage2", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Copyright (C) 2018 Noraneko Inc..
+        /// </summary>
+        public static string Copyright {
+            get {
+                return ResourceManager.GetString("Copyright", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to CSV Export.
+        /// </summary>
+        public static string CSVExport {
+            get {
+                return ResourceManager.GetString("CSVExport", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to CSV Import.
+        /// </summary>
+        public static string CSVImport {
+            get {
+                return ResourceManager.GetString("CSVImport", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Destination Emailaddress.
+        /// </summary>
+        public static string DestinationEmailaddress {
+            get {
+                return ResourceManager.GetString("DestinationEmailaddress", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Domain.
+        /// </summary>
+        public static string Domain {
+            get {
+                return ResourceManager.GetString("Domain", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Don&apos;t show confirmation screen.
+        /// </summary>
+        public static string DontShowConfirmationScreen {
+            get {
+                return ResourceManager.GetString("DontShowConfirmationScreen", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Export Failed.
+        /// </summary>
+        public static string ExportFailed {
+            get {
+                return ResourceManager.GetString("ExportFailed", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Failed to get information..
+        /// </summary>
+        public static string FailedToGetInformation {
+            get {
+                return ResourceManager.GetString("FailedToGetInformation", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to ForgottenToAttachAlert.
+        /// </summary>
+        public static string ForgottenToAttachAlert {
+            get {
+                return ResourceManager.GetString("ForgottenToAttachAlert", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to General.
+        /// </summary>
+        public static string General {
+            get {
+                return ResourceManager.GetString("General", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Help.
+        /// </summary>
+        public static string Help {
+            get {
+                return ResourceManager.GetString("Help", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to * Delete row: Select the row and press the Delete key.
+        /// </summary>
+        public static string HowToDaleteRow {
+            get {
+                return ResourceManager.GetString("HowToDaleteRow", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to HTML.
+        /// </summary>
+        public static string HTML {
+            get {
+                return ResourceManager.GetString("HTML", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to If all destinations are in the same domain as the source address, do not display the confirmation screen..
+        /// </summary>
+        public static string IfAllSameDomain {
+            get {
+                return ResourceManager.GetString("IfAllSameDomain", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to If there is no check target in the destination, do not display the confirmation screen..
+        /// </summary>
+        public static string IfAllWhite {
+            get {
+                return ResourceManager.GetString("IfAllWhite", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Import/Export.
+        /// </summary>
+        public static string ImportAndExport {
+            get {
+                return ResourceManager.GetString("ImportAndExport", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Important Alert.
+        /// </summary>
+        public static string ImportantAlert {
+            get {
+                return ResourceManager.GetString("ImportantAlert", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Import Failed.
+        /// </summary>
+        public static string ImportFailed {
+            get {
+                return ResourceManager.GetString("ImportFailed", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Input CC or BCC.
+        /// </summary>
+        public static string InputCCorBCC {
+            get {
+                return ResourceManager.GetString("InputCCorBCC", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Input domain(from @).
+        /// </summary>
+        public static string InputDomainInfo {
+            get {
+                return ResourceManager.GetString("InputDomainInfo", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Please Input Emailaddress or Domain..
+        /// </summary>
+        public static string InputMailaddressOrDomain {
+            get {
+                return ResourceManager.GetString("InputMailaddressOrDomain", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Input name(ex. Company name).
+        /// </summary>
+        public static string InputNameInfo {
+            get {
+                return ResourceManager.GetString("InputNameInfo", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The address/domain registered as a warning target is included in the destination (BCC). .
+        /// </summary>
+        public static string IsAlertAddressBccAlert {
+            get {
+                return ResourceManager.GetString("IsAlertAddressBccAlert", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The address/domain registered as a warning target is included in the destination (CC). .
+        /// </summary>
+        public static string IsAlertAddressCcAlert {
+            get {
+                return ResourceManager.GetString("IsAlertAddressCcAlert", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to This address may be irrelevant to the intended destination..
+        /// </summary>
+        public static string IsAlertAddressMaybeIrrelevant {
+            get {
+                return ResourceManager.GetString("IsAlertAddressMaybeIrrelevant", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The address/domain registered as a warning target is included in the destination (To). .
+        /// </summary>
+        public static string IsAlertAddressToAlert {
+            get {
+                return ResourceManager.GetString("IsAlertAddressToAlert", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to An executable file (.exe) is attached..
+        /// </summary>
+        public static string IsAttachedExe {
+            get {
+                return ResourceManager.GetString("IsAttachedExe", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to There are attached files of 10 Mbyte or more..
+        /// </summary>
+        public static string IsBigAttachedFile {
+            get {
+                return ResourceManager.GetString("IsBigAttachedFile", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Keyword.
+        /// </summary>
+        public static string Keyword {
+            get {
+                return ResourceManager.GetString("Keyword", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Mail Body(Text Style).
+        /// </summary>
+        public static string MailBody {
+            get {
+                return ResourceManager.GetString("MailBody", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to EMailaddress / Domain.
+        /// </summary>
+        public static string MailddressAndDomain {
+            get {
+                return ResourceManager.GetString("MailddressAndDomain", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Mail Infomation.
+        /// </summary>
+        public static string MailInfo {
+            get {
+                return ResourceManager.GetString("MailInfo", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Type.
+        /// </summary>
+        public static string MailType {
+            get {
+                return ResourceManager.GetString("MailType", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Name.
+        /// </summary>
+        public static string Name {
+            get {
+                return ResourceManager.GetString("Name", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Name/Domain.
+        /// </summary>
+        public static string NameAndDomain {
+            get {
+                return ResourceManager.GetString("NameAndDomain", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to There is no warning..
+        /// </summary>
+        public static string NoAlert {
+            get {
+                return ResourceManager.GetString("NoAlert", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to OK.
+        /// </summary>
+        public static string OK {
+            get {
+                return ResourceManager.GetString("OK", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to RichText.
+        /// </summary>
+        public static string RichText {
+            get {
+                return ResourceManager.GetString("RichText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The setting was updated..
+        /// </summary>
+        public static string SaveSettings {
+            get {
+                return ResourceManager.GetString("SaveSettings", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Please select a CSV file..
+        /// </summary>
+        public static string SelectCSVFile {
+            get {
+                return ResourceManager.GetString("SelectCSVFile", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Please select a save destination..
+        /// </summary>
+        public static string SelectSaveDestination {
+            get {
+                return ResourceManager.GetString("SelectSaveDestination", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Send.
+        /// </summary>
+        public static string Send {
+            get {
+                return ResourceManager.GetString("Send", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Sender.
+        /// </summary>
+        public static string Sender {
+            get {
+                return ResourceManager.GetString("Sender", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Sending forbid.
+        /// </summary>
+        public static string SendingForbid {
+            get {
+                return ResourceManager.GetString("SendingForbid", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Mail Sending forbid Email address..
+        /// </summary>
+        public static string SendingForbidAddress {
+            get {
+                return ResourceManager.GetString("SendingForbidAddress", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to EMail sending is forbidden when checked.
+        /// </summary>
+        public static string SendingForbidInfo {
+            get {
+                return ResourceManager.GetString("SendingForbidInfo", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Setting Example.
+        /// </summary>
+        public static string SettingExample {
+            get {
+                return ResourceManager.GetString("SettingExample", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Keywords: confidential
+        ///Warning text: Contains confidential word.
+        ///
+        ///Register keywords to be warned and their warnings..
+        /// </summary>
+        public static string SettingExampleAlertKeyword {
+            get {
+                return ResourceManager.GetString("SettingExampleAlertKeyword", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to EMailAddress: info@noraneko.co.jp
+        ///or
+        ///Domain: @noraneko.co.jp
+        ///
+        ///Register address or domain.
+        ///When registering, a warning will be displayed when sending to that address..
+        /// </summary>
+        public static string SettingExampleAlertMailAddress {
+            get {
+                return ResourceManager.GetString("SettingExampleAlertMailAddress", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Type: CC or BCC
+        ///Keywords: confidential
+        ///Address: boss@noraneko.co.jp
+        ///
+        ///When the keyword is included in the mail,
+        ///The address specified for CC or BCC is automatically added..
+        /// </summary>
+        public static string SettingExampleAutoAddCCorBCCByKeyword {
+            get {
+                return ResourceManager.GetString("SettingExampleAutoAddCCorBCCByKeyword", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Type: CC or BCC
+        ///To: warning@xxxxxxx.com
+        ///Address: boss@noraneko.co.jp
+        ///
+        ///When sending mail to registered destinations and domains,
+        ///The address specified for CC or BCC is automatically added..
+        /// </summary>
+        public static string SettingExampleAutoAddCCorBCCByMailAddressOrDomain {
+            get {
+                return ResourceManager.GetString("SettingExampleAutoAddCCorBCCByMailAddressOrDomain", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Name: Noraneko Inc
+        ///Domain: @noraneko.co.jp
+        ///
+        ///Register the name (company name etc.) and domain..
+        /// </summary>
+        public static string SettingExampleNameAndDomain {
+            get {
+                return ResourceManager.GetString("SettingExampleNameAndDomain", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to EMailAddress: info@noraneko.co.jp
+        ///or
+        ///Domain: @noraneko.co.jp
+        ///
+        ///Register EMailAddress or domain..
+        /// </summary>
+        public static string SettingExampleWhiteList {
+            get {
+                return ResourceManager.GetString("SettingExampleWhiteList", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Settings.
+        /// </summary>
+        public static string Settings {
+            get {
+                return ResourceManager.GetString("Settings", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Subject.
+        /// </summary>
+        public static string Subject {
+            get {
+                return ResourceManager.GetString("Subject", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Successful Export.
+        /// </summary>
+        public static string SuccessfulExport {
+            get {
+                return ResourceManager.GetString("SuccessfulExport", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Successful Import.
+        /// </summary>
+        public static string SuccessfulImport {
+            get {
+                return ResourceManager.GetString("SuccessfulImport", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Plain Text.
+        /// </summary>
+        public static string Text {
+            get {
+                return ResourceManager.GetString("Text", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Unknown.
+        /// </summary>
+        public static string Unknown {
+            get {
+                return ResourceManager.GetString("Unknown", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Version 2.0.0 (β1).
+        /// </summary>
+        public static string Version {
+            get {
+                return ResourceManager.GetString("Version", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to About.
+        /// </summary>
+        public static string VersionInfo {
+            get {
+                return ResourceManager.GetString("VersionInfo", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Warning text.
+        /// </summary>
+        public static string WarningText {
+            get {
+                return ResourceManager.GetString("WarningText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Warning text on confirmation.
+        /// </summary>
+        public static string WarningTextInfo {
+            get {
+                return ResourceManager.GetString("WarningTextInfo", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to WhiteList.
+        /// </summary>
+        public static string WhiteList {
+            get {
+                return ResourceManager.GetString("WhiteList", resourceCulture);
             }
         }
     }

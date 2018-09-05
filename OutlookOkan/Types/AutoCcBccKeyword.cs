@@ -1,6 +1,6 @@
 ﻿using CsvHelper.Configuration;
 
-namespace OutlookOkan
+namespace OutlookOkan.Types
 {
     public class AutoCcBccKeyword
     {
@@ -9,7 +9,7 @@ namespace OutlookOkan
         public string AutoAddAddress { get; set; }
     }
 
-    public sealed class AutoCcBccKeywordMap : CsvClassMap<AutoCcBccKeyword>
+    public sealed class AutoCcBccKeywordMap : ClassMap<AutoCcBccKeyword>
     {
         public AutoCcBccKeywordMap()
         {

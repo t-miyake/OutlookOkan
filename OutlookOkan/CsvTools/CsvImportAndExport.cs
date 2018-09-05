@@ -1,12 +1,13 @@
-﻿using System;
+﻿using CsvHelper;
+using OutlookOkan.Properties;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
-using CsvHelper;
 
-namespace OutlookOkan
+namespace OutlookOkan.CsvTools
 {
     //TODO To be improved
     public class CsvImportAndExport
@@ -17,16 +18,16 @@ namespace OutlookOkan
         /// <returns>インポートするCSVファイルのパス</returns>
         public string ImportCsv()
         {
-            MessageBox.Show("書式の異なるCSVをインポートするとエラーになります。気を付けてください。");
+            MessageBox.Show(Resources.BerforeCSVImportAlert);
 
             var openFileDialog = new OpenFileDialog
             {
-                Title = "CSVファイルを選択してください。",
+                Title = Resources.SelectCSVFile,
                 InitialDirectory = @"C:\",
                 Filter = "CSV|*.csv"
             };
 
-            var importPath =  openFileDialog.ShowDialog() == DialogResult.OK ? openFileDialog.FileName : null;
+            var importPath = openFileDialog.ShowDialog() == DialogResult.OK ? openFileDialog.FileName : null;
             openFileDialog.Dispose();
 
             return importPath;
@@ -37,25 +38,25 @@ namespace OutlookOkan
         /// </summary>
         /// <typeparam name="TMaptype">CsvClassMap型</typeparam>
         /// <returns>パースされたCSV</returns>
-        public CsvParser ParseCsv<TMaptype>(string filePath) where TMaptype : CsvHelper.Configuration.CsvClassMap
+        public CsvReader LoadCsv<TMaptype>(string filePath) where TMaptype : CsvHelper.Configuration.ClassMap
         {
-            var csvParser = new CsvParser(new StreamReader(filePath, Encoding.GetEncoding("Shift_JIS")));
-            csvParser.Configuration.HasHeaderRecord = false;
-            csvParser.Configuration.RegisterClassMap<TMaptype>();
+            var csvReader = new CsvReader(new StreamReader(filePath, Encoding.UTF8));
+            csvReader.Configuration.HasHeaderRecord = false;
+            csvReader.Configuration.RegisterClassMap<TMaptype>();
 
-            return csvParser;
+            return csvReader;
         }
 
         /// <summary>
-        /// パースされたCSVをもとに、List<T/>を変えす。
+        /// 読み込んだCSVから、List<T/>を変えす。
         /// </summary>
         /// <typeparam name="TCsvType"></typeparam>
-        /// <param name="csvPerser">パースされたCSV</param>
+        /// <param name="loadedCsv">パースされたCSV</param>
         /// <returns>CSVデータ(List<T/>)</returns>
-        public List<TCsvType> ReadCsv<TCsvType>(CsvParser csvPerser)
+        public List<TCsvType> ReadCsv<TCsvType>(CsvReader loadedCsv)
         {
-            var list = new CsvReader(csvPerser).GetRecords<TCsvType>().ToList();
-            csvPerser.Dispose();
+            var list = loadedCsv.GetRecords<TCsvType>().ToList();
+            loadedCsv.Dispose();
 
             return list;
         }
@@ -66,11 +67,11 @@ namespace OutlookOkan
         /// <typeparam name="TMaptype">CsvClassMap型</typeparam>
         /// <param name="bindableData">エクスポートするデータ</param>
         /// <param name="defaultFileName">デフォルトのファイル名(.csvと付けること)</param>
-        public void CsvExport<TMaptype>(BindingSource bindableData,string defaultFileName) where TMaptype : CsvHelper.Configuration.CsvClassMap
+        public void CsvExport<TMaptype>(BindingSource bindableData, string defaultFileName) where TMaptype : CsvHelper.Configuration.ClassMap
         {
             var saveFileDialog = new SaveFileDialog
             {
-                Title = "保存先を選択してください。",
+                Title = Resources.SelectSaveDestination,
                 InitialDirectory = @"C:\",
                 Filter = "CSV|*.csv",
                 CreatePrompt = true,
@@ -81,7 +82,7 @@ namespace OutlookOkan
             {
                 try
                 {
-                    var csvWriter = new CsvWriter(new StreamWriter(saveFileDialog.FileName, false, Encoding.GetEncoding("Shift_JIS")));
+                    var csvWriter = new CsvWriter(new StreamWriter(saveFileDialog.FileName, false, Encoding.UTF8));
                     csvWriter.Configuration.HasHeaderRecord = false;
                     csvWriter.Configuration.RegisterClassMap<TMaptype>();
 
@@ -89,11 +90,11 @@ namespace OutlookOkan
 
                     csvWriter.Dispose();
 
-                    MessageBox.Show("エクスポートが完了しました。");
+                    MessageBox.Show(Resources.SuccessfulExport);
                 }
                 catch (Exception e)
                 {
-                    MessageBox.Show("エクスポートに失敗しました" + e);
+                    MessageBox.Show(Resources.ExportFailed + e);
                 }
             }
             saveFileDialog.Dispose();
