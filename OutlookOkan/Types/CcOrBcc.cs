@@ -1,4 +1,4 @@
-﻿namespace OutlookOkan
+﻿namespace OutlookOkan.Types
 {
     public enum CcOrBcc
     {

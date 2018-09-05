@@ -1,9 +1,9 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
-VisualStudioVersion = 15.0.26403.7
+VisualStudioVersion = 15.0.28010.2016
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OutlookOkan", "OutlookOkan\OutlookOkan.csproj", "{E10D32D4-EB76-4532-868F-7AA8309B6C0F}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OutlookOkan", "OutlookOkan\OutlookOkan.csproj", "{B6B4F2A2-B70A-410C-8E76-1F4090CC438F}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -11,12 +11,15 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{E10D32D4-EB76-4532-868F-7AA8309B6C0F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{E10D32D4-EB76-4532-868F-7AA8309B6C0F}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{E10D32D4-EB76-4532-868F-7AA8309B6C0F}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{E10D32D4-EB76-4532-868F-7AA8309B6C0F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B6B4F2A2-B70A-410C-8E76-1F4090CC438F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B6B4F2A2-B70A-410C-8E76-1F4090CC438F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B6B4F2A2-B70A-410C-8E76-1F4090CC438F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B6B4F2A2-B70A-410C-8E76-1F4090CC438F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {32F32E6B-F48F-4324-A111-5630BC529975}
 	EndGlobalSection
 EndGlobal

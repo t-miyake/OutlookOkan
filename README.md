@@ -15,18 +15,28 @@
 専用のカスタマイズやサポートが必要な場合は、個別にご相談ください。  
 
 送信前の確認ウインドウ  
-![Screenshot](https://github.com/t-miyake/OutlookOkan/blob/master/Screenshots/Screenshot_v0.9.2_01.png)  
+![Screenshot](https://github.com/t-miyake/OutlookOkan/blob/master/Screenshots/Screenshot_v2.0.0_01.png)  
 
 設定ウィンドウ  
-![Screenshot](https://github.com/t-miyake/OutlookOkan/blob/master/Screenshots/Screenshot_v0.9.2_02.png) 
+![Screenshot](https://github.com/t-miyake/OutlookOkan/blob/master/Screenshots/Screenshot_v2.0.0_02.png) 
 
 ## 機能一覧(概要)
 
 - メール送信前の確認 
     - メール送信前に確認ウインドウを表示し、全ての項目にチェックしないと送信ができない仕様
+    -  同一ドメインへのメールなど、送信前の確認を表示しないことも可能
     - 社外ドメインは赤文字で表示
-    - 件名や添付ファイルの一覧を表示
-    - 添付ファイルの添付漏れを警告
+    - 件名や送信者のアドレス、添付ファイルの一覧、メール本文を表示
+    - 添付ファイルの添付漏れや大容量の添付ファイルを警告
+
+- 送信禁止機能
+    - 指定した宛先やドメインへのメール送信を禁止
+    - 指定したキーワードが本文に含まれるメールの送信を禁止
+    - 送信禁止に該当する場合、禁止の旨とその理由を表示
+
+- メール送信前の確認 
+    - メール送信前に確認ウインドウを表示し、全ての項目にチェックしないと送信ができない仕様
+    - 社外ドメインは赤文字で表示
 
 - ホワイトリスト
     - ホワイトリストに登録したドメインやアドレスは、確認画面での項目チェックが不要
@@ -48,6 +58,9 @@
 
 - 設定のインポート/エクスポート
     - 設定内容をCSVファイルでインポート/エクスポート
+
+- 多言語対応
+    - 日本語と英語に対応しており、言語の追加が可能な設計
 
 ## 使い方
 [Wiki(Manual)](https://github.com/t-miyake/OutlookOkan/wiki/Manual) に記載します。

@@ -1,13 +1,13 @@
 ﻿using CsvHelper.Configuration;
 
-namespace OutlookOkan
+namespace OutlookOkan.Types
 {
     public class Whitelist
     {
         public string WhiteName { get; set; }
     }
 
-    public sealed class WhitelistMap : CsvClassMap<Whitelist>
+    public sealed class WhitelistMap : ClassMap<Whitelist>
     {
         public WhitelistMap()
         {

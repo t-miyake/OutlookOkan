@@ -1,6 +1,6 @@
 ﻿using CsvHelper.Configuration;
 
-namespace OutlookOkan
+namespace OutlookOkan.Types
 {
     public class NameAndDomains
     {
@@ -8,7 +8,7 @@ namespace OutlookOkan
         public string Domain { get; set; }
     }
 
-    public sealed class NameAndDomainsMap : CsvClassMap<NameAndDomains>
+    public sealed class NameAndDomainsMap : ClassMap<NameAndDomains>
     {
         public NameAndDomainsMap()
         {
