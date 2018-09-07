@@ -483,20 +483,26 @@ namespace OutlookOkan.ViewModels
         private void LoadGeneralSettingData()
         {
             var readCsv = new ReadAndWriteCsv("GeneralSetting.csv");
-
             //1行しかないはずだが、何かの間違いで2行以上あるとまずいので、全行ロードする。
             foreach (var data in readCsv.GetCsvRecords<GeneralSetting>(readCsv.LoadCsv<GeneralSettingMap>()))
             {
                 _generalSetting.Add((data));
             }
 
+            Language = new LanguageCodeAndName();
+
             //実際に使用するのは1行目の設定のみ
-            //現在の言語はここではロードしない。
             if (_generalSetting.Count != 0)
             {
                 IsDoNotConfirmationIfAllRecipientsAreSameDomain = _generalSetting[0].IsDoNotConfirmationIfAllRecipientsAreSameDomain;
                 IsDoDoNotConfirmationIfAllWhite = _generalSetting[0].IsDoDoNotConfirmationIfAllWhite;
                 IsAutoCheckIfAllRecipientsAreSameDomain = _generalSetting[0].IsAutoCheckIfAllRecipientsAreSameDomain;
+
+                //設定ファイル内に言語設定があればそれをロードする。
+                if (_generalSetting[0].LanguageCode != null)
+                {
+                    Language.LanguageCode = _generalSetting[0].LanguageCode;
+                }
             }
         }
 
