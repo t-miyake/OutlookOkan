@@ -137,7 +137,7 @@ namespace OutlookOkan.Models
             //Load AlertKeywordAndMessage
             var csv = new ReadAndWriteCsv("AlertKeywordAndMessageList.csv");
             var alertKeywordAndMessageList = csv.GetCsvRecords<AlertKeywordAndMessage>(csv.LoadCsv<AlertKeywordAndMessageMap>());
-
+            
             if (alertKeywordAndMessageList.Count != 0)
             {
                 foreach (var i in alertKeywordAndMessageList)
@@ -194,8 +194,8 @@ namespace OutlookOkan.Models
 
             //Load AutoCcBccRecipientList
             // TODO To be improved
-            var csv = new ReadAndWriteCsv("AutoCcBccRecipientList.csv");
-            var autoCcBccRecipientList = csv.GetCsvRecords<AutoCcBccRecipient > (csv.LoadCsv<AutoCcBccRecipientMap>());
+            var autoCcBccRecipientListcsv = new ReadAndWriteCsv("AutoCcBccRecipientList.csv");
+            var autoCcBccRecipientList = autoCcBccRecipientListcsv.GetCsvRecords<AutoCcBccRecipient>(autoCcBccRecipientListcsv.LoadCsv<AutoCcBccRecipientMap>());
 
             if (autoCcBccRecipientList.Count != 0)
             {
@@ -250,8 +250,16 @@ namespace OutlookOkan.Models
                         _checkList.Alerts.Add(new Alert{AlertMessage = Resources.IsBigAttachedFile + $"[{mail.Attachments[i + 1].FileName}]", IsChecked = false, IsImportant = true, IsWhite = false});
                     }
 
-                    var fileType = mail.Attachments[i + 1].FileName
-                        .Substring(mail.Attachments[i + 1].FileName.LastIndexOf(".", StringComparison.Ordinal));
+                    //一部の状態で添付ファイルのファイルタイプを取得できないため、それを回避。
+                    string fileType;
+                    try
+                    {
+                        fileType = mail.Attachments[i + 1].FileName.Substring(mail.Attachments[i + 1].FileName.LastIndexOf(".", StringComparison.Ordinal));
+                    }
+                    catch (Exception)
+                    {
+                        fileType = Resources.Unknown;
+                    }
 
                     var isDangerous = false;
                     //実行ファイル(.exe)を添付していたら警告を表示
@@ -261,7 +269,17 @@ namespace OutlookOkan.Models
                         isDangerous = true;
                     }
 
-                    _checkList.Attachments.Add(new Attachment{FileName = mail.Attachments[i + 1].FileName, FileSize = fileSize, FileType = fileType, IsTooBig  = mail.Attachments[i + 1].Size >= 10485760, IsEncrypted = false, IsChecked = false, IsDangerous = isDangerous});
+                    string attachmetName;
+                    try
+                    {
+                        attachmetName = mail.Attachments[i + 1].FileName;
+                    }
+                    catch (Exception)
+                    {
+                        attachmetName = Resources.Unknown;
+                    }
+                    
+                    _checkList.Attachments.Add(new Attachment{FileName = attachmetName, FileSize = fileSize, FileType = fileType, IsTooBig = mail.Attachments[i + 1].Size >= 10485760, IsEncrypted = false, IsChecked = false, IsDangerous = isDangerous});
                 }
             }
         }

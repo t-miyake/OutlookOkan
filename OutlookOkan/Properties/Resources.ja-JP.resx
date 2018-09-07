@@ -412,4 +412,13 @@ CCあるいはBCCに指定したアドレスが自動で追加されます。</v
 
 アドレスまたはドメインを登録します。</value>
   </data>
+  <data name="ChangeRibbonLanguageInfo" xml:space="preserve">
+    <value>リボン(メニュー)の表示言語は、Outlookを再起動すると更新されます。</value>
+  </data>
+  <data name="IsCanNotShowConfirmation" xml:space="preserve">
+    <value>確認画面を表示できません</value>
+  </data>
+  <data name="SendMailConfirmation" xml:space="preserve">
+    <value>メールを送信しますか？</value>
+  </data>
 </root>

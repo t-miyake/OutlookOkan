@@ -16,12 +16,31 @@ namespace OutlookOkan.CsvTools
         /// </summary>
         private readonly string _directoryPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "Noraneko\\OutlookOkan\\");
         private readonly string _filePath;
+        private readonly Encoding _fileEncoding;
 
         public ReadAndWriteCsv(string filename)
         {
             _filePath = _directoryPath + (filename ?? throw new ArgumentNullException(nameof(filename)));
-
+            _fileEncoding = Encoding.GetEncoding(DetectCharset(_filePath));
+           
             CheckFileAndDirectoryExists();
+        }
+
+        /// <summary>
+        /// 文字コードの確認
+        /// </summary>
+        /// <param name="filePath">文字コードを確認するファイルのパス</param>
+        /// <returns>文字コード</returns>
+        public string DetectCharset(string filePath)
+        {
+            using (var fileStream = File.OpenRead(filePath))
+            {
+                var charsetDetector = new Ude.CharsetDetector();
+                charsetDetector.Feed(fileStream);
+                charsetDetector.DataEnd();
+
+                return charsetDetector.Charset ?? "UTF-8";
+            }
         }
 
         /// <summary>
@@ -43,7 +62,7 @@ namespace OutlookOkan.CsvTools
         /// <returns>読み込んだCSVデータ</returns>
         public CsvReader LoadCsv<TMaptype>() where TMaptype : CsvHelper.Configuration.ClassMap
         {
-            var csvReader = new CsvReader(new StreamReader(_filePath, Encoding.UTF8));
+            var csvReader = new CsvReader(new StreamReader(_filePath, _fileEncoding));
             csvReader.Configuration.HasHeaderRecord = false;
             csvReader.Configuration.RegisterClassMap<TMaptype>();
 
@@ -58,7 +77,8 @@ namespace OutlookOkan.CsvTools
         /// <returns>CSVデータ(List<T/>)</returns>
         public List<TCsvType> GetCsvRecords<TCsvType>(CsvReader loadedCsv)
         {
-            var list = loadedCsv.GetRecords<TCsvType>().ToList();
+            loadedCsv.Configuration.MissingFieldFound = null;
+            var list =  loadedCsv.GetRecords<TCsvType>().ToList();
             loadedCsv.Dispose();
 
             return list;

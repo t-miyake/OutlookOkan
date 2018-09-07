@@ -25,7 +25,7 @@
                 <Label Content="{Binding Source={x:Static services:ResourceService.Instance}, Path=Resources.Copyright, Mode=OneWay}"/>
                 <Label Content="{Binding Source={x:Static services:ResourceService.Instance}, Path=Resources.CompanyName, Mode=OneWay}"/>
 
-                <TextBox Height="150" VerticalScrollBarVisibility="Visible" HorizontalScrollBarVisibility="Visible" IsReadOnly="True" Margin="0,3,0,0" Padding="3" Text="Third-Party Software Usage and Licenses&#xa;&#xa;CsvHelper&#xa;Copyright © 2009-2018 Josh Close and Contributors&#xa;Dual licensed under Microsoft Public License and Apache License Version 2.0&#xa;https://github.com/JoshClose/CsvHelper/blob/master/LICENSE.txt"/>
+                <TextBox Height="150" VerticalScrollBarVisibility="Visible" HorizontalScrollBarVisibility="Visible" IsReadOnly="True" Margin="0,3,0,0" Padding="3" Text="Third-Party Software Usage and Licenses&#xa;&#xa;CsvHelper&#xa;Copyright © 2009-2018 Josh Close and Contributors&#xa;Dual licensed under Microsoft Public License and Apache License Version 2.0&#xa;https://github.com/JoshClose/CsvHelper/blob/master/LICENSE.txt&#xa;&#xa;Ude.NetStandard&#xa;The library is subject to the Mozilla Public License Version 1.1 (the &quot;License&quot;).&#xa;Alternatively, it may be used under the terms of either the GNU General Public License Version 2 or later (the &quot;GPL&quot;),&#xa;or the GNU Lesser General Public License Version 2.1 or later (the &quot;LGPL&quot;).&#xa;License&#xa;https://github.com/yinyue200/ude/tree/master/license&#xa;Source code&#xa;https://github.com/yinyue200/ude&#xa;"/>
 
                 <Button Content="OK" Width="100" HorizontalAlignment="Right" Margin="0,13,5,0" IsCancel="True" IsDefault="True"/>
             </StackPanel>
