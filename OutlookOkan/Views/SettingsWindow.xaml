@@ -38,6 +38,7 @@
                     <GroupBox Header="{Binding Source={x:Static services:ResourceService.Instance}, Path=Resources.ChangeLanguage, Mode=OneWay}"  FontSize="11" Padding="3,3,3,3" Margin="0,5,0,0">
                         <StackPanel Orientation="Vertical">
                             <ComboBox ItemsSource="{Binding Languages}" SelectedItem="{Binding Language, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" DisplayMemberPath="LanguageName" />
+                            <TextBlock Text="{Binding Source={x:Static services:ResourceService.Instance}, Path=Resources.ChangeRibbonLanguageInfo, Mode=OneWay}" Margin="5,4,0,0"/>
                         </StackPanel>
                     </GroupBox>
                 </StackPanel>
@@ -51,7 +52,7 @@
                     </Grid.ColumnDefinitions>
                     <StackPanel Grid.Column="0" Margin="8,2,8,8">
                         <GroupBox Header="{Binding Source={x:Static services:ResourceService.Instance}, Path=Resources.Settings, Mode=OneWay}"  FontSize="11" Padding="3,3,3,3">
-                            <DataGrid Height="303" VerticalScrollBarVisibility="Visible" HorizontalScrollBarVisibility="Visible" BorderBrush="#FFD5DFE5" HeadersVisibility="Column" ItemsSource="{Binding Whitelist,Mode=TwoWay}" AutoGenerateColumns="false" CanUserAddRows="True" CanUserDeleteRows="True" CanUserResizeColumns="True" CanUserResizeRows="false" CanUserSortColumns="True" HorizontalGridLinesBrush="#FFD5DFE5" VerticalGridLinesBrush="#FFD5DFE5" CellEditEnding="DataGrid_WhiteList_OnCellEditEnding">
+                            <DataGrid Height="303" VerticalScrollBarVisibility="Visible" HorizontalScrollBarVisibility="Visible" BorderBrush="#FFD5DFE5" HeadersVisibility="All" RowHeaderWidth="15" ItemsSource="{Binding Whitelist,Mode=TwoWay}" AutoGenerateColumns="false" CanUserResizeColumns="True" CanUserSortColumns="True" HorizontalGridLinesBrush="#FFD5DFE5" VerticalGridLinesBrush="#FFD5DFE5" CellEditEnding="DataGrid_WhiteList_OnCellEditEnding">
                                 <DataGrid.Columns>
                                     <DataGridTextColumn Header="{Binding Source={x:Static services:ResourceService.Instance}, Path=Resources.MailddressAndDomain, Mode=OneWay}" Binding="{Binding WhiteName, Mode=TwoWay}" Width="*">
                                         <DataGridTextColumn.ElementStyle>
@@ -87,7 +88,7 @@
                     </Grid.ColumnDefinitions>
                     <StackPanel Grid.Column="0" Margin="8,2,8,8">
                         <GroupBox Header="{Binding Source={x:Static services:ResourceService.Instance}, Path=Resources.Settings, Mode=OneWay}"  FontSize="11" Padding="3,3,3,3">
-                            <DataGrid Height="303" VerticalScrollBarVisibility="Visible" HorizontalScrollBarVisibility="Visible" BorderBrush="#FFD5DFE5" HeadersVisibility="Column"  ItemsSource="{Binding NameAndDomains,Mode=TwoWay}" AutoGenerateColumns="False" CanUserAddRows="True" CanUserDeleteRows="True" CanUserResizeColumns="True" CanUserResizeRows="false" CanUserSortColumns="True" HorizontalGridLinesBrush="#FFD5DFE5" VerticalGridLinesBrush="#FFD5DFE5" CellEditEnding="DataGrid_NameAndDomains_OnCellEditEnding">
+                            <DataGrid Height="303" VerticalScrollBarVisibility="Visible" HorizontalScrollBarVisibility="Visible" BorderBrush="#FFD5DFE5" HeadersVisibility="All" RowHeaderWidth="15" ItemsSource="{Binding NameAndDomains,Mode=TwoWay}" AutoGenerateColumns="False" CanUserAddRows="True" CanUserDeleteRows="True" CanUserResizeColumns="True" CanUserResizeRows="false" CanUserSortColumns="True" HorizontalGridLinesBrush="#FFD5DFE5" VerticalGridLinesBrush="#FFD5DFE5" CellEditEnding="DataGrid_NameAndDomains_OnCellEditEnding">
                                 <DataGrid.Columns>
                                     <DataGridTextColumn Header="{Binding Source={x:Static services:ResourceService.Instance}, Path=Resources.Name, Mode=OneWay}" Binding="{Binding Name, Mode=TwoWay}" Width="*">
                                         <DataGridTextColumn.ElementStyle>
@@ -130,7 +131,7 @@
                     </Grid.ColumnDefinitions>
                     <StackPanel Grid.Column="0" Margin="8,2,8,8">
                         <GroupBox Header="{Binding Source={x:Static services:ResourceService.Instance}, Path=Resources.Settings, Mode=OneWay}"  FontSize="11" Padding="3,3,3,3">
-                            <DataGrid Height="303" VerticalScrollBarVisibility="Visible" HorizontalScrollBarVisibility="Visible" BorderBrush="#FFD5DFE5" HeadersVisibility="Column"  ItemsSource="{Binding AlertKeywordAndMessages,Mode=TwoWay}" AutoGenerateColumns="False" CanUserAddRows="True" CanUserDeleteRows="True" CanUserResizeColumns="True" CanUserResizeRows="false" CanUserSortColumns="True" HorizontalGridLinesBrush="#FFD5DFE5" VerticalGridLinesBrush="#FFD5DFE5" CellEditEnding="DataGrid_AlertKeywordAndMessage_OnCellEditEnding">
+                            <DataGrid Height="303" VerticalScrollBarVisibility="Visible" HorizontalScrollBarVisibility="Visible" BorderBrush="#FFD5DFE5" HeadersVisibility="All" RowHeaderWidth="15" ItemsSource="{Binding AlertKeywordAndMessages,Mode=TwoWay}" AutoGenerateColumns="False" CanUserAddRows="True" CanUserDeleteRows="True" CanUserResizeColumns="True" CanUserResizeRows="false" CanUserSortColumns="True" HorizontalGridLinesBrush="#FFD5DFE5" VerticalGridLinesBrush="#FFD5DFE5" CellEditEnding="DataGrid_AlertKeywordAndMessage_OnCellEditEnding">
                                 <DataGrid.Columns>
                                     <DataGridTextColumn Header="{Binding Source={x:Static services:ResourceService.Instance}, Path=Resources.AlertKeyword, Mode=OneWay}" Binding="{Binding AlertKeyword, Mode=TwoWay}" Width="*">
                                         <DataGridTextColumn.ElementStyle>
@@ -182,7 +183,7 @@
                     </Grid.ColumnDefinitions>
                     <StackPanel Grid.Column="0" Margin="8,2,8,8">
                         <GroupBox Header="{Binding Source={x:Static services:ResourceService.Instance}, Path=Resources.Settings, Mode=OneWay}"  FontSize="11" Padding="3,3,3,3">
-                            <DataGrid Height="303" VerticalScrollBarVisibility="Visible" HorizontalScrollBarVisibility="Visible" BorderBrush="#FFD5DFE5" HeadersVisibility="Column"  ItemsSource="{Binding AlertAddresses,Mode=TwoWay}" AutoGenerateColumns="False" CanUserAddRows="True" CanUserDeleteRows="True" CanUserResizeColumns="True" CanUserResizeRows="false" CanUserSortColumns="True" HorizontalGridLinesBrush="#FFD5DFE5" VerticalGridLinesBrush="#FFD5DFE5" CellEditEnding="DataGrid_AlertAddresses_OnCellEditEnding">
+                            <DataGrid Height="303" VerticalScrollBarVisibility="Visible" HorizontalScrollBarVisibility="Visible" BorderBrush="#FFD5DFE5" HeadersVisibility="All" RowHeaderWidth="15" ItemsSource="{Binding AlertAddresses,Mode=TwoWay}" AutoGenerateColumns="False" CanUserAddRows="True" CanUserDeleteRows="True" CanUserResizeColumns="True" CanUserResizeRows="false" CanUserSortColumns="True" HorizontalGridLinesBrush="#FFD5DFE5" VerticalGridLinesBrush="#FFD5DFE5" CellEditEnding="DataGrid_AlertAddresses_OnCellEditEnding">
                                 <DataGrid.Columns>
                                     <DataGridTextColumn Header="{Binding Source={x:Static services:ResourceService.Instance}, Path=Resources.AlertMailddressAndDomain, Mode=OneWay}" Binding="{Binding TartgetAddress, Mode=TwoWay}" Width="*">
                                         <DataGridTextColumn.ElementStyle>
@@ -227,7 +228,7 @@
                     </Grid.ColumnDefinitions>
                     <StackPanel Grid.Column="0" Margin="8,2,8,8">
                         <GroupBox Header="{Binding Source={x:Static services:ResourceService.Instance}, Path=Resources.Settings, Mode=OneWay}"  FontSize="11" Padding="3,3,3,3">
-                            <DataGrid Height="303" VerticalScrollBarVisibility="Visible" HorizontalScrollBarVisibility="Visible" BorderBrush="#FFD5DFE5" HeadersVisibility="Column"  ItemsSource="{Binding AutoCcBccKeywords,Mode=TwoWay}" AutoGenerateColumns="False" CanUserAddRows="True" CanUserDeleteRows="True" CanUserResizeColumns="True" CanUserResizeRows="false" CanUserSortColumns="True" HorizontalGridLinesBrush="#FFD5DFE5" VerticalGridLinesBrush="#FFD5DFE5" CellEditEnding="DataGrid_AutoCcBccKeyword_OnCellEditEnding">
+                            <DataGrid Height="303" VerticalScrollBarVisibility="Visible" HorizontalScrollBarVisibility="Visible" BorderBrush="#FFD5DFE5" HeadersVisibility="All" RowHeaderWidth="15" ItemsSource="{Binding AutoCcBccKeywords,Mode=TwoWay}" AutoGenerateColumns="False" CanUserAddRows="True" CanUserDeleteRows="True" CanUserResizeColumns="True" CanUserResizeRows="false" CanUserSortColumns="True" HorizontalGridLinesBrush="#FFD5DFE5" VerticalGridLinesBrush="#FFD5DFE5" CellEditEnding="DataGrid_AutoCcBccKeyword_OnCellEditEnding">
                                 <DataGrid.Columns>
                                     <DataGridTextColumn Header="{Binding Source={x:Static services:ResourceService.Instance}, Path=Resources.Keyword, Mode=OneWay}" Binding="{Binding Keyword, Mode=TwoWay}" Width="*">
                                         <DataGridTextColumn.ElementStyle>
@@ -278,7 +279,7 @@
                     </Grid.ColumnDefinitions>
                     <StackPanel Grid.Column="0" Margin="8,2,8,8">
                         <GroupBox Header="{Binding Source={x:Static services:ResourceService.Instance}, Path=Resources.Settings, Mode=OneWay}"  FontSize="11" Padding="3,3,3,3">
-                            <DataGrid Height="303" VerticalScrollBarVisibility="Visible" HorizontalScrollBarVisibility="Hidden" BorderBrush="#FFD5DFE5" HeadersVisibility="Column"  ItemsSource="{Binding AutoCcBccRecipients,Mode=TwoWay}" AutoGenerateColumns="False" CanUserAddRows="True" CanUserDeleteRows="True" CanUserResizeColumns="True" CanUserResizeRows="false" CanUserSortColumns="True" HorizontalGridLinesBrush="#FFD5DFE5" VerticalGridLinesBrush="#FFD5DFE5" CellEditEnding="DataGrid_AutoCcBccRecipient_OnCellEditEnding">
+                            <DataGrid Height="303" VerticalScrollBarVisibility="Visible" HorizontalScrollBarVisibility="Hidden" BorderBrush="#FFD5DFE5" HeadersVisibility="All" RowHeaderWidth="15" ItemsSource="{Binding AutoCcBccRecipients,Mode=TwoWay}" AutoGenerateColumns="False" CanUserAddRows="True" CanUserDeleteRows="True" CanUserResizeColumns="True" CanUserResizeRows="false" CanUserSortColumns="True" HorizontalGridLinesBrush="#FFD5DFE5" VerticalGridLinesBrush="#FFD5DFE5" CellEditEnding="DataGrid_AutoCcBccRecipient_OnCellEditEnding">
                                 <DataGrid.Columns>
                                     <DataGridTextColumn Header="{Binding Source={x:Static services:ResourceService.Instance}, Path=Resources.MailddressAndDomain, Mode=OneWay}" Binding="{Binding TargetRecipient, Mode=TwoWay}" Width="*">
                                         <DataGridTextColumn.ElementStyle>

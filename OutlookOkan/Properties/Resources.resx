@@ -412,4 +412,13 @@ Domain: @noraneko.co.jp
 
 Register EMailAddress or domain.</value>
   </data>
+  <data name="ChangeRibbonLanguageInfo" xml:space="preserve">
+    <value>The display language of the ribbon (menu) is updated when Outlook is restarted.</value>
+  </data>
+  <data name="IsCanNotShowConfirmation" xml:space="preserve">
+    <value>Can't show the confirmation</value>
+  </data>
+  <data name="SendMailConfirmation" xml:space="preserve">
+    <value>Do you want to send mail?</value>
+  </data>
 </root>

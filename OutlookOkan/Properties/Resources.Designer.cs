@@ -259,6 +259,15 @@ namespace OutlookOkan.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to The display language of the ribbon (menu) is updated when Outlook is restarted..
+        /// </summary>
+        public static string ChangeRibbonLanguageInfo {
+            get {
+                return ResourceManager.GetString("ChangeRibbonLanguageInfo", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Noraneko Inc..
         /// </summary>
         public static string CompanyName {
@@ -547,6 +556,15 @@ namespace OutlookOkan.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Can&apos;t show the confirmation.
+        /// </summary>
+        public static string IsCanNotShowConfirmation {
+            get {
+                return ResourceManager.GetString("IsCanNotShowConfirmation", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Keyword.
         /// </summary>
         public static string Keyword {
@@ -705,6 +723,15 @@ namespace OutlookOkan.Properties {
         public static string SendingForbidInfo {
             get {
                 return ResourceManager.GetString("SendingForbidInfo", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Do you want to send mail?.
+        /// </summary>
+        public static string SendMailConfirmation {
+            get {
+                return ResourceManager.GetString("SendMailConfirmation", resourceCulture);
             }
         }
         

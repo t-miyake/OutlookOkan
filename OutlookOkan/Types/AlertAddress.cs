@@ -13,7 +13,7 @@ namespace OutlookOkan.Types
         public AlertAddressMap()
         {
             Map(m => m.TartgetAddress).Index(0);
-            Map(m => m.IsCanNotSend).Index(1).TypeConverterOption.BooleanValues(true, true, "Yes", "Y").TypeConverterOption.BooleanValues(false, true, "No", "N");
+            Map(m => m.IsCanNotSend).Index(1).TypeConverterOption.BooleanValues(true, true, "Yes", "Y").TypeConverterOption.BooleanValues(false, true, "No", "N").Default(false);
         }
     }
 }

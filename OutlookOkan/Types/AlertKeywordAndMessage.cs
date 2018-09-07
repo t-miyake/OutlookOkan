@@ -15,7 +15,7 @@ namespace OutlookOkan.Types
         {
             Map(m => m.AlertKeyword).Index(0);
             Map(m => m.Message).Index(1);
-            Map(m => m.IsCanNotSend).Index(2).TypeConverterOption.BooleanValues(true, true, "Yes", "Y").TypeConverterOption.BooleanValues(false, true, "No", "N");
+            Map(m => m.IsCanNotSend).Index(2).TypeConverterOption.BooleanValues(true, true, "Yes", "Y").TypeConverterOption.BooleanValues(false, true, "No", "N").Default(false);
         }
     }
 }

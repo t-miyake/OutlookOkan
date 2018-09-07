@@ -38,84 +38,100 @@ namespace OutlookOkan
 
         private void Application_ItemSend(object item, ref bool cancel)
         {
-            var generateCheckList = new GenerateCheckList();
-            var checklist = generateCheckList.GenerateCheckListFromMail(item as Outlook._MailItem);
-
-            //Outlook起動後にユーザが設定を変更する可能性があるため、毎回ユーザ設定をロード
-            LoadSetting();
-            if (_language != "NotSet")
+            //何らかの問題で確認画面が表示されないと、意図せずメールが送られてしまう恐れがあるため、
+            try
             {
-                ResourceService.Instance.ChangeCulture(_language);
-            }
+                var generateCheckList = new GenerateCheckList();
+                var checklist = generateCheckList.GenerateCheckListFromMail(item as Outlook._MailItem);
 
-            //送信先と同一のドメインはあらかじめチェックを入れるオプションが有効な場合、それをする。
-            if (_isAutoCheckIfAllRecipientsAreSameDomain)
-            {
-                foreach(var to in checklist.ToAddresses)
+                //Outlook起動後にユーザが設定を変更する可能性があるため、毎回ユーザ設定をロード
+                LoadSetting();
+                if (_language != "NotSet")
                 {
-                    if (!to.IsExternal)
+                    ResourceService.Instance.ChangeCulture(_language);
+                }
+
+                //送信先と同一のドメインはあらかじめチェックを入れるオプションが有効な場合、それをする。
+                if (_isAutoCheckIfAllRecipientsAreSameDomain)
+                {
+                    foreach (var to in checklist.ToAddresses)
                     {
-                        to.IsChecked = true;
+                        if (!to.IsExternal)
+                        {
+                            to.IsChecked = true;
+                        }
+                    }
+
+                    foreach (var cc in checklist.CcAddresses)
+                    {
+                        if (!cc.IsExternal)
+                        {
+                            cc.IsChecked = true;
+                        }
+                    }
+
+                    foreach (var bcc in checklist.BccAddresses)
+                    {
+                        if (!bcc.IsExternal)
+                        {
+                            bcc.IsChecked = true;
+                        }
                     }
                 }
 
-                foreach(var cc in checklist.CcAddresses)
+                if (_isDoNotConfirmationIfAllRecipientsAreSameDomain && IsAllRecipientsAreSameDomain(checklist))
                 {
-                    if (!cc.IsExternal)
+                    //全ての受信者が送信者と同一ドメインの場合に確認画面を表示しないオプションが有効かつその状態のためreturn.
+                    return;
+                }
+
+
+                if (_isDoDoNotConfirmationIfAllWhite && IsAllChedked(checklist))
+                {
+                    //全てにチェックが入った状態の場合に確認画面を表示しないオプションが有効かつその状態のためreturn.
+                    return;
+                }
+
+                //送信禁止フラグの確認
+                if (checklist.IsCanNotSendMail)
+                {
+                    //このタイミングで落ちると、メールが送信されてしまうので、念のため。
+                    try
                     {
-                        cc.IsChecked = true;
+                        MessageBox.Show(checklist.CanNotSendMailMessage, Properties.Resources.SendingForbid,
+                            MessageBoxButton.OK, MessageBoxImage.Error);
                     }
-                }
-
-                foreach(var bcc in checklist.BccAddresses)
-                {
-                    if (!bcc.IsExternal)
+                    catch (Exception)
                     {
-                        bcc.IsChecked = true;
+                        //Do Noting.
                     }
-                }
-            }
+                    finally
+                    {
+                        cancel = true;
+                    }
 
-            if(_isDoNotConfirmationIfAllRecipientsAreSameDomain && IsAllRecipientsAreSameDomain(checklist))
-            {
-                //全ての受信者が送信者と同一ドメインの場合に確認画面を表示しないオプションが有効かつその状態のためreturn.
-                return;
-            }
-
-
-            if (_isDoDoNotConfirmationIfAllWhite && IsAllChedked(checklist))
-            {
-                //全てにチェックが入った状態の場合に確認画面を表示しないオプションが有効かつその状態のためreturn.
-                return;
-            }
-
-            //送信禁止フラグの確認
-            if (checklist.IsCanNotSendMail)
-            {
-                //このタイミングで落ちると、メールが送信されてしまうので、念のため。
-                try
-                {
-                    MessageBox.Show(checklist.CanNotSendMailMessage, Properties.Resources.SendingForbid, MessageBoxButton.OK, MessageBoxImage.Error);
-                }
-                catch (Exception)
-                {
-                    //Do Noting.
-                }
-                finally
-                { 
                     cancel = true;
                 }
-
-                cancel = true;
-            }
-            else
-            {
-                var confirmationWindow = new ConfirmationWindow(checklist);
-                var dialogResult = confirmationWindow.ShowDialog();
-
-                if (dialogResult == true)
+                else
                 {
-                    //Send Mail.
+                    var confirmationWindow = new ConfirmationWindow(checklist);
+                    var dialogResult = confirmationWindow.ShowDialog();
+
+                    if (dialogResult == true)
+                    {
+                        //Send Mail.
+                    }
+                    else
+                    {
+                        cancel = true;
+                    }
+                }
+            }catch (Exception)
+            {
+                var dialogResult = MessageBox.Show(Properties.Resources.SendMailConfirmation, Properties.Resources.IsCanNotShowConfirmation, MessageBoxButton.YesNo, MessageBoxImage.Warning);
+                if (dialogResult == MessageBoxResult.Yes)
+                {
+                    //SendMail
                 }
                 else
                 {

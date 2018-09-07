@@ -66,7 +66,9 @@ namespace OutlookOkan.ViewModels
         private void LoadWhitelistData()
         {
             var readCsv = new ReadAndWriteCsv("Whitelist.csv");
-            foreach (var data in readCsv.GetCsvRecords<Whitelist>(readCsv.LoadCsv<WhitelistMap>()))
+            var whitelist = readCsv.GetCsvRecords<Whitelist>(readCsv.LoadCsv<WhitelistMap>());
+
+            foreach (var data in whitelist)
             {
                 Whitelist.Add(data);
             }
@@ -134,7 +136,9 @@ namespace OutlookOkan.ViewModels
         private void LoadNameAndDomainsData()
         {
             var readCsv = new ReadAndWriteCsv("NameAndDomains.csv");
-            foreach (var data in readCsv.GetCsvRecords<NameAndDomains>(readCsv.LoadCsv<NameAndDomainsMap>()))
+            var nameAndDomains = readCsv.GetCsvRecords<NameAndDomains>(readCsv.LoadCsv<NameAndDomainsMap>());
+
+            foreach (var data in nameAndDomains)
             {
                 NameAndDomains.Add(data);
             }
@@ -202,7 +206,9 @@ namespace OutlookOkan.ViewModels
         private void LoadAlertKeywordAndMessagesData()
         {
             var readCsv = new ReadAndWriteCsv("AlertKeywordAndMessageList.csv");
-            foreach (var data in readCsv.GetCsvRecords<AlertKeywordAndMessage>(readCsv.LoadCsv<AlertKeywordAndMessageMap>()))
+            var alertKeywordAndMessages = readCsv.GetCsvRecords<AlertKeywordAndMessage>(readCsv.LoadCsv<AlertKeywordAndMessageMap>());
+
+            foreach (var data in alertKeywordAndMessages)
             {
                 AlertKeywordAndMessages.Add(data);
             }
@@ -270,7 +276,9 @@ namespace OutlookOkan.ViewModels
         private void LoadAlertAddressessData()
         {
             var readCsv = new ReadAndWriteCsv("AlertAddressList.csv");
-            foreach (var data in readCsv.GetCsvRecords<AlertAddress>(readCsv.LoadCsv<AlertAddressMap>()))
+            var alertAddresses = readCsv.GetCsvRecords<AlertAddress>(readCsv.LoadCsv<AlertAddressMap>());
+
+            foreach (var data in alertAddresses)
             {
                 AlertAddresses.Add(data);
             }
@@ -338,7 +346,9 @@ namespace OutlookOkan.ViewModels
         private void LoadAutoCcBccKeywordsData()
         {
             var readCsv = new ReadAndWriteCsv("AutoCcBccKeywordList.csv");
-            foreach (var data in readCsv.GetCsvRecords<AutoCcBccKeyword>(readCsv.LoadCsv<AutoCcBccKeywordMap>()))
+            var autoCcBccKeywords = readCsv.GetCsvRecords<AutoCcBccKeyword>(readCsv.LoadCsv<AutoCcBccKeywordMap>());
+
+            foreach (var data in autoCcBccKeywords)
             {
                 AutoCcBccKeywords.Add(data);
             }
@@ -406,7 +416,9 @@ namespace OutlookOkan.ViewModels
         private void LoadAutoCcBccRecipientsData()
         {
             var readCsv = new ReadAndWriteCsv("AutoCcBccRecipientList.csv");
-            foreach (var data in readCsv.GetCsvRecords<AutoCcBccRecipient>(readCsv.LoadCsv<AutoCcBccRecipientMap>()))
+            var autoCcBccRecipient = readCsv.GetCsvRecords<AutoCcBccRecipient>(readCsv.LoadCsv<AutoCcBccRecipientMap>());
+
+            foreach (var data in autoCcBccRecipient)
             {
                 AutoCcBccRecipients.Add(data);
             }
