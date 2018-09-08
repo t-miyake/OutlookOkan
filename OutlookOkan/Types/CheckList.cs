@@ -11,6 +11,7 @@ namespace OutlookOkan.Types
         public List<Attachment> Attachments { get; set; } = new List<Attachment>();
         public string Sender { get; set; }
         public string SenderDomain { get; set; }
+        public int RecipientExternalDomainNum { get; set; }
         public string Subject { get; set; }
         public string MailType { get; set; }
         public string MailBody { get; set; }
@@ -43,6 +44,7 @@ namespace OutlookOkan.Types
         public string MailAddress { get; set; }
         public bool IsExternal { get; set; }
         public bool IsWhite { get; set; }
+        public bool IsSkip { get; set; }
         public bool IsChecked { get; set; }
     }
 }

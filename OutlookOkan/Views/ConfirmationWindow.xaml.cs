@@ -1,6 +1,6 @@
-﻿using System.Windows;
-using OutlookOkan.Types;
+﻿using OutlookOkan.Types;
 using OutlookOkan.ViewModels;
+using System.Windows;
 
 namespace OutlookOkan.Views
 {
@@ -10,7 +10,7 @@ namespace OutlookOkan.Views
         {
             var viewModel = new ConfirmationWindowViewModel(checkList);
             DataContext = viewModel;
-            
+
             InitializeComponent();
         }
 

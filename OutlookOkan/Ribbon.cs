@@ -1,10 +1,10 @@
-﻿using System;
+﻿using OutlookOkan.Views;
+using System;
 using System.Diagnostics;
 using System.IO;
 using System.Reflection;
 using System.Runtime.InteropServices;
 using Office = Microsoft.Office.Core;
-using OutlookOkan.Views;
 
 namespace OutlookOkan
 {
@@ -13,7 +13,7 @@ namespace OutlookOkan
     {
         private Office.IRibbonUI _ribbon;
 
-        public Ribbon(){}
+        public Ribbon() { }
 
         public void ShowHelp(Office.IRibbonControl control)
         {

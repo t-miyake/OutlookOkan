@@ -91,7 +91,7 @@ namespace OutlookOkan.ViewModels
             {
                 try
                 {
-                    var importData =new List<Whitelist>(importAction.ReadCsv<Whitelist>(importAction.LoadCsv<WhitelistMap>(filePath)));
+                    var importData = new List<Whitelist>(importAction.ReadCsv<Whitelist>(importAction.LoadCsv<WhitelistMap>(filePath)));
                     foreach (var data in importData)
                     {
                         Whitelist.Add(data);
@@ -112,7 +112,7 @@ namespace OutlookOkan.ViewModels
             foreach (var data in Whitelist) { tempDate.Add(data); }
 
             var exportAction = new CsvImportAndExport();
-            exportAction.CsvExport<WhitelistMap>(tempDate,"Whitelist.csv");
+            exportAction.CsvExport<WhitelistMap>(tempDate, "Whitelist.csv");
         }
 
         private ObservableCollection<Whitelist> _whitelist = new ObservableCollection<Whitelist>();
@@ -483,7 +483,6 @@ namespace OutlookOkan.ViewModels
         private void LoadGeneralSettingData()
         {
             var readCsv = new ReadAndWriteCsv("GeneralSetting.csv");
-
             //1行しかないはずだが、何かの間違いで2行以上あるとまずいので、全行ロードする。
             foreach (var data in readCsv.GetCsvRecords<GeneralSetting>(readCsv.LoadCsv<GeneralSettingMap>()))
             {
@@ -491,12 +490,18 @@ namespace OutlookOkan.ViewModels
             }
 
             //実際に使用するのは1行目の設定のみ
-            //現在の言語はここではロードしない。
             if (_generalSetting.Count != 0)
             {
                 IsDoNotConfirmationIfAllRecipientsAreSameDomain = _generalSetting[0].IsDoNotConfirmationIfAllRecipientsAreSameDomain;
                 IsDoDoNotConfirmationIfAllWhite = _generalSetting[0].IsDoDoNotConfirmationIfAllWhite;
                 IsAutoCheckIfAllRecipientsAreSameDomain = _generalSetting[0].IsAutoCheckIfAllRecipientsAreSameDomain;
+                IsShowConfirmationToMultipleDomain = _generalSetting[0].IsShowConfirmationToMultipleDomain;
+
+                //設定ファイル内に言語設定があればそれをロードする。
+                if (_generalSetting[0].LanguageCode != null)
+                {
+                    Language.LanguageCode = _generalSetting[0].LanguageCode;
+                }
             }
         }
 
@@ -512,11 +517,11 @@ namespace OutlookOkan.ViewModels
             {
                 new GeneralSetting
                 {
-
                     IsDoNotConfirmationIfAllRecipientsAreSameDomain = IsDoNotConfirmationIfAllRecipientsAreSameDomain,
                     IsDoDoNotConfirmationIfAllWhite = IsDoDoNotConfirmationIfAllWhite,
                     IsAutoCheckIfAllRecipientsAreSameDomain = IsAutoCheckIfAllRecipientsAreSameDomain,
-                    LanguageCode = languageCode
+                    LanguageCode = languageCode,
+                    IsShowConfirmationToMultipleDomain = IsShowConfirmationToMultipleDomain
                 }
             };
 
@@ -561,7 +566,18 @@ namespace OutlookOkan.ViewModels
             }
         }
 
-        private LanguageCodeAndName _language;
+        private bool _isShowConfirmationToMultipleDomain;
+        public bool IsShowConfirmationToMultipleDomain
+        {
+            get => _isShowConfirmationToMultipleDomain;
+            set
+            {
+                _isShowConfirmationToMultipleDomain = value;
+                OnPropertyChanged("IsShowConfirmationToMultipleDomain");
+            }
+        }
+
+        private LanguageCodeAndName _language = new LanguageCodeAndName();
         public LanguageCodeAndName Language
         {
             get => _language;

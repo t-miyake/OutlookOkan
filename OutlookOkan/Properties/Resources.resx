@@ -205,7 +205,7 @@
     <value>Domain</value>
   </data>
   <data name="DontShowConfirmationScreen" xml:space="preserve">
-    <value>Don't show confirmation screen</value>
+    <value>Skip the confirmation screen</value>
   </data>
   <data name="ExportFailed" xml:space="preserve">
     <value>Export Failed</value>
@@ -229,10 +229,10 @@
     <value>HTML</value>
   </data>
   <data name="IfAllSameDomain" xml:space="preserve">
-    <value>If all destinations are in the same domain as the source address, do not display the confirmation screen.</value>
+    <value>If all destinations are in the same domain as the source address, skip the confirmation screen.</value>
   </data>
   <data name="IfAllWhite" xml:space="preserve">
-    <value>If there is no check target in the destination, do not display the confirmation screen.</value>
+    <value>If there is no check target in the destination, skip the confirmation screen.</value>
   </data>
   <data name="ImportAndExport" xml:space="preserve">
     <value>Import/Export</value>
@@ -361,7 +361,7 @@
     <value>Copyright (C) 2018 Noraneko Inc.</value>
   </data>
   <data name="Version" xml:space="preserve">
-    <value>Version 2.0.0 (β1)</value>
+    <value>Version 2.0.3 (β4)</value>
   </data>
   <data name="VersionInfo" xml:space="preserve">
     <value>About</value>
@@ -420,5 +420,14 @@ Register EMailAddress or domain.</value>
   </data>
   <data name="SendMailConfirmation" xml:space="preserve">
     <value>Do you want to send mail?</value>
+  </data>
+  <data name="IsShowConfirmationToMultipleDomain" xml:space="preserve">
+    <value>If the recipient contains multiple external domains, show the confirmation screen. (Don't skip confirmation screen.)</value>
+  </data>
+  <data name="IsSkipConfirmation" xml:space="preserve">
+    <value>Skip confirmation</value>
+  </data>
+  <data name="IsSkipConfirmationInfo" xml:space="preserve">
+    <value>When checked, skip the confirmation screen.</value>
   </data>
 </root>

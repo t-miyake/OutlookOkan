@@ -361,7 +361,7 @@
     <value>Copyright (C) 2018 Noraneko Inc.</value>
   </data>
   <data name="Version" xml:space="preserve">
-    <value>バージョン 2.0.0 (β1)</value>
+    <value>バージョン 2.0.3 (β4)</value>
   </data>
   <data name="VersionInfo" xml:space="preserve">
     <value>バージョン情報</value>
@@ -420,5 +420,14 @@ CCあるいはBCCに指定したアドレスが自動で追加されます。</v
   </data>
   <data name="SendMailConfirmation" xml:space="preserve">
     <value>メールを送信しますか？</value>
+  </data>
+  <data name="IsShowConfirmationToMultipleDomain" xml:space="preserve">
+    <value>宛先に複数の外部ドメインが含まれている場合、必ず確認画面を表示する。(確認画面をスキップしません)</value>
+  </data>
+  <data name="IsSkipConfirmation" xml:space="preserve">
+    <value>確認画面をスキップ</value>
+  </data>
+  <data name="IsSkipConfirmationInfo" xml:space="preserve">
+    <value>チェックを入れた宛先にのみメールを送信する場合、確認画面をスキップします</value>
   </data>
 </root>
