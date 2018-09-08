@@ -36,8 +36,7 @@ namespace OutlookOkan
 
             Application.ItemSend += Application_ItemSend;
         }
-
-        //TODO 分かりやすくするために機能を分離する。
+        
         private void Application_ItemSend(object item, ref bool cancel)
         {
             //何らかの問題で確認画面が表示されないと、意図せずメールが送られてしまう恐れがあるため、念のための処理を入れておく。
@@ -58,26 +57,20 @@ namespace OutlookOkan
                 {
                     foreach (var to in checklist.ToAddresses)
                     {
-                        if (!to.IsExternal)
-                        {
-                            to.IsChecked = true;
-                        }
+                        if (to.IsExternal) continue;
+                        to.IsChecked = true;
                     }
 
                     foreach (var cc in checklist.CcAddresses)
                     {
-                        if (!cc.IsExternal)
-                        {
-                            cc.IsChecked = true;
-                        }
+                        if (cc.IsExternal) continue;
+                        cc.IsChecked = true;
                     }
 
                     foreach (var bcc in checklist.BccAddresses)
                     {
-                        if (!bcc.IsExternal)
-                        {
-                            bcc.IsChecked = true;
-                        }
+                        if (bcc.IsExternal) continue;
+                        bcc.IsChecked = true;
                     }
                 }
 
@@ -103,7 +96,7 @@ namespace OutlookOkan
                     cancel = true;
                 }
                 //確認画面の表示条件に合致していたら
-                else if(IsShowConfirmationWindow(checklist))
+                else if (IsShowConfirmationWindow(checklist))
                 {
                     var confirmationWindow = new ConfirmationWindow(checklist);
                     var dialogResult = confirmationWindow.ShowDialog();
@@ -189,7 +182,7 @@ namespace OutlookOkan
                 //全ての受信者が送信者と同一ドメインの場合に確認画面を表示しないオプションが有効かつその状態のためスキップ.
                 return false;
             }
-            
+
             if (checklist.ToAddresses.Count(x => x.IsSkip) == checklist.ToAddresses.Count && checklist.CcAddresses.Count(x => x.IsSkip) == checklist.CcAddresses.Count && checklist.BccAddresses.Count(x => x.IsSkip) == checklist.BccAddresses.Count)
             {
                 //全ての宛先が確認画面スキップ対象のためスキップ。
@@ -197,7 +190,7 @@ namespace OutlookOkan
             }
 
             if (_isDoDoNotConfirmationIfAllWhite && IsAllChedked(checklist))
-            { 
+            {
                 //全てにチェックが入った状態の場合に確認画面を表示しないオプションが有効かつその状態のためスキップ.
                 return false;
             }

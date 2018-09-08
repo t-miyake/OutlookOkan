@@ -13,7 +13,7 @@ namespace OutlookOkan
     {
         private Office.IRibbonUI _ribbon;
 
-        public Ribbon(){}
+        public Ribbon() { }
 
         public void ShowHelp(Office.IRibbonControl control)
         {

@@ -22,7 +22,7 @@ namespace OutlookOkan.CsvTools
         {
             _filePath = _directoryPath + (filename ?? throw new ArgumentNullException(nameof(filename)));
             _fileEncoding = Encoding.GetEncoding(DetectCharset(_filePath));
-           
+
             CheckFileAndDirectoryExists();
         }
 
@@ -78,7 +78,7 @@ namespace OutlookOkan.CsvTools
         public List<TCsvType> GetCsvRecords<TCsvType>(CsvReader loadedCsv)
         {
             loadedCsv.Configuration.MissingFieldFound = null;
-            var list =  loadedCsv.GetRecords<TCsvType>().ToList();
+            var list = loadedCsv.GetRecords<TCsvType>().ToList();
             loadedCsv.Dispose();
 
             return list;

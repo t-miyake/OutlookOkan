@@ -91,7 +91,7 @@ namespace OutlookOkan.ViewModels
             {
                 try
                 {
-                    var importData =new List<Whitelist>(importAction.ReadCsv<Whitelist>(importAction.LoadCsv<WhitelistMap>(filePath)));
+                    var importData = new List<Whitelist>(importAction.ReadCsv<Whitelist>(importAction.LoadCsv<WhitelistMap>(filePath)));
                     foreach (var data in importData)
                     {
                         Whitelist.Add(data);
@@ -112,7 +112,7 @@ namespace OutlookOkan.ViewModels
             foreach (var data in Whitelist) { tempDate.Add(data); }
 
             var exportAction = new CsvImportAndExport();
-            exportAction.CsvExport<WhitelistMap>(tempDate,"Whitelist.csv");
+            exportAction.CsvExport<WhitelistMap>(tempDate, "Whitelist.csv");
         }
 
         private ObservableCollection<Whitelist> _whitelist = new ObservableCollection<Whitelist>();

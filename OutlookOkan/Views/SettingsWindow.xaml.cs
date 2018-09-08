@@ -23,7 +23,7 @@ namespace OutlookOkan.Views
         private void DataGrid_WhiteList_OnCellEditEnding(object sender, DataGridCellEditEndingEventArgs e)
         {
             var inputText = ((TextBox)e.EditingElement).Text;
-            if (string.IsNullOrEmpty(inputText)||!inputText.Contains("@"))
+            if (string.IsNullOrEmpty(inputText) || !inputText.Contains("@"))
             {
                 MessageBox.Show(Properties.Resources.InputMailaddressOrDomain);
                 e.Cancel = true;
@@ -49,7 +49,7 @@ namespace OutlookOkan.Views
         {
             try
             {
-                var inputText = ((TextBox) e.EditingElement).Text;
+                var inputText = ((TextBox)e.EditingElement).Text;
                 if (string.IsNullOrEmpty(inputText) || !inputText.Contains("@"))
                 {
                     MessageBox.Show(Properties.Resources.InputMailaddressOrDomain);
