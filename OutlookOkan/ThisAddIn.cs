@@ -38,7 +38,7 @@ namespace OutlookOkan
 
         private void Application_ItemSend(object item, ref bool cancel)
         {
-            //何らかの問題で確認画面が表示されないと、意図せずメールが送られてしまう恐れがあるため、
+            //何らかの問題で確認画面が表示されないと、意図せずメールが送られてしまう恐れがあるため、念のための処理を入れておく。
             try
             {
                 var generateCheckList = new GenerateCheckList();

@@ -1,10 +1,10 @@
-﻿using System;
+﻿using OutlookOkan.Views;
+using System;
 using System.Diagnostics;
 using System.IO;
 using System.Reflection;
 using System.Runtime.InteropServices;
 using Office = Microsoft.Office.Core;
-using OutlookOkan.Views;
 
 namespace OutlookOkan
 {

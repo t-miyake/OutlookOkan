@@ -489,8 +489,6 @@ namespace OutlookOkan.ViewModels
                 _generalSetting.Add((data));
             }
 
-            Language = new LanguageCodeAndName();
-
             //実際に使用するのは1行目の設定のみ
             if (_generalSetting.Count != 0)
             {
@@ -567,7 +565,7 @@ namespace OutlookOkan.ViewModels
             }
         }
 
-        private LanguageCodeAndName _language;
+        private LanguageCodeAndName _language = new LanguageCodeAndName();
         public LanguageCodeAndName Language
         {
             get => _language;
