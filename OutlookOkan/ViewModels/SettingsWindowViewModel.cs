@@ -495,6 +495,7 @@ namespace OutlookOkan.ViewModels
                 IsDoNotConfirmationIfAllRecipientsAreSameDomain = _generalSetting[0].IsDoNotConfirmationIfAllRecipientsAreSameDomain;
                 IsDoDoNotConfirmationIfAllWhite = _generalSetting[0].IsDoDoNotConfirmationIfAllWhite;
                 IsAutoCheckIfAllRecipientsAreSameDomain = _generalSetting[0].IsAutoCheckIfAllRecipientsAreSameDomain;
+                IsShowConfirmationToMultipleDomain = _generalSetting[0].IsShowConfirmationToMultipleDomain;
 
                 //設定ファイル内に言語設定があればそれをロードする。
                 if (_generalSetting[0].LanguageCode != null)
@@ -516,11 +517,11 @@ namespace OutlookOkan.ViewModels
             {
                 new GeneralSetting
                 {
-
                     IsDoNotConfirmationIfAllRecipientsAreSameDomain = IsDoNotConfirmationIfAllRecipientsAreSameDomain,
                     IsDoDoNotConfirmationIfAllWhite = IsDoDoNotConfirmationIfAllWhite,
                     IsAutoCheckIfAllRecipientsAreSameDomain = IsAutoCheckIfAllRecipientsAreSameDomain,
-                    LanguageCode = languageCode
+                    LanguageCode = languageCode,
+                    IsShowConfirmationToMultipleDomain = IsShowConfirmationToMultipleDomain
                 }
             };
 
@@ -562,6 +563,17 @@ namespace OutlookOkan.ViewModels
             {
                 _isAutoCheckIfAllRecipientsAreSameDomain = value;
                 OnPropertyChanged("IsAutoCheckIfAllRecipientsAreSameDomain");
+            }
+        }
+
+        private bool _isShowConfirmationToMultipleDomain;
+        public bool IsShowConfirmationToMultipleDomain
+        {
+            get => _isShowConfirmationToMultipleDomain;
+            set
+            {
+                _isShowConfirmationToMultipleDomain = value;
+                OnPropertyChanged("IsShowConfirmationToMultipleDomain");
             }
         }
 

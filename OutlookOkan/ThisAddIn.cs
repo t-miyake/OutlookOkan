@@ -18,6 +18,7 @@ namespace OutlookOkan
         private bool _isDoNotConfirmationIfAllRecipientsAreSameDomain;
         private bool _isDoDoNotConfirmationIfAllWhite;
         private bool _isAutoCheckIfAllRecipientsAreSameDomain;
+        private bool _isShowConfirmationToMultipleDomain;
 
         protected override Microsoft.Office.Core.IRibbonExtensibility CreateRibbonExtensibilityObject()
         {
@@ -36,6 +37,7 @@ namespace OutlookOkan
             Application.ItemSend += Application_ItemSend;
         }
 
+        //TODO 分かりやすくするために機能を分離する。
         private void Application_ItemSend(object item, ref bool cancel)
         {
             //何らかの問題で確認画面が表示されないと、意図せずメールが送られてしまう恐れがあるため、念のための処理を入れておく。
@@ -79,23 +81,11 @@ namespace OutlookOkan
                     }
                 }
 
-                if (_isDoNotConfirmationIfAllRecipientsAreSameDomain && IsAllRecipientsAreSameDomain(checklist))
-                {
-                    //全ての受信者が送信者と同一ドメインの場合に確認画面を表示しないオプションが有効かつその状態のためreturn.
-                    return;
-                }
-
-
-                if (_isDoDoNotConfirmationIfAllWhite && IsAllChedked(checklist))
-                {
-                    //全てにチェックが入った状態の場合に確認画面を表示しないオプションが有効かつその状態のためreturn.
-                    return;
-                }
-
                 //送信禁止フラグの確認
                 if (checklist.IsCanNotSendMail)
                 {
-                    //このタイミングで落ちると、メールが送信されてしまうので、念のため。
+                    //送信禁止条件に該当するため、確認画面を表示するのではなく、送信禁止画面を表示する。
+                    //このタイミングで落ちると、メールが送信されてしまうので、念のためのTry Catch.
                     try
                     {
                         MessageBox.Show(checklist.CanNotSendMailMessage, Properties.Resources.SendingForbid,
@@ -112,7 +102,8 @@ namespace OutlookOkan
 
                     cancel = true;
                 }
-                else
+                //確認画面の表示条件に合致していたら
+                else if(IsShowConfirmationWindow(checklist))
                 {
                     var confirmationWindow = new ConfirmationWindow(checklist);
                     var dialogResult = confirmationWindow.ShowDialog();
@@ -126,7 +117,12 @@ namespace OutlookOkan
                         cancel = true;
                     }
                 }
-            }catch (Exception)
+                else
+                {
+                    //Send Mail.
+                }
+            }
+            catch (Exception)
             {
                 var dialogResult = MessageBox.Show(Properties.Resources.SendMailConfirmation, Properties.Resources.IsCanNotShowConfirmation, MessageBoxButton.YesNo, MessageBoxImage.Warning);
                 if (dialogResult == MessageBoxResult.Yes)
@@ -155,6 +151,7 @@ namespace OutlookOkan
                 _isDoNotConfirmationIfAllRecipientsAreSameDomain = generalSetting[0].IsDoNotConfirmationIfAllRecipientsAreSameDomain;
                 _isDoDoNotConfirmationIfAllWhite = generalSetting[0].IsDoDoNotConfirmationIfAllWhite;
                 _isAutoCheckIfAllRecipientsAreSameDomain = generalSetting[0].IsAutoCheckIfAllRecipientsAreSameDomain;
+                _isShowConfirmationToMultipleDomain = generalSetting[0].IsShowConfirmationToMultipleDomain;
             }
         }
 
@@ -176,6 +173,37 @@ namespace OutlookOkan
             var isAllBccRecipientsAreSameDomain = checkLlist.BccAddresses.Count(x => !x.IsExternal) == checkLlist.BccAddresses.Count;
 
             return isAllToRecipientsAreSameDomain && isAllCcRecipientsAreSameDomain && isAllBccRecipientsAreSameDomain;
+        }
+
+        private bool IsShowConfirmationWindow(CheckList checklist)
+        {
+            if (checklist.RecipientExternalDomainNum >= 2 && _isShowConfirmationToMultipleDomain)
+            {
+                //全ての宛先が確認対象だが、複数のドメインが宛先に含まれる場合は確認画面を表示するオプションが有効かつその状態のため、スキップしない。
+                //他の判定より優先されるために先人確認して、先にretrunする。
+                return true;
+            }
+
+            if (_isDoNotConfirmationIfAllRecipientsAreSameDomain && IsAllRecipientsAreSameDomain(checklist))
+            {
+                //全ての受信者が送信者と同一ドメインの場合に確認画面を表示しないオプションが有効かつその状態のためスキップ.
+                return false;
+            }
+            
+            if (checklist.ToAddresses.Count(x => x.IsSkip) == checklist.ToAddresses.Count && checklist.CcAddresses.Count(x => x.IsSkip) == checklist.CcAddresses.Count && checklist.BccAddresses.Count(x => x.IsSkip) == checklist.BccAddresses.Count)
+            {
+                //全ての宛先が確認画面スキップ対象のためスキップ。
+                return false;
+            }
+
+            if (_isDoDoNotConfirmationIfAllWhite && IsAllChedked(checklist))
+            { 
+                //全てにチェックが入った状態の場合に確認画面を表示しないオプションが有効かつその状態のためスキップ.
+                return false;
+            }
+
+            //どのようなオプション条件にも該当しないため、通常通り確認画面を表示する。
+            return true;
         }
 
         #region VSTO generated code

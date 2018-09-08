@@ -349,7 +349,7 @@ namespace OutlookOkan.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Don&apos;t show confirmation screen.
+        ///   Looks up a localized string similar to Skip the confirmation screen.
         /// </summary>
         public static string DontShowConfirmationScreen {
             get {
@@ -421,7 +421,7 @@ namespace OutlookOkan.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to If all destinations are in the same domain as the source address, do not display the confirmation screen..
+        ///   Looks up a localized string similar to If all destinations are in the same domain as the source address, skip the confirmation screen..
         /// </summary>
         public static string IfAllSameDomain {
             get {
@@ -430,7 +430,7 @@ namespace OutlookOkan.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to If there is no check target in the destination, do not display the confirmation screen..
+        ///   Looks up a localized string similar to If there is no check target in the destination, skip the confirmation screen..
         /// </summary>
         public static string IfAllWhite {
             get {
@@ -561,6 +561,33 @@ namespace OutlookOkan.Properties {
         public static string IsCanNotShowConfirmation {
             get {
                 return ResourceManager.GetString("IsCanNotShowConfirmation", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to If the recipient contains multiple external domains, show the confirmation screen. (Don&apos;t skip confirmation screen.).
+        /// </summary>
+        public static string IsShowConfirmationToMultipleDomain {
+            get {
+                return ResourceManager.GetString("IsShowConfirmationToMultipleDomain", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Skip confirmation.
+        /// </summary>
+        public static string IsSkipConfirmation {
+            get {
+                return ResourceManager.GetString("IsSkipConfirmation", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to When checked, skip the confirmation screen..
+        /// </summary>
+        public static string IsSkipConfirmationInfo {
+            get {
+                return ResourceManager.GetString("IsSkipConfirmationInfo", resourceCulture);
             }
         }
         
@@ -878,7 +905,7 @@ namespace OutlookOkan.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Version 2.0.0 (β1).
+        ///   Looks up a localized string similar to Version 2.0.3 (β4).
         /// </summary>
         public static string Version {
             get {

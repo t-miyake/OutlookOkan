@@ -23,6 +23,10 @@
                                 <CheckBox Margin="0,0,8,0" IsChecked="{Binding IsDoDoNotConfirmationIfAllWhite, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
                                 <TextBlock Text="{Binding Source={x:Static services:ResourceService.Instance}, Path=Resources.IfAllWhite, Mode=OneWay}" />
                             </StackPanel>
+                            <StackPanel Orientation="Horizontal" Margin="0,5,0,0">
+                                <CheckBox Margin="0,0,8,0" IsChecked="{Binding IsShowConfirmationToMultipleDomain, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                                <TextBlock Text="{Binding Source={x:Static services:ResourceService.Instance}, Path=Resources.IsShowConfirmationToMultipleDomain, Mode=OneWay}" />
+                            </StackPanel>
                         </StackPanel>
                     </GroupBox>
 
@@ -61,6 +65,15 @@
                                             </Style>
                                         </DataGridTextColumn.ElementStyle>
                                     </DataGridTextColumn>
+                                    <DataGridCheckBoxColumn Header="{Binding Source={x:Static services:ResourceService.Instance}, Path=Resources.IsSkipConfirmation, Mode=OneWay}" Binding="{Binding IsSkipConfirmation, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Width="Auto">
+                                        <DataGridCheckBoxColumn.ElementStyle>
+                                            <Style TargetType="CheckBox">
+                                                <Setter Property="ToolTip" Value="{Binding Source={x:Static services:ResourceService.Instance}, Path=Resources.IsSkipConfirmationInfo, Mode=OneWay}"/>
+                                                <Setter Property="VerticalAlignment" Value="Center"/>
+                                                <Setter Property="HorizontalAlignment" Value="Center"/>
+                                            </Style>
+                                        </DataGridCheckBoxColumn.ElementStyle>
+                                    </DataGridCheckBoxColumn>
                                 </DataGrid.Columns>
                             </DataGrid>
                         </GroupBox>

@@ -44,9 +44,15 @@ namespace OutlookOkan.Models
 
             CheckMailbodyAndRecipient(mail);
 
+            CountRecipientExternalDomains();
+
             return _checkList;
         }
 
+        /// <summary>
+        /// 一般的なメールの情報を取得して格納する。
+        /// </summary>
+        /// <param name="mail"></param>
         private void GetGeneralMailInfomation(Outlook._MailItem mail)
         {
             try
@@ -62,10 +68,33 @@ namespace OutlookOkan.Models
                     _checkList.Sender = Resources.FailedToGetInformation;
                 }
             }
+
             _checkList.Subject = mail.Subject;
             _checkList.MailType = GetMailBodyFormat(mail);
             _checkList.MailBody = mail.Body;
             _checkList.MailHtmlBody = mail.HTMLBody;
+        }
+
+        /// <summary>
+        /// 送信者ドメインを除く宛先のドメイン数を数える。
+        /// </summary>
+        private void CountRecipientExternalDomains()
+        {
+            var domainList = new HashSet<string>();
+            foreach (var mail in _displayNameAndRecipient)
+            {
+                var recipient = mail.Key;
+                domainList.Add(recipient.Substring(recipient.IndexOf("@", StringComparison.Ordinal)));
+            }
+            var recipientExternalDomainNum = domainList.Count;
+
+            //外部ドメインの数のため、送信者のドメインが含まれていた場合それをマイナスする。
+            if (domainList.Contains(_checkList.SenderDomain))
+            {
+                recipientExternalDomainNum -= 1;
+            }
+
+            _checkList.RecipientExternalDomainNum = recipientExternalDomainNum;
         }
 
         /// <summary>
@@ -401,12 +430,25 @@ namespace OutlookOkan.Models
             // ホワイトリストに含まれる宛先の場合、ListのIsCheckedフラグをtrueにして、最初からチェック済みとする。
             // 警告アドレスリストに含まれる宛先の場合、AlertBoxにその旨を追加する。
 
+            //TODO 重複が多いので切り出してまとめる。
             foreach (var i in _toDisplayNameAndRecipient)
             {
                 var isExternal = !i.Key.Contains(_checkList.SenderDomain);
                 var isWhite = _whitelist.Count != 0 && _whitelist.Any(x => i.Key.Contains(x.WhiteName));
+                var isSkip = false;
 
-                _checkList.ToAddresses.Add(new Address { MailAddress = i.Value, IsExternal = isExternal, IsWhite = isWhite, IsChecked = isWhite });
+                if (isWhite)
+                {
+                    foreach (var whitelist in _whitelist)
+                    {
+                        if (i.Key.Contains(whitelist.WhiteName))
+                        {
+                            isSkip = whitelist.IsSkipConfirmation;
+                        }
+                    }
+                }
+
+                _checkList.ToAddresses.Add(new Address { MailAddress = i.Value, IsExternal = isExternal, IsWhite = isWhite, IsChecked = isWhite, IsSkip = isSkip });
 
                 if (alertAddresslist.Count != 0 &&
                     alertAddresslist.Any(address => i.Key.Contains(address.TartgetAddress)))
@@ -435,8 +477,20 @@ namespace OutlookOkan.Models
             {
                 var isExternal = !i.Key.Contains(_checkList.SenderDomain);
                 var isWhite = _whitelist.Count != 0 && _whitelist.Any(x => i.Key.Contains(x.WhiteName));
+                var isSkip = false;
 
-                _checkList.CcAddresses.Add(new Address { MailAddress = i.Value, IsExternal = isExternal, IsWhite = isWhite, IsChecked = isWhite });
+                if (isWhite)
+                {
+                    foreach (var whitelist in _whitelist)
+                    {
+                        if (i.Key.Contains(whitelist.WhiteName))
+                        {
+                            isSkip = whitelist.IsSkipConfirmation;
+                        }
+                    }
+                }
+
+                _checkList.CcAddresses.Add(new Address { MailAddress = i.Value, IsExternal = isExternal, IsWhite = isWhite, IsChecked = isWhite, IsSkip = isSkip });
 
                 if (alertAddresslist.Count != 0 &&
                     alertAddresslist.Any(address => i.Key.Contains(address.TartgetAddress)))
@@ -466,8 +520,20 @@ namespace OutlookOkan.Models
             {
                 var isExternal = !i.Key.Contains(_checkList.SenderDomain);
                 var isWhite = _whitelist.Count != 0 && _whitelist.Any(x => i.Key.Contains(x.WhiteName));
+                var isSkip = false;
 
-                _checkList.BccAddresses.Add(new Address { MailAddress = i.Value, IsExternal = isExternal, IsWhite = isWhite, IsChecked = isWhite });
+                if (isWhite)
+                {
+                    foreach (var whitelist in _whitelist)
+                    {
+                        if (i.Key.Contains(whitelist.WhiteName))
+                        {
+                            isSkip = whitelist.IsSkipConfirmation;
+                        }
+                    }
+                }
+
+                _checkList.BccAddresses.Add(new Address { MailAddress = i.Value, IsExternal = isExternal, IsWhite = isWhite, IsChecked = isWhite, IsSkip = isSkip });
 
                 if (alertAddresslist.Count != 0 && alertAddresslist.Any(address => i.Key.Contains(address.TartgetAddress)))
                 {
