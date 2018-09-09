@@ -21,9 +21,10 @@ namespace OutlookOkan.CsvTools
         public ReadAndWriteCsv(string filename)
         {
             _filePath = _directoryPath + (filename ?? throw new ArgumentNullException(nameof(filename)));
-            _fileEncoding = Encoding.GetEncoding(DetectCharset(_filePath));
 
             CheckFileAndDirectoryExists();
+
+            _fileEncoding = Encoding.GetEncoding(DetectCharset(_filePath));
         }
 
         /// <summary>
