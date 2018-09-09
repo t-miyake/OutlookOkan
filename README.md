@@ -15,10 +15,13 @@
 専用のカスタマイズやサポートが必要な場合は、個別にご相談ください。  
 
 送信前の確認ウインドウ  
-![Screenshot](https://github.com/t-miyake/OutlookOkan/blob/master/Screenshots/Screenshot_v2.0.0_01.png)  
+![Screenshot 1](https://github.com/t-miyake/OutlookOkan/blob/master/Screenshots/Screenshot_v2.0.3_01.png)  
 
 設定ウィンドウ  
-![Screenshot](https://github.com/t-miyake/OutlookOkan/blob/master/Screenshots/Screenshot_v2.0.0_02.png) 
+![Screenshot 2](https://github.com/t-miyake/OutlookOkan/blob/master/Screenshots/Screenshot_v2.0.3_02.png) 
+
+送信禁止通知  
+![Screenshot 3](https://github.com/t-miyake/OutlookOkan/blob/master/Screenshots/Screenshot_v2.0.3_03.png)
 
 ## 機能一覧(概要)
 
