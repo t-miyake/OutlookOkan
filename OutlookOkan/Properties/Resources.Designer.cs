@@ -763,6 +763,15 @@ namespace OutlookOkan.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Send on behalf..
+        /// </summary>
+        public static string SentOnBehalf {
+            get {
+                return ResourceManager.GetString("SentOnBehalf", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Setting Example.
         /// </summary>
         public static string SettingExample {
@@ -905,7 +914,7 @@ namespace OutlookOkan.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Version 2.0.3 (β4).
+        ///   Looks up a localized string similar to Version 2.0.4.
         /// </summary>
         public static string Version {
             get {

@@ -361,7 +361,7 @@
     <value>Copyright (C) 2018 Noraneko Inc.</value>
   </data>
   <data name="Version" xml:space="preserve">
-    <value>Version 2.0.3 (β4)</value>
+    <value>Version 2.0.4</value>
   </data>
   <data name="VersionInfo" xml:space="preserve">
     <value>About</value>
@@ -429,5 +429,8 @@ Register EMailAddress or domain.</value>
   </data>
   <data name="IsSkipConfirmationInfo" xml:space="preserve">
     <value>When checked, skip the confirmation screen.</value>
+  </data>
+  <data name="SentOnBehalf" xml:space="preserve">
+    <value>Send on behalf.</value>
   </data>
 </root>
