@@ -1,35 +1,16 @@
 ﻿using CsvHelper;
 using OutlookOkan.Properties;
 using System;
-using System.Collections.Generic;
 using System.IO;
-using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 
 namespace OutlookOkan.CsvTools
 {
     //TODO To be improved
-    public class CsvImportAndExport
+    public class CsvImportAndExport : CsvToolsBase
     {
         private Encoding _fileEncoding;
-
-        /// <summary>
-        /// 文字コードの確認
-        /// </summary>
-        /// <param name="filePath">文字コードを確認するファイルのパス</param>
-        /// <returns>文字コード</returns>
-        public string DetectCharset(string filePath)
-        {
-            using (var fileStream = File.OpenRead(filePath))
-            {
-                var charsetDetector = new Ude.CharsetDetector();
-                charsetDetector.Feed(fileStream);
-                charsetDetector.DataEnd();
-
-                return charsetDetector.Charset ?? "UTF-8";
-            }
-        }
 
         /// <summary>
         /// CSVファイルをインポートするパスを取得する。
@@ -67,21 +48,6 @@ namespace OutlookOkan.CsvTools
             csvReader.Configuration.RegisterClassMap<TMaptype>();
 
             return csvReader;
-        }
-
-        /// <summary>
-        /// 読み込んだCSVから、List<T/>を変えす。
-        /// </summary>
-        /// <typeparam name="TCsvType"></typeparam>
-        /// <param name="loadedCsv">パースされたCSV</param>
-        /// <returns>CSVデータ(List<T/>)</returns>
-        public List<TCsvType> ReadCsv<TCsvType>(CsvReader loadedCsv)
-        {
-            loadedCsv.Configuration.MissingFieldFound = null;
-            var list = loadedCsv.GetRecords<TCsvType>().ToList();
-            loadedCsv.Dispose();
-
-            return list;
         }
 
         /// <summary>

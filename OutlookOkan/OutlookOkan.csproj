@@ -95,6 +95,7 @@
     <WarningLevel>4</WarningLevel>
     <TreatWarningsAsErrors>false</TreatWarningsAsErrors>
     <PlatformTarget>AnyCPU</PlatformTarget>
+    <RunCodeAnalysis>true</RunCodeAnalysis>
   </PropertyGroup>
   <!--
     This section defines properties that are set when the "Release" configuration is selected.
@@ -268,6 +269,7 @@
   -->
   <ItemGroup>
     <Compile Include="CsvTools\CsvImportAndExport.cs" />
+    <Compile Include="CsvTools\CsvToolsBase.cs" />
     <Compile Include="CsvTools\ReadAndWriteCsv.cs" />
     <Compile Include="Models\GenerateCheckList.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">

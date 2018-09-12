@@ -55,24 +55,75 @@ namespace OutlookOkan.Models
         /// <param name="mail"></param>
         private void GetGeneralMailInfomation(Outlook._MailItem mail)
         {
-            try
+            if (string.IsNullOrEmpty(mail.SentOnBehalfOfName))
             {
-                _checkList.Sender = mail.SendUsingAccount.SmtpAddress;
-            }
-            catch (NullReferenceException)
-            {
-                _checkList.Sender = mail.SenderEmailAddress;
+                //代理送信ではない場合。
+                _checkList.Sender = mail.SenderEmailAddress ?? Resources.FailedToGetInformation;
 
+                //mail.SenderEmailAddressがExchangeのアカウントだとそのまま使えないので、メールアドレスに変換する。
                 if (!_checkList.Sender.Contains("@"))
                 {
-                    _checkList.Sender = Resources.FailedToGetInformation;
+                    var tempOutlookApp = new Outlook.Application();
+                    var tempRecipient = tempOutlookApp.Session.CreateRecipient(mail.SenderEmailAddress);
+
+                    var exchangeUser = tempRecipient.AddressEntry.GetExchangeUser();
+
+                    _checkList.Sender = exchangeUser.PrimarySmtpAddress ?? Resources.FailedToGetInformation;
+
+                    if (!_checkList.Sender.Contains("@"))
+                    {
+                        //ここまでやって見つからなければ送信者のメールアドレスの取得を諦める。
+                        _checkList.Sender = Resources.FailedToGetInformation;
+                    }
+                }
+                _checkList.SenderDomain = _checkList.Sender == Resources.FailedToGetInformation ? "------------------" : _checkList.Sender.Substring(_checkList.Sender.IndexOf("@", StringComparison.Ordinal));
+            }
+            else
+            {
+                //代理送信の場合
+                _checkList.Sender = mail.Sender.Address ?? Resources.FailedToGetInformation;
+
+                if (_checkList.Sender.Contains("@"))
+                {
+                    //メールアドレスが取得できる場合はExchangeではないのでそのままでよい。
+                    _checkList.Sender = $@"{_checkList.Sender} ([{mail.SentOnBehalfOfName}] {Resources.SentOnBehalf})";
+                    _checkList.SenderDomain = _checkList.Sender.Substring(_checkList.Sender.IndexOf("@", StringComparison.Ordinal));
+                }
+                else
+                {
+                    //代理送信の場合かつExchange利用
+                    var tempOutlookApp = new Outlook.Application();
+                    var tempRecipient = tempOutlookApp.Session.CreateRecipient(mail.Sender.Address);
+
+                    try
+                    {
+                        //ユーザの代理送信
+                        var exchangeUser = tempRecipient.AddressEntry.GetExchangeUser();
+                        _checkList.Sender = $@"{exchangeUser.PrimarySmtpAddress} ([{mail.SentOnBehalfOfName}] {Resources.SentOnBehalf})";
+                        _checkList.SenderDomain = exchangeUser.PrimarySmtpAddress.Substring(exchangeUser.PrimarySmtpAddress.IndexOf("@", StringComparison.Ordinal));
+                    }
+                    catch (Exception)
+                    {
+                        try
+                        {
+                            //配布リストの代理送信
+                            var exchangeDistributionList = tempRecipient.AddressEntry.GetExchangeDistributionList();
+                            _checkList.Sender = $@"{exchangeDistributionList.PrimarySmtpAddress} ([{mail.SentOnBehalfOfName}] {Resources.SentOnBehalf})";
+                            _checkList.SenderDomain = exchangeDistributionList.PrimarySmtpAddress.Substring(exchangeDistributionList.PrimarySmtpAddress.IndexOf("@", StringComparison.Ordinal));
+                        }
+                        catch (Exception)
+                        {
+                            _checkList.Sender = $@"[{mail.SentOnBehalfOfName}] {Resources.SentOnBehalf}";
+                            _checkList.Sender = @"------------------";
+                        }
+                    }
                 }
             }
 
-            _checkList.Subject = mail.Subject;
-            _checkList.MailType = GetMailBodyFormat(mail);
-            _checkList.MailBody = mail.Body;
-            _checkList.MailHtmlBody = mail.HTMLBody;
+            _checkList.Subject = mail.Subject ?? Resources.FailedToGetInformation;
+            _checkList.MailType = GetMailBodyFormat(mail) ?? Resources.FailedToGetInformation;
+            _checkList.MailBody = mail.Body ?? Resources.FailedToGetInformation;
+            _checkList.MailHtmlBody = mail.HTMLBody ?? Resources.FailedToGetInformation;
         }
 
         /// <summary>
@@ -112,16 +163,31 @@ namespace OutlookOkan.Models
             foreach (Outlook.Recipient recip in mail.Recipients)
             {
                 // Exchangeの連絡先に登録された情報を取得。
-                var exchangeUser = recip.AddressEntry.GetExchangeUser();
+                Outlook.ExchangeUser exchangeUser = null;
+                try
+                {
+                    exchangeUser = recip.AddressEntry.GetExchangeUser();
+                }
+                catch (Exception) { }
 
                 // Exchangeの配布リスト(ML)として登録された情報を取得。
-                var exchangeDistributionList = recip.AddressEntry.GetExchangeDistributionList();
+                Outlook.ExchangeDistributionList exchangeDistributionList = null;
+                try
+                {
+                    exchangeDistributionList = recip.AddressEntry.GetExchangeDistributionList();
+                }
+                catch (Exception) { }
 
                 // ローカルの連絡先に登録された情報を取得。
-                var registeredUser = recip.AddressEntry.GetContact();
+                Outlook.ContactItem registeredUser = null;
+                try
+                {
+                    registeredUser = recip.AddressEntry.GetContact();
+                }
+                catch (Exception) { }
 
                 //宛先メールアドレスを取得
-                var mailAddress = exchangeUser != null ? exchangeUser.PrimarySmtpAddress : exchangeDistributionList != null ? exchangeDistributionList.PrimarySmtpAddress : recip.Address;
+                var mailAddress = exchangeUser != null ? exchangeUser.PrimarySmtpAddress : exchangeDistributionList != null ? exchangeDistributionList.PrimarySmtpAddress : recip.Address ?? Resources.FailedToGetInformation;
 
                 // 登録されたメールアドレスの場合、登録名のみが表示されるため、メールアドレスと共に表示されるよう表示用テキストを生成。
                 var nameAndMailAddress = exchangeUser != null
@@ -129,8 +195,8 @@ namespace OutlookOkan.Models
                     : exchangeDistributionList != null
                         ? exchangeDistributionList.Name + $@" ({exchangeDistributionList.PrimarySmtpAddress})"
                         : registeredUser != null
-                            ? recip.Name + $@" ({recip.Address})"
-                            : recip.Address;
+                            ? recip.Name + $@" ({recip.Address ?? Resources.FailedToGetInformation})"
+                            : recip.Address ?? Resources.FailedToGetInformation;
 
                 _displayNameAndRecipient[mailAddress] = nameAndMailAddress;
 
@@ -294,7 +360,6 @@ namespace OutlookOkan.Models
                     }
                 }
             }
-
             mail.Recipients.ResolveAll();
         }
 
@@ -365,7 +430,7 @@ namespace OutlookOkan.Models
             var recipientCandidateDomains = (from nameAnddomain in nameAndDomainsList where mail.Body.Contains(nameAnddomain.Name) select nameAnddomain.Domain).ToList();
 
             //登録された名称かつ本文中に登場した名称以外のドメインが宛先に含まれている場合、警告を表示。
-            //送信先の候補が見つからない場合、何もしない。(見つからない場合の方が多いため、警告ばかりになってしまう。) 
+            //送信先の候補が見つからない場合、何もしない。(見つからない場合の方が多いため、警告ばかりになってしまう。)
             if (recipientCandidateDomains.Count != 0)
             {
                 foreach (var recipients in _displayNameAndRecipient)
@@ -375,9 +440,7 @@ namespace OutlookOkan.Models
                             recipients.Key.Substring(recipients.Key.IndexOf("@", StringComparison.Ordinal)))))
                     {
                         //送信者ドメインは警告対象外。
-                        if (!recipients.Key.Contains(
-                            mail.SendUsingAccount.SmtpAddress.Substring(
-                                mail.SendUsingAccount.SmtpAddress.IndexOf("@", StringComparison.Ordinal))))
+                        if (!recipients.Key.Contains(_checkList.SenderDomain))
                         {
                             _checkList.Alerts.Add(new Alert { AlertMessage = recipients.Value + " : " + Resources.IsAlertAddressMaybeIrrelevant, IsImportant = true, IsWhite = false, IsChecked = false });
                         }
@@ -389,7 +452,7 @@ namespace OutlookOkan.Models
         /// <summary>
         /// 送信先メールアドレスを取得し、チェックリストに追加する。
         /// </summary>
-        /// <param name="mail">送信するメールに関する情報</param>
+        /// <param name="mail"></param>
         private void GetRecipient(Outlook._MailItem mail)
         {
             // TODO To be improved
@@ -401,29 +464,6 @@ namespace OutlookOkan.Models
             //Load AlertAddressList
             readCsv = new ReadAndWriteCsv("AlertAddressList.csv");
             var alertAddresslist = readCsv.GetCsvRecords<AlertAddress>(readCsv.LoadCsv<AlertAddressMap>());
-
-            //送信メールアドレスのドメインを取得
-            try
-            {
-                _checkList.SenderDomain =
-                    mail.SendUsingAccount.SmtpAddress.Substring(
-                        mail.SendUsingAccount.SmtpAddress.IndexOf("@", StringComparison.Ordinal));
-            }
-            catch (NullReferenceException)
-            {
-                try
-                {
-                    _checkList.SenderDomain =
-                        mail.SenderEmailAddress.Substring(
-                            mail.SenderEmailAddress.IndexOf("@", StringComparison.Ordinal));
-
-                }
-                catch (Exception)
-                {
-                    //まれに取得できないケースがあるため、その場合はドメインとしてあり得ない文字列を入れておく。
-                    _checkList.SenderDomain = "--------------------";
-                }
-            }
 
             // 宛先や登録名から、表示用テキスト(メールアドレスや登録名)を各エリアに表示。
             // 宛先ドメインが送信元ドメインと異なる場合、色を変更するフラグをtrue、そうでない場合falseとする。
@@ -513,7 +553,6 @@ namespace OutlookOkan.Models
                         }
                     }
                 }
-
             }
 
             foreach (var i in _bccDisplayNameAndRecipient)

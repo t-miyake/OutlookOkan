@@ -39,11 +39,14 @@ namespace OutlookOkan
         
         private void Application_ItemSend(object item, ref bool cancel)
         {
+            //MailItemにキャストできないものは会議招待などメールではないものなので、何もしない。
+            if (!(item is Outlook._MailItem)) return;
+
             //何らかの問題で確認画面が表示されないと、意図せずメールが送られてしまう恐れがあるため、念のための処理を入れておく。
             try
             {
                 var generateCheckList = new GenerateCheckList();
-                var checklist = generateCheckList.GenerateCheckListFromMail(item as Outlook._MailItem);
+                var checklist = generateCheckList.GenerateCheckListFromMail((Outlook._MailItem) item);
 
                 //Outlook起動後にユーザが設定を変更する可能性があるため、毎回ユーザ設定をロード
                 LoadSetting();

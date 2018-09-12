@@ -73,7 +73,7 @@ namespace OutlookOkan
 
         public void Ribbon_Load(Office.IRibbonUI ribbonUi)
         {
-            this._ribbon = ribbonUi;
+            _ribbon = ribbonUi;
         }
 
         #endregion

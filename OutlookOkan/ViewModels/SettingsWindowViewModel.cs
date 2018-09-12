@@ -91,7 +91,7 @@ namespace OutlookOkan.ViewModels
             {
                 try
                 {
-                    var importData = new List<Whitelist>(importAction.ReadCsv<Whitelist>(importAction.LoadCsv<WhitelistMap>(filePath)));
+                    var importData = new List<Whitelist>(importAction.GetCsvRecords<Whitelist>(importAction.LoadCsv<WhitelistMap>(filePath)));
                     foreach (var data in importData)
                     {
                         Whitelist.Add(data);
@@ -161,7 +161,7 @@ namespace OutlookOkan.ViewModels
             {
                 try
                 {
-                    var importData = new List<NameAndDomains>(importAction.ReadCsv<NameAndDomains>(importAction.LoadCsv<NameAndDomainsMap>(filePath)));
+                    var importData = new List<NameAndDomains>(importAction.GetCsvRecords<NameAndDomains>(importAction.LoadCsv<NameAndDomainsMap>(filePath)));
                     foreach (var data in importData)
                     {
                         NameAndDomains.Add(data);
@@ -231,7 +231,7 @@ namespace OutlookOkan.ViewModels
             {
                 try
                 {
-                    var importData = new List<AlertKeywordAndMessage>(importAction.ReadCsv<AlertKeywordAndMessage>(importAction.LoadCsv<AlertKeywordAndMessageMap>(filePath)));
+                    var importData = new List<AlertKeywordAndMessage>(importAction.GetCsvRecords<AlertKeywordAndMessage>(importAction.LoadCsv<AlertKeywordAndMessageMap>(filePath)));
                     foreach (var data in importData)
                     {
                         AlertKeywordAndMessages.Add(data);
@@ -301,7 +301,7 @@ namespace OutlookOkan.ViewModels
             {
                 try
                 {
-                    var importData = new List<AlertAddress>(importAction.ReadCsv<AlertAddress>(importAction.LoadCsv<AlertAddressMap>(filePath)));
+                    var importData = new List<AlertAddress>(importAction.GetCsvRecords<AlertAddress>(importAction.LoadCsv<AlertAddressMap>(filePath)));
                     foreach (var data in importData)
                     {
                         AlertAddresses.Add(data);
@@ -371,7 +371,7 @@ namespace OutlookOkan.ViewModels
             {
                 try
                 {
-                    var importData = new List<AutoCcBccKeyword>(importAction.ReadCsv<AutoCcBccKeyword>(importAction.LoadCsv<AutoCcBccKeywordMap>(filePath)));
+                    var importData = new List<AutoCcBccKeyword>(importAction.GetCsvRecords<AutoCcBccKeyword>(importAction.LoadCsv<AutoCcBccKeywordMap>(filePath)));
                     foreach (var data in importData)
                     {
                         AutoCcBccKeywords.Add(data);
@@ -441,7 +441,7 @@ namespace OutlookOkan.ViewModels
             {
                 try
                 {
-                    var importData = new List<AutoCcBccRecipient>(importAction.ReadCsv<AutoCcBccRecipient>(importAction.LoadCsv<AutoCcBccRecipientMap>(filePath)));
+                    var importData = new List<AutoCcBccRecipient>(importAction.GetCsvRecords<AutoCcBccRecipient>(importAction.LoadCsv<AutoCcBccRecipientMap>(filePath)));
                     foreach (var data in importData)
                     {
                         AutoCcBccRecipients.Add(data);
