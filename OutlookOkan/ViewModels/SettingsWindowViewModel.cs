@@ -501,15 +501,23 @@ namespace OutlookOkan.ViewModels
                 if (_generalSetting[0].LanguageCode != null)
                 {
                     Language.LanguageCode = _generalSetting[0].LanguageCode;
+                    foreach (var lang in Languages)
+                    {
+                        if (lang.LanguageCode == Language.LanguageCode)
+                        {
+                            LanguageNumber = lang.LanguageNumber;
+                        }
+                    }
                 }
             }
         }
 
         private void SaveGeneralSettingToCsv()
         {
-            var languageCode = Language == null ? CultureInfo.CurrentUICulture.Name : Language.LanguageCode;
-            if (Language != null)
+            var languageCode = Language.LanguageCode ?? CultureInfo.CurrentUICulture.Name;
+            if (Language.LanguageCode != null)
             {
+                
                 ResourceService.Instance.ChangeCulture(Language.LanguageCode);
             }
 
@@ -596,6 +604,17 @@ namespace OutlookOkan.ViewModels
             {
                 _languages = value;
                 OnPropertyChanged("Languages");
+            }
+        }
+
+        private int _languageNumber = -1;
+        public int LanguageNumber
+        {
+            get => _languageNumber;
+            set
+            {
+                _languageNumber = value;
+                OnPropertyChanged("LanguageNumber");
             }
         }
 
