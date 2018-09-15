@@ -8,13 +8,14 @@ namespace OutlookOkan.Types
 
         public Languages()
         {
-            Language.Add(new LanguageCodeAndName { LanguageName = "日本語", LanguageCode = "ja-JP" });
-            Language.Add(new LanguageCodeAndName { LanguageName = "English", LanguageCode = "en-US" });
+            Language.Add(new LanguageCodeAndName { LanguageNumber = 0, LanguageName = "日本語", LanguageCode = "ja-JP" });
+            Language.Add(new LanguageCodeAndName { LanguageNumber = 1, LanguageName = "English", LanguageCode = "en-US" });
         }
     }
 
     public class LanguageCodeAndName
     {
+        public int LanguageNumber { get; set; }
         public string LanguageCode { get; set; }
         public string LanguageName { get; set; }
     }

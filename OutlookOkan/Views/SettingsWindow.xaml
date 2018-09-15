@@ -41,7 +41,7 @@
 
                     <GroupBox Header="{Binding Source={x:Static services:ResourceService.Instance}, Path=Resources.ChangeLanguage, Mode=OneWay}"  FontSize="11" Padding="3,3,3,3" Margin="0,5,0,0">
                         <StackPanel Orientation="Vertical">
-                            <ComboBox ItemsSource="{Binding Languages}" SelectedItem="{Binding Language, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" DisplayMemberPath="LanguageName" />
+                            <ComboBox ItemsSource="{Binding Languages}" SelectedItem="{Binding Language, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" SelectedIndex="{Binding LanguageNumber, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" DisplayMemberPath="LanguageName" />
                             <TextBlock Text="{Binding Source={x:Static services:ResourceService.Instance}, Path=Resources.ChangeRibbonLanguageInfo, Mode=OneWay}" Margin="5,4,0,0"/>
                         </StackPanel>
                     </GroupBox>
