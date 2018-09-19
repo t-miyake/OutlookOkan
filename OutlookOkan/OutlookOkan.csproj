@@ -271,6 +271,7 @@
     <Compile Include="CsvTools\CsvImportAndExport.cs" />
     <Compile Include="CsvTools\CsvToolsBase.cs" />
     <Compile Include="CsvTools\ReadAndWriteCsv.cs" />
+    <Compile Include="Helpers\OfficeWin32Window.cs" />
     <Compile Include="Models\GenerateCheckList.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>

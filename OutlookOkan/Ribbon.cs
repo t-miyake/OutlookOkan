@@ -1,9 +1,11 @@
-﻿using OutlookOkan.Views;
+﻿using OutlookOkan.Helpers;
+using OutlookOkan.Views;
 using System;
 using System.Diagnostics;
 using System.IO;
 using System.Reflection;
 using System.Runtime.InteropServices;
+using System.Windows.Interop;
 using Office = Microsoft.Office.Core;
 
 namespace OutlookOkan
@@ -23,12 +25,20 @@ namespace OutlookOkan
         public void ShowSettings(Office.IRibbonControl control)
         {
             var settingsWindow = new SettingsWindow();
+            var activeWindow = Globals.ThisAddIn.Application.ActiveWindow();
+            var outlookHandle = new OfficeWin32Window(activeWindow).Handle;
+            var windowInteropHelper = new WindowInteropHelper(settingsWindow) { Owner = outlookHandle };
+
             settingsWindow.ShowDialog();
         }
 
         public void ShowAbout(Office.IRibbonControl control)
         {
             var aboutWindow = new AboutWindow();
+            var activeWindow = Globals.ThisAddIn.Application.ActiveWindow();
+            var outlookHandle = new OfficeWin32Window(activeWindow).Handle;
+            var windowInteropHelper = new WindowInteropHelper(aboutWindow) { Owner = outlookHandle };
+
             aboutWindow.ShowDialog();
         }
 

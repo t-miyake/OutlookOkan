@@ -1,4 +1,5 @@
 ﻿using OutlookOkan.CsvTools;
+using OutlookOkan.Helpers;
 using OutlookOkan.Models;
 using OutlookOkan.Services;
 using OutlookOkan.Types;
@@ -7,6 +8,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Windows;
+using System.Windows.Interop;
 using MessageBox = System.Windows.MessageBox;
 using Outlook = Microsoft.Office.Interop.Outlook;
 
@@ -101,7 +103,12 @@ namespace OutlookOkan
                 //確認画面の表示条件に合致していたら
                 else if (IsShowConfirmationWindow(checklist))
                 {
+                    //OutlookのWindowを親として確認画面をモーダル表示。
                     var confirmationWindow = new ConfirmationWindow(checklist);
+                    var activeWindow = Globals.ThisAddIn.Application.ActiveWindow();
+                    var outlookHandle = new OfficeWin32Window(activeWindow).Handle;
+                    var windowInteropHelper = new WindowInteropHelper(confirmationWindow) { Owner = outlookHandle };
+
                     var dialogResult = confirmationWindow.ShowDialog();
 
                     if (dialogResult == true)
