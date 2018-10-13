@@ -25,24 +25,25 @@ namespace OutlookOkan.Models
         /// <param name="mail">送信するメールアイテム</param>
         public CheckList GenerateCheckListFromMail(Outlook._MailItem mail)
         {
-            MakeDisplayNameAndRecipient(mail);
-
+            //This methods must run first.
             GetGeneralMailInfomation(mail);
+
+            MakeDisplayNameAndRecipient(mail);
 
             CheckForgotAttach(mail);
 
-            CheckKeyword(mail);
+            CheckKeyword();
 
             AutoAddCcAndBcc(mail);
 
             //TODO Temporary processing. It will be improved.
             MakeDisplayNameAndRecipient(mail);
 
-            GetRecipient(mail);
+            GetRecipient();
 
             GetAttachmentsInfomation(mail);
 
-            CheckMailbodyAndRecipient(mail);
+            CheckMailbodyAndRecipient();
 
             CountRecipientExternalDomains();
 
@@ -114,7 +115,7 @@ namespace OutlookOkan.Models
                         catch (Exception)
                         {
                             _checkList.Sender = $@"[{mail.SentOnBehalfOfName}] {Resources.SentOnBehalf}";
-                            _checkList.Sender = @"------------------";
+                            _checkList.SenderDomain = @"------------------";
                         }
                     }
                 }
@@ -123,6 +124,13 @@ namespace OutlookOkan.Models
             _checkList.Subject = mail.Subject ?? Resources.FailedToGetInformation;
             _checkList.MailType = GetMailBodyFormat(mail) ?? Resources.FailedToGetInformation;
             _checkList.MailBody = mail.Body ?? Resources.FailedToGetInformation;
+
+            //改行が2行になる問題を回避するため、HTML形式の場合にのみ2行の改行を1行に置換する。
+            if (_checkList.MailType == Resources.HTML)
+            {
+                _checkList.MailBody = _checkList.MailBody.Replace("\r\n\r\n", "\r\n");
+            }
+
             _checkList.MailHtmlBody = mail.HTMLBody ?? Resources.FailedToGetInformation;
         }
 
@@ -135,7 +143,10 @@ namespace OutlookOkan.Models
             foreach (var mail in _displayNameAndRecipient)
             {
                 var recipient = mail.Key;
-                domainList.Add(recipient.Substring(recipient.IndexOf("@", StringComparison.Ordinal)));
+                if (recipient != Resources.FailedToGetInformation)
+                {
+                    domainList.Add(recipient.Substring(recipient.IndexOf("@", StringComparison.Ordinal)));
+                }
             }
             var recipientExternalDomainNum = domainList.Count;
 
@@ -168,7 +179,10 @@ namespace OutlookOkan.Models
                 {
                     exchangeUser = recip.AddressEntry.GetExchangeUser();
                 }
-                catch (Exception) { }
+                catch (Exception)
+                {
+                    //Do Nothing.
+                }
 
                 // Exchangeの配布リスト(ML)として登録された情報を取得。
                 Outlook.ExchangeDistributionList exchangeDistributionList = null;
@@ -176,7 +190,10 @@ namespace OutlookOkan.Models
                 {
                     exchangeDistributionList = recip.AddressEntry.GetExchangeDistributionList();
                 }
-                catch (Exception) { }
+                catch (Exception)
+                {
+                    //Do Nothing.
+                }
 
                 // ローカルの連絡先に登録された情報を取得。
                 Outlook.ContactItem registeredUser = null;
@@ -184,10 +201,14 @@ namespace OutlookOkan.Models
                 {
                     registeredUser = recip.AddressEntry.GetContact();
                 }
-                catch (Exception) { }
+                catch (Exception)
+                {
+                    //Do Nothing.
+                }
 
                 //宛先メールアドレスを取得
                 var mailAddress = exchangeUser != null ? exchangeUser.PrimarySmtpAddress : exchangeDistributionList != null ? exchangeDistributionList.PrimarySmtpAddress : recip.Address ?? Resources.FailedToGetInformation;
+                mailAddress = mailAddress ?? Resources.FailedToGetInformation;
 
                 // 登録されたメールアドレスの場合、登録名のみが表示されるため、メールアドレスと共に表示されるよう表示用テキストを生成。
                 var nameAndMailAddress = exchangeUser != null
@@ -197,6 +218,8 @@ namespace OutlookOkan.Models
                         : registeredUser != null
                             ? recip.Name + $@" ({recip.Address ?? Resources.FailedToGetInformation})"
                             : recip.Address ?? Resources.FailedToGetInformation;
+
+                nameAndMailAddress = nameAndMailAddress ?? Resources.FailedToGetInformation;
 
                 _displayNameAndRecipient[mailAddress] = nameAndMailAddress;
 
@@ -227,7 +250,7 @@ namespace OutlookOkan.Models
         /// <param name="mail"></param>
         private void CheckForgotAttach(Outlook._MailItem mail)
         {
-            if (mail.Body.Contains("添付") && mail.Attachments.Count == 0)
+            if (_checkList.MailBody.Contains("添付") && mail.Attachments.Count == 0)
             {
                 _checkList.Alerts.Add(new Alert { AlertMessage = Resources.ForgottenToAttachAlert, IsImportant = true, IsWhite = false, IsChecked = false });
             }
@@ -258,8 +281,7 @@ namespace OutlookOkan.Models
         /// <summary>
         /// 本文に登録したキーワードがある場合、登録した警告文を表示する。
         /// </summary>
-        /// <param name="mail"></param>
-        private void CheckKeyword(Outlook._MailItem mail)
+        private void CheckKeyword()
         {
             //Load AlertKeywordAndMessage
             var csv = new ReadAndWriteCsv("AlertKeywordAndMessageList.csv");
@@ -269,7 +291,7 @@ namespace OutlookOkan.Models
             {
                 foreach (var i in alertKeywordAndMessageList)
                 {
-                    if (mail.Body.Contains(i.AlertKeyword))
+                    if (_checkList.MailBody.Contains(i.AlertKeyword))
                     {
                         _checkList.Alerts.Add(new Alert { AlertMessage = i.Message, IsImportant = true, IsWhite = false, IsChecked = false });
                         if (i.IsCanNotSend)
@@ -295,7 +317,7 @@ namespace OutlookOkan.Models
             {
                 foreach (var i in autoCcBccKeywordList)
                 {
-                    if (mail.Body.Contains(i.Keyword))
+                    if (_checkList.MailBody.Contains(i.Keyword) && i.AutoAddAddress.Contains("@"))
                     {
                         if (i.CcOrBcc == CcOrBcc.CC)
                         {
@@ -306,7 +328,6 @@ namespace OutlookOkan.Models
 
                                 autoAddedCcAddressList.Add(i.AutoAddAddress);
                             }
-
                         }
                         else if (!autoAddedBccAddressList.Contains(i.AutoAddAddress) && !_bccDisplayNameAndRecipient.ContainsKey(i.AutoAddAddress))
                         {
@@ -333,7 +354,7 @@ namespace OutlookOkan.Models
             {
                 foreach (var i in autoCcBccRecipientList)
                 {
-                    if (_displayNameAndRecipient.Any(recipient => recipient.Key.Contains(i.TargetRecipient)))
+                    if (_displayNameAndRecipient.Any(recipient => recipient.Key.Contains(i.TargetRecipient)) && i.AutoAddAddress.Contains("@"))
                     {
                         if (i.CcOrBcc == CcOrBcc.CC)
                         {
@@ -419,15 +440,14 @@ namespace OutlookOkan.Models
         /// <summary>
         /// 登録された名称とドメインから、宛先候補ではないアドレスが宛先に含まれている場合に、警告を表示する。
         /// </summary>
-        /// <param name="mail"></param>
-        private void CheckMailbodyAndRecipient(Outlook._MailItem mail)
+        private void CheckMailbodyAndRecipient()
         {
             //Load NameAndDomainsList
             var csv = new ReadAndWriteCsv("NameAndDomains.csv");
             var nameAndDomainsList = csv.GetCsvRecords<NameAndDomains>(csv.LoadCsv<NameAndDomainsMap>());
 
             //メールの本文中に、登録された名称があるか確認。
-            var recipientCandidateDomains = (from nameAnddomain in nameAndDomainsList where mail.Body.Contains(nameAnddomain.Name) select nameAnddomain.Domain).ToList();
+            var recipientCandidateDomains = (from nameAnddomain in nameAndDomainsList where _checkList.MailBody.Contains(nameAnddomain.Name) select nameAnddomain.Domain).ToList();
 
             //登録された名称かつ本文中に登場した名称以外のドメインが宛先に含まれている場合、警告を表示。
             //送信先の候補が見つからない場合、何もしない。(見つからない場合の方が多いため、警告ばかりになってしまう。)
@@ -452,8 +472,7 @@ namespace OutlookOkan.Models
         /// <summary>
         /// 送信先メールアドレスを取得し、チェックリストに追加する。
         /// </summary>
-        /// <param name="mail"></param>
-        private void GetRecipient(Outlook._MailItem mail)
+        private void GetRecipient()
         {
             // TODO To be improved
 
@@ -504,7 +523,7 @@ namespace OutlookOkan.Models
                     //送信禁止アドレスに該当する場合、禁止フラグを立て対象メールアドレスを説明文へ追加。
                     foreach (var alertAddress in alertAddresslist)
                     {
-                        if (alertAddress.TartgetAddress == i.Key && alertAddress.IsCanNotSend)
+                        if (i.Key.Contains(alertAddress.TartgetAddress) && alertAddress.IsCanNotSend)
                         {
                             _checkList.IsCanNotSendMail = true;
                             _checkList.CanNotSendMailMessage = Resources.SendingForbidAddress + $"[{i.Value}]";
@@ -546,7 +565,7 @@ namespace OutlookOkan.Models
                     //送信禁止アドレスに該当する場合、禁止フラグを立て対象メールアドレスを説明文へ追加。
                     foreach (var alertAddress in alertAddresslist)
                     {
-                        if (alertAddress.TartgetAddress == i.Key && alertAddress.IsCanNotSend)
+                        if (i.Key.Contains(alertAddress.TartgetAddress) && alertAddress.IsCanNotSend)
                         {
                             _checkList.IsCanNotSendMail = true;
                             _checkList.CanNotSendMailMessage = Resources.SendingForbidAddress + $"[{i.Value}]";
@@ -580,7 +599,7 @@ namespace OutlookOkan.Models
                     //送信禁止アドレスに該当する場合、禁止フラグを立て対象メールアドレスを説明文へ追加。
                     foreach (var alertAddress in alertAddresslist)
                     {
-                        if (alertAddress.TartgetAddress == i.Key && alertAddress.IsCanNotSend)
+                        if (i.Key.Contains(alertAddress.TartgetAddress) && alertAddress.IsCanNotSend)
                         {
                             _checkList.IsCanNotSendMail = true;
                             _checkList.CanNotSendMailMessage = Resources.SendingForbidAddress + $"[{i.Value}]";

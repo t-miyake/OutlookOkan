@@ -84,7 +84,7 @@ namespace OutlookOkan.Views
         private void OkButton_OnClick(object sender, RoutedEventArgs e)
         {
             var viewModel = DataContext as SettingsWindowViewModel;
-            viewModel.SaveSettings();
+            viewModel?.SaveSettings();
 
             DialogResult = true;
         }
@@ -97,7 +97,7 @@ namespace OutlookOkan.Views
         private void ApplyButton_OnClick(object sender, RoutedEventArgs e)
         {
             var viewModel = DataContext as SettingsWindowViewModel;
-            viewModel.SaveSettings();
+            viewModel?.SaveSettings();
 
             MessageBox.Show(Properties.Resources.SaveSettings);
         }

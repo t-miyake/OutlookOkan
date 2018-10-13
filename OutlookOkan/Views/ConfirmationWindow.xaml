@@ -8,7 +8,7 @@
              xmlns:services="clr-namespace:OutlookOkan.Services"
              mc:Ignorable="d"
         Title="{Binding Source={x:Static services:ResourceService.Instance}, Path=Resources.Confirmation, Mode=OneWay}"
-        ResizeMode="NoResize" ShowInTaskbar="False" WindowStartupLocation="CenterOwner" Height="570" Width="780">
+        ResizeMode="NoResize" ShowInTaskbar="False" WindowStartupLocation="CenterOwner" Height="590" Width="780">
     <StackPanel Margin="5,8">
         <StackPanel Margin="5,0,0,0">
             <Label Content="{Binding Source={x:Static services:ResourceService.Instance}, Path=Resources.ConfirmationMessage1, Mode=OneWay}" FontSize="12" Padding="0"/>
@@ -113,7 +113,7 @@
                                         </DataTemplate>
                                     </DataGridTemplateColumn.CellTemplate>
                                 </DataGridTemplateColumn>
-                                <DataGridTextColumn Binding="{Binding MailAddress, Mode=OneWay}" Width="*" IsReadOnly="True" Foreground="{Binding Foreground, Mode=OneWay}">
+                                <DataGridTextColumn Binding="{Binding MailAddress, Mode=OneWay}" Width="*" IsReadOnly="True">
                                     <DataGridTextColumn.CellStyle>
                                         <Style TargetType="DataGridCell">
                                             <Style.Triggers>

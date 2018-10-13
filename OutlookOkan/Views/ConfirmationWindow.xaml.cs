@@ -36,7 +36,7 @@ namespace OutlookOkan.Views
         private void ToggleButton_OnChecked(object sender, RoutedEventArgs e)
         {
             var viewModel = DataContext as ConfirmationWindowViewModel;
-            viewModel.ToggleSendButton();
+            viewModel?.ToggleSendButton();
         }
 
         /// <summary>
@@ -45,7 +45,7 @@ namespace OutlookOkan.Views
         private void ToggleButton_OnUnchecked(object sender, RoutedEventArgs e)
         {
             var viewModel = DataContext as ConfirmationWindowViewModel;
-            viewModel.ToggleSendButton();
+            viewModel?.ToggleSendButton();
         }
     }
 }
