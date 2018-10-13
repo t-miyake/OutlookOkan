@@ -38,7 +38,7 @@ namespace OutlookOkan
 
             Application.ItemSend += Application_ItemSend;
         }
-        
+
         private void Application_ItemSend(object item, ref bool cancel)
         {
             //MailItemにキャストできないものは会議招待などメールではないものなので、何もしない。
@@ -48,7 +48,7 @@ namespace OutlookOkan
             try
             {
                 var generateCheckList = new GenerateCheckList();
-                var checklist = generateCheckList.GenerateCheckListFromMail((Outlook._MailItem) item);
+                var checklist = generateCheckList.GenerateCheckListFromMail((Outlook._MailItem)item);
 
                 //Outlook起動後にユーザが設定を変更する可能性があるため、毎回ユーザ設定をロード
                 LoadSetting();
@@ -106,7 +106,7 @@ namespace OutlookOkan
                     //OutlookのWindowを親として確認画面をモーダル表示。
                     var confirmationWindow = new ConfirmationWindow(checklist);
                     var activeWindow = Globals.ThisAddIn.Application.ActiveWindow();
-                    var outlookHandle = new OfficeWin32Window(activeWindow).Handle;
+                    var outlookHandle = new NativeMethods(activeWindow).Handle;
                     var windowInteropHelper = new WindowInteropHelper(confirmationWindow) { Owner = outlookHandle };
 
                     var dialogResult = confirmationWindow.ShowDialog();
@@ -125,9 +125,9 @@ namespace OutlookOkan
                     //Send Mail.
                 }
             }
-            catch (Exception)
+            catch (Exception e)
             {
-                var dialogResult = MessageBox.Show(Properties.Resources.SendMailConfirmation, Properties.Resources.IsCanNotShowConfirmation, MessageBoxButton.YesNo, MessageBoxImage.Warning);
+                var dialogResult = MessageBox.Show(Properties.Resources.IsCanNotShowConfirmation + Environment.NewLine + Properties.Resources.SendMailConfirmation + Environment.NewLine + Environment.NewLine + e.Message, Properties.Resources.IsCanNotShowConfirmation, MessageBoxButton.YesNo, MessageBoxImage.Warning);
                 if (dialogResult == MessageBoxResult.Yes)
                 {
                     //SendMail
@@ -211,14 +211,7 @@ namespace OutlookOkan
 
         #region VSTO generated code
 
-        /// <summary>
-        /// Required method for Designer support - do not modify
-        /// the contents of this method with the code editor.
-        /// </summary>
-        private void InternalStartup()
-        {
-            Startup += ThisAddIn_Startup;
-        }
+        private void InternalStartup() => Startup += ThisAddIn_Startup;
 
         #endregion
     }

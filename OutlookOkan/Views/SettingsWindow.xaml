@@ -81,7 +81,7 @@
                     <GridSplitter Grid.Column="1"/>
                     <StackPanel Grid.Column="2" Margin="1,2,8,8">
                         <GroupBox Header="{Binding Source={x:Static services:ResourceService.Instance}, Path=Resources.SettingExample, Mode=OneWay}" FontSize="11" Padding="3,3,3,3">
-                            <TextBox Height="220" BorderBrush="White" FontSize="10" TextWrapping="Wrap" Text="{Binding Source={x:Static services:ResourceService.Instance}, Path=Resources.SettingExampleWhiteList, Mode=OneWay}" Padding="0,12,0,0"/>
+                            <TextBox Height="220" BorderBrush="White" FontSize="10" TextWrapping="Wrap" Text="{Binding Source={x:Static services:ResourceService.Instance}, Path=Resources.SettingExampleWhiteList, Mode=OneWay}" Padding="0,12,0,0" IsReadOnly="True"/>
                         </GroupBox>
                         <GroupBox Header="{Binding Source={x:Static services:ResourceService.Instance}, Path=Resources.ImportAndExport, Mode=OneWay}" FontSize="11" Padding="3,3,3,3">
                             <StackPanel Margin="4">
@@ -124,7 +124,7 @@
                     <GridSplitter Grid.Column="1"/>
                     <StackPanel Grid.Column="2" Margin="1,2,8,8">
                         <GroupBox Header="{Binding Source={x:Static services:ResourceService.Instance}, Path=Resources.SettingExample, Mode=OneWay}" FontSize="11" Padding="3,3,3,3">
-                            <TextBox Height="220" BorderBrush="White" FontSize="10" TextWrapping="Wrap" Text="{Binding Source={x:Static services:ResourceService.Instance}, Path=Resources.SettingExampleNameAndDomain, Mode=OneWay}" Padding="0,12,0,0"/>
+                            <TextBox Height="220" BorderBrush="White" FontSize="10" TextWrapping="Wrap" Text="{Binding Source={x:Static services:ResourceService.Instance}, Path=Resources.SettingExampleNameAndDomain, Mode=OneWay}" Padding="0,12,0,0" IsReadOnly="True"/>
                         </GroupBox>
                         <GroupBox Header="{Binding Source={x:Static services:ResourceService.Instance}, Path=Resources.ImportAndExport, Mode=OneWay}" FontSize="11" Padding="3,3,3,3">
                             <StackPanel Margin="4">
@@ -176,7 +176,7 @@
                     <GridSplitter Grid.Column="1"/>
                     <StackPanel Grid.Column="2" Margin="1,2,8,8">
                         <GroupBox Header="{Binding Source={x:Static services:ResourceService.Instance}, Path=Resources.SettingExample, Mode=OneWay}" FontSize="11" Padding="3,3,3,3">
-                            <TextBox Height="220" BorderBrush="White" FontSize="10" TextWrapping="Wrap" Text="{Binding Source={x:Static services:ResourceService.Instance}, Path=Resources.SettingExampleAlertKeyword, Mode=OneWay}" Padding="0,12,0,0"/>
+                            <TextBox Height="220" BorderBrush="White" FontSize="10" TextWrapping="Wrap" Text="{Binding Source={x:Static services:ResourceService.Instance}, Path=Resources.SettingExampleAlertKeyword, Mode=OneWay}" Padding="0,12,0,0" IsReadOnly="True"/>
                         </GroupBox>
                         <GroupBox Header="{Binding Source={x:Static services:ResourceService.Instance}, Path=Resources.ImportAndExport, Mode=OneWay}" FontSize="11" Padding="3,3,3,3">
                             <StackPanel Margin="4">
@@ -221,7 +221,7 @@
                     <GridSplitter Grid.Column="1"/>
                     <StackPanel Grid.Column="2" Margin="1,2,8,8">
                         <GroupBox Header="{Binding Source={x:Static services:ResourceService.Instance}, Path=Resources.SettingExample, Mode=OneWay}" FontSize="11" Padding="3,3,3,3">
-                            <TextBox Height="220" BorderBrush="White" FontSize="10" TextWrapping="Wrap" Text="{Binding Source={x:Static services:ResourceService.Instance}, Path=Resources.SettingExampleAlertMailAddress, Mode=OneWay}" Padding="0,12,0,0"/>
+                            <TextBox Height="220" BorderBrush="White" FontSize="10" TextWrapping="Wrap" Text="{Binding Source={x:Static services:ResourceService.Instance}, Path=Resources.SettingExampleAlertMailAddress, Mode=OneWay}" Padding="0,12,0,0" IsReadOnly="True"/>
                         </GroupBox>
                         <GroupBox Header="{Binding Source={x:Static services:ResourceService.Instance}, Path=Resources.ImportAndExport, Mode=OneWay}" FontSize="11" Padding="3,3,3,3">
                             <StackPanel Margin="4">
@@ -272,7 +272,7 @@
                     <GridSplitter Grid.Column="1"/>
                     <StackPanel Grid.Column="2" Margin="1,2,8,8">
                         <GroupBox Header="{Binding Source={x:Static services:ResourceService.Instance}, Path=Resources.SettingExample, Mode=OneWay}" FontSize="11" Padding="3,3,3,3">
-                            <TextBox Height="220" BorderBrush="White" FontSize="10" TextWrapping="Wrap" Text="{Binding Source={x:Static services:ResourceService.Instance}, Path=Resources.SettingExampleAutoAddCCorBCCByKeyword, Mode=OneWay}" Padding="0,12,0,0"/>
+                            <TextBox Height="220" BorderBrush="White" FontSize="10" TextWrapping="Wrap" Text="{Binding Source={x:Static services:ResourceService.Instance}, Path=Resources.SettingExampleAutoAddCCorBCCByKeyword, Mode=OneWay}" Padding="0,12,0,0" IsReadOnly="True"/>
                         </GroupBox>
                         <GroupBox Header="{Binding Source={x:Static services:ResourceService.Instance}, Path=Resources.ImportAndExport, Mode=OneWay}" FontSize="11" Padding="3,3,3,3">
                             <StackPanel Margin="4">
@@ -323,7 +323,7 @@
                     <GridSplitter Grid.Column="1"/>
                     <StackPanel Grid.Column="2" Margin="1,2,8,8">
                         <GroupBox Header="{Binding Source={x:Static services:ResourceService.Instance}, Path=Resources.SettingExample, Mode=OneWay}" FontSize="11" Padding="3,3,3,3">
-                            <TextBox Height="220" BorderBrush="White" FontSize="10" TextWrapping="Wrap" Text="{Binding Source={x:Static services:ResourceService.Instance}, Path=Resources.SettingExampleAutoAddCCorBCCByMailAddressOrDomain, Mode=OneWay}" Padding="0,12,0,0"/>
+                            <TextBox Height="220" BorderBrush="White" FontSize="10" TextWrapping="Wrap" Text="{Binding Source={x:Static services:ResourceService.Instance}, Path=Resources.SettingExampleAutoAddCCorBCCByMailAddressOrDomain, Mode=OneWay}" Padding="0,12,0,0" IsReadOnly="True"/>
                         </GroupBox>
                         <GroupBox Header="{Binding Source={x:Static services:ResourceService.Instance}, Path=Resources.ImportAndExport, Mode=OneWay}" FontSize="11" Padding="3,3,3,3">
                             <StackPanel Margin="4">

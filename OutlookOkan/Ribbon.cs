@@ -3,6 +3,7 @@ using OutlookOkan.Views;
 using System;
 using System.Diagnostics;
 using System.IO;
+using System.Linq;
 using System.Reflection;
 using System.Runtime.InteropServices;
 using System.Windows.Interop;
@@ -14,19 +15,18 @@ namespace OutlookOkan
     public class Ribbon : Office.IRibbonExtensibility
     {
         private Office.IRibbonUI _ribbon;
-
         public Ribbon() { }
 
         public void ShowHelp(Office.IRibbonControl control)
         {
-            Process.Start("https://github.com/t-miyake/OutlookOkan/wiki");
+            Process.Start("https://github.com/t-miyake/OutlookOkan/wiki/Manual");
         }
 
         public void ShowSettings(Office.IRibbonControl control)
         {
             var settingsWindow = new SettingsWindow();
             var activeWindow = Globals.ThisAddIn.Application.ActiveWindow();
-            var outlookHandle = new OfficeWin32Window(activeWindow).Handle;
+            var outlookHandle = new NativeMethods(activeWindow).Handle;
             var windowInteropHelper = new WindowInteropHelper(settingsWindow) { Owner = outlookHandle };
 
             settingsWindow.ShowDialog();
@@ -36,7 +36,7 @@ namespace OutlookOkan
         {
             var aboutWindow = new AboutWindow();
             var activeWindow = Globals.ThisAddIn.Application.ActiveWindow();
-            var outlookHandle = new OfficeWin32Window(activeWindow).Handle;
+            var outlookHandle = new NativeMethods(activeWindow).Handle;
             var windowInteropHelper = new WindowInteropHelper(aboutWindow) { Owner = outlookHandle };
 
             aboutWindow.ShowDialog();
@@ -94,17 +94,11 @@ namespace OutlookOkan
         {
             var asm = Assembly.GetExecutingAssembly();
             var resourceNames = asm.GetManifestResourceNames();
-            foreach (var t in resourceNames)
+            foreach (var t in resourceNames.Where(t => string.Compare(resourceName, t, StringComparison.OrdinalIgnoreCase) == 0))
             {
-                if (string.Compare(resourceName, t, StringComparison.OrdinalIgnoreCase) == 0)
+                using (var resourceReader = new StreamReader(asm.GetManifestResourceStream(t) ?? throw new InvalidOperationException()))
                 {
-                    using (var resourceReader = new StreamReader(asm.GetManifestResourceStream(t)))
-                    {
-                        if (resourceReader != null)
-                        {
-                            return resourceReader.ReadToEnd();
-                        }
-                    }
+                    return resourceReader.ReadToEnd();
                 }
             }
             return null;

@@ -5,7 +5,7 @@ using System.Runtime.CompilerServices;
 
 namespace OutlookOkan.Services
 {
-    class ResourceService : INotifyPropertyChanged
+    internal class ResourceService : INotifyPropertyChanged
     {
         // Singleton instance.
         public static ResourceService Instance { get; } = new ResourceService();
