@@ -1,4 +1,5 @@
 ﻿using CsvHelper;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -14,18 +15,26 @@ namespace OutlookOkan.CsvTools
         /// <returns>文字コード</returns>
         internal string DetectCharset(string filePath)
         {
-            using (var fileStream = File.OpenRead(filePath))
+            try
             {
-                var charsetDetector = new Ude.CharsetDetector();
-                charsetDetector.Feed(fileStream);
-                charsetDetector.DataEnd();
+                using (var fileStream = File.OpenRead(filePath))
+                {
+                    var charsetDetector = new Ude.CharsetDetector();
+                    charsetDetector.Feed(fileStream);
+                    charsetDetector.DataEnd();
 
-                return charsetDetector.Charset ?? "UTF-8";
+                    return charsetDetector.Charset ?? "UTF-8";
+                }
+            }
+            catch (Exception)
+            {
+                // Do Nothing.
+                return "UTF-8";
             }
         }
 
         /// <summary>
-        /// 読み込んだCSVから、List<T/>を変えす。
+        /// 読み込んだCSVから、List<T/>を返す。
         /// </summary>
         /// <typeparam name="TCsvType"></typeparam>
         /// <param name="loadedCsv">読み込んだCSVデータ</param>

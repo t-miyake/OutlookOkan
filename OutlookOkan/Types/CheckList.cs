@@ -18,6 +18,7 @@ namespace OutlookOkan.Types
         public string MailHtmlBody { get; set; }
         public bool IsCanNotSendMail { get; set; }
         public string CanNotSendMailMessage { get; set; }
+        public int DeferredMinutes { get; set; }
     }
 
     public class Alert

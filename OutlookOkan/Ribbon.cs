@@ -15,7 +15,6 @@ namespace OutlookOkan
     public class Ribbon : Office.IRibbonExtensibility
     {
         private Office.IRibbonUI _ribbon;
-        public Ribbon() { }
 
         public void ShowHelp(Office.IRibbonControl control)
         {
@@ -27,7 +26,7 @@ namespace OutlookOkan
             var settingsWindow = new SettingsWindow();
             var activeWindow = Globals.ThisAddIn.Application.ActiveWindow();
             var outlookHandle = new NativeMethods(activeWindow).Handle;
-            var windowInteropHelper = new WindowInteropHelper(settingsWindow) { Owner = outlookHandle };
+            _ = new WindowInteropHelper(settingsWindow) { Owner = outlookHandle };
 
             settingsWindow.ShowDialog();
         }
@@ -37,7 +36,7 @@ namespace OutlookOkan
             var aboutWindow = new AboutWindow();
             var activeWindow = Globals.ThisAddIn.Application.ActiveWindow();
             var outlookHandle = new NativeMethods(activeWindow).Handle;
-            var windowInteropHelper = new WindowInteropHelper(aboutWindow) { Owner = outlookHandle };
+            _ = new WindowInteropHelper(aboutWindow) { Owner = outlookHandle };
 
             aboutWindow.ShowDialog();
         }

@@ -175,15 +175,21 @@
                     <StackPanel>
                         <StackPanel Orientation="Horizontal" Margin="0,8,0,0">
                             <Label Content="{Binding Source={x:Static services:ResourceService.Instance}, Path=Resources.Sender, Mode=OneWay}" FontSize="11" Padding="0" Width="42"/>
-                            <TextBox Width="311" Padding="0" Margin="5,0,0,0" IsReadOnly="True" Text="{Binding Sender, Mode=OneWay}"/>
+                            <TextBox Width="304" Padding="0" Margin="5,0,0,0" IsReadOnly="True" Text="{Binding Sender, Mode=OneWay}"/>
                         </StackPanel>
                         <StackPanel Orientation="Horizontal" Margin="0,12,0,0">
                             <Label Content="{Binding Source={x:Static services:ResourceService.Instance}, Path=Resources.Subject, Mode=OneWay}" FontSize="11" Padding="0" Width="42"/>
-                            <TextBox Width="311" Padding="0" Margin="5,0,0,0" IsReadOnly="True" Text="{Binding Subject, Mode=OneWay}"/>
+                            <TextBox Width="304" Padding="0" Margin="5,0,0,0" IsReadOnly="True" Text="{Binding Subject, Mode=OneWay}"/>
                         </StackPanel>
                         <StackPanel Orientation="Horizontal" Margin="0,12,0,0">
-                            <Label Content="{Binding Source={x:Static services:ResourceService.Instance}, Path=Resources.MailType, Mode=OneWay}" FontSize="11" Padding="0" Width="42"/>
-                            <TextBox Width="311" Padding="0" Margin="5,0,0,0" IsReadOnly="True" Text="{Binding MailType, Mode=OneWay}"/>
+                            <StackPanel Orientation="Horizontal">
+                                <Label Content="{Binding Source={x:Static services:ResourceService.Instance}, Path=Resources.MailType, Mode=OneWay}" FontSize="11" Padding="0" Width="42"/>
+                                <TextBox Width="108" Padding="0" Margin="5,0,0,0" IsReadOnly="True" Text="{Binding MailType, Mode=OneWay}"/>
+                            </StackPanel>
+                            <StackPanel Orientation="Horizontal">
+                                <Label Content="{Binding Source={x:Static services:ResourceService.Instance}, Path=Resources.DeferredDeliveryMinutes, Mode=OneWay}" FontSize="11" Padding="0" Width="138" Margin="11,0,0,0"/>
+                                <TextBox x:Name="DeferredDeliveryMinutesBox" Width="42" Padding="0" Margin="5,0,0,0" IsReadOnly="false" TextAlignment="Right" Text="{Binding DeferredDeliveryMinutes, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" PreviewTextInput="DeferredDeliveryMinutesBox_OnPreviewTextInput" CommandManager.PreviewExecuted="DeferredDeliveryMinutesBox_OnPreviewExecuted"/>
+                            </StackPanel>
                         </StackPanel>
                     </StackPanel>
                 </GroupBox>

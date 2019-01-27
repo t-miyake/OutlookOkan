@@ -171,7 +171,7 @@
   <data name="AutoCheckSameDomain" xml:space="preserve">
     <value>送信元アドレスと同一のドメインのメールアドレス(社内アドレス)は、あらかじめチェックを自動付与する。</value>
   </data>
-  <data name="BerforeCSVImportAlert" xml:space="preserve">
+  <data name="CSVImportAlert" xml:space="preserve">
     <value>書式の異なるCSVをインポートするとエラーになります。気を付けてください。</value>
   </data>
   <data name="Cancel" xml:space="preserve">
@@ -358,10 +358,10 @@
     <value>株式会社のらねこ</value>
   </data>
   <data name="Copyright" xml:space="preserve">
-    <value>Copyright (C) 2018 Noraneko Inc.</value>
+    <value>Copyright (C) 2019 Noraneko Inc.</value>
   </data>
   <data name="Version" xml:space="preserve">
-    <value>バージョン 2.0.6</value>
+    <value>バージョン 2.1.0</value>
   </data>
   <data name="VersionInfo" xml:space="preserve">
     <value>バージョン情報</value>
@@ -432,5 +432,35 @@ CCあるいはBCCに指定したアドレスが自動で追加されます。</v
   </data>
   <data name="SentOnBehalf" xml:space="preserve">
     <value>として代理送信</value>
+  </data>
+  <data name="DeferredDelivery" xml:space="preserve">
+    <value>遅延送信</value>
+  </data>
+  <data name="DeferredDeliveryMinutes" xml:space="preserve">
+    <value>遅延送信(分) ※0で即時送信</value>
+  </data>
+  <data name="EnableForgottenToAttachAlert" xml:space="preserve">
+    <value>本文中に 添付 という文言があるのに添付ファイルがない場合、その旨を警告する。(添付ファイル漏れの警告)</value>
+  </data>
+  <data name="DeferredDeliveryEmailAddressOrDomainInfo" xml:space="preserve">
+    <value>送信を遅延させたいメールアドレスかドメインを入力してください。</value>
+  </data>
+  <data name="DeferredDeliveryTime" xml:space="preserve">
+    <value>遅延時間(分)</value>
+  </data>
+  <data name="InputDeferredDeliveryTime" xml:space="preserve">
+    <value>遅延時間を分単位で入力してください。</value>
+  </data>
+  <data name="SettingExampleDeferredDelivery" xml:space="preserve">
+    <value>アドレス：info@noraneko.co.jp
+または、
+ドメイン：@noraneko.co.jp
+
+アドレスまたはドメインを登録し、
+分単位で遅延時間を登録します。
+
+※@のみを登録すると全てのメールの標準の遅延時間を登録できます。
+
+※複数の条件に該当した場合、最も長い遅延時間が採用されます。</value>
   </data>
 </root>

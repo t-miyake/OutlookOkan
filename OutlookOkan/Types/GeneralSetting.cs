@@ -9,6 +9,7 @@ namespace OutlookOkan.Types
         public bool IsAutoCheckIfAllRecipientsAreSameDomain { get; set; }
         public string LanguageCode { get; set; }
         public bool IsShowConfirmationToMultipleDomain { get; set; }
+        public bool EnableForgottenToAttachAlert { get; set; }
     }
 
     public sealed class GeneralSettingMap : ClassMap<GeneralSetting>
@@ -24,6 +25,8 @@ namespace OutlookOkan.Types
             Map(m => m.LanguageCode).Index(3);
             Map(m => m.IsShowConfirmationToMultipleDomain).Index(4).TypeConverterOption
                 .BooleanValues(true, true, "Yes", "Y").TypeConverterOption.BooleanValues(false, true, "No", "N").Default(false);
+            Map(m => m.EnableForgottenToAttachAlert).Index(5).TypeConverterOption
+                .BooleanValues(true, true, "Yes", "Y").TypeConverterOption.BooleanValues(false, true, "No", "N").Default(true);
         }
     }
 }

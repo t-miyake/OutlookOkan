@@ -47,6 +47,8 @@ namespace OutlookOkan.Models
 
             CountRecipientExternalDomains();
 
+            _checkList.DeferredMinutes = CalcDeferredMinutes();
+
             return _checkList;
         }
 
@@ -143,7 +145,7 @@ namespace OutlookOkan.Models
             foreach (var mail in _displayNameAndRecipient)
             {
                 var recipient = mail.Key;
-                if (recipient != Resources.FailedToGetInformation)
+                if (recipient != Resources.FailedToGetInformation && recipient.Contains("@"))
                 {
                     domainList.Add(recipient.Substring(recipient.IndexOf("@", StringComparison.Ordinal)));
                 }
@@ -216,8 +218,14 @@ namespace OutlookOkan.Models
                     : exchangeDistributionList != null
                         ? exchangeDistributionList.Name + $@" ({exchangeDistributionList.PrimarySmtpAddress})"
                         : registeredUser != null
-                            ? recip.Name + $@" ({recip.Address ?? Resources.FailedToGetInformation})"
+                            ? registeredUser.Email1DisplayName ?? Resources.FailedToGetInformation
                             : recip.Address ?? Resources.FailedToGetInformation;
+
+                //ケースによってメールアドレスのみを正しく取得できないため、その場合は、表示名称をメールアドレスとして登録する。
+                if (!mailAddress.Contains("@"))
+                {
+                    mailAddress = nameAndMailAddress;
+                }
 
                 nameAndMailAddress = nameAndMailAddress ?? Resources.FailedToGetInformation;
 
@@ -227,11 +235,9 @@ namespace OutlookOkan.Models
                 //名称を差出人とメールアドレスの紐づけをTo/CC/BCCそれぞれに格納
                 switch (recip.Type)
                 {
-                    //To
                     case 1:
                         _toDisplayNameAndRecipient[mailAddress] = nameAndMailAddress;
                         break;
-                    //CC
                     case 2:
                         _ccDisplayNameAndRecipient[mailAddress] = nameAndMailAddress;
                         break;
@@ -250,7 +256,32 @@ namespace OutlookOkan.Models
         /// <param name="mail"></param>
         private void CheckForgotAttach(Outlook._MailItem mail)
         {
-            if (_checkList.MailBody.Contains("添付") && mail.Attachments.Count == 0)
+            if (mail.Attachments.Count >= 1) return;
+
+            var generalSetting = new List<GeneralSetting>();
+            var readCsv = new ReadAndWriteCsv("GeneralSetting.csv");
+            foreach (var data in readCsv.GetCsvRecords<GeneralSetting>(readCsv.LoadCsv<GeneralSettingMap>()))
+            {
+                generalSetting.Add((data));
+            }
+
+            if (generalSetting.Count == 0) return;
+            if (!generalSetting[0].EnableForgottenToAttachAlert) return;
+
+            string attachmentsKeyword;
+            switch (generalSetting[0].LanguageCode)
+            {
+                case "ja-JP":
+                    attachmentsKeyword = "添付";
+                    break;
+                case "en-US":
+                    attachmentsKeyword = "attached file";
+                    break;
+                default:
+                    return;
+            }
+
+            if (_checkList.MailBody.Contains(attachmentsKeyword))
             {
                 _checkList.Alerts.Add(new Alert { AlertMessage = Resources.ForgottenToAttachAlert, IsImportant = true, IsWhite = false, IsChecked = false });
             }
@@ -287,20 +318,17 @@ namespace OutlookOkan.Models
             var csv = new ReadAndWriteCsv("AlertKeywordAndMessageList.csv");
             var alertKeywordAndMessageList = csv.GetCsvRecords<AlertKeywordAndMessage>(csv.LoadCsv<AlertKeywordAndMessageMap>());
 
-            if (alertKeywordAndMessageList.Count != 0)
+            if (alertKeywordAndMessageList.Count == 0) return;
+            foreach (var i in alertKeywordAndMessageList)
             {
-                foreach (var i in alertKeywordAndMessageList)
-                {
-                    if (_checkList.MailBody.Contains(i.AlertKeyword))
-                    {
-                        _checkList.Alerts.Add(new Alert { AlertMessage = i.Message, IsImportant = true, IsWhite = false, IsChecked = false });
-                        if (i.IsCanNotSend)
-                        {
-                            _checkList.IsCanNotSendMail = true;
-                            _checkList.CanNotSendMailMessage = i.Message;
-                        }
-                    }
-                }
+                if (!_checkList.MailBody.Contains(i.AlertKeyword)) continue;
+
+                _checkList.Alerts.Add(new Alert { AlertMessage = i.Message, IsImportant = true, IsWhite = false, IsChecked = false });
+
+                if (!i.IsCanNotSend) continue;
+
+                _checkList.IsCanNotSendMail = true;
+                _checkList.CanNotSendMailMessage = i.Message;
             }
         }
 
@@ -317,31 +345,30 @@ namespace OutlookOkan.Models
             {
                 foreach (var i in autoCcBccKeywordList)
                 {
-                    if (_checkList.MailBody.Contains(i.Keyword) && i.AutoAddAddress.Contains("@"))
-                    {
-                        if (i.CcOrBcc == CcOrBcc.CC)
-                        {
-                            if (!autoAddedCcAddressList.Contains(i.AutoAddAddress) && !_ccDisplayNameAndRecipient.ContainsKey(i.AutoAddAddress))
-                            {
-                                var recip = mail.Recipients.Add(i.AutoAddAddress);
-                                recip.Type = (int)Outlook.OlMailRecipientType.olCC;
+                    if (!_checkList.MailBody.Contains(i.Keyword) || !i.AutoAddAddress.Contains("@")) continue;
 
-                                autoAddedCcAddressList.Add(i.AutoAddAddress);
-                            }
-                        }
-                        else if (!autoAddedBccAddressList.Contains(i.AutoAddAddress) && !_bccDisplayNameAndRecipient.ContainsKey(i.AutoAddAddress))
+                    if (i.CcOrBcc == CcOrBcc.CC)
+                    {
+                        if (!autoAddedCcAddressList.Contains(i.AutoAddAddress) && !_ccDisplayNameAndRecipient.ContainsKey(i.AutoAddAddress))
                         {
                             var recip = mail.Recipients.Add(i.AutoAddAddress);
-                            recip.Type = (int)Outlook.OlMailRecipientType.olBCC;
+                            recip.Type = (int)Outlook.OlMailRecipientType.olCC;
 
-                            autoAddedBccAddressList.Add(i.AutoAddAddress);
+                            autoAddedCcAddressList.Add(i.AutoAddAddress);
                         }
-
-                        _checkList.Alerts.Add(new Alert { AlertMessage = Resources.AutoAddDestination + $@"[{i.CcOrBcc}] [{i.AutoAddAddress}] (" + Resources.ApplicableKeywords + $" 「{i.Keyword}」)", IsImportant = false, IsWhite = true, IsChecked = true });
-
-                        // 自動追加されたアドレスはホワイトリスト登録アドレス扱い。
-                        _whitelist.Add(new Whitelist { WhiteName = i.AutoAddAddress });
                     }
+                    else if (!autoAddedBccAddressList.Contains(i.AutoAddAddress) && !_bccDisplayNameAndRecipient.ContainsKey(i.AutoAddAddress))
+                    {
+                        var recip = mail.Recipients.Add(i.AutoAddAddress);
+                        recip.Type = (int)Outlook.OlMailRecipientType.olBCC;
+
+                        autoAddedBccAddressList.Add(i.AutoAddAddress);
+                    }
+
+                    _checkList.Alerts.Add(new Alert { AlertMessage = Resources.AutoAddDestination + $@"[{i.CcOrBcc}] [{i.AutoAddAddress}] (" + Resources.ApplicableKeywords + $" 「{i.Keyword}」)", IsImportant = false, IsWhite = true, IsChecked = true });
+
+                    // 自動追加されたアドレスはホワイトリスト登録アドレス扱い。
+                    _whitelist.Add(new Whitelist { WhiteName = i.AutoAddAddress });
                 }
             }
 
@@ -354,31 +381,30 @@ namespace OutlookOkan.Models
             {
                 foreach (var i in autoCcBccRecipientList)
                 {
-                    if (_displayNameAndRecipient.Any(recipient => recipient.Key.Contains(i.TargetRecipient)) && i.AutoAddAddress.Contains("@"))
-                    {
-                        if (i.CcOrBcc == CcOrBcc.CC)
-                        {
-                            if (!autoAddedCcAddressList.Contains(i.AutoAddAddress) && !_ccDisplayNameAndRecipient.ContainsKey(i.AutoAddAddress))
-                            {
-                                var recip = mail.Recipients.Add(i.AutoAddAddress);
-                                recip.Type = (int)Outlook.OlMailRecipientType.olCC;
+                    if (!_displayNameAndRecipient.Any(recipient => recipient.Key.Contains(i.TargetRecipient)) || !i.AutoAddAddress.Contains("@")) continue;
 
-                                autoAddedCcAddressList.Add(i.AutoAddAddress);
-                            }
-                        }
-                        else if (!autoAddedBccAddressList.Contains(i.AutoAddAddress) && !_bccDisplayNameAndRecipient.ContainsKey(i.AutoAddAddress))
+                    if (i.CcOrBcc == CcOrBcc.CC)
+                    {
+                        if (!autoAddedCcAddressList.Contains(i.AutoAddAddress) && !_ccDisplayNameAndRecipient.ContainsKey(i.AutoAddAddress))
                         {
                             var recip = mail.Recipients.Add(i.AutoAddAddress);
-                            recip.Type = (int)Outlook.OlMailRecipientType.olBCC;
+                            recip.Type = (int)Outlook.OlMailRecipientType.olCC;
 
-                            autoAddedBccAddressList.Add(i.AutoAddAddress);
+                            autoAddedCcAddressList.Add(i.AutoAddAddress);
                         }
-
-                        _checkList.Alerts.Add(new Alert { AlertMessage = Resources.AutoAddDestination + $@"[{i.CcOrBcc}] [{i.AutoAddAddress}] (" + Resources.ApplicableDestination + $" 「{i.TargetRecipient}」)", IsImportant = false, IsWhite = true, IsChecked = true });
-
-                        // 自動追加されたアドレスはホワイトリスト登録アドレス扱い。
-                        _whitelist.Add(new Whitelist { WhiteName = i.AutoAddAddress });
                     }
+                    else if (!autoAddedBccAddressList.Contains(i.AutoAddAddress) && !_bccDisplayNameAndRecipient.ContainsKey(i.AutoAddAddress))
+                    {
+                        var recip = mail.Recipients.Add(i.AutoAddAddress);
+                        recip.Type = (int)Outlook.OlMailRecipientType.olBCC;
+
+                        autoAddedBccAddressList.Add(i.AutoAddAddress);
+                    }
+
+                    _checkList.Alerts.Add(new Alert { AlertMessage = Resources.AutoAddDestination + $@"[{i.CcOrBcc}] [{i.AutoAddAddress}] (" + Resources.ApplicableDestination + $" 「{i.TargetRecipient}」)", IsImportant = false, IsWhite = true, IsChecked = true });
+
+                    // 自動追加されたアドレスはホワイトリスト登録アドレス扱い。
+                    _whitelist.Add(new Whitelist { WhiteName = i.AutoAddAddress });
                 }
             }
             mail.Recipients.ResolveAll();
@@ -391,49 +417,49 @@ namespace OutlookOkan.Models
         /// <param name="mail"></param>
         private void GetAttachmentsInfomation(Outlook._MailItem mail)
         {
-            if (mail.Attachments.Count != 0)
+            if (mail.Attachments.Count == 0) return;
+
+            for (var i = 0; i < mail.Attachments.Count; i++)
             {
-                for (var i = 0; i < mail.Attachments.Count; i++)
+                var fileSize = Math.Round(((double)mail.Attachments[i + 1].Size / 1024), 0, MidpointRounding.AwayFromZero).ToString("##,###") + "KB";
+
+                //10Mbyte以上の添付ファイルは警告も表示。
+                if (mail.Attachments[i + 1].Size >= 10485760)
                 {
-                    var fileSize = Math.Round(((double)mail.Attachments[i + 1].Size / 1024), 0, MidpointRounding.AwayFromZero).ToString("##,###") + "KB";
-
-                    //10Mbyte以上の添付ファイルは警告も表示。
-                    if (mail.Attachments[i + 1].Size >= 10485760)
-                    {
-                        _checkList.Alerts.Add(new Alert { AlertMessage = Resources.IsBigAttachedFile + $"[{mail.Attachments[i + 1].FileName}]", IsChecked = false, IsImportant = true, IsWhite = false });
-                    }
-
-                    //一部の状態で添付ファイルのファイルタイプを取得できないため、それを回避。
-                    string fileType;
-                    try
-                    {
-                        fileType = mail.Attachments[i + 1].FileName.Substring(mail.Attachments[i + 1].FileName.LastIndexOf(".", StringComparison.Ordinal));
-                    }
-                    catch (Exception)
-                    {
-                        fileType = Resources.Unknown;
-                    }
-
-                    var isDangerous = false;
-                    //実行ファイル(.exe)を添付していたら警告を表示
-                    if (fileType == ".exe")
-                    {
-                        _checkList.Alerts.Add(new Alert { AlertMessage = Resources.IsAttachedExe + $"[{mail.Attachments[i + 1].FileName}]", IsChecked = false, IsImportant = true, IsWhite = false });
-                        isDangerous = true;
-                    }
-
-                    string attachmetName;
-                    try
-                    {
-                        attachmetName = mail.Attachments[i + 1].FileName;
-                    }
-                    catch (Exception)
-                    {
-                        attachmetName = Resources.Unknown;
-                    }
-
-                    _checkList.Attachments.Add(new Attachment { FileName = attachmetName, FileSize = fileSize, FileType = fileType, IsTooBig = mail.Attachments[i + 1].Size >= 10485760, IsEncrypted = false, IsChecked = false, IsDangerous = isDangerous });
+                    _checkList.Alerts.Add(new Alert { AlertMessage = Resources.IsBigAttachedFile + $"[{mail.Attachments[i + 1].FileName}]", IsChecked = false, IsImportant = true, IsWhite = false });
                 }
+
+                //一部の状態で添付ファイルのファイルタイプを取得できないため、それを回避。
+                string fileType;
+                try
+                {
+                    fileType = mail.Attachments[i + 1].FileName.Substring(mail.Attachments[i + 1].FileName.LastIndexOf(".", StringComparison.Ordinal));
+                }
+                catch (Exception)
+                {
+                    fileType = Resources.Unknown;
+                }
+
+                var isDangerous = false;
+
+                //実行ファイル(.exe)を添付していたら警告を表示
+                if (fileType == ".exe")
+                {
+                    _checkList.Alerts.Add(new Alert { AlertMessage = Resources.IsAttachedExe + $"[{mail.Attachments[i + 1].FileName}]", IsChecked = false, IsImportant = true, IsWhite = false });
+                    isDangerous = true;
+                }
+
+                string attachmetName;
+                try
+                {
+                    attachmetName = mail.Attachments[i + 1].FileName;
+                }
+                catch (Exception)
+                {
+                    attachmetName = Resources.Unknown;
+                }
+
+                _checkList.Attachments.Add(new Attachment { FileName = attachmetName, FileSize = fileSize, FileType = fileType, IsTooBig = mail.Attachments[i + 1].Size >= 10485760, IsEncrypted = false, IsChecked = false, IsDangerous = isDangerous });
             }
         }
 
@@ -451,20 +477,16 @@ namespace OutlookOkan.Models
 
             //登録された名称かつ本文中に登場した名称以外のドメインが宛先に含まれている場合、警告を表示。
             //送信先の候補が見つからない場合、何もしない。(見つからない場合の方が多いため、警告ばかりになってしまう。)
-            if (recipientCandidateDomains.Count != 0)
+            if (recipientCandidateDomains.Count == 0) return;
+
+            foreach (var recipients in _displayNameAndRecipient)
             {
-                foreach (var recipients in _displayNameAndRecipient)
+                if (recipientCandidateDomains.Any(domains => domains.Equals(recipients.Key.Substring(recipients.Key.IndexOf("@", StringComparison.Ordinal))))) continue;
+
+                //送信者ドメインは警告対象外。
+                if (!recipients.Key.Contains(_checkList.SenderDomain))
                 {
-                    if (!recipientCandidateDomains.Any(
-                        domains => domains.Equals(
-                            recipients.Key.Substring(recipients.Key.IndexOf("@", StringComparison.Ordinal)))))
-                    {
-                        //送信者ドメインは警告対象外。
-                        if (!recipients.Key.Contains(_checkList.SenderDomain))
-                        {
-                            _checkList.Alerts.Add(new Alert { AlertMessage = recipients.Value + " : " + Resources.IsAlertAddressMaybeIrrelevant, IsImportant = true, IsWhite = false, IsChecked = false });
-                        }
-                    }
+                    _checkList.Alerts.Add(new Alert { AlertMessage = recipients.Value + " : " + Resources.IsAlertAddressMaybeIrrelevant, IsImportant = true, IsWhite = false, IsChecked = false });
                 }
             }
         }
@@ -509,26 +531,23 @@ namespace OutlookOkan.Models
 
                 _checkList.ToAddresses.Add(new Address { MailAddress = i.Value, IsExternal = isExternal, IsWhite = isWhite, IsChecked = isWhite, IsSkip = isSkip });
 
-                if (alertAddresslist.Count != 0 &&
-                    alertAddresslist.Any(address => i.Key.Contains(address.TartgetAddress)))
-                {
-                    _checkList.Alerts.Add(new Alert
-                    {
-                        AlertMessage = Resources.IsAlertAddressToAlert + $"[{i.Value}]",
-                        IsImportant = true,
-                        IsWhite = false,
-                        IsChecked = false
-                    });
+                if (alertAddresslist.Count == 0 || !alertAddresslist.Any(address => i.Key.Contains(address.TartgetAddress))) continue;
 
-                    //送信禁止アドレスに該当する場合、禁止フラグを立て対象メールアドレスを説明文へ追加。
-                    foreach (var alertAddress in alertAddresslist)
-                    {
-                        if (i.Key.Contains(alertAddress.TartgetAddress) && alertAddress.IsCanNotSend)
-                        {
-                            _checkList.IsCanNotSendMail = true;
-                            _checkList.CanNotSendMailMessage = Resources.SendingForbidAddress + $"[{i.Value}]";
-                        }
-                    }
+                _checkList.Alerts.Add(new Alert
+                {
+                    AlertMessage = Resources.IsAlertAddressToAlert + $"[{i.Value}]",
+                    IsImportant = true,
+                    IsWhite = false,
+                    IsChecked = false
+                });
+
+                //送信禁止アドレスに該当する場合、禁止フラグを立て対象メールアドレスを説明文へ追加。
+                foreach (var alertAddress in alertAddresslist)
+                {
+                    if (!i.Key.Contains(alertAddress.TartgetAddress) || !alertAddress.IsCanNotSend) continue;
+
+                    _checkList.IsCanNotSendMail = true;
+                    _checkList.CanNotSendMailMessage = Resources.SendingForbidAddress + $"[{i.Value}]";
                 }
             }
 
@@ -551,26 +570,23 @@ namespace OutlookOkan.Models
 
                 _checkList.CcAddresses.Add(new Address { MailAddress = i.Value, IsExternal = isExternal, IsWhite = isWhite, IsChecked = isWhite, IsSkip = isSkip });
 
-                if (alertAddresslist.Count != 0 &&
-                    alertAddresslist.Any(address => i.Key.Contains(address.TartgetAddress)))
-                {
-                    _checkList.Alerts.Add(new Alert
-                    {
-                        AlertMessage = Resources.IsAlertAddressCcAlert + $"[{i.Value}]",
-                        IsImportant = true,
-                        IsWhite = false,
-                        IsChecked = false
-                    });
+                if (alertAddresslist.Count == 0 || !alertAddresslist.Any(address => i.Key.Contains(address.TartgetAddress))) continue;
 
-                    //送信禁止アドレスに該当する場合、禁止フラグを立て対象メールアドレスを説明文へ追加。
-                    foreach (var alertAddress in alertAddresslist)
-                    {
-                        if (i.Key.Contains(alertAddress.TartgetAddress) && alertAddress.IsCanNotSend)
-                        {
-                            _checkList.IsCanNotSendMail = true;
-                            _checkList.CanNotSendMailMessage = Resources.SendingForbidAddress + $"[{i.Value}]";
-                        }
-                    }
+                _checkList.Alerts.Add(new Alert
+                {
+                    AlertMessage = Resources.IsAlertAddressCcAlert + $"[{i.Value}]",
+                    IsImportant = true,
+                    IsWhite = false,
+                    IsChecked = false
+                });
+
+                //送信禁止アドレスに該当する場合、禁止フラグを立て対象メールアドレスを説明文へ追加。
+                foreach (var alertAddress in alertAddresslist)
+                {
+                    if (!i.Key.Contains(alertAddress.TartgetAddress) || !alertAddress.IsCanNotSend) continue;
+
+                    _checkList.IsCanNotSendMail = true;
+                    _checkList.CanNotSendMailMessage = Resources.SendingForbidAddress + $"[{i.Value}]";
                 }
             }
 
@@ -593,20 +609,92 @@ namespace OutlookOkan.Models
 
                 _checkList.BccAddresses.Add(new Address { MailAddress = i.Value, IsExternal = isExternal, IsWhite = isWhite, IsChecked = isWhite, IsSkip = isSkip });
 
-                if (alertAddresslist.Count != 0 && alertAddresslist.Any(address => i.Key.Contains(address.TartgetAddress)))
+                if (alertAddresslist.Count == 0 || !alertAddresslist.Any(address => i.Key.Contains(address.TartgetAddress))) continue;
+
+                _checkList.Alerts.Add(new Alert
                 {
-                    _checkList.Alerts.Add(new Alert { AlertMessage = Resources.IsAlertAddressBccAlert + $"[{i.Value}]", IsImportant = true, IsWhite = false, IsChecked = false });
-                    //送信禁止アドレスに該当する場合、禁止フラグを立て対象メールアドレスを説明文へ追加。
-                    foreach (var alertAddress in alertAddresslist)
+                    AlertMessage = Resources.IsAlertAddressBccAlert + $"[{i.Value}]",
+                    IsImportant = true,
+                    IsWhite = false,
+                    IsChecked = false
+                });
+
+                //送信禁止アドレスに該当する場合、禁止フラグを立て対象メールアドレスを説明文へ追加。
+                foreach (var alertAddress in alertAddresslist)
+                {
+                    if (!i.Key.Contains(alertAddress.TartgetAddress) || !alertAddress.IsCanNotSend) continue;
+
+                    _checkList.IsCanNotSendMail = true;
+                    _checkList.CanNotSendMailMessage = Resources.SendingForbidAddress + $"[{i.Value}]";
+                }
+            }
+        }
+
+        /// <summary>
+        /// 送信遅延時間を算出する。
+        /// 条件に該当する最も長い送信遅延時間を返す。
+        /// </summary>
+        /// <returns>送信遅延時間(分)</returns>
+        private int CalcDeferredMinutes()
+        {
+            var readCsv = new ReadAndWriteCsv("DeferredDeliveryMinutes.csv");
+            var deferredDeliveryMinutes = readCsv.GetCsvRecords<DeferredDeliveryMinutes>(readCsv.LoadCsv<DeferredDeliveryMinutesMap>());
+            if (deferredDeliveryMinutes.Count == 0) return 0;
+
+            var deferredMinutes = 0;
+
+            //@のみで登録していた場合、それを標準の送信遅延時間とする。
+            foreach (var config in deferredDeliveryMinutes)
+            {
+                if (config.TartgetAddress == "@")
+                {
+                    deferredMinutes = config.DeferredMinutes;
+                }
+            }
+
+            if (_toDisplayNameAndRecipient.Count != 0)
+            {
+                foreach (var toRecipients in _toDisplayNameAndRecipient)
+                {
+                    foreach (var config in deferredDeliveryMinutes)
                     {
-                        if (i.Key.Contains(alertAddress.TartgetAddress) && alertAddress.IsCanNotSend)
+                        if (toRecipients.Value.Contains(config.TartgetAddress) && deferredMinutes < config.DeferredMinutes)
                         {
-                            _checkList.IsCanNotSendMail = true;
-                            _checkList.CanNotSendMailMessage = Resources.SendingForbidAddress + $"[{i.Value}]";
+                            deferredMinutes = config.DeferredMinutes;
                         }
                     }
                 }
             }
+
+            if (_ccDisplayNameAndRecipient.Count != 0)
+            {
+                foreach (var ccRecipients in _ccDisplayNameAndRecipient)
+                {
+                    foreach (var config in deferredDeliveryMinutes)
+                    {
+                        if (ccRecipients.Value.Contains(config.TartgetAddress) && deferredMinutes < config.DeferredMinutes)
+                        {
+                            deferredMinutes = config.DeferredMinutes;
+                        }
+                    }
+                }
+            }
+
+            if (_bccDisplayNameAndRecipient.Count != 0)
+            {
+                foreach (var bccRecipients in _bccDisplayNameAndRecipient)
+                {
+                    foreach (var config in deferredDeliveryMinutes)
+                    {
+                        if (bccRecipients.Value.Contains(config.TartgetAddress) && deferredMinutes < config.DeferredMinutes)
+                        {
+                            deferredMinutes = config.DeferredMinutes;
+                        }
+                    }
+                }
+            }
+
+            return deferredMinutes;
         }
     }
 }
