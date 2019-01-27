@@ -9,19 +9,26 @@
 機密の関わるメールにおいて、完全なオープンソースのため、安心してご利用いただけます。  
 また、キーワードによる警告や、自動CC/BCC追加機能など、便利なオプション機能もあります。  
 
-ダウンロードは[releases](https://github.com/t-miyake/OutlookOkan/releases)からできます。
+ダウンロードは[releases](https://github.com/t-miyake/OutlookOkan/releases)からできます。  
+アドイン名を無難なものにしたバージョンも併せて配布しています。
 
 オープンソースかつ無料でご利用いただけますが、無サポート、無保証です。([ライセンス](https://github.com/t-miyake/OutlookOkan/blob/master/LICENSE))  
 専用のカスタマイズやサポートが必要な場合は、個別にご相談ください。  
 
 送信前の確認ウインドウ  
-![Screenshot 1](https://github.com/t-miyake/OutlookOkan/blob/master/Screenshots/Screenshot_v2.0.3_02.png)  
+![Screenshot 1](https://github.com/t-miyake/OutlookOkan/blob/master/Screenshots/Screenshot_v2.1.0_02.png)  
 
 設定ウィンドウ  
-![Screenshot 2](https://github.com/t-miyake/OutlookOkan/blob/master/Screenshots/Screenshot_v2.0.3_01.png) 
+![Screenshot 2](https://github.com/t-miyake/OutlookOkan/blob/master/Screenshots/Screenshot_v2.1.0_01.png) 
 
 送信禁止通知  
 ![Screenshot 3](https://github.com/t-miyake/OutlookOkan/blob/master/Screenshots/Screenshot_v2.0.3_03.png)
+
+## 対応環境
+
+- Windows 7/8/8.1/10
+- Microsoft Outlook 2013/2016/2019/Office365 (32bit版及び64bit版)
+- .NET Framework 4.6.2以上
 
 ## 機能一覧(概要)
 
@@ -58,6 +65,10 @@
 
 - 自動CC/BCC追加(宛先)
     - 指定した宛先へのメールに、指定したアドレスを自動でCCやBCCに追加
+
+- 送信遅延(送信保留)
+    -  設定した時間(分単位)だけ、メールの送信を遅延(保留)
+    - ドメインやメールアドレス毎に、デフォルトの遅延時間を設定可能
 
 - 設定のインポート/エクスポート
     - 設定内容をCSVファイルでインポート/エクスポート
