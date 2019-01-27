@@ -1,17 +1,27 @@
 ﻿using OutlookOkan.Types;
 using OutlookOkan.ViewModels;
+using System;
+using System.Text.RegularExpressions;
 using System.Windows;
+using System.Windows.Input;
+using Outlook = Microsoft.Office.Interop.Outlook;
 
 namespace OutlookOkan.Views
 {
     public partial class ConfirmationWindow : Window
     {
-        public ConfirmationWindow(CheckList checkList)
+        private readonly Outlook._MailItem _mailItem;
+
+        public ConfirmationWindow(CheckList checkList, Outlook._MailItem mailItem)
         {
-            var viewModel = new ConfirmationWindowViewModel(checkList);
-            DataContext = viewModel;
+            DataContext = new ConfirmationWindowViewModel(checkList);
+            _mailItem = mailItem;
 
             InitializeComponent();
+
+            //送信遅延時間を表示(設定)欄に入れる。
+            DeferredDeliveryMinutesBox.Text = checkList.DeferredMinutes.ToString();
+
         }
 
         /// <summary>
@@ -19,6 +29,13 @@ namespace OutlookOkan.Views
         /// </summary>
         private void SendButton_OnClick(object sender, RoutedEventArgs e)
         {
+            //送信遅延時間(分単位)を現在時刻に加える。
+            int.TryParse(DeferredDeliveryMinutesBox.Text, out var deferredDeliveryMinutes);
+            if (deferredDeliveryMinutes != 0)
+            {
+                _mailItem.DeferredDeliveryTime = DateTime.Now.AddMinutes(deferredDeliveryMinutes);
+            }
+
             DialogResult = true;
         }
 
@@ -46,6 +63,29 @@ namespace OutlookOkan.Views
         {
             var viewModel = DataContext as ConfirmationWindowViewModel;
             viewModel?.ToggleSendButton();
+        }
+
+        /// <summary>
+        /// 送信遅延時間の入力ボックスを数値のみ入力に制限する。
+        /// </summary>
+        private void DeferredDeliveryMinutesBox_OnPreviewTextInput(object sender, TextCompositionEventArgs e)
+        {
+            var regex = new Regex("[^0-9]+$");
+
+            if (!regex.IsMatch(DeferredDeliveryMinutesBox.Text + e.Text)) return;
+            DeferredDeliveryMinutesBox.Text = "0";
+            e.Handled = true;
+        }
+
+        /// <summary>
+        /// 送信遅延時間の入力ボックスへのペーストを無視する。(全角数字がペーストされる恐れがあるため)
+        /// </summary>
+        private void DeferredDeliveryMinutesBox_OnPreviewExecuted(object sender, ExecutedRoutedEventArgs e)
+        {
+            if (e.Command == ApplicationCommands.Paste)
+            {
+                e.Handled = true;
+            }
         }
     }
 }

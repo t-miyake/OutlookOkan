@@ -2,6 +2,7 @@
 using OutlookOkan.Services;
 using OutlookOkan.Types;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Globalization;
@@ -33,6 +34,9 @@ namespace OutlookOkan.ViewModels
             ImportAutoCcBccRecipientsList = new RelayCommand(ImportAutoCcBccRecipientsFromCsv);
             ExportAutoCcBccRecipientsList = new RelayCommand(ExportAutoCcBccRecipientsToCsv);
 
+            ImportDeferredDeliveryMinutesesList = new RelayCommand(ImportDeferredDeliveryMinutesFromCsv);
+            ExportDeferredDeliveryMinutesesList = new RelayCommand(ExportDeferredDeliveryMinutesToCsv);
+
             //言語コードと名称をロード
             var langlist = new Languages();
             Languages = langlist.Language;
@@ -45,6 +49,7 @@ namespace OutlookOkan.ViewModels
             LoadAlertAddressessData();
             LoadAutoCcBccKeywordsData();
             LoadAutoCcBccRecipientsData();
+            LoadDeferredDeliveryMinutesData();
         }
 
         public void SaveSettings()
@@ -56,6 +61,7 @@ namespace OutlookOkan.ViewModels
             SaveAlertAddressesToCsv();
             SaveAutoCcBccKeywordsToCsv();
             SaveAutoCcBccRecipientsToCsv();
+            SaveDeferredDeliveryMinutesToCsv();
         }
 
         #region Whitelist
@@ -76,10 +82,14 @@ namespace OutlookOkan.ViewModels
 
         private void SaveWhiteListToCsv()
         {
-            var tempDate = new BindingSource();
-            foreach (var data in Whitelist) { tempDate.Add(data); }
+            var list = new ArrayList();
+            foreach (var data in Whitelist)
+            {
+                list.Add(data);
+            }
+
             var writeCsv = new ReadAndWriteCsv("Whitelist.csv");
-            writeCsv.WriteBindableDataToCsv<WhitelistMap>(tempDate);
+            writeCsv.WriteRecordsToCsv<WhitelistMap>(list);
         }
 
         private void ImportWhiteListFromCsv()
@@ -87,32 +97,34 @@ namespace OutlookOkan.ViewModels
             var importAction = new CsvImportAndExport();
             var filePath = importAction.ImportCsv();
 
-            if (filePath != null)
-            {
-                try
-                {
-                    var importData = new List<Whitelist>(importAction.GetCsvRecords<Whitelist>(importAction.LoadCsv<WhitelistMap>(filePath)));
-                    foreach (var data in importData)
-                    {
-                        Whitelist.Add(data);
-                    }
+            if (filePath == null) return;
 
-                    MessageBox.Show(Properties.Resources.SuccessfulImport);
-                }
-                catch (Exception)
+            try
+            {
+                var importData = new List<Whitelist>(importAction.GetCsvRecords<Whitelist>(importAction.LoadCsv<WhitelistMap>(filePath)));
+                foreach (var data in importData)
                 {
-                    MessageBox.Show(Properties.Resources.ImportFailed);
+                    Whitelist.Add(data);
                 }
+
+                MessageBox.Show(Properties.Resources.SuccessfulImport);
+            }
+            catch (Exception)
+            {
+                MessageBox.Show(Properties.Resources.ImportFailed);
             }
         }
 
         private void ExportWhiteListToCsv()
         {
-            var tempDate = new BindingSource();
-            foreach (var data in Whitelist) { tempDate.Add(data); }
+            var list = new ArrayList();
+            foreach (var data in Whitelist)
+            {
+                list.Add(data);
+            }
 
             var exportAction = new CsvImportAndExport();
-            exportAction.CsvExport<WhitelistMap>(tempDate, "Whitelist.csv");
+            exportAction.CsvExport<WhitelistMap>(list, "Whitelist.csv");
         }
 
         private ObservableCollection<Whitelist> _whitelist = new ObservableCollection<Whitelist>();
@@ -146,10 +158,13 @@ namespace OutlookOkan.ViewModels
 
         private void SaveNameAndDomainsToCsv()
         {
-            var tempDate = new BindingSource();
-            foreach (var data in NameAndDomains) { tempDate.Add(data); }
+            var list = new ArrayList();
+            foreach (var data in NameAndDomains)
+            {
+                list.Add(data);
+            }
             var writeCsv = new ReadAndWriteCsv("NameAndDomains.csv");
-            writeCsv.WriteBindableDataToCsv<NameAndDomainsMap>(tempDate);
+            writeCsv.WriteRecordsToCsv<NameAndDomainsMap>(list);
         }
 
         private void ImportNameAndDomainsFromCsv()
@@ -157,32 +172,34 @@ namespace OutlookOkan.ViewModels
             var importAction = new CsvImportAndExport();
             var filePath = importAction.ImportCsv();
 
-            if (filePath != null)
-            {
-                try
-                {
-                    var importData = new List<NameAndDomains>(importAction.GetCsvRecords<NameAndDomains>(importAction.LoadCsv<NameAndDomainsMap>(filePath)));
-                    foreach (var data in importData)
-                    {
-                        NameAndDomains.Add(data);
-                    }
+            if (filePath == null) return;
 
-                    MessageBox.Show(Properties.Resources.SuccessfulImport);
-                }
-                catch (Exception)
+            try
+            {
+                var importData = new List<NameAndDomains>(importAction.GetCsvRecords<NameAndDomains>(importAction.LoadCsv<NameAndDomainsMap>(filePath)));
+                foreach (var data in importData)
                 {
-                    MessageBox.Show(Properties.Resources.ImportFailed);
+                    NameAndDomains.Add(data);
                 }
+
+                MessageBox.Show(Properties.Resources.SuccessfulImport);
+            }
+            catch (Exception)
+            {
+                MessageBox.Show(Properties.Resources.ImportFailed);
             }
         }
 
         private void ExportNameAndDomainsToCsv()
         {
-            var tempDate = new BindingSource();
-            foreach (var data in NameAndDomains) { tempDate.Add(data); }
+            var list = new ArrayList();
+            foreach (var data in NameAndDomains)
+            {
+                list.Add(data);
+            }
 
             var exportAction = new CsvImportAndExport();
-            exportAction.CsvExport<NameAndDomainsMap>(tempDate, "NameAndDomains.csv");
+            exportAction.CsvExport<NameAndDomainsMap>(list, "NameAndDomains.csv");
         }
 
         private ObservableCollection<NameAndDomains> _nameAndDomains = new ObservableCollection<NameAndDomains>();
@@ -216,10 +233,14 @@ namespace OutlookOkan.ViewModels
 
         private void SaveAlertKeywordAndMessageToCsv()
         {
-            var tempDate = new BindingSource();
-            foreach (var data in AlertKeywordAndMessages) { tempDate.Add(data); }
+            var list = new ArrayList();
+            foreach (var data in AlertKeywordAndMessages)
+            {
+                list.Add(data);
+            }
+
             var writeCsv = new ReadAndWriteCsv("AlertKeywordAndMessageList.csv");
-            writeCsv.WriteBindableDataToCsv<AlertKeywordAndMessageMap>(tempDate);
+            writeCsv.WriteRecordsToCsv<AlertKeywordAndMessageMap>(list);
         }
 
         private void ImportAlertKeywordAndMessagesFromCsv()
@@ -227,32 +248,34 @@ namespace OutlookOkan.ViewModels
             var importAction = new CsvImportAndExport();
             var filePath = importAction.ImportCsv();
 
-            if (filePath != null)
-            {
-                try
-                {
-                    var importData = new List<AlertKeywordAndMessage>(importAction.GetCsvRecords<AlertKeywordAndMessage>(importAction.LoadCsv<AlertKeywordAndMessageMap>(filePath)));
-                    foreach (var data in importData)
-                    {
-                        AlertKeywordAndMessages.Add(data);
-                    }
+            if (filePath == null) return;
 
-                    MessageBox.Show(Properties.Resources.SuccessfulImport);
-                }
-                catch (Exception)
+            try
+            {
+                var importData = new List<AlertKeywordAndMessage>(importAction.GetCsvRecords<AlertKeywordAndMessage>(importAction.LoadCsv<AlertKeywordAndMessageMap>(filePath)));
+                foreach (var data in importData)
                 {
-                    MessageBox.Show(Properties.Resources.ImportFailed);
+                    AlertKeywordAndMessages.Add(data);
                 }
+
+                MessageBox.Show(Properties.Resources.SuccessfulImport);
+            }
+            catch (Exception)
+            {
+                MessageBox.Show(Properties.Resources.ImportFailed);
             }
         }
 
         private void ExportAlertKeywordAndMessagesToCsv()
         {
-            var tempDate = new BindingSource();
-            foreach (var data in AlertKeywordAndMessages) { tempDate.Add(data); }
+            var list = new ArrayList();
+            foreach (var data in AlertKeywordAndMessages)
+            {
+                list.Add(data);
+            }
 
             var exportAction = new CsvImportAndExport();
-            exportAction.CsvExport<AlertKeywordAndMessageMap>(tempDate, "AlertKeywordAndMessageList.csv");
+            exportAction.CsvExport<AlertKeywordAndMessageMap>(list, "AlertKeywordAndMessageList.csv");
         }
 
         private ObservableCollection<AlertKeywordAndMessage> _alertKeywordAndMessages = new ObservableCollection<AlertKeywordAndMessage>();
@@ -286,10 +309,14 @@ namespace OutlookOkan.ViewModels
 
         private void SaveAlertAddressesToCsv()
         {
-            var tempDate = new BindingSource();
-            foreach (var data in AlertAddresses) { tempDate.Add(data); }
+            var list = new ArrayList();
+            foreach (var data in AlertAddresses)
+            {
+                list.Add(data);
+            }
+
             var writeCsv = new ReadAndWriteCsv("AlertAddressList.csv");
-            writeCsv.WriteBindableDataToCsv<AlertAddressMap>(tempDate);
+            writeCsv.WriteRecordsToCsv<AlertAddressMap>(list);
         }
 
         private void ImportAlertAddressesFromCsv()
@@ -297,32 +324,34 @@ namespace OutlookOkan.ViewModels
             var importAction = new CsvImportAndExport();
             var filePath = importAction.ImportCsv();
 
-            if (filePath != null)
-            {
-                try
-                {
-                    var importData = new List<AlertAddress>(importAction.GetCsvRecords<AlertAddress>(importAction.LoadCsv<AlertAddressMap>(filePath)));
-                    foreach (var data in importData)
-                    {
-                        AlertAddresses.Add(data);
-                    }
+            if (filePath == null) return;
 
-                    MessageBox.Show(Properties.Resources.SuccessfulImport);
-                }
-                catch (Exception)
+            try
+            {
+                var importData = new List<AlertAddress>(importAction.GetCsvRecords<AlertAddress>(importAction.LoadCsv<AlertAddressMap>(filePath)));
+                foreach (var data in importData)
                 {
-                    MessageBox.Show(Properties.Resources.ImportFailed);
+                    AlertAddresses.Add(data);
                 }
+
+                MessageBox.Show(Properties.Resources.SuccessfulImport);
+            }
+            catch (Exception)
+            {
+                MessageBox.Show(Properties.Resources.ImportFailed);
             }
         }
 
         private void ExportAlertAddressesToCsv()
         {
-            var tempDate = new BindingSource();
-            foreach (var data in AlertAddresses) { tempDate.Add(data); }
+            var list = new ArrayList();
+            foreach (var data in AlertAddresses)
+            {
+                list.Add(data);
+            }
 
             var exportAction = new CsvImportAndExport();
-            exportAction.CsvExport<AlertAddressMap>(tempDate, "AlertAddressList.csv");
+            exportAction.CsvExport<AlertAddressMap>(list, "AlertAddressList.csv");
         }
 
         private ObservableCollection<AlertAddress> _alertAddresses = new ObservableCollection<AlertAddress>();
@@ -356,10 +385,13 @@ namespace OutlookOkan.ViewModels
 
         private void SaveAutoCcBccKeywordsToCsv()
         {
-            var tempDate = new BindingSource();
-            foreach (var data in AutoCcBccKeywords) { tempDate.Add(data); }
+            var list = new ArrayList();
+            foreach (var data in AutoCcBccKeywords)
+            {
+                list.Add(data);
+            }
             var writeCsv = new ReadAndWriteCsv("AutoCcBccKeywordList.csv");
-            writeCsv.WriteBindableDataToCsv<AutoCcBccKeywordMap>(tempDate);
+            writeCsv.WriteRecordsToCsv<AutoCcBccKeywordMap>(list);
         }
 
         private void ImportAutoCcBccKeywordsFromCsv()
@@ -367,32 +399,34 @@ namespace OutlookOkan.ViewModels
             var importAction = new CsvImportAndExport();
             var filePath = importAction.ImportCsv();
 
-            if (filePath != null)
-            {
-                try
-                {
-                    var importData = new List<AutoCcBccKeyword>(importAction.GetCsvRecords<AutoCcBccKeyword>(importAction.LoadCsv<AutoCcBccKeywordMap>(filePath)));
-                    foreach (var data in importData)
-                    {
-                        AutoCcBccKeywords.Add(data);
-                    }
+            if (filePath == null) return;
 
-                    MessageBox.Show(Properties.Resources.SuccessfulImport);
-                }
-                catch (Exception)
+            try
+            {
+                var importData = new List<AutoCcBccKeyword>(importAction.GetCsvRecords<AutoCcBccKeyword>(importAction.LoadCsv<AutoCcBccKeywordMap>(filePath)));
+                foreach (var data in importData)
                 {
-                    MessageBox.Show(Properties.Resources.ImportFailed);
+                    AutoCcBccKeywords.Add(data);
                 }
+
+                MessageBox.Show(Properties.Resources.SuccessfulImport);
+            }
+            catch (Exception)
+            {
+                MessageBox.Show(Properties.Resources.ImportFailed);
             }
         }
 
         private void ExportAutoCcBccKeywordsToCsv()
         {
-            var tempDate = new BindingSource();
-            foreach (var data in AutoCcBccKeywords) { tempDate.Add(data); }
+            var list = new ArrayList();
+            foreach (var data in AutoCcBccKeywords)
+            {
+                list.Add(data);
+            }
 
             var exportAction = new CsvImportAndExport();
-            exportAction.CsvExport<AutoCcBccKeywordMap>(tempDate, "AutoCcBccKeywordList.csv");
+            exportAction.CsvExport<AutoCcBccKeywordMap>(list, "AutoCcBccKeywordList.csv");
         }
 
         private ObservableCollection<AutoCcBccKeyword> _autoCcBccKeywords = new ObservableCollection<AutoCcBccKeyword>();
@@ -426,10 +460,13 @@ namespace OutlookOkan.ViewModels
 
         private void SaveAutoCcBccRecipientsToCsv()
         {
-            var tempDate = new BindingSource();
-            foreach (var data in AutoCcBccRecipients) { tempDate.Add(data); }
+            var list = new ArrayList();
+            foreach (var data in AutoCcBccRecipients)
+            {
+                list.Add(data);
+            }
             var writeCsv = new ReadAndWriteCsv("AutoCcBccRecipientList.csv");
-            writeCsv.WriteBindableDataToCsv<AutoCcBccRecipientMap>(tempDate);
+            writeCsv.WriteRecordsToCsv<AutoCcBccRecipientMap>(list);
         }
 
         private void ImportAutoCcBccRecipientsFromCsv()
@@ -437,32 +474,34 @@ namespace OutlookOkan.ViewModels
             var importAction = new CsvImportAndExport();
             var filePath = importAction.ImportCsv();
 
-            if (filePath != null)
-            {
-                try
-                {
-                    var importData = new List<AutoCcBccRecipient>(importAction.GetCsvRecords<AutoCcBccRecipient>(importAction.LoadCsv<AutoCcBccRecipientMap>(filePath)));
-                    foreach (var data in importData)
-                    {
-                        AutoCcBccRecipients.Add(data);
-                    }
+            if (filePath == null) return;
 
-                    MessageBox.Show(Properties.Resources.SuccessfulImport);
-                }
-                catch (Exception)
+            try
+            {
+                var importData = new List<AutoCcBccRecipient>(importAction.GetCsvRecords<AutoCcBccRecipient>(importAction.LoadCsv<AutoCcBccRecipientMap>(filePath)));
+                foreach (var data in importData)
                 {
-                    MessageBox.Show(Properties.Resources.ImportFailed);
+                    AutoCcBccRecipients.Add(data);
                 }
+
+                MessageBox.Show(Properties.Resources.SuccessfulImport);
+            }
+            catch (Exception)
+            {
+                MessageBox.Show(Properties.Resources.ImportFailed);
             }
         }
 
         private void ExportAutoCcBccRecipientsToCsv()
         {
-            var tempDate = new BindingSource();
-            foreach (var data in AutoCcBccRecipients) { tempDate.Add(data); }
+            var list = new ArrayList();
+            foreach (var data in AutoCcBccRecipients)
+            {
+                list.Add(data);
+            }
 
             var exportAction = new CsvImportAndExport();
-            exportAction.CsvExport<AutoCcBccRecipientMap>(tempDate, "AutoCcBccRecipientList.csv");
+            exportAction.CsvExport<AutoCcBccRecipientMap>(list, "AutoCcBccRecipientList.csv");
         }
 
         private ObservableCollection<AutoCcBccRecipient> _autoCcBccRecipients = new ObservableCollection<AutoCcBccRecipient>();
@@ -473,6 +512,81 @@ namespace OutlookOkan.ViewModels
             {
                 _autoCcBccRecipients = value;
                 OnPropertyChanged("AutoCcBccRecipients");
+            }
+        }
+
+        #endregion
+
+        #region DeferredDelivery
+
+        public ICommand ImportDeferredDeliveryMinutesesList { get; }
+        public ICommand ExportDeferredDeliveryMinutesesList { get; }
+
+        private void LoadDeferredDeliveryMinutesData()
+        {
+            var readCsv = new ReadAndWriteCsv("DeferredDeliveryMinutes.csv");
+            var deferredDeliveryMinutes = readCsv.GetCsvRecords<DeferredDeliveryMinutes>(readCsv.LoadCsv<DeferredDeliveryMinutesMap>());
+
+            foreach (var data in deferredDeliveryMinutes)
+            {
+                DeferredDeliveryMinuteses.Add(data);
+            }
+        }
+
+        private void SaveDeferredDeliveryMinutesToCsv()
+        {
+            var list = new ArrayList();
+            foreach (var data in DeferredDeliveryMinuteses)
+            {
+                list.Add(data);
+            }
+            var writeCsv = new ReadAndWriteCsv("DeferredDeliveryMinutes.csv");
+            writeCsv.WriteRecordsToCsv<DeferredDeliveryMinutesMap>(list);
+        }
+
+        private void ImportDeferredDeliveryMinutesFromCsv()
+        {
+            var importAction = new CsvImportAndExport();
+            var filePath = importAction.ImportCsv();
+
+            if (filePath == null) return;
+
+            try
+            {
+                var importData = new List<DeferredDeliveryMinutes>(importAction.GetCsvRecords<DeferredDeliveryMinutes>(importAction.LoadCsv<DeferredDeliveryMinutesMap>(filePath)));
+                foreach (var data in importData)
+                {
+                    DeferredDeliveryMinuteses.Add(data);
+                }
+
+                MessageBox.Show(Properties.Resources.SuccessfulImport);
+            }
+            catch (Exception)
+            {
+                MessageBox.Show(Properties.Resources.ImportFailed);
+            }
+        }
+
+        private void ExportDeferredDeliveryMinutesToCsv()
+        {
+            var list = new ArrayList();
+            foreach (var data in DeferredDeliveryMinuteses)
+            {
+                list.Add(data);
+            }
+
+            var exportAction = new CsvImportAndExport();
+            exportAction.CsvExport<DeferredDeliveryMinutesMap>(list, "DeferredDeliveryMinutes.csv");
+        }
+
+        private ObservableCollection<DeferredDeliveryMinutes> _deferredDeliveryMinuteses = new ObservableCollection<DeferredDeliveryMinutes>();
+        public ObservableCollection<DeferredDeliveryMinutes> DeferredDeliveryMinuteses
+        {
+            get => _deferredDeliveryMinuteses;
+            set
+            {
+                _deferredDeliveryMinuteses = value;
+                OnPropertyChanged("DeferredDeliveryMinuteses");
             }
         }
 
@@ -489,25 +603,24 @@ namespace OutlookOkan.ViewModels
                 _generalSetting.Add((data));
             }
 
-            //実際に使用するのは1行目の設定のみ
-            if (_generalSetting.Count != 0)
-            {
-                IsDoNotConfirmationIfAllRecipientsAreSameDomain = _generalSetting[0].IsDoNotConfirmationIfAllRecipientsAreSameDomain;
-                IsDoDoNotConfirmationIfAllWhite = _generalSetting[0].IsDoDoNotConfirmationIfAllWhite;
-                IsAutoCheckIfAllRecipientsAreSameDomain = _generalSetting[0].IsAutoCheckIfAllRecipientsAreSameDomain;
-                IsShowConfirmationToMultipleDomain = _generalSetting[0].IsShowConfirmationToMultipleDomain;
+            if (_generalSetting.Count == 0) return;
 
-                //設定ファイル内に言語設定があればそれをロードする。
-                if (_generalSetting[0].LanguageCode != null)
+            //実際に使用するのは1行目の設定のみ
+            IsDoNotConfirmationIfAllRecipientsAreSameDomain = _generalSetting[0].IsDoNotConfirmationIfAllRecipientsAreSameDomain;
+            IsDoDoNotConfirmationIfAllWhite = _generalSetting[0].IsDoDoNotConfirmationIfAllWhite;
+            IsAutoCheckIfAllRecipientsAreSameDomain = _generalSetting[0].IsAutoCheckIfAllRecipientsAreSameDomain;
+            IsShowConfirmationToMultipleDomain = _generalSetting[0].IsShowConfirmationToMultipleDomain;
+            EnableForgottenToAttachAlert = _generalSetting[0].EnableForgottenToAttachAlert;
+
+            if (_generalSetting[0].LanguageCode == null) return;
+
+            //設定ファイル内に言語設定があればそれをロードする。
+            Language.LanguageCode = _generalSetting[0].LanguageCode;
+            foreach (var lang in Languages)
+            {
+                if (lang.LanguageCode == Language.LanguageCode)
                 {
-                    Language.LanguageCode = _generalSetting[0].LanguageCode;
-                    foreach (var lang in Languages)
-                    {
-                        if (lang.LanguageCode == Language.LanguageCode)
-                        {
-                            LanguageNumber = lang.LanguageNumber;
-                        }
-                    }
+                    LanguageNumber = lang.LanguageNumber;
                 }
             }
         }
@@ -517,7 +630,7 @@ namespace OutlookOkan.ViewModels
             var languageCode = Language.LanguageCode ?? CultureInfo.CurrentUICulture.Name;
             if (Language.LanguageCode != null)
             {
-                
+
                 ResourceService.Instance.ChangeCulture(Language.LanguageCode);
             }
 
@@ -529,14 +642,18 @@ namespace OutlookOkan.ViewModels
                     IsDoDoNotConfirmationIfAllWhite = IsDoDoNotConfirmationIfAllWhite,
                     IsAutoCheckIfAllRecipientsAreSameDomain = IsAutoCheckIfAllRecipientsAreSameDomain,
                     LanguageCode = languageCode,
-                    IsShowConfirmationToMultipleDomain = IsShowConfirmationToMultipleDomain
+                    IsShowConfirmationToMultipleDomain = IsShowConfirmationToMultipleDomain,
+                    EnableForgottenToAttachAlert = EnableForgottenToAttachAlert
                 }
             };
 
-            var tempDate = new BindingSource();
-            foreach (var data in tempGeneralSetting) { tempDate.Add(data); }
+            var list = new ArrayList();
+            foreach (var data in tempGeneralSetting)
+            {
+                list.Add(data);
+            }
             var writeCsv = new ReadAndWriteCsv("GeneralSetting.csv");
-            writeCsv.WriteBindableDataToCsv<GeneralSettingMap>(tempDate);
+            writeCsv.WriteRecordsToCsv<GeneralSettingMap>(list);
         }
 
         private readonly List<GeneralSetting> _generalSetting = new List<GeneralSetting>();
@@ -582,6 +699,17 @@ namespace OutlookOkan.ViewModels
             {
                 _isShowConfirmationToMultipleDomain = value;
                 OnPropertyChanged("IsShowConfirmationToMultipleDomain");
+            }
+        }
+
+        private bool _enableForgottenToAttachAlert = true;
+        public bool EnableForgottenToAttachAlert
+        {
+            get => _enableForgottenToAttachAlert;
+            set
+            {
+                _enableForgottenToAttachAlert = value;
+                OnPropertyChanged("EnableForgottenToAttachAlert");
             }
         }
 

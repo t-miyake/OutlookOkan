@@ -1,5 +1,6 @@
 ﻿using OutlookOkan.ViewModels;
 using System;
+using System.Text.RegularExpressions;
 using System.Windows;
 using System.Windows.Controls;
 
@@ -75,6 +76,26 @@ namespace OutlookOkan.Views
 
         private void DataGrid_AutoCcBccRecipient_OnCellEditEnding(object sender, DataGridCellEditEndingEventArgs e)
         {
+        }
+
+        private void DataGrid_DeferredDeliveryMinutes_OnCellEditEnding(object sender, DataGridCellEditEndingEventArgs e)
+        {
+            switch (e.Column.DisplayIndex)
+            {
+                case 0:
+                    if (!string.IsNullOrEmpty(((TextBox)e.EditingElement).Text) && ((TextBox)e.EditingElement).Text.Contains("@")) return;
+                    MessageBox.Show(Properties.Resources.InputMailaddressOrDomain);
+                    e.Cancel = true;
+                    return;
+                case 1:
+                    var regex = new Regex("[^0-9]+$");
+                    if (!regex.IsMatch(((TextBox)e.EditingElement).Text)) return;
+                    MessageBox.Show(Properties.Resources.InputDeferredDeliveryTime);
+                    e.Cancel = true;
+                    break;
+                default:
+                    return;
+            }
         }
 
         #endregion

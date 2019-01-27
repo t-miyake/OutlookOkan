@@ -1,8 +1,8 @@
 ﻿using CsvHelper;
 using System;
+using System.Collections;
 using System.IO;
 using System.Text;
-using System.Windows.Forms;
 
 namespace OutlookOkan.CsvTools
 {
@@ -33,6 +33,7 @@ namespace OutlookOkan.CsvTools
             if (!Directory.Exists(_directoryPath))
                 Directory.CreateDirectory(_directoryPath);
 
+
             if (!File.Exists(_filePath))
                 File.Create(_filePath).Close();
         }
@@ -52,17 +53,17 @@ namespace OutlookOkan.CsvTools
         }
 
         /// <summary>
-        /// BindingSource型のデータをCSVファイルに書き込む。
+        /// データをCSVファイルに書き込む。
         /// </summary>
         /// <typeparam name="TMaptype">CsvClassMap型</typeparam>
-        /// <param name="bindableData">BindingSource型のデータ</param>
-        public void WriteBindableDataToCsv<TMaptype>(BindingSource bindableData) where TMaptype : CsvHelper.Configuration.ClassMap
+        /// <param name="records">ArrayList型のデータ</param>
+        public void WriteRecordsToCsv<TMaptype>(ArrayList records) where TMaptype : CsvHelper.Configuration.ClassMap
         {
             var csvWriter = new CsvWriter(new StreamWriter(_filePath, false, Encoding.UTF8));
             csvWriter.Configuration.HasHeaderRecord = false;
             csvWriter.Configuration.RegisterClassMap<TMaptype>();
 
-            csvWriter.WriteRecords(bindableData);
+            csvWriter.WriteRecords(records);
 
             csvWriter.Dispose();
         }

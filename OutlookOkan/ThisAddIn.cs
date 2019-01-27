@@ -104,10 +104,10 @@ namespace OutlookOkan
                 else if (IsShowConfirmationWindow(checklist))
                 {
                     //OutlookのWindowを親として確認画面をモーダル表示。
-                    var confirmationWindow = new ConfirmationWindow(checklist);
+                    var confirmationWindow = new ConfirmationWindow(checklist, (Outlook._MailItem)item);
                     var activeWindow = Globals.ThisAddIn.Application.ActiveWindow();
                     var outlookHandle = new NativeMethods(activeWindow).Handle;
-                    var windowInteropHelper = new WindowInteropHelper(confirmationWindow) { Owner = outlookHandle };
+                    _ = new WindowInteropHelper(confirmationWindow) { Owner = outlookHandle };
 
                     var dialogResult = confirmationWindow.ShowDialog();
 
@@ -148,14 +148,13 @@ namespace OutlookOkan
                 generalSetting.Add((data));
             }
 
-            if (generalSetting.Count != 0)
-            {
-                _language = generalSetting[0].LanguageCode;
-                _isDoNotConfirmationIfAllRecipientsAreSameDomain = generalSetting[0].IsDoNotConfirmationIfAllRecipientsAreSameDomain;
-                _isDoDoNotConfirmationIfAllWhite = generalSetting[0].IsDoDoNotConfirmationIfAllWhite;
-                _isAutoCheckIfAllRecipientsAreSameDomain = generalSetting[0].IsAutoCheckIfAllRecipientsAreSameDomain;
-                _isShowConfirmationToMultipleDomain = generalSetting[0].IsShowConfirmationToMultipleDomain;
-            }
+            if (generalSetting.Count == 0) return;
+
+            _language = generalSetting[0].LanguageCode;
+            _isDoNotConfirmationIfAllRecipientsAreSameDomain = generalSetting[0].IsDoNotConfirmationIfAllRecipientsAreSameDomain;
+            _isDoDoNotConfirmationIfAllWhite = generalSetting[0].IsDoDoNotConfirmationIfAllWhite;
+            _isAutoCheckIfAllRecipientsAreSameDomain = generalSetting[0].IsAutoCheckIfAllRecipientsAreSameDomain;
+            _isShowConfirmationToMultipleDomain = generalSetting[0].IsShowConfirmationToMultipleDomain;
         }
 
         private bool IsAllChedked(CheckList checkLlist)

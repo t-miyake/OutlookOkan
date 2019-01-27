@@ -171,7 +171,7 @@
   <data name="AutoCheckSameDomain" xml:space="preserve">
     <value>Automatically check the mail address (company address) in the same domain as the source address.</value>
   </data>
-  <data name="BerforeCSVImportAlert" xml:space="preserve">
+  <data name="CSVImportAlert" xml:space="preserve">
     <value>Don't import CSV file with wrong format.</value>
   </data>
   <data name="Cancel" xml:space="preserve">
@@ -214,7 +214,7 @@
     <value>Failed to get information.</value>
   </data>
   <data name="ForgottenToAttachAlert" xml:space="preserve">
-    <value>ForgottenToAttachAlert</value>
+    <value>There is an attached file in the text but there is no attached file.</value>
   </data>
   <data name="General" xml:space="preserve">
     <value>General</value>
@@ -301,7 +301,7 @@
     <value>OK</value>
   </data>
   <data name="RichText" xml:space="preserve">
-    <value>RichText</value>
+    <value>Rich Text</value>
   </data>
   <data name="SaveSettings" xml:space="preserve">
     <value>The setting was updated.</value>
@@ -358,10 +358,10 @@
     <value>Noraneko Inc.</value>
   </data>
   <data name="Copyright" xml:space="preserve">
-    <value>Copyright (C) 2018 Noraneko Inc.</value>
+    <value>Copyright (C) 2019 Noraneko Inc.</value>
   </data>
   <data name="Version" xml:space="preserve">
-    <value>Version 2.0.6</value>
+    <value>Version 2.1.0</value>
   </data>
   <data name="VersionInfo" xml:space="preserve">
     <value>About</value>
@@ -432,5 +432,35 @@ Register EMailAddress or domain.</value>
   </data>
   <data name="SentOnBehalf" xml:space="preserve">
     <value>Send on behalf.</value>
+  </data>
+  <data name="DeferredDelivery" xml:space="preserve">
+    <value>Delay Delivery</value>
+  </data>
+  <data name="DeferredDeliveryMinutes" xml:space="preserve">
+    <value>Deferred Delivery time (min)</value>
+  </data>
+  <data name="EnableForgottenToAttachAlert" xml:space="preserve">
+    <value>If there is a sentence attached file in the text and there is no attached file, warn about that.</value>
+  </data>
+  <data name="DeferredDeliveryEmailAddressOrDomainInfo" xml:space="preserve">
+    <value>Please Input Emailaddress or Domain.</value>
+  </data>
+  <data name="DeferredDeliveryTime" xml:space="preserve">
+    <value>Dealy Time(min)</value>
+  </data>
+  <data name="InputDeferredDeliveryTime" xml:space="preserve">
+    <value>Please enter the time (min) to delay delivery.</value>
+  </data>
+  <data name="SettingExampleDeferredDelivery" xml:space="preserve">
+    <value>EMailAddress: info@noraneko.co.jp
+or
+Domain: @noraneko.co.jp
+
+Register EMailAddress or domain.
+And enter the time (min) to delay delivery.
+
+* If you register only @, you can register the standard delay time of all mails.
+
+* When multiple conditions are met, the longest delay time is adopted.</value>
   </data>
 </root>

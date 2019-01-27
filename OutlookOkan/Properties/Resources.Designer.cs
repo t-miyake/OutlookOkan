@@ -223,15 +223,6 @@ namespace OutlookOkan.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Don&apos;t import CSV file with wrong format..
-        /// </summary>
-        public static string BerforeCSVImportAlert {
-            get {
-                return ResourceManager.GetString("BerforeCSVImportAlert", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Cancel.
         /// </summary>
         public static string Cancel {
@@ -304,7 +295,7 @@ namespace OutlookOkan.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Copyright (C) 2018 Noraneko Inc..
+        ///   Looks up a localized string similar to Copyright (C) 2019 Noraneko Inc..
         /// </summary>
         public static string Copyright {
             get {
@@ -327,6 +318,51 @@ namespace OutlookOkan.Properties {
         public static string CSVImport {
             get {
                 return ResourceManager.GetString("CSVImport", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Don&apos;t import CSV file with wrong format..
+        /// </summary>
+        public static string CSVImportAlert {
+            get {
+                return ResourceManager.GetString("CSVImportAlert", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Delay Delivery.
+        /// </summary>
+        public static string DeferredDelivery {
+            get {
+                return ResourceManager.GetString("DeferredDelivery", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Please Input Emailaddress or Domain..
+        /// </summary>
+        public static string DeferredDeliveryEmailAddressOrDomainInfo {
+            get {
+                return ResourceManager.GetString("DeferredDeliveryEmailAddressOrDomainInfo", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Deferred Delivery time (min).
+        /// </summary>
+        public static string DeferredDeliveryMinutes {
+            get {
+                return ResourceManager.GetString("DeferredDeliveryMinutes", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Dealy Time(min).
+        /// </summary>
+        public static string DeferredDeliveryTime {
+            get {
+                return ResourceManager.GetString("DeferredDeliveryTime", resourceCulture);
             }
         }
         
@@ -358,6 +394,15 @@ namespace OutlookOkan.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to If there is a sentence attached file in the text and there is no attached file, warn about that..
+        /// </summary>
+        public static string EnableForgottenToAttachAlert {
+            get {
+                return ResourceManager.GetString("EnableForgottenToAttachAlert", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Export Failed.
         /// </summary>
         public static string ExportFailed {
@@ -376,7 +421,7 @@ namespace OutlookOkan.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to ForgottenToAttachAlert.
+        ///   Looks up a localized string similar to There is an attached file in the text but there is no attached file..
         /// </summary>
         public static string ForgottenToAttachAlert {
             get {
@@ -471,6 +516,15 @@ namespace OutlookOkan.Properties {
         public static string InputCCorBCC {
             get {
                 return ResourceManager.GetString("InputCCorBCC", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Please enter the time (min) to delay delivery..
+        /// </summary>
+        public static string InputDeferredDeliveryTime {
+            get {
+                return ResourceManager.GetString("InputDeferredDeliveryTime", resourceCulture);
             }
         }
         
@@ -673,7 +727,7 @@ namespace OutlookOkan.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to RichText.
+        ///   Looks up a localized string similar to Rich Text.
         /// </summary>
         public static string RichText {
             get {
@@ -835,6 +889,24 @@ namespace OutlookOkan.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to EMailAddress: info@noraneko.co.jp
+        ///or
+        ///Domain: @noraneko.co.jp
+        ///
+        ///Register EMailAddress or domain.
+        ///And enter the time (min) to delay delivery.
+        ///
+        ///* If you register only @, you can register the standard delay time of all mails.
+        ///
+        ///* When multiple conditions are met, the longest delay time is adopted..
+        /// </summary>
+        public static string SettingExampleDeferredDelivery {
+            get {
+                return ResourceManager.GetString("SettingExampleDeferredDelivery", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Name: Noraneko Inc
         ///Domain: @noraneko.co.jp
         ///
@@ -914,7 +986,7 @@ namespace OutlookOkan.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Version 2.0.6.
+        ///   Looks up a localized string similar to Version 2.1.0.
         /// </summary>
         public static string Version {
             get {

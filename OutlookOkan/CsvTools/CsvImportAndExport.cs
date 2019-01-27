@@ -1,6 +1,7 @@
 ﻿using CsvHelper;
 using OutlookOkan.Properties;
 using System;
+using System.Collections;
 using System.IO;
 using System.Text;
 using System.Windows.Forms;
@@ -18,7 +19,7 @@ namespace OutlookOkan.CsvTools
         /// <returns>インポートするCSVファイルのパス</returns>
         public string ImportCsv()
         {
-            MessageBox.Show(Resources.BerforeCSVImportAlert);
+            MessageBox.Show(Resources.CSVImportAlert);
 
             var openFileDialog = new OpenFileDialog
             {
@@ -54,9 +55,9 @@ namespace OutlookOkan.CsvTools
         /// 設定ウィンドウ内で表示されている項目をCSVでエクスポートする。
         /// </summary>
         /// <typeparam name="TMaptype">CsvClassMap型</typeparam>
-        /// <param name="bindableData">エクスポートするデータ</param>
+        /// <param name="records">エクスポートするデータ</param>
         /// <param name="defaultFileName">デフォルトのファイル名(.csvと付けること)</param>
-        public void CsvExport<TMaptype>(BindingSource bindableData, string defaultFileName) where TMaptype : CsvHelper.Configuration.ClassMap
+        public void CsvExport<TMaptype>(ArrayList records, string defaultFileName) where TMaptype : CsvHelper.Configuration.ClassMap
         {
             var saveFileDialog = new SaveFileDialog
             {
@@ -74,7 +75,7 @@ namespace OutlookOkan.CsvTools
                     var csvWriter = new CsvWriter(new StreamWriter(saveFileDialog.FileName, false, Encoding.UTF8));
                     csvWriter.Configuration.HasHeaderRecord = false;
                     csvWriter.Configuration.RegisterClassMap<TMaptype>();
-                    csvWriter.WriteRecords(bindableData);
+                    csvWriter.WriteRecords(records);
                     csvWriter.Dispose();
 
                     MessageBox.Show(Resources.SuccessfulExport);

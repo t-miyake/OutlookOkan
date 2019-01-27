@@ -224,6 +224,17 @@ namespace OutlookOkan.ViewModels
             }
         }
 
+        private int _deferredDeliveryMinutes;
+        public int DeferredDeliveryMinutes
+        {
+            get => _deferredDeliveryMinutes;
+            set
+            {
+                _deferredDeliveryMinutes = value;
+                OnPropertyChanged("DefferdDeliveryMinutes");
+            }
+        }
+
         public string Sender => _checkList.Sender;
         public string Subject => _checkList.Subject;
         public string MailType => _checkList.MailType;
