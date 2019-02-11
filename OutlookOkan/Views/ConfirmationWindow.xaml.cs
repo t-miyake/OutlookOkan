@@ -29,12 +29,9 @@ namespace OutlookOkan.Views
         /// </summary>
         private void SendButton_OnClick(object sender, RoutedEventArgs e)
         {
-            //送信遅延時間(分単位)を現在時刻に加える。
+            //送信時刻の設定
             int.TryParse(DeferredDeliveryMinutesBox.Text, out var deferredDeliveryMinutes);
-            if (deferredDeliveryMinutes != 0)
-            {
-                _mailItem.DeferredDeliveryTime = DateTime.Now.AddMinutes(deferredDeliveryMinutes);
-            }
+            _mailItem.DeferredDeliveryTime = deferredDeliveryMinutes == 0 ? DateTime.Now : DateTime.Now.AddMinutes(deferredDeliveryMinutes);
 
             DialogResult = true;
         }

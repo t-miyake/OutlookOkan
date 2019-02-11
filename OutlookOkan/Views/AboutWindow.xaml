@@ -17,7 +17,7 @@
                 <ColumnDefinition Width="6*"/>
             </Grid.ColumnDefinitions>
             <StackPanel Grid.Column="0" Margin="8,2,8,8">
-                <Image Source="/OutlookOkan;component/Images/Noraneko_Logo.png" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="6,50,6,0"/>
+                <Image Source="/OutlookOkan;component/Images/Noraneko_Logo.png" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="6,50,6,0" RenderOptions.BitmapScalingMode="Fant"/>
             </StackPanel>
             <GridSplitter Grid.Column="1"/>
             <StackPanel Grid.Column="2" Margin="8,2,8,8">
