@@ -75,8 +75,8 @@ namespace OutlookOkan.Models
 
                     if (!_checkList.Sender.Contains("@"))
                     {
-                        //ここまでやって見つからなければ送信者のメールアドレスの取得を諦める。
-                        _checkList.Sender = Resources.FailedToGetInformation;
+                        //ここまでやって見つからなければ送信者のメールアドレスの検索を諦めてそのまま入れる。
+                        _checkList.Sender = mail.Sender.PropertyAccessor.GetProperty("https://schemas.microsoft.com/mapi/proptag/0x39FE001E").ToString();
                     }
                 }
                 _checkList.SenderDomain = _checkList.Sender == Resources.FailedToGetInformation ? "------------------" : _checkList.Sender.Substring(_checkList.Sender.IndexOf("@", StringComparison.Ordinal));
@@ -122,7 +122,7 @@ namespace OutlookOkan.Models
                     }
                 }
             }
-
+            
             _checkList.Subject = mail.Subject ?? Resources.FailedToGetInformation;
             _checkList.MailType = GetMailBodyFormat(mail) ?? Resources.FailedToGetInformation;
             _checkList.MailBody = mail.Body ?? Resources.FailedToGetInformation;
@@ -209,25 +209,22 @@ namespace OutlookOkan.Models
                 }
 
                 //宛先メールアドレスを取得
-                var mailAddress = exchangeUser != null ? exchangeUser.PrimarySmtpAddress : exchangeDistributionList != null ? exchangeDistributionList.PrimarySmtpAddress : recip.Address ?? Resources.FailedToGetInformation;
-                mailAddress = mailAddress ?? Resources.FailedToGetInformation;
+                string mailAddress = recip.PropertyAccessor.GetProperty("http://schemas.microsoft.com/mapi/proptag/0x39FE001E").ToString() ?? Resources.FailedToGetInformation;
 
                 // 登録されたメールアドレスの場合、登録名のみが表示されるため、メールアドレスと共に表示されるよう表示用テキストを生成。
                 var nameAndMailAddress = exchangeUser != null
-                    ? exchangeUser.Name + $@" ({exchangeUser.PrimarySmtpAddress})"
+                    ? exchangeUser.Name + $@" ({mailAddress})"
                     : exchangeDistributionList != null
-                        ? exchangeDistributionList.Name + $@" ({exchangeDistributionList.PrimarySmtpAddress})"
+                        ? exchangeDistributionList.Name + $@" ({mailAddress})"
                         : registeredUser != null
-                            ? registeredUser.Email1DisplayName ?? Resources.FailedToGetInformation
-                            : recip.Address ?? Resources.FailedToGetInformation;
-
-                //ケースによってメールアドレスのみを正しく取得できないため、その場合は、表示名称をメールアドレスとして登録する。
+                            ? registeredUser.FullName + $@" ({mailAddress})"
+                            : mailAddress ?? Resources.FailedToGetInformation;
+                
+                //ケースによってメールアドレスのみを正しく取得できない恐れがあるため、その場合は、表示名称をメールアドレスとして登録する。
                 if (!mailAddress.Contains("@"))
                 {
                     mailAddress = nameAndMailAddress;
                 }
-
-                nameAndMailAddress = nameAndMailAddress ?? Resources.FailedToGetInformation;
 
                 _displayNameAndRecipient[mailAddress] = nameAndMailAddress;
 
