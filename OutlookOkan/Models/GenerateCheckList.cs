@@ -262,20 +262,27 @@ namespace OutlookOkan.Models
                 generalSetting.Add((data));
             }
 
-            if (generalSetting.Count == 0) return;
-            if (!generalSetting[0].EnableForgottenToAttachAlert) return;
-
             string attachmentsKeyword;
-            switch (generalSetting[0].LanguageCode)
+
+            if (generalSetting.Count == 0)
             {
-                case "ja-JP":
-                    attachmentsKeyword = "添付";
-                    break;
-                case "en-US":
-                    attachmentsKeyword = "attached file";
-                    break;
-                default:
-                    return;
+                attachmentsKeyword = "添付";
+            }
+            else
+            {
+                if (!generalSetting[0].EnableForgottenToAttachAlert) return;
+
+                switch (generalSetting[0].LanguageCode)
+                {
+                    case "ja-JP":
+                        attachmentsKeyword = "添付";
+                        break;
+                    case "en-US":
+                        attachmentsKeyword = "attached file";
+                        break;
+                    default:
+                        return;
+                }
             }
 
             if (_checkList.MailBody.Contains(attachmentsKeyword))
