@@ -8,9 +8,9 @@
              mc:Ignorable="d" 
              Title="{Binding Source={x:Static services:ResourceService.Instance}, Path=Resources.VersionInfo, Mode=OneWay}"
              ResizeMode="NoResize" ShowInTaskbar="False" WindowStartupLocation="CenterOwner"
-             Height="350" Width="600">
+             Height="360" Width="600">
     <StackPanel Margin="5,8">
-        <Grid Height="300">
+        <Grid Height="315">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="4*"/>
                 <ColumnDefinition Width="Auto" />

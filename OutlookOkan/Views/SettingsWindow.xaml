@@ -8,9 +8,9 @@
              mc:Ignorable="d" 
              Title="{Binding Source={x:Static services:ResourceService.Instance}, Path=Resources.Settings, Mode=OneWay}"
              ResizeMode="NoResize" ShowInTaskbar="False" WindowStartupLocation="CenterOwner"
-             Height="487" Width="800">
+             Height="510" Width="800">
     <StackPanel Margin="8,8" >
-        <TabControl Height="390" >
+        <TabControl Height="400" >
             <TabItem Header="{Binding Source={x:Static services:ResourceService.Instance}, Path=Resources.General, Mode=OneWay}">
                 <StackPanel Margin="8,2,8,8">
                     <GroupBox Header="{Binding Source={x:Static services:ResourceService.Instance}, Path=Resources.General, Mode=OneWay}"  FontSize="11" Padding="3,3,3,3">
@@ -390,9 +390,9 @@
             <Label Content="{Binding Source={x:Static services:ResourceService.Instance}, Path=Resources.HowToDaleteRow, Mode=OneWay}" Padding="0" Foreground="LightSlateGray"/>
         </StackPanel>
         <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Margin="0,0,1,0">
-            <Button Content="{Binding Source={x:Static services:ResourceService.Instance}, Path=Resources.OK, Mode=OneWay}" Width="58" Click="OkButton_OnClick"/>
-            <Button Content="{Binding Source={x:Static services:ResourceService.Instance}, Path=Resources.Cancel, Mode=OneWay}" Width="58" Margin="10,0,0,0" IsCancel="True" Click="CancelButton_OnClick"/>
-            <Button Content="{Binding Source={x:Static services:ResourceService.Instance}, Path=Resources.Apply, Mode=OneWay}" Width="58" Margin="10,0,0,0" Click="ApplyButton_OnClick"/>
+            <Button Content="{Binding Source={x:Static services:ResourceService.Instance}, Path=Resources.OK, Mode=OneWay}" Width="68" Click="OkButton_OnClick"/>
+            <Button Content="{Binding Source={x:Static services:ResourceService.Instance}, Path=Resources.Cancel, Mode=OneWay}" Width="68" Margin="10,0,0,0" IsCancel="True" Click="CancelButton_OnClick"/>
+            <Button Content="{Binding Source={x:Static services:ResourceService.Instance}, Path=Resources.Apply, Mode=OneWay}" Width="68" Margin="10,0,0,0" Click="ApplyButton_OnClick"/>
         </StackPanel>
     </StackPanel>
 </Window>
