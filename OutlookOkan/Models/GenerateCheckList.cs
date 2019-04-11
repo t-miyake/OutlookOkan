@@ -290,7 +290,7 @@ namespace OutlookOkan.Models
             var readCsv = new ReadAndWriteCsv("GeneralSetting.csv");
             foreach (var data in readCsv.GetCsvRecords<GeneralSetting>(readCsv.LoadCsv<GeneralSettingMap>()))
             {
-                generalSetting.Add((data));
+                generalSetting.Add(data);
             }
 
             string attachmentsKeyword;
