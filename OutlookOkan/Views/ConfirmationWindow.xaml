@@ -188,7 +188,7 @@
                             </StackPanel>
                             <StackPanel Orientation="Horizontal">
                                 <Label Content="{Binding Source={x:Static services:ResourceService.Instance}, Path=Resources.DeferredDeliveryMinutes, Mode=OneWay}" FontSize="11" Padding="0" Width="148" Margin="11,0,0,0"/>
-                                <TextBox x:Name="DeferredDeliveryMinutesBox" Width="32" Padding="0" Margin="5,0,0,0" IsReadOnly="false" TextAlignment="Right" Text="{Binding DeferredDeliveryMinutes, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" PreviewTextInput="DeferredDeliveryMinutesBox_OnPreviewTextInput" CommandManager.PreviewExecuted="DeferredDeliveryMinutesBox_OnPreviewExecuted"/>
+                                <TextBox x:Name="DeferredDeliveryMinutesBox" Width="32" Padding="0" Margin="5,0,0,0" IsReadOnly="false" TextAlignment="Right" Text="{Binding DeferredDeliveryMinutes, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" PreviewTextInput="DeferredDeliveryMinutesBox_OnPreviewTextInput" CommandManager.PreviewExecuted="DeferredDeliveryMinutesBox_OnPreviewExecuted" InputMethod.IsInputMethodEnabled="False" InputMethod.PreferredImeState="Off"/>
                             </StackPanel>
                         </StackPanel>
                     </StackPanel>
