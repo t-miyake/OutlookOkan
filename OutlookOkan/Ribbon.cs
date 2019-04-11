@@ -73,7 +73,7 @@ namespace OutlookOkan
 
         public string GetCustomUI(string ribbonId)
         {
-            return GetResourceText("OutlookOkan.Ribbon.xml");
+            return ribbonId == "Microsoft.Outlook.Explorer" ? GetResourceText("OutlookOkan.Ribbon.xml") : null;
         }
 
         #endregion
