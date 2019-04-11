@@ -16,7 +16,7 @@ namespace OutlookOkan
 {
     public partial class ThisAddIn
     {
-        private string _language = "NotSet";
+        private string _language;
         private bool _isDoNotConfirmationIfAllRecipientsAreSameDomain;
         private bool _isDoDoNotConfirmationIfAllWhite;
         private bool _isAutoCheckIfAllRecipientsAreSameDomain;
@@ -31,7 +31,7 @@ namespace OutlookOkan
         {
             //ユーザ設定をロード(このタイミングでロードしておかないと、リボンの言語を変更できない。
             LoadSetting();
-            if (_language != "NotSet")
+            if (!(_language is null))
             {
                 ResourceService.Instance.ChangeCulture(_language);
             }
@@ -52,7 +52,7 @@ namespace OutlookOkan
 
                 //Outlook起動後にユーザが設定を変更する可能性があるため、毎回ユーザ設定をロード
                 LoadSetting();
-                if (_language != "NotSet")
+                if (!(_language is null))
                 {
                     ResourceService.Instance.ChangeCulture(_language);
                 }

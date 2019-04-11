@@ -97,7 +97,7 @@ namespace OutlookOkan.ViewModels
             var importAction = new CsvImportAndExport();
             var filePath = importAction.ImportCsv();
 
-            if (filePath == null) return;
+            if (filePath is null) return;
 
             try
             {
@@ -172,7 +172,7 @@ namespace OutlookOkan.ViewModels
             var importAction = new CsvImportAndExport();
             var filePath = importAction.ImportCsv();
 
-            if (filePath == null) return;
+            if (filePath is null) return;
 
             try
             {
@@ -248,7 +248,7 @@ namespace OutlookOkan.ViewModels
             var importAction = new CsvImportAndExport();
             var filePath = importAction.ImportCsv();
 
-            if (filePath == null) return;
+            if (filePath is null) return;
 
             try
             {
@@ -324,7 +324,7 @@ namespace OutlookOkan.ViewModels
             var importAction = new CsvImportAndExport();
             var filePath = importAction.ImportCsv();
 
-            if (filePath == null) return;
+            if (filePath is null) return;
 
             try
             {
@@ -399,7 +399,7 @@ namespace OutlookOkan.ViewModels
             var importAction = new CsvImportAndExport();
             var filePath = importAction.ImportCsv();
 
-            if (filePath == null) return;
+            if (filePath is null) return;
 
             try
             {
@@ -474,7 +474,7 @@ namespace OutlookOkan.ViewModels
             var importAction = new CsvImportAndExport();
             var filePath = importAction.ImportCsv();
 
-            if (filePath == null) return;
+            if (filePath is null) return;
 
             try
             {
@@ -549,7 +549,7 @@ namespace OutlookOkan.ViewModels
             var importAction = new CsvImportAndExport();
             var filePath = importAction.ImportCsv();
 
-            if (filePath == null) return;
+            if (filePath is null) return;
 
             try
             {
@@ -612,7 +612,7 @@ namespace OutlookOkan.ViewModels
             IsShowConfirmationToMultipleDomain = _generalSetting[0].IsShowConfirmationToMultipleDomain;
             EnableForgottenToAttachAlert = _generalSetting[0].EnableForgottenToAttachAlert;
 
-            if (_generalSetting[0].LanguageCode == null) return;
+            if (_generalSetting[0].LanguageCode is null) return;
 
             //設定ファイル内に言語設定があればそれをロードする。
             Language.LanguageCode = _generalSetting[0].LanguageCode;
