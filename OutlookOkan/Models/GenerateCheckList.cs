@@ -164,9 +164,17 @@ namespace OutlookOkan.Models
         /// <returns></returns>
         private IEnumerable<NameAndRecipient> GetNameAndRecipient(Outlook.Recipient recip)
         {
-            string mailAddress =
-                recip.PropertyAccessor.GetProperty("http://schemas.microsoft.com/mapi/proptag/0x39FE001E")
-                    .ToString() ?? Resources.FailedToGetInformation;
+            var mailAddress = Resources.FailedToGetInformation;
+            try
+            {
+                mailAddress =
+                    recip.PropertyAccessor.GetProperty("http://schemas.microsoft.com/mapi/proptag/0x39FE001E")
+                        .ToString() ?? Resources.FailedToGetInformation;
+            }
+            catch (Exception)
+            {
+                // Do Nothing.
+            }
 
             string nameAndMailAddress;
             if (string.IsNullOrEmpty(recip.Name))
