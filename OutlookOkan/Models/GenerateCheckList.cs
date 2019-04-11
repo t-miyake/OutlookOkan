@@ -124,7 +124,7 @@ namespace OutlookOkan.Models
             }
             
             _checkList.Subject = mail.Subject ?? Resources.FailedToGetInformation;
-            _checkList.MailType = GetMailBodyFormat(mail) ?? Resources.FailedToGetInformation;
+            _checkList.MailType = GetMailBodyFormat(mail.BodyFormat) ?? Resources.FailedToGetInformation;
             _checkList.MailBody = mail.Body ?? Resources.FailedToGetInformation;
 
             //改行が2行になる問題を回避するため、HTML形式の場合にのみ2行の改行を1行に置換する。
@@ -295,11 +295,11 @@ namespace OutlookOkan.Models
         /// <summary>
         /// メールの形式を取得し、表示用の文字列を返す。
         /// </summary>
-        /// <param name="mail"></param>
+        /// <param name="bodyFormat"></param>
         /// <returns>メールの形式</returns>
-        private string GetMailBodyFormat(Outlook._MailItem mail)
+        private string GetMailBodyFormat(Outlook.OlBodyFormat bodyFormat)
         {
-            switch (mail.BodyFormat)
+            switch (bodyFormat)
             {
                 case Outlook.OlBodyFormat.olFormatUnspecified:
                     return Resources.Unknown;
