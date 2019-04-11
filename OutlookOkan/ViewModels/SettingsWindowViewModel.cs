@@ -6,6 +6,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Globalization;
+using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Windows.Input;
 
@@ -52,16 +53,21 @@ namespace OutlookOkan.ViewModels
             LoadDeferredDeliveryMinutesData();
         }
 
-        public void SaveSettings()
+        public async Task SaveSettings()
         {
-            SaveGeneralSettingToCsv();
-            SaveWhiteListToCsv();
-            SaveNameAndDomainsToCsv();
-            SaveAlertKeywordAndMessageToCsv();
-            SaveAlertAddressesToCsv();
-            SaveAutoCcBccKeywordsToCsv();
-            SaveAutoCcBccRecipientsToCsv();
-            SaveDeferredDeliveryMinutesToCsv();
+            IEnumerable<Task> saveTasks = new[]
+                {
+                    SaveGeneralSettingToCsv(),
+                    SaveWhiteListToCsv(),
+                    SaveNameAndDomainsToCsv(),
+                    SaveAlertKeywordAndMessageToCsv(),
+                    SaveAutoCcBccKeywordsToCsv(),
+                    SaveAlertAddressesToCsv(),
+                    SaveAutoCcBccRecipientsToCsv(),
+                    SaveDeferredDeliveryMinutesToCsv()
+                };
+
+            await Task.WhenAll(saveTasks);
         }
 
         #region Whitelist
@@ -80,7 +86,7 @@ namespace OutlookOkan.ViewModels
             }
         }
 
-        private void SaveWhiteListToCsv()
+        private async Task SaveWhiteListToCsv()
         {
             var list = new ArrayList();
             foreach (var data in Whitelist)
@@ -89,7 +95,7 @@ namespace OutlookOkan.ViewModels
             }
 
             var writeCsv = new ReadAndWriteCsv("Whitelist.csv");
-            writeCsv.WriteRecordsToCsv<WhitelistMap>(list);
+            await Task.Run(() => writeCsv.WriteRecordsToCsv<WhitelistMap>(list));
         }
 
         private void ImportWhiteListFromCsv()
@@ -156,7 +162,7 @@ namespace OutlookOkan.ViewModels
             }
         }
 
-        private void SaveNameAndDomainsToCsv()
+        private async Task SaveNameAndDomainsToCsv()
         {
             var list = new ArrayList();
             foreach (var data in NameAndDomains)
@@ -164,7 +170,7 @@ namespace OutlookOkan.ViewModels
                 list.Add(data);
             }
             var writeCsv = new ReadAndWriteCsv("NameAndDomains.csv");
-            writeCsv.WriteRecordsToCsv<NameAndDomainsMap>(list);
+            await Task.Run(() => writeCsv.WriteRecordsToCsv<NameAndDomainsMap>(list));
         }
 
         private void ImportNameAndDomainsFromCsv()
@@ -231,7 +237,7 @@ namespace OutlookOkan.ViewModels
             }
         }
 
-        private void SaveAlertKeywordAndMessageToCsv()
+        private async Task SaveAlertKeywordAndMessageToCsv()
         {
             var list = new ArrayList();
             foreach (var data in AlertKeywordAndMessages)
@@ -240,7 +246,7 @@ namespace OutlookOkan.ViewModels
             }
 
             var writeCsv = new ReadAndWriteCsv("AlertKeywordAndMessageList.csv");
-            writeCsv.WriteRecordsToCsv<AlertKeywordAndMessageMap>(list);
+            await Task.Run(() => writeCsv.WriteRecordsToCsv<AlertKeywordAndMessageMap>(list));
         }
 
         private void ImportAlertKeywordAndMessagesFromCsv()
@@ -307,7 +313,7 @@ namespace OutlookOkan.ViewModels
             }
         }
 
-        private void SaveAlertAddressesToCsv()
+        private async Task SaveAlertAddressesToCsv()
         {
             var list = new ArrayList();
             foreach (var data in AlertAddresses)
@@ -316,7 +322,7 @@ namespace OutlookOkan.ViewModels
             }
 
             var writeCsv = new ReadAndWriteCsv("AlertAddressList.csv");
-            writeCsv.WriteRecordsToCsv<AlertAddressMap>(list);
+            await Task.Run(() => writeCsv.WriteRecordsToCsv<AlertAddressMap>(list));
         }
 
         private void ImportAlertAddressesFromCsv()
@@ -383,7 +389,7 @@ namespace OutlookOkan.ViewModels
             }
         }
 
-        private void SaveAutoCcBccKeywordsToCsv()
+        private async Task SaveAutoCcBccKeywordsToCsv()
         {
             var list = new ArrayList();
             foreach (var data in AutoCcBccKeywords)
@@ -391,7 +397,7 @@ namespace OutlookOkan.ViewModels
                 list.Add(data);
             }
             var writeCsv = new ReadAndWriteCsv("AutoCcBccKeywordList.csv");
-            writeCsv.WriteRecordsToCsv<AutoCcBccKeywordMap>(list);
+            await Task.Run(() => writeCsv.WriteRecordsToCsv<AutoCcBccKeywordMap>(list));
         }
 
         private void ImportAutoCcBccKeywordsFromCsv()
@@ -458,7 +464,7 @@ namespace OutlookOkan.ViewModels
             }
         }
 
-        private void SaveAutoCcBccRecipientsToCsv()
+        private async Task SaveAutoCcBccRecipientsToCsv()
         {
             var list = new ArrayList();
             foreach (var data in AutoCcBccRecipients)
@@ -466,7 +472,7 @@ namespace OutlookOkan.ViewModels
                 list.Add(data);
             }
             var writeCsv = new ReadAndWriteCsv("AutoCcBccRecipientList.csv");
-            writeCsv.WriteRecordsToCsv<AutoCcBccRecipientMap>(list);
+            await Task.Run(() => writeCsv.WriteRecordsToCsv<AutoCcBccRecipientMap>(list));
         }
 
         private void ImportAutoCcBccRecipientsFromCsv()
@@ -533,7 +539,7 @@ namespace OutlookOkan.ViewModels
             }
         }
 
-        private void SaveDeferredDeliveryMinutesToCsv()
+        private async Task SaveDeferredDeliveryMinutesToCsv()
         {
             var list = new ArrayList();
             foreach (var data in DeferredDeliveryMinuteses)
@@ -541,7 +547,7 @@ namespace OutlookOkan.ViewModels
                 list.Add(data);
             }
             var writeCsv = new ReadAndWriteCsv("DeferredDeliveryMinutes.csv");
-            writeCsv.WriteRecordsToCsv<DeferredDeliveryMinutesMap>(list);
+            await Task.Run(() => writeCsv.WriteRecordsToCsv<DeferredDeliveryMinutesMap>(list));
         }
 
         private void ImportDeferredDeliveryMinutesFromCsv()
@@ -625,7 +631,7 @@ namespace OutlookOkan.ViewModels
             }
         }
 
-        private void SaveGeneralSettingToCsv()
+        private async Task SaveGeneralSettingToCsv()
         {
             var languageCode = Language.LanguageCode ?? CultureInfo.CurrentUICulture.Name;
             if (Language.LanguageCode != null)
@@ -653,7 +659,7 @@ namespace OutlookOkan.ViewModels
                 list.Add(data);
             }
             var writeCsv = new ReadAndWriteCsv("GeneralSetting.csv");
-            writeCsv.WriteRecordsToCsv<GeneralSettingMap>(list);
+            await Task.Run(() => writeCsv.WriteRecordsToCsv<GeneralSettingMap>(list));
         }
 
         private readonly List<GeneralSetting> _generalSetting = new List<GeneralSetting>();
