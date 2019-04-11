@@ -45,7 +45,7 @@ namespace OutlookOkan.Models
 
             CheckMailbodyAndRecipient();
 
-            CountRecipientExternalDomains();
+            _checkList.RecipientExternalDomainNum = CountRecipientExternalDomains();
 
             _checkList.DeferredMinutes = CalcDeferredMinutes();
 
@@ -139,7 +139,8 @@ namespace OutlookOkan.Models
         /// <summary>
         /// 送信者ドメインを除く宛先のドメイン数を数える。
         /// </summary>
-        private void CountRecipientExternalDomains()
+        /// <returns>送信者ドメインを除く宛先のドメイン数</returns>
+        private int CountRecipientExternalDomains()
         {
             var domainList = new HashSet<string>();
             foreach (var mail in _displayNameAndRecipient)
@@ -150,15 +151,15 @@ namespace OutlookOkan.Models
                     domainList.Add(recipient.Substring(recipient.IndexOf("@", StringComparison.Ordinal)));
                 }
             }
-            var recipientExternalDomainNum = domainList.Count;
 
             //外部ドメインの数のため、送信者のドメインが含まれていた場合それをマイナスする。
             if (domainList.Contains(_checkList.SenderDomain))
             {
-                recipientExternalDomainNum -= 1;
+                return domainList.Count - 1;
             }
 
-            _checkList.RecipientExternalDomainNum = recipientExternalDomainNum;
+            return domainList.Count;
+        }
         }
 
         /// <summary>
