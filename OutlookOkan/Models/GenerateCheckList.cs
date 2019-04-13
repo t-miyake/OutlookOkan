@@ -26,11 +26,11 @@ namespace OutlookOkan.Models
         public CheckList GenerateCheckListFromMail(Outlook._MailItem mail)
         {
             //This methods must run first.
-            GetGeneralMailInfomation(mail);
+            GetGeneralMailInfomation(in mail);
 
             MakeDisplayNameAndRecipient(mail);
 
-            CheckForgotAttach(mail);
+            CheckForgotAttach(in mail);
 
             CheckKeyword();
 
@@ -41,7 +41,7 @@ namespace OutlookOkan.Models
 
             GetRecipient();
 
-            GetAttachmentsInfomation(mail);
+            GetAttachmentsInfomation(in mail);
 
             CheckMailbodyAndRecipient();
 
@@ -56,7 +56,7 @@ namespace OutlookOkan.Models
         /// 一般的なメールの情報を取得して格納する。
         /// </summary>
         /// <param name="mail"></param>
-        private void GetGeneralMailInfomation(Outlook._MailItem mail)
+        private void GetGeneralMailInfomation(in Outlook._MailItem mail)
         {
             if (string.IsNullOrEmpty(mail.SentOnBehalfOfName))
             {
@@ -290,7 +290,7 @@ namespace OutlookOkan.Models
         /// ファイルの添付忘れを確認。
         /// </summary>
         /// <param name="mail"></param>
-        private void CheckForgotAttach(Outlook._MailItem mail)
+        private void CheckForgotAttach(in Outlook._MailItem mail)
         {
             if (mail.Attachments.Count >= 1) return;
 
@@ -458,7 +458,7 @@ namespace OutlookOkan.Models
         /// 添付ファイルとそのファイルサイズを取得し、チェックリストに追加する。
         /// </summary>
         /// <param name="mail"></param>
-        private void GetAttachmentsInfomation(Outlook._MailItem mail)
+        private void GetAttachmentsInfomation(in Outlook._MailItem mail)
         {
             if (mail.Attachments.Count == 0) return;
 
