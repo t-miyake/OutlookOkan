@@ -30,7 +30,7 @@
                                 <Style TargetType="DataGridCell">
                                     <Style.Triggers>
                                         <DataTrigger Binding="{Binding IsImportant}" Value="true">
-                                            <Setter Property="Foreground" Value="Crimson"/>
+                                            <Setter Property="Foreground" Value="#FFFF2800"/>
                                         </DataTrigger>
                                     </Style.Triggers>
                                 </Style>
@@ -66,11 +66,12 @@
                                                 <MultiDataTrigger>
                                                     <MultiDataTrigger.Conditions>
                                                         <Condition Binding="{Binding IsExternal}" Value="true" />
-                                                        <Condition Binding="{Binding IsWhite}" Value="false"/>
+                                                        <Condition Binding="{Binding IsWhite}" Value="false" />
                                                     </MultiDataTrigger.Conditions>
-                                                    <Setter Property="Foreground" Value="Crimson"/>
+                                                    <Setter Property="Foreground" Value="#FFFF2800" />
                                                 </MultiDataTrigger>
                                             </Style.Triggers>
+                                            <Setter Property="ToolTip" Value="{Binding MailAddress, Mode=OneWay}" />
                                         </Style>
                                     </DataGridTextColumn.CellStyle>
                                 </DataGridTextColumn>
@@ -95,9 +96,10 @@
                                                         <Condition Binding="{Binding IsExternal}" Value="true" />
                                                         <Condition Binding="{Binding IsWhite}" Value="false"/>
                                                     </MultiDataTrigger.Conditions>
-                                                    <Setter Property="Foreground" Value="Crimson"/>
+                                                    <Setter Property="Foreground" Value="#FFFF2800"/>
                                                 </MultiDataTrigger>
                                             </Style.Triggers>
+                                            <Setter Property="ToolTip" Value="{Binding MailAddress, Mode=OneWay}" />
                                         </Style>
                                     </DataGridTextColumn.CellStyle>
                                 </DataGridTextColumn>
@@ -122,9 +124,10 @@
                                                         <Condition Binding="{Binding IsExternal}" Value="true" />
                                                         <Condition Binding="{Binding IsWhite}" Value="false"/>
                                                     </MultiDataTrigger.Conditions>
-                                                    <Setter Property="Foreground" Value="Crimson"/>
+                                                    <Setter Property="Foreground" Value="#FFFF2800"/>
                                                 </MultiDataTrigger>
                                             </Style.Triggers>
+                                            <Setter Property="ToolTip" Value="{Binding MailAddress, Mode=OneWay}" />
                                         </Style>
                                     </DataGridTextColumn.CellStyle>
                                 </DataGridTextColumn>
@@ -151,7 +154,7 @@
                                     <Style TargetType="DataGridCell">
                                         <Style.Triggers>
                                             <DataTrigger Binding="{Binding IsDangerous}" Value="true">
-                                                <Setter Property="Foreground" Value="Crimson"/>
+                                                <Setter Property="Foreground" Value="#FFFF2800"/>
                                             </DataTrigger>
                                         </Style.Triggers>
                                     </Style>
@@ -162,7 +165,7 @@
                                     <Style TargetType="DataGridCell">
                                         <Style.Triggers>
                                             <DataTrigger Binding="{Binding IsTooBig}" Value="true">
-                                                <Setter Property="Foreground" Value="Crimson"/>
+                                                <Setter Property="Foreground" Value="#FFFF2800"/>
                                             </DataTrigger>
                                         </Style.Triggers>
                                     </Style>

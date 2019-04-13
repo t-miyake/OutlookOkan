@@ -361,7 +361,7 @@
     <value>Copyright (C) 2019 Noraneko Inc.</value>
   </data>
   <data name="Version" xml:space="preserve">
-    <value>バージョン 2.1.5</value>
+    <value>バージョン 2.2.0</value>
   </data>
   <data name="VersionInfo" xml:space="preserve">
     <value>バージョン情報</value>
@@ -462,5 +462,20 @@ CCあるいはBCCに指定したアドレスが自動で追加されます。</v
 ※@のみを登録すると全てのメールの標準の遅延時間を登録できます。
 
 ※複数の条件に該当した場合、最も長い遅延時間が採用されます。</value>
+  </data>
+  <data name="ContactGroup" xml:space="preserve">
+    <value>連絡先グループ</value>
+  </data>
+  <data name="AutoCheckMembersAddress" xml:space="preserve">
+    <value>メンバーのメールアドレスは、あらかじめチェックを自動付与する。</value>
+  </data>
+  <data name="GetMembersOfTheContactGroup" xml:space="preserve">
+    <value>連絡先グループのメンバーを展開する。</value>
+  </data>
+  <data name="GetMembersOfTheExDistList" xml:space="preserve">
+    <value>Exchange配布リストのメンバーを表示する。(表示に時間がかかる場合があります。)</value>
+  </data>
+  <data name="GetMembersOfTheList" xml:space="preserve">
+    <value>Exchange配布リストや連絡先グループのメンバーを表示する</value>
   </data>
 </root>

@@ -214,6 +214,15 @@ namespace OutlookOkan.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to The member&apos;s address will be checked automatically..
+        /// </summary>
+        public static string AutoCheckMembersAddress {
+            get {
+                return ResourceManager.GetString("AutoCheckMembersAddress", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Automatically check the mail address (company address) in the same domain as the source address..
         /// </summary>
         public static string AutoCheckSameDomain {
@@ -291,6 +300,15 @@ namespace OutlookOkan.Properties {
         public static string ConfirmationMessage2 {
             get {
                 return ResourceManager.GetString("ConfirmationMessage2", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Contact Group.
+        /// </summary>
+        public static string ContactGroup {
+            get {
+                return ResourceManager.GetString("ContactGroup", resourceCulture);
             }
         }
         
@@ -435,6 +453,33 @@ namespace OutlookOkan.Properties {
         public static string General {
             get {
                 return ResourceManager.GetString("General", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Get members of an Contact Group..
+        /// </summary>
+        public static string GetMembersOfTheContactGroup {
+            get {
+                return ResourceManager.GetString("GetMembersOfTheContactGroup", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Get members of an Exchange distribution list. (It may take a long time.).
+        /// </summary>
+        public static string GetMembersOfTheExDistList {
+            get {
+                return ResourceManager.GetString("GetMembersOfTheExDistList", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Get members of an Exchange distribution list or an Contact Group.
+        /// </summary>
+        public static string GetMembersOfTheList {
+            get {
+                return ResourceManager.GetString("GetMembersOfTheList", resourceCulture);
             }
         }
         
@@ -986,7 +1031,7 @@ namespace OutlookOkan.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Version 2.1.5.
+        ///   Looks up a localized string similar to Version 2.2.0.
         /// </summary>
         public static string Version {
             get {
