@@ -53,7 +53,7 @@ namespace OutlookOkan.Models
         /// <summary>
         /// 一般的なメールの情報を取得して格納する。
         /// </summary>
-        /// <param name="mail"></param>
+        /// <param name="mail">Mail</param>
         private void GetGeneralMailInfomation(in Outlook._MailItem mail)
         {
             if (string.IsNullOrEmpty(mail.SentOnBehalfOfName))
@@ -158,8 +158,8 @@ namespace OutlookOkan.Models
         /// <summary>
         /// 宛先メールアドレスと宛先名称を取得する。
         /// </summary>
-        /// <param name="recip"></param>
-        /// <returns></returns>
+        /// <param name="recip">メールの宛先</param>
+        /// <returns>宛先メールアドレスと宛先名称</returns>
         private IEnumerable<NameAndRecipient> GetNameAndRecipient(Outlook.Recipient recip)
         {
             var mailAddress = Resources.FailedToGetInformation;
@@ -194,7 +194,7 @@ namespace OutlookOkan.Models
         }
 
         /// <summary>
-        /// 連絡先グループを展開して宛先メールアドレスと宛先名称を取得する。
+        /// Exchangeの配布リストを展開して宛先メールアドレスと宛先名称を取得する。(入れ子は非展開)
         /// </summary>
         /// <param name="recip"></param>
         /// <param name="contactGroupId"></param>
@@ -281,7 +281,7 @@ namespace OutlookOkan.Models
         /// <summary>
         /// ファイルの添付忘れを確認。
         /// </summary>
-        /// <param name="mail"></param>
+        /// <param name="mail">Mail</param>
         private void CheckForgotAttach(in Outlook._MailItem mail)
         {
             if (mail.Attachments.Count >= 1) return;
@@ -325,7 +325,7 @@ namespace OutlookOkan.Models
         /// <summary>
         /// メールの形式を取得し、表示用の文字列を返す。
         /// </summary>
-        /// <param name="bodyFormat"></param>
+        /// <param name="bodyFormat">メールのフォーマット</param>
         /// <returns>メールの形式</returns>
         private string GetMailBodyFormat(Outlook.OlBodyFormat bodyFormat)
         {

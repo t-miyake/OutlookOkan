@@ -636,7 +636,6 @@ namespace OutlookOkan.ViewModels
             var languageCode = Language.LanguageCode ?? CultureInfo.CurrentUICulture.Name;
             if (Language.LanguageCode != null)
             {
-
                 ResourceService.Instance.ChangeCulture(Language.LanguageCode);
             }
 

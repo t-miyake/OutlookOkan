@@ -145,7 +145,7 @@ namespace OutlookOkan
             var readCsv = new ReadAndWriteCsv("GeneralSetting.csv");
             foreach (var data in readCsv.GetCsvRecords<GeneralSetting>(readCsv.LoadCsv<GeneralSettingMap>()))
             {
-                generalSetting.Add((data));
+                generalSetting.Add(data);
             }
 
             if (generalSetting.Count == 0) return;
@@ -182,7 +182,7 @@ namespace OutlookOkan
             if (checklist.RecipientExternalDomainNum >= 2 && _isShowConfirmationToMultipleDomain)
             {
                 //全ての宛先が確認対象だが、複数のドメインが宛先に含まれる場合は確認画面を表示するオプションが有効かつその状態のため、スキップしない。
-                //他の判定より優先されるために先人確認して、先にretrunする。
+                //他の判定より優先されるため先に確認して、先にretrunする。
                 return true;
             }
 
