@@ -476,6 +476,6 @@ CCあるいはBCCに指定したアドレスが自動で追加されます。</v
     <value>Exchange配布リストのメンバーを表示する。(表示に時間がかかる場合があります。)</value>
   </data>
   <data name="GetMembersOfTheList" xml:space="preserve">
-    <value>Exchange配布リストや連絡先グループのメンバーを表示する。</value>
+    <value>Exchange配布リストや連絡先グループのメンバーを表示する</value>
   </data>
 </root>
