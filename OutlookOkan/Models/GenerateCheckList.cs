@@ -273,7 +273,6 @@ namespace OutlookOkan.Models
             var contactGroupMembers = new List<NameAndRecipient>();
             if (!enableGetContactGroupMembers)
             {
-                //TODO 連絡先グループの名称をリソースから持ってくる。
                 contactGroupMembers.Add(new NameAndRecipient { MailAddress = recip.Name, NameAndMailAddress = recip.Name + $@" [{Resources.ContactGroup}]" });
                 return contactGroupMembers;
             }
