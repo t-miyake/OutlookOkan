@@ -2,6 +2,7 @@
 using OutlookOkan.Properties;
 using OutlookOkan.Types;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using Outlook = Microsoft.Office.Interop.Outlook;
@@ -28,16 +29,13 @@ namespace OutlookOkan.Models
             //This methods must run first.
             GetGeneralMailInfomation(in mail);
 
-            MakeDisplayNameAndRecipient(mail);
+            MakeDisplayNameAndRecipient(mail.Recipients);
 
             CheckForgotAttach(in mail);
 
             CheckKeyword();
 
             AutoAddCcAndBcc(mail);
-
-            //TODO Temporary processing. It will be improved.
-            MakeDisplayNameAndRecipient(mail);
 
             GetRecipient();
 
@@ -243,16 +241,10 @@ namespace OutlookOkan.Models
         /// <summary>
         /// 送信先の表示名と表示名とメールアドレスを対応させる。(Outlookの仕様上、表示名にメールアドレスが含まれない事がある。)
         /// </summary>
-        /// <param name="mail"></param>
-        private void MakeDisplayNameAndRecipient(Outlook._MailItem mail)
+        /// <param name="recipients"></param>
+        private void MakeDisplayNameAndRecipient(IEnumerable recipients)
         {
-            //TODO Temporary processing. It will be improved.
-            //暫定的にこのメソッドを複数回実行する可能性があるため、実行のたびに以下の3つは初期化する。
-            _toDisplayNameAndRecipient.Clear();
-            _ccDisplayNameAndRecipient.Clear();
-            _bccDisplayNameAndRecipient.Clear();
-
-            foreach (Outlook.Recipient recip in mail.Recipients)
+            foreach (Outlook.Recipient recip in recipients)
             {
                 var nameAndRecipient = new List<NameAndRecipient>();
 
@@ -379,6 +371,7 @@ namespace OutlookOkan.Models
         {
             var autoAddedCcAddressList = new List<string>();
             var autoAddedBccAddressList = new List<string>();
+            var autoAddRecipients = new List<Outlook.Recipient>();
 
             //Load AutoCcBccKeywordList
             var autoCcBccKeywordListCsv = new ReadAndWriteCsv("AutoCcBccKeywordList.csv");
@@ -397,6 +390,7 @@ namespace OutlookOkan.Models
                             var recip = mail.Recipients.Add(i.AutoAddAddress);
                             recip.Type = (int)Outlook.OlMailRecipientType.olCC;
 
+                            autoAddRecipients.Add(recip);
                             autoAddedCcAddressList.Add(i.AutoAddAddress);
                         }
                     }
@@ -405,6 +399,7 @@ namespace OutlookOkan.Models
                         var recip = mail.Recipients.Add(i.AutoAddAddress);
                         recip.Type = (int)Outlook.OlMailRecipientType.olBCC;
 
+                        autoAddRecipients.Add(recip);
                         autoAddedBccAddressList.Add(i.AutoAddAddress);
                     }
 
@@ -433,6 +428,7 @@ namespace OutlookOkan.Models
                             var recip = mail.Recipients.Add(i.AutoAddAddress);
                             recip.Type = (int)Outlook.OlMailRecipientType.olCC;
 
+                            autoAddRecipients.Add(recip);
                             autoAddedCcAddressList.Add(i.AutoAddAddress);
                         }
                     }
@@ -441,6 +437,7 @@ namespace OutlookOkan.Models
                         var recip = mail.Recipients.Add(i.AutoAddAddress);
                         recip.Type = (int)Outlook.OlMailRecipientType.olBCC;
 
+                        autoAddRecipients.Add(recip);
                         autoAddedBccAddressList.Add(i.AutoAddAddress);
                     }
 
@@ -450,6 +447,12 @@ namespace OutlookOkan.Models
                     _whitelist.Add(new Whitelist { WhiteName = i.AutoAddAddress });
                 }
             }
+
+            if (autoAddRecipients.Count != 0)
+            {
+                MakeDisplayNameAndRecipient(autoAddRecipients);
+            }
+
             mail.Recipients.ResolveAll();
         }
 
