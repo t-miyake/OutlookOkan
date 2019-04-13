@@ -71,6 +71,7 @@
                                                     <Setter Property="Foreground" Value="#FFFF2800" />
                                                 </MultiDataTrigger>
                                             </Style.Triggers>
+                                            <Setter Property="ToolTip" Value="{Binding MailAddress, Mode=OneWay}" />
                                         </Style>
                                     </DataGridTextColumn.CellStyle>
                                 </DataGridTextColumn>
@@ -98,6 +99,7 @@
                                                     <Setter Property="Foreground" Value="#FFFF2800"/>
                                                 </MultiDataTrigger>
                                             </Style.Triggers>
+                                            <Setter Property="ToolTip" Value="{Binding MailAddress, Mode=OneWay}" />
                                         </Style>
                                     </DataGridTextColumn.CellStyle>
                                 </DataGridTextColumn>
@@ -125,6 +127,7 @@
                                                     <Setter Property="Foreground" Value="#FFFF2800"/>
                                                 </MultiDataTrigger>
                                             </Style.Triggers>
+                                            <Setter Property="ToolTip" Value="{Binding MailAddress, Mode=OneWay}" />
                                         </Style>
                                     </DataGridTextColumn.CellStyle>
                                 </DataGridTextColumn>
