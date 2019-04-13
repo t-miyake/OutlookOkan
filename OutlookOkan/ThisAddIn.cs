@@ -16,11 +16,7 @@ namespace OutlookOkan
 {
     public partial class ThisAddIn
     {
-        private string _language;
-        private bool _isDoNotConfirmationIfAllRecipientsAreSameDomain;
-        private bool _isDoDoNotConfirmationIfAllWhite;
-        private bool _isAutoCheckIfAllRecipientsAreSameDomain;
-        private bool _isShowConfirmationToMultipleDomain;
+        private readonly GeneralSetting _generalSetting = new GeneralSetting();
 
         protected override Microsoft.Office.Core.IRibbonExtensibility CreateRibbonExtensibilityObject()
         {
@@ -30,10 +26,10 @@ namespace OutlookOkan
         private void ThisAddIn_Startup(object sender, EventArgs e)
         {
             //ユーザ設定をロード(このタイミングでロードしておかないと、リボンの言語を変更できない。
-            LoadSetting();
-            if (!(_language is null))
+            LoadGeneralSetting(true);
+            if (!(_generalSetting.LanguageCode is null))
             {
-                ResourceService.Instance.ChangeCulture(_language);
+                ResourceService.Instance.ChangeCulture(_generalSetting.LanguageCode);
             }
 
             Application.ItemSend += Application_ItemSend;
@@ -47,18 +43,18 @@ namespace OutlookOkan
             //何らかの問題で確認画面が表示されないと、意図せずメールが送られてしまう恐れがあるため、念のための処理を入れておく。
             try
             {
-                var generateCheckList = new GenerateCheckList();
-                var checklist = generateCheckList.GenerateCheckListFromMail((Outlook._MailItem)item);
-
                 //Outlook起動後にユーザが設定を変更する可能性があるため、毎回ユーザ設定をロード
-                LoadSetting();
-                if (!(_language is null))
+                LoadGeneralSetting(false);
+                if (!(_generalSetting.LanguageCode is null))
                 {
-                    ResourceService.Instance.ChangeCulture(_language);
+                    ResourceService.Instance.ChangeCulture(_generalSetting.LanguageCode);
                 }
 
+                var generateCheckList = new GenerateCheckList();
+                var checklist = generateCheckList.GenerateCheckListFromMail((Outlook._MailItem)item, _generalSetting);
+
                 //送信先と同一のドメインはあらかじめチェックを入れるオプションが有効な場合、それをする。
-                if (_isAutoCheckIfAllRecipientsAreSameDomain)
+                if (_generalSetting.IsAutoCheckIfAllRecipientsAreSameDomain)
                 {
                     foreach (var to in checklist.ToAddresses)
                     {
@@ -139,7 +135,7 @@ namespace OutlookOkan
             }
         }
 
-        private void LoadSetting()
+        private void LoadGeneralSetting(bool isLaunch)
         {
             var generalSetting = new List<GeneralSetting>();
             var readCsv = new ReadAndWriteCsv("GeneralSetting.csv");
@@ -150,11 +146,17 @@ namespace OutlookOkan
 
             if (generalSetting.Count == 0) return;
 
-            _language = generalSetting[0].LanguageCode;
-            _isDoNotConfirmationIfAllRecipientsAreSameDomain = generalSetting[0].IsDoNotConfirmationIfAllRecipientsAreSameDomain;
-            _isDoDoNotConfirmationIfAllWhite = generalSetting[0].IsDoDoNotConfirmationIfAllWhite;
-            _isAutoCheckIfAllRecipientsAreSameDomain = generalSetting[0].IsAutoCheckIfAllRecipientsAreSameDomain;
-            _isShowConfirmationToMultipleDomain = generalSetting[0].IsShowConfirmationToMultipleDomain;
+            _generalSetting.LanguageCode = generalSetting[0].LanguageCode;
+            if(isLaunch) return;
+            
+            _generalSetting.IsDoNotConfirmationIfAllRecipientsAreSameDomain = generalSetting[0].IsDoNotConfirmationIfAllRecipientsAreSameDomain;
+            _generalSetting.IsDoDoNotConfirmationIfAllWhite = generalSetting[0].IsDoDoNotConfirmationIfAllWhite;
+            _generalSetting.IsAutoCheckIfAllRecipientsAreSameDomain = generalSetting[0].IsAutoCheckIfAllRecipientsAreSameDomain;
+            _generalSetting.IsShowConfirmationToMultipleDomain = generalSetting[0].IsShowConfirmationToMultipleDomain;
+            _generalSetting.EnableGetContactGroupMembers = generalSetting[0].EnableGetContactGroupMembers;
+            _generalSetting.EnableGetExchangeDistributionListMembers = generalSetting[0].EnableGetExchangeDistributionListMembers;
+            _generalSetting.ContactGroupMembersAreWhite = generalSetting[0].ContactGroupMembersAreWhite;
+            _generalSetting.ExchangeDistributionListMembersAreWhite = generalSetting[0].ExchangeDistributionListMembersAreWhite;
         }
 
         private bool IsAllChedked(CheckList checkLlist)
@@ -179,14 +181,14 @@ namespace OutlookOkan
 
         private bool IsShowConfirmationWindow(CheckList checklist)
         {
-            if (checklist.RecipientExternalDomainNum >= 2 && _isShowConfirmationToMultipleDomain)
+            if (checklist.RecipientExternalDomainNum >= 2 && _generalSetting.IsShowConfirmationToMultipleDomain)
             {
                 //全ての宛先が確認対象だが、複数のドメインが宛先に含まれる場合は確認画面を表示するオプションが有効かつその状態のため、スキップしない。
                 //他の判定より優先されるため先に確認して、先にretrunする。
                 return true;
             }
 
-            if (_isDoNotConfirmationIfAllRecipientsAreSameDomain && IsAllRecipientsAreSameDomain(checklist))
+            if (_generalSetting.IsDoNotConfirmationIfAllRecipientsAreSameDomain && IsAllRecipientsAreSameDomain(checklist))
             {
                 //全ての受信者が送信者と同一ドメインの場合に確認画面を表示しないオプションが有効かつその状態のためスキップ.
                 return false;
@@ -198,7 +200,7 @@ namespace OutlookOkan
                 return false;
             }
 
-            if (_isDoDoNotConfirmationIfAllWhite && IsAllChedked(checklist))
+            if (_generalSetting.IsDoDoNotConfirmationIfAllWhite && IsAllChedked(checklist))
             {
                 //全てにチェックが入った状態の場合に確認画面を表示しないオプションが有効かつその状態のためスキップ.
                 return false;

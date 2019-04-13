@@ -617,6 +617,10 @@ namespace OutlookOkan.ViewModels
             IsAutoCheckIfAllRecipientsAreSameDomain = _generalSetting[0].IsAutoCheckIfAllRecipientsAreSameDomain;
             IsShowConfirmationToMultipleDomain = _generalSetting[0].IsShowConfirmationToMultipleDomain;
             EnableForgottenToAttachAlert = _generalSetting[0].EnableForgottenToAttachAlert;
+            EnableGetContactGroupMembers = _generalSetting[0].EnableGetContactGroupMembers;
+            EnableGetExchangeDistributionListMembers = _generalSetting[0].EnableGetExchangeDistributionListMembers;
+            ContactGroupMembersAreWhite = _generalSetting[0].ContactGroupMembersAreWhite;
+            ExchangeDistributionListMembersAreWhite = _generalSetting[0].ExchangeDistributionListMembersAreWhite;
 
             if (_generalSetting[0].LanguageCode is null) return;
 
@@ -648,7 +652,11 @@ namespace OutlookOkan.ViewModels
                     IsAutoCheckIfAllRecipientsAreSameDomain = IsAutoCheckIfAllRecipientsAreSameDomain,
                     LanguageCode = languageCode,
                     IsShowConfirmationToMultipleDomain = IsShowConfirmationToMultipleDomain,
-                    EnableForgottenToAttachAlert = EnableForgottenToAttachAlert
+                    EnableForgottenToAttachAlert = EnableForgottenToAttachAlert,
+                    EnableGetContactGroupMembers = EnableGetContactGroupMembers,
+                    EnableGetExchangeDistributionListMembers = EnableGetExchangeDistributionListMembers,
+                    ContactGroupMembersAreWhite = ContactGroupMembersAreWhite,
+                    ExchangeDistributionListMembersAreWhite = ExchangeDistributionListMembersAreWhite
                 }
             };
 
@@ -715,6 +723,50 @@ namespace OutlookOkan.ViewModels
             {
                 _enableForgottenToAttachAlert = value;
                 OnPropertyChanged("EnableForgottenToAttachAlert");
+            }
+        }
+
+        private bool _enableGetContactGroupMembers;
+        public bool EnableGetContactGroupMembers
+        {
+            get => _enableGetContactGroupMembers;
+            set
+            {
+                _enableGetContactGroupMembers = value;
+                OnPropertyChanged("EnableGetContactGroupMembers");
+            }
+        }
+
+        private bool _enableGetExchangeDistributionListMembers;
+        public bool EnableGetExchangeDistributionListMembers
+        {
+            get => _enableGetExchangeDistributionListMembers;
+            set
+            {
+                _enableGetExchangeDistributionListMembers = value;
+                OnPropertyChanged("EnableGetExchangeDistributionListMembers");
+            }
+        }
+
+        private bool _contactGroupMembersAreWhite = true;
+        public bool ContactGroupMembersAreWhite
+        {
+            get => _contactGroupMembersAreWhite;
+            set
+            {
+                _contactGroupMembersAreWhite = value;
+                OnPropertyChanged("ContactGroupMembersAreWhite");
+            }
+        }
+
+        private bool _exchangeDistributionListMembersAreWhite = true;
+        public bool ExchangeDistributionListMembersAreWhite
+        {
+            get => _exchangeDistributionListMembersAreWhite;
+            set
+            {
+                _exchangeDistributionListMembersAreWhite = value;
+                OnPropertyChanged("ExchangeDistributionListMembersAreWhite");
             }
         }
 

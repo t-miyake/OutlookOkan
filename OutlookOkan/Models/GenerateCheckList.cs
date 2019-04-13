@@ -24,18 +24,19 @@ namespace OutlookOkan.Models
         /// メール送信の確認画面を表示。
         /// </summary>
         /// <param name="mail">送信するメールアイテム</param>
-        public CheckList GenerateCheckListFromMail(Outlook._MailItem mail)
+        /// <param name="generalSetting">一般設定</param>
+        public CheckList GenerateCheckListFromMail(Outlook._MailItem mail, GeneralSetting generalSetting)
         {
             //This methods must run first.
             GetGeneralMailInfomation(in mail);
 
-            MakeDisplayNameAndRecipient(mail.Recipients);
+            MakeDisplayNameAndRecipient(mail.Recipients, generalSetting);
 
             CheckForgotAttach(in mail);
 
             CheckKeyword();
 
-            AutoAddCcAndBcc(mail);
+            AutoAddCcAndBcc(mail, generalSetting);
 
             GetRecipient();
 
@@ -196,14 +197,88 @@ namespace OutlookOkan.Models
         /// <summary>
         /// Exchangeの配布リストを展開して宛先メールアドレスと宛先名称を取得する。(入れ子は非展開)
         /// </summary>
-        /// <param name="recip"></param>
-        /// <param name="contactGroupId"></param>
-        /// <returns></returns>
-        private IEnumerable<NameAndRecipient> GetContactGroupMembers(Outlook.Recipient recip, string contactGroupId)
+        /// <param name="recip">メールの宛先</param>
+        /// <param name="enableGetExchangeDistributionListMembers">配布リスト展開のオンオフ設定</param>
+        /// <param name="exchangeDistributionListMembersAreWhite">配布リストで展開したアドレスをホワイトリスト化するか否かの設定</param>
+        /// <returns>宛先メールアドレスと宛先名称</returns>
+        private IEnumerable<NameAndRecipient> GetExchangeDistributionListMembers(Outlook.Recipient recip, bool enableGetExchangeDistributionListMembers, bool exchangeDistributionListMembersAreWhite)
         {
-            string entryId;
-            var contactGroupMembers = new List<NameAndRecipient>();
+            if (recip.AddressEntry.AddressEntryUserType != Outlook.OlAddressEntryUserType.olExchangeDistributionListAddressEntry) return null;
 
+            try
+            {
+                var distributionList = recip.AddressEntry.GetExchangeDistributionList();
+                var addressEntries = distributionList.GetExchangeDistributionListMembers();
+
+                if (addressEntries is null) return null;
+
+                var exchangeDistributionListMembers = new List<NameAndRecipient>();
+
+                if (addressEntries.Count == 0 || !enableGetExchangeDistributionListMembers)
+                {
+                    exchangeDistributionListMembers.Add(new NameAndRecipient { MailAddress = distributionList.PrimarySmtpAddress, NameAndMailAddress = distributionList.Name + $@" ({distributionList.PrimarySmtpAddress})" });
+
+                    if (exchangeDistributionListMembersAreWhite)
+                    {
+                        _whitelist.Add(new Whitelist { WhiteName = distributionList.PrimarySmtpAddress });
+                    }
+
+                    return exchangeDistributionListMembers;
+                }
+
+                var tempOutlookApp = new Outlook.Application();
+                foreach (Outlook.AddressEntry member in addressEntries)
+                {
+                    var tempRecipient = tempOutlookApp.Session.CreateRecipient(member.Address);
+                    var mailAddress = Resources.FailedToGetInformation;
+
+                    try
+                    {
+                        //メールアドレスをExchangeの登録情報から取得。
+                        mailAddress = tempRecipient.AddressEntry.PropertyAccessor
+                                .GetProperty("http://schemas.microsoft.com/mapi/proptag/0x39FE001E").ToString() ?? Resources.FailedToGetInformation;
+                    }
+                    catch (Exception)
+                    {
+                        //Do Nothing.
+                    }
+
+                    // 入れ子になった配布リストは展開しない。(Exchangeサーバへの負荷が大きく時間もかかるため)
+                    exchangeDistributionListMembers.Add(new NameAndRecipient { MailAddress = mailAddress, NameAndMailAddress = (member.Name ?? Resources.FailedToGetInformation) + $@" ({mailAddress})", IncludedGroupAndList = $@" [{distributionList.Name}]" });
+
+                    if (exchangeDistributionListMembersAreWhite)
+                    {
+                        _whitelist.Add(new Whitelist { WhiteName = mailAddress });
+                    }
+                }
+
+                return exchangeDistributionListMembers;
+            }
+            catch (Exception)
+            {
+                return null;
+            }
+        }
+
+        /// <summary>
+        /// 連絡先グループを展開して宛先メールアドレスと宛先名称を取得する。(入れ子も自動展開)
+        /// </summary>
+        /// <param name="recip">メールの宛先</param>
+        /// <param name="contactGroupId">既に確認したGroupID</param>
+        /// <param name="enableGetContactGroupMembers">連絡先グループ展開のオンオフ設定</param>
+        /// <param name="contactGroupMembersAreWhite">連絡先グループで展開したアドレスをホワイトリスト化するか否かの設定</param>
+        /// <returns>宛先メールアドレスと宛先名称</returns>
+        private IEnumerable<NameAndRecipient> GetContactGroupMembers(Outlook.Recipient recip, string contactGroupId, bool enableGetContactGroupMembers, bool contactGroupMembersAreWhite)
+        {
+            var contactGroupMembers = new List<NameAndRecipient>();
+            if (!enableGetContactGroupMembers)
+            {
+                //TODO 連絡先グループの名称をリソースから持ってくる。
+                contactGroupMembers.Add(new NameAndRecipient { MailAddress = recip.Name, NameAndMailAddress = recip.Name + $@" [{Resources.ContactGroup}]" });
+                return contactGroupMembers;
+            }
+
+            string entryId;
             if (contactGroupId is null)
             {
                 var entryIdLength = Convert.ToInt32(recip.AddressEntry.ID.Substring(66, 2) + recip.AddressEntry.ID.Substring(64, 2), 16) * 2;
@@ -226,13 +301,18 @@ namespace OutlookOkan.Models
             {
                 var member = distList.GetMember(i);
                 contactGroupMembers.AddRange(member.Address == "Unknown"
-                    ? GetContactGroupMembers(member, contactGroupId)
+                    ? GetContactGroupMembers(member, contactGroupId, enableGetContactGroupMembers, contactGroupMembersAreWhite)
                     : GetNameAndRecipient(member));
             }
 
             foreach (var item in contactGroupMembers)
             {
-                item.NameAndMailAddress += $"[{distList.DLName}]";
+                item.IncludedGroupAndList += $@" [{distList.DLName}]";
+
+                if (contactGroupMembersAreWhite)
+                {
+                    _whitelist.Add(new Whitelist { WhiteName = item.MailAddress });
+                }
             }
 
             return contactGroupMembers;
@@ -241,35 +321,71 @@ namespace OutlookOkan.Models
         /// <summary>
         /// 送信先の表示名と表示名とメールアドレスを対応させる。(Outlookの仕様上、表示名にメールアドレスが含まれない事がある。)
         /// </summary>
-        /// <param name="recipients"></param>
-        private void MakeDisplayNameAndRecipient(IEnumerable recipients)
+        /// <param name="recipients">メールの宛先</param>
+        /// <param name="generalSetting">一般設定</param>
+        private void MakeDisplayNameAndRecipient(IEnumerable recipients, GeneralSetting generalSetting)
         {
             foreach (Outlook.Recipient recip in recipients)
             {
                 var nameAndRecipient = new List<NameAndRecipient>();
 
-                nameAndRecipient.AddRange(
-                    recip.AddressEntry.AddressEntryUserType ==
-                    Outlook.OlAddressEntryUserType.olOutlookDistributionListAddressEntry
-                        ? GetContactGroupMembers(recip, null)
-                        : GetNameAndRecipient(recip));
+                switch (recip.AddressEntry.AddressEntryUserType)
+                {
+                    case Outlook.OlAddressEntryUserType.olExchangeDistributionListAddressEntry:
+                        nameAndRecipient.AddRange(GetExchangeDistributionListMembers(recip, generalSetting.EnableGetExchangeDistributionListMembers, generalSetting.ExchangeDistributionListMembersAreWhite));
+                        break;
+                    case Outlook.OlAddressEntryUserType.olOutlookDistributionListAddressEntry:
+                        nameAndRecipient.AddRange(GetContactGroupMembers(recip, null, generalSetting.EnableGetContactGroupMembers, generalSetting.ContactGroupMembersAreWhite));
+                        break;
+                    default:
+                        nameAndRecipient.AddRange(GetNameAndRecipient(recip));
+                        break;
+                }
 
                 foreach (var item in nameAndRecipient)
                 {
-                    _displayNameAndRecipient[item.MailAddress] = item.NameAndMailAddress;
+                    if (_displayNameAndRecipient.ContainsKey(item.MailAddress))
+                    {
+                        _displayNameAndRecipient[item.MailAddress] += item.IncludedGroupAndList;
+                    }
+                    else
+                    {
+                        _displayNameAndRecipient[item.MailAddress] = item.NameAndMailAddress + item.IncludedGroupAndList;
+                    }
 
                     //TODO Temporary processing. It will be improved.
-                    //名称を差出人とメールアドレスの紐づけをTo/CC/BCCそれぞれに格納
+                    //名称と差出人とメールアドレスの紐づけをTo/CC/BCCそれぞれに格納
                     switch (recip.Type)
                     {
                         case 1:
-                            _toDisplayNameAndRecipient[item.MailAddress] = item.NameAndMailAddress;
+                            if (_toDisplayNameAndRecipient.ContainsKey(item.MailAddress))
+                            {
+                                _toDisplayNameAndRecipient[item.MailAddress] += item.IncludedGroupAndList;
+                            }
+                            else
+                            {
+                                _toDisplayNameAndRecipient[item.MailAddress] = item.NameAndMailAddress + item.IncludedGroupAndList;
+                            }
                             continue;
                         case 2:
-                            _ccDisplayNameAndRecipient[item.MailAddress] = item.NameAndMailAddress;
+                            if (_ccDisplayNameAndRecipient.ContainsKey(item.MailAddress))
+                            {
+                                _ccDisplayNameAndRecipient[item.MailAddress] += item.IncludedGroupAndList;
+                            }
+                            else
+                            {
+                                _ccDisplayNameAndRecipient[item.MailAddress] = item.NameAndMailAddress + item.IncludedGroupAndList;
+                            }
                             continue;
                         case 3:
-                            _bccDisplayNameAndRecipient[item.MailAddress] = item.NameAndMailAddress;
+                            if (_bccDisplayNameAndRecipient.ContainsKey(item.MailAddress))
+                            {
+                                _bccDisplayNameAndRecipient[item.MailAddress] += item.IncludedGroupAndList;
+                            }
+                            else
+                            {
+                                _bccDisplayNameAndRecipient[item.MailAddress] = item.NameAndMailAddress + item.IncludedGroupAndList;
+                            }
                             continue;
                         default:
                             continue;
@@ -367,7 +483,12 @@ namespace OutlookOkan.Models
             }
         }
 
-        private void AutoAddCcAndBcc(Outlook._MailItem mail)
+        /// <summary>
+        /// 条件に一致した場合、CCやBCCに宛先を追加する。
+        /// </summary>
+        /// <param name="mail">Mail</param>
+        /// <param name="generalSetting">一般設定</param>
+        private void AutoAddCcAndBcc(Outlook._MailItem mail, GeneralSetting generalSetting)
         {
             var autoAddedCcAddressList = new List<string>();
             var autoAddedBccAddressList = new List<string>();
@@ -450,7 +571,7 @@ namespace OutlookOkan.Models
 
             if (autoAddRecipients.Count != 0)
             {
-                MakeDisplayNameAndRecipient(autoAddRecipients);
+                MakeDisplayNameAndRecipient(autoAddRecipients, generalSetting);
             }
 
             mail.Recipients.ResolveAll();

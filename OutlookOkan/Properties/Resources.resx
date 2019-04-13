@@ -463,4 +463,19 @@ And enter the time (min) to delay delivery.
 
 * When multiple conditions are met, the longest delay time is adopted.</value>
   </data>
+  <data name="ContactGroup" xml:space="preserve">
+    <value>Contact Group</value>
+  </data>
+  <data name="AutoCheckMembersAddress" xml:space="preserve">
+    <value>The member's address will be checked automatically.</value>
+  </data>
+  <data name="GetMembersOfTheContactGroup" xml:space="preserve">
+    <value>Get members of an Contact Group.</value>
+  </data>
+  <data name="GetMembersOfTheExDistList" xml:space="preserve">
+    <value>Get members of an Exchange distribution list. (It may take a long time.)</value>
+  </data>
+  <data name="GetMembersOfTheList" xml:space="preserve">
+    <value>Get members of an Exchange distribution list or an Contact Group</value>
+  </data>
 </root>
