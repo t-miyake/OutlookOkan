@@ -218,7 +218,7 @@ namespace OutlookOkan.Models
                 {
                     exchangeDistributionListMembers.Add(new NameAndRecipient { MailAddress = distributionList.PrimarySmtpAddress, NameAndMailAddress = distributionList.Name + $@" ({distributionList.PrimarySmtpAddress})" });
 
-                    if (exchangeDistributionListMembersAreWhite)
+                    if (exchangeDistributionListMembersAreWhite && enableGetExchangeDistributionListMembers)
                     {
                         _whitelist.Add(new Whitelist { WhiteName = distributionList.PrimarySmtpAddress });
                     }
