@@ -2,7 +2,7 @@
 
 namespace OutlookOkan.Types
 {
-    public class AlertAddress
+    public sealed class AlertAddress
     {
         public string TartgetAddress { get; set; }
         public bool IsCanNotSend { get; set; }

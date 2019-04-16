@@ -2,7 +2,7 @@
 
 namespace OutlookOkan.Types
 {
-    public class AlertKeywordAndMessage
+    public sealed class AlertKeywordAndMessage
     {
         public string AlertKeyword { get; set; }
         public string Message { get; set; }

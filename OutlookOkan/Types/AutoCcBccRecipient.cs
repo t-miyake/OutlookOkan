@@ -2,7 +2,7 @@
 
 namespace OutlookOkan.Types
 {
-    public class AutoCcBccRecipient
+    public sealed class AutoCcBccRecipient
     {
         public string TargetRecipient { get; set; }
         public CcOrBcc CcOrBcc { get; set; }

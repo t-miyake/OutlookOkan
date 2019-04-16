@@ -2,7 +2,7 @@
 
 namespace OutlookOkan.Types
 {
-    public class NameAndDomains
+    public sealed class NameAndDomains
     {
         public string Name { get; set; }
         public string Domain { get; set; }

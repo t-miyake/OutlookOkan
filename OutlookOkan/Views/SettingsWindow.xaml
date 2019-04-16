@@ -16,7 +16,7 @@
                     <GroupBox Header="{Binding Source={x:Static services:ResourceService.Instance}, Path=Resources.General, Mode=OneWay}"  FontSize="11" Padding="3,3,3,3">
                         <StackPanel Orientation="Vertical">
                             <StackPanel Orientation="Horizontal">
-                                <CheckBox Margin="0,0,8,0" IsChecked="{Binding EnableForgottenToAttachAlert, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                                <CheckBox Margin="0,0,8,0" IsChecked="{Binding EnableForgottenToAttachAlert, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
                                 <TextBlock Text="{Binding Source={x:Static services:ResourceService.Instance}, Path=Resources.EnableForgottenToAttachAlert, Mode=OneWay}" />
                             </StackPanel>
                         </StackPanel>
@@ -24,15 +24,15 @@
                     <GroupBox Header="{Binding Source={x:Static services:ResourceService.Instance}, Path=Resources.DontShowConfirmationScreen, Mode=OneWay}"  FontSize="11" Padding="3,3,3,3"  Margin="0,5,0,0">
                         <StackPanel Orientation="Vertical">
                             <StackPanel Orientation="Horizontal">
-                                <CheckBox Margin="0,0,8,0"  IsChecked="{Binding IsDoNotConfirmationIfAllRecipientsAreSameDomain, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                                <CheckBox Margin="0,0,8,0"  IsChecked="{Binding IsDoNotConfirmationIfAllRecipientsAreSameDomain, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
                                 <TextBlock Text="{Binding Source={x:Static services:ResourceService.Instance}, Path=Resources.IfAllSameDomain, Mode=OneWay}" />
                             </StackPanel>
                             <StackPanel Orientation="Horizontal" Margin="0,5,0,0">
-                                <CheckBox Margin="0,0,8,0" IsChecked="{Binding IsDoDoNotConfirmationIfAllWhite, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                                <CheckBox Margin="0,0,8,0" IsChecked="{Binding IsDoDoNotConfirmationIfAllWhite, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
                                 <TextBlock Text="{Binding Source={x:Static services:ResourceService.Instance}, Path=Resources.IfAllWhite, Mode=OneWay}" />
                             </StackPanel>
                             <StackPanel Orientation="Horizontal" Margin="0,5,0,0">
-                                <CheckBox Margin="0,0,8,0" IsChecked="{Binding IsShowConfirmationToMultipleDomain, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                                <CheckBox Margin="0,0,8,0" IsChecked="{Binding IsShowConfirmationToMultipleDomain, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
                                 <TextBlock Text="{Binding Source={x:Static services:ResourceService.Instance}, Path=Resources.IsShowConfirmationToMultipleDomain, Mode=OneWay}" />
                             </StackPanel>
                         </StackPanel>
@@ -40,7 +40,7 @@
                     <GroupBox Header="{Binding Source={x:Static services:ResourceService.Instance}, Path=Resources.AutoCheckConfig, Mode=OneWay}"  FontSize="11" Padding="3,3,3,3" Margin="0,5,0,0">
                         <StackPanel Orientation="Vertical">
                             <StackPanel Orientation="Horizontal">
-                                <CheckBox Margin="0,0,8,0" IsChecked="{Binding IsAutoCheckIfAllRecipientsAreSameDomain, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                                <CheckBox Margin="0,0,8,0" IsChecked="{Binding IsAutoCheckIfAllRecipientsAreSameDomain, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
                                 <TextBlock Text="{Binding Source={x:Static services:ResourceService.Instance}, Path=Resources.AutoCheckSameDomain, Mode=OneWay}" />
                             </StackPanel>
                         </StackPanel>
@@ -48,21 +48,21 @@
                     <GroupBox Header="{Binding Source={x:Static services:ResourceService.Instance}, Path=Resources.GetMembersOfTheList, Mode=OneWay}"  FontSize="11" Padding="3,3,3,3"  Margin="0,5,0,0">
                         <StackPanel Orientation="Vertical">
                             <StackPanel Orientation="Horizontal">
-                                <CheckBox Margin="0,0,8,0"  IsChecked="{Binding EnableGetExchangeDistributionListMembers, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                                <CheckBox Margin="0,0,8,0"  IsChecked="{Binding EnableGetExchangeDistributionListMembers, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
                                 <TextBlock Text="{Binding Source={x:Static services:ResourceService.Instance}, Path=Resources.GetMembersOfTheExDistList, Mode=OneWay}" />
                             </StackPanel>
                             <StackPanel Orientation="Horizontal" Margin="10,3,0,0">
-                                <TextBlock Text="=> "/>
-                                <CheckBox Margin="0,0,8,0" IsChecked="{Binding ExchangeDistributionListMembersAreWhite, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                                <TextBlock Text="=> " />
+                                <CheckBox Margin="0,0,8,0" IsChecked="{Binding ExchangeDistributionListMembersAreWhite, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
                                 <TextBlock Text="{Binding Source={x:Static services:ResourceService.Instance}, Path=Resources.AutoCheckMembersAddress, Mode=OneWay}" />
                             </StackPanel>
                             <StackPanel Orientation="Horizontal" Margin="0,5,0,0">
-                                <CheckBox Margin="0,0,8,0" IsChecked="{Binding EnableGetContactGroupMembers, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                                <CheckBox Margin="0,0,8,0" IsChecked="{Binding EnableGetContactGroupMembers, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
                                 <TextBlock Text="{Binding Source={x:Static services:ResourceService.Instance}, Path=Resources.GetMembersOfTheContactGroup, Mode=OneWay}" />
                             </StackPanel>
                             <StackPanel Orientation="Horizontal" Margin="10,3,0,0">
-                                <TextBlock Text="=> "/>
-                                <CheckBox Margin="0,0,8,0" IsChecked="{Binding ContactGroupMembersAreWhite, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                                <TextBlock Text="=> " />
+                                <CheckBox Margin="0,0,8,0" IsChecked="{Binding ContactGroupMembersAreWhite, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
                                 <TextBlock Text="{Binding Source={x:Static services:ResourceService.Instance}, Path=Resources.AutoCheckMembersAddress, Mode=OneWay}" />
                             </StackPanel>
                         </StackPanel>
@@ -70,7 +70,7 @@
                     <GroupBox Header="{Binding Source={x:Static services:ResourceService.Instance}, Path=Resources.ChangeLanguage, Mode=OneWay}"  FontSize="11" Padding="3,3,3,3" Margin="0,5,0,0">
                         <StackPanel Orientation="Vertical">
                             <ComboBox ItemsSource="{Binding Languages}" SelectedItem="{Binding Language, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" SelectedIndex="{Binding LanguageNumber, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" DisplayMemberPath="LanguageName" />
-                            <TextBlock Text="{Binding Source={x:Static services:ResourceService.Instance}, Path=Resources.ChangeRibbonLanguageInfo, Mode=OneWay}" Margin="5,4,0,0"/>
+                            <TextBlock Text="{Binding Source={x:Static services:ResourceService.Instance}, Path=Resources.ChangeRibbonLanguageInfo, Mode=OneWay}" Margin="5,4,0,0" />
                         </StackPanel>
                     </GroupBox>
                 </StackPanel>
@@ -78,27 +78,32 @@
             <TabItem Header="{Binding Source={x:Static services:ResourceService.Instance}, Path=Resources.WhiteList, Mode=OneWay}">
                 <Grid>
                     <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="3*"/>
+                        <ColumnDefinition Width="3*" />
                         <ColumnDefinition Width="Auto" />
-                        <ColumnDefinition Width="1*"/>
+                        <ColumnDefinition Width="1*" />
                     </Grid.ColumnDefinitions>
                     <StackPanel Grid.Column="0" Margin="8,2,8,8">
                         <GroupBox Header="{Binding Source={x:Static services:ResourceService.Instance}, Path=Resources.Settings, Mode=OneWay}"  FontSize="11" Padding="3,3,3,3">
                             <DataGrid Height="353" VerticalScrollBarVisibility="Visible" HorizontalScrollBarVisibility="Visible" BorderBrush="#FFD5DFE5" HeadersVisibility="All" RowHeaderWidth="15" ItemsSource="{Binding Whitelist, Mode=TwoWay}" AutoGenerateColumns="false" CanUserResizeColumns="True" CanUserSortColumns="True" HorizontalGridLinesBrush="#FFD5DFE5" VerticalGridLinesBrush="#FFD5DFE5" CellEditEnding="DataGrid_WhiteList_OnCellEditEnding">
                                 <DataGrid.Columns>
-                                    <DataGridTextColumn Header="{Binding Source={x:Static services:ResourceService.Instance}, Path=Resources.MailddressAndDomain, Mode=OneWay}" Binding="{Binding WhiteName, Mode=TwoWay}" Width="*">
+                                    <DataGridTextColumn Header="{Binding Source={x:Static services:ResourceService.Instance}, Path=Resources.MailddressAndDomain, Mode=OneWay}" Binding="{Binding WhiteName, Mode=TwoWay}" Width="*" >
                                         <DataGridTextColumn.ElementStyle>
                                             <Style TargetType="TextBlock">
                                                 <Setter Property="ToolTipService.ToolTip" Value="{Binding Source={x:Static services:ResourceService.Instance}, Path=Resources.MailddressAndDomain, Mode=OneWay}" />
                                             </Style>
                                         </DataGridTextColumn.ElementStyle>
+                                        <DataGridTextColumn.EditingElementStyle>
+                                            <Style TargetType="TextBox">
+                                                <Setter Property="InputMethod.IsInputMethodEnabled" Value="False" />
+                                            </Style>
+                                        </DataGridTextColumn.EditingElementStyle>
                                     </DataGridTextColumn>
                                     <DataGridCheckBoxColumn Header="{Binding Source={x:Static services:ResourceService.Instance}, Path=Resources.IsSkipConfirmation, Mode=OneWay}" Binding="{Binding IsSkipConfirmation, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Width="Auto">
                                         <DataGridCheckBoxColumn.ElementStyle>
                                             <Style TargetType="CheckBox">
-                                                <Setter Property="ToolTip" Value="{Binding Source={x:Static services:ResourceService.Instance}, Path=Resources.IsSkipConfirmationInfo, Mode=OneWay}"/>
-                                                <Setter Property="VerticalAlignment" Value="Center"/>
-                                                <Setter Property="HorizontalAlignment" Value="Center"/>
+                                                <Setter Property="ToolTip" Value="{Binding Source={x:Static services:ResourceService.Instance}, Path=Resources.IsSkipConfirmationInfo, Mode=OneWay}" />
+                                                <Setter Property="VerticalAlignment" Value="Center" />
+                                                <Setter Property="HorizontalAlignment" Value="Center" />
                                             </Style>
                                         </DataGridCheckBoxColumn.ElementStyle>
                                     </DataGridCheckBoxColumn>
@@ -106,15 +111,15 @@
                             </DataGrid>
                         </GroupBox>
                     </StackPanel>
-                    <GridSplitter Grid.Column="1"/>
+                    <GridSplitter Grid.Column="1" />
                     <StackPanel Grid.Column="2" Margin="1,2,8,8">
                         <GroupBox Header="{Binding Source={x:Static services:ResourceService.Instance}, Path=Resources.SettingExample, Mode=OneWay}" FontSize="11" Padding="3,3,3,3">
-                            <TextBox Height="272" BorderBrush="White" FontSize="10" TextWrapping="Wrap" Text="{Binding Source={x:Static services:ResourceService.Instance}, Path=Resources.SettingExampleWhiteList, Mode=OneWay}" Padding="0,12,0,0" IsReadOnly="True"/>
+                            <TextBox Height="272" BorderBrush="White" FontSize="10" TextWrapping="Wrap" Text="{Binding Source={x:Static services:ResourceService.Instance}, Path=Resources.SettingExampleWhiteList, Mode=OneWay}" Padding="0,12,0,0" IsReadOnly="True" />
                         </GroupBox>
                         <GroupBox Header="{Binding Source={x:Static services:ResourceService.Instance}, Path=Resources.ImportAndExport, Mode=OneWay}" FontSize="11" Padding="3,3,3,3">
                             <StackPanel Margin="4">
-                                <Button Content="{Binding Source={x:Static services:ResourceService.Instance}, Path=Resources.CSVImport, Mode=OneWay}" Width="120" Padding="0" Margin="0,1,0,3" Command="{Binding ImportWhiteList}"/>
-                                <Button Content="{Binding Source={x:Static services:ResourceService.Instance}, Path=Resources.CSVExport, Mode=OneWay}" Width="120" Padding="0" Margin="0,8,0,0" Command="{Binding ExportWhiteList}"/>
+                                <Button Content="{Binding Source={x:Static services:ResourceService.Instance}, Path=Resources.CSVImport, Mode=OneWay}" Width="120" Padding="0" Margin="0,1,0,3" Command="{Binding ImportWhiteList}" />
+                                <Button Content="{Binding Source={x:Static services:ResourceService.Instance}, Path=Resources.CSVExport, Mode=OneWay}" Width="120" Padding="0" Margin="0,8,0,0" Command="{Binding ExportWhiteList}" />
                             </StackPanel>
                         </GroupBox>
                     </StackPanel>
@@ -123,9 +128,9 @@
             <TabItem Header="{Binding Source={x:Static services:ResourceService.Instance}, Path=Resources.NameAndDomain, Mode=OneWay}">
                 <Grid>
                     <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="3*"/>
+                        <ColumnDefinition Width="3*" />
                         <ColumnDefinition Width="Auto" />
-                        <ColumnDefinition Width="1*"/>
+                        <ColumnDefinition Width="1*" />
                     </Grid.ColumnDefinitions>
                     <StackPanel Grid.Column="0" Margin="8,2,8,8">
                         <GroupBox Header="{Binding Source={x:Static services:ResourceService.Instance}, Path=Resources.Settings, Mode=OneWay}"  FontSize="11" Padding="3,3,3,3">
@@ -144,20 +149,25 @@
                                                 <Setter Property="ToolTipService.ToolTip" Value="{Binding Source={x:Static services:ResourceService.Instance}, Path=Resources.InputDomainInfo, Mode=OneWay}" />
                                             </Style>
                                         </DataGridTextColumn.ElementStyle>
+                                        <DataGridTextColumn.EditingElementStyle>
+                                            <Style TargetType="TextBox">
+                                                <Setter Property="InputMethod.IsInputMethodEnabled" Value="False" />
+                                            </Style>
+                                        </DataGridTextColumn.EditingElementStyle>
                                     </DataGridTextColumn>
                                 </DataGrid.Columns>
                             </DataGrid>
                         </GroupBox>
                     </StackPanel>
-                    <GridSplitter Grid.Column="1"/>
+                    <GridSplitter Grid.Column="1" />
                     <StackPanel Grid.Column="2" Margin="1,2,8,8">
                         <GroupBox Header="{Binding Source={x:Static services:ResourceService.Instance}, Path=Resources.SettingExample, Mode=OneWay}" FontSize="11" Padding="3,3,3,3">
-                            <TextBox Height="272" BorderBrush="White" FontSize="10" TextWrapping="Wrap" Text="{Binding Source={x:Static services:ResourceService.Instance}, Path=Resources.SettingExampleNameAndDomain, Mode=OneWay}" Padding="0,12,0,0" IsReadOnly="True"/>
+                            <TextBox Height="272" BorderBrush="White" FontSize="10" TextWrapping="Wrap" Text="{Binding Source={x:Static services:ResourceService.Instance}, Path=Resources.SettingExampleNameAndDomain, Mode=OneWay}" Padding="0,12,0,0" IsReadOnly="True" />
                         </GroupBox>
                         <GroupBox Header="{Binding Source={x:Static services:ResourceService.Instance}, Path=Resources.ImportAndExport, Mode=OneWay}" FontSize="11" Padding="3,3,3,3">
                             <StackPanel Margin="4">
-                                <Button Content="{Binding Source={x:Static services:ResourceService.Instance}, Path=Resources.CSVImport, Mode=OneWay}" Width="120" Padding="0" Margin="0,1,0,3" Command="{Binding ImportNameAndDomainsList}"/>
-                                <Button Content="{Binding Source={x:Static services:ResourceService.Instance}, Path=Resources.CSVExport, Mode=OneWay}" Width="120" Padding="0" Margin="0,8,0,0" Command="{Binding ExportNameAndDomainsList}"/>
+                                <Button Content="{Binding Source={x:Static services:ResourceService.Instance}, Path=Resources.CSVImport, Mode=OneWay}" Width="120" Padding="0" Margin="0,1,0,3" Command="{Binding ImportNameAndDomainsList}" />
+                                <Button Content="{Binding Source={x:Static services:ResourceService.Instance}, Path=Resources.CSVExport, Mode=OneWay}" Width="120" Padding="0" Margin="0,8,0,0" Command="{Binding ExportNameAndDomainsList}" />
                             </StackPanel>
                         </GroupBox>
                     </StackPanel>
@@ -166,9 +176,9 @@
             <TabItem Header="{Binding Source={x:Static services:ResourceService.Instance}, Path=Resources.AlertKeyword, Mode=OneWay}">
                 <Grid>
                     <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="3*"/>
+                        <ColumnDefinition Width="3*" />
                         <ColumnDefinition Width="Auto" />
-                        <ColumnDefinition Width="1*"/>
+                        <ColumnDefinition Width="1*" />
                     </Grid.ColumnDefinitions>
                     <StackPanel Grid.Column="0" Margin="8,2,8,8">
                         <GroupBox Header="{Binding Source={x:Static services:ResourceService.Instance}, Path=Resources.Settings, Mode=OneWay}"  FontSize="11" Padding="3,3,3,3">
@@ -191,9 +201,9 @@
                                     <DataGridCheckBoxColumn Header="{Binding Source={x:Static services:ResourceService.Instance}, Path=Resources.SendingForbid, Mode=OneWay}" Binding="{Binding IsCanNotSend, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Width="Auto">
                                         <DataGridCheckBoxColumn.ElementStyle>
                                             <Style TargetType="CheckBox">
-                                                <Setter Property="ToolTip" Value="{Binding Source={x:Static services:ResourceService.Instance}, Path=Resources.SendingForbidInfo, Mode=OneWay}"/>
-                                                <Setter Property="VerticalAlignment" Value="Center"/>
-                                                <Setter Property="HorizontalAlignment" Value="Center"/>
+                                                <Setter Property="ToolTip" Value="{Binding Source={x:Static services:ResourceService.Instance}, Path=Resources.SendingForbidInfo, Mode=OneWay}" />
+                                                <Setter Property="VerticalAlignment" Value="Center" />
+                                                <Setter Property="HorizontalAlignment" Value="Center" />
                                             </Style>
                                         </DataGridCheckBoxColumn.ElementStyle>
                                     </DataGridCheckBoxColumn>
@@ -201,15 +211,15 @@
                             </DataGrid>
                         </GroupBox>
                     </StackPanel>
-                    <GridSplitter Grid.Column="1"/>
+                    <GridSplitter Grid.Column="1" />
                     <StackPanel Grid.Column="2" Margin="1,2,8,8">
                         <GroupBox Header="{Binding Source={x:Static services:ResourceService.Instance}, Path=Resources.SettingExample, Mode=OneWay}" FontSize="11" Padding="3,3,3,3">
-                            <TextBox Height="272" BorderBrush="White" FontSize="10" TextWrapping="Wrap" Text="{Binding Source={x:Static services:ResourceService.Instance}, Path=Resources.SettingExampleAlertKeyword, Mode=OneWay}" Padding="0,12,0,0" IsReadOnly="True"/>
+                            <TextBox Height="272" BorderBrush="White" FontSize="10" TextWrapping="Wrap" Text="{Binding Source={x:Static services:ResourceService.Instance}, Path=Resources.SettingExampleAlertKeyword, Mode=OneWay}" Padding="0,12,0,0" IsReadOnly="True" />
                         </GroupBox>
                         <GroupBox Header="{Binding Source={x:Static services:ResourceService.Instance}, Path=Resources.ImportAndExport, Mode=OneWay}" FontSize="11" Padding="3,3,3,3">
                             <StackPanel Margin="4">
-                                <Button Content="{Binding Source={x:Static services:ResourceService.Instance}, Path=Resources.CSVImport, Mode=OneWay}" Width="120" Padding="0" Margin="0,1,0,3" Command="{Binding ImportAlertKeywordAndMessagesList}"/>
-                                <Button Content="{Binding Source={x:Static services:ResourceService.Instance}, Path=Resources.CSVExport, Mode=OneWay}" Width="120" Padding="0" Margin="0,8,0,0" Command="{Binding ExportAlertKeywordAndMessagesList}"/>
+                                <Button Content="{Binding Source={x:Static services:ResourceService.Instance}, Path=Resources.CSVImport, Mode=OneWay}" Width="120" Padding="0" Margin="0,1,0,3" Command="{Binding ImportAlertKeywordAndMessagesList}" />
+                                <Button Content="{Binding Source={x:Static services:ResourceService.Instance}, Path=Resources.CSVExport, Mode=OneWay}" Width="120" Padding="0" Margin="0,8,0,0" Command="{Binding ExportAlertKeywordAndMessagesList}" />
                             </StackPanel>
                         </GroupBox>
                     </StackPanel>
@@ -218,9 +228,9 @@
             <TabItem Header="{Binding Source={x:Static services:ResourceService.Instance}, Path=Resources.AlertMailAddress, Mode=OneWay}">
                 <Grid>
                     <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="3*"/>
+                        <ColumnDefinition Width="3*" />
                         <ColumnDefinition Width="Auto" />
-                        <ColumnDefinition Width="1*"/>
+                        <ColumnDefinition Width="1*" />
                     </Grid.ColumnDefinitions>
                     <StackPanel Grid.Column="0" Margin="8,2,8,8">
                         <GroupBox Header="{Binding Source={x:Static services:ResourceService.Instance}, Path=Resources.Settings, Mode=OneWay}"  FontSize="11" Padding="3,3,3,3">
@@ -232,13 +242,18 @@
                                                 <Setter Property="ToolTipService.ToolTip" Value="{Binding Source={x:Static services:ResourceService.Instance}, Path=Resources.MailddressAndDomain, Mode=OneWay}" />
                                             </Style>
                                         </DataGridTextColumn.ElementStyle>
+                                        <DataGridTextColumn.EditingElementStyle>
+                                            <Style TargetType="TextBox">
+                                                <Setter Property="InputMethod.IsInputMethodEnabled" Value="False" />
+                                            </Style>
+                                        </DataGridTextColumn.EditingElementStyle>
                                     </DataGridTextColumn>
                                     <DataGridCheckBoxColumn Header="{Binding Source={x:Static services:ResourceService.Instance}, Path=Resources.SendingForbid, Mode=OneWay}" Binding="{Binding IsCanNotSend, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Width="Auto">
                                         <DataGridCheckBoxColumn.ElementStyle>
                                             <Style TargetType="CheckBox">
-                                                <Setter Property="ToolTip" Value="{Binding Source={x:Static services:ResourceService.Instance}, Path=Resources.SendingForbidInfo, Mode=OneWay}"/>
-                                                <Setter Property="VerticalAlignment" Value="Center"/>
-                                                <Setter Property="HorizontalAlignment" Value="Center"/>
+                                                <Setter Property="ToolTip" Value="{Binding Source={x:Static services:ResourceService.Instance}, Path=Resources.SendingForbidInfo, Mode=OneWay}" />
+                                                <Setter Property="VerticalAlignment" Value="Center" />
+                                                <Setter Property="HorizontalAlignment" Value="Center" />
                                             </Style>
                                         </DataGridCheckBoxColumn.ElementStyle>
                                     </DataGridCheckBoxColumn>
@@ -246,15 +261,15 @@
                             </DataGrid>
                         </GroupBox>
                     </StackPanel>
-                    <GridSplitter Grid.Column="1"/>
+                    <GridSplitter Grid.Column="1" />
                     <StackPanel Grid.Column="2" Margin="1,2,8,8">
                         <GroupBox Header="{Binding Source={x:Static services:ResourceService.Instance}, Path=Resources.SettingExample, Mode=OneWay}" FontSize="11" Padding="3,3,3,3">
-                            <TextBox Height="272" BorderBrush="White" FontSize="10" TextWrapping="Wrap" Text="{Binding Source={x:Static services:ResourceService.Instance}, Path=Resources.SettingExampleAlertMailAddress, Mode=OneWay}" Padding="0,12,0,0" IsReadOnly="True"/>
+                            <TextBox Height="272" BorderBrush="White" FontSize="10" TextWrapping="Wrap" Text="{Binding Source={x:Static services:ResourceService.Instance}, Path=Resources.SettingExampleAlertMailAddress, Mode=OneWay}" Padding="0,12,0,0" IsReadOnly="True" />
                         </GroupBox>
                         <GroupBox Header="{Binding Source={x:Static services:ResourceService.Instance}, Path=Resources.ImportAndExport, Mode=OneWay}" FontSize="11" Padding="3,3,3,3">
                             <StackPanel Margin="4">
-                                <Button Content="{Binding Source={x:Static services:ResourceService.Instance}, Path=Resources.CSVImport, Mode=OneWay}" Width="120" Padding="0" Margin="0,1,0,3" Command="{Binding ImportAlertAddressesList}"/>
-                                <Button Content="{Binding Source={x:Static services:ResourceService.Instance}, Path=Resources.CSVExport, Mode=OneWay}" Width="120" Padding="0" Margin="0,8,0,0" Command="{Binding ExportAlertAddressesList}"/>
+                                <Button Content="{Binding Source={x:Static services:ResourceService.Instance}, Path=Resources.CSVImport, Mode=OneWay}" Width="120" Padding="0" Margin="0,1,0,3" Command="{Binding ImportAlertAddressesList}" />
+                                <Button Content="{Binding Source={x:Static services:ResourceService.Instance}, Path=Resources.CSVExport, Mode=OneWay}" Width="120" Padding="0" Margin="0,8,0,0" Command="{Binding ExportAlertAddressesList}" />
                             </StackPanel>
                         </GroupBox>
                     </StackPanel>
@@ -263,9 +278,9 @@
             <TabItem Header="{Binding Source={x:Static services:ResourceService.Instance}, Path=Resources.AutoAddCCorBCCByKeyword, Mode=OneWay}">
                 <Grid>
                     <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="3*"/>
+                        <ColumnDefinition Width="3*" />
                         <ColumnDefinition Width="Auto" />
-                        <ColumnDefinition Width="1*"/>
+                        <ColumnDefinition Width="1*" />
                     </Grid.ColumnDefinitions>
                     <StackPanel Grid.Column="0" Margin="8,2,8,8">
                         <GroupBox Header="{Binding Source={x:Static services:ResourceService.Instance}, Path=Resources.Settings, Mode=OneWay}"  FontSize="11" Padding="3,3,3,3">
@@ -282,9 +297,14 @@
                                         <DataGridTextColumn.ElementStyle>
                                             <Style TargetType="TextBlock">
                                                 <Setter Property="ToolTipService.ToolTip" Value="{Binding Source={x:Static services:ResourceService.Instance}, Path=Resources.CCorBCC, Mode=OneWay}" />
-                                                <Setter Property="HorizontalAlignment" Value="Center"/>
+                                                <Setter Property="HorizontalAlignment" Value="Center" />
                                             </Style>
                                         </DataGridTextColumn.ElementStyle>
+                                        <DataGridTextColumn.EditingElementStyle>
+                                            <Style TargetType="TextBox">
+                                                <Setter Property="InputMethod.IsInputMethodEnabled" Value="False" />
+                                            </Style>
+                                        </DataGridTextColumn.EditingElementStyle>
                                     </DataGridTextColumn>
                                     <DataGridTextColumn Header="{Binding Source={x:Static services:ResourceService.Instance}, Path=Resources.AutoAddMailAddress, Mode=OneWay}" Binding="{Binding AutoAddAddress, Mode=TwoWay}" Width="*">
                                         <DataGridTextColumn.ElementStyle>
@@ -292,20 +312,25 @@
                                                 <Setter Property="ToolTipService.ToolTip" Value="{Binding Source={x:Static services:ResourceService.Instance}, Path=Resources.AutoAddMailAddress, Mode=OneWay}" />
                                             </Style>
                                         </DataGridTextColumn.ElementStyle>
+                                        <DataGridTextColumn.EditingElementStyle>
+                                            <Style TargetType="TextBox">
+                                                <Setter Property="InputMethod.IsInputMethodEnabled" Value="False" />
+                                            </Style>
+                                        </DataGridTextColumn.EditingElementStyle>
                                     </DataGridTextColumn>
                                 </DataGrid.Columns>
                             </DataGrid>
                         </GroupBox>
                     </StackPanel>
-                    <GridSplitter Grid.Column="1"/>
+                    <GridSplitter Grid.Column="1" />
                     <StackPanel Grid.Column="2" Margin="1,2,8,8">
                         <GroupBox Header="{Binding Source={x:Static services:ResourceService.Instance}, Path=Resources.SettingExample, Mode=OneWay}" FontSize="11" Padding="3,3,3,3">
-                            <TextBox Height="272" BorderBrush="White" FontSize="10" TextWrapping="Wrap" Text="{Binding Source={x:Static services:ResourceService.Instance}, Path=Resources.SettingExampleAutoAddCCorBCCByKeyword, Mode=OneWay}" Padding="0,12,0,0" IsReadOnly="True"/>
+                            <TextBox Height="272" BorderBrush="White" FontSize="10" TextWrapping="Wrap" Text="{Binding Source={x:Static services:ResourceService.Instance}, Path=Resources.SettingExampleAutoAddCCorBCCByKeyword, Mode=OneWay}" Padding="0,12,0,0" IsReadOnly="True" />
                         </GroupBox>
                         <GroupBox Header="{Binding Source={x:Static services:ResourceService.Instance}, Path=Resources.ImportAndExport, Mode=OneWay}" FontSize="11" Padding="3,3,3,3">
                             <StackPanel Margin="4">
-                                <Button Content="{Binding Source={x:Static services:ResourceService.Instance}, Path=Resources.CSVImport, Mode=OneWay}" Width="120" Padding="0" Margin="0,1,0,3" Command="{Binding ImportAutoCcBccKeywordsList}"/>
-                                <Button Content="{Binding Source={x:Static services:ResourceService.Instance}, Path=Resources.CSVExport, Mode=OneWay}" Width="120" Padding="0" Margin="0,8,0,0" Command="{Binding ExportAutoCcBccKeywordsList}"/>
+                                <Button Content="{Binding Source={x:Static services:ResourceService.Instance}, Path=Resources.CSVImport, Mode=OneWay}" Width="120" Padding="0" Margin="0,1,0,3" Command="{Binding ImportAutoCcBccKeywordsList}" />
+                                <Button Content="{Binding Source={x:Static services:ResourceService.Instance}, Path=Resources.CSVExport, Mode=OneWay}" Width="120" Padding="0" Margin="0,8,0,0" Command="{Binding ExportAutoCcBccKeywordsList}" />
                             </StackPanel>
                         </GroupBox>
                     </StackPanel>
@@ -314,9 +339,9 @@
             <TabItem Header="{Binding Source={x:Static services:ResourceService.Instance}, Path=Resources.AutoAddCCorBCCByMailAddressOrDomain, Mode=OneWay}">
                 <Grid>
                     <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="3*"/>
+                        <ColumnDefinition Width="3*" />
                         <ColumnDefinition Width="Auto" />
-                        <ColumnDefinition Width="1*"/>
+                        <ColumnDefinition Width="1*" />
                     </Grid.ColumnDefinitions>
                     <StackPanel Grid.Column="0" Margin="8,2,8,8">
                         <GroupBox Header="{Binding Source={x:Static services:ResourceService.Instance}, Path=Resources.Settings, Mode=OneWay}"  FontSize="11" Padding="3,3,3,3">
@@ -328,14 +353,24 @@
                                                 <Setter Property="ToolTipService.ToolTip" Value="{Binding Source={x:Static services:ResourceService.Instance}, Path=Resources.AutoAddCCorBCCByMailAddressOrDomainInfo, Mode=OneWay}" />
                                             </Style>
                                         </DataGridTextColumn.ElementStyle>
+                                        <DataGridTextColumn.EditingElementStyle>
+                                            <Style TargetType="TextBox">
+                                                <Setter Property="InputMethod.IsInputMethodEnabled" Value="False" />
+                                            </Style>
+                                        </DataGridTextColumn.EditingElementStyle>
                                     </DataGridTextColumn>
                                     <DataGridTextColumn Header="{Binding Source={x:Static services:ResourceService.Instance}, Path=Resources.CCorBCC, Mode=OneWay}" Binding="{Binding CcOrBcc, Mode=TwoWay}" Width="Auto">
                                         <DataGridTextColumn.ElementStyle>
                                             <Style TargetType="TextBlock">
                                                 <Setter Property="ToolTipService.ToolTip" Value="{Binding Source={x:Static services:ResourceService.Instance}, Path=Resources.InputCCorBCC, Mode=OneWay}" />
-                                                <Setter Property="HorizontalAlignment" Value="Center"/>
+                                                <Setter Property="HorizontalAlignment" Value="Center" />
                                             </Style>
                                         </DataGridTextColumn.ElementStyle>
+                                        <DataGridTextColumn.EditingElementStyle>
+                                            <Style TargetType="TextBox">
+                                                <Setter Property="InputMethod.IsInputMethodEnabled" Value="False" />
+                                            </Style>
+                                        </DataGridTextColumn.EditingElementStyle>
                                     </DataGridTextColumn>
                                     <DataGridTextColumn Header="{Binding Source={x:Static services:ResourceService.Instance}, Path=Resources.AutoAddMailAddress, Mode=OneWay}" Binding="{Binding AutoAddAddress, Mode=TwoWay}" Width="*">
                                         <DataGridTextColumn.ElementStyle>
@@ -343,20 +378,25 @@
                                                 <Setter Property="ToolTipService.ToolTip" Value="{Binding Source={x:Static services:ResourceService.Instance}, Path=Resources.AutoAddMailAddress, Mode=OneWay}" />
                                             </Style>
                                         </DataGridTextColumn.ElementStyle>
+                                        <DataGridTextColumn.EditingElementStyle>
+                                            <Style TargetType="TextBox">
+                                                <Setter Property="InputMethod.IsInputMethodEnabled" Value="False" />
+                                            </Style>
+                                        </DataGridTextColumn.EditingElementStyle>
                                     </DataGridTextColumn>
                                 </DataGrid.Columns>
                             </DataGrid>
                         </GroupBox>
                     </StackPanel>
-                    <GridSplitter Grid.Column="1"/>
+                    <GridSplitter Grid.Column="1" />
                     <StackPanel Grid.Column="2" Margin="1,2,8,8">
                         <GroupBox Header="{Binding Source={x:Static services:ResourceService.Instance}, Path=Resources.SettingExample, Mode=OneWay}" FontSize="11" Padding="3,3,3,3">
-                            <TextBox Height="272" BorderBrush="White" FontSize="10" TextWrapping="Wrap" Text="{Binding Source={x:Static services:ResourceService.Instance}, Path=Resources.SettingExampleAutoAddCCorBCCByMailAddressOrDomain, Mode=OneWay}" Padding="0,12,0,0" IsReadOnly="True"/>
+                            <TextBox Height="272" BorderBrush="White" FontSize="10" TextWrapping="Wrap" Text="{Binding Source={x:Static services:ResourceService.Instance}, Path=Resources.SettingExampleAutoAddCCorBCCByMailAddressOrDomain, Mode=OneWay}" Padding="0,12,0,0" IsReadOnly="True" />
                         </GroupBox>
                         <GroupBox Header="{Binding Source={x:Static services:ResourceService.Instance}, Path=Resources.ImportAndExport, Mode=OneWay}" FontSize="11" Padding="3,3,3,3">
                             <StackPanel Margin="4">
-                                <Button Content="{Binding Source={x:Static services:ResourceService.Instance}, Path=Resources.CSVImport, Mode=OneWay}" Width="120" Padding="0" Margin="0,1,0,3" Command="{Binding ImportAutoCcBccRecipientsList}"/>
-                                <Button Content="{Binding Source={x:Static services:ResourceService.Instance}, Path=Resources.CSVExport, Mode=OneWay}" Width="120" Padding="0" Margin="0,8,0,0" Command="{Binding ExportAutoCcBccRecipientsList}"/>
+                                <Button Content="{Binding Source={x:Static services:ResourceService.Instance}, Path=Resources.CSVImport, Mode=OneWay}" Width="120" Padding="0" Margin="0,1,0,3" Command="{Binding ImportAutoCcBccRecipientsList}" />
+                                <Button Content="{Binding Source={x:Static services:ResourceService.Instance}, Path=Resources.CSVExport, Mode=OneWay}" Width="120" Padding="0" Margin="0,8,0,0" Command="{Binding ExportAutoCcBccRecipientsList}" />
                             </StackPanel>
                         </GroupBox>
                     </StackPanel>
@@ -365,9 +405,9 @@
             <TabItem Header="{Binding Source={x:Static services:ResourceService.Instance}, Path=Resources.DeferredDelivery, Mode=OneWay}">
                 <Grid>
                     <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="3*"/>
+                        <ColumnDefinition Width="3*" />
                         <ColumnDefinition Width="Auto" />
-                        <ColumnDefinition Width="1*"/>
+                        <ColumnDefinition Width="1*" />
                     </Grid.ColumnDefinitions>
                     <StackPanel Grid.Column="0" Margin="8,2,8,8">
                         <GroupBox Header="{Binding Source={x:Static services:ResourceService.Instance}, Path=Resources.Settings, Mode=OneWay}"  FontSize="11" Padding="3,3,3,3">
@@ -379,28 +419,38 @@
                                                 <Setter Property="ToolTipService.ToolTip" Value="{Binding Source={x:Static services:ResourceService.Instance}, Path=Resources.DeferredDeliveryEmailAddressOrDomainInfo, Mode=OneWay}" />
                                             </Style>
                                         </DataGridTextColumn.ElementStyle>
+                                        <DataGridTextColumn.EditingElementStyle>
+                                            <Style TargetType="TextBox">
+                                                <Setter Property="InputMethod.IsInputMethodEnabled" Value="False" />
+                                            </Style>
+                                        </DataGridTextColumn.EditingElementStyle>
                                     </DataGridTextColumn>
                                     <DataGridTextColumn Header="{Binding Source={x:Static services:ResourceService.Instance}, Path=Resources.DeferredDeliveryTime, Mode=OneWay}" Binding="{Binding DeferredMinutes, Mode=TwoWay}" Width="Auto">
                                         <DataGridTextColumn.ElementStyle>
                                             <Style TargetType="TextBlock">
                                                 <Setter Property="ToolTipService.ToolTip" Value="{Binding Source={x:Static services:ResourceService.Instance}, Path=Resources.InputDeferredDeliveryTime, Mode=OneWay}" />
-                                                <Setter Property="HorizontalAlignment" Value="Right"/>
+                                                <Setter Property="HorizontalAlignment" Value="Right" />
                                             </Style>
                                         </DataGridTextColumn.ElementStyle>
+                                        <DataGridTextColumn.EditingElementStyle>
+                                            <Style TargetType="TextBox">
+                                                <Setter Property="InputMethod.IsInputMethodEnabled" Value="False" />
+                                            </Style>
+                                        </DataGridTextColumn.EditingElementStyle>
                                     </DataGridTextColumn>
                                 </DataGrid.Columns>
                             </DataGrid>
                         </GroupBox>
                     </StackPanel>
-                    <GridSplitter Grid.Column="1"/>
+                    <GridSplitter Grid.Column="1" />
                     <StackPanel Grid.Column="2" Margin="1,2,8,8">
                         <GroupBox Header="{Binding Source={x:Static services:ResourceService.Instance}, Path=Resources.SettingExample, Mode=OneWay}" FontSize="11" Padding="3,3,3,3">
-                            <TextBox Height="272" BorderBrush="White" FontSize="10" TextWrapping="Wrap" Text="{Binding Source={x:Static services:ResourceService.Instance}, Path=Resources.SettingExampleDeferredDelivery, Mode=OneWay}" Padding="0,12,0,0" IsReadOnly="True"/>
+                            <TextBox Height="272" BorderBrush="White" FontSize="10" TextWrapping="Wrap" Text="{Binding Source={x:Static services:ResourceService.Instance}, Path=Resources.SettingExampleDeferredDelivery, Mode=OneWay}" Padding="0,12,0,0" IsReadOnly="True" />
                         </GroupBox>
                         <GroupBox Header="{Binding Source={x:Static services:ResourceService.Instance}, Path=Resources.ImportAndExport, Mode=OneWay}" FontSize="11" Padding="3,3,3,3">
                             <StackPanel Margin="4">
-                                <Button Content="{Binding Source={x:Static services:ResourceService.Instance}, Path=Resources.CSVImport, Mode=OneWay}" Width="120" Padding="0" Margin="0,1,0,3" Command="{Binding ImportDeferredDeliveryMinutesesList}"/>
-                                <Button Content="{Binding Source={x:Static services:ResourceService.Instance}, Path=Resources.CSVExport, Mode=OneWay}" Width="120" Padding="0" Margin="0,8,0,0" Command="{Binding ExportDeferredDeliveryMinutesesList}"/>
+                                <Button Content="{Binding Source={x:Static services:ResourceService.Instance}, Path=Resources.CSVImport, Mode=OneWay}" Width="120" Padding="0" Margin="0,1,0,3" Command="{Binding ImportDeferredDeliveryMinutesesList}" />
+                                <Button Content="{Binding Source={x:Static services:ResourceService.Instance}, Path=Resources.CSVExport, Mode=OneWay}" Width="120" Padding="0" Margin="0,8,0,0" Command="{Binding ExportDeferredDeliveryMinutesesList}" />
                             </StackPanel>
                         </GroupBox>
                     </StackPanel>
@@ -408,12 +458,12 @@
             </TabItem>
         </TabControl>
         <StackPanel Margin="0,1,0,0">
-            <Label Content="{Binding Source={x:Static services:ResourceService.Instance}, Path=Resources.HowToDaleteRow, Mode=OneWay}" Padding="0" Foreground="LightSlateGray"/>
+            <Label Content="{Binding Source={x:Static services:ResourceService.Instance}, Path=Resources.HowToDaleteRow, Mode=OneWay}" Padding="0" Foreground="LightSlateGray" />
         </StackPanel>
         <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Margin="0,0,1,0">
-            <Button Content="{Binding Source={x:Static services:ResourceService.Instance}, Path=Resources.OK, Mode=OneWay}" Width="68" Click="OkButton_OnClick"/>
-            <Button Content="{Binding Source={x:Static services:ResourceService.Instance}, Path=Resources.Cancel, Mode=OneWay}" Width="68" Margin="10,0,0,0" IsCancel="True" Click="CancelButton_OnClick"/>
-            <Button Content="{Binding Source={x:Static services:ResourceService.Instance}, Path=Resources.Apply, Mode=OneWay}" Width="68" Margin="10,0,0,0" Click="ApplyButton_OnClick"/>
+            <Button Content="{Binding Source={x:Static services:ResourceService.Instance}, Path=Resources.OK, Mode=OneWay}" Width="68" Click="OkButton_OnClick" />
+            <Button Content="{Binding Source={x:Static services:ResourceService.Instance}, Path=Resources.Cancel, Mode=OneWay}" Width="68" Margin="10,0,0,0" IsCancel="True" Click="CancelButton_OnClick" />
+            <Button Content="{Binding Source={x:Static services:ResourceService.Instance}, Path=Resources.Apply, Mode=OneWay}" Width="68" Margin="10,0,0,0" Click="ApplyButton_OnClick" />
         </StackPanel>
     </StackPanel>
 </Window>

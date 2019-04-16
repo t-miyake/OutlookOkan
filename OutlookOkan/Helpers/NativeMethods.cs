@@ -4,7 +4,7 @@ using System.Windows.Forms;
 
 namespace OutlookOkan.Helpers
 {
-    public class NativeMethods : IWin32Window
+    public sealed class NativeMethods : IWin32Window
     {
         [DllImport("user32", CharSet = CharSet.Unicode)]
         private static extern IntPtr FindWindow(string lpClassName, string lpWindowName);

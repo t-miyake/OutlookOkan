@@ -2,7 +2,7 @@
 
 namespace OutlookOkan.Types
 {
-    public class CheckList
+    public sealed class CheckList
     {
         public List<Alert> Alerts { get; set; } = new List<Alert>();
         public List<Address> ToAddresses { get; set; } = new List<Address>();
@@ -21,7 +21,7 @@ namespace OutlookOkan.Types
         public int DeferredMinutes { get; set; }
     }
 
-    public class Alert
+    public sealed class Alert
     {
         public string AlertMessage { get; set; }
         public bool IsImportant { get; set; }
@@ -29,7 +29,7 @@ namespace OutlookOkan.Types
         public bool IsChecked { get; set; }
     }
 
-    public class Attachment
+    public sealed class Attachment
     {
         public string FileName { get; set; }
         public string FileType { get; set; }
@@ -40,7 +40,7 @@ namespace OutlookOkan.Types
         public bool IsChecked { get; set; }
     }
 
-    public class Address
+    public sealed class Address
     {
         public string MailAddress { get; set; }
         public bool IsExternal { get; set; }

@@ -2,7 +2,7 @@
 
 namespace OutlookOkan.Types
 {
-    public class GeneralSetting
+    public sealed class GeneralSetting
     {
         public bool IsDoNotConfirmationIfAllRecipientsAreSameDomain { get; set; }
         public bool IsDoDoNotConfirmationIfAllWhite { get; set; }
