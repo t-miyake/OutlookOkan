@@ -11,8 +11,8 @@
         ResizeMode="NoResize" ShowInTaskbar="False" WindowStartupLocation="CenterOwner" Height="590" Width="780">
     <StackPanel Margin="5,8">
         <StackPanel Margin="5,0,0,0">
-            <Label Content="{Binding Source={x:Static services:ResourceService.Instance}, Path=Resources.ConfirmationMessage1, Mode=OneWay}" FontSize="12" Padding="0"/>
-            <Label Content="{Binding Source={x:Static services:ResourceService.Instance}, Path=Resources.ConfirmationMessage2, Mode=OneWay}" FontSize="10" Padding="0" Margin="0,3"/>
+            <Label Content="{Binding Source={x:Static services:ResourceService.Instance}, Path=Resources.ConfirmationMessage1, Mode=OneWay}" FontSize="12" Padding="0" />
+            <Label Content="{Binding Source={x:Static services:ResourceService.Instance}, Path=Resources.ConfirmationMessage2, Mode=OneWay}" FontSize="10" Padding="0" Margin="0,3" />
         </StackPanel>
         <StackPanel  Margin="8,6,8,8">
             <GroupBox Header="{Binding AlertCount}" FontSize="11" Padding="3,3,3,3">
@@ -21,25 +21,25 @@
                         <DataGridTemplateColumn IsReadOnly="True">
                             <DataGridTemplateColumn.CellTemplate>
                                 <DataTemplate>
-                                    <CheckBox IsChecked="{Binding IsChecked, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Center" VerticalAlignment="Center" Checked="ToggleButton_OnChecked" Unchecked="ToggleButton_OnUnchecked"/>
+                                    <CheckBox IsChecked="{Binding IsChecked, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Center" VerticalAlignment="Center" Checked="ToggleButton_OnChecked" Unchecked="ToggleButton_OnUnchecked" />
                                 </DataTemplate>
                             </DataGridTemplateColumn.CellTemplate>
                             <DataGridTemplateColumn.CellStyle>
                                 <Style TargetType="DataGridCell">
-                                    <Setter Property="IsTabStop" Value="False"/>
+                                    <Setter Property="IsTabStop" Value="False" />
                                 </Style>
                             </DataGridTemplateColumn.CellStyle>
                         </DataGridTemplateColumn>
                         <DataGridTextColumn Binding="{Binding AlertMessage, Mode=OneWay}" Width="*" IsReadOnly="True">
                             <DataGridTextColumn.CellStyle>
                                 <Style TargetType="DataGridCell">
-                                    <Setter Property="IsTabStop" Value="False"/>
+                                    <Setter Property="IsTabStop" Value="False" />
                                     <Style.Triggers>
                                         <DataTrigger Binding="{Binding IsImportant}" Value="True">
-                                            <Setter Property="Foreground" Value="#FFFF2800"/>
+                                            <Setter Property="Foreground" Value="#FFFF2800" />
                                         </DataTrigger>
                                         <DataTrigger Binding="{Binding IsImportant}" Value="False">
-                                            <Setter Property="Foreground" Value="Black"/>
+                                            <Setter Property="Foreground" Value="Black" />
                                         </DataTrigger>
                                     </Style.Triggers>
                                 </Style>
@@ -62,18 +62,18 @@
             <StackPanel Grid.Column="0" Margin="8,2,8,8">
                 <GroupBox Header="{Binding AddressCount}" FontSize="11" Padding="3,3,3,3" >
                     <StackPanel>
-                        <Label Content="{Binding ToAddressCount}" Margin="0,5,0,0" Padding="0" VerticalAlignment="Bottom" FontSize="11"/>
+                        <Label Content="{Binding ToAddressCount}" Margin="0,5,0,0" Padding="0" VerticalAlignment="Bottom" FontSize="11" />
                         <DataGrid Height="70" VerticalScrollBarVisibility="Visible" HorizontalScrollBarVisibility="Auto" BorderBrush="#FFD5DFE5" HeadersVisibility="None" ItemsSource="{Binding ToAddresses,Mode=TwoWay}" AutoGenerateColumns="False" CanUserAddRows="false" CanUserDeleteRows="false" CanUserResizeColumns="false" CanUserResizeRows="false" CanUserSortColumns="false" HorizontalGridLinesBrush="#FFD5DFE5" VerticalGridLinesBrush="#FFD5DFE5" >
                             <DataGrid.Columns>
                                 <DataGridTemplateColumn IsReadOnly="True">
                                     <DataGridTemplateColumn.CellTemplate>
                                         <DataTemplate>
-                                            <CheckBox IsChecked="{Binding IsChecked, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Center" VerticalAlignment="Center"  Checked="ToggleButton_OnChecked" Unchecked="ToggleButton_OnUnchecked"/>
+                                            <CheckBox IsChecked="{Binding IsChecked, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Center" VerticalAlignment="Center"  Checked="ToggleButton_OnChecked" Unchecked="ToggleButton_OnUnchecked" />
                                         </DataTemplate>
                                     </DataGridTemplateColumn.CellTemplate>
                                     <DataGridTemplateColumn.CellStyle>
                                         <Style TargetType="DataGridCell">
-                                            <Setter Property="IsTabStop" Value="False"/>
+                                            <Setter Property="IsTabStop" Value="False" />
                                         </Style>
                                     </DataGridTemplateColumn.CellStyle>
                                 </DataGridTemplateColumn>
@@ -92,17 +92,17 @@
                                                     <MultiDataTrigger.Conditions>
                                                         <Condition Binding="{Binding IsExternal}" Value="False" />
                                                     </MultiDataTrigger.Conditions>
-                                                    <Setter Property="Foreground" Value="Black"/>
+                                                    <Setter Property="Foreground" Value="Black" />
                                                 </MultiDataTrigger>
                                                 <MultiDataTrigger>
                                                     <MultiDataTrigger.Conditions>
-                                                        <Condition Binding="{Binding IsWhite}" Value="True"/>
+                                                        <Condition Binding="{Binding IsWhite}" Value="True" />
                                                     </MultiDataTrigger.Conditions>
-                                                    <Setter Property="Foreground" Value="Black"/>
+                                                    <Setter Property="Foreground" Value="Black" />
                                                 </MultiDataTrigger>
                                             </Style.Triggers>
                                             <Setter Property="ToolTip" Value="{Binding MailAddress, Mode=OneWay}" />
-                                            <Setter Property="IsTabStop" Value="False"/>
+                                            <Setter Property="IsTabStop" Value="False" />
                                         </Style>
                                     </DataGridTextColumn.CellStyle>
                                 </DataGridTextColumn>
@@ -112,18 +112,18 @@
                                 <SolidColorBrush x:Key="{x:Static SystemColors.InactiveSelectionHighlightBrushKey}" Color="Transparent" />
                             </DataGrid.Resources>
                         </DataGrid>
-                        <Label Content="{Binding CcAddressCount}" Margin="0,6,0,0" Padding="0" VerticalAlignment="Bottom" FontSize="11"/>
+                        <Label Content="{Binding CcAddressCount}" Margin="0,6,0,0" Padding="0" VerticalAlignment="Bottom" FontSize="11" />
                         <DataGrid Height="70" VerticalScrollBarVisibility="Visible" HorizontalScrollBarVisibility="Auto" BorderBrush="#FFD5DFE5" HeadersVisibility="None" ItemsSource="{Binding CcAddresses,Mode=TwoWay}" AutoGenerateColumns="False" CanUserAddRows="false" CanUserDeleteRows="false" CanUserResizeColumns="false" CanUserResizeRows="false" CanUserSortColumns="false" HorizontalGridLinesBrush="#FFD5DFE5" VerticalGridLinesBrush="#FFD5DFE5" >
                             <DataGrid.Columns>
                                 <DataGridTemplateColumn IsReadOnly="True">
                                     <DataGridTemplateColumn.CellTemplate>
                                         <DataTemplate>
-                                            <CheckBox IsChecked="{Binding IsChecked, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Center" VerticalAlignment="Center" Checked="ToggleButton_OnChecked" Unchecked="ToggleButton_OnUnchecked"/>
+                                            <CheckBox IsChecked="{Binding IsChecked, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Center" VerticalAlignment="Center" Checked="ToggleButton_OnChecked" Unchecked="ToggleButton_OnUnchecked" />
                                         </DataTemplate>
                                     </DataGridTemplateColumn.CellTemplate>
                                     <DataGridTemplateColumn.CellStyle>
                                         <Style TargetType="DataGridCell">
-                                            <Setter Property="IsTabStop" Value="False"/>
+                                            <Setter Property="IsTabStop" Value="False" />
                                         </Style>
                                     </DataGridTemplateColumn.CellStyle>
                                 </DataGridTemplateColumn>
@@ -136,23 +136,23 @@
                                                         <Condition Binding="{Binding IsExternal}" Value="True" />
                                                         <Condition Binding="{Binding IsWhite}" Value="False" />
                                                     </MultiDataTrigger.Conditions>
-                                                    <Setter Property="Foreground" Value="#FFFF2800"/>
+                                                    <Setter Property="Foreground" Value="#FFFF2800" />
                                                 </MultiDataTrigger>
                                                 <MultiDataTrigger>
                                                     <MultiDataTrigger.Conditions>
                                                         <Condition Binding="{Binding IsExternal}" Value="False" />
                                                     </MultiDataTrigger.Conditions>
-                                                    <Setter Property="Foreground" Value="Black"/>
+                                                    <Setter Property="Foreground" Value="Black" />
                                                 </MultiDataTrigger>
                                                 <MultiDataTrigger>
                                                     <MultiDataTrigger.Conditions>
-                                                        <Condition Binding="{Binding IsWhite}" Value="True"/>
+                                                        <Condition Binding="{Binding IsWhite}" Value="True" />
                                                     </MultiDataTrigger.Conditions>
-                                                    <Setter Property="Foreground" Value="Black"/>
+                                                    <Setter Property="Foreground" Value="Black" />
                                                 </MultiDataTrigger>
                                             </Style.Triggers>
                                             <Setter Property="ToolTip" Value="{Binding MailAddress, Mode=OneWay}" />
-                                            <Setter Property="IsTabStop" Value="False"/>
+                                            <Setter Property="IsTabStop" Value="False" />
                                         </Style>
                                     </DataGridTextColumn.CellStyle>
                                 </DataGridTextColumn>
@@ -162,18 +162,18 @@
                                 <SolidColorBrush x:Key="{x:Static SystemColors.InactiveSelectionHighlightBrushKey}" Color="Transparent" />
                             </DataGrid.Resources>
                         </DataGrid>
-                        <Label Content="{Binding BccAddressCount}" Margin="0,6,0,0" Padding="0" VerticalAlignment="Bottom" FontSize="11"/>
+                        <Label Content="{Binding BccAddressCount}" Margin="0,6,0,0" Padding="0" VerticalAlignment="Bottom" FontSize="11" />
                         <DataGrid Height="70" VerticalScrollBarVisibility="Visible" HorizontalScrollBarVisibility="Auto" BorderBrush="#FFD5DFE5" HeadersVisibility="None" ItemsSource="{Binding BccAddresses,Mode=TwoWay}" AutoGenerateColumns="False" CanUserAddRows="false" CanUserDeleteRows="false" CanUserResizeColumns="false" CanUserResizeRows="false" CanUserSortColumns="false" HorizontalGridLinesBrush="#FFD5DFE5" VerticalGridLinesBrush="#FFD5DFE5" >
                             <DataGrid.Columns>
                                 <DataGridTemplateColumn IsReadOnly="True">
                                     <DataGridTemplateColumn.CellTemplate>
                                         <DataTemplate>
-                                            <CheckBox IsChecked="{Binding IsChecked, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Center" VerticalAlignment="Center" Checked="ToggleButton_OnChecked" Unchecked="ToggleButton_OnUnchecked"/>
+                                            <CheckBox IsChecked="{Binding IsChecked, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Center" VerticalAlignment="Center" Checked="ToggleButton_OnChecked" Unchecked="ToggleButton_OnUnchecked" />
                                         </DataTemplate>
                                     </DataGridTemplateColumn.CellTemplate>
                                     <DataGridTemplateColumn.CellStyle>
                                         <Style TargetType="DataGridCell">
-                                            <Setter Property="IsTabStop" Value="False"/>
+                                            <Setter Property="IsTabStop" Value="False" />
                                         </Style>
                                     </DataGridTemplateColumn.CellStyle>
                                 </DataGridTemplateColumn>
@@ -184,25 +184,25 @@
                                                 <MultiDataTrigger>
                                                     <MultiDataTrigger.Conditions>
                                                         <Condition Binding="{Binding IsExternal}" Value="True" />
-                                                        <Condition Binding="{Binding IsWhite}" Value="False"/>
+                                                        <Condition Binding="{Binding IsWhite}" Value="False" />
                                                     </MultiDataTrigger.Conditions>
-                                                    <Setter Property="Foreground" Value="#FFFF2800"/>
+                                                    <Setter Property="Foreground" Value="#FFFF2800" />
                                                 </MultiDataTrigger>
                                                 <MultiDataTrigger>
                                                     <MultiDataTrigger.Conditions>
                                                         <Condition Binding="{Binding IsExternal}" Value="False" />
                                                     </MultiDataTrigger.Conditions>
-                                                    <Setter Property="Foreground" Value="Black"/>
+                                                    <Setter Property="Foreground" Value="Black" />
                                                 </MultiDataTrigger>
                                                 <MultiDataTrigger>
                                                     <MultiDataTrigger.Conditions>
-                                                        <Condition Binding="{Binding IsWhite}" Value="True"/>
+                                                        <Condition Binding="{Binding IsWhite}" Value="True" />
                                                     </MultiDataTrigger.Conditions>
-                                                    <Setter Property="Foreground" Value="Black"/>
+                                                    <Setter Property="Foreground" Value="Black" />
                                                 </MultiDataTrigger>
                                             </Style.Triggers>
                                             <Setter Property="ToolTip" Value="{Binding MailAddress, Mode=OneWay}" />
-                                            <Setter Property="IsTabStop" Value="False"/>
+                                            <Setter Property="IsTabStop" Value="False" />
                                         </Style>
                                     </DataGridTextColumn.CellStyle>
                                 </DataGridTextColumn>
@@ -215,7 +215,7 @@
                     </StackPanel>
                 </GroupBox>
             </StackPanel>
-            <GridSplitter Grid.Column="1" IsTabStop="False"/>
+            <GridSplitter Grid.Column="1" IsTabStop="False" />
             <StackPanel Grid.Column="2" Margin="0,2,8,0">
                 <GroupBox Header="{Binding AttachmentCount}"  FontSize="11" Padding="3,3,3,3">
                     <DataGrid Height="68" VerticalScrollBarVisibility="Visible" HorizontalScrollBarVisibility="Auto" BorderBrush="#FFD5DFE5" HeadersVisibility="None" ItemsSource="{Binding Attachments,Mode=TwoWay}" AutoGenerateColumns="False" CanUserAddRows="false" CanUserDeleteRows="false" CanUserResizeColumns="false" CanUserResizeRows="false" CanUserSortColumns="false" HorizontalGridLinesBrush="#FFD5DFE5" VerticalGridLinesBrush="#FFD5DFE5" >
@@ -223,19 +223,19 @@
                             <DataGridTemplateColumn IsReadOnly="True">
                                 <DataGridTemplateColumn.CellTemplate>
                                     <DataTemplate>
-                                        <CheckBox IsChecked="{Binding IsChecked, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Center" VerticalAlignment="Center" Checked="ToggleButton_OnChecked" Unchecked="ToggleButton_OnUnchecked"/>
+                                        <CheckBox IsChecked="{Binding IsChecked, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Center" VerticalAlignment="Center" Checked="ToggleButton_OnChecked" Unchecked="ToggleButton_OnUnchecked" />
                                     </DataTemplate>
                                 </DataGridTemplateColumn.CellTemplate>
                                 <DataGridTemplateColumn.CellStyle>
                                     <Style TargetType="DataGridCell">
-                                        <Setter Property="IsTabStop" Value="False"/>
+                                        <Setter Property="IsTabStop" Value="False" />
                                     </Style>
                                 </DataGridTemplateColumn.CellStyle>
                             </DataGridTemplateColumn>
                             <DataGridTextColumn Binding="{Binding FileName, Mode=OneWay}" Width="Auto" IsReadOnly="True" Foreground="Black" >
                                 <DataGridTextColumn.CellStyle>
                                     <Style TargetType="DataGridCell">
-                                        <Setter Property="IsTabStop" Value="False"/>
+                                        <Setter Property="IsTabStop" Value="False" />
                                     </Style>
                                 </DataGridTextColumn.CellStyle>
                             </DataGridTextColumn>
@@ -244,13 +244,13 @@
                                     <Style TargetType="DataGridCell">
                                         <Style.Triggers>
                                             <DataTrigger Binding="{Binding IsDangerous}" Value="True">
-                                                <Setter Property="Foreground" Value="#FFFF2800"/>
+                                                <Setter Property="Foreground" Value="#FFFF2800" />
                                             </DataTrigger>
                                             <DataTrigger Binding="{Binding IsDangerous}" Value="False">
-                                                <Setter Property="Foreground" Value="Black"/>
+                                                <Setter Property="Foreground" Value="Black" />
                                             </DataTrigger>
                                         </Style.Triggers>
-                                        <Setter Property="IsTabStop" Value="False"/>
+                                        <Setter Property="IsTabStop" Value="False" />
                                     </Style>
                                 </DataGridTextColumn.CellStyle>
                             </DataGridTextColumn>
@@ -259,13 +259,13 @@
                                     <Style TargetType="DataGridCell">
                                         <Style.Triggers>
                                             <DataTrigger Binding="{Binding IsTooBig}" Value="True">
-                                                <Setter Property="Foreground" Value="#FFFF2800"/>
+                                                <Setter Property="Foreground" Value="#FFFF2800" />
                                             </DataTrigger>
                                             <DataTrigger Binding="{Binding IsTooBig}" Value="False">
-                                                <Setter Property="Foreground" Value="Black"/>
+                                                <Setter Property="Foreground" Value="Black" />
                                             </DataTrigger>
                                         </Style.Triggers>
-                                        <Setter Property="IsTabStop" Value="False"/>
+                                        <Setter Property="IsTabStop" Value="False" />
                                     </Style>
                                 </DataGridTextColumn.CellStyle>
                             </DataGridTextColumn>
@@ -279,33 +279,33 @@
                 <GroupBox Header="{Binding Source={x:Static services:ResourceService.Instance}, Path=Resources.MailInfo, Mode=OneWay}" FontSize="11" Padding="3,3,3,3" Margin="0,1.5,0,0">
                     <StackPanel>
                         <StackPanel Orientation="Horizontal" Margin="0,8,0,0">
-                            <Label Content="{Binding Source={x:Static services:ResourceService.Instance}, Path=Resources.Sender, Mode=OneWay}" FontSize="11" Padding="0" Width="42"/>
-                            <TextBox Width="304" Padding="0" Margin="5,0,0,0" IsReadOnly="True" Text="{Binding Sender, Mode=OneWay}"/>
+                            <Label Content="{Binding Source={x:Static services:ResourceService.Instance}, Path=Resources.Sender, Mode=OneWay}" FontSize="11" Padding="0" Width="42" />
+                            <TextBox Width="304" Padding="0" Margin="5,0,0,0" IsReadOnly="True" Text="{Binding Sender, Mode=OneWay}" />
                         </StackPanel>
                         <StackPanel Orientation="Horizontal" Margin="0,12,0,0">
-                            <Label Content="{Binding Source={x:Static services:ResourceService.Instance}, Path=Resources.Subject, Mode=OneWay}" FontSize="11" Padding="0" Width="42"/>
-                            <TextBox Width="304" Padding="0" Margin="5,0,0,0" IsReadOnly="True" Text="{Binding Subject, Mode=OneWay}"/>
+                            <Label Content="{Binding Source={x:Static services:ResourceService.Instance}, Path=Resources.Subject, Mode=OneWay}" FontSize="11" Padding="0" Width="42" />
+                            <TextBox Width="304" Padding="0" Margin="5,0,0,0" IsReadOnly="True" Text="{Binding Subject, Mode=OneWay}" />
                         </StackPanel>
                         <StackPanel Orientation="Horizontal" Margin="0,12,0,0">
                             <StackPanel Orientation="Horizontal">
-                                <Label Content="{Binding Source={x:Static services:ResourceService.Instance}, Path=Resources.MailType, Mode=OneWay}" FontSize="11" Padding="0" Width="42"/>
-                                <TextBox Width="108" Padding="0" Margin="5,0,0,0" IsReadOnly="True" Text="{Binding MailType, Mode=OneWay}"/>
+                                <Label Content="{Binding Source={x:Static services:ResourceService.Instance}, Path=Resources.MailType, Mode=OneWay}" FontSize="11" Padding="0" Width="42" />
+                                <TextBox Width="108" Padding="0" Margin="5,0,0,0" IsReadOnly="True" Text="{Binding MailType, Mode=OneWay}" />
                             </StackPanel>
                             <StackPanel Orientation="Horizontal">
-                                <Label Content="{Binding Source={x:Static services:ResourceService.Instance}, Path=Resources.DeferredDeliveryMinutes, Mode=OneWay}" FontSize="11" Padding="0" Width="148" Margin="11,0,0,0"/>
-                                <TextBox x:Name="DeferredDeliveryMinutesBox" Width="32" Padding="0" Margin="5,0,0,0" IsReadOnly="false" TextAlignment="Right" Text="{Binding DeferredDeliveryMinutes, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" PreviewTextInput="DeferredDeliveryMinutesBox_OnPreviewTextInput" CommandManager.PreviewExecuted="DeferredDeliveryMinutesBox_OnPreviewExecuted" InputMethod.IsInputMethodEnabled="False" InputMethod.PreferredImeState="Off"/>
+                                <Label Content="{Binding Source={x:Static services:ResourceService.Instance}, Path=Resources.DeferredDeliveryMinutes, Mode=OneWay}" FontSize="11" Padding="0" Width="148" Margin="11,0,0,0" />
+                                <TextBox x:Name="DeferredDeliveryMinutesBox" Width="32" Padding="0" Margin="5,0,0,0" IsReadOnly="false" TextAlignment="Right" Text="{Binding DeferredDeliveryMinutes, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" PreviewTextInput="DeferredDeliveryMinutesBox_OnPreviewTextInput" CommandManager.PreviewExecuted="DeferredDeliveryMinutesBox_OnPreviewExecuted" InputMethod.IsInputMethodEnabled="False" />
                             </StackPanel>
                         </StackPanel>
                     </StackPanel>
                 </GroupBox>
                 <GroupBox Header="{Binding Source={x:Static services:ResourceService.Instance}, Path=Resources.MailBody, Mode=OneWay}" FontSize="11" Padding="3,3,3,3" Margin="0,1.5,0,0">
-                    <TextBox Height="63" VerticalScrollBarVisibility="Visible" IsReadOnly="True" Text="{Binding MailBody, Mode=OneWay}"/>
+                    <TextBox Height="63" VerticalScrollBarVisibility="Visible" IsReadOnly="True" Text="{Binding MailBody, Mode=OneWay}" />
                 </GroupBox>
             </StackPanel>
         </Grid>
         <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Margin="0,6,8,0">
-            <Button Content="{Binding Source={x:Static services:ResourceService.Instance}, Path=Resources.Send, Mode=OneWay}" Width="48" Margin="0,0,10,0" IsEnabled="{Binding IsCanSendMail}" Click="SendButton_OnClick"/>
-            <Button Content="{Binding Source={x:Static services:ResourceService.Instance}, Path=Resources.Cancel, Mode=OneWay}" Width="100" Margin="3,0,0,0" IsDefault="True" IsCancel="True" Click="CancelButton_OnClick"/>
+            <Button Content="{Binding Source={x:Static services:ResourceService.Instance}, Path=Resources.Send, Mode=OneWay}" Width="48" Margin="0,0,10,0" IsEnabled="{Binding IsCanSendMail}" Click="SendButton_OnClick" />
+            <Button Content="{Binding Source={x:Static services:ResourceService.Instance}, Path=Resources.Cancel, Mode=OneWay}" Width="100" Margin="3,0,0,0" IsDefault="True" IsCancel="True" Click="CancelButton_OnClick" />
         </StackPanel>
     </StackPanel>
 </Window>
