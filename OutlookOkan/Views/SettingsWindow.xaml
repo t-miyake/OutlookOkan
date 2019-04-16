@@ -92,6 +92,11 @@
                                                 <Setter Property="ToolTipService.ToolTip" Value="{Binding Source={x:Static services:ResourceService.Instance}, Path=Resources.MailddressAndDomain, Mode=OneWay}" />
                                             </Style>
                                         </DataGridTextColumn.ElementStyle>
+                                        <DataGridTextColumn.EditingElementStyle>
+                                            <Style TargetType="TextBox">
+                                                <Setter Property="InputMethod.IsInputMethodEnabled" Value="False" />
+                                            </Style>
+                                        </DataGridTextColumn.EditingElementStyle>
                                     </DataGridTextColumn>
                                     <DataGridCheckBoxColumn Header="{Binding Source={x:Static services:ResourceService.Instance}, Path=Resources.IsSkipConfirmation, Mode=OneWay}" Binding="{Binding IsSkipConfirmation, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Width="Auto">
                                         <DataGridCheckBoxColumn.ElementStyle>
@@ -144,6 +149,11 @@
                                                 <Setter Property="ToolTipService.ToolTip" Value="{Binding Source={x:Static services:ResourceService.Instance}, Path=Resources.InputDomainInfo, Mode=OneWay}" />
                                             </Style>
                                         </DataGridTextColumn.ElementStyle>
+                                        <DataGridTextColumn.EditingElementStyle>
+                                            <Style TargetType="TextBox">
+                                                <Setter Property="InputMethod.IsInputMethodEnabled" Value="False" />
+                                            </Style>
+                                        </DataGridTextColumn.EditingElementStyle>
                                     </DataGridTextColumn>
                                 </DataGrid.Columns>
                             </DataGrid>
@@ -232,6 +242,11 @@
                                                 <Setter Property="ToolTipService.ToolTip" Value="{Binding Source={x:Static services:ResourceService.Instance}, Path=Resources.MailddressAndDomain, Mode=OneWay}" />
                                             </Style>
                                         </DataGridTextColumn.ElementStyle>
+                                        <DataGridTextColumn.EditingElementStyle>
+                                            <Style TargetType="TextBox">
+                                                <Setter Property="InputMethod.IsInputMethodEnabled" Value="False" />
+                                            </Style>
+                                        </DataGridTextColumn.EditingElementStyle>
                                     </DataGridTextColumn>
                                     <DataGridCheckBoxColumn Header="{Binding Source={x:Static services:ResourceService.Instance}, Path=Resources.SendingForbid, Mode=OneWay}" Binding="{Binding IsCanNotSend, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Width="Auto">
                                         <DataGridCheckBoxColumn.ElementStyle>
@@ -285,6 +300,11 @@
                                                 <Setter Property="HorizontalAlignment" Value="Center" />
                                             </Style>
                                         </DataGridTextColumn.ElementStyle>
+                                        <DataGridTextColumn.EditingElementStyle>
+                                            <Style TargetType="TextBox">
+                                                <Setter Property="InputMethod.IsInputMethodEnabled" Value="False" />
+                                            </Style>
+                                        </DataGridTextColumn.EditingElementStyle>
                                     </DataGridTextColumn>
                                     <DataGridTextColumn Header="{Binding Source={x:Static services:ResourceService.Instance}, Path=Resources.AutoAddMailAddress, Mode=OneWay}" Binding="{Binding AutoAddAddress, Mode=TwoWay}" Width="*">
                                         <DataGridTextColumn.ElementStyle>
@@ -292,6 +312,11 @@
                                                 <Setter Property="ToolTipService.ToolTip" Value="{Binding Source={x:Static services:ResourceService.Instance}, Path=Resources.AutoAddMailAddress, Mode=OneWay}" />
                                             </Style>
                                         </DataGridTextColumn.ElementStyle>
+                                        <DataGridTextColumn.EditingElementStyle>
+                                            <Style TargetType="TextBox">
+                                                <Setter Property="InputMethod.IsInputMethodEnabled" Value="False" />
+                                            </Style>
+                                        </DataGridTextColumn.EditingElementStyle>
                                     </DataGridTextColumn>
                                 </DataGrid.Columns>
                             </DataGrid>
@@ -328,6 +353,11 @@
                                                 <Setter Property="ToolTipService.ToolTip" Value="{Binding Source={x:Static services:ResourceService.Instance}, Path=Resources.AutoAddCCorBCCByMailAddressOrDomainInfo, Mode=OneWay}" />
                                             </Style>
                                         </DataGridTextColumn.ElementStyle>
+                                        <DataGridTextColumn.EditingElementStyle>
+                                            <Style TargetType="TextBox">
+                                                <Setter Property="InputMethod.IsInputMethodEnabled" Value="False" />
+                                            </Style>
+                                        </DataGridTextColumn.EditingElementStyle>
                                     </DataGridTextColumn>
                                     <DataGridTextColumn Header="{Binding Source={x:Static services:ResourceService.Instance}, Path=Resources.CCorBCC, Mode=OneWay}" Binding="{Binding CcOrBcc, Mode=TwoWay}" Width="Auto">
                                         <DataGridTextColumn.ElementStyle>
@@ -336,6 +366,11 @@
                                                 <Setter Property="HorizontalAlignment" Value="Center" />
                                             </Style>
                                         </DataGridTextColumn.ElementStyle>
+                                        <DataGridTextColumn.EditingElementStyle>
+                                            <Style TargetType="TextBox">
+                                                <Setter Property="InputMethod.IsInputMethodEnabled" Value="False" />
+                                            </Style>
+                                        </DataGridTextColumn.EditingElementStyle>
                                     </DataGridTextColumn>
                                     <DataGridTextColumn Header="{Binding Source={x:Static services:ResourceService.Instance}, Path=Resources.AutoAddMailAddress, Mode=OneWay}" Binding="{Binding AutoAddAddress, Mode=TwoWay}" Width="*">
                                         <DataGridTextColumn.ElementStyle>
@@ -343,6 +378,11 @@
                                                 <Setter Property="ToolTipService.ToolTip" Value="{Binding Source={x:Static services:ResourceService.Instance}, Path=Resources.AutoAddMailAddress, Mode=OneWay}" />
                                             </Style>
                                         </DataGridTextColumn.ElementStyle>
+                                        <DataGridTextColumn.EditingElementStyle>
+                                            <Style TargetType="TextBox">
+                                                <Setter Property="InputMethod.IsInputMethodEnabled" Value="False" />
+                                            </Style>
+                                        </DataGridTextColumn.EditingElementStyle>
                                     </DataGridTextColumn>
                                 </DataGrid.Columns>
                             </DataGrid>
@@ -379,6 +419,11 @@
                                                 <Setter Property="ToolTipService.ToolTip" Value="{Binding Source={x:Static services:ResourceService.Instance}, Path=Resources.DeferredDeliveryEmailAddressOrDomainInfo, Mode=OneWay}" />
                                             </Style>
                                         </DataGridTextColumn.ElementStyle>
+                                        <DataGridTextColumn.EditingElementStyle>
+                                            <Style TargetType="TextBox">
+                                                <Setter Property="InputMethod.IsInputMethodEnabled" Value="False" />
+                                            </Style>
+                                        </DataGridTextColumn.EditingElementStyle>
                                     </DataGridTextColumn>
                                     <DataGridTextColumn Header="{Binding Source={x:Static services:ResourceService.Instance}, Path=Resources.DeferredDeliveryTime, Mode=OneWay}" Binding="{Binding DeferredMinutes, Mode=TwoWay}" Width="Auto">
                                         <DataGridTextColumn.ElementStyle>
@@ -387,6 +432,11 @@
                                                 <Setter Property="HorizontalAlignment" Value="Right" />
                                             </Style>
                                         </DataGridTextColumn.ElementStyle>
+                                        <DataGridTextColumn.EditingElementStyle>
+                                            <Style TargetType="TextBox">
+                                                <Setter Property="InputMethod.IsInputMethodEnabled" Value="False" />
+                                            </Style>
+                                        </DataGridTextColumn.EditingElementStyle>
                                     </DataGridTextColumn>
                                 </DataGrid.Columns>
                             </DataGrid>
