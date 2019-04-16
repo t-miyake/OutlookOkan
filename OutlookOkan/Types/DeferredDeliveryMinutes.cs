@@ -2,7 +2,7 @@
 
 namespace OutlookOkan.Types
 {
-    public class DeferredDeliveryMinutes
+    public sealed class DeferredDeliveryMinutes
     {
         public string TartgetAddress { get; set; }
         public int DeferredMinutes { get; set; }

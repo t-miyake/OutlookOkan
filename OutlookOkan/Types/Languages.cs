@@ -2,7 +2,7 @@
 
 namespace OutlookOkan.Types
 {
-    public class Languages
+    public sealed class Languages
     {
         public List<LanguageCodeAndName> Language = new List<LanguageCodeAndName>();
 
@@ -13,7 +13,7 @@ namespace OutlookOkan.Types
         }
     }
 
-    public class LanguageCodeAndName
+    public sealed class LanguageCodeAndName
     {
         public int LanguageNumber { get; set; }
         public string LanguageCode { get; set; }

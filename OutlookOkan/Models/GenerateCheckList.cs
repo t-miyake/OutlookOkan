@@ -9,7 +9,7 @@ using Outlook = Microsoft.Office.Interop.Outlook;
 
 namespace OutlookOkan.Models
 {
-    public class GenerateCheckList
+    public sealed class GenerateCheckList
     {
         private readonly CheckList _checkList = new CheckList();
 

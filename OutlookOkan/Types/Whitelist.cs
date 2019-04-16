@@ -2,7 +2,7 @@
 
 namespace OutlookOkan.Types
 {
-    public class Whitelist
+    public sealed class Whitelist
     {
         public string WhiteName { get; set; }
         public bool IsSkipConfirmation { get; set; }

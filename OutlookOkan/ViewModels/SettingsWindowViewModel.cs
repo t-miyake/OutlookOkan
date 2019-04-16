@@ -12,7 +12,7 @@ using System.Windows.Input;
 
 namespace OutlookOkan.ViewModels
 {
-    public class SettingsWindowViewModel : ViewModelBase
+    public sealed class SettingsWindowViewModel : ViewModelBase
     {
         public SettingsWindowViewModel()
         {

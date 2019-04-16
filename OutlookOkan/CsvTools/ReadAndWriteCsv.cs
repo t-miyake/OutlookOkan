@@ -6,7 +6,7 @@ using System.Text;
 
 namespace OutlookOkan.CsvTools
 {
-    public class ReadAndWriteCsv : CsvToolsBase
+    public sealed class ReadAndWriteCsv : CsvToolsBase
     {
         /// <summary>
         /// 設定ファイル(CSV)の設置個所は下記で固定。

@@ -2,7 +2,7 @@
 
 namespace OutlookOkan.Types
 {
-    public class AutoCcBccKeyword
+    public sealed class AutoCcBccKeyword
     {
         public string Keyword { get; set; }
         public CcOrBcc CcOrBcc { get; set; }

@@ -9,7 +9,7 @@ using System.Windows.Forms;
 namespace OutlookOkan.CsvTools
 {
     //TODO To be improved
-    public class CsvImportAndExport : CsvToolsBase
+    public sealed class CsvImportAndExport : CsvToolsBase
     {
         private Encoding _fileEncoding;
 
