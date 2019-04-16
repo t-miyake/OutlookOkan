@@ -215,7 +215,7 @@
                     </StackPanel>
                 </GroupBox>
             </StackPanel>
-            <GridSplitter Grid.Column="1"/>
+            <GridSplitter Grid.Column="1" IsTabStop="False"/>
             <StackPanel Grid.Column="2" Margin="0,2,8,0">
                 <GroupBox Header="{Binding AttachmentCount}"  FontSize="11" Padding="3,3,3,3">
                     <DataGrid Height="68" VerticalScrollBarVisibility="Visible" HorizontalScrollBarVisibility="Auto" BorderBrush="#FFD5DFE5" HeadersVisibility="None" ItemsSource="{Binding Attachments,Mode=TwoWay}" AutoGenerateColumns="False" CanUserAddRows="false" CanUserDeleteRows="false" CanUserResizeColumns="false" CanUserResizeRows="false" CanUserSortColumns="false" HorizontalGridLinesBrush="#FFD5DFE5" VerticalGridLinesBrush="#FFD5DFE5" >
