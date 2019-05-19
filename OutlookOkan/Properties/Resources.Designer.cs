@@ -944,6 +944,19 @@ namespace OutlookOkan.Properties {
         
         /// <summary>
         ///   Looks up a localized string similar to Type: CC or BCC
+        ///Address: boss@noraneko.co.jp
+        ///
+        ///When you send an email with a file attached, 
+        ///The address specified for CC or BCC is automatically added..
+        /// </summary>
+        public static string SettingExampleAutoAddCCorBCCByAttachedFile {
+            get {
+                return ResourceManager.GetString("SettingExampleAutoAddCCorBCCByAttachedFile", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Type: CC or BCC
         ///Keywords: confidential
         ///Address: boss@noraneko.co.jp
         ///

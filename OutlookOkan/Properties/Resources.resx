@@ -494,4 +494,11 @@ Do you want to download it?</value>
   <data name="IsNotTreatedAsAttachmentsAtHtmlEmbeddedFiles" xml:space="preserve">
     <value>[Beta] HTML mail embedded files are not treated as attachments.</value>
   </data>
+  <data name="SettingExampleAutoAddCCorBCCByAttachedFile" xml:space="preserve">
+    <value>Type: CC or BCC
+Address: boss@noraneko.co.jp
+
+When you send an email with a file attached, 
+The address specified for CC or BCC is automatically added.</value>
+  </data>
 </root>

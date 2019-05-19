@@ -494,4 +494,11 @@ CCあるいはBCCに指定したアドレスが自動で追加されます。</v
   <data name="IsNotTreatedAsAttachmentsAtHtmlEmbeddedFiles" xml:space="preserve">
     <value>[Beta] HTMLメールに埋め込まれたファイルは、添付ファイルとして扱わない。</value>
   </data>
+  <data name="SettingExampleAutoAddCCorBCCByAttachedFile" xml:space="preserve">
+    <value>種別：CC または BCC
+アドレス：boss@noraneko.co.jp
+
+ファイルを添付したメールの送信時に、
+CCあるいはBCCに指定したアドレスが自動で追加されます。</value>
+  </data>
 </root>
