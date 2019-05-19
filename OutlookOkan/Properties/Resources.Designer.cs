@@ -151,6 +151,15 @@ namespace OutlookOkan.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Auto add CC/BCC (AttachedFile).
+        /// </summary>
+        public static string AutoAddCCorBCCByAttachedFile {
+            get {
+                return ResourceManager.GetString("AutoAddCCorBCCByAttachedFile", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Auto add CC/BCC (Keyword).
         /// </summary>
         public static string AutoAddCCorBCCByKeyword {

@@ -488,6 +488,9 @@ Do you want to download it?</value>
   <data name="YouHaveLatest" xml:space="preserve">
     <value>You have the latest version.</value>
   </data>
+  <data name="AutoAddCCorBCCByAttachedFile" xml:space="preserve">
+    <value>Auto add CC/BCC (AttachedFile)</value>
+  </data>
   <data name="IsNotTreatedAsAttachmentsAtHtmlEmbeddedFiles" xml:space="preserve">
     <value>[Beta] HTML mail embedded files are not treated as attachments.</value>
   </data>

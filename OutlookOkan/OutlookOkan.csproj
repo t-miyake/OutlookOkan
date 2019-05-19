@@ -213,6 +213,7 @@
     <Compile Include="Services\ResourceService.cs" />
     <Compile Include="Types\AlertAddress.cs" />
     <Compile Include="Types\AlertKeywordAndMessage.cs" />
+    <Compile Include="Types\AutoCcBccAttachedFile.cs" />
     <Compile Include="Types\AutoCcBccKeyword.cs" />
     <Compile Include="Types\AutoCcBccRecipient.cs" />
     <Compile Include="Types\CcOrBcc.cs" />

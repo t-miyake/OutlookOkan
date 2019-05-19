@@ -35,6 +35,9 @@ namespace OutlookOkan.ViewModels
             ImportAutoCcBccRecipientsList = new RelayCommand(ImportAutoCcBccRecipientsFromCsv);
             ExportAutoCcBccRecipientsList = new RelayCommand(ExportAutoCcBccRecipientsToCsv);
 
+            ImportAutoCcBccAttachedFilesList = new RelayCommand(ImportAutoCcBccAttachedFilesFromCsv);
+            ExportAutoCcBccAttachedFilesList = new RelayCommand(ExportAutoCcBccAttachedFilesToCsv);
+
             ImportDeferredDeliveryMinutesesList = new RelayCommand(ImportDeferredDeliveryMinutesFromCsv);
             ExportDeferredDeliveryMinutesesList = new RelayCommand(ExportDeferredDeliveryMinutesToCsv);
 
@@ -50,6 +53,7 @@ namespace OutlookOkan.ViewModels
             LoadAlertAddressessData();
             LoadAutoCcBccKeywordsData();
             LoadAutoCcBccRecipientsData();
+            LoadAutoCcBccAttachedFilesData();
             LoadDeferredDeliveryMinutesData();
         }
 
@@ -64,6 +68,7 @@ namespace OutlookOkan.ViewModels
                     SaveAutoCcBccKeywordsToCsv(),
                     SaveAlertAddressesToCsv(),
                     SaveAutoCcBccRecipientsToCsv(),
+                    SaveAutoCcBccAttachedFilesToCsv(),
                     SaveDeferredDeliveryMinutesToCsv()
                 };
 
@@ -518,6 +523,81 @@ namespace OutlookOkan.ViewModels
             {
                 _autoCcBccRecipients = value;
                 OnPropertyChanged("AutoCcBccRecipients");
+            }
+        }
+
+        #endregion
+
+        #region AutoCcBccAttachedFile
+
+        public ICommand ImportAutoCcBccAttachedFilesList { get; }
+        public ICommand ExportAutoCcBccAttachedFilesList { get; }
+
+        private void LoadAutoCcBccAttachedFilesData()
+        {
+            var readCsv = new ReadAndWriteCsv("AutoCcBccAttachedFileList.csv");
+            var autoCcBccAttachedFile = readCsv.GetCsvRecords<AutoCcBccAttachedFile>(readCsv.LoadCsv<AutoCcBccAttachedFileMap>());
+
+            foreach (var data in autoCcBccAttachedFile)
+            {
+                AutoCcBccAttachedFiles.Add(data);
+            }
+        }
+
+        private async Task SaveAutoCcBccAttachedFilesToCsv()
+        {
+            var list = new ArrayList();
+            foreach (var data in AutoCcBccAttachedFiles)
+            {
+                list.Add(data);
+            }
+            var writeCsv = new ReadAndWriteCsv("AutoCcBccAttachedFileList.csv");
+            await Task.Run(() => writeCsv.WriteRecordsToCsv<AutoCcBccAttachedFileMap>(list));
+        }
+
+        private void ImportAutoCcBccAttachedFilesFromCsv()
+        {
+            var importAction = new CsvImportAndExport();
+            var filePath = importAction.ImportCsv();
+
+            if (filePath is null) return;
+
+            try
+            {
+                var importData = new List<AutoCcBccAttachedFile>(importAction.GetCsvRecords<AutoCcBccAttachedFile>(importAction.LoadCsv<AutoCcBccAttachedFileMap>(filePath)));
+                foreach (var data in importData)
+                {
+                    AutoCcBccAttachedFiles.Add(data);
+                }
+
+                MessageBox.Show(Properties.Resources.SuccessfulImport);
+            }
+            catch (Exception)
+            {
+                MessageBox.Show(Properties.Resources.ImportFailed);
+            }
+        }
+
+        private void ExportAutoCcBccAttachedFilesToCsv()
+        {
+            var list = new ArrayList();
+            foreach (var data in AutoCcBccAttachedFiles)
+            {
+                list.Add(data);
+            }
+
+            var exportAction = new CsvImportAndExport();
+            exportAction.CsvExport<AutoCcBccAttachedFileMap>(list, "AutoCcBccAttachedFileList.csv");
+        }
+
+        private ObservableCollection<AutoCcBccAttachedFile> _autoCcBccAttachedFiles = new ObservableCollection<AutoCcBccAttachedFile>();
+        public ObservableCollection<AutoCcBccAttachedFile> AutoCcBccAttachedFiles
+        {
+            get => _autoCcBccAttachedFiles;
+            set
+            {
+                _autoCcBccAttachedFiles = value;
+                OnPropertyChanged("AutoCcBccAttachedFiles");
             }
         }
 

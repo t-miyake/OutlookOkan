@@ -77,6 +77,10 @@ namespace OutlookOkan.Views
         {
         }
 
+        private void DataGrid_AutoCcBccAttachedFile_OnCellEditEnding(object sender, DataGridCellEditEndingEventArgs e)
+        {
+        }
+
         private void DataGrid_DeferredDeliveryMinutes_OnCellEditEnding(object sender, DataGridCellEditEndingEventArgs e)
         {
             switch (e.Column.DisplayIndex)

@@ -532,6 +532,45 @@ namespace OutlookOkan.Models
                 }
             }
 
+            //警告対象の添付ファイル数が0でない場合のみ、CCやBCCの追加処理を行う。
+            if (_checkList.Attachments.Count != 0)
+            {
+                //Load autoCcBccAttachedFilesList
+                var autoCcBccAttachedFilesListCsv = new ReadAndWriteCsv("AutoCcBccAttachedFileList.csv");
+                var autoCcBccAttachedFilesList = autoCcBccAttachedFilesListCsv.GetCsvRecords<AutoCcBccAttachedFile>(autoCcBccAttachedFilesListCsv.LoadCsv<AutoCcBccAttachedFileMap>());
+
+                if (autoCcBccAttachedFilesList.Count != 0)
+                {
+                    foreach (var i in autoCcBccAttachedFilesList)
+                    {
+                        if (i.CcOrBcc == CcOrBcc.CC)
+                        {
+                            if (!autoAddedCcAddressList.Contains(i.AutoAddAddress) && !_ccDisplayNameAndRecipient.ContainsKey(i.AutoAddAddress))
+                            {
+                                var recip = mail.Recipients.Add(i.AutoAddAddress);
+                                recip.Type = (int)Outlook.OlMailRecipientType.olCC;
+
+                                autoAddRecipients.Add(recip);
+                                autoAddedCcAddressList.Add(i.AutoAddAddress);
+                            }
+                        }
+                        else if (!autoAddedBccAddressList.Contains(i.AutoAddAddress) && !_bccDisplayNameAndRecipient.ContainsKey(i.AutoAddAddress))
+                        {
+                            var recip = mail.Recipients.Add(i.AutoAddAddress);
+                            recip.Type = (int)Outlook.OlMailRecipientType.olBCC;
+
+                            autoAddRecipients.Add(recip);
+                            autoAddedBccAddressList.Add(i.AutoAddAddress);
+                        }
+
+                        _checkList.Alerts.Add(new Alert { AlertMessage = Resources.AutoAddDestination + $@"[{i.CcOrBcc}] [{i.AutoAddAddress}] (" + Resources.Attachments + ")", IsImportant = false, IsWhite = true, IsChecked = true });
+
+                        // 自動追加されたアドレスはホワイトリスト登録アドレス扱い。
+                        _whitelist.Add(new Whitelist { WhiteName = i.AutoAddAddress });
+                    }
+                }
+            }
+
             //Load AutoCcBccRecipientList
             // TODO To be improved
             var autoCcBccRecipientListcsv = new ReadAndWriteCsv("AutoCcBccRecipientList.csv");
