@@ -683,6 +683,15 @@ namespace OutlookOkan.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to [Beta] HTML mail embedded files are not treated as attachments..
+        /// </summary>
+        public static string IsNotTreatedAsAttachmentsAtHtmlEmbeddedFiles {
+            get {
+                return ResourceManager.GetString("IsNotTreatedAsAttachmentsAtHtmlEmbeddedFiles", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to If the recipient contains multiple external domains, show the confirmation screen. (Don&apos;t skip confirmation screen.).
         /// </summary>
         public static string IsShowConfirmationToMultipleDomain {

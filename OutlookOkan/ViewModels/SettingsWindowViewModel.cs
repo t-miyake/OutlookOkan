@@ -621,6 +621,7 @@ namespace OutlookOkan.ViewModels
             EnableGetExchangeDistributionListMembers = _generalSetting[0].EnableGetExchangeDistributionListMembers;
             ContactGroupMembersAreWhite = _generalSetting[0].ContactGroupMembersAreWhite;
             ExchangeDistributionListMembersAreWhite = _generalSetting[0].ExchangeDistributionListMembersAreWhite;
+            IsNotTreatedAsAttachmentsAtHtmlEmbeddedFiles = _generalSetting[0].IsNotTreatedAsAttachmentsAtHtmlEmbeddedFiles;
 
             if (_generalSetting[0].LanguageCode is null) return;
 
@@ -656,7 +657,8 @@ namespace OutlookOkan.ViewModels
                     EnableGetContactGroupMembers = EnableGetContactGroupMembers,
                     EnableGetExchangeDistributionListMembers = EnableGetExchangeDistributionListMembers,
                     ContactGroupMembersAreWhite = ContactGroupMembersAreWhite,
-                    ExchangeDistributionListMembersAreWhite = ExchangeDistributionListMembersAreWhite
+                    ExchangeDistributionListMembersAreWhite = ExchangeDistributionListMembersAreWhite,
+                    IsNotTreatedAsAttachmentsAtHtmlEmbeddedFiles = IsNotTreatedAsAttachmentsAtHtmlEmbeddedFiles
                 }
             };
 
@@ -767,6 +769,18 @@ namespace OutlookOkan.ViewModels
             {
                 _exchangeDistributionListMembersAreWhite = value;
                 OnPropertyChanged("ExchangeDistributionListMembersAreWhite");
+            }
+        }
+
+        private bool _isNotTreatedAsAttachmentsAtHtmlEmbeddedFiles;
+
+        public bool IsNotTreatedAsAttachmentsAtHtmlEmbeddedFiles
+        {
+            get => _isNotTreatedAsAttachmentsAtHtmlEmbeddedFiles;
+            set
+            {
+                _isNotTreatedAsAttachmentsAtHtmlEmbeddedFiles = value;
+                OnPropertyChanged("IsNotTreatedAsAttachmentsAtHtmlEmbeddedFiles");
             }
         }
 

@@ -488,4 +488,7 @@ CCあるいはBCCに指定したアドレスが自動で追加されます。</v
   <data name="YouHaveLatest" xml:space="preserve">
     <value>最新版をご利用です。</value>
   </data>
+  <data name="IsNotTreatedAsAttachmentsAtHtmlEmbeddedFiles" xml:space="preserve">
+    <value>[Beta] HTMLメールに埋め込まれたファイルは、添付ファイルとして扱わない。</value>
+  </data>
 </root>

@@ -14,6 +14,7 @@ namespace OutlookOkan.Types
         public bool EnableGetExchangeDistributionListMembers { get; set; }
         public bool ContactGroupMembersAreWhite { get; set; }
         public bool ExchangeDistributionListMembersAreWhite { get; set; }
+        public bool IsNotTreatedAsAttachmentsAtHtmlEmbeddedFiles { get; set; }
     }
 
     public sealed class GeneralSettingMap : ClassMap<GeneralSetting>
@@ -49,6 +50,8 @@ namespace OutlookOkan.Types
             Map(m => m.ExchangeDistributionListMembersAreWhite).Index(9).TypeConverterOption
                 .BooleanValues(true, true, "Yes", "Y").TypeConverterOption.BooleanValues(false, true, "No", "N").Default(true);
 
+            Map(m => m.IsNotTreatedAsAttachmentsAtHtmlEmbeddedFiles).Index(10).TypeConverterOption
+                .BooleanValues(true, true, "Yes", "Y").TypeConverterOption.BooleanValues(false, true, "No", "N").Default(false);
         }
     }
 }
