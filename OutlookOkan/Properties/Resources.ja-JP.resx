@@ -478,4 +478,14 @@ CCあるいはBCCに指定したアドレスが自動で追加されます。</v
   <data name="GetMembersOfTheList" xml:space="preserve">
     <value>Exchange配布リストや連絡先グループのメンバーを表示する</value>
   </data>
+  <data name="CanGetNewVersion" xml:space="preserve">
+    <value>新しいバージョンがあります。
+ダウンロードしますか?</value>
+  </data>
+  <data name="CheckNewVersion" xml:space="preserve">
+    <value>新バージョンの確認</value>
+  </data>
+  <data name="YouHaveLatest" xml:space="preserve">
+    <value>最新版をご利用です。</value>
+  </data>
 </root>

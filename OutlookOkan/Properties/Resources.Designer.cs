@@ -241,6 +241,16 @@ namespace OutlookOkan.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to You can get the new version.
+        ///Do you want to download it?.
+        /// </summary>
+        public static string CanGetNewVersion {
+            get {
+                return ResourceManager.GetString("CanGetNewVersion", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to CC/BCC.
         /// </summary>
         public static string CCorBCC {
@@ -264,6 +274,15 @@ namespace OutlookOkan.Properties {
         public static string ChangeRibbonLanguageInfo {
             get {
                 return ResourceManager.GetString("ChangeRibbonLanguageInfo", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Check for Updates.
+        /// </summary>
+        public static string CheckNewVersion {
+            get {
+                return ResourceManager.GetString("CheckNewVersion", resourceCulture);
             }
         }
         
@@ -1072,6 +1091,15 @@ namespace OutlookOkan.Properties {
         public static string WhiteList {
             get {
                 return ResourceManager.GetString("WhiteList", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to You have the latest version..
+        /// </summary>
+        public static string YouHaveLatest {
+            get {
+                return ResourceManager.GetString("YouHaveLatest", resourceCulture);
             }
         }
     }

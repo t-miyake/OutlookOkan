@@ -10,8 +10,7 @@ namespace OutlookOkan.Views
     {
         public SettingsWindow()
         {
-            var viewModel = new SettingsWindowViewModel();
-            DataContext = viewModel;
+            DataContext = new SettingsWindowViewModel();
 
             InitializeComponent();
         }

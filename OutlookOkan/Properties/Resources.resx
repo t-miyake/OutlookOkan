@@ -478,4 +478,14 @@ And enter the time (min) to delay delivery.
   <data name="GetMembersOfTheList" xml:space="preserve">
     <value>Get members of an Exchange distribution list or an Contact Group</value>
   </data>
+  <data name="CanGetNewVersion" xml:space="preserve">
+    <value>You can get the new version.
+Do you want to download it?</value>
+  </data>
+  <data name="CheckNewVersion" xml:space="preserve">
+    <value>Check for Updates</value>
+  </data>
+  <data name="YouHaveLatest" xml:space="preserve">
+    <value>You have the latest version.</value>
+  </data>
 </root>

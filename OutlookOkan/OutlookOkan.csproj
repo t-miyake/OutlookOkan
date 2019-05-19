@@ -194,6 +194,7 @@
     <Compile Include="CsvTools\CsvToolsBase.cs" />
     <Compile Include="CsvTools\ReadAndWriteCsv.cs" />
     <Compile Include="Helpers\NativeMethods.cs" />
+    <Compile Include="Models\CheckNewVersion.cs" />
     <Compile Include="Models\GenerateCheckList.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
@@ -222,6 +223,7 @@
     <Compile Include="Types\NameAndDomains.cs" />
     <Compile Include="Types\NameAndRecipient.cs" />
     <Compile Include="Types\Whitelist.cs" />
+    <Compile Include="ViewModels\AboutWindowViewModel.cs" />
     <Compile Include="ViewModels\ConfirmationWindowViewModel.cs" />
     <Compile Include="ViewModels\RelayCommand.cs" />
     <Compile Include="ViewModels\SettingsWindowViewModel.cs" />

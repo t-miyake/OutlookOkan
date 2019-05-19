@@ -1,4 +1,5 @@
 ﻿using System.Windows;
+using OutlookOkan.ViewModels;
 
 namespace OutlookOkan.Views
 {
@@ -6,6 +7,7 @@ namespace OutlookOkan.Views
     {
         public AboutWindow()
         {
+            DataContext = new AboutWindowViewModel();
             InitializeComponent();
         }
     }
