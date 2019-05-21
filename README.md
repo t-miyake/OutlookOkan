@@ -15,14 +15,20 @@
 オープンソースかつ無料でご利用いただけますが、無サポート、無保証です。([ライセンス](https://github.com/t-miyake/OutlookOkan/blob/master/LICENSE))  
 専用のカスタマイズやサポートが必要な場合は、個別にご相談ください。  
 
-送信前の確認ウインドウ  
+送信前の確認ウインドウ  
 ![Screenshot 1](https://github.com/t-miyake/OutlookOkan/blob/master/Screenshots/Screenshot_v2.1.0_02.png)  
 
-設定ウィンドウ  
-![Screenshot 2](https://github.com/t-miyake/OutlookOkan/blob/master/Screenshots/Screenshot_v2.1.0_01.png) 
+設定ウィンドウ(一般設定)  
+![Screenshot 2](https://github.com/t-miyake/OutlookOkan/blob/master/Screenshots/Screenshot_v2.3.0_04.png) 
+
+設定ウィンドウ(ホワイトリスト)  
+![Screenshot 3](https://github.com/t-miyake/OutlookOkan/blob/master/Screenshots/Screenshot_v2.3.0_05.png) 
 
 送信禁止通知  
-![Screenshot 3](https://github.com/t-miyake/OutlookOkan/blob/master/Screenshots/Screenshot_v2.0.3_03.png)
+![Screenshot 4](https://github.com/t-miyake/OutlookOkan/blob/master/Screenshots/Screenshot_v2.0.3_03.png)
+
+バージョン情報  
+![Screenshot 5](https://github.com/t-miyake/OutlookOkan/blob/master/Screenshots/Screenshot_v2.3.0_01.png)
 
 ## 対応環境
 
@@ -62,6 +68,9 @@
 
 - 自動CC/BCC追加(宛先)
     - 指定した宛先へのメールに、指定したアドレスを自動でCCやBCCに追加
+
+- 自動CC/BCC追加(添付ファイル)
+    - ファイルが添付されたメールに、指定したアドレスを自動でCCやBCCに追加
 
 - 送信遅延(送信保留)
     -  設定した時間(分単位)だけ、メールの送信を遅延(保留)
