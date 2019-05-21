@@ -5,6 +5,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text.RegularExpressions;
 using Outlook = Microsoft.Office.Interop.Outlook;
 
 namespace OutlookOkan.Models
@@ -30,6 +31,9 @@ namespace OutlookOkan.Models
             //This methods must run first.
             GetGeneralMailInfomation(in mail);
 
+            //This methods must run second.
+            GetAttachmentsInfomation(in mail, generalSetting.IsNotTreatedAsAttachmentsAtHtmlEmbeddedFiles);
+
             MakeDisplayNameAndRecipient(mail.Recipients, generalSetting);
 
             CheckForgotAttach(in mail);
@@ -39,8 +43,6 @@ namespace OutlookOkan.Models
             AutoAddCcAndBcc(mail, generalSetting);
 
             GetRecipient();
-
-            GetAttachmentsInfomation(in mail);
 
             CheckMailbodyAndRecipient();
 
@@ -530,6 +532,45 @@ namespace OutlookOkan.Models
                 }
             }
 
+            //警告対象の添付ファイル数が0でない場合のみ、CCやBCCの追加処理を行う。
+            if (_checkList.Attachments.Count != 0)
+            {
+                //Load autoCcBccAttachedFilesList
+                var autoCcBccAttachedFilesListCsv = new ReadAndWriteCsv("AutoCcBccAttachedFileList.csv");
+                var autoCcBccAttachedFilesList = autoCcBccAttachedFilesListCsv.GetCsvRecords<AutoCcBccAttachedFile>(autoCcBccAttachedFilesListCsv.LoadCsv<AutoCcBccAttachedFileMap>());
+
+                if (autoCcBccAttachedFilesList.Count != 0)
+                {
+                    foreach (var i in autoCcBccAttachedFilesList)
+                    {
+                        if (i.CcOrBcc == CcOrBcc.CC)
+                        {
+                            if (!autoAddedCcAddressList.Contains(i.AutoAddAddress) && !_ccDisplayNameAndRecipient.ContainsKey(i.AutoAddAddress))
+                            {
+                                var recip = mail.Recipients.Add(i.AutoAddAddress);
+                                recip.Type = (int)Outlook.OlMailRecipientType.olCC;
+
+                                autoAddRecipients.Add(recip);
+                                autoAddedCcAddressList.Add(i.AutoAddAddress);
+                            }
+                        }
+                        else if (!autoAddedBccAddressList.Contains(i.AutoAddAddress) && !_bccDisplayNameAndRecipient.ContainsKey(i.AutoAddAddress))
+                        {
+                            var recip = mail.Recipients.Add(i.AutoAddAddress);
+                            recip.Type = (int)Outlook.OlMailRecipientType.olBCC;
+
+                            autoAddRecipients.Add(recip);
+                            autoAddedBccAddressList.Add(i.AutoAddAddress);
+                        }
+
+                        _checkList.Alerts.Add(new Alert { AlertMessage = Resources.AutoAddDestination + $@"[{i.CcOrBcc}] [{i.AutoAddAddress}] (" + Resources.Attachments + ")", IsImportant = false, IsWhite = true, IsChecked = true });
+
+                        // 自動追加されたアドレスはホワイトリスト登録アドレス扱い。
+                        _whitelist.Add(new Whitelist { WhiteName = i.AutoAddAddress });
+                    }
+                }
+            }
+
             //Load AutoCcBccRecipientList
             // TODO To be improved
             var autoCcBccRecipientListcsv = new ReadAndWriteCsv("AutoCcBccRecipientList.csv");
@@ -576,18 +617,52 @@ namespace OutlookOkan.Models
             mail.Recipients.ResolveAll();
         }
 
+        /// <summary>
+        /// HTML内に埋め込まれた添付ファイル名を取得する。
+        /// </summary>
+        /// <param name="mail"></param>
+        /// <returns>埋め込みファイル名のList</returns>
+        private List<string> MakeEmbeddedAttachmentsList(in Outlook._MailItem mail)
+        {
+            //HTML形式及びリッチテキスト形式の場合のみ、処理対象とする。
+            if (mail.BodyFormat != Outlook.OlBodyFormat.olFormatHTML) return null;
+
+            var htmlBody = mail.HTMLBody;
+            var matches = Regex.Matches(htmlBody, @"cid:.*?@");
+
+            if (matches.Count == 0) return null;
+
+            var embeddedAttachmentsName = new List<string>();
+            foreach (var data in matches)
+            {
+                embeddedAttachmentsName.Add(data.ToString().Replace(@"cid:", "").Replace(@"@", ""));
+            }
+
+            return embeddedAttachmentsName;
+        }
 
         /// <summary>
         /// 添付ファイルとそのファイルサイズを取得し、チェックリストに追加する。
         /// </summary>
         /// <param name="mail"></param>
-        private void GetAttachmentsInfomation(in Outlook._MailItem mail)
+        /// <param name="isNotTreatedAsAttachmentsAtHtmlEmbeddedFiles"></param>
+        private void GetAttachmentsInfomation(in Outlook._MailItem mail, bool isNotTreatedAsAttachmentsAtHtmlEmbeddedFiles)
         {
             if (mail.Attachments.Count == 0) return;
 
+            var embeddedAttachmentsName = new List<string>();
+            if (isNotTreatedAsAttachmentsAtHtmlEmbeddedFiles)
+            {
+                embeddedAttachmentsName = MakeEmbeddedAttachmentsList(in mail);
+            }
+
             for (var i = 0; i < mail.Attachments.Count; i++)
             {
-                var fileSize = Math.Round(((double)mail.Attachments[i + 1].Size / 1024), 0, MidpointRounding.AwayFromZero).ToString("##,###") + "KB";
+                var fileSize = "?KB";
+                if (mail.Attachments[i + 1].Size != 0)
+                {
+                    fileSize = Math.Round(((double)mail.Attachments[i + 1].Size / 1024), 0, MidpointRounding.AwayFromZero).ToString("##,###") + "KB";
+                }
 
                 //10Mbyte以上の添付ファイルは警告も表示。
                 if (mail.Attachments[i + 1].Size >= 10485760)
@@ -625,7 +700,23 @@ namespace OutlookOkan.Models
                     attachmetName = Resources.Unknown;
                 }
 
-                _checkList.Attachments.Add(new Attachment { FileName = attachmetName, FileSize = fileSize, FileType = fileType, IsTooBig = mail.Attachments[i + 1].Size >= 10485760, IsEncrypted = false, IsChecked = false, IsDangerous = isDangerous });
+                //情報取得に完全に失敗した添付ファイルは無視する。(リッチテキスト形式の埋め込み画像など)
+                if (attachmetName == Resources.Unknown && fileSize == "?KB" && fileType == Resources.Unknown) continue;
+
+                //HTML埋め込みファイルは無視する。
+                if (!embeddedAttachmentsName.Contains(attachmetName))
+                {
+                    _checkList.Attachments.Add(new Attachment
+                    {
+                        FileName = attachmetName,
+                        FileSize = fileSize,
+                        FileType = fileType,
+                        IsTooBig = mail.Attachments[i + 1].Size >= 10485760,
+                        IsEncrypted = false,
+                        IsChecked = false,
+                        IsDangerous = isDangerous
+                    });
+                }
             }
         }
 

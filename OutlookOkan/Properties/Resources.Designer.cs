@@ -151,6 +151,15 @@ namespace OutlookOkan.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Auto add CC/BCC (AttachedFile).
+        /// </summary>
+        public static string AutoAddCCorBCCByAttachedFile {
+            get {
+                return ResourceManager.GetString("AutoAddCCorBCCByAttachedFile", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Auto add CC/BCC (Keyword).
         /// </summary>
         public static string AutoAddCCorBCCByKeyword {
@@ -241,6 +250,16 @@ namespace OutlookOkan.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to You can get the new version.
+        ///Do you want to download it?.
+        /// </summary>
+        public static string CanGetNewVersion {
+            get {
+                return ResourceManager.GetString("CanGetNewVersion", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to CC/BCC.
         /// </summary>
         public static string CCorBCC {
@@ -264,6 +283,15 @@ namespace OutlookOkan.Properties {
         public static string ChangeRibbonLanguageInfo {
             get {
                 return ResourceManager.GetString("ChangeRibbonLanguageInfo", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Check for Updates.
+        /// </summary>
+        public static string CheckNewVersion {
+            get {
+                return ResourceManager.GetString("CheckNewVersion", resourceCulture);
             }
         }
         
@@ -664,6 +692,15 @@ namespace OutlookOkan.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to [Beta] HTML mail embedded files are not treated as attachments..
+        /// </summary>
+        public static string IsNotTreatedAsAttachmentsAtHtmlEmbeddedFiles {
+            get {
+                return ResourceManager.GetString("IsNotTreatedAsAttachmentsAtHtmlEmbeddedFiles", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to If the recipient contains multiple external domains, show the confirmation screen. (Don&apos;t skip confirmation screen.).
         /// </summary>
         public static string IsShowConfirmationToMultipleDomain {
@@ -907,6 +944,19 @@ namespace OutlookOkan.Properties {
         
         /// <summary>
         ///   Looks up a localized string similar to Type: CC or BCC
+        ///Address: boss@noraneko.co.jp
+        ///
+        ///When you send an email with a file attached, 
+        ///The address specified for CC or BCC is automatically added..
+        /// </summary>
+        public static string SettingExampleAutoAddCCorBCCByAttachedFile {
+            get {
+                return ResourceManager.GetString("SettingExampleAutoAddCCorBCCByAttachedFile", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Type: CC or BCC
         ///Keywords: confidential
         ///Address: boss@noraneko.co.jp
         ///
@@ -1031,7 +1081,7 @@ namespace OutlookOkan.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Version 2.2.1.
+        ///   Looks up a localized string similar to Version 2.3.0.
         /// </summary>
         public static string Version {
             get {
@@ -1072,6 +1122,15 @@ namespace OutlookOkan.Properties {
         public static string WhiteList {
             get {
                 return ResourceManager.GetString("WhiteList", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to You have the latest version..
+        /// </summary>
+        public static string YouHaveLatest {
+            get {
+                return ResourceManager.GetString("YouHaveLatest", resourceCulture);
             }
         }
     }

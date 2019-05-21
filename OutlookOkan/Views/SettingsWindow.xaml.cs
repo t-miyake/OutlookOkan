@@ -10,8 +10,7 @@ namespace OutlookOkan.Views
     {
         public SettingsWindow()
         {
-            var viewModel = new SettingsWindowViewModel();
-            DataContext = viewModel;
+            DataContext = new SettingsWindowViewModel();
 
             InitializeComponent();
         }
@@ -75,6 +74,10 @@ namespace OutlookOkan.Views
         }
 
         private void DataGrid_AutoCcBccRecipient_OnCellEditEnding(object sender, DataGridCellEditEndingEventArgs e)
+        {
+        }
+
+        private void DataGrid_AutoCcBccAttachedFile_OnCellEditEnding(object sender, DataGridCellEditEndingEventArgs e)
         {
         }
 

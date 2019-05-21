@@ -361,7 +361,7 @@
     <value>Copyright (C) 2019 Noraneko Inc.</value>
   </data>
   <data name="Version" xml:space="preserve">
-    <value>バージョン 2.2.1</value>
+    <value>バージョン 2.3.0</value>
   </data>
   <data name="VersionInfo" xml:space="preserve">
     <value>バージョン情報</value>
@@ -470,12 +470,35 @@ CCあるいはBCCに指定したアドレスが自動で追加されます。</v
     <value>メンバーのメールアドレスは、あらかじめチェックを自動付与する。</value>
   </data>
   <data name="GetMembersOfTheContactGroup" xml:space="preserve">
-    <value>連絡先グループのメンバーを展開する。</value>
+    <value>連絡先グループのメンバーを表示する。</value>
   </data>
   <data name="GetMembersOfTheExDistList" xml:space="preserve">
     <value>Exchange配布リストのメンバーを表示する。(表示に時間がかかる場合があります。)</value>
   </data>
   <data name="GetMembersOfTheList" xml:space="preserve">
-    <value>Exchange配布リストや連絡先グループのメンバーを表示する</value>
+    <value>Exchange配布リストや連絡先グループのメンバー表示設定</value>
+  </data>
+  <data name="CanGetNewVersion" xml:space="preserve">
+    <value>新しいバージョンがあります。
+ダウンロードしますか?</value>
+  </data>
+  <data name="CheckNewVersion" xml:space="preserve">
+    <value>新バージョンの確認</value>
+  </data>
+  <data name="YouHaveLatest" xml:space="preserve">
+    <value>最新版をご利用です。</value>
+  </data>
+  <data name="AutoAddCCorBCCByAttachedFile" xml:space="preserve">
+    <value>自動CC/BCC追加(添付ファイル)</value>
+  </data>
+  <data name="IsNotTreatedAsAttachmentsAtHtmlEmbeddedFiles" xml:space="preserve">
+    <value>[Beta] HTMLメールに埋め込まれたファイルは、添付ファイルとして扱わない。</value>
+  </data>
+  <data name="SettingExampleAutoAddCCorBCCByAttachedFile" xml:space="preserve">
+    <value>種別：CC または BCC
+アドレス：boss@noraneko.co.jp
+
+ファイルを添付したメールの送信時に、
+CCあるいはBCCに指定したアドレスが自動で追加されます。</value>
   </data>
 </root>
