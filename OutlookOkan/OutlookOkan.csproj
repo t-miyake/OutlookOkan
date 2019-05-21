@@ -247,7 +247,7 @@
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.ja-JP.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <None Include="OutlookOkan_TemporaryKey.pfx" />
+    <None Include="CodeSigningCertificate_NoranekoInc.pfx" />
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -296,13 +296,20 @@
     <SignManifests>true</SignManifests>
   </PropertyGroup>
   <PropertyGroup>
-    <ManifestKeyFile>OutlookOkan_TemporaryKey.pfx</ManifestKeyFile>
+    <ManifestKeyFile>CodeSigningCertificate_NoranekoInc.pfx</ManifestKeyFile>
   </PropertyGroup>
   <PropertyGroup>
-    <ManifestCertificateThumbprint>D42AC8E0515F469D1E2F0A5F07C5C9FC72594A52</ManifestCertificateThumbprint>
+    <ManifestCertificateThumbprint>95F309D2E9A9720D0A43B6F732CD6F4FF93DA500</ManifestCertificateThumbprint>
   </PropertyGroup>
   <PropertyGroup>
     <SignAssembly>false</SignAssembly>
+  </PropertyGroup>
+  <PropertyGroup>
+    <DelaySign>false</DelaySign>
+  </PropertyGroup>
+  <PropertyGroup>
+    <AssemblyOriginatorKeyFile>
+    </AssemblyOriginatorKeyFile>
   </PropertyGroup>
   <!-- Include the build rules for a C# project. -->
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
