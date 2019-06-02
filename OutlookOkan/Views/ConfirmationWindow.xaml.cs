@@ -31,7 +31,7 @@ namespace OutlookOkan.Views
         {
             //送信時刻の設定
             int.TryParse(DeferredDeliveryMinutesBox.Text, out var deferredDeliveryMinutes);
-            _mailItem.DeferredDeliveryTime = deferredDeliveryMinutes == 0 ? DateTime.Now : DateTime.Now.AddMinutes(deferredDeliveryMinutes);
+            _mailItem.DeferredDeliveryTime = deferredDeliveryMinutes == 0 ? _mailItem.CreationTime : DateTime.Now.AddMinutes(deferredDeliveryMinutes);
 
             DialogResult = true;
         }
