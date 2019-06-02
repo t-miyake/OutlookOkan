@@ -701,10 +701,26 @@ namespace OutlookOkan.Models
                 }
 
                 //情報取得に完全に失敗した添付ファイルは無視する。(リッチテキスト形式の埋め込み画像など)
-                if (attachmetName == Resources.Unknown && fileSize == "?KB" && fileType == Resources.Unknown) continue;
+                if (fileName == Resources.Unknown && fileSize == "?KB" && fileType == Resources.Unknown) continue;
+
+                if (embeddedAttachmentsName is null)
+                {
+                    _checkList.Attachments.Add(new Attachment
+                    {
+                        FileName = fileName,
+                        FileSize = fileSize,
+                        FileType = fileType,
+                        IsTooBig = mail.Attachments[i + 1].Size >= 10485760,
+                        IsEncrypted = false,
+                        IsChecked = false,
+                        IsDangerous = isDangerous
+                    });
+
+                    continue;
+                }
 
                 //HTML埋め込みファイルは無視する。
-                if (!embeddedAttachmentsName.Contains(attachmetName))
+                if (!embeddedAttachmentsName.Contains(fileName))
                 {
                     _checkList.Attachments.Add(new Attachment
                     {
