@@ -28,7 +28,6 @@ namespace OutlookOkan.CsvTools
             }
             catch (Exception)
             {
-                // Do Nothing.
                 return "UTF-8";
             }
         }

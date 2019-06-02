@@ -4,7 +4,7 @@ namespace OutlookOkan.Types
 {
     public sealed class DeferredDeliveryMinutes
     {
-        public string TartgetAddress { get; set; }
+        public string TargetAddress { get; set; }
         public int DeferredMinutes { get; set; }
     }
 
@@ -12,7 +12,7 @@ namespace OutlookOkan.Types
     {
         public DeferredDeliveryMinutesMap()
         {
-            Map(m => m.TartgetAddress).Index(0);
+            Map(m => m.TargetAddress).Index(0);
             Map(m => m.DeferredMinutes).Index(1).Default(0);
         }
     }

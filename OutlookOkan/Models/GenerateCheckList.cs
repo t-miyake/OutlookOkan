@@ -29,10 +29,10 @@ namespace OutlookOkan.Models
         public CheckList GenerateCheckListFromMail(Outlook._MailItem mail, GeneralSetting generalSetting)
         {
             //This methods must run first.
-            GetGeneralMailInfomation(in mail);
+            GetGeneralMailInformation(in mail);
 
             //This methods must run second.
-            GetAttachmentsInfomation(in mail, generalSetting.IsNotTreatedAsAttachmentsAtHtmlEmbeddedFiles);
+            GetAttachmentsInformation(in mail, generalSetting.IsNotTreatedAsAttachmentsAtHtmlEmbeddedFiles);
 
             MakeDisplayNameAndRecipient(mail.Recipients, generalSetting);
 
@@ -44,7 +44,7 @@ namespace OutlookOkan.Models
 
             GetRecipient();
 
-            CheckMailbodyAndRecipient();
+            CheckMailBodyAndRecipient();
 
             _checkList.RecipientExternalDomainNum = CountRecipientExternalDomains();
 
@@ -57,7 +57,7 @@ namespace OutlookOkan.Models
         /// 一般的なメールの情報を取得して格納する。
         /// </summary>
         /// <param name="mail">Mail</param>
-        private void GetGeneralMailInfomation(in Outlook._MailItem mail)
+        private void GetGeneralMailInformation(in Outlook._MailItem mail)
         {
             if (string.IsNullOrEmpty(mail.SentOnBehalfOfName))
             {
@@ -161,15 +161,15 @@ namespace OutlookOkan.Models
         /// <summary>
         /// 宛先メールアドレスと宛先名称を取得する。
         /// </summary>
-        /// <param name="recip">メールの宛先</param>
+        /// <param name="recipient">メールの宛先</param>
         /// <returns>宛先メールアドレスと宛先名称</returns>
-        private IEnumerable<NameAndRecipient> GetNameAndRecipient(Outlook.Recipient recip)
+        private IEnumerable<NameAndRecipient> GetNameAndRecipient(Outlook.Recipient recipient)
         {
             var mailAddress = Resources.FailedToGetInformation;
             try
             {
                 mailAddress =
-                    recip.PropertyAccessor.GetProperty("http://schemas.microsoft.com/mapi/proptag/0x39FE001E")
+                    recipient.PropertyAccessor.GetProperty("http://schemas.microsoft.com/mapi/proptag/0x39FE001E")
                         .ToString() ?? Resources.FailedToGetInformation;
             }
             catch (Exception)
@@ -178,13 +178,13 @@ namespace OutlookOkan.Models
             }
 
             string nameAndMailAddress;
-            if (string.IsNullOrEmpty(recip.Name))
+            if (string.IsNullOrEmpty(recipient.Name))
             {
                 nameAndMailAddress = mailAddress ?? Resources.FailedToGetInformation;
             }
             else
             {
-                nameAndMailAddress = recip.Name.Contains($@" ({mailAddress})") ? recip.Name : recip.Name + $@" ({mailAddress})";
+                nameAndMailAddress = recipient.Name.Contains($@" ({mailAddress})") ? recipient.Name : recipient.Name + $@" ({mailAddress})";
             }
 
             //ケースによってメールアドレスのみを正しく取得できない恐れがあるため、その場合は、表示名称をメールアドレスとして登録する。
@@ -199,17 +199,17 @@ namespace OutlookOkan.Models
         /// <summary>
         /// Exchangeの配布リストを展開して宛先メールアドレスと宛先名称を取得する。(入れ子は非展開)
         /// </summary>
-        /// <param name="recip">メールの宛先</param>
+        /// <param name="recipient">メールの宛先</param>
         /// <param name="enableGetExchangeDistributionListMembers">配布リスト展開のオンオフ設定</param>
         /// <param name="exchangeDistributionListMembersAreWhite">配布リストで展開したアドレスをホワイトリスト化するか否かの設定</param>
         /// <returns>宛先メールアドレスと宛先名称</returns>
-        private IEnumerable<NameAndRecipient> GetExchangeDistributionListMembers(Outlook.Recipient recip, bool enableGetExchangeDistributionListMembers, bool exchangeDistributionListMembersAreWhite)
+        private IEnumerable<NameAndRecipient> GetExchangeDistributionListMembers(Outlook.Recipient recipient, bool enableGetExchangeDistributionListMembers, bool exchangeDistributionListMembersAreWhite)
         {
-            if (recip.AddressEntry.AddressEntryUserType != Outlook.OlAddressEntryUserType.olExchangeDistributionListAddressEntry) return null;
+            if (recipient.AddressEntry.AddressEntryUserType != Outlook.OlAddressEntryUserType.olExchangeDistributionListAddressEntry) return null;
 
             try
             {
-                var distributionList = recip.AddressEntry.GetExchangeDistributionList();
+                var distributionList = recipient.AddressEntry.GetExchangeDistributionList();
                 var addressEntries = distributionList.GetExchangeDistributionListMembers();
 
                 if (addressEntries is null) return null;
@@ -265,30 +265,30 @@ namespace OutlookOkan.Models
         /// <summary>
         /// 連絡先グループを展開して宛先メールアドレスと宛先名称を取得する。(入れ子も自動展開)
         /// </summary>
-        /// <param name="recip">メールの宛先</param>
+        /// <param name="recipient">メールの宛先</param>
         /// <param name="contactGroupId">既に確認したGroupID</param>
         /// <param name="enableGetContactGroupMembers">連絡先グループ展開のオンオフ設定</param>
         /// <param name="contactGroupMembersAreWhite">連絡先グループで展開したアドレスをホワイトリスト化するか否かの設定</param>
         /// <returns>宛先メールアドレスと宛先名称</returns>
-        private IEnumerable<NameAndRecipient> GetContactGroupMembers(Outlook.Recipient recip, string contactGroupId, bool enableGetContactGroupMembers, bool contactGroupMembersAreWhite)
+        private IEnumerable<NameAndRecipient> GetContactGroupMembers(Outlook.Recipient recipient, string contactGroupId, bool enableGetContactGroupMembers, bool contactGroupMembersAreWhite)
         {
             var contactGroupMembers = new List<NameAndRecipient>();
             if (!enableGetContactGroupMembers)
             {
-                contactGroupMembers.Add(new NameAndRecipient { MailAddress = recip.Name, NameAndMailAddress = recip.Name + $@" [{Resources.ContactGroup}]" });
+                contactGroupMembers.Add(new NameAndRecipient { MailAddress = recipient.Name, NameAndMailAddress = recipient.Name + $@" [{Resources.ContactGroup}]" });
                 return contactGroupMembers;
             }
 
             string entryId;
             if (contactGroupId is null)
             {
-                var entryIdLength = Convert.ToInt32(recip.AddressEntry.ID.Substring(66, 2) + recip.AddressEntry.ID.Substring(64, 2), 16) * 2;
-                entryId = recip.AddressEntry.ID.Substring(72, entryIdLength);
+                var entryIdLength = Convert.ToInt32(recipient.AddressEntry.ID.Substring(66, 2) + recipient.AddressEntry.ID.Substring(64, 2), 16) * 2;
+                entryId = recipient.AddressEntry.ID.Substring(72, entryIdLength);
             }
             else
             {
                 //入れ子の場合のID
-                entryId = recip.AddressEntry.ID.Substring(42);
+                entryId = recipient.AddressEntry.ID.Substring(42);
             }
 
             if (contactGroupId?.Contains(entryId) == true) return null;
@@ -326,20 +326,20 @@ namespace OutlookOkan.Models
         /// <param name="generalSetting">一般設定</param>
         private void MakeDisplayNameAndRecipient(IEnumerable recipients, GeneralSetting generalSetting)
         {
-            foreach (Outlook.Recipient recip in recipients)
+            foreach (Outlook.Recipient recipient in recipients)
             {
                 var nameAndRecipient = new List<NameAndRecipient>();
 
-                switch (recip.AddressEntry.AddressEntryUserType)
+                switch (recipient.AddressEntry.AddressEntryUserType)
                 {
                     case Outlook.OlAddressEntryUserType.olExchangeDistributionListAddressEntry:
-                        nameAndRecipient.AddRange(GetExchangeDistributionListMembers(recip, generalSetting.EnableGetExchangeDistributionListMembers, generalSetting.ExchangeDistributionListMembersAreWhite));
+                        nameAndRecipient.AddRange(GetExchangeDistributionListMembers(recipient, generalSetting.EnableGetExchangeDistributionListMembers, generalSetting.ExchangeDistributionListMembersAreWhite));
                         break;
                     case Outlook.OlAddressEntryUserType.olOutlookDistributionListAddressEntry:
-                        nameAndRecipient.AddRange(GetContactGroupMembers(recip, null, generalSetting.EnableGetContactGroupMembers, generalSetting.ContactGroupMembersAreWhite));
+                        nameAndRecipient.AddRange(GetContactGroupMembers(recipient, null, generalSetting.EnableGetContactGroupMembers, generalSetting.ContactGroupMembersAreWhite));
                         break;
                     default:
-                        nameAndRecipient.AddRange(GetNameAndRecipient(recip));
+                        nameAndRecipient.AddRange(GetNameAndRecipient(recipient));
                         break;
                 }
 
@@ -356,7 +356,7 @@ namespace OutlookOkan.Models
 
                     //TODO Temporary processing. It will be improved.
                     //名称と差出人とメールアドレスの紐づけをTo/CC/BCCそれぞれに格納
-                    switch (recip.Type)
+                    switch (recipient.Type)
                     {
                         case 1:
                             if (_toDisplayNameAndRecipient.ContainsKey(item.MailAddress))
@@ -509,19 +509,19 @@ namespace OutlookOkan.Models
                     {
                         if (!autoAddedCcAddressList.Contains(i.AutoAddAddress) && !_ccDisplayNameAndRecipient.ContainsKey(i.AutoAddAddress))
                         {
-                            var recip = mail.Recipients.Add(i.AutoAddAddress);
-                            recip.Type = (int)Outlook.OlMailRecipientType.olCC;
+                            var recipient = mail.Recipients.Add(i.AutoAddAddress);
+                            recipient.Type = (int)Outlook.OlMailRecipientType.olCC;
 
-                            autoAddRecipients.Add(recip);
+                            autoAddRecipients.Add(recipient);
                             autoAddedCcAddressList.Add(i.AutoAddAddress);
                         }
                     }
                     else if (!autoAddedBccAddressList.Contains(i.AutoAddAddress) && !_bccDisplayNameAndRecipient.ContainsKey(i.AutoAddAddress))
                     {
-                        var recip = mail.Recipients.Add(i.AutoAddAddress);
-                        recip.Type = (int)Outlook.OlMailRecipientType.olBCC;
+                        var recipient = mail.Recipients.Add(i.AutoAddAddress);
+                        recipient.Type = (int)Outlook.OlMailRecipientType.olBCC;
 
-                        autoAddRecipients.Add(recip);
+                        autoAddRecipients.Add(recipient);
                         autoAddedBccAddressList.Add(i.AutoAddAddress);
                     }
 
@@ -547,19 +547,19 @@ namespace OutlookOkan.Models
                         {
                             if (!autoAddedCcAddressList.Contains(i.AutoAddAddress) && !_ccDisplayNameAndRecipient.ContainsKey(i.AutoAddAddress))
                             {
-                                var recip = mail.Recipients.Add(i.AutoAddAddress);
-                                recip.Type = (int)Outlook.OlMailRecipientType.olCC;
+                                var recipient = mail.Recipients.Add(i.AutoAddAddress);
+                                recipient.Type = (int)Outlook.OlMailRecipientType.olCC;
 
-                                autoAddRecipients.Add(recip);
+                                autoAddRecipients.Add(recipient);
                                 autoAddedCcAddressList.Add(i.AutoAddAddress);
                             }
                         }
                         else if (!autoAddedBccAddressList.Contains(i.AutoAddAddress) && !_bccDisplayNameAndRecipient.ContainsKey(i.AutoAddAddress))
                         {
-                            var recip = mail.Recipients.Add(i.AutoAddAddress);
-                            recip.Type = (int)Outlook.OlMailRecipientType.olBCC;
+                            var recipient = mail.Recipients.Add(i.AutoAddAddress);
+                            recipient.Type = (int)Outlook.OlMailRecipientType.olBCC;
 
-                            autoAddRecipients.Add(recip);
+                            autoAddRecipients.Add(recipient);
                             autoAddedBccAddressList.Add(i.AutoAddAddress);
                         }
 
@@ -573,8 +573,8 @@ namespace OutlookOkan.Models
 
             //Load AutoCcBccRecipientList
             // TODO To be improved
-            var autoCcBccRecipientListcsv = new ReadAndWriteCsv("AutoCcBccRecipientList.csv");
-            var autoCcBccRecipientList = autoCcBccRecipientListcsv.GetCsvRecords<AutoCcBccRecipient>(autoCcBccRecipientListcsv.LoadCsv<AutoCcBccRecipientMap>());
+            var autoCcBccRecipientListCsv = new ReadAndWriteCsv("AutoCcBccRecipientList.csv");
+            var autoCcBccRecipientList = autoCcBccRecipientListCsv.GetCsvRecords<AutoCcBccRecipient>(autoCcBccRecipientListCsv.LoadCsv<AutoCcBccRecipientMap>());
 
             if (autoCcBccRecipientList.Count != 0)
             {
@@ -586,19 +586,19 @@ namespace OutlookOkan.Models
                     {
                         if (!autoAddedCcAddressList.Contains(i.AutoAddAddress) && !_ccDisplayNameAndRecipient.ContainsKey(i.AutoAddAddress))
                         {
-                            var recip = mail.Recipients.Add(i.AutoAddAddress);
-                            recip.Type = (int)Outlook.OlMailRecipientType.olCC;
+                            var recipient = mail.Recipients.Add(i.AutoAddAddress);
+                            recipient.Type = (int)Outlook.OlMailRecipientType.olCC;
 
-                            autoAddRecipients.Add(recip);
+                            autoAddRecipients.Add(recipient);
                             autoAddedCcAddressList.Add(i.AutoAddAddress);
                         }
                     }
                     else if (!autoAddedBccAddressList.Contains(i.AutoAddAddress) && !_bccDisplayNameAndRecipient.ContainsKey(i.AutoAddAddress))
                     {
-                        var recip = mail.Recipients.Add(i.AutoAddAddress);
-                        recip.Type = (int)Outlook.OlMailRecipientType.olBCC;
+                        var recipient = mail.Recipients.Add(i.AutoAddAddress);
+                        recipient.Type = (int)Outlook.OlMailRecipientType.olBCC;
 
-                        autoAddRecipients.Add(recip);
+                        autoAddRecipients.Add(recipient);
                         autoAddedBccAddressList.Add(i.AutoAddAddress);
                     }
 
@@ -646,7 +646,7 @@ namespace OutlookOkan.Models
         /// </summary>
         /// <param name="mail"></param>
         /// <param name="isNotTreatedAsAttachmentsAtHtmlEmbeddedFiles"></param>
-        private void GetAttachmentsInfomation(in Outlook._MailItem mail, bool isNotTreatedAsAttachmentsAtHtmlEmbeddedFiles)
+        private void GetAttachmentsInformation(in Outlook._MailItem mail, bool isNotTreatedAsAttachmentsAtHtmlEmbeddedFiles)
         {
             if (mail.Attachments.Count == 0) return;
 
@@ -690,14 +690,14 @@ namespace OutlookOkan.Models
                     isDangerous = true;
                 }
 
-                string attachmetName;
+                string fileName;
                 try
                 {
-                    attachmetName = mail.Attachments[i + 1].FileName;
+                    fileName = mail.Attachments[i + 1].FileName;
                 }
                 catch (Exception)
                 {
-                    attachmetName = Resources.Unknown;
+                    fileName = Resources.Unknown;
                 }
 
                 //情報取得に完全に失敗した添付ファイルは無視する。(リッチテキスト形式の埋め込み画像など)
@@ -708,7 +708,7 @@ namespace OutlookOkan.Models
                 {
                     _checkList.Attachments.Add(new Attachment
                     {
-                        FileName = attachmetName,
+                        FileName = fileName,
                         FileSize = fileSize,
                         FileType = fileType,
                         IsTooBig = mail.Attachments[i + 1].Size >= 10485760,
@@ -723,14 +723,14 @@ namespace OutlookOkan.Models
         /// <summary>
         /// 登録された名称とドメインから、宛先候補ではないアドレスが宛先に含まれている場合に、警告を表示する。
         /// </summary>
-        private void CheckMailbodyAndRecipient()
+        private void CheckMailBodyAndRecipient()
         {
             //Load NameAndDomainsList
             var csv = new ReadAndWriteCsv("NameAndDomains.csv");
             var nameAndDomainsList = csv.GetCsvRecords<NameAndDomains>(csv.LoadCsv<NameAndDomainsMap>());
 
             //メールの本文中に、登録された名称があるか確認。
-            var recipientCandidateDomains = (from nameAnddomain in nameAndDomainsList where _checkList.MailBody.Contains(nameAnddomain.Name) select nameAnddomain.Domain).ToList();
+            var recipientCandidateDomains = (from nameAndDomain in nameAndDomainsList where _checkList.MailBody.Contains(nameAndDomain.Name) select nameAndDomain.Domain).ToList();
 
             //登録された名称かつ本文中に登場した名称以外のドメインが宛先に含まれている場合、警告を表示。
             //送信先の候補が見つからない場合、何もしない。(見つからない場合の方が多いため、警告ばかりになってしまう。)
@@ -761,7 +761,7 @@ namespace OutlookOkan.Models
 
             //Load AlertAddressList
             readCsv = new ReadAndWriteCsv("AlertAddressList.csv");
-            var alertAddresslist = readCsv.GetCsvRecords<AlertAddress>(readCsv.LoadCsv<AlertAddressMap>());
+            var alertAddressList = readCsv.GetCsvRecords<AlertAddress>(readCsv.LoadCsv<AlertAddressMap>());
 
             // 宛先や登録名から、表示用テキスト(メールアドレスや登録名)を各エリアに表示。
             // 宛先ドメインが送信元ドメインと異なる場合、色を変更するフラグをtrue、そうでない場合falseとする。
@@ -788,7 +788,7 @@ namespace OutlookOkan.Models
 
                 _checkList.ToAddresses.Add(new Address { MailAddress = i.Value, IsExternal = isExternal, IsWhite = isWhite, IsChecked = isWhite, IsSkip = isSkip });
 
-                if (alertAddresslist.Count == 0 || !alertAddresslist.Any(address => i.Key.Contains(address.TartgetAddress))) continue;
+                if (alertAddressList.Count == 0 || !alertAddressList.Any(address => i.Key.Contains(address.TargetAddress))) continue;
 
                 _checkList.Alerts.Add(new Alert
                 {
@@ -799,9 +799,9 @@ namespace OutlookOkan.Models
                 });
 
                 //送信禁止アドレスに該当する場合、禁止フラグを立て対象メールアドレスを説明文へ追加。
-                foreach (var alertAddress in alertAddresslist)
+                foreach (var alertAddress in alertAddressList)
                 {
-                    if (!i.Key.Contains(alertAddress.TartgetAddress) || !alertAddress.IsCanNotSend) continue;
+                    if (!i.Key.Contains(alertAddress.TargetAddress) || !alertAddress.IsCanNotSend) continue;
 
                     _checkList.IsCanNotSendMail = true;
                     _checkList.CanNotSendMailMessage = Resources.SendingForbidAddress + $"[{i.Value}]";
@@ -827,7 +827,7 @@ namespace OutlookOkan.Models
 
                 _checkList.CcAddresses.Add(new Address { MailAddress = i.Value, IsExternal = isExternal, IsWhite = isWhite, IsChecked = isWhite, IsSkip = isSkip });
 
-                if (alertAddresslist.Count == 0 || !alertAddresslist.Any(address => i.Key.Contains(address.TartgetAddress))) continue;
+                if (alertAddressList.Count == 0 || !alertAddressList.Any(address => i.Key.Contains(address.TargetAddress))) continue;
 
                 _checkList.Alerts.Add(new Alert
                 {
@@ -838,9 +838,9 @@ namespace OutlookOkan.Models
                 });
 
                 //送信禁止アドレスに該当する場合、禁止フラグを立て対象メールアドレスを説明文へ追加。
-                foreach (var alertAddress in alertAddresslist)
+                foreach (var alertAddress in alertAddressList)
                 {
-                    if (!i.Key.Contains(alertAddress.TartgetAddress) || !alertAddress.IsCanNotSend) continue;
+                    if (!i.Key.Contains(alertAddress.TargetAddress) || !alertAddress.IsCanNotSend) continue;
 
                     _checkList.IsCanNotSendMail = true;
                     _checkList.CanNotSendMailMessage = Resources.SendingForbidAddress + $"[{i.Value}]";
@@ -866,7 +866,7 @@ namespace OutlookOkan.Models
 
                 _checkList.BccAddresses.Add(new Address { MailAddress = i.Value, IsExternal = isExternal, IsWhite = isWhite, IsChecked = isWhite, IsSkip = isSkip });
 
-                if (alertAddresslist.Count == 0 || !alertAddresslist.Any(address => i.Key.Contains(address.TartgetAddress))) continue;
+                if (alertAddressList.Count == 0 || !alertAddressList.Any(address => i.Key.Contains(address.TargetAddress))) continue;
 
                 _checkList.Alerts.Add(new Alert
                 {
@@ -877,9 +877,9 @@ namespace OutlookOkan.Models
                 });
 
                 //送信禁止アドレスに該当する場合、禁止フラグを立て対象メールアドレスを説明文へ追加。
-                foreach (var alertAddress in alertAddresslist)
+                foreach (var alertAddress in alertAddressList)
                 {
-                    if (!i.Key.Contains(alertAddress.TartgetAddress) || !alertAddress.IsCanNotSend) continue;
+                    if (!i.Key.Contains(alertAddress.TargetAddress) || !alertAddress.IsCanNotSend) continue;
 
                     _checkList.IsCanNotSendMail = true;
                     _checkList.CanNotSendMailMessage = Resources.SendingForbidAddress + $"[{i.Value}]";
@@ -903,7 +903,7 @@ namespace OutlookOkan.Models
             //@のみで登録していた場合、それを標準の送信遅延時間とする。
             foreach (var config in deferredDeliveryMinutes)
             {
-                if (config.TartgetAddress == "@")
+                if (config.TargetAddress == "@")
                 {
                     deferredMinutes = config.DeferredMinutes;
                 }
@@ -915,7 +915,7 @@ namespace OutlookOkan.Models
                 {
                     foreach (var config in deferredDeliveryMinutes)
                     {
-                        if (toRecipients.Value.Contains(config.TartgetAddress) && deferredMinutes < config.DeferredMinutes)
+                        if (toRecipients.Value.Contains(config.TargetAddress) && deferredMinutes < config.DeferredMinutes)
                         {
                             deferredMinutes = config.DeferredMinutes;
                         }
@@ -929,7 +929,7 @@ namespace OutlookOkan.Models
                 {
                     foreach (var config in deferredDeliveryMinutes)
                     {
-                        if (ccRecipients.Value.Contains(config.TartgetAddress) && deferredMinutes < config.DeferredMinutes)
+                        if (ccRecipients.Value.Contains(config.TargetAddress) && deferredMinutes < config.DeferredMinutes)
                         {
                             deferredMinutes = config.DeferredMinutes;
                         }
@@ -943,7 +943,7 @@ namespace OutlookOkan.Models
                 {
                     foreach (var config in deferredDeliveryMinutes)
                     {
-                        if (bccRecipients.Value.Contains(config.TartgetAddress) && deferredMinutes < config.DeferredMinutes)
+                        if (bccRecipients.Value.Contains(config.TargetAddress) && deferredMinutes < config.DeferredMinutes)
                         {
                             deferredMinutes = config.DeferredMinutes;
                         }
