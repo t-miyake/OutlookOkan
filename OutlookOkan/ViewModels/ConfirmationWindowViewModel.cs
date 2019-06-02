@@ -231,7 +231,7 @@ namespace OutlookOkan.ViewModels
             set
             {
                 _deferredDeliveryMinutes = value;
-                OnPropertyChanged("DefferdDeliveryMinutes");
+                OnPropertyChanged("DeferredDeliveryMinutes");
             }
         }
 

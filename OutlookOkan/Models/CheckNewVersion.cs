@@ -26,7 +26,7 @@ namespace OutlookOkan.Models
                     if (string.IsNullOrEmpty(versionFile)) return false;
 
                     var fetchedVersion = int.Parse(versionFile.Replace(".", ""));
-                    return fetchedVersion > GetCurrentVerison();
+                    return fetchedVersion > GetCurrentVersion();
 
                 }
                 catch (Exception)
@@ -40,7 +40,7 @@ namespace OutlookOkan.Models
         /// 現在使用しているアドインのバージョンを取得する。
         /// </summary>
         /// <returns>現在使用しているアドインのバージョン</returns>
-        private int GetCurrentVerison()
+        private int GetCurrentVersion()
         {
             var assemblyName = Assembly.GetExecutingAssembly().GetName();
             return int.Parse(assemblyName.Version.Major.ToString() + assemblyName.Version.Minor.ToString() + assemblyName.Version.Build.ToString() + assemblyName.Version.Revision.ToString());

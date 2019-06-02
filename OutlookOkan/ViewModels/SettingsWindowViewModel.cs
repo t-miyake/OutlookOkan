@@ -38,19 +38,19 @@ namespace OutlookOkan.ViewModels
             ImportAutoCcBccAttachedFilesList = new RelayCommand(ImportAutoCcBccAttachedFilesFromCsv);
             ExportAutoCcBccAttachedFilesList = new RelayCommand(ExportAutoCcBccAttachedFilesToCsv);
 
-            ImportDeferredDeliveryMinutesesList = new RelayCommand(ImportDeferredDeliveryMinutesFromCsv);
-            ExportDeferredDeliveryMinutesesList = new RelayCommand(ExportDeferredDeliveryMinutesToCsv);
+            ImportDeferredDeliveryMinutesList = new RelayCommand(ImportDeferredDeliveryMinutesFromCsv);
+            ExportDeferredDeliveryMinutesList = new RelayCommand(ExportDeferredDeliveryMinutesToCsv);
 
             //言語コードと名称をロード
-            var langlist = new Languages();
-            Languages = langlist.Language;
+            var languages = new Languages();
+            Languages = languages.Language;
 
             //Load settings from csv.
             LoadGeneralSettingData();
             LoadWhitelistData();
             LoadNameAndDomainsData();
             LoadAlertKeywordAndMessagesData();
-            LoadAlertAddressessData();
+            LoadAlertAddressesData();
             LoadAutoCcBccKeywordsData();
             LoadAutoCcBccRecipientsData();
             LoadAutoCcBccAttachedFilesData();
@@ -307,7 +307,7 @@ namespace OutlookOkan.ViewModels
         public ICommand ImportAlertAddressesList { get; }
         public ICommand ExportAlertAddressesList { get; }
 
-        private void LoadAlertAddressessData()
+        private void LoadAlertAddressesData()
         {
             var readCsv = new ReadAndWriteCsv("AlertAddressList.csv");
             var alertAddresses = readCsv.GetCsvRecords<AlertAddress>(readCsv.LoadCsv<AlertAddressMap>());
@@ -605,8 +605,8 @@ namespace OutlookOkan.ViewModels
 
         #region DeferredDelivery
 
-        public ICommand ImportDeferredDeliveryMinutesesList { get; }
-        public ICommand ExportDeferredDeliveryMinutesesList { get; }
+        public ICommand ImportDeferredDeliveryMinutesList { get; }
+        public ICommand ExportDeferredDeliveryMinutesList { get; }
 
         private void LoadDeferredDeliveryMinutesData()
         {
@@ -615,14 +615,14 @@ namespace OutlookOkan.ViewModels
 
             foreach (var data in deferredDeliveryMinutes)
             {
-                DeferredDeliveryMinuteses.Add(data);
+                DeferredDeliveryMinutes.Add(data);
             }
         }
 
         private async Task SaveDeferredDeliveryMinutesToCsv()
         {
             var list = new ArrayList();
-            foreach (var data in DeferredDeliveryMinuteses)
+            foreach (var data in DeferredDeliveryMinutes)
             {
                 list.Add(data);
             }
@@ -642,7 +642,7 @@ namespace OutlookOkan.ViewModels
                 var importData = new List<DeferredDeliveryMinutes>(importAction.GetCsvRecords<DeferredDeliveryMinutes>(importAction.LoadCsv<DeferredDeliveryMinutesMap>(filePath)));
                 foreach (var data in importData)
                 {
-                    DeferredDeliveryMinuteses.Add(data);
+                    DeferredDeliveryMinutes.Add(data);
                 }
 
                 MessageBox.Show(Properties.Resources.SuccessfulImport);
@@ -656,7 +656,7 @@ namespace OutlookOkan.ViewModels
         private void ExportDeferredDeliveryMinutesToCsv()
         {
             var list = new ArrayList();
-            foreach (var data in DeferredDeliveryMinuteses)
+            foreach (var data in DeferredDeliveryMinutes)
             {
                 list.Add(data);
             }
@@ -665,14 +665,14 @@ namespace OutlookOkan.ViewModels
             exportAction.CsvExport<DeferredDeliveryMinutesMap>(list, "DeferredDeliveryMinutes.csv");
         }
 
-        private ObservableCollection<DeferredDeliveryMinutes> _deferredDeliveryMinuteses = new ObservableCollection<DeferredDeliveryMinutes>();
-        public ObservableCollection<DeferredDeliveryMinutes> DeferredDeliveryMinuteses
+        private ObservableCollection<DeferredDeliveryMinutes> _deferredDeliveryMinutes = new ObservableCollection<DeferredDeliveryMinutes>();
+        public ObservableCollection<DeferredDeliveryMinutes> DeferredDeliveryMinutes
         {
-            get => _deferredDeliveryMinuteses;
+            get => _deferredDeliveryMinutes;
             set
             {
-                _deferredDeliveryMinuteses = value;
-                OnPropertyChanged("DeferredDeliveryMinuteses");
+                _deferredDeliveryMinutes = value;
+                OnPropertyChanged("DeferredDeliveryMinutes");
             }
         }
 

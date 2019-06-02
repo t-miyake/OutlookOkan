@@ -160,22 +160,22 @@ namespace OutlookOkan
             _generalSetting.IsNotTreatedAsAttachmentsAtHtmlEmbeddedFiles = generalSetting[0].IsNotTreatedAsAttachmentsAtHtmlEmbeddedFiles;
         }
 
-        private bool IsAllChedked(CheckList checkLlist)
+        private bool IsAllChecked(CheckList checkList)
         {
-            var isToAddressesCompleteChecked = checkLlist.ToAddresses.Count(x => x.IsChecked) == checkLlist.ToAddresses.Count;
-            var isCcAddressesCompleteChecked = checkLlist.CcAddresses.Count(x => x.IsChecked) == checkLlist.CcAddresses.Count;
-            var isBccAddressesCompleteChecked = checkLlist.BccAddresses.Count(x => x.IsChecked) == checkLlist.BccAddresses.Count;
-            var isAlertsCompleteChecked = checkLlist.Alerts.Count(x => x.IsChecked) == checkLlist.Alerts.Count;
-            var isAttachmentsCompleteChecked = checkLlist.Attachments.Count(x => x.IsChecked) == checkLlist.Attachments.Count;
+            var isToAddressesCompleteChecked = checkList.ToAddresses.Count(x => x.IsChecked) == checkList.ToAddresses.Count;
+            var isCcAddressesCompleteChecked = checkList.CcAddresses.Count(x => x.IsChecked) == checkList.CcAddresses.Count;
+            var isBccAddressesCompleteChecked = checkList.BccAddresses.Count(x => x.IsChecked) == checkList.BccAddresses.Count;
+            var isAlertsCompleteChecked = checkList.Alerts.Count(x => x.IsChecked) == checkList.Alerts.Count;
+            var isAttachmentsCompleteChecked = checkList.Attachments.Count(x => x.IsChecked) == checkList.Attachments.Count;
 
             return isToAddressesCompleteChecked && isCcAddressesCompleteChecked && isBccAddressesCompleteChecked && isAlertsCompleteChecked && isAttachmentsCompleteChecked;
         }
 
-        private bool IsAllRecipientsAreSameDomain(CheckList checkLlist)
+        private bool IsAllRecipientsAreSameDomain(CheckList checkList)
         {
-            var isAllToRecipientsAreSameDomain = checkLlist.ToAddresses.Count(x => !x.IsExternal) == checkLlist.ToAddresses.Count;
-            var isAllCcRecipientsAreSameDomain = checkLlist.CcAddresses.Count(x => !x.IsExternal) == checkLlist.CcAddresses.Count;
-            var isAllBccRecipientsAreSameDomain = checkLlist.BccAddresses.Count(x => !x.IsExternal) == checkLlist.BccAddresses.Count;
+            var isAllToRecipientsAreSameDomain = checkList.ToAddresses.Count(x => !x.IsExternal) == checkList.ToAddresses.Count;
+            var isAllCcRecipientsAreSameDomain = checkList.CcAddresses.Count(x => !x.IsExternal) == checkList.CcAddresses.Count;
+            var isAllBccRecipientsAreSameDomain = checkList.BccAddresses.Count(x => !x.IsExternal) == checkList.BccAddresses.Count;
 
             return isAllToRecipientsAreSameDomain && isAllCcRecipientsAreSameDomain && isAllBccRecipientsAreSameDomain;
         }
@@ -185,7 +185,7 @@ namespace OutlookOkan
             if (checklist.RecipientExternalDomainNum >= 2 && _generalSetting.IsShowConfirmationToMultipleDomain)
             {
                 //全ての宛先が確認対象だが、複数のドメインが宛先に含まれる場合は確認画面を表示するオプションが有効かつその状態のため、スキップしない。
-                //他の判定より優先されるため先に確認して、先にretrunする。
+                //他の判定より優先されるため先に確認して、先にreturnする。
                 return true;
             }
 
@@ -201,7 +201,7 @@ namespace OutlookOkan
                 return false;
             }
 
-            if (_generalSetting.IsDoDoNotConfirmationIfAllWhite && IsAllChedked(checklist))
+            if (_generalSetting.IsDoDoNotConfirmationIfAllWhite && IsAllChecked(checklist))
             {
                 //全てにチェックが入った状態の場合に確認画面を表示しないオプションが有効かつその状態のためスキップ.
                 return false;
