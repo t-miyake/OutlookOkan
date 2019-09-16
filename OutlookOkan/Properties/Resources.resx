@@ -492,7 +492,7 @@ Do you want to download it?</value>
     <value>Auto add CC/BCC (AttachedFile)</value>
   </data>
   <data name="IsNotTreatedAsAttachmentsAtHtmlEmbeddedFiles" xml:space="preserve">
-    <value>[Beta] HTML mail embedded files are not treated as attachments.</value>
+    <value>HTML mail embedded files are not treated as attachments.</value>
   </data>
   <data name="SettingExampleAutoAddCCorBCCByAttachedFile" xml:space="preserve">
     <value>Type: CC or BCC
