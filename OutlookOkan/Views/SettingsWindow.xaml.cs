@@ -32,7 +32,7 @@ namespace OutlookOkan.Views
             {
                 //@のみで登録すると全てのメールアドレスが対象になるため、それを禁止。
                 if (!inputText.Equals("@")) return;
-                MessageBox.Show(Properties.Resources.InputMailaddressOrDomain);
+                MessageBox.Show(Properties.Resources.InputMailaddressOrDomain, Properties.Resources.AppName, MessageBoxButton.OK);
                 e.Cancel = true;
             }
         }
@@ -52,14 +52,14 @@ namespace OutlookOkan.Views
                 var inputText = ((TextBox)e.EditingElement).Text;
                 if (string.IsNullOrEmpty(inputText) || !inputText.Contains("@"))
                 {
-                    MessageBox.Show(Properties.Resources.InputMailaddressOrDomain);
+                    MessageBox.Show(Properties.Resources.InputMailaddressOrDomain, Properties.Resources.AppName, MessageBoxButton.OK);
                     e.Cancel = true;
                 }
                 else
                 {
                     //@のみで登録すると全てのメールアドレスが対象になるため、それを禁止。
                     if (!inputText.Equals("@")) return;
-                    MessageBox.Show(Properties.Resources.InputMailaddressOrDomain);
+                    MessageBox.Show(Properties.Resources.InputMailaddressOrDomain, Properties.Resources.AppName, MessageBoxButton.OK);
                     e.Cancel = true;
                 }
             }
@@ -87,13 +87,13 @@ namespace OutlookOkan.Views
             {
                 case 0:
                     if (!string.IsNullOrEmpty(((TextBox)e.EditingElement).Text) && ((TextBox)e.EditingElement).Text.Contains("@")) return;
-                    MessageBox.Show(Properties.Resources.InputMailaddressOrDomain);
+                    MessageBox.Show(Properties.Resources.InputMailaddressOrDomain, Properties.Resources.AppName, MessageBoxButton.OK);
                     e.Cancel = true;
                     return;
                 case 1:
                     var regex = new Regex("[^0-9]+$");
                     if (!regex.IsMatch(((TextBox)e.EditingElement).Text)) return;
-                    MessageBox.Show(Properties.Resources.InputDeferredDeliveryTime);
+                    MessageBox.Show(Properties.Resources.InputDeferredDeliveryTime, Properties.Resources.AppName, MessageBoxButton.OK);
                     e.Cancel = true;
                     break;
                 default:
@@ -123,7 +123,7 @@ namespace OutlookOkan.Views
             var viewModel = DataContext as SettingsWindowViewModel;
             viewModel?.SaveSettings();
 
-            MessageBox.Show(Properties.Resources.SaveSettings);
+            MessageBox.Show(Properties.Resources.SaveSettings, Properties.Resources.AppName, MessageBoxButton.OK);
         }
 
         #endregion

@@ -5,11 +5,9 @@ using OutlookOkan.Services;
 using OutlookOkan.Types;
 using OutlookOkan.Views;
 using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Windows;
 using System.Windows.Interop;
-using MessageBox = System.Windows.MessageBox;
 using Outlook = Microsoft.Office.Interop.Outlook;
 
 namespace OutlookOkan
@@ -56,21 +54,18 @@ namespace OutlookOkan
                 //送信先と同一のドメインはあらかじめチェックを入れるオプションが有効な場合、それをする。
                 if (_generalSetting.IsAutoCheckIfAllRecipientsAreSameDomain)
                 {
-                    foreach (var to in checklist.ToAddresses)
+                    foreach (var to in checklist.ToAddresses.Where(to => !to.IsExternal))
                     {
-                        if (to.IsExternal) continue;
                         to.IsChecked = true;
                     }
 
-                    foreach (var cc in checklist.CcAddresses)
+                    foreach (var cc in checklist.CcAddresses.Where(cc => !cc.IsExternal))
                     {
-                        if (cc.IsExternal) continue;
                         cc.IsChecked = true;
                     }
 
-                    foreach (var bcc in checklist.BccAddresses)
+                    foreach (var bcc in checklist.BccAddresses.Where(bcc => !bcc.IsExternal))
                     {
-                        if (bcc.IsExternal) continue;
                         bcc.IsChecked = true;
                     }
                 }
@@ -105,9 +100,9 @@ namespace OutlookOkan
                     var outlookHandle = new NativeMethods(activeWindow).Handle;
                     _ = new WindowInteropHelper(confirmationWindow) { Owner = outlookHandle };
 
-                    var dialogResult = confirmationWindow.ShowDialog();
+                    var dialogResult = confirmationWindow.ShowDialog() ?? false;
 
-                    if (dialogResult == true)
+                    if (dialogResult)
                     {
                         //Send Mail.
                     }
@@ -137,12 +132,8 @@ namespace OutlookOkan
 
         private void LoadGeneralSetting(bool isLaunch)
         {
-            var generalSetting = new List<GeneralSetting>();
             var readCsv = new ReadAndWriteCsv("GeneralSetting.csv");
-            foreach (var data in readCsv.GetCsvRecords<GeneralSetting>(readCsv.LoadCsv<GeneralSettingMap>()))
-            {
-                generalSetting.Add(data);
-            }
+            var generalSetting = readCsv.GetCsvRecords<GeneralSetting>(readCsv.LoadCsv<GeneralSettingMap>()).ToList();
 
             if (generalSetting.Count == 0) return;
 

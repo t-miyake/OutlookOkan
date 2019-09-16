@@ -2,12 +2,12 @@
 using OutlookOkan.Services;
 using OutlookOkan.Types;
 using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Globalization;
+using System.Linq;
 using System.Threading.Tasks;
-using System.Windows.Forms;
+using System.Windows;
 using System.Windows.Input;
 
 namespace OutlookOkan.ViewModels
@@ -93,12 +93,7 @@ namespace OutlookOkan.ViewModels
 
         private async Task SaveWhiteListToCsv()
         {
-            var list = new ArrayList();
-            foreach (var data in Whitelist)
-            {
-                list.Add(data);
-            }
-
+            var list = Whitelist.Cast<object>().ToList();
             var writeCsv = new ReadAndWriteCsv("Whitelist.csv");
             await Task.Run(() => writeCsv.WriteRecordsToCsv<WhitelistMap>(list));
         }
@@ -118,22 +113,17 @@ namespace OutlookOkan.ViewModels
                     Whitelist.Add(data);
                 }
 
-                MessageBox.Show(Properties.Resources.SuccessfulImport);
+                MessageBox.Show(Properties.Resources.SuccessfulImport, Properties.Resources.AppName, MessageBoxButton.OK);
             }
             catch (Exception)
             {
-                MessageBox.Show(Properties.Resources.ImportFailed);
+                MessageBox.Show(Properties.Resources.ImportFailed, Properties.Resources.AppName, MessageBoxButton.OK);
             }
         }
 
         private void ExportWhiteListToCsv()
         {
-            var list = new ArrayList();
-            foreach (var data in Whitelist)
-            {
-                list.Add(data);
-            }
-
+            var list = Whitelist.Cast<object>().ToList();
             var exportAction = new CsvImportAndExport();
             exportAction.CsvExport<WhitelistMap>(list, "Whitelist.csv");
         }
@@ -169,11 +159,7 @@ namespace OutlookOkan.ViewModels
 
         private async Task SaveNameAndDomainsToCsv()
         {
-            var list = new ArrayList();
-            foreach (var data in NameAndDomains)
-            {
-                list.Add(data);
-            }
+            var list = NameAndDomains.Cast<object>().ToList();
             var writeCsv = new ReadAndWriteCsv("NameAndDomains.csv");
             await Task.Run(() => writeCsv.WriteRecordsToCsv<NameAndDomainsMap>(list));
         }
@@ -193,22 +179,17 @@ namespace OutlookOkan.ViewModels
                     NameAndDomains.Add(data);
                 }
 
-                MessageBox.Show(Properties.Resources.SuccessfulImport);
+                MessageBox.Show(Properties.Resources.SuccessfulImport, Properties.Resources.AppName, MessageBoxButton.OK);
             }
             catch (Exception)
             {
-                MessageBox.Show(Properties.Resources.ImportFailed);
+                MessageBox.Show(Properties.Resources.ImportFailed, Properties.Resources.AppName, MessageBoxButton.OK);
             }
         }
 
         private void ExportNameAndDomainsToCsv()
         {
-            var list = new ArrayList();
-            foreach (var data in NameAndDomains)
-            {
-                list.Add(data);
-            }
-
+            var list = NameAndDomains.Cast<object>().ToList();
             var exportAction = new CsvImportAndExport();
             exportAction.CsvExport<NameAndDomainsMap>(list, "NameAndDomains.csv");
         }
@@ -244,12 +225,7 @@ namespace OutlookOkan.ViewModels
 
         private async Task SaveAlertKeywordAndMessageToCsv()
         {
-            var list = new ArrayList();
-            foreach (var data in AlertKeywordAndMessages)
-            {
-                list.Add(data);
-            }
-
+            var list = AlertKeywordAndMessages.Cast<object>().ToList();
             var writeCsv = new ReadAndWriteCsv("AlertKeywordAndMessageList.csv");
             await Task.Run(() => writeCsv.WriteRecordsToCsv<AlertKeywordAndMessageMap>(list));
         }
@@ -269,22 +245,17 @@ namespace OutlookOkan.ViewModels
                     AlertKeywordAndMessages.Add(data);
                 }
 
-                MessageBox.Show(Properties.Resources.SuccessfulImport);
+                MessageBox.Show(Properties.Resources.SuccessfulImport, Properties.Resources.AppName, MessageBoxButton.OK);
             }
             catch (Exception)
             {
-                MessageBox.Show(Properties.Resources.ImportFailed);
+                MessageBox.Show(Properties.Resources.ImportFailed, Properties.Resources.AppName, MessageBoxButton.OK);
             }
         }
 
         private void ExportAlertKeywordAndMessagesToCsv()
         {
-            var list = new ArrayList();
-            foreach (var data in AlertKeywordAndMessages)
-            {
-                list.Add(data);
-            }
-
+            var list = AlertKeywordAndMessages.Cast<object>().ToList();
             var exportAction = new CsvImportAndExport();
             exportAction.CsvExport<AlertKeywordAndMessageMap>(list, "AlertKeywordAndMessageList.csv");
         }
@@ -320,12 +291,7 @@ namespace OutlookOkan.ViewModels
 
         private async Task SaveAlertAddressesToCsv()
         {
-            var list = new ArrayList();
-            foreach (var data in AlertAddresses)
-            {
-                list.Add(data);
-            }
-
+            var list = AlertAddresses.Cast<object>().ToList();
             var writeCsv = new ReadAndWriteCsv("AlertAddressList.csv");
             await Task.Run(() => writeCsv.WriteRecordsToCsv<AlertAddressMap>(list));
         }
@@ -345,22 +311,17 @@ namespace OutlookOkan.ViewModels
                     AlertAddresses.Add(data);
                 }
 
-                MessageBox.Show(Properties.Resources.SuccessfulImport);
+                MessageBox.Show(Properties.Resources.SuccessfulImport, Properties.Resources.AppName, MessageBoxButton.OK);
             }
             catch (Exception)
             {
-                MessageBox.Show(Properties.Resources.ImportFailed);
+                MessageBox.Show(Properties.Resources.ImportFailed, Properties.Resources.AppName, MessageBoxButton.OK);
             }
         }
 
         private void ExportAlertAddressesToCsv()
         {
-            var list = new ArrayList();
-            foreach (var data in AlertAddresses)
-            {
-                list.Add(data);
-            }
-
+            var list = AlertAddresses.Cast<object>().ToList();
             var exportAction = new CsvImportAndExport();
             exportAction.CsvExport<AlertAddressMap>(list, "AlertAddressList.csv");
         }
@@ -396,11 +357,7 @@ namespace OutlookOkan.ViewModels
 
         private async Task SaveAutoCcBccKeywordsToCsv()
         {
-            var list = new ArrayList();
-            foreach (var data in AutoCcBccKeywords)
-            {
-                list.Add(data);
-            }
+            var list = AutoCcBccKeywords.Cast<object>().ToList();
             var writeCsv = new ReadAndWriteCsv("AutoCcBccKeywordList.csv");
             await Task.Run(() => writeCsv.WriteRecordsToCsv<AutoCcBccKeywordMap>(list));
         }
@@ -420,22 +377,17 @@ namespace OutlookOkan.ViewModels
                     AutoCcBccKeywords.Add(data);
                 }
 
-                MessageBox.Show(Properties.Resources.SuccessfulImport);
+                MessageBox.Show(Properties.Resources.SuccessfulImport, Properties.Resources.AppName, MessageBoxButton.OK);
             }
             catch (Exception)
             {
-                MessageBox.Show(Properties.Resources.ImportFailed);
+                MessageBox.Show(Properties.Resources.ImportFailed, Properties.Resources.AppName, MessageBoxButton.OK);
             }
         }
 
         private void ExportAutoCcBccKeywordsToCsv()
         {
-            var list = new ArrayList();
-            foreach (var data in AutoCcBccKeywords)
-            {
-                list.Add(data);
-            }
-
+            var list = AutoCcBccKeywords.Cast<object>().ToList();
             var exportAction = new CsvImportAndExport();
             exportAction.CsvExport<AutoCcBccKeywordMap>(list, "AutoCcBccKeywordList.csv");
         }
@@ -471,11 +423,7 @@ namespace OutlookOkan.ViewModels
 
         private async Task SaveAutoCcBccRecipientsToCsv()
         {
-            var list = new ArrayList();
-            foreach (var data in AutoCcBccRecipients)
-            {
-                list.Add(data);
-            }
+            var list = AutoCcBccRecipients.Cast<object>().ToList();
             var writeCsv = new ReadAndWriteCsv("AutoCcBccRecipientList.csv");
             await Task.Run(() => writeCsv.WriteRecordsToCsv<AutoCcBccRecipientMap>(list));
         }
@@ -495,22 +443,17 @@ namespace OutlookOkan.ViewModels
                     AutoCcBccRecipients.Add(data);
                 }
 
-                MessageBox.Show(Properties.Resources.SuccessfulImport);
+                MessageBox.Show(Properties.Resources.SuccessfulImport, Properties.Resources.AppName, MessageBoxButton.OK);
             }
             catch (Exception)
             {
-                MessageBox.Show(Properties.Resources.ImportFailed);
+                MessageBox.Show(Properties.Resources.ImportFailed, Properties.Resources.AppName, MessageBoxButton.OK);
             }
         }
 
         private void ExportAutoCcBccRecipientsToCsv()
         {
-            var list = new ArrayList();
-            foreach (var data in AutoCcBccRecipients)
-            {
-                list.Add(data);
-            }
-
+            var list = AutoCcBccRecipients.Cast<object>().ToList();
             var exportAction = new CsvImportAndExport();
             exportAction.CsvExport<AutoCcBccRecipientMap>(list, "AutoCcBccRecipientList.csv");
         }
@@ -546,11 +489,7 @@ namespace OutlookOkan.ViewModels
 
         private async Task SaveAutoCcBccAttachedFilesToCsv()
         {
-            var list = new ArrayList();
-            foreach (var data in AutoCcBccAttachedFiles)
-            {
-                list.Add(data);
-            }
+            var list = AutoCcBccAttachedFiles.Cast<object>().ToList();
             var writeCsv = new ReadAndWriteCsv("AutoCcBccAttachedFileList.csv");
             await Task.Run(() => writeCsv.WriteRecordsToCsv<AutoCcBccAttachedFileMap>(list));
         }
@@ -570,22 +509,17 @@ namespace OutlookOkan.ViewModels
                     AutoCcBccAttachedFiles.Add(data);
                 }
 
-                MessageBox.Show(Properties.Resources.SuccessfulImport);
+                MessageBox.Show(Properties.Resources.SuccessfulImport, Properties.Resources.AppName, MessageBoxButton.OK);
             }
             catch (Exception)
             {
-                MessageBox.Show(Properties.Resources.ImportFailed);
+                MessageBox.Show(Properties.Resources.ImportFailed, Properties.Resources.AppName, MessageBoxButton.OK);
             }
         }
 
         private void ExportAutoCcBccAttachedFilesToCsv()
         {
-            var list = new ArrayList();
-            foreach (var data in AutoCcBccAttachedFiles)
-            {
-                list.Add(data);
-            }
-
+            var list = AutoCcBccAttachedFiles.Cast<object>().ToList();
             var exportAction = new CsvImportAndExport();
             exportAction.CsvExport<AutoCcBccAttachedFileMap>(list, "AutoCcBccAttachedFileList.csv");
         }
@@ -621,11 +555,7 @@ namespace OutlookOkan.ViewModels
 
         private async Task SaveDeferredDeliveryMinutesToCsv()
         {
-            var list = new ArrayList();
-            foreach (var data in DeferredDeliveryMinutes)
-            {
-                list.Add(data);
-            }
+            var list = DeferredDeliveryMinutes.Cast<object>().ToList();
             var writeCsv = new ReadAndWriteCsv("DeferredDeliveryMinutes.csv");
             await Task.Run(() => writeCsv.WriteRecordsToCsv<DeferredDeliveryMinutesMap>(list));
         }
@@ -645,22 +575,17 @@ namespace OutlookOkan.ViewModels
                     DeferredDeliveryMinutes.Add(data);
                 }
 
-                MessageBox.Show(Properties.Resources.SuccessfulImport);
+                MessageBox.Show(Properties.Resources.SuccessfulImport, Properties.Resources.AppName, MessageBoxButton.OK);
             }
             catch (Exception)
             {
-                MessageBox.Show(Properties.Resources.ImportFailed);
+                MessageBox.Show(Properties.Resources.ImportFailed, Properties.Resources.AppName, MessageBoxButton.OK);
             }
         }
 
         private void ExportDeferredDeliveryMinutesToCsv()
         {
-            var list = new ArrayList();
-            foreach (var data in DeferredDeliveryMinutes)
-            {
-                list.Add(data);
-            }
-
+            var list = DeferredDeliveryMinutes.Cast<object>().ToList();
             var exportAction = new CsvImportAndExport();
             exportAction.CsvExport<DeferredDeliveryMinutesMap>(list, "DeferredDeliveryMinutes.csv");
         }
@@ -742,11 +667,7 @@ namespace OutlookOkan.ViewModels
                 }
             };
 
-            var list = new ArrayList();
-            foreach (var data in tempGeneralSetting)
-            {
-                list.Add(data);
-            }
+            var list = tempGeneralSetting.Cast<object>().ToList();
             var writeCsv = new ReadAndWriteCsv("GeneralSetting.csv");
             await Task.Run(() => writeCsv.WriteRecordsToCsv<GeneralSettingMap>(list));
         }
