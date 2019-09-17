@@ -692,7 +692,7 @@ namespace OutlookOkan.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to [Beta] HTML mail embedded files are not treated as attachments..
+        ///   Looks up a localized string similar to HTML mail embedded files are not treated as attachments..
         /// </summary>
         public static string IsNotTreatedAsAttachmentsAtHtmlEmbeddedFiles {
             get {
@@ -1081,7 +1081,7 @@ namespace OutlookOkan.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Version 2.3.1.
+        ///   Looks up a localized string similar to Version 2.3.2.
         /// </summary>
         public static string Version {
             get {

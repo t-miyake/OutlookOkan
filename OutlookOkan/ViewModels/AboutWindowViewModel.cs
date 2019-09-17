@@ -1,6 +1,6 @@
 ﻿using OutlookOkan.Models;
 using System.Diagnostics;
-using System.Windows.Forms;
+using System.Windows;
 using System.Windows.Input;
 
 namespace OutlookOkan.ViewModels
@@ -20,15 +20,15 @@ namespace OutlookOkan.ViewModels
         {
             if (_checkNewVersion.IsCanDownloadNewVersion())
             {
-                var result = MessageBox.Show(Properties.Resources.CanGetNewVersion, Properties.Resources.AppName, MessageBoxButtons.YesNo);
-                if (result == DialogResult.Yes)
+                var result = MessageBox.Show(Properties.Resources.CanGetNewVersion, Properties.Resources.AppName, MessageBoxButton.YesNo);
+                if (result == MessageBoxResult.Yes)
                 {
                     Process.Start("https://github.com/t-miyake/OutlookOkan/releases");
                 }
             }
             else
             {
-                MessageBox.Show(Properties.Resources.YouHaveLatest, Properties.Resources.AppName, MessageBoxButtons.OK);
+                MessageBox.Show(Properties.Resources.YouHaveLatest, Properties.Resources.AppName, MessageBoxButton.OK);
             }
         }
     }

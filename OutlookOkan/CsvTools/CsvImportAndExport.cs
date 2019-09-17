@@ -1,10 +1,11 @@
 ﻿using CsvHelper;
+using Microsoft.Win32;
 using OutlookOkan.Properties;
 using System;
-using System.Collections;
+using System.Collections.Generic;
 using System.IO;
 using System.Text;
-using System.Windows.Forms;
+using System.Windows;
 
 namespace OutlookOkan.CsvTools
 {
@@ -19,7 +20,7 @@ namespace OutlookOkan.CsvTools
         /// <returns>インポートするCSVファイルのパス</returns>
         public string ImportCsv()
         {
-            MessageBox.Show(Resources.CSVImportAlert);
+            MessageBox.Show(Resources.CSVImportAlert, Properties.Resources.AppName, MessageBoxButton.OK);
 
             var openFileDialog = new OpenFileDialog
             {
@@ -28,8 +29,7 @@ namespace OutlookOkan.CsvTools
                 Filter = "CSV|*.csv"
             };
 
-            var importPath = openFileDialog.ShowDialog() == DialogResult.OK ? openFileDialog.FileName : null;
-            openFileDialog.Dispose();
+            var importPath = openFileDialog.ShowDialog() ?? false ? openFileDialog.FileName : null;
 
             _fileEncoding = Encoding.GetEncoding(DetectCharset(importPath));
 
@@ -57,7 +57,7 @@ namespace OutlookOkan.CsvTools
         /// <typeparam name="TMaptype">CsvClassMap型</typeparam>
         /// <param name="records">エクスポートするデータ</param>
         /// <param name="defaultFileName">デフォルトのファイル名(.csvと付けること)</param>
-        public void CsvExport<TMaptype>(ArrayList records, string defaultFileName) where TMaptype : CsvHelper.Configuration.ClassMap
+        public void CsvExport<TMaptype>(List<object> records, string defaultFileName) where TMaptype : CsvHelper.Configuration.ClassMap
         {
             var saveFileDialog = new SaveFileDialog
             {
@@ -68,25 +68,21 @@ namespace OutlookOkan.CsvTools
                 FileName = defaultFileName
             };
 
-            if (saveFileDialog.ShowDialog() == DialogResult.OK)
+            if (!saveFileDialog.ShowDialog() ?? false) return;
+            try
             {
-                try
-                {
-                    var csvWriter = new CsvWriter(new StreamWriter(saveFileDialog.FileName, false, Encoding.UTF8));
-                    csvWriter.Configuration.HasHeaderRecord = false;
-                    csvWriter.Configuration.RegisterClassMap<TMaptype>();
-                    csvWriter.WriteRecords(records);
-                    csvWriter.Dispose();
+                var csvWriter = new CsvWriter(new StreamWriter(saveFileDialog.FileName, false, Encoding.UTF8));
+                csvWriter.Configuration.HasHeaderRecord = false;
+                csvWriter.Configuration.RegisterClassMap<TMaptype>();
+                csvWriter.WriteRecords(records);
+                csvWriter.Dispose();
 
-                    MessageBox.Show(Resources.SuccessfulExport);
-                }
-                catch (Exception e)
-                {
-                    MessageBox.Show(Resources.ExportFailed + e);
-                }
+                MessageBox.Show(Resources.SuccessfulExport, Properties.Resources.AppName, MessageBoxButton.OK);
             }
-
-            saveFileDialog.Dispose();
+            catch (Exception e)
+            {
+                MessageBox.Show(Resources.ExportFailed + e, Properties.Resources.AppName, MessageBoxButton.OK);
+            }
         }
     }
 }

@@ -1,6 +1,6 @@
 ﻿using CsvHelper;
 using System;
-using System.Collections;
+using System.Collections.Generic;
 using System.IO;
 using System.Text;
 
@@ -57,7 +57,7 @@ namespace OutlookOkan.CsvTools
         /// </summary>
         /// <typeparam name="TMaptype">CsvClassMap型</typeparam>
         /// <param name="records">ArrayList型のデータ</param>
-        public void WriteRecordsToCsv<TMaptype>(ArrayList records) where TMaptype : CsvHelper.Configuration.ClassMap
+        public void WriteRecordsToCsv<TMaptype>(List<object> records) where TMaptype : CsvHelper.Configuration.ClassMap
         {
             var csvWriter = new CsvWriter(new StreamWriter(_filePath, false, Encoding.UTF8));
             csvWriter.Configuration.HasHeaderRecord = false;
