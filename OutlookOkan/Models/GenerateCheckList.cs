@@ -333,11 +333,29 @@ namespace OutlookOkan.Models
                 switch (recipient.AddressEntry.AddressEntryUserType)
                 {
                     case Outlook.OlAddressEntryUserType.olExchangeDistributionListAddressEntry:
-                        nameAndRecipient.AddRange(GetExchangeDistributionListMembers(recipient, generalSetting.EnableGetExchangeDistributionListMembers, generalSetting.ExchangeDistributionListMembersAreWhite));
-                        break;
+                        var exchangeMembers = GetExchangeDistributionListMembers(recipient, generalSetting.EnableGetExchangeDistributionListMembers, generalSetting.ExchangeDistributionListMembersAreWhite);
+                        if (exchangeMembers is null)
+                        {
+                            nameAndRecipient.AddRange(GetNameAndRecipient(recipient));
+                            break;
+                        }
+                        else
+                        {
+                            nameAndRecipient.AddRange(exchangeMembers);
+                            break;
+                        }
                     case Outlook.OlAddressEntryUserType.olOutlookDistributionListAddressEntry:
-                        nameAndRecipient.AddRange(GetContactGroupMembers(recipient, null, generalSetting.EnableGetContactGroupMembers, generalSetting.ContactGroupMembersAreWhite));
-                        break;
+                        var addressEntryMembers = GetContactGroupMembers(recipient, null, generalSetting.EnableGetContactGroupMembers, generalSetting.ContactGroupMembersAreWhite);
+                        if (addressEntryMembers is null)
+                        {
+                            nameAndRecipient.AddRange(GetNameAndRecipient(recipient));
+                            break;
+                        }
+                        else
+                        {
+                            nameAndRecipient.AddRange(addressEntryMembers);
+                            break;
+                        }
                     default:
                         nameAndRecipient.AddRange(GetNameAndRecipient(recipient));
                         break;
