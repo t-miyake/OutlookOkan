@@ -66,9 +66,23 @@ namespace OutlookOkan.Models
                 {
                     var tempOutlookApp = new Outlook.Application();
                     var tempRecipient = tempOutlookApp.Session.CreateRecipient(mail.SenderEmailAddress);
-                    var exchangeUser = tempRecipient.AddressEntry.GetExchangeUser();
+                    try
+                    {
+                        var exchangeUser = tempRecipient.AddressEntry.GetExchangeUser();
 
-                    _checkList.Sender = exchangeUser.PrimarySmtpAddress ?? Resources.FailedToGetInformation;
+                        if (exchangeUser is null)
+                        {
+                            _checkList.Sender = Resources.FailedToGetInformation;
+                        }
+                        else
+                        {
+                            _checkList.Sender = exchangeUser.PrimarySmtpAddress ?? Resources.FailedToGetInformation;
+                        }
+                    }
+                    catch (Exception)
+                    {
+                        _checkList.Sender = Resources.FailedToGetInformation;
+                    }
                 }
                 else
                 {
