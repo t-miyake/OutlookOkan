@@ -66,9 +66,23 @@ namespace OutlookOkan.Models
                 {
                     var tempOutlookApp = new Outlook.Application();
                     var tempRecipient = tempOutlookApp.Session.CreateRecipient(mail.SenderEmailAddress);
-                    var exchangeUser = tempRecipient.AddressEntry.GetExchangeUser();
+                    try
+                    {
+                        var exchangeUser = tempRecipient.AddressEntry.GetExchangeUser();
 
-                    _checkList.Sender = exchangeUser.PrimarySmtpAddress ?? Resources.FailedToGetInformation;
+                        if (exchangeUser is null)
+                        {
+                            _checkList.Sender = Resources.FailedToGetInformation;
+                        }
+                        else
+                        {
+                            _checkList.Sender = exchangeUser.PrimarySmtpAddress ?? Resources.FailedToGetInformation;
+                        }
+                    }
+                    catch (Exception)
+                    {
+                        _checkList.Sender = Resources.FailedToGetInformation;
+                    }
                 }
                 else
                 {
@@ -333,11 +347,29 @@ namespace OutlookOkan.Models
                 switch (recipient.AddressEntry.AddressEntryUserType)
                 {
                     case Outlook.OlAddressEntryUserType.olExchangeDistributionListAddressEntry:
-                        nameAndRecipient.AddRange(GetExchangeDistributionListMembers(recipient, generalSetting.EnableGetExchangeDistributionListMembers, generalSetting.ExchangeDistributionListMembersAreWhite));
-                        break;
+                        var exchangeMembers = GetExchangeDistributionListMembers(recipient, generalSetting.EnableGetExchangeDistributionListMembers, generalSetting.ExchangeDistributionListMembersAreWhite);
+                        if (exchangeMembers is null)
+                        {
+                            nameAndRecipient.AddRange(GetNameAndRecipient(recipient));
+                            break;
+                        }
+                        else
+                        {
+                            nameAndRecipient.AddRange(exchangeMembers);
+                            break;
+                        }
                     case Outlook.OlAddressEntryUserType.olOutlookDistributionListAddressEntry:
-                        nameAndRecipient.AddRange(GetContactGroupMembers(recipient, null, generalSetting.EnableGetContactGroupMembers, generalSetting.ContactGroupMembersAreWhite));
-                        break;
+                        var addressEntryMembers = GetContactGroupMembers(recipient, null, generalSetting.EnableGetContactGroupMembers, generalSetting.ContactGroupMembersAreWhite);
+                        if (addressEntryMembers is null)
+                        {
+                            nameAndRecipient.AddRange(GetNameAndRecipient(recipient));
+                            break;
+                        }
+                        else
+                        {
+                            nameAndRecipient.AddRange(addressEntryMembers);
+                            break;
+                        }
                     default:
                         nameAndRecipient.AddRange(GetNameAndRecipient(recipient));
                         break;
