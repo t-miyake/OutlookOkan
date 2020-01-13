@@ -110,24 +110,22 @@ namespace OutlookOkan.Models
                 else
                 {
                     //代理送信の場合かつExchange利用
-                    var tempOutlookApp = new Outlook.Application();
-                    var tempRecipient = tempOutlookApp.Session.CreateRecipient(mail.Sender.Address);
-
                     _checkList.Sender = $@"[{mail.SentOnBehalfOfName}] {Resources.SentOnBehalf}";
                     _checkList.SenderDomain = @"------------------";
 
-                    if (tempRecipient.AddressEntry.AddressEntryUserType == Outlook.OlAddressEntryUserType.olExchangeUserAddressEntry)
+                    var exchangeDistributionList = mail.Sender.GetExchangeDistributionList();
+                    var exchangeUser = mail.Sender.GetExchangeUser();
+
+                    if (!(exchangeUser is null))
                     {
                         //ユーザの代理送信
-                        var exchangeUser = tempRecipient.AddressEntry.GetExchangeUser();
                         _checkList.Sender = $@"{exchangeUser.PrimarySmtpAddress} ([{mail.SentOnBehalfOfName}] {Resources.SentOnBehalf})";
                         _checkList.SenderDomain = exchangeUser.PrimarySmtpAddress.Substring(exchangeUser.PrimarySmtpAddress.IndexOf("@", StringComparison.Ordinal));
                     }
 
-                    if (tempRecipient.AddressEntry.AddressEntryUserType == Outlook.OlAddressEntryUserType.olExchangeDistributionListAddressEntry)
+                    if (!(exchangeDistributionList is null))
                     {
                         //配布リストの代理送信
-                        var exchangeDistributionList = tempRecipient.AddressEntry.GetExchangeDistributionList();
                         _checkList.Sender = $@"{exchangeDistributionList.PrimarySmtpAddress} ([{mail.SentOnBehalfOfName}] {Resources.SentOnBehalf})";
                         _checkList.SenderDomain = exchangeDistributionList.PrimarySmtpAddress.Substring(exchangeDistributionList.PrimarySmtpAddress.IndexOf("@", StringComparison.Ordinal));
                     }
