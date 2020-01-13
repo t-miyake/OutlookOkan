@@ -431,7 +431,7 @@ Register EMailAddress or domain.</value>
     <value>When checked, skip the confirmation screen.</value>
   </data>
   <data name="SentOnBehalf" xml:space="preserve">
-    <value>Send on behalf.</value>
+    <value>Send on behalf or Send As.</value>
   </data>
   <data name="DeferredDelivery" xml:space="preserve">
     <value>Delay Delivery</value>
