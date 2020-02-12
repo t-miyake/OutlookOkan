@@ -361,7 +361,7 @@
     <value>Copyright (C) 2019 Noraneko Inc.</value>
   </data>
   <data name="Version" xml:space="preserve">
-    <value>バージョン 2.3.3</value>
+    <value>バージョン 2.3.4</value>
   </data>
   <data name="VersionInfo" xml:space="preserve">
     <value>バージョン情報</value>
@@ -431,7 +431,7 @@ CCあるいはBCCに指定したアドレスが自動で追加されます。</v
     <value>チェックを入れた宛先にのみメールを送信する場合、確認画面をスキップします</value>
   </data>
   <data name="SentOnBehalf" xml:space="preserve">
-    <value>として代理送信</value>
+    <value>として送信又は代理送信</value>
   </data>
   <data name="DeferredDelivery" xml:space="preserve">
     <value>遅延送信</value>

@@ -899,7 +899,7 @@ namespace OutlookOkan.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Send on behalf..
+        ///   Looks up a localized string similar to Send on behalf or Send As..
         /// </summary>
         public static string SentOnBehalf {
             get {
@@ -1081,7 +1081,7 @@ namespace OutlookOkan.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Version 2.3.3.
+        ///   Looks up a localized string similar to Version 2.3.4.
         /// </summary>
         public static string Version {
             get {
