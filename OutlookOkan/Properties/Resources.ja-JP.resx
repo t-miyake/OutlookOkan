@@ -229,7 +229,7 @@
     <value>HTML形式</value>
   </data>
   <data name="IfAllSameDomain" xml:space="preserve">
-    <value>宛先が全て送信元アドレスと同一ドメインの場合、確認画面を表示しない。</value>
+    <value>全ての宛先のドメインが、送信元アドレスのドメインと同一の場合、確認画面を表示しない。</value>
   </data>
   <data name="IfAllWhite" xml:space="preserve">
     <value>宛先にチェック対象が存在しない場合、確認画面を表示しない。(全ての宛先がホワイトリストに含まれる場合など)</value>
@@ -280,7 +280,7 @@
     <value>メール本文 (Text形式で表示)</value>
   </data>
   <data name="MailddressAndDomain" xml:space="preserve">
-    <value>宛先アドレス / ドメイン(@から)</value>
+    <value>宛先アドレス/ドメイン(@から)</value>
   </data>
   <data name="MailInfo" xml:space="preserve">
     <value>メール情報</value>
@@ -376,12 +376,12 @@
 警告するキーワードとその警告文を登録します。</value>
   </data>
   <data name="SettingExampleAlertMailAddress" xml:space="preserve">
-    <value>アドレス：info@noraneko.co.jp
+    <value>メールアドレス：info@noraneko.co.jp
 または、
 ドメイン：@noraneko.co.jp
 
-アドレスまたはドメインを登録します。
-登録するとそのアドレスへの送信時に警告が表示されます。</value>
+メールアドレスまたはドメインを登録します。
+登録するとその宛先への送信時に警告が表示されます。</value>
   </data>
   <data name="SettingExampleAutoAddCCorBCCByKeyword" xml:space="preserve">
     <value>種別：CC または BCC
@@ -416,7 +416,7 @@ CCあるいはBCCに指定したアドレスが自動で追加されます。</v
     <value>リボン(メニュー)の表示言語は、Outlookを再起動すると更新されます。</value>
   </data>
   <data name="IsCanNotShowConfirmation" xml:space="preserve">
-    <value>確認画面を表示できません</value>
+    <value>確認画面を表示できません.</value>
   </data>
   <data name="SendMailConfirmation" xml:space="preserve">
     <value>メールを送信しますか？</value>
@@ -428,7 +428,7 @@ CCあるいはBCCに指定したアドレスが自動で追加されます。</v
     <value>確認画面をスキップ</value>
   </data>
   <data name="IsSkipConfirmationInfo" xml:space="preserve">
-    <value>チェックを入れた宛先にのみメールを送信する場合、確認画面をスキップします</value>
+    <value>チェックを入れた宛先にのみメールを送信する場合、確認画面をスキップします.</value>
   </data>
   <data name="SentOnBehalf" xml:space="preserve">
     <value>として送信又は代理送信</value>
