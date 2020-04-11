@@ -121,19 +121,19 @@
     <value>About</value>
   </data>
   <data name="AlertKeyword" xml:space="preserve">
-    <value>Alert keyword</value>
+    <value>Alert keywords</value>
   </data>
   <data name="AlertKeywordInfo" xml:space="preserve">
-    <value>Warning keywords</value>
+    <value>Keywords to alert</value>
   </data>
   <data name="AlertMailAddress" xml:space="preserve">
-    <value>Alert Emailaddress</value>
+    <value>Alert recipients</value>
   </data>
   <data name="AlertMailddressAndDomain" xml:space="preserve">
-    <value>Alert EMailaddress / Domain</value>
+    <value>Alerting recipients or domains</value>
   </data>
   <data name="ApplicableDestination" xml:space="preserve">
-    <value>Applicable destination</value>
+    <value>Applicable recipients</value>
   </data>
   <data name="ApplicableKeywords" xml:space="preserve">
     <value>Applicable keywords</value>
@@ -148,28 +148,28 @@
     <value>Attachments</value>
   </data>
   <data name="AutoAddCCorBCCByKeyword" xml:space="preserve">
-    <value>Auto add CC/BCC (Keyword)</value>
+    <value>Automatic CC/BCC addition(by keywords)</value>
   </data>
   <data name="AutoAddCCorBCCByKeywordInfo" xml:space="preserve">
-    <value>Automatically add CC or BCC by keyword</value>
+    <value>Keywords that automatically add CCs or BCCs.</value>
   </data>
   <data name="AutoAddCCorBCCByMailAddressOrDomain" xml:space="preserve">
-    <value>Auto add CC/BCC (Dest)</value>
+    <value>Automatic CC/BCC addition(by recipients)</value>
   </data>
   <data name="AutoAddCCorBCCByMailAddressOrDomainInfo" xml:space="preserve">
-    <value>Automatically add CC or BCC by the Emailaddress or domain</value>
+    <value>Recipients or domains that automatically add CCs or BCCs.</value>
   </data>
   <data name="AutoAddDestination" xml:space="preserve">
-    <value>Auto add destination</value>
+    <value>Added automatically.</value>
   </data>
   <data name="AutoAddMailAddress" xml:space="preserve">
-    <value>Auto add Emailaddress</value>
+    <value>Automatically add recipients.</value>
   </data>
   <data name="AutoCheckConfig" xml:space="preserve">
-    <value>Auto check</value>
+    <value>Auto-check setting</value>
   </data>
   <data name="AutoCheckSameDomain" xml:space="preserve">
-    <value>Automatically check the mail address (company address) in the same domain as the source address.</value>
+    <value>The same domain recipients as the sender address will be auto-checked.</value>
   </data>
   <data name="CSVImportAlert" xml:space="preserve">
     <value>Don't import CSV file with wrong format.</value>
@@ -181,40 +181,40 @@
     <value>CC/BCC</value>
   </data>
   <data name="ChangeLanguage" xml:space="preserve">
-    <value>Change Language</value>
+    <value>Change the display language</value>
   </data>
   <data name="Confirmation" xml:space="preserve">
-    <value>Confirmation before sending mail.</value>
+    <value>Confirmation before sending an email.</value>
   </data>
   <data name="ConfirmationMessage1" xml:space="preserve">
-    <value>Do you want to send mail?</value>
+    <value>Would you like to send this email?</value>
   </data>
   <data name="ConfirmationMessage2" xml:space="preserve">
     <value>After checking all items, you can press send button.</value>
   </data>
   <data name="CSVExport" xml:space="preserve">
-    <value>CSV Export</value>
+    <value>Export CSV</value>
   </data>
   <data name="CSVImport" xml:space="preserve">
-    <value>CSV Import</value>
+    <value>Import CSV</value>
   </data>
   <data name="DestinationEmailaddress" xml:space="preserve">
-    <value>Destination Emailaddress</value>
+    <value>Recipients</value>
   </data>
   <data name="Domain" xml:space="preserve">
     <value>Domain</value>
   </data>
   <data name="DontShowConfirmationScreen" xml:space="preserve">
-    <value>Skip the confirmation screen</value>
+    <value>Skip the confirmation window</value>
   </data>
   <data name="ExportFailed" xml:space="preserve">
-    <value>Export Failed</value>
+    <value>Failed to export.</value>
   </data>
   <data name="FailedToGetInformation" xml:space="preserve">
-    <value>Failed to get information.</value>
+    <value>Failed to get the information.</value>
   </data>
   <data name="ForgottenToAttachAlert" xml:space="preserve">
-    <value>There is an attached file in the text but there is no attached file.</value>
+    <value>The word "attached file" is in the text, but there is no attachment.</value>
   </data>
   <data name="General" xml:space="preserve">
     <value>General</value>
@@ -223,64 +223,64 @@
     <value>Help</value>
   </data>
   <data name="HowToDaleteRow" xml:space="preserve">
-    <value>* Delete row: Select the row and press the Delete key</value>
+    <value>* Delete row: Select the row and press the delete key.</value>
   </data>
   <data name="HTML" xml:space="preserve">
     <value>HTML</value>
   </data>
   <data name="IfAllSameDomain" xml:space="preserve">
-    <value>If all destinations are in the same domain as the source address, skip the confirmation screen.</value>
+    <value>If all recipient's domains are the same domain as the source address, skip the confirmation window.</value>
   </data>
   <data name="IfAllWhite" xml:space="preserve">
-    <value>If there is no check target in the destination, skip the confirmation screen.</value>
+    <value>If there is no check target in the recipients, skip the confirmation window. (e.g., if all recipients are included in the whitelist.)</value>
   </data>
   <data name="ImportAndExport" xml:space="preserve">
     <value>Import/Export</value>
   </data>
   <data name="ImportantAlert" xml:space="preserve">
-    <value>Important Alert</value>
+    <value>Important Alerts.</value>
   </data>
   <data name="ImportFailed" xml:space="preserve">
-    <value>Import Failed</value>
+    <value>Failed to import.</value>
   </data>
   <data name="InputCCorBCC" xml:space="preserve">
-    <value>Input CC or BCC</value>
+    <value>Enter "CC" or "BCC".</value>
   </data>
   <data name="InputDomainInfo" xml:space="preserve">
-    <value>Input domain(from @)</value>
+    <value>Enter the domain from @.</value>
   </data>
   <data name="InputMailaddressOrDomain" xml:space="preserve">
-    <value>Please Input Emailaddress or Domain.</value>
+    <value>Enter email address or domain.</value>
   </data>
   <data name="InputNameInfo" xml:space="preserve">
-    <value>Input name(ex. Company name)</value>
+    <value>Enter the name.(ex. Company name)</value>
   </data>
   <data name="IsAlertAddressBccAlert" xml:space="preserve">
-    <value>The address/domain registered as a warning target is included in the destination (BCC). </value>
+    <value>The recipients (BCC) contains an address or domain that has been registered as an alert.</value>
   </data>
   <data name="IsAlertAddressCcAlert" xml:space="preserve">
-    <value>The address/domain registered as a warning target is included in the destination (CC). </value>
+    <value>The recipients (CC) contains an address or domain that has been registered as an alert.</value>
   </data>
   <data name="IsAlertAddressMaybeIrrelevant" xml:space="preserve">
-    <value>This address may be irrelevant to the intended destination.</value>
+    <value>This recipient may be unrelated to the intended destination.</value>
   </data>
   <data name="IsAlertAddressToAlert" xml:space="preserve">
-    <value>The address/domain registered as a warning target is included in the destination (To). </value>
+    <value>The recipients (To) contains an address or domain that has been registered as an alert.</value>
   </data>
   <data name="IsAttachedExe" xml:space="preserve">
     <value>An executable file (.exe) is attached.</value>
   </data>
   <data name="IsBigAttachedFile" xml:space="preserve">
-    <value>There are attached files of 10 Mbyte or more.</value>
+    <value>There is a 10Mbyte or larger file attached to this email.</value>
   </data>
   <data name="Keyword" xml:space="preserve">
-    <value>Keyword</value>
+    <value>Keywords</value>
   </data>
   <data name="MailBody" xml:space="preserve">
-    <value>Mail Body(Text Style)</value>
+    <value>Message body (Text format)</value>
   </data>
   <data name="MailddressAndDomain" xml:space="preserve">
-    <value>EMailaddress / Domain</value>
+    <value>Recipient address/domain</value>
   </data>
   <data name="MailInfo" xml:space="preserve">
     <value>Mail Infomation</value>
@@ -295,22 +295,22 @@
     <value>Name/Domain</value>
   </data>
   <data name="NoAlert" xml:space="preserve">
-    <value>There is no warning.</value>
+    <value>There are no important alerts.</value>
   </data>
   <data name="OK" xml:space="preserve">
     <value>OK</value>
   </data>
   <data name="RichText" xml:space="preserve">
-    <value>Rich Text</value>
+    <value>Rich-text</value>
   </data>
   <data name="SaveSettings" xml:space="preserve">
-    <value>The setting was updated.</value>
+    <value>The settings have been updated.</value>
   </data>
   <data name="SelectCSVFile" xml:space="preserve">
-    <value>Please select a CSV file.</value>
+    <value>Select a CSV file.</value>
   </data>
   <data name="SelectSaveDestination" xml:space="preserve">
-    <value>Please select a save destination.</value>
+    <value>Select where you want to save it.</value>
   </data>
   <data name="Send" xml:space="preserve">
     <value>Send</value>
@@ -319,13 +319,13 @@
     <value>Sender</value>
   </data>
   <data name="SendingForbid" xml:space="preserve">
-    <value>Sending forbid</value>
+    <value>Sending prohibited</value>
   </data>
   <data name="SendingForbidInfo" xml:space="preserve">
-    <value>EMail sending is forbidden when checked</value>
+    <value>If you check this box, you can't send an email to the recipient or include the keyword.</value>
   </data>
   <data name="SettingExample" xml:space="preserve">
-    <value>Setting Example</value>
+    <value>Example of settings.</value>
   </data>
   <data name="Settings" xml:space="preserve">
     <value>Settings</value>
@@ -334,25 +334,25 @@
     <value>Subject</value>
   </data>
   <data name="SuccessfulExport" xml:space="preserve">
-    <value>Successful Export</value>
+    <value>The export is now complete.</value>
   </data>
   <data name="SuccessfulImport" xml:space="preserve">
-    <value>Successful Import</value>
+    <value>The import is now complete.</value>
   </data>
   <data name="Text" xml:space="preserve">
-    <value>Plain Text</value>
+    <value>Plain-text</value>
   </data>
   <data name="Unknown" xml:space="preserve">
     <value>Unknown</value>
   </data>
   <data name="WarningText" xml:space="preserve">
-    <value>Warning text</value>
+    <value>Alerting text</value>
   </data>
   <data name="WarningTextInfo" xml:space="preserve">
-    <value>Warning text on confirmation</value>
+    <value>Alerting text on confirmation window.</value>
   </data>
   <data name="WhiteList" xml:space="preserve">
-    <value>WhiteList</value>
+    <value>Whitelist</value>
   </data>
   <data name="CompanyName" xml:space="preserve">
     <value>Noraneko Inc.</value>
@@ -367,138 +367,135 @@
     <value>About</value>
   </data>
   <data name="SendingForbidAddress" xml:space="preserve">
-    <value>Mail Sending forbid Email address.</value>
+    <value>Prohibited recipients.</value>
   </data>
   <data name="SettingExampleAlertKeyword" xml:space="preserve">
-    <value>Keywords: confidential
-Warning text: Contains confidential word.
+    <value>Keywords: Confidential
+Alerting text: It includes the phrase "Confidential".
 
-Register keywords to be warned and their warnings.</value>
+Register the keywords to be alert and their alerting text.</value>
   </data>
   <data name="SettingExampleAlertMailAddress" xml:space="preserve">
-    <value>EMailAddress: info@noraneko.co.jp
+    <value>Email address: info@noraneko.co.jp
 or
 Domain: @noraneko.co.jp
 
-Register address or domain.
-When registering, a warning will be displayed when sending to that address.</value>
+Register an email address or domain.
+
+If you send an email to an email address or domain that you have registered here, you will receive an alert in advance.</value>
   </data>
   <data name="SettingExampleAutoAddCCorBCCByKeyword" xml:space="preserve">
     <value>Type: CC or BCC
-Keywords: confidential
-Address: boss@noraneko.co.jp
+Keywords: Confidential
+Email address: boss@noraneko.co.jp
 
-When the keyword is included in the mail,
-The address specified for CC or BCC is automatically added.</value>
+When the keywords are included in the mail, The specified address is automatically added to the CC or BCC.</value>
   </data>
   <data name="SettingExampleAutoAddCCorBCCByMailAddressOrDomain" xml:space="preserve">
     <value>Type: CC or BCC
 To: warning@xxxxxxx.com
-Address: boss@noraneko.co.jp
+Email address: boss@noraneko.co.jp
 
-When sending mail to registered destinations and domains,
-The address specified for CC or BCC is automatically added.</value>
+When sending mail to registered recipients and domains, The specified address is automatically added to the CC or BCC.</value>
   </data>
   <data name="SettingExampleNameAndDomain" xml:space="preserve">
     <value>Name: Noraneko Inc
 Domain: @noraneko.co.jp
 
-Register the name (company name etc.) and domain.</value>
+Register the name (ex. Company name) and domain.</value>
   </data>
   <data name="SettingExampleWhiteList" xml:space="preserve">
-    <value>EMailAddress: info@noraneko.co.jp
+    <value>Email address: info@noraneko.co.jp
 or
 Domain: @noraneko.co.jp
 
-Register EMailAddress or domain.</value>
+Register Email address or domain.</value>
   </data>
   <data name="ChangeRibbonLanguageInfo" xml:space="preserve">
     <value>The display language of the ribbon (menu) is updated when Outlook is restarted.</value>
   </data>
   <data name="IsCanNotShowConfirmation" xml:space="preserve">
-    <value>Can't show the confirmation</value>
+    <value>The confirmation window could not be displayed.</value>
   </data>
   <data name="SendMailConfirmation" xml:space="preserve">
-    <value>Do you want to send mail?</value>
+    <value>Would you like to send this email?</value>
   </data>
   <data name="IsShowConfirmationToMultipleDomain" xml:space="preserve">
-    <value>If the recipient contains multiple external domains, show the confirmation screen. (Don't skip confirmation screen.)</value>
+    <value>If the recipients contains multiple external domains, display the confirmation window. (Doesn't skip the confirmation window.)</value>
   </data>
   <data name="IsSkipConfirmation" xml:space="preserve">
-    <value>Skip confirmation</value>
+    <value>Skip confirmation window.</value>
   </data>
   <data name="IsSkipConfirmationInfo" xml:space="preserve">
-    <value>When checked, skip the confirmation screen.</value>
+    <value>Skip the confirmation window when you send an email only to the selected recipients.</value>
   </data>
   <data name="SentOnBehalf" xml:space="preserve">
     <value>Send on behalf or Send As.</value>
   </data>
   <data name="DeferredDelivery" xml:space="preserve">
-    <value>Delay Delivery</value>
+    <value>Deferred delivery</value>
   </data>
   <data name="DeferredDeliveryMinutes" xml:space="preserve">
-    <value>Deferred Delivery time (min)</value>
+    <value>Deferred delivery time.(min)</value>
   </data>
   <data name="EnableForgottenToAttachAlert" xml:space="preserve">
-    <value>If there is a sentence attached file in the text and there is no attached file, warn about that.</value>
+    <value>If there is a sentence "attached file" in the text and there is no attached file, warn about that.</value>
   </data>
   <data name="DeferredDeliveryEmailAddressOrDomainInfo" xml:space="preserve">
-    <value>Please Input Emailaddress or Domain.</value>
+    <value>Enter the email address or domain you want to deferred delivery.</value>
   </data>
   <data name="DeferredDeliveryTime" xml:space="preserve">
-    <value>Dealy Time(min)</value>
+    <value>Deferred delivery time.(min)</value>
   </data>
   <data name="InputDeferredDeliveryTime" xml:space="preserve">
-    <value>Please enter the time (min) to delay delivery.</value>
+    <value>Enter the deferred time in minutes.</value>
   </data>
   <data name="SettingExampleDeferredDelivery" xml:space="preserve">
-    <value>EMailAddress: info@noraneko.co.jp
+    <value>Email address: info@noraneko.co.jp
 or
 Domain: @noraneko.co.jp
 
-Register EMailAddress or domain.
-And enter the time (min) to delay delivery.
+Register your email address or domain and register the deferred time by the minute.
 
-* If you register only @, you can register the standard delay time of all mails.
+* If you register only @, you can register the standard deferred time of all mails.
 
-* When multiple conditions are met, the longest delay time is adopted.</value>
+* If multiple conditions are met, the longest deferred time will be applied.</value>
   </data>
   <data name="ContactGroup" xml:space="preserve">
-    <value>Contact Group</value>
+    <value>Contact group</value>
   </data>
   <data name="AutoCheckMembersAddress" xml:space="preserve">
-    <value>The member's address will be checked automatically.</value>
+    <value>The members' email addresses will be auto-checked.</value>
   </data>
   <data name="GetMembersOfTheContactGroup" xml:space="preserve">
-    <value>Get members of an Contact Group.</value>
+    <value>Show the members of an Contact group.</value>
   </data>
   <data name="GetMembersOfTheExDistList" xml:space="preserve">
-    <value>Get members of an Exchange distribution list. (It may take a long time.)</value>
+    <value>Show the members of an Exchange distribution list. (It may take a long time.)</value>
   </data>
   <data name="GetMembersOfTheList" xml:space="preserve">
-    <value>Get members of an Exchange distribution list or an Contact Group</value>
+    <value>Show the members of an Exchange distribution list or an Contact group</value>
   </data>
   <data name="CanGetNewVersion" xml:space="preserve">
-    <value>You can get the new version.
+    <value>There is a new version of this add-in.
 Do you want to download it?</value>
   </data>
   <data name="CheckNewVersion" xml:space="preserve">
-    <value>Check for Updates</value>
+    <value>Check the new version.</value>
   </data>
   <data name="YouHaveLatest" xml:space="preserve">
-    <value>You have the latest version.</value>
+    <value>This add-in is the latest version.</value>
   </data>
   <data name="AutoAddCCorBCCByAttachedFile" xml:space="preserve">
-    <value>Auto add CC/BCC (AttachedFile)</value>
+    <value>Automatic CC/BCC addition(by attachments)</value>
   </data>
   <data name="IsNotTreatedAsAttachmentsAtHtmlEmbeddedFiles" xml:space="preserve">
-    <value>HTML mail embedded files are not treated as attachments.</value>
+    <value>A file embedded in an HTML mail is not treated as an attachment.</value>
   </data>
   <data name="SettingExampleAutoAddCCorBCCByAttachedFile" xml:space="preserve">
     <value>Type: CC or BCC
-Address: boss@noraneko.co.jp
+Email address: boss@noraneko.co.jp
 
-When you send an email with a file attached, 
-The address specified for CC or BCC is automatically added.</value>
+When you send an email with a file attached, The specified address is automatically added to the CC or BCC.</value>
   </data>
 </root>

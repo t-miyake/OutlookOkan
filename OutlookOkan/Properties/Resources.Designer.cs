@@ -70,7 +70,7 @@ namespace OutlookOkan.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Alert keyword.
+        ///   Looks up a localized string similar to Alert keywords.
         /// </summary>
         public static string AlertKeyword {
             get {
@@ -79,7 +79,7 @@ namespace OutlookOkan.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Warning keywords.
+        ///   Looks up a localized string similar to Keywords to alert.
         /// </summary>
         public static string AlertKeywordInfo {
             get {
@@ -88,7 +88,7 @@ namespace OutlookOkan.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Alert Emailaddress.
+        ///   Looks up a localized string similar to Alert recipients.
         /// </summary>
         public static string AlertMailAddress {
             get {
@@ -97,7 +97,7 @@ namespace OutlookOkan.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Alert EMailaddress / Domain.
+        ///   Looks up a localized string similar to Alerting recipients or domains.
         /// </summary>
         public static string AlertMailddressAndDomain {
             get {
@@ -106,7 +106,7 @@ namespace OutlookOkan.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Applicable destination.
+        ///   Looks up a localized string similar to Applicable recipients.
         /// </summary>
         public static string ApplicableDestination {
             get {
@@ -151,7 +151,7 @@ namespace OutlookOkan.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Auto add CC/BCC (AttachedFile).
+        ///   Looks up a localized string similar to Automatic CC/BCC addition(by attachments).
         /// </summary>
         public static string AutoAddCCorBCCByAttachedFile {
             get {
@@ -160,7 +160,7 @@ namespace OutlookOkan.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Auto add CC/BCC (Keyword).
+        ///   Looks up a localized string similar to Automatic CC/BCC addition(by keywords).
         /// </summary>
         public static string AutoAddCCorBCCByKeyword {
             get {
@@ -169,7 +169,7 @@ namespace OutlookOkan.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Automatically add CC or BCC by keyword.
+        ///   Looks up a localized string similar to Keywords that automatically add CCs or BCCs..
         /// </summary>
         public static string AutoAddCCorBCCByKeywordInfo {
             get {
@@ -178,7 +178,7 @@ namespace OutlookOkan.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Auto add CC/BCC (Dest).
+        ///   Looks up a localized string similar to Automatic CC/BCC addition(by recipients).
         /// </summary>
         public static string AutoAddCCorBCCByMailAddressOrDomain {
             get {
@@ -187,7 +187,7 @@ namespace OutlookOkan.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Automatically add CC or BCC by the Emailaddress or domain.
+        ///   Looks up a localized string similar to Recipients or domains that automatically add CCs or BCCs..
         /// </summary>
         public static string AutoAddCCorBCCByMailAddressOrDomainInfo {
             get {
@@ -196,7 +196,7 @@ namespace OutlookOkan.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Auto add destination.
+        ///   Looks up a localized string similar to Added automatically..
         /// </summary>
         public static string AutoAddDestination {
             get {
@@ -205,7 +205,7 @@ namespace OutlookOkan.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Auto add Emailaddress.
+        ///   Looks up a localized string similar to Automatically add recipients..
         /// </summary>
         public static string AutoAddMailAddress {
             get {
@@ -214,7 +214,7 @@ namespace OutlookOkan.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Auto check.
+        ///   Looks up a localized string similar to Auto-check setting.
         /// </summary>
         public static string AutoCheckConfig {
             get {
@@ -223,7 +223,7 @@ namespace OutlookOkan.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to The member&apos;s address will be checked automatically..
+        ///   Looks up a localized string similar to The members&apos; email addresses will be auto-checked..
         /// </summary>
         public static string AutoCheckMembersAddress {
             get {
@@ -232,7 +232,7 @@ namespace OutlookOkan.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Automatically check the mail address (company address) in the same domain as the source address..
+        ///   Looks up a localized string similar to The same domain recipients as the sender address will be auto-checked..
         /// </summary>
         public static string AutoCheckSameDomain {
             get {
@@ -250,7 +250,7 @@ namespace OutlookOkan.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to You can get the new version.
+        ///   Looks up a localized string similar to There is a new version of this add-in.
         ///Do you want to download it?.
         /// </summary>
         public static string CanGetNewVersion {
@@ -269,7 +269,7 @@ namespace OutlookOkan.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Change Language.
+        ///   Looks up a localized string similar to Change the display language.
         /// </summary>
         public static string ChangeLanguage {
             get {
@@ -287,7 +287,7 @@ namespace OutlookOkan.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Check for Updates.
+        ///   Looks up a localized string similar to Check the new version..
         /// </summary>
         public static string CheckNewVersion {
             get {
@@ -305,7 +305,7 @@ namespace OutlookOkan.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Confirmation before sending mail..
+        ///   Looks up a localized string similar to Confirmation before sending an email..
         /// </summary>
         public static string Confirmation {
             get {
@@ -314,7 +314,7 @@ namespace OutlookOkan.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Do you want to send mail?.
+        ///   Looks up a localized string similar to Would you like to send this email?.
         /// </summary>
         public static string ConfirmationMessage1 {
             get {
@@ -332,7 +332,7 @@ namespace OutlookOkan.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Contact Group.
+        ///   Looks up a localized string similar to Contact group.
         /// </summary>
         public static string ContactGroup {
             get {
@@ -350,7 +350,7 @@ namespace OutlookOkan.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to CSV Export.
+        ///   Looks up a localized string similar to Export CSV.
         /// </summary>
         public static string CSVExport {
             get {
@@ -359,7 +359,7 @@ namespace OutlookOkan.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to CSV Import.
+        ///   Looks up a localized string similar to Import CSV.
         /// </summary>
         public static string CSVImport {
             get {
@@ -377,7 +377,7 @@ namespace OutlookOkan.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Delay Delivery.
+        ///   Looks up a localized string similar to Deferred delivery.
         /// </summary>
         public static string DeferredDelivery {
             get {
@@ -386,7 +386,7 @@ namespace OutlookOkan.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Please Input Emailaddress or Domain..
+        ///   Looks up a localized string similar to Enter the email address or domain you want to deferred delivery..
         /// </summary>
         public static string DeferredDeliveryEmailAddressOrDomainInfo {
             get {
@@ -395,7 +395,7 @@ namespace OutlookOkan.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Deferred Delivery time (min).
+        ///   Looks up a localized string similar to Deferred delivery time.(min).
         /// </summary>
         public static string DeferredDeliveryMinutes {
             get {
@@ -404,7 +404,7 @@ namespace OutlookOkan.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Dealy Time(min).
+        ///   Looks up a localized string similar to Deferred delivery time.(min).
         /// </summary>
         public static string DeferredDeliveryTime {
             get {
@@ -413,7 +413,7 @@ namespace OutlookOkan.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Destination Emailaddress.
+        ///   Looks up a localized string similar to Recipients.
         /// </summary>
         public static string DestinationEmailaddress {
             get {
@@ -431,7 +431,7 @@ namespace OutlookOkan.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Skip the confirmation screen.
+        ///   Looks up a localized string similar to Skip the confirmation window.
         /// </summary>
         public static string DontShowConfirmationScreen {
             get {
@@ -440,7 +440,7 @@ namespace OutlookOkan.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to If there is a sentence attached file in the text and there is no attached file, warn about that..
+        ///   Looks up a localized string similar to If there is a sentence &quot;attached file&quot; in the text and there is no attached file, warn about that..
         /// </summary>
         public static string EnableForgottenToAttachAlert {
             get {
@@ -449,7 +449,7 @@ namespace OutlookOkan.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Export Failed.
+        ///   Looks up a localized string similar to Failed to export..
         /// </summary>
         public static string ExportFailed {
             get {
@@ -458,7 +458,7 @@ namespace OutlookOkan.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Failed to get information..
+        ///   Looks up a localized string similar to Failed to get the information..
         /// </summary>
         public static string FailedToGetInformation {
             get {
@@ -467,7 +467,7 @@ namespace OutlookOkan.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to There is an attached file in the text but there is no attached file..
+        ///   Looks up a localized string similar to The word &quot;attached file&quot; is in the text, but there is no attachment..
         /// </summary>
         public static string ForgottenToAttachAlert {
             get {
@@ -485,7 +485,7 @@ namespace OutlookOkan.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Get members of an Contact Group..
+        ///   Looks up a localized string similar to Show the members of an Contact group..
         /// </summary>
         public static string GetMembersOfTheContactGroup {
             get {
@@ -494,7 +494,7 @@ namespace OutlookOkan.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Get members of an Exchange distribution list. (It may take a long time.).
+        ///   Looks up a localized string similar to Show the members of an Exchange distribution list. (It may take a long time.).
         /// </summary>
         public static string GetMembersOfTheExDistList {
             get {
@@ -503,7 +503,7 @@ namespace OutlookOkan.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Get members of an Exchange distribution list or an Contact Group.
+        ///   Looks up a localized string similar to Show the members of an Exchange distribution list or an Contact group.
         /// </summary>
         public static string GetMembersOfTheList {
             get {
@@ -521,7 +521,7 @@ namespace OutlookOkan.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to * Delete row: Select the row and press the Delete key.
+        ///   Looks up a localized string similar to * Delete row: Select the row and press the delete key..
         /// </summary>
         public static string HowToDaleteRow {
             get {
@@ -539,7 +539,7 @@ namespace OutlookOkan.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to If all destinations are in the same domain as the source address, skip the confirmation screen..
+        ///   Looks up a localized string similar to If all recipient&apos;s domains are the same domain as the source address, skip the confirmation window..
         /// </summary>
         public static string IfAllSameDomain {
             get {
@@ -548,7 +548,7 @@ namespace OutlookOkan.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to If there is no check target in the destination, skip the confirmation screen..
+        ///   Looks up a localized string similar to If there is no check target in the recipients, skip the confirmation window. (e.g., if all recipients are included in the whitelist.).
         /// </summary>
         public static string IfAllWhite {
             get {
@@ -566,7 +566,7 @@ namespace OutlookOkan.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Important Alert.
+        ///   Looks up a localized string similar to Important Alerts..
         /// </summary>
         public static string ImportantAlert {
             get {
@@ -575,7 +575,7 @@ namespace OutlookOkan.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Import Failed.
+        ///   Looks up a localized string similar to Failed to import..
         /// </summary>
         public static string ImportFailed {
             get {
@@ -584,7 +584,7 @@ namespace OutlookOkan.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Input CC or BCC.
+        ///   Looks up a localized string similar to Enter &quot;CC&quot; or &quot;BCC&quot;..
         /// </summary>
         public static string InputCCorBCC {
             get {
@@ -593,7 +593,7 @@ namespace OutlookOkan.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Please enter the time (min) to delay delivery..
+        ///   Looks up a localized string similar to Enter the deferred time in minutes..
         /// </summary>
         public static string InputDeferredDeliveryTime {
             get {
@@ -602,7 +602,7 @@ namespace OutlookOkan.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Input domain(from @).
+        ///   Looks up a localized string similar to Enter the domain from @..
         /// </summary>
         public static string InputDomainInfo {
             get {
@@ -611,7 +611,7 @@ namespace OutlookOkan.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Please Input Emailaddress or Domain..
+        ///   Looks up a localized string similar to Enter email address or domain..
         /// </summary>
         public static string InputMailaddressOrDomain {
             get {
@@ -620,7 +620,7 @@ namespace OutlookOkan.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Input name(ex. Company name).
+        ///   Looks up a localized string similar to Enter the name.(ex. Company name).
         /// </summary>
         public static string InputNameInfo {
             get {
@@ -629,7 +629,7 @@ namespace OutlookOkan.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to The address/domain registered as a warning target is included in the destination (BCC). .
+        ///   Looks up a localized string similar to The recipients (BCC) contains an address or domain that has been registered as an alert..
         /// </summary>
         public static string IsAlertAddressBccAlert {
             get {
@@ -638,7 +638,7 @@ namespace OutlookOkan.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to The address/domain registered as a warning target is included in the destination (CC). .
+        ///   Looks up a localized string similar to The recipients (CC) contains an address or domain that has been registered as an alert..
         /// </summary>
         public static string IsAlertAddressCcAlert {
             get {
@@ -647,7 +647,7 @@ namespace OutlookOkan.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to This address may be irrelevant to the intended destination..
+        ///   Looks up a localized string similar to This recipient may be unrelated to the intended destination..
         /// </summary>
         public static string IsAlertAddressMaybeIrrelevant {
             get {
@@ -656,7 +656,7 @@ namespace OutlookOkan.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to The address/domain registered as a warning target is included in the destination (To). .
+        ///   Looks up a localized string similar to The recipients (To) contains an address or domain that has been registered as an alert..
         /// </summary>
         public static string IsAlertAddressToAlert {
             get {
@@ -674,7 +674,7 @@ namespace OutlookOkan.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to There are attached files of 10 Mbyte or more..
+        ///   Looks up a localized string similar to There is a 10Mbyte or larger file attached to this email..
         /// </summary>
         public static string IsBigAttachedFile {
             get {
@@ -683,7 +683,7 @@ namespace OutlookOkan.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Can&apos;t show the confirmation.
+        ///   Looks up a localized string similar to The confirmation window could not be displayed..
         /// </summary>
         public static string IsCanNotShowConfirmation {
             get {
@@ -692,7 +692,7 @@ namespace OutlookOkan.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to HTML mail embedded files are not treated as attachments..
+        ///   Looks up a localized string similar to A file embedded in an HTML mail is not treated as an attachment..
         /// </summary>
         public static string IsNotTreatedAsAttachmentsAtHtmlEmbeddedFiles {
             get {
@@ -701,7 +701,7 @@ namespace OutlookOkan.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to If the recipient contains multiple external domains, show the confirmation screen. (Don&apos;t skip confirmation screen.).
+        ///   Looks up a localized string similar to If the recipients contains multiple external domains, display the confirmation window. (Doesn&apos;t skip the confirmation window.).
         /// </summary>
         public static string IsShowConfirmationToMultipleDomain {
             get {
@@ -710,7 +710,7 @@ namespace OutlookOkan.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Skip confirmation.
+        ///   Looks up a localized string similar to Skip confirmation window..
         /// </summary>
         public static string IsSkipConfirmation {
             get {
@@ -719,7 +719,7 @@ namespace OutlookOkan.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to When checked, skip the confirmation screen..
+        ///   Looks up a localized string similar to Skip the confirmation window when you send an email only to the selected recipients..
         /// </summary>
         public static string IsSkipConfirmationInfo {
             get {
@@ -728,7 +728,7 @@ namespace OutlookOkan.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Keyword.
+        ///   Looks up a localized string similar to Keywords.
         /// </summary>
         public static string Keyword {
             get {
@@ -737,7 +737,7 @@ namespace OutlookOkan.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Mail Body(Text Style).
+        ///   Looks up a localized string similar to Message body (Text format).
         /// </summary>
         public static string MailBody {
             get {
@@ -746,7 +746,7 @@ namespace OutlookOkan.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to EMailaddress / Domain.
+        ///   Looks up a localized string similar to Recipient address/domain.
         /// </summary>
         public static string MailddressAndDomain {
             get {
@@ -791,7 +791,7 @@ namespace OutlookOkan.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to There is no warning..
+        ///   Looks up a localized string similar to There are no important alerts..
         /// </summary>
         public static string NoAlert {
             get {
@@ -809,7 +809,7 @@ namespace OutlookOkan.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Rich Text.
+        ///   Looks up a localized string similar to Rich-text.
         /// </summary>
         public static string RichText {
             get {
@@ -818,7 +818,7 @@ namespace OutlookOkan.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to The setting was updated..
+        ///   Looks up a localized string similar to The settings have been updated..
         /// </summary>
         public static string SaveSettings {
             get {
@@ -827,7 +827,7 @@ namespace OutlookOkan.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Please select a CSV file..
+        ///   Looks up a localized string similar to Select a CSV file..
         /// </summary>
         public static string SelectCSVFile {
             get {
@@ -836,7 +836,7 @@ namespace OutlookOkan.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Please select a save destination..
+        ///   Looks up a localized string similar to Select where you want to save it..
         /// </summary>
         public static string SelectSaveDestination {
             get {
@@ -863,7 +863,7 @@ namespace OutlookOkan.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Sending forbid.
+        ///   Looks up a localized string similar to Sending prohibited.
         /// </summary>
         public static string SendingForbid {
             get {
@@ -872,7 +872,7 @@ namespace OutlookOkan.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Mail Sending forbid Email address..
+        ///   Looks up a localized string similar to Prohibited recipients..
         /// </summary>
         public static string SendingForbidAddress {
             get {
@@ -881,7 +881,7 @@ namespace OutlookOkan.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to EMail sending is forbidden when checked.
+        ///   Looks up a localized string similar to If you check this box, you can&apos;t send an email to the recipient or include the keyword..
         /// </summary>
         public static string SendingForbidInfo {
             get {
@@ -890,7 +890,7 @@ namespace OutlookOkan.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Do you want to send mail?.
+        ///   Looks up a localized string similar to Would you like to send this email?.
         /// </summary>
         public static string SendMailConfirmation {
             get {
@@ -908,7 +908,7 @@ namespace OutlookOkan.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Setting Example.
+        ///   Looks up a localized string similar to Example of settings..
         /// </summary>
         public static string SettingExample {
             get {
@@ -917,10 +917,10 @@ namespace OutlookOkan.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Keywords: confidential
-        ///Warning text: Contains confidential word.
+        ///   Looks up a localized string similar to Keywords: Confidential
+        ///Alerting text: It includes the phrase &quot;Confidential&quot;.
         ///
-        ///Register keywords to be warned and their warnings..
+        ///Register the keywords to be alert and their alerting text..
         /// </summary>
         public static string SettingExampleAlertKeyword {
             get {
@@ -929,12 +929,13 @@ namespace OutlookOkan.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to EMailAddress: info@noraneko.co.jp
+        ///   Looks up a localized string similar to Email address: info@noraneko.co.jp
         ///or
         ///Domain: @noraneko.co.jp
         ///
-        ///Register address or domain.
-        ///When registering, a warning will be displayed when sending to that address..
+        ///Register an email address or domain.
+        ///
+        ///If you send an email to an email address or domain that you have registered here, you will receive an alert in advance..
         /// </summary>
         public static string SettingExampleAlertMailAddress {
             get {
@@ -944,10 +945,9 @@ namespace OutlookOkan.Properties {
         
         /// <summary>
         ///   Looks up a localized string similar to Type: CC or BCC
-        ///Address: boss@noraneko.co.jp
+        ///Email address: boss@noraneko.co.jp
         ///
-        ///When you send an email with a file attached, 
-        ///The address specified for CC or BCC is automatically added..
+        ///When you send an email with a file attached, The specified address is automatically added to the CC or BCC..
         /// </summary>
         public static string SettingExampleAutoAddCCorBCCByAttachedFile {
             get {
@@ -957,11 +957,10 @@ namespace OutlookOkan.Properties {
         
         /// <summary>
         ///   Looks up a localized string similar to Type: CC or BCC
-        ///Keywords: confidential
-        ///Address: boss@noraneko.co.jp
+        ///Keywords: Confidential
+        ///Email address: boss@noraneko.co.jp
         ///
-        ///When the keyword is included in the mail,
-        ///The address specified for CC or BCC is automatically added..
+        ///When the keywords are included in the mail, The specified address is automatically added to the CC or BCC..
         /// </summary>
         public static string SettingExampleAutoAddCCorBCCByKeyword {
             get {
@@ -972,10 +971,9 @@ namespace OutlookOkan.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Type: CC or BCC
         ///To: warning@xxxxxxx.com
-        ///Address: boss@noraneko.co.jp
+        ///Email address: boss@noraneko.co.jp
         ///
-        ///When sending mail to registered destinations and domains,
-        ///The address specified for CC or BCC is automatically added..
+        ///When sending mail to registered recipients and domains, The specified address is automatically added to the CC or BCC..
         /// </summary>
         public static string SettingExampleAutoAddCCorBCCByMailAddressOrDomain {
             get {
@@ -984,16 +982,15 @@ namespace OutlookOkan.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to EMailAddress: info@noraneko.co.jp
+        ///   Looks up a localized string similar to Email address: info@noraneko.co.jp
         ///or
         ///Domain: @noraneko.co.jp
         ///
-        ///Register EMailAddress or domain.
-        ///And enter the time (min) to delay delivery.
+        ///Register your email address or domain and register the deferred time by the minute.
         ///
-        ///* If you register only @, you can register the standard delay time of all mails.
+        ///* If you register only @, you can register the standard deferred time of all mails.
         ///
-        ///* When multiple conditions are met, the longest delay time is adopted..
+        ///* If multiple conditions are met, the longest deferred time will be applied..
         /// </summary>
         public static string SettingExampleDeferredDelivery {
             get {
@@ -1005,7 +1002,7 @@ namespace OutlookOkan.Properties {
         ///   Looks up a localized string similar to Name: Noraneko Inc
         ///Domain: @noraneko.co.jp
         ///
-        ///Register the name (company name etc.) and domain..
+        ///Register the name (ex. Company name) and domain..
         /// </summary>
         public static string SettingExampleNameAndDomain {
             get {
@@ -1014,11 +1011,11 @@ namespace OutlookOkan.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to EMailAddress: info@noraneko.co.jp
+        ///   Looks up a localized string similar to Email address: info@noraneko.co.jp
         ///or
         ///Domain: @noraneko.co.jp
         ///
-        ///Register EMailAddress or domain..
+        ///Register Email address or domain..
         /// </summary>
         public static string SettingExampleWhiteList {
             get {
@@ -1045,7 +1042,7 @@ namespace OutlookOkan.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Successful Export.
+        ///   Looks up a localized string similar to The export is now complete..
         /// </summary>
         public static string SuccessfulExport {
             get {
@@ -1054,7 +1051,7 @@ namespace OutlookOkan.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Successful Import.
+        ///   Looks up a localized string similar to The import is now complete..
         /// </summary>
         public static string SuccessfulImport {
             get {
@@ -1063,7 +1060,7 @@ namespace OutlookOkan.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Plain Text.
+        ///   Looks up a localized string similar to Plain-text.
         /// </summary>
         public static string Text {
             get {
@@ -1099,7 +1096,7 @@ namespace OutlookOkan.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Warning text.
+        ///   Looks up a localized string similar to Alerting text.
         /// </summary>
         public static string WarningText {
             get {
@@ -1108,7 +1105,7 @@ namespace OutlookOkan.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Warning text on confirmation.
+        ///   Looks up a localized string similar to Alerting text on confirmation window..
         /// </summary>
         public static string WarningTextInfo {
             get {
@@ -1117,7 +1114,7 @@ namespace OutlookOkan.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to WhiteList.
+        ///   Looks up a localized string similar to Whitelist.
         /// </summary>
         public static string WhiteList {
             get {
@@ -1126,7 +1123,7 @@ namespace OutlookOkan.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to You have the latest version..
+        ///   Looks up a localized string similar to This add-in is the latest version..
         /// </summary>
         public static string YouHaveLatest {
             get {
