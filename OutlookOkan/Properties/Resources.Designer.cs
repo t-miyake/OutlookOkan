@@ -341,7 +341,7 @@ namespace OutlookOkan.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Copyright (C) 2019 Noraneko Inc..
+        ///   Looks up a localized string similar to Copyright (C) 2020 Noraneko Inc..
         /// </summary>
         public static string Copyright {
             get {
@@ -1081,7 +1081,7 @@ namespace OutlookOkan.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Version 2.3.4.
+        ///   Looks up a localized string similar to Version 2.3.5.
         /// </summary>
         public static string Version {
             get {
