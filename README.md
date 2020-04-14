@@ -1,6 +1,8 @@
 おかん for Outlook (メール誤送信防止アドイン)
 ========
 
+English readme is [here](https://github.com/t-miyake/OutlookOkan/blob/master/README_en.md).
+
 おかん for Outlookは、Microsoft Office Outlook用アドインです。  
 
 誤送信を防止するため、メールの送信前に確認ウィンドウを表示します。  
