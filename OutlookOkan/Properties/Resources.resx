@@ -498,4 +498,12 @@ Email address: boss@noraneko.co.jp
 
 When you send an email with a file attached, The specified address is automatically added to the CC or BCC.</value>
   </data>
+  <data name="CanceledSendingMail" xml:space="preserve">
+    <value>Canceled sending this email.</value>
+  </data>
+  <data name="CanceledSendingMailMessage" xml:space="preserve">
+    <value>Canceled sending this email. You can reedit this.
+To send this email, you must click on the Send button.
+(Closing the edit screen will not send this email.)</value>
+  </data>
 </root>

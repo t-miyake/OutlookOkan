@@ -15,6 +15,7 @@ namespace OutlookOkan
     public partial class ThisAddIn
     {
         private readonly GeneralSetting _generalSetting = new GeneralSetting();
+        private Outlook.Inspectors _inspectors;
 
         protected override Microsoft.Office.Core.IRibbonExtensibility CreateRibbonExtensibilityObject()
         {
@@ -30,7 +31,22 @@ namespace OutlookOkan
                 ResourceService.Instance.ChangeCulture(_generalSetting.LanguageCode);
             }
 
+            _inspectors = Application.Inspectors;
+            _inspectors.NewInspector += OpenOutboxItemInspector;
+
             Application.ItemSend += Application_ItemSend;
+        }
+
+        //送信トレイのファイルを開く際の警告。
+        private void OpenOutboxItemInspector(Outlook.Inspector inspector)
+        {
+            if (!(inspector.CurrentItem is Outlook._MailItem)) return;
+            if (!(inspector.CurrentItem is Outlook.MailItem mailItem)) return;
+
+            if (mailItem.Submitted)
+            {
+                MessageBox.Show(Properties.Resources.CanceledSendingMailMessage, Properties.Resources.CanceledSendingMail, MessageBoxButton.OK, MessageBoxImage.Warning);
+            }
         }
 
         private void Application_ItemSend(object item, ref bool cancel)
