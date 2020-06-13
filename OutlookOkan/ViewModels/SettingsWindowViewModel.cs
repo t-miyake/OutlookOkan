@@ -16,7 +16,7 @@ namespace OutlookOkan.ViewModels
     {
         public SettingsWindowViewModel()
         {
-            //Add button command
+            //Add button command.
             ImportWhiteList = new RelayCommand(ImportWhiteListFromCsv);
             ExportWhiteList = new RelayCommand(ExportWhiteListToCsv);
 
@@ -41,7 +41,7 @@ namespace OutlookOkan.ViewModels
             ImportDeferredDeliveryMinutesList = new RelayCommand(ImportDeferredDeliveryMinutesFromCsv);
             ExportDeferredDeliveryMinutesList = new RelayCommand(ExportDeferredDeliveryMinutesToCsv);
 
-            //言語コードと名称をロード
+            //Load language code and name.
             var languages = new Languages();
             Languages = languages.Language;
 
@@ -135,7 +135,7 @@ namespace OutlookOkan.ViewModels
             set
             {
                 _whitelist = value;
-                OnPropertyChanged("Whitelist");
+                OnPropertyChanged(nameof(Whitelist));
             }
         }
 
@@ -201,7 +201,7 @@ namespace OutlookOkan.ViewModels
             set
             {
                 _nameAndDomains = value;
-                OnPropertyChanged("NameAndDomains");
+                OnPropertyChanged(nameof(NameAndDomains));
             }
         }
 
@@ -267,7 +267,7 @@ namespace OutlookOkan.ViewModels
             set
             {
                 _alertKeywordAndMessages = value;
-                OnPropertyChanged("AlertKeywordAndMessages");
+                OnPropertyChanged(nameof(AlertKeywordAndMessages));
             }
         }
 
@@ -333,7 +333,7 @@ namespace OutlookOkan.ViewModels
             set
             {
                 _alertAddresses = value;
-                OnPropertyChanged("AlertAddresses");
+                OnPropertyChanged(nameof(AlertAddresses));
             }
         }
 
@@ -399,7 +399,7 @@ namespace OutlookOkan.ViewModels
             set
             {
                 _autoCcBccKeywords = value;
-                OnPropertyChanged("AutoCcBccKeywords");
+                OnPropertyChanged(nameof(AutoCcBccKeywords));
             }
         }
 
@@ -465,7 +465,7 @@ namespace OutlookOkan.ViewModels
             set
             {
                 _autoCcBccRecipients = value;
-                OnPropertyChanged("AutoCcBccRecipients");
+                OnPropertyChanged(nameof(AutoCcBccRecipients));
             }
         }
 
@@ -531,7 +531,7 @@ namespace OutlookOkan.ViewModels
             set
             {
                 _autoCcBccAttachedFiles = value;
-                OnPropertyChanged("AutoCcBccAttachedFiles");
+                OnPropertyChanged(nameof(AutoCcBccAttachedFiles));
             }
         }
 
@@ -597,7 +597,7 @@ namespace OutlookOkan.ViewModels
             set
             {
                 _deferredDeliveryMinutes = value;
-                OnPropertyChanged("DeferredDeliveryMinutes");
+                OnPropertyChanged(nameof(DeferredDeliveryMinutes));
             }
         }
 
@@ -608,7 +608,7 @@ namespace OutlookOkan.ViewModels
         private void LoadGeneralSettingData()
         {
             var readCsv = new ReadAndWriteCsv("GeneralSetting.csv");
-            //1行しかないはずだが、何かの間違いで2行以上あるとまずいので、全行ロードする。
+            //1行しかないはずだが、2行以上あるとロード時にエラーとなる恐れがあるため、全行ロードする。
             foreach (var data in readCsv.GetCsvRecords<GeneralSetting>(readCsv.LoadCsv<GeneralSettingMap>()))
             {
                 _generalSetting.Add((data));
@@ -681,7 +681,7 @@ namespace OutlookOkan.ViewModels
             set
             {
                 _isDoNotConfirmationIfAllRecipientsAreSameDomain = value;
-                OnPropertyChanged("IsDoNotConfirmationIfAllRecipientsAreSameDomain");
+                OnPropertyChanged(nameof(IsDoNotConfirmationIfAllRecipientsAreSameDomain));
             }
         }
 
@@ -692,7 +692,7 @@ namespace OutlookOkan.ViewModels
             set
             {
                 _isDoDoNotConfirmationIfAllWhite = value;
-                OnPropertyChanged("IsDoDoNotConfirmationIfAllWhite");
+                OnPropertyChanged(nameof(IsDoDoNotConfirmationIfAllWhite));
             }
         }
 
@@ -703,7 +703,7 @@ namespace OutlookOkan.ViewModels
             set
             {
                 _isAutoCheckIfAllRecipientsAreSameDomain = value;
-                OnPropertyChanged("IsAutoCheckIfAllRecipientsAreSameDomain");
+                OnPropertyChanged(nameof(IsAutoCheckIfAllRecipientsAreSameDomain));
             }
         }
 
@@ -714,7 +714,7 @@ namespace OutlookOkan.ViewModels
             set
             {
                 _isShowConfirmationToMultipleDomain = value;
-                OnPropertyChanged("IsShowConfirmationToMultipleDomain");
+                OnPropertyChanged(nameof(IsShowConfirmationToMultipleDomain));
             }
         }
 
@@ -725,7 +725,7 @@ namespace OutlookOkan.ViewModels
             set
             {
                 _enableForgottenToAttachAlert = value;
-                OnPropertyChanged("EnableForgottenToAttachAlert");
+                OnPropertyChanged(nameof(EnableForgottenToAttachAlert));
             }
         }
 
@@ -736,7 +736,7 @@ namespace OutlookOkan.ViewModels
             set
             {
                 _enableGetContactGroupMembers = value;
-                OnPropertyChanged("EnableGetContactGroupMembers");
+                OnPropertyChanged(nameof(EnableGetContactGroupMembers));
             }
         }
 
@@ -747,7 +747,7 @@ namespace OutlookOkan.ViewModels
             set
             {
                 _enableGetExchangeDistributionListMembers = value;
-                OnPropertyChanged("EnableGetExchangeDistributionListMembers");
+                OnPropertyChanged(nameof(EnableGetExchangeDistributionListMembers));
             }
         }
 
@@ -758,7 +758,7 @@ namespace OutlookOkan.ViewModels
             set
             {
                 _contactGroupMembersAreWhite = value;
-                OnPropertyChanged("ContactGroupMembersAreWhite");
+                OnPropertyChanged(nameof(ContactGroupMembersAreWhite));
             }
         }
 
@@ -769,7 +769,7 @@ namespace OutlookOkan.ViewModels
             set
             {
                 _exchangeDistributionListMembersAreWhite = value;
-                OnPropertyChanged("ExchangeDistributionListMembersAreWhite");
+                OnPropertyChanged(nameof(ExchangeDistributionListMembersAreWhite));
             }
         }
 
@@ -781,7 +781,7 @@ namespace OutlookOkan.ViewModels
             set
             {
                 _isNotTreatedAsAttachmentsAtHtmlEmbeddedFiles = value;
-                OnPropertyChanged("IsNotTreatedAsAttachmentsAtHtmlEmbeddedFiles");
+                OnPropertyChanged(nameof(IsNotTreatedAsAttachmentsAtHtmlEmbeddedFiles));
             }
         }
 
@@ -792,7 +792,7 @@ namespace OutlookOkan.ViewModels
             set
             {
                 _language = value;
-                OnPropertyChanged("Language");
+                OnPropertyChanged(nameof(Language));
             }
         }
 
@@ -803,7 +803,7 @@ namespace OutlookOkan.ViewModels
             set
             {
                 _languages = value;
-                OnPropertyChanged("Languages");
+                OnPropertyChanged(nameof(Languages));
             }
         }
 
@@ -814,7 +814,7 @@ namespace OutlookOkan.ViewModels
             set
             {
                 _languageNumber = value;
-                OnPropertyChanged("LanguageNumber");
+                OnPropertyChanged(nameof(LanguageNumber));
             }
         }
 

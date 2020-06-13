@@ -24,7 +24,7 @@ namespace OutlookOkan.Services
         public void ChangeCulture(string name)
         {
             Resources.Culture = CultureInfo.GetCultureInfo(name);
-            RaisePropertyChanged("Resources");
+            RaisePropertyChanged(nameof(Resources));
         }
     }
 }

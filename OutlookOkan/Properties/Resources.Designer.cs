@@ -250,6 +250,26 @@ namespace OutlookOkan.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Canceled sending this email..
+        /// </summary>
+        public static string CanceledSendingMail {
+            get {
+                return ResourceManager.GetString("CanceledSendingMail", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Canceled sending this email. You can reedit this.
+        ///To send this email, you must click on the Send button.
+        ///(Closing the edit screen will not send this email.).
+        /// </summary>
+        public static string CanceledSendingMailMessage {
+            get {
+                return ResourceManager.GetString("CanceledSendingMailMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to There is a new version of this add-in.
         ///Do you want to download it?.
         /// </summary>

@@ -98,7 +98,7 @@ namespace OutlookOkan.ViewModels
             set
             {
                 _alerts = value;
-                OnPropertyChanged("Alerts");
+                OnPropertyChanged(nameof(Alerts));
             }
         }
 
@@ -109,7 +109,7 @@ namespace OutlookOkan.ViewModels
             set
             {
                 _toAddresses = value;
-                OnPropertyChanged("ToAddresses");
+                OnPropertyChanged(nameof(ToAddresses));
             }
         }
 
@@ -120,7 +120,7 @@ namespace OutlookOkan.ViewModels
             set
             {
                 _ccAddresses = value;
-                OnPropertyChanged("CcAddresses");
+                OnPropertyChanged(nameof(CcAddresses));
             }
         }
 
@@ -131,7 +131,7 @@ namespace OutlookOkan.ViewModels
             set
             {
                 _bccAddresses = value;
-                OnPropertyChanged("BccAddresses");
+                OnPropertyChanged(nameof(BccAddresses));
             }
         }
 
@@ -142,7 +142,7 @@ namespace OutlookOkan.ViewModels
             set
             {
                 _attachments = value;
-                OnPropertyChanged("Attachments");
+                OnPropertyChanged(nameof(Attachments));
             }
         }
 
@@ -153,7 +153,7 @@ namespace OutlookOkan.ViewModels
             set
             {
                 _isCanSendMail = value;
-                OnPropertyChanged("IsCanSendMail");
+                OnPropertyChanged(nameof(IsCanSendMail));
             }
         }
 
@@ -165,7 +165,7 @@ namespace OutlookOkan.ViewModels
             set
             {
                 _addressCount = value;
-                OnPropertyChanged("AddressCount");
+                OnPropertyChanged(nameof(AddressCount));
             }
         }
 
@@ -176,7 +176,7 @@ namespace OutlookOkan.ViewModels
             set
             {
                 _toAddressCount = value;
-                OnPropertyChanged("ToAddressCount");
+                OnPropertyChanged(nameof(ToAddressCount));
             }
         }
 
@@ -187,7 +187,7 @@ namespace OutlookOkan.ViewModels
             set
             {
                 _ccAddressCount = value;
-                OnPropertyChanged("CcAddressCount");
+                OnPropertyChanged(nameof(CcAddressCount));
             }
         }
 
@@ -198,7 +198,7 @@ namespace OutlookOkan.ViewModels
             set
             {
                 _bccAddressCount = value;
-                OnPropertyChanged("BccAddressCount");
+                OnPropertyChanged(nameof(BccAddressCount));
             }
         }
 
@@ -209,7 +209,7 @@ namespace OutlookOkan.ViewModels
             set
             {
                 _alertCount = value;
-                OnPropertyChanged("AlertCount");
+                OnPropertyChanged(nameof(AlertCount));
             }
         }
 
@@ -220,7 +220,7 @@ namespace OutlookOkan.ViewModels
             set
             {
                 _attachmentCount = value;
-                OnPropertyChanged("AttachmentCount");
+                OnPropertyChanged(nameof(AttachmentCount));
             }
         }
 
@@ -231,7 +231,7 @@ namespace OutlookOkan.ViewModels
             set
             {
                 _deferredDeliveryMinutes = value;
-                OnPropertyChanged("DeferredDeliveryMinutes");
+                OnPropertyChanged(nameof(DeferredDeliveryMinutes));
             }
         }
 

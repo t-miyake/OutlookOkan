@@ -9,7 +9,6 @@ using System.Windows;
 
 namespace OutlookOkan.CsvTools
 {
-    //TODO To be improved
     public sealed class CsvImportAndExport : CsvToolsBase
     {
         private Encoding _fileEncoding;
