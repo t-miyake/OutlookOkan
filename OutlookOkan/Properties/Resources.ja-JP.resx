@@ -129,7 +129,7 @@
   <data name="AlertMailAddress" xml:space="preserve">
     <value>警告アドレス</value>
   </data>
-  <data name="AlertMailddressAndDomain" xml:space="preserve">
+  <data name="AlertMailAddressAndDomain" xml:space="preserve">
     <value>警告するアドレス / ドメイン(@から)</value>
   </data>
   <data name="ApplicableDestination" xml:space="preserve">
@@ -204,7 +204,7 @@
   <data name="Domain" xml:space="preserve">
     <value>ドメイン (@から)</value>
   </data>
-  <data name="DontShowConfirmationScreen" xml:space="preserve">
+  <data name="DoNotShowConfirmationScreen" xml:space="preserve">
     <value>確認画面の非表示設定</value>
   </data>
   <data name="ExportFailed" xml:space="preserve">
@@ -222,7 +222,7 @@
   <data name="Help" xml:space="preserve">
     <value>ヘルプ</value>
   </data>
-  <data name="HowToDaleteRow" xml:space="preserve">
+  <data name="HowToDeleteRow" xml:space="preserve">
     <value>※行の削除：行を選択してDeleteキー</value>
   </data>
   <data name="HTML" xml:space="preserve">
@@ -279,7 +279,7 @@
   <data name="MailBody" xml:space="preserve">
     <value>メール本文 (Text形式で表示)</value>
   </data>
-  <data name="MailddressAndDomain" xml:space="preserve">
+  <data name="MailAddressAndDomain" xml:space="preserve">
     <value>宛先アドレス/ドメイン(@から)</value>
   </data>
   <data name="MailInfo" xml:space="preserve">

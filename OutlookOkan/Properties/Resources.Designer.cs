@@ -99,9 +99,9 @@ namespace OutlookOkan.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Alerting recipients or domains.
         /// </summary>
-        public static string AlertMailddressAndDomain {
+        public static string AlertMailAddressAndDomain {
             get {
-                return ResourceManager.GetString("AlertMailddressAndDomain", resourceCulture);
+                return ResourceManager.GetString("AlertMailAddressAndDomain", resourceCulture);
             }
         }
         
@@ -453,9 +453,9 @@ namespace OutlookOkan.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Skip the confirmation window.
         /// </summary>
-        public static string DontShowConfirmationScreen {
+        public static string DoNotShowConfirmationScreen {
             get {
-                return ResourceManager.GetString("DontShowConfirmationScreen", resourceCulture);
+                return ResourceManager.GetString("DoNotShowConfirmationScreen", resourceCulture);
             }
         }
         
@@ -543,9 +543,9 @@ namespace OutlookOkan.Properties {
         /// <summary>
         ///   Looks up a localized string similar to * Delete row: Select the row and press the delete key..
         /// </summary>
-        public static string HowToDaleteRow {
+        public static string HowToDeleteRow {
             get {
-                return ResourceManager.GetString("HowToDaleteRow", resourceCulture);
+                return ResourceManager.GetString("HowToDeleteRow", resourceCulture);
             }
         }
         
@@ -757,20 +757,20 @@ namespace OutlookOkan.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Recipient address/domain.
+        /// </summary>
+        public static string MailAddressAndDomain {
+            get {
+                return ResourceManager.GetString("MailAddressAndDomain", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Message body (Text format).
         /// </summary>
         public static string MailBody {
             get {
                 return ResourceManager.GetString("MailBody", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Recipient address/domain.
-        /// </summary>
-        public static string MailddressAndDomain {
-            get {
-                return ResourceManager.GetString("MailddressAndDomain", resourceCulture);
             }
         }
         

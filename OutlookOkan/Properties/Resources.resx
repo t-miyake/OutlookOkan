@@ -129,7 +129,7 @@
   <data name="AlertMailAddress" xml:space="preserve">
     <value>Alert recipients</value>
   </data>
-  <data name="AlertMailddressAndDomain" xml:space="preserve">
+  <data name="AlertMailAddressAndDomain" xml:space="preserve">
     <value>Alerting recipients or domains</value>
   </data>
   <data name="ApplicableDestination" xml:space="preserve">
@@ -204,7 +204,7 @@
   <data name="Domain" xml:space="preserve">
     <value>Domain</value>
   </data>
-  <data name="DontShowConfirmationScreen" xml:space="preserve">
+  <data name="DoNotShowConfirmationScreen" xml:space="preserve">
     <value>Skip the confirmation window</value>
   </data>
   <data name="ExportFailed" xml:space="preserve">
@@ -222,7 +222,7 @@
   <data name="Help" xml:space="preserve">
     <value>Help</value>
   </data>
-  <data name="HowToDaleteRow" xml:space="preserve">
+  <data name="HowToDeleteRow" xml:space="preserve">
     <value>* Delete row: Select the row and press the delete key.</value>
   </data>
   <data name="HTML" xml:space="preserve">
@@ -279,7 +279,7 @@
   <data name="MailBody" xml:space="preserve">
     <value>Message body (Text format)</value>
   </data>
-  <data name="MailddressAndDomain" xml:space="preserve">
+  <data name="MailAddressAndDomain" xml:space="preserve">
     <value>Recipient address/domain</value>
   </data>
   <data name="MailInfo" xml:space="preserve">
