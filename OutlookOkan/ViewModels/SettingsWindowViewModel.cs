@@ -41,6 +41,9 @@ namespace OutlookOkan.ViewModels
             ImportDeferredDeliveryMinutesList = new RelayCommand(ImportDeferredDeliveryMinutesFromCsv);
             ExportDeferredDeliveryMinutesList = new RelayCommand(ExportDeferredDeliveryMinutesToCsv);
 
+            ImportInternalDomainList = new RelayCommand(ImportInternalDomainListFromCsv);
+            ExportInternalDomainList = new RelayCommand(ExportInternalDomainListToCsv);
+
             //Load language code and name.
             var languages = new Languages();
             Languages = languages.Language;
@@ -55,6 +58,7 @@ namespace OutlookOkan.ViewModels
             LoadAutoCcBccRecipientsData();
             LoadAutoCcBccAttachedFilesData();
             LoadDeferredDeliveryMinutesData();
+            LoadInternalDomainListData();
         }
 
         public async Task SaveSettings()
@@ -69,7 +73,8 @@ namespace OutlookOkan.ViewModels
                     SaveAlertAddressesToCsv(),
                     SaveAutoCcBccRecipientsToCsv(),
                     SaveAutoCcBccAttachedFilesToCsv(),
-                    SaveDeferredDeliveryMinutesToCsv()
+                    SaveDeferredDeliveryMinutesToCsv(),
+                    SaveInternalDomainListToCsv()
                 };
 
             await Task.WhenAll(saveTasks);
@@ -598,6 +603,72 @@ namespace OutlookOkan.ViewModels
             {
                 _deferredDeliveryMinutes = value;
                 OnPropertyChanged(nameof(DeferredDeliveryMinutes));
+            }
+        }
+
+        #endregion
+
+        #region InternalDomain
+
+        public ICommand ImportInternalDomainList { get; }
+        public ICommand ExportInternalDomainList { get; }
+
+        private void LoadInternalDomainListData()
+        {
+            var readCsv = new ReadAndWriteCsv("InternalDomainList.csv");
+            var internalDomainList = readCsv.GetCsvRecords<InternalDomain>(readCsv.LoadCsv<InternalDomainMap>());
+
+            foreach (var data in internalDomainList)
+            {
+                InternalDomainList.Add(data);
+            }
+        }
+
+        private async Task SaveInternalDomainListToCsv()
+        {
+            var list = InternalDomainList.Cast<object>().ToList();
+            var writeCsv = new ReadAndWriteCsv("InternalDomainList.csv");
+            await Task.Run(() => writeCsv.WriteRecordsToCsv<InternalDomainMap>(list));
+        }
+
+        private void ImportInternalDomainListFromCsv()
+        {
+            var importAction = new CsvImportAndExport();
+            var filePath = importAction.ImportCsv();
+
+            if (filePath is null) return;
+
+            try
+            {
+                var importData = new List<InternalDomain>(importAction.GetCsvRecords<InternalDomain>(importAction.LoadCsv<InternalDomainMap>(filePath)));
+                foreach (var data in importData)
+                {
+                    InternalDomainList.Add(data);
+                }
+
+                MessageBox.Show(Properties.Resources.SuccessfulImport, Properties.Resources.AppName, MessageBoxButton.OK);
+            }
+            catch (Exception)
+            {
+                MessageBox.Show(Properties.Resources.ImportFailed, Properties.Resources.AppName, MessageBoxButton.OK);
+            }
+        }
+
+        private void ExportInternalDomainListToCsv()
+        {
+            var list = InternalDomainList.Cast<object>().ToList();
+            var exportAction = new CsvImportAndExport();
+            exportAction.CsvExport<InternalDomainMap>(list, "InternalDomainList.csv");
+        }
+
+        private ObservableCollection<InternalDomain> _internalDomainList = new ObservableCollection<InternalDomain>();
+        public ObservableCollection<InternalDomain> InternalDomainList
+        {
+            get => _internalDomainList;
+            set
+            {
+                _internalDomainList = value;
+                OnPropertyChanged(nameof(InternalDomainList));
             }
         }
 

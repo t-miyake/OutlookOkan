@@ -218,6 +218,7 @@
     <Compile Include="Types\DeferredDeliveryMinutes.cs" />
     <Compile Include="Types\DisplayNameAndRecipient.cs" />
     <Compile Include="Types\GeneralSetting.cs" />
+    <Compile Include="Types\InternalDomain.cs" />
     <Compile Include="Types\Languages.cs" />
     <Compile Include="Types\NameAndDomains.cs" />
     <Compile Include="Types\NameAndRecipient.cs" />

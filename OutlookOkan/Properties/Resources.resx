@@ -506,4 +506,17 @@ When you send an email with a file attached, The specified address is automatica
 To send this email, you must click on the Send button.
 (Closing the edit screen will not send this email.)</value>
   </data>
+  <data name="InputDomain" xml:space="preserve">
+    <value>Enter domain.</value>
+  </data>
+  <data name="InternalDomain" xml:space="preserve">
+    <value>Internal domain</value>
+  </data>
+  <data name="SettingExampleInternalDomainList" xml:space="preserve">
+    <value>Domain: @miyake.me
+
+Register a domain to be handled as an internal (company) domain.
+
+The domain of the sender's email address is always treated as an internal domain.</value>
+  </data>
 </root>

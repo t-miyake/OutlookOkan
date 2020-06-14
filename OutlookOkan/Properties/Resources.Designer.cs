@@ -622,6 +622,15 @@ namespace OutlookOkan.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Enter domain..
+        /// </summary>
+        public static string InputDomain {
+            get {
+                return ResourceManager.GetString("InputDomain", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Enter the domain from @..
         /// </summary>
         public static string InputDomainInfo {
@@ -645,6 +654,15 @@ namespace OutlookOkan.Properties {
         public static string InputNameInfo {
             get {
                 return ResourceManager.GetString("InputNameInfo", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Internal domain.
+        /// </summary>
+        public static string InternalDomain {
+            get {
+                return ResourceManager.GetString("InternalDomain", resourceCulture);
             }
         }
         
@@ -1015,6 +1033,19 @@ namespace OutlookOkan.Properties {
         public static string SettingExampleDeferredDelivery {
             get {
                 return ResourceManager.GetString("SettingExampleDeferredDelivery", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Domain: @miyake.me
+        ///
+        ///Register a domain to be handled as an internal (company) domain.
+        ///
+        ///The domain of the sender&apos;s email address is always treated as an internal domain..
+        /// </summary>
+        public static string SettingExampleInternalDomainList {
+            get {
+                return ResourceManager.GetString("SettingExampleInternalDomainList", resourceCulture);
             }
         }
         
