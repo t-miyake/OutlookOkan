@@ -376,7 +376,7 @@
 警告するキーワードとその警告文を登録します。</value>
   </data>
   <data name="SettingExampleAlertMailAddress" xml:space="preserve">
-    <value>メールアドレス：info@noraneko.co.jp
+    <value>アドレス：info@noraneko.co.jp
 または、
 ドメイン：@noraneko.co.jp
 
