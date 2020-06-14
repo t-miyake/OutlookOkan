@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OutlookOkan", "OutlookOkan\
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OutlookOkanTest", "OutlookOkanTest\OutlookOkanTest.csproj", "{828251EB-7A92-4559-93F8-BB5F5D8B16A7}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SetupCustomAction", "SetupCustomAction\SetupCustomAction.csproj", "{DE0DDC03-116B-4E2C-AF47-9F06FD99D391}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{828251EB-7A92-4559-93F8-BB5F5D8B16A7}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{828251EB-7A92-4559-93F8-BB5F5D8B16A7}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{828251EB-7A92-4559-93F8-BB5F5D8B16A7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DE0DDC03-116B-4E2C-AF47-9F06FD99D391}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DE0DDC03-116B-4E2C-AF47-9F06FD99D391}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DE0DDC03-116B-4E2C-AF47-9F06FD99D391}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DE0DDC03-116B-4E2C-AF47-9F06FD99D391}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
