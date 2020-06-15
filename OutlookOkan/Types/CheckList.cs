@@ -11,7 +11,8 @@ namespace OutlookOkan.Types
         public List<Attachment> Attachments { get; set; } = new List<Attachment>();
         public string Sender { get; set; }
         public string SenderDomain { get; set; }
-        public int RecipientExternalDomainNum { get; set; }
+        public int RecipientExternalDomainNumAll { get; set; }
+        public int RecipientExternalDomainNumToAndCc { get; set; }
         public string Subject { get; set; }
         public string MailType { get; set; }
         public string MailBody { get; set; }

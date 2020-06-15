@@ -52,6 +52,9 @@ namespace OutlookOkan.Models
             var deferredDeliveryMinutesCsv = new ReadAndWriteCsv("DeferredDeliveryMinutes.csv");
             var deferredDeliveryMinutes = deferredDeliveryMinutesCsv.GetCsvRecords<DeferredDeliveryMinutes>(deferredDeliveryMinutesCsv.LoadCsv<DeferredDeliveryMinutesMap>());
 
+            var internalDomainListCsv = new ReadAndWriteCsv("InternalDomainList.csv");
+            var internalDomainList = internalDomainListCsv.GetCsvRecords<InternalDomain>(internalDomainListCsv.LoadCsv<InternalDomainMap>());
+
             _checkList.Subject = mail.Subject ?? Resources.FailedToGetInformation;
             _checkList.MailType = GetMailBodyFormat(mail.BodyFormat) ?? Resources.FailedToGetInformation;
             _checkList.MailBody = GetMailBody(mail.BodyFormat, mail.Body ?? Resources.FailedToGetInformation);
@@ -74,11 +77,11 @@ namespace OutlookOkan.Models
             }
             mail.Recipients.ResolveAll();
 
-            _checkList = GetRecipient(_checkList, displayNameAndRecipient, alertAddressList);
+            _checkList = GetRecipient(_checkList, displayNameAndRecipient, alertAddressList, internalDomainList);
 
             _checkList = CheckMailBodyAndRecipient(_checkList, displayNameAndRecipient, nameAndDomainsList);
 
-            _checkList.RecipientExternalDomainNum = CountRecipientExternalDomains(displayNameAndRecipient, _checkList.SenderDomain);
+            _checkList.RecipientExternalDomainNumAll = CountRecipientExternalDomains(displayNameAndRecipient, _checkList.SenderDomain, internalDomainList, false);
 
             _checkList.DeferredMinutes = CalcDeferredMinutes(displayNameAndRecipient, deferredDeliveryMinutes);
 
@@ -216,30 +219,51 @@ namespace OutlookOkan.Models
         }
 
         /// <summary>
-        /// 送信者ドメインを除く宛先のドメイン数を数える。
+        /// 内部ドメインを除く宛先のドメイン数を数える。
         /// </summary>
         /// <param name="displayNameAndRecipient">宛先アドレスと名称</param>
         /// <param name="senderDomain">送信元ドメイン</param>
-        /// <returns>送信者ドメインを除く宛先のドメイン数</returns>
-        private int CountRecipientExternalDomains(DisplayNameAndRecipient displayNameAndRecipient, string senderDomain)
+        /// <param name="internalDomain">内部ドメイン設定</param>
+        /// <param name="isToAndCcOnly">対象がTOとCCのみか否か</param>
+        /// <returns>内部ドメインを除く宛先のドメイン数</returns>
+        private int CountRecipientExternalDomains(DisplayNameAndRecipient displayNameAndRecipient, string senderDomain, IEnumerable<InternalDomain> internalDomain, bool isToAndCcOnly)
         {
             var domainList = new HashSet<string>();
-            foreach (var mail in displayNameAndRecipient.All)
+
+            if (isToAndCcOnly)
             {
-                var recipient = mail.Key;
-                if (recipient != Resources.FailedToGetInformation && recipient.Contains("@"))
+                foreach (var recipient in displayNameAndRecipient.To.Select(mail => mail.Key).Where(recipient => recipient != Resources.FailedToGetInformation && recipient.Contains("@")))
+                {
+                    domainList.Add(recipient.Substring(recipient.IndexOf("@", StringComparison.Ordinal)));
+                }
+
+                foreach (var recipient in displayNameAndRecipient.Cc.Select(mail => mail.Key).Where(recipient => recipient != Resources.FailedToGetInformation && recipient.Contains("@")))
+                {
+                    domainList.Add(recipient.Substring(recipient.IndexOf("@", StringComparison.Ordinal)));
+                }
+            }
+            else
+            {
+                foreach (var recipient in displayNameAndRecipient.All.Select(mail => mail.Key).Where(recipient => recipient != Resources.FailedToGetInformation && recipient.Contains("@")))
                 {
                     domainList.Add(recipient.Substring(recipient.IndexOf("@", StringComparison.Ordinal)));
                 }
             }
 
+            var externalDomainsCount = domainList.Count;
+
+            foreach (var _ in internalDomain.Where(settings => domainList.Contains(settings.Domain) && settings.Domain != senderDomain))
+            {
+                externalDomainsCount--;
+            }
+
             //外部ドメインの数のため、送信者のドメインが含まれていた場合それをマイナスする。
             if (domainList.Contains(senderDomain))
             {
-                return domainList.Count - 1;
+                return externalDomainsCount - 1;
             }
 
-            return domainList.Count;
+            return externalDomainsCount;
         }
 
         /// <summary>
@@ -932,8 +956,9 @@ namespace OutlookOkan.Models
         /// <param name="checkList">CheckList</param>
         /// <param name="displayNameAndRecipient">宛先アドレスと名称</param>
         /// <param name="alertAddressList">警告アドレス設定</param>
+        /// <param name="internalDomainList">内部ドメイン設定</param>
         /// <returns>CheckList</returns>
-        private CheckList GetRecipient(CheckList checkList, DisplayNameAndRecipient displayNameAndRecipient, IReadOnlyCollection<AlertAddress> alertAddressList)
+        private CheckList GetRecipient(CheckList checkList, DisplayNameAndRecipient displayNameAndRecipient, IReadOnlyCollection<AlertAddress> alertAddressList, List<InternalDomain> internalDomainList)
         {
             // 宛先や登録名から、表示用テキスト(メールアドレスや登録名)を各エリアに表示。
             // 宛先ドメインが送信元ドメインと異なる場合、色を変更するフラグをtrue、そうでない場合falseとする。
@@ -942,9 +967,17 @@ namespace OutlookOkan.Models
 
             if (displayNameAndRecipient is null) return checkList;
 
+            var internalDomains = internalDomainList;
+            internalDomains.Add(new InternalDomain { Domain = checkList.SenderDomain });
+
             foreach (var to in displayNameAndRecipient.To)
             {
-                var isExternal = !to.Key.Contains(checkList.SenderDomain);
+                var isExternal = true;
+                foreach (var _ in internalDomains.Where(settings => to.Key.Contains(settings.Domain)))
+                {
+                    isExternal = false;
+                }
+
                 var isWhite = _whitelist.Count != 0 && _whitelist.Any(x => to.Key.Contains(x.WhiteName));
                 var isSkip = false;
 
@@ -980,7 +1013,12 @@ namespace OutlookOkan.Models
 
             foreach (var cc in displayNameAndRecipient.Cc)
             {
-                var isExternal = !cc.Key.Contains(checkList.SenderDomain);
+                var isExternal = true;
+                foreach (var _ in internalDomains.Where(settings => cc.Key.Contains(settings.Domain)))
+                {
+                    isExternal = false;
+                }
+
                 var isWhite = _whitelist.Count != 0 && _whitelist.Any(x => cc.Key.Contains(x.WhiteName));
                 var isSkip = false;
 
@@ -1016,7 +1054,12 @@ namespace OutlookOkan.Models
 
             foreach (var bcc in displayNameAndRecipient.Bcc)
             {
-                var isExternal = !bcc.Key.Contains(checkList.SenderDomain);
+                var isExternal = true;
+                foreach (var _ in internalDomains.Where(settings => bcc.Key.Contains(settings.Domain)))
+                {
+                    isExternal = false;
+                }
+
                 var isWhite = _whitelist.Count != 0 && _whitelist.Any(x => bcc.Key.Contains(x.WhiteName));
                 var isSkip = false;
 

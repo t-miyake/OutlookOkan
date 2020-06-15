@@ -169,7 +169,7 @@
     <value>自動チェック設定</value>
   </data>
   <data name="AutoCheckSameDomain" xml:space="preserve">
-    <value>送信元アドレスと同一のドメインのメールアドレス(社内アドレス)は、あらかじめチェックを自動付与する。</value>
+    <value>内部ドメインの宛先は、あらかじめチェックを自動付与する。</value>
   </data>
   <data name="CSVImportAlert" xml:space="preserve">
     <value>書式の異なるCSVをインポートするとエラーになります。気を付けてください。</value>
@@ -229,7 +229,7 @@
     <value>HTML形式</value>
   </data>
   <data name="IfAllSameDomain" xml:space="preserve">
-    <value>全ての宛先のドメインが、送信元アドレスのドメインと同一の場合、確認画面を表示しない。</value>
+    <value>全ての宛先のドメインが内部ドメインの場合、確認画面を表示しない。</value>
   </data>
   <data name="IfAllWhite" xml:space="preserve">
     <value>宛先にチェック対象が存在しない場合、確認画面を表示しない。(全ての宛先がホワイトリストに含まれる場合など)</value>

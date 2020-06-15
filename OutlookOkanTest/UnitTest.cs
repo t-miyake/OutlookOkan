@@ -348,6 +348,8 @@ namespace OutlookOkanTest
             const string to2 = "たろう (taro@sample.com)";
             const string cc1 = "(株)のらねこ (info@noraneko.co.jp)";
 
+            var internalDomainList = new List<InternalDomain>();
+
             var testCheckList = new CheckList { SenderDomain = "@noraneko.co.jp" };
             var displayNameAndRecipient = new DisplayNameAndRecipient
             {
@@ -358,6 +360,7 @@ namespace OutlookOkanTest
                 },
                 Cc = { ["info@noraneko.co.jp"] = cc1 }
             };
+
             var alertAddressList = new List<AlertAddress>
             {
                 new AlertAddress {TargetAddress = "@sample.com", IsCanNotSend = false}
@@ -365,7 +368,7 @@ namespace OutlookOkanTest
 
             var generateCheckList = new GenerateCheckList();
             var privateObject = new PrivateObject(generateCheckList);
-            var args = new object[] { testCheckList, displayNameAndRecipient, alertAddressList };
+            var args = new object[] { testCheckList, displayNameAndRecipient, alertAddressList, internalDomainList };
             var result = (CheckList)privateObject.Invoke("GetRecipient", args);
 
             Assert.AreEqual(result.ToAddresses[0].MailAddress, to1);
@@ -383,6 +386,8 @@ namespace OutlookOkanTest
             const string to2 = "たろう (taro@sample.com)";
             const string cc1 = "(株)のらねこ (info@noraneko.co.jp)";
 
+            var internalDomainList = new List<InternalDomain>();
+
             var testCheckList = new CheckList { SenderDomain = "@noraneko.co.jp" };
             var displayNameAndRecipient = new DisplayNameAndRecipient
             {
@@ -393,6 +398,7 @@ namespace OutlookOkanTest
                 },
                 Cc = { ["info@noraneko.co.jp"] = cc1 }
             };
+
             var alertAddressList = new List<AlertAddress>
             {
                 new AlertAddress {TargetAddress = "@sample.com", IsCanNotSend = true}
@@ -400,7 +406,7 @@ namespace OutlookOkanTest
 
             var generateCheckList = new GenerateCheckList();
             var privateObject = new PrivateObject(generateCheckList);
-            var args = new object[] { testCheckList, displayNameAndRecipient, alertAddressList };
+            var args = new object[] { testCheckList, displayNameAndRecipient, alertAddressList, internalDomainList };
             var result = (CheckList)privateObject.Invoke("GetRecipient", args);
 
             Assert.AreEqual(result.ToAddresses[0].MailAddress, to1);
@@ -410,6 +416,44 @@ namespace OutlookOkanTest
             Assert.AreEqual(result.Alerts[0].AlertMessage, Resources.IsAlertAddressToAlert + $"[{to2}]");
             Assert.IsTrue(testCheckList.IsCanNotSendMail);
             Assert.AreEqual(testCheckList.CanNotSendMailMessage, Resources.SendingForbidAddress + $"[{to2}]");
+        }
+
+        [TestMethod, TestCategory("_GenerateCheckList"), TestCategory("GetRecipient")]
+        public void 宛先を表示リストに格納_内部ドメイン設定あり()
+        {
+            const string to1 = "三宅 (miyake@noraneko.co.jp)";
+            const string to2 = "たろう (taro@sample.com)";
+            const string cc1 = "(株)のらねこ (info@noraneko.co.jp)";
+            const string bcc1 = "次郎 (jiro@sample.com)";
+
+            var internalDomainList = new List<InternalDomain> { new InternalDomain { Domain = "@sample.com" } };
+
+            var testCheckList = new CheckList { SenderDomain = "@noraneko.co.jp" };
+            var displayNameAndRecipient = new DisplayNameAndRecipient
+            {
+                To =
+                {
+                    ["miyake@noraneko.co.jp"] = to1,
+                    ["taro@sample.com"] = to2
+                },
+                Cc = { ["info@noraneko.co.jp"] = cc1 },
+                Bcc = { ["jiro@sample2.com"] = bcc1 }
+            };
+
+            var alertAddressList = new List<AlertAddress>();
+
+            var generateCheckList = new GenerateCheckList();
+            var privateObject = new PrivateObject(generateCheckList);
+            var args = new object[] { testCheckList, displayNameAndRecipient, alertAddressList, internalDomainList };
+            var result = (CheckList)privateObject.Invoke("GetRecipient", args);
+
+            Assert.AreEqual(result.ToAddresses[0].MailAddress, to1);
+            Assert.AreEqual(result.ToAddresses[1].MailAddress, to2);
+            Assert.AreEqual(result.CcAddresses[0].MailAddress, cc1);
+            Assert.AreEqual(result.BccAddresses[0].MailAddress, bcc1);
+
+            Assert.IsFalse(result.ToAddresses[0].IsExternal && result.ToAddresses[1].IsExternal && result.CcAddresses[0].IsExternal);
+            Assert.IsTrue(result.BccAddresses[0].IsExternal);
         }
 
         #endregion
@@ -465,19 +509,21 @@ namespace OutlookOkanTest
         [TestMethod, TestCategory("_GenerateCheckList"), TestCategory("CountRecipientExternalDomains")]
         public void 宛先の外部ドメイン数取得_外部ドメイン数0()
         {
+            var internalDomainList = new List<InternalDomain>();
+
             var testDisplayNameAndRecipient = new DisplayNameAndRecipient
             {
                 All =
                 {
                     ["miyake@noraneko.co.jp"] = "Takafumi Miyake",
                     ["test@noraneko.co.jp"] = "test",
-                    ["test2@noraneko.co.jp"] = "test2",
+                    ["test2@noraneko.co.jp"] = "test2"
                 }
             };
 
             var generateCheckList = new GenerateCheckList();
             var privateObject = new PrivateObject(generateCheckList);
-            var args = new object[] { testDisplayNameAndRecipient, "@noraneko.co.jp" };
+            var args = new object[] { testDisplayNameAndRecipient, "@noraneko.co.jp", internalDomainList, false };
             var result = (int)privateObject.Invoke("CountRecipientExternalDomains", args);
 
             Assert.AreEqual(result, 0);
@@ -486,6 +532,8 @@ namespace OutlookOkanTest
         [TestMethod, TestCategory("_GenerateCheckList"), TestCategory("CountRecipientExternalDomains")]
         public void 宛先の外部ドメイン数取得_外部ドメイン数2()
         {
+            var internalDomainList = new List<InternalDomain>();
+
             var testDisplayNameAndRecipient = new DisplayNameAndRecipient
             {
                 All =
@@ -498,10 +546,40 @@ namespace OutlookOkanTest
 
             var generateCheckList = new GenerateCheckList();
             var privateObject = new PrivateObject(generateCheckList);
-            var args = new object[] { testDisplayNameAndRecipient, "@noraneko.co.jp" };
+            var args = new object[] { testDisplayNameAndRecipient, "@noraneko.co.jp", internalDomainList, false };
             var result = (int)privateObject.Invoke("CountRecipientExternalDomains", args);
 
             Assert.AreEqual(result, 2);
+        }
+
+        [TestMethod, TestCategory("_GenerateCheckList"), TestCategory("CountRecipientExternalDomains")]
+        public void 宛先の外部ドメイン数取得_外部ドメイン数5_内部ドメイン設定2()
+        {
+            var internalDomainList = new List<InternalDomain>
+            {
+                new InternalDomain {Domain = "@sample4.com"},
+                new InternalDomain {Domain = "@sample5.com"}
+            };
+
+            var testDisplayNameAndRecipient = new DisplayNameAndRecipient
+            {
+                All =
+                {
+                    ["miyake@noraneko.co.jp"] = "Takafumi Miyake",
+                    ["sample@sample.com"] = "サンプル太郎",
+                    ["sample@sample2.com"] = "サンプル次郎",
+                    ["sample@sample3.com"] = "サンプル三郎",
+                    ["sample@sample4.com"] = "サンプル四郎",
+                    ["sample@sample5.com"] = "サンプル五郎"
+                }
+            };
+
+            var generateCheckList = new GenerateCheckList();
+            var privateObject = new PrivateObject(generateCheckList);
+            var args = new object[] { testDisplayNameAndRecipient, "@noraneko.co.jp", internalDomainList, false };
+            var result = (int)privateObject.Invoke("CountRecipientExternalDomains", args);
+
+            Assert.AreEqual(result, 3);
         }
 
         #endregion

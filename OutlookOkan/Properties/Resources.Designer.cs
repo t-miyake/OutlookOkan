@@ -232,7 +232,7 @@ namespace OutlookOkan.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to The same domain recipients as the sender address will be auto-checked..
+        ///   Looks up a localized string similar to The internal domain recipients will be auto-checked..
         /// </summary>
         public static string AutoCheckSameDomain {
             get {
@@ -559,7 +559,7 @@ namespace OutlookOkan.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to If all recipient&apos;s domains are the same domain as the source address, skip the confirmation window..
+        ///   Looks up a localized string similar to If all recipient&apos;s domains are internal domain, skip the confirmation window..
         /// </summary>
         public static string IfAllSameDomain {
             get {

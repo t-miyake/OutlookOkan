@@ -169,7 +169,7 @@
     <value>Auto-check setting</value>
   </data>
   <data name="AutoCheckSameDomain" xml:space="preserve">
-    <value>The same domain recipients as the sender address will be auto-checked.</value>
+    <value>The internal domain recipients will be auto-checked.</value>
   </data>
   <data name="CSVImportAlert" xml:space="preserve">
     <value>Don't import CSV file with wrong format.</value>
@@ -229,7 +229,7 @@
     <value>HTML</value>
   </data>
   <data name="IfAllSameDomain" xml:space="preserve">
-    <value>If all recipient's domains are the same domain as the source address, skip the confirmation window.</value>
+    <value>If all recipient's domains are internal domain, skip the confirmation window.</value>
   </data>
   <data name="IfAllWhite" xml:space="preserve">
     <value>If there is no check target in the recipients, skip the confirmation window. (e.g., if all recipients are included in the whitelist.)</value>

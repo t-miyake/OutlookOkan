@@ -212,7 +212,7 @@ namespace OutlookOkan
         /// <returns>送信前の確認画面の表示有無。</returns>
         private bool IsShowConfirmationWindow(CheckList checklist)
         {
-            if (checklist.RecipientExternalDomainNum >= 2 && _generalSetting.IsShowConfirmationToMultipleDomain)
+            if (checklist.RecipientExternalDomainNumAll >= 2 && _generalSetting.IsShowConfirmationToMultipleDomain)
             {
                 //全ての宛先が確認対象だが、複数のドメインが宛先に含まれる場合は確認画面を表示するオプションが有効かつその状態のため、スキップしない。
                 //他の判定より優先されるため、常に先に確認して、先にreturnする。
