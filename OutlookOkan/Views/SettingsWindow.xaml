@@ -55,18 +55,18 @@
                                 <CheckBox Margin="0,0,8,0"  IsChecked="{Binding EnableGetExchangeDistributionListMembers, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
                                 <TextBlock Text="{Binding Source={x:Static services:ResourceService.Instance}, Path=Resources.GetMembersOfTheExDistList, Mode=OneWay}" />
                             </StackPanel>
-                            <StackPanel Orientation="Horizontal" Margin="10,3,0,0">
-                                <TextBlock Text="=> " />
-                                <CheckBox Margin="0,0,8,0" IsChecked="{Binding ExchangeDistributionListMembersAreWhite, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+                            <StackPanel Orientation="Horizontal" Margin="6,3,0,0">
+                                <TextBlock Text="┗━━ " />
+                                <CheckBox Margin="0,0,8,0" IsChecked="{Binding ExchangeDistributionListMembersAreWhite, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" IsEnabled="{Binding EnableGetExchangeDistributionListMembers, UpdateSourceTrigger=PropertyChanged}"/>
                                 <TextBlock Text="{Binding Source={x:Static services:ResourceService.Instance}, Path=Resources.AutoCheckMembersAddress, Mode=OneWay}" />
                             </StackPanel>
                             <StackPanel Orientation="Horizontal" Margin="0,5,0,0">
                                 <CheckBox Margin="0,0,8,0" IsChecked="{Binding EnableGetContactGroupMembers, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
                                 <TextBlock Text="{Binding Source={x:Static services:ResourceService.Instance}, Path=Resources.GetMembersOfTheContactGroup, Mode=OneWay}" />
                             </StackPanel>
-                            <StackPanel Orientation="Horizontal" Margin="10,3,0,0">
-                                <TextBlock Text="=> " />
-                                <CheckBox Margin="0,0,8,0" IsChecked="{Binding ContactGroupMembersAreWhite, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+                            <StackPanel Orientation="Horizontal" Margin="6,3,0,0">
+                                <TextBlock Text="┗━━ " />
+                                <CheckBox Margin="0,0,8,0" IsChecked="{Binding ContactGroupMembersAreWhite, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" IsEnabled="{Binding EnableGetContactGroupMembers, UpdateSourceTrigger=PropertyChanged}" />
                                 <TextBlock Text="{Binding Source={x:Static services:ResourceService.Instance}, Path=Resources.AutoCheckMembersAddress, Mode=OneWay}" />
                             </StackPanel>
                         </StackPanel>
