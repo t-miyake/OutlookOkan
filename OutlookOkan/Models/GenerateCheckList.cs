@@ -105,7 +105,7 @@ namespace OutlookOkan.Models
                     {
                         var isDone = false;
                         var errorCount = 0;
-                        while (!isDone && errorCount < 200)
+                        while (!isDone && errorCount < 300)
                         {
                             try
                             {
@@ -118,7 +118,7 @@ namespace OutlookOkan.Models
                             catch (COMException)
                             {
                                 //HRESULT:0x80004004 対策
-                                Thread.Sleep(30);
+                                Thread.Sleep(33);
                                 errorCount++;
                             }
                         }
@@ -167,7 +167,7 @@ namespace OutlookOkan.Models
 
                     var isDone = false;
                     var errorCount = 0;
-                    while (!isDone && errorCount < 200)
+                    while (!isDone && errorCount < 300)
                     {
                         try
                         {
@@ -179,7 +179,7 @@ namespace OutlookOkan.Models
                         catch (COMException)
                         {
                             //HRESULT:0x80004004 対策
-                            Thread.Sleep(30);
+                            Thread.Sleep(33);
                             errorCount++;
                         }
                     }
