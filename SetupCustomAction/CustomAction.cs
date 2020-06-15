@@ -19,7 +19,6 @@ namespace SetupCustomAction
             {
                 throw new InstallException();
             }
-
         }
 
         public override void Uninstall(IDictionary savedState)
@@ -39,7 +38,6 @@ namespace SetupCustomAction
                     //throw new InstallException();
                 }
             }
-
         }
 
         public override void Commit(IDictionary savedState)
