@@ -698,6 +698,9 @@ namespace OutlookOkan.ViewModels
             ContactGroupMembersAreWhite = _generalSetting[0].ContactGroupMembersAreWhite;
             ExchangeDistributionListMembersAreWhite = _generalSetting[0].ExchangeDistributionListMembersAreWhite;
             IsNotTreatedAsAttachmentsAtHtmlEmbeddedFiles = _generalSetting[0].IsNotTreatedAsAttachmentsAtHtmlEmbeddedFiles;
+            IsDoNotUseAutoCcBccAttachedFileIfAllRecipientsAreInternalDomain = _generalSetting[0].IsDoNotUseAutoCcBccAttachedFileIfAllRecipientsAreInternalDomain;
+            IsDoNotUseDeferredDeliveryIfAllRecipientsAreInternalDomain = _generalSetting[0].IsDoNotUseDeferredDeliveryIfAllRecipientsAreInternalDomain;
+            IsDoNotUseAutoCcBccKeywordIfAllRecipientsAreInternalDomain = _generalSetting[0].IsDoNotUseAutoCcBccKeywordIfAllRecipientsAreInternalDomain;
 
             if (_generalSetting[0].LanguageCode is null) return;
 
@@ -734,7 +737,10 @@ namespace OutlookOkan.ViewModels
                     EnableGetExchangeDistributionListMembers = EnableGetExchangeDistributionListMembers,
                     ContactGroupMembersAreWhite = ContactGroupMembersAreWhite,
                     ExchangeDistributionListMembersAreWhite = ExchangeDistributionListMembersAreWhite,
-                    IsNotTreatedAsAttachmentsAtHtmlEmbeddedFiles = IsNotTreatedAsAttachmentsAtHtmlEmbeddedFiles
+                    IsNotTreatedAsAttachmentsAtHtmlEmbeddedFiles = IsNotTreatedAsAttachmentsAtHtmlEmbeddedFiles,
+                    IsDoNotUseAutoCcBccAttachedFileIfAllRecipientsAreInternalDomain = IsDoNotUseAutoCcBccAttachedFileIfAllRecipientsAreInternalDomain,
+                    IsDoNotUseDeferredDeliveryIfAllRecipientsAreInternalDomain = IsDoNotUseDeferredDeliveryIfAllRecipientsAreInternalDomain,
+                    IsDoNotUseAutoCcBccKeywordIfAllRecipientsAreInternalDomain = IsDoNotUseAutoCcBccKeywordIfAllRecipientsAreInternalDomain
                 }
             };
 
@@ -845,7 +851,6 @@ namespace OutlookOkan.ViewModels
         }
 
         private bool _isNotTreatedAsAttachmentsAtHtmlEmbeddedFiles;
-
         public bool IsNotTreatedAsAttachmentsAtHtmlEmbeddedFiles
         {
             get => _isNotTreatedAsAttachmentsAtHtmlEmbeddedFiles;
@@ -853,6 +858,39 @@ namespace OutlookOkan.ViewModels
             {
                 _isNotTreatedAsAttachmentsAtHtmlEmbeddedFiles = value;
                 OnPropertyChanged(nameof(IsNotTreatedAsAttachmentsAtHtmlEmbeddedFiles));
+            }
+        }
+
+        private bool _isDoNotUseAutoCcBccAttachedFileIfAllRecipientsAreInternalDomain;
+        public bool IsDoNotUseAutoCcBccAttachedFileIfAllRecipientsAreInternalDomain
+        {
+            get => _isDoNotUseAutoCcBccAttachedFileIfAllRecipientsAreInternalDomain;
+            set
+            {
+                _isDoNotUseAutoCcBccAttachedFileIfAllRecipientsAreInternalDomain = value;
+                OnPropertyChanged(nameof(IsDoNotUseAutoCcBccAttachedFileIfAllRecipientsAreInternalDomain));
+            }
+        }
+
+        private bool _isDoNotUseDeferredDeliveryIfAllRecipientsAreInternalDomain;
+        public bool IsDoNotUseDeferredDeliveryIfAllRecipientsAreInternalDomain
+        {
+            get => _isDoNotUseDeferredDeliveryIfAllRecipientsAreInternalDomain;
+            set
+            {
+                _isDoNotUseDeferredDeliveryIfAllRecipientsAreInternalDomain = value;
+                OnPropertyChanged(nameof(IsDoNotUseDeferredDeliveryIfAllRecipientsAreInternalDomain));
+            }
+        }
+
+        private bool _isDoNotUseAutoCcBccKeywordIfAllRecipientsAreInternalDomain;
+        public bool IsDoNotUseAutoCcBccKeywordIfAllRecipientsAreInternalDomain
+        {
+            get => _isDoNotUseAutoCcBccKeywordIfAllRecipientsAreInternalDomain;
+            set
+            {
+                _isDoNotUseAutoCcBccKeywordIfAllRecipientsAreInternalDomain = value;
+                OnPropertyChanged(nameof(IsDoNotUseAutoCcBccKeywordIfAllRecipientsAreInternalDomain));
             }
         }
 

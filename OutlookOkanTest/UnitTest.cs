@@ -606,7 +606,7 @@ namespace OutlookOkanTest
 
             var generateCheckList = new GenerateCheckList();
             var privateObject = new PrivateObject(generateCheckList);
-            var args = new object[] { testDisplayNameAndRecipient, testDeferredDeliveryMinutes };
+            var args = new object[] { testDisplayNameAndRecipient, testDeferredDeliveryMinutes, false, 2 };
             var result = (int)privateObject.Invoke("CalcDeferredMinutes", args);
 
             Assert.AreEqual(result, deferredMinutes);
@@ -634,10 +634,38 @@ namespace OutlookOkanTest
 
             var generateCheckList = new GenerateCheckList();
             var privateObject = new PrivateObject(generateCheckList);
-            var args = new object[] { testDisplayNameAndRecipient, testDeferredDeliveryMinutes };
+            var args = new object[] { testDisplayNameAndRecipient, testDeferredDeliveryMinutes, false, 2 };
             var result = (int)privateObject.Invoke("CalcDeferredMinutes", args);
 
             Assert.AreEqual(result, targetDeferredMinutes);
+        }
+
+        [TestMethod, TestCategory("_GenerateCheckList"), TestCategory("CalcDeferredMinutes")]
+        public void 送信保留する時間を算出_個別該当なし_全体設定あり_外部ドメイン0_外部ドメイン0の際の無効設定あり()
+        {
+            var testDisplayNameAndRecipient = new DisplayNameAndRecipient
+            {
+                To =
+                {
+                    ["miyake@noraneko.co.jp"] = "Takafumi Miyake",
+                    ["sample@noraneko.co.jp"] = "サンプル太郎",
+                    ["sample2@noraneko.co.jp"] = "サンプル次郎"
+                },
+                Cc = { ["miyake@noraneko.co.jp"] = "Takafumi Miyake" },
+                Bcc = { ["info@noraneko.co.jp"] = "Takafumi Miyake" },
+            };
+
+            var testDeferredDeliveryMinutes = new List<DeferredDeliveryMinutes>
+            {
+                new DeferredDeliveryMinutes {TargetAddress = "@", DeferredMinutes = 3}
+            };
+
+            var generateCheckList = new GenerateCheckList();
+            var privateObject = new PrivateObject(generateCheckList);
+            var args = new object[] { testDisplayNameAndRecipient, testDeferredDeliveryMinutes, true, 0 };
+            var result = (int)privateObject.Invoke("CalcDeferredMinutes", args);
+
+            Assert.AreEqual(result, 0);
         }
 
         #endregion

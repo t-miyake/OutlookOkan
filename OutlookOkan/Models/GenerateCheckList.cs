@@ -70,7 +70,7 @@ namespace OutlookOkan.Models
 
             _checkList = CheckKeyword(_checkList, alertKeywordAndMessageList);
 
-            var autoAddRecipients = AutoAddCcAndBcc(mail, displayNameAndRecipient, autoCcBccKeywordList, autoCcBccAttachedFilesList, autoCcBccRecipientList);
+            var autoAddRecipients = AutoAddCcAndBcc(mail, generalSetting, displayNameAndRecipient, autoCcBccKeywordList, autoCcBccAttachedFilesList, autoCcBccRecipientList, CountRecipientExternalDomains(displayNameAndRecipient, _checkList.SenderDomain, internalDomainList, false));
             if (autoAddRecipients?.Count > 0)
             {
                 MakeDisplayNameAndRecipient(autoAddRecipients, displayNameAndRecipient, generalSetting);
@@ -83,7 +83,7 @@ namespace OutlookOkan.Models
 
             _checkList.RecipientExternalDomainNumAll = CountRecipientExternalDomains(displayNameAndRecipient, _checkList.SenderDomain, internalDomainList, false);
 
-            _checkList.DeferredMinutes = CalcDeferredMinutes(displayNameAndRecipient, deferredDeliveryMinutes);
+            _checkList.DeferredMinutes = CalcDeferredMinutes(displayNameAndRecipient, deferredDeliveryMinutes, generalSetting.IsDoNotUseDeferredDeliveryIfAllRecipientsAreInternalDomain, _checkList.RecipientExternalDomainNumAll);
 
             return _checkList;
         }
@@ -113,7 +113,6 @@ namespace OutlookOkan.Models
                             try
                             {
                                 var exchangeUser = tempRecipient.AddressEntry.GetExchangeUser();
-
                                 if (!(exchangeUser is null)) checkList.Sender = exchangeUser.PrimarySmtpAddress ?? Resources.FailedToGetInformation;
 
                                 isDone = true;
@@ -552,7 +551,6 @@ namespace OutlookOkan.Models
                         displayNameAndRecipient.All[nameAndRecipient.MailAddress] = nameAndRecipient.NameAndMailAddress + nameAndRecipient.IncludedGroupAndList;
                     }
 
-
                     //名称と差出人とメールアドレスの紐づけをTO/CC/BCCそれぞれに格納。
                     switch (recipient.Type)
                     {
@@ -680,18 +678,20 @@ namespace OutlookOkan.Models
         /// 条件に一致した場合、CCやBCCに宛先を追加する。
         /// </summary>
         /// <param name="mail">Mail</param>
+        /// <param name="generalSetting">一般設定</param>
         /// <param name="displayNameAndRecipient">宛先アドレスと名称設定</param>
         /// <param name="autoCcBccKeywordList">自動CC/BCC追加(キーワード)設定</param>
         /// <param name="autoCcBccAttachedFilesList">自動CC/BCC追加(キーワード)設定</param>
         /// <param name="autoCcBccRecipientList">自動CC/BCC追加(宛先)設定</param>
+        /// <param name="externalDomainCount">外部ドメイン数</param>
         /// <returns>CCやBCCに自動追加された宛先アドレス</returns>
-        private List<Outlook.Recipient> AutoAddCcAndBcc(Outlook._MailItem mail, DisplayNameAndRecipient displayNameAndRecipient, IReadOnlyCollection<AutoCcBccKeyword> autoCcBccKeywordList, IReadOnlyCollection<AutoCcBccAttachedFile> autoCcBccAttachedFilesList, IReadOnlyCollection<AutoCcBccRecipient> autoCcBccRecipientList)
+        private List<Outlook.Recipient> AutoAddCcAndBcc(Outlook._MailItem mail, GeneralSetting generalSetting, DisplayNameAndRecipient displayNameAndRecipient, IReadOnlyCollection<AutoCcBccKeyword> autoCcBccKeywordList, IReadOnlyCollection<AutoCcBccAttachedFile> autoCcBccAttachedFilesList, IReadOnlyCollection<AutoCcBccRecipient> autoCcBccRecipientList, int externalDomainCount)
         {
             var autoAddedCcAddressList = new List<string>();
             var autoAddedBccAddressList = new List<string>();
             var autoAddRecipients = new List<Outlook.Recipient>();
 
-            if (autoCcBccKeywordList.Count != 0)
+            if (autoCcBccKeywordList.Count != 0 && !(externalDomainCount == 0 && generalSetting.IsDoNotUseAutoCcBccKeywordIfAllRecipientsAreInternalDomain))
             {
                 foreach (var autoCcBccKeyword in autoCcBccKeywordList)
                 {
@@ -725,7 +725,7 @@ namespace OutlookOkan.Models
             }
 
             //警告対象の添付ファイル数が0でない場合のみ、CCやBCCの追加処理を行う。
-            if (_checkList.Attachments.Count != 0)
+            if (_checkList.Attachments.Count != 0 && !(externalDomainCount == 0 && generalSetting.IsDoNotUseAutoCcBccAttachedFileIfAllRecipientsAreInternalDomain))
             {
                 if (autoCcBccAttachedFilesList.Count != 0)
                 {
@@ -1101,10 +1101,13 @@ namespace OutlookOkan.Models
         /// </summary>
         /// <param name="displayNameAndRecipient">宛先アドレスと名称</param>
         /// <param name="deferredDeliveryMinutes">遅延送信設定</param>
+        /// <param name="isDoNotUseDeferredDeliveryIfAllRecipientsAreInternalDomain">外部ドメイン数が0の際の機能使用有無</param>
+        /// <param name="externalDomainCount">外部ドメイン数</param>
         /// <returns>送信遅延時間(分)</returns>
-        private int CalcDeferredMinutes(DisplayNameAndRecipient displayNameAndRecipient, IReadOnlyCollection<DeferredDeliveryMinutes> deferredDeliveryMinutes)
+        private int CalcDeferredMinutes(DisplayNameAndRecipient displayNameAndRecipient, IReadOnlyCollection<DeferredDeliveryMinutes> deferredDeliveryMinutes, bool isDoNotUseDeferredDeliveryIfAllRecipientsAreInternalDomain, int externalDomainCount)
         {
             if (deferredDeliveryMinutes.Count == 0) return 0;
+            if (externalDomainCount == 0 && isDoNotUseDeferredDeliveryIfAllRecipientsAreInternalDomain) return 0;
 
             var deferredMinutes = 0;
 

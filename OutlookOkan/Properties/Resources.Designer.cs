@@ -469,6 +469,15 @@ namespace OutlookOkan.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Exclusion settings.
+        /// </summary>
+        public static string ExclusionSettings {
+            get {
+                return ResourceManager.GetString("ExclusionSettings", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Failed to export..
         /// </summary>
         public static string ExportFailed {
@@ -726,6 +735,15 @@ namespace OutlookOkan.Properties {
         public static string IsCanNotShowConfirmation {
             get {
                 return ResourceManager.GetString("IsCanNotShowConfirmation", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Disable this feature if the recipient&apos;s domains are all internal domains..
+        /// </summary>
+        public static string IsDoNotUseXIfAllRecipientsAreInternalDomain {
+            get {
+                return ResourceManager.GetString("IsDoNotUseXIfAllRecipientsAreInternalDomain", resourceCulture);
             }
         }
         

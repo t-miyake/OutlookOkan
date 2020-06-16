@@ -522,4 +522,10 @@ CCあるいはBCCに指定したアドレスが自動で追加されます。</v
 
 ※送信元のドメインは、常に内部ドメインとして扱われます。</value>
   </data>
+  <data name="ExclusionSettings" xml:space="preserve">
+    <value>対象外設定</value>
+  </data>
+  <data name="IsDoNotUseXIfAllRecipientsAreInternalDomain" xml:space="preserve">
+    <value>全ての宛先のドメインが内部ドメインの場合、この機能を使用しない。</value>
+  </data>
 </root>

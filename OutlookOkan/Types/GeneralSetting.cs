@@ -15,6 +15,9 @@ namespace OutlookOkan.Types
         public bool ContactGroupMembersAreWhite { get; set; }
         public bool ExchangeDistributionListMembersAreWhite { get; set; }
         public bool IsNotTreatedAsAttachmentsAtHtmlEmbeddedFiles { get; set; }
+        public bool IsDoNotUseAutoCcBccAttachedFileIfAllRecipientsAreInternalDomain { get; set; }
+        public bool IsDoNotUseDeferredDeliveryIfAllRecipientsAreInternalDomain { get; set; }
+        public bool IsDoNotUseAutoCcBccKeywordIfAllRecipientsAreInternalDomain { get; set; }
     }
 
     public sealed class GeneralSettingMap : ClassMap<GeneralSetting>
@@ -51,6 +54,15 @@ namespace OutlookOkan.Types
                 .BooleanValues(true, true, "Yes", "Y").TypeConverterOption.BooleanValues(false, true, "No", "N").Default(true);
 
             Map(m => m.IsNotTreatedAsAttachmentsAtHtmlEmbeddedFiles).Index(10).TypeConverterOption
+                .BooleanValues(true, true, "Yes", "Y").TypeConverterOption.BooleanValues(false, true, "No", "N").Default(false);
+
+            Map(m => m.IsDoNotUseAutoCcBccAttachedFileIfAllRecipientsAreInternalDomain).Index(11).TypeConverterOption
+                .BooleanValues(true, true, "Yes", "Y").TypeConverterOption.BooleanValues(false, true, "No", "N").Default(false);
+
+            Map(m => m.IsDoNotUseDeferredDeliveryIfAllRecipientsAreInternalDomain).Index(12).TypeConverterOption
+                .BooleanValues(true, true, "Yes", "Y").TypeConverterOption.BooleanValues(false, true, "No", "N").Default(false);
+
+            Map(m => m.IsDoNotUseAutoCcBccKeywordIfAllRecipientsAreInternalDomain).Index(13).TypeConverterOption
                 .BooleanValues(true, true, "Yes", "Y").TypeConverterOption.BooleanValues(false, true, "No", "N").Default(false);
         }
     }

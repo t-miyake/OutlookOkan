@@ -519,4 +519,10 @@ Register a domain to be handled as an internal (company) domain.
 
 The domain of the sender's email address is always treated as an internal domain.</value>
   </data>
+  <data name="ExclusionSettings" xml:space="preserve">
+    <value>Exclusion settings</value>
+  </data>
+  <data name="IsDoNotUseXIfAllRecipientsAreInternalDomain" xml:space="preserve">
+    <value>Disable this feature if the recipient's domains are all internal domains.</value>
+  </data>
 </root>
