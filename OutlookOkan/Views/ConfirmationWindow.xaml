@@ -3,8 +3,6 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-             xmlns:xc="clr-namespace:OutlookOkan.Views"
-             xmlns:properties="clr-namespace:OutlookOkan.Properties"
              xmlns:services="clr-namespace:OutlookOkan.Services"
              mc:Ignorable="d"
         Title="{Binding Source={x:Static services:ResourceService.Instance}, Path=Resources.Confirmation, Mode=OneWay}"

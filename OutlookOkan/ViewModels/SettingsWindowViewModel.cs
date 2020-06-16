@@ -682,7 +682,7 @@ namespace OutlookOkan.ViewModels
             //1行しかないはずだが、2行以上あるとロード時にエラーとなる恐れがあるため、全行ロードする。
             foreach (var data in readCsv.GetCsvRecords<GeneralSetting>(readCsv.LoadCsv<GeneralSettingMap>()))
             {
-                _generalSetting.Add((data));
+                _generalSetting.Add(data);
             }
 
             if (_generalSetting.Count == 0) return;
