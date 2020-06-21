@@ -542,7 +542,9 @@ when the recipients (To/Cc) has a large number of external domains.</value>
     <value>Displays a warning when the recipients (To/Cc) has a large number of external domains.</value>
   </data>
   <data name="SettingExampleExternalDomainsWarningAndAutoChangeToBcc" xml:space="preserve">
-    <value>aa</value>
+    <value>Set the number of external domains to be used as a basis for warnings and automatic change to Bcc, and turn each one on or off.
+
+If the To does not exist after automatic change to Bcc, the sender's address will be automatically added to the To.</value>
   </data>
   <data name="TargetToAndCcExternalDomainsNum" xml:space="preserve">
     <value>The number of external domains of the recipients (To/Cc) to be covered by this feature.</value>

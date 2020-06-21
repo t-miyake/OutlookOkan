@@ -1137,7 +1137,9 @@ namespace OutlookOkan.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to aa.
+        ///   Looks up a localized string similar to Set the number of external domains to be used as a basis for warnings and automatic change to Bcc, and turn each one on or off.
+        ///
+        ///If the To does not exist after automatic change to Bcc, the sender&apos;s address will be automatically added to the To..
         /// </summary>
         public static string SettingExampleExternalDomainsWarningAndAutoChangeToBcc {
             get {

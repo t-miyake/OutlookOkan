@@ -613,7 +613,7 @@
                     <GridSplitter Grid.Column="1" />
                     <StackPanel Grid.Column="2" Margin="1,2,8,8">
                         <GroupBox Header="{Binding Source={x:Static services:ResourceService.Instance}, Path=Resources.SettingExample, Mode=OneWay}" FontSize="11" Padding="3,3,3,3">
-                            <TextBox Height="370" BorderBrush="White" FontSize="10" TextWrapping="Wrap" Text="{Binding Source={x:Static services:ResourceService.Instance}, Path=Resources.SettingExampleExternalDomainsWarningAndAutoChangeToBcc, Mode=OneWay}" Padding="0,12,0,0" IsReadOnly="True" />
+                            <TextBox Height="370" BorderBrush="White" FontSize="11" TextWrapping="Wrap" Text="{Binding Source={x:Static services:ResourceService.Instance}, Path=Resources.SettingExampleExternalDomainsWarningAndAutoChangeToBcc, Mode=OneWay}" Padding="0,12,0,0" IsReadOnly="True" />
                         </GroupBox>
                     </StackPanel>
                 </Grid>

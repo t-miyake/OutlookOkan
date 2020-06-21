@@ -544,7 +544,9 @@ CcあるいはBccに指定したアドレスが自動で追加されます。</v
     <value>宛先(To/Cc)の外部ドメイン数が多い場合、確認画面に警告を表示する。</value>
   </data>
   <data name="SettingExampleExternalDomainsWarningAndAutoChangeToBcc" xml:space="preserve">
-    <value>aa</value>
+    <value>外部ドメイン数の警告やBccへの自動変換の基準とする外部ドメイン数と、それぞれのオンオフを設定します。
+
+※Bccへの自動変換によって、Toが存在しなくなる場合、送信者のアドレスがToへ自動追加されます。</value>
   </data>
   <data name="TargetToAndCcExternalDomainsNum" xml:space="preserve">
     <value>基準とする宛先(To/Cc)の外部ドメイン数。</value>
