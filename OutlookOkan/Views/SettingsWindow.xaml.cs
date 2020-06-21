@@ -119,9 +119,7 @@ namespace OutlookOkan.Views
         private void ExternalDomainsNumBox_OnPreviewTextInput(object sender, TextCompositionEventArgs e)
         {
             var regex = new Regex("[^0-9]+$");
-
             if (!regex.IsMatch(ExternalDomainsNumBox.Text + e.Text)) return;
-            ExternalDomainsNumBox.Text = "10";
             e.Handled = true;
         }
 
