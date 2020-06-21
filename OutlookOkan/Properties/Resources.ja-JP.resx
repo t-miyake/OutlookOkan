@@ -124,7 +124,7 @@
     <value>警告キーワード</value>
   </data>
   <data name="AlertKeywordInfo" xml:space="preserve">
-    <value>警告するキーワード</value>
+    <value>警告するキーワード。</value>
   </data>
   <data name="AlertMailAddress" xml:space="preserve">
     <value>警告アドレス</value>
@@ -148,16 +148,16 @@
     <value>添付ファイル</value>
   </data>
   <data name="AutoAddCCorBCCByKeyword" xml:space="preserve">
-    <value>自動CC/BCC追加(キーワード)</value>
+    <value>自動Cc/Bcc追加(キーワード)</value>
   </data>
   <data name="AutoAddCCorBCCByKeywordInfo" xml:space="preserve">
-    <value>自動でCCやBCCを追加したいキーワード</value>
+    <value>自動でCcやBccを追加したいキーワード。</value>
   </data>
   <data name="AutoAddCCorBCCByMailAddressOrDomain" xml:space="preserve">
-    <value>自動CC/BCC追加(宛先)</value>
+    <value>自動Cc/Bcc追加(宛先)</value>
   </data>
   <data name="AutoAddCCorBCCByMailAddressOrDomainInfo" xml:space="preserve">
-    <value>自動でCCやBCCを追加したいアドレスまたはドメイン(@から)</value>
+    <value>自動でCcやBccを追加したいアドレスまたはドメイン。(@から)</value>
   </data>
   <data name="AutoAddDestination" xml:space="preserve">
     <value>自動で宛先に追加されました。</value>
@@ -178,7 +178,7 @@
     <value>キャンセル</value>
   </data>
   <data name="CCorBCC" xml:space="preserve">
-    <value>CCまたはBCC</value>
+    <value>CcまたはBcc</value>
   </data>
   <data name="ChangeLanguage" xml:space="preserve">
     <value>表示言語の変更</value>
@@ -244,22 +244,22 @@
     <value>インポートに失敗しました。</value>
   </data>
   <data name="InputCCorBCC" xml:space="preserve">
-    <value>CC または BCCと入力</value>
+    <value>Cc または Bccと入力。</value>
   </data>
   <data name="InputDomainInfo" xml:space="preserve">
-    <value>@からドメインを入力</value>
+    <value>@からドメインを入力。</value>
   </data>
   <data name="InputMailaddressOrDomain" xml:space="preserve">
     <value>メールアドレスかドメインを登録してください。</value>
   </data>
   <data name="InputNameInfo" xml:space="preserve">
-    <value>社名等の宛先名を入力</value>
+    <value>社名等の宛先名を入力。</value>
   </data>
   <data name="IsAlertAddressBccAlert" xml:space="preserve">
-    <value>警告対象として登録されたアドレス/ドメインが宛先(BCC)に含まれています。</value>
+    <value>警告対象として登録されたアドレス/ドメインが宛先(Bcc)に含まれています。</value>
   </data>
   <data name="IsAlertAddressCcAlert" xml:space="preserve">
-    <value>警告対象として登録されたアドレス/ドメインが宛先(CC)に含まれています。</value>
+    <value>警告対象として登録されたアドレス/ドメインが宛先(Cc)に含まれています。</value>
   </data>
   <data name="IsAlertAddressMaybeIrrelevant" xml:space="preserve">
     <value>このアドレスは意図した宛先とは無関係の可能性があります。</value>
@@ -322,7 +322,7 @@
     <value>送信禁止</value>
   </data>
   <data name="SendingForbidInfo" xml:space="preserve">
-    <value>チェックを入れると送信を禁止できます</value>
+    <value>チェックを入れると送信を禁止できます。</value>
   </data>
   <data name="SettingExample" xml:space="preserve">
     <value>設定例</value>
@@ -384,20 +384,20 @@
 登録するとその宛先への送信時に警告が表示されます。</value>
   </data>
   <data name="SettingExampleAutoAddCCorBCCByKeyword" xml:space="preserve">
-    <value>種別：CC または BCC
+    <value>種別：Cc または Bcc
 キーワード：機密情報
 アドレス：boss@noraneko.co.jp
 
 キーワードに本文に含まれる場合、
-CCあるいはBCCに指定したアドレスが自動で追加されます。</value>
+CcあるいはBccに指定したアドレスが自動で追加されます。</value>
   </data>
   <data name="SettingExampleAutoAddCCorBCCByMailAddressOrDomain" xml:space="preserve">
-    <value>種別：CC または BCC
+    <value>種別：Cc または Bcc
 宛先：warning@xxxxxxx.com
 アドレス：boss@noraneko.co.jp
 
 登録した宛先やドメインへのメール送信時に、
-CCあるいはBCCに指定したアドレスが自動で追加されます。</value>
+CcあるいはBccに指定したアドレスが自動で追加されます。</value>
   </data>
   <data name="SettingExampleNameAndDomain" xml:space="preserve">
     <value>名称：のらねこ
@@ -428,7 +428,7 @@ CCあるいはBCCに指定したアドレスが自動で追加されます。</v
     <value>確認画面をスキップ</value>
   </data>
   <data name="IsSkipConfirmationInfo" xml:space="preserve">
-    <value>チェックを入れた宛先にのみメールを送信する場合、確認画面をスキップします.</value>
+    <value>チェックを入れた宛先にのみメールを送信する場合、確認画面をスキップします。</value>
   </data>
   <data name="SentOnBehalf" xml:space="preserve">
     <value>として送信又は代理送信</value>
@@ -489,17 +489,17 @@ CCあるいはBCCに指定したアドレスが自動で追加されます。</v
     <value>最新版をご利用です。</value>
   </data>
   <data name="AutoAddCCorBCCByAttachedFile" xml:space="preserve">
-    <value>自動CC/BCC追加(添付ファイル)</value>
+    <value>自動Cc/Bcc追加(添付ファイル)</value>
   </data>
   <data name="IsNotTreatedAsAttachmentsAtHtmlEmbeddedFiles" xml:space="preserve">
     <value>HTMLメールに埋め込まれたファイルは、添付ファイルとして扱わない。</value>
   </data>
   <data name="SettingExampleAutoAddCCorBCCByAttachedFile" xml:space="preserve">
-    <value>種別：CC または BCC
+    <value>種別：Cc または Bcc
 アドレス：boss@noraneko.co.jp
 
 ファイルを添付したメールの送信時に、
-CCあるいはBCCに指定したアドレスが自動で追加されます。</value>
+CcあるいはBccに指定したアドレスが自動で追加されます。</value>
   </data>
   <data name="CanceledSendingMail" xml:space="preserve">
     <value>送信をキャンセルしました。</value>

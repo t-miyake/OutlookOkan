@@ -148,16 +148,16 @@
     <value>Attachments</value>
   </data>
   <data name="AutoAddCCorBCCByKeyword" xml:space="preserve">
-    <value>Automatic CC/BCC addition(by keywords)</value>
+    <value>Automatic Cc/Bcc addition(by keywords)</value>
   </data>
   <data name="AutoAddCCorBCCByKeywordInfo" xml:space="preserve">
-    <value>Keywords that automatically add CCs or BCCs.</value>
+    <value>Keywords that automatically add Ccs or Bccs.</value>
   </data>
   <data name="AutoAddCCorBCCByMailAddressOrDomain" xml:space="preserve">
-    <value>Automatic CC/BCC addition(by recipients)</value>
+    <value>Automatic Cc/Bcc addition(by recipients)</value>
   </data>
   <data name="AutoAddCCorBCCByMailAddressOrDomainInfo" xml:space="preserve">
-    <value>Recipients or domains that automatically add CCs or BCCs.</value>
+    <value>Recipients or domains that automatically add Ccs or Bccs.</value>
   </data>
   <data name="AutoAddDestination" xml:space="preserve">
     <value>Added automatically.</value>
@@ -178,7 +178,7 @@
     <value>Cancel</value>
   </data>
   <data name="CCorBCC" xml:space="preserve">
-    <value>CC/BCC</value>
+    <value>Cc/Bcc</value>
   </data>
   <data name="ChangeLanguage" xml:space="preserve">
     <value>Change the display language</value>
@@ -244,7 +244,7 @@
     <value>Failed to import.</value>
   </data>
   <data name="InputCCorBCC" xml:space="preserve">
-    <value>Enter "CC" or "BCC".</value>
+    <value>Enter "Cc" or "Bcc".</value>
   </data>
   <data name="InputDomainInfo" xml:space="preserve">
     <value>Enter the domain from @.</value>
@@ -253,13 +253,13 @@
     <value>Enter email address or domain.</value>
   </data>
   <data name="InputNameInfo" xml:space="preserve">
-    <value>Enter the name.(ex. Company name)</value>
+    <value>Enter the name. (ex. Company name)</value>
   </data>
   <data name="IsAlertAddressBccAlert" xml:space="preserve">
-    <value>The recipients (BCC) contains an address or domain that has been registered as an alert.</value>
+    <value>The recipients (Bcc) contains an address or domain that has been registered as an alert.</value>
   </data>
   <data name="IsAlertAddressCcAlert" xml:space="preserve">
-    <value>The recipients (CC) contains an address or domain that has been registered as an alert.</value>
+    <value>The recipients (Cc) contains an address or domain that has been registered as an alert.</value>
   </data>
   <data name="IsAlertAddressMaybeIrrelevant" xml:space="preserve">
     <value>This recipient may be unrelated to the intended destination.</value>
@@ -385,18 +385,18 @@ Register an email address or domain.
 If you send an email to an email address or domain that you have registered here, you will receive an alert in advance.</value>
   </data>
   <data name="SettingExampleAutoAddCCorBCCByKeyword" xml:space="preserve">
-    <value>Type: CC or BCC
+    <value>Type: Cc or Bcc
 Keywords: Confidential
 Email address: boss@noraneko.co.jp
 
-When the keywords are included in the mail, The specified address is automatically added to the CC or BCC.</value>
+When the keywords are included in the mail, The specified address is automatically added to the Cc or Bcc.</value>
   </data>
   <data name="SettingExampleAutoAddCCorBCCByMailAddressOrDomain" xml:space="preserve">
-    <value>Type: CC or BCC
+    <value>Type: Cc or Bcc
 To: warning@xxxxxxx.com
 Email address: boss@noraneko.co.jp
 
-When sending mail to registered recipients and domains, The specified address is automatically added to the CC or BCC.</value>
+When sending mail to registered recipients and domains, The specified address is automatically added to the Cc or Bcc.</value>
   </data>
   <data name="SettingExampleNameAndDomain" xml:space="preserve">
     <value>Name: Noraneko Inc
@@ -487,16 +487,16 @@ Do you want to download it?</value>
     <value>This add-in is the latest version.</value>
   </data>
   <data name="AutoAddCCorBCCByAttachedFile" xml:space="preserve">
-    <value>Automatic CC/BCC addition(by attachments)</value>
+    <value>Automatic Cc/Bcc addition(by attachments)</value>
   </data>
   <data name="IsNotTreatedAsAttachmentsAtHtmlEmbeddedFiles" xml:space="preserve">
     <value>A file embedded in an HTML mail is not treated as an attachment.</value>
   </data>
   <data name="SettingExampleAutoAddCCorBCCByAttachedFile" xml:space="preserve">
-    <value>Type: CC or BCC
+    <value>Type: Cc or Bcc
 Email address: boss@noraneko.co.jp
 
-When you send an email with a file attached, The specified address is automatically added to the CC or BCC.</value>
+When you send an email with a file attached, The specified address is automatically added to the Cc or Bcc.</value>
   </data>
   <data name="CanceledSendingMail" xml:space="preserve">
     <value>Canceled sending this email.</value>

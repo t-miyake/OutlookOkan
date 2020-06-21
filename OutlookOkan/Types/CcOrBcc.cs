@@ -2,7 +2,7 @@
 {
     public enum CcOrBcc
     {
-        BCC,
-        CC
+        Bcc,
+        Cc
     }
 }

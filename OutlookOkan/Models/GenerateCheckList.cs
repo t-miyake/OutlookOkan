@@ -222,7 +222,7 @@ namespace OutlookOkan.Models
         /// <param name="displayNameAndRecipient">宛先アドレスと名称</param>
         /// <param name="senderDomain">送信元ドメイン</param>
         /// <param name="internalDomain">内部ドメイン設定</param>
-        /// <param name="isToAndCcOnly">対象がTOとCCのみか否か</param>
+        /// <param name="isToAndCcOnly">対象がToとCcのみか否か</param>
         /// <returns>内部ドメインを除く宛先のドメイン数</returns>
         private int CountRecipientExternalDomains(DisplayNameAndRecipient displayNameAndRecipient, string senderDomain, IEnumerable<InternalDomain> internalDomain, bool isToAndCcOnly)
         {
@@ -673,16 +673,16 @@ namespace OutlookOkan.Models
         }
 
         /// <summary>
-        /// 条件に一致した場合、CCやBCCに宛先を追加する。
+        /// 条件に一致した場合、CcやBccに宛先を追加する。
         /// </summary>
         /// <param name="mail">Mail</param>
         /// <param name="generalSetting">一般設定</param>
         /// <param name="displayNameAndRecipient">宛先アドレスと名称設定</param>
-        /// <param name="autoCcBccKeywordList">自動CC/BCC追加(キーワード)設定</param>
-        /// <param name="autoCcBccAttachedFilesList">自動CC/BCC追加(キーワード)設定</param>
-        /// <param name="autoCcBccRecipientList">自動CC/BCC追加(宛先)設定</param>
+        /// <param name="autoCcBccKeywordList">自動Cc/Bcc追加(キーワード)設定</param>
+        /// <param name="autoCcBccAttachedFilesList">自動Cc/Bcc追加(キーワード)設定</param>
+        /// <param name="autoCcBccRecipientList">自動Cc/Bcc追加(宛先)設定</param>
         /// <param name="externalDomainCount">外部ドメイン数</param>
-        /// <returns>CCやBCCに自動追加された宛先アドレス</returns>
+        /// <returns>CcやBccに自動追加された宛先アドレス</returns>
         private List<Outlook.Recipient> AutoAddCcAndBcc(Outlook._MailItem mail, GeneralSetting generalSetting, DisplayNameAndRecipient displayNameAndRecipient, IReadOnlyCollection<AutoCcBccKeyword> autoCcBccKeywordList, IReadOnlyCollection<AutoCcBccAttachedFile> autoCcBccAttachedFilesList, IReadOnlyCollection<AutoCcBccRecipient> autoCcBccRecipientList, int externalDomainCount)
         {
             var autoAddedCcAddressList = new List<string>();
@@ -695,7 +695,7 @@ namespace OutlookOkan.Models
                 {
                     if (!_checkList.MailBody.Contains(autoCcBccKeyword.Keyword) || !autoCcBccKeyword.AutoAddAddress.Contains("@")) continue;
 
-                    if (autoCcBccKeyword.CcOrBcc == CcOrBcc.CC)
+                    if (autoCcBccKeyword.CcOrBcc == CcOrBcc.Cc)
                     {
                         if (!autoAddedCcAddressList.Contains(autoCcBccKeyword.AutoAddAddress) && !displayNameAndRecipient.Cc.ContainsKey(autoCcBccKeyword.AutoAddAddress))
                         {
@@ -721,14 +721,14 @@ namespace OutlookOkan.Models
                 }
             }
 
-            //警告対象の添付ファイル数が0でない場合のみ、CCやBCCの追加処理を行う。
+            //警告対象の添付ファイル数が0でない場合のみ、CcやBccの追加処理を行う。
             if (_checkList.Attachments.Count != 0 && !(externalDomainCount == 0 && generalSetting.IsDoNotUseAutoCcBccAttachedFileIfAllRecipientsAreInternalDomain))
             {
                 if (autoCcBccAttachedFilesList.Count != 0)
                 {
                     foreach (var autoCcBccAttachedFile in autoCcBccAttachedFilesList)
                     {
-                        if (autoCcBccAttachedFile.CcOrBcc == CcOrBcc.CC)
+                        if (autoCcBccAttachedFile.CcOrBcc == CcOrBcc.Cc)
                         {
                             if (!autoAddedCcAddressList.Contains(autoCcBccAttachedFile.AutoAddAddress) && !displayNameAndRecipient.Cc.ContainsKey(autoCcBccAttachedFile.AutoAddAddress))
                             {
@@ -761,7 +761,7 @@ namespace OutlookOkan.Models
                 {
                     if (!displayNameAndRecipient.All.Any(recipient => recipient.Key.Contains(autoCcBccRecipient.TargetRecipient)) || !autoCcBccRecipient.AutoAddAddress.Contains("@")) continue;
 
-                    if (autoCcBccRecipient.CcOrBcc == CcOrBcc.CC)
+                    if (autoCcBccRecipient.CcOrBcc == CcOrBcc.Cc)
                     {
                         if (!autoAddedCcAddressList.Contains(autoCcBccRecipient.AutoAddAddress) && !displayNameAndRecipient.Cc.ContainsKey(autoCcBccRecipient.AutoAddAddress))
                         {

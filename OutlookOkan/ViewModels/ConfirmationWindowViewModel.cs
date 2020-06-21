@@ -64,8 +64,8 @@ namespace OutlookOkan.ViewModels
 
             AddressCount = Properties.Resources.DestinationEmailaddress + " (" + (ToAddresses.Count + CcAddresses.Count + BccAddresses.Count) + ")";
             ToAddressCount = "To (" + ToAddresses.Count + ")";
-            CcAddressCount = "CC (" + CcAddresses.Count + ")";
-            BccAddressCount = "BCC (" + BccAddresses.Count + ")";
+            CcAddressCount = "Cc (" + CcAddresses.Count + ")";
+            BccAddressCount = "Bcc (" + BccAddresses.Count + ")";
 
             AttachmentCount = Properties.Resources.Attachments + " (" + Attachments.Count + ")";
         }
@@ -180,7 +180,7 @@ namespace OutlookOkan.ViewModels
             }
         }
 
-        private string _ccAddressCount = "CC ()";
+        private string _ccAddressCount = "Cc ()";
         public string CcAddressCount
         {
             get => _ccAddressCount;
@@ -191,7 +191,7 @@ namespace OutlookOkan.ViewModels
             }
         }
 
-        private string _bccAddressCount = "BCC ()";
+        private string _bccAddressCount = "Bcc ()";
         public string BccAddressCount
         {
             get => _bccAddressCount;

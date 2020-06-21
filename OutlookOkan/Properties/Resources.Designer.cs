@@ -151,7 +151,7 @@ namespace OutlookOkan.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Automatic CC/BCC addition(by attachments).
+        ///   Looks up a localized string similar to Automatic Cc/Bcc addition(by attachments).
         /// </summary>
         public static string AutoAddCCorBCCByAttachedFile {
             get {
@@ -160,7 +160,7 @@ namespace OutlookOkan.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Automatic CC/BCC addition(by keywords).
+        ///   Looks up a localized string similar to Automatic Cc/Bcc addition(by keywords).
         /// </summary>
         public static string AutoAddCCorBCCByKeyword {
             get {
@@ -169,7 +169,7 @@ namespace OutlookOkan.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Keywords that automatically add CCs or BCCs..
+        ///   Looks up a localized string similar to Keywords that automatically add Ccs or Bccs..
         /// </summary>
         public static string AutoAddCCorBCCByKeywordInfo {
             get {
@@ -178,7 +178,7 @@ namespace OutlookOkan.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Automatic CC/BCC addition(by recipients).
+        ///   Looks up a localized string similar to Automatic Cc/Bcc addition(by recipients).
         /// </summary>
         public static string AutoAddCCorBCCByMailAddressOrDomain {
             get {
@@ -187,7 +187,7 @@ namespace OutlookOkan.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Recipients or domains that automatically add CCs or BCCs..
+        ///   Looks up a localized string similar to Recipients or domains that automatically add Ccs or Bccs..
         /// </summary>
         public static string AutoAddCCorBCCByMailAddressOrDomainInfo {
             get {
@@ -280,7 +280,7 @@ namespace OutlookOkan.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to CC/BCC.
+        ///   Looks up a localized string similar to Cc/Bcc.
         /// </summary>
         public static string CCorBCC {
             get {
@@ -613,7 +613,7 @@ namespace OutlookOkan.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Enter &quot;CC&quot; or &quot;BCC&quot;..
+        ///   Looks up a localized string similar to Enter &quot;Cc&quot; or &quot;Bcc&quot;..
         /// </summary>
         public static string InputCCorBCC {
             get {
@@ -658,7 +658,7 @@ namespace OutlookOkan.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Enter the name.(ex. Company name).
+        ///   Looks up a localized string similar to Enter the name. (ex. Company name).
         /// </summary>
         public static string InputNameInfo {
             get {
@@ -676,7 +676,7 @@ namespace OutlookOkan.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to The recipients (BCC) contains an address or domain that has been registered as an alert..
+        ///   Looks up a localized string similar to The recipients (Bcc) contains an address or domain that has been registered as an alert..
         /// </summary>
         public static string IsAlertAddressBccAlert {
             get {
@@ -685,7 +685,7 @@ namespace OutlookOkan.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to The recipients (CC) contains an address or domain that has been registered as an alert..
+        ///   Looks up a localized string similar to The recipients (Cc) contains an address or domain that has been registered as an alert..
         /// </summary>
         public static string IsAlertAddressCcAlert {
             get {
@@ -1000,10 +1000,10 @@ namespace OutlookOkan.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Type: CC or BCC
+        ///   Looks up a localized string similar to Type: Cc or Bcc
         ///Email address: boss@noraneko.co.jp
         ///
-        ///When you send an email with a file attached, The specified address is automatically added to the CC or BCC..
+        ///When you send an email with a file attached, The specified address is automatically added to the Cc or Bcc..
         /// </summary>
         public static string SettingExampleAutoAddCCorBCCByAttachedFile {
             get {
@@ -1012,11 +1012,11 @@ namespace OutlookOkan.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Type: CC or BCC
+        ///   Looks up a localized string similar to Type: Cc or Bcc
         ///Keywords: Confidential
         ///Email address: boss@noraneko.co.jp
         ///
-        ///When the keywords are included in the mail, The specified address is automatically added to the CC or BCC..
+        ///When the keywords are included in the mail, The specified address is automatically added to the Cc or Bcc..
         /// </summary>
         public static string SettingExampleAutoAddCCorBCCByKeyword {
             get {
@@ -1025,11 +1025,11 @@ namespace OutlookOkan.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Type: CC or BCC
+        ///   Looks up a localized string similar to Type: Cc or Bcc
         ///To: warning@xxxxxxx.com
         ///Email address: boss@noraneko.co.jp
         ///
-        ///When sending mail to registered recipients and domains, The specified address is automatically added to the CC or BCC..
+        ///When sending mail to registered recipients and domains, The specified address is automatically added to the Cc or Bcc..
         /// </summary>
         public static string SettingExampleAutoAddCCorBCCByMailAddressOrDomain {
             get {
