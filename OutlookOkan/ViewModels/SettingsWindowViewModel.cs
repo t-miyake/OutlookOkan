@@ -59,6 +59,7 @@ namespace OutlookOkan.ViewModels
             LoadAutoCcBccAttachedFilesData();
             LoadDeferredDeliveryMinutesData();
             LoadInternalDomainListData();
+            LoadExternalDomainsWarningAndAutoChangeToBccData();
         }
 
         public async Task SaveSettings()
@@ -74,7 +75,8 @@ namespace OutlookOkan.ViewModels
                     SaveAutoCcBccRecipientsToCsv(),
                     SaveAutoCcBccAttachedFilesToCsv(),
                     SaveDeferredDeliveryMinutesToCsv(),
-                    SaveInternalDomainListToCsv()
+                    SaveInternalDomainListToCsv(),
+                    SaveExternalDomainsWarningAndAutoChangeToBccToCsv()
                 };
 
             await Task.WhenAll(saveTasks);
@@ -669,6 +671,92 @@ namespace OutlookOkan.ViewModels
             {
                 _internalDomainList = value;
                 OnPropertyChanged(nameof(InternalDomainList));
+            }
+        }
+
+        #endregion
+
+        #region ExternalDomainsWarningAndAutoChangeToBcc
+
+        private void LoadExternalDomainsWarningAndAutoChangeToBccData()
+        {
+            var readCsv = new ReadAndWriteCsv("ExternalDomainsWarningAndAutoChangeToBccSetting.csv");
+            //1行しかないはずだが、2行以上あるとロード時にエラーとなる恐れがあるため、全行ロードする。
+            foreach (var data in readCsv.GetCsvRecords<ExternalDomainsWarningAndAutoChangeToBcc>(readCsv.LoadCsv<ExternalDomainsWarningAndAutoChangeToBccMap>()))
+            {
+                _externalDomainsWarningAndAutoChangeToBcc.Add(data);
+            }
+
+            if (_externalDomainsWarningAndAutoChangeToBcc.Count == 0) return;
+
+            //実際に使用するのは1行目の設定のみ
+            TargetToAndCcExternalDomainsNum = _externalDomainsWarningAndAutoChangeToBcc[0].TargetToAndCcExternalDomainsNum;
+            IsWarningWhenLargeNumberOfExternalDomains = _externalDomainsWarningAndAutoChangeToBcc[0].IsWarningWhenLargeNumberOfExternalDomains;
+            IsProhibitedWhenLargeNumberOfExternalDomains = _externalDomainsWarningAndAutoChangeToBcc[0].IsProhibitedWhenLargeNumberOfExternalDomains;
+            IsAutoChangeToBccWhenLargeNumberOfExternalDomains = _externalDomainsWarningAndAutoChangeToBcc[0].IsAutoChangeToBccWhenLargeNumberOfExternalDomains;
+        }
+
+        private async Task SaveExternalDomainsWarningAndAutoChangeToBccToCsv()
+        {
+            var tempExternalDomainsWarningAndAutoChangeToBcc = new List<ExternalDomainsWarningAndAutoChangeToBcc>
+            {
+                new ExternalDomainsWarningAndAutoChangeToBcc
+                {
+                    TargetToAndCcExternalDomainsNum = TargetToAndCcExternalDomainsNum,
+                    IsWarningWhenLargeNumberOfExternalDomains = IsWarningWhenLargeNumberOfExternalDomains,
+                    IsProhibitedWhenLargeNumberOfExternalDomains = IsProhibitedWhenLargeNumberOfExternalDomains,
+                    IsAutoChangeToBccWhenLargeNumberOfExternalDomains = IsAutoChangeToBccWhenLargeNumberOfExternalDomains
+                }
+            };
+
+            var list = tempExternalDomainsWarningAndAutoChangeToBcc.Cast<object>().ToList();
+            var writeCsv = new ReadAndWriteCsv("ExternalDomainsWarningAndAutoChangeToBccSetting.csv");
+            await Task.Run(() => writeCsv.WriteRecordsToCsv<ExternalDomainsWarningAndAutoChangeToBccMap>(list));
+        }
+
+        private readonly List<ExternalDomainsWarningAndAutoChangeToBcc> _externalDomainsWarningAndAutoChangeToBcc = new List<ExternalDomainsWarningAndAutoChangeToBcc>();
+
+        private int _targetToAndCcExternalDomainsNum = 10;
+        public int TargetToAndCcExternalDomainsNum
+        {
+            get => _targetToAndCcExternalDomainsNum;
+            set
+            {
+                _targetToAndCcExternalDomainsNum = value;
+                OnPropertyChanged(nameof(TargetToAndCcExternalDomainsNum));
+            }
+        }
+
+        private bool _isWarningWhenLargeNumberOfExternalDomains = true;
+        public bool IsWarningWhenLargeNumberOfExternalDomains
+        {
+            get => _isWarningWhenLargeNumberOfExternalDomains;
+            set
+            {
+                _isWarningWhenLargeNumberOfExternalDomains = value;
+                OnPropertyChanged(nameof(IsWarningWhenLargeNumberOfExternalDomains));
+            }
+        }
+
+        private bool _isProhibitedWhenLargeNumberOfExternalDomains;
+        public bool IsProhibitedWhenLargeNumberOfExternalDomains
+        {
+            get => _isProhibitedWhenLargeNumberOfExternalDomains;
+            set
+            {
+                _isProhibitedWhenLargeNumberOfExternalDomains = value;
+                OnPropertyChanged(nameof(IsProhibitedWhenLargeNumberOfExternalDomains));
+            }
+        }
+
+        private bool _isAutoChangeToBccWhenLargeNumberOfExternalDomains;
+        public bool IsAutoChangeToBccWhenLargeNumberOfExternalDomains
+        {
+            get => _isAutoChangeToBccWhenLargeNumberOfExternalDomains;
+            set
+            {
+                _isAutoChangeToBccWhenLargeNumberOfExternalDomains = value;
+                OnPropertyChanged(nameof(IsAutoChangeToBccWhenLargeNumberOfExternalDomains));
             }
         }
 

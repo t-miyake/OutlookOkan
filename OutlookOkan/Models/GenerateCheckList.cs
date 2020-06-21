@@ -54,6 +54,9 @@ namespace OutlookOkan.Models
             var internalDomainListCsv = new ReadAndWriteCsv("InternalDomainList.csv");
             var internalDomainList = internalDomainListCsv.GetCsvRecords<InternalDomain>(internalDomainListCsv.LoadCsv<InternalDomainMap>());
 
+            var externalDomainsWarningAndAutoChangeToBccCsv = new ReadAndWriteCsv("ExternalDomainsWarningAndAutoChangeToBccSetting.csv");
+            var externalDomainsWarningAndAutoChangeToBccSetting = externalDomainsWarningAndAutoChangeToBccCsv.GetCsvRecords<ExternalDomainsWarningAndAutoChangeToBcc>(externalDomainsWarningAndAutoChangeToBccCsv.LoadCsv<ExternalDomainsWarningAndAutoChangeToBccMap>())[0];
+
             _checkList.Subject = mail.Subject ?? Resources.FailedToGetInformation;
             _checkList.MailType = GetMailBodyFormat(mail.BodyFormat) ?? Resources.FailedToGetInformation;
             _checkList.MailBody = GetMailBody(mail.BodyFormat, mail.Body ?? Resources.FailedToGetInformation);
@@ -72,15 +75,22 @@ namespace OutlookOkan.Models
             var autoAddRecipients = AutoAddCcAndBcc(mail, generalSetting, displayNameAndRecipient, autoCcBccKeywordList, autoCcBccAttachedFilesList, autoCcBccRecipientList, CountRecipientExternalDomains(displayNameAndRecipient, _checkList.SenderDomain, internalDomainList, false));
             if (autoAddRecipients?.Count > 0)
             {
-                MakeDisplayNameAndRecipient(autoAddRecipients, displayNameAndRecipient, generalSetting);
+                displayNameAndRecipient = MakeDisplayNameAndRecipient(autoAddRecipients, displayNameAndRecipient, generalSetting);
+                mail.Recipients.ResolveAll();
             }
-            mail.Recipients.ResolveAll();
+
+            displayNameAndRecipient = ExternalDomainsChangeToBccIfNeeded(mail, displayNameAndRecipient,
+                externalDomainsWarningAndAutoChangeToBccSetting, internalDomainList,
+                CountRecipientExternalDomains(displayNameAndRecipient, _checkList.SenderDomain, internalDomainList, true),
+                _checkList.SenderDomain, _checkList.Sender);
 
             _checkList = GetRecipient(_checkList, displayNameAndRecipient, alertAddressList, internalDomainList);
 
             _checkList = CheckMailBodyAndRecipient(_checkList, displayNameAndRecipient, nameAndDomainsList);
 
             _checkList.RecipientExternalDomainNumAll = CountRecipientExternalDomains(displayNameAndRecipient, _checkList.SenderDomain, internalDomainList, false);
+
+            _checkList = ExternalDomainsWarningIfNeeded(_checkList, externalDomainsWarningAndAutoChangeToBccSetting, CountRecipientExternalDomains(displayNameAndRecipient, _checkList.SenderDomain, internalDomainList, true));
 
             _checkList.DeferredMinutes = CalcDeferredMinutes(displayNameAndRecipient, deferredDeliveryMinutes, generalSetting.IsDoNotUseDeferredDeliveryIfAllRecipientsAreInternalDomain, _checkList.RecipientExternalDomainNumAll);
 
@@ -549,6 +559,13 @@ namespace OutlookOkan.Models
                     {
                         displayNameAndRecipient.All[nameAndRecipient.MailAddress] = nameAndRecipient.NameAndMailAddress + nameAndRecipient.IncludedGroupAndList;
                     }
+
+                    displayNameAndRecipient.MailRecipientsIndex.Add(new MailItemsRecipientAndMailAddress
+                    {
+                        MailAddress = nameAndRecipient.MailAddress,
+                        MailItemsRecipient = recipient.Address,
+                        Type = recipient.Type
+                    });
 
                     switch (recipient.Type)
                     {
@@ -1134,6 +1151,192 @@ namespace OutlookOkan.Models
             }
 
             return deferredMinutes;
+        }
+
+        /// <summary>
+        /// ToとCcの外部ドメイン数が規定値以上の場合に、警告を表示したり、メール送信を禁止したりする。
+        /// </summary>
+        /// <param name="checkList">CheckList</param>
+        /// <param name="settings">外部ドメイン数の警告と自動Bcc変換の設定</param>
+        /// <param name="externalDomainNumToAndCc">ToとCcの外部ドメイン数</param>
+        /// <returns>CheckList</returns>
+        private CheckList ExternalDomainsWarningIfNeeded(CheckList checkList, ExternalDomainsWarningAndAutoChangeToBcc settings, int externalDomainNumToAndCc)
+        {
+            if (settings.TargetToAndCcExternalDomainsNum > externalDomainNumToAndCc) return checkList;
+
+            if (settings.IsProhibitedWhenLargeNumberOfExternalDomains)
+            {
+                checkList.IsCanNotSendMail = true;
+                checkList.CanNotSendMailMessage = Resources.ProhibitedWhenLargeNumberOfExternalDomainsAlert + $"[{settings.TargetToAndCcExternalDomainsNum}]";
+
+                return checkList;
+            }
+
+            if (settings.IsWarningWhenLargeNumberOfExternalDomains && !settings.IsAutoChangeToBccWhenLargeNumberOfExternalDomains)
+            {
+                checkList.Alerts.Add(new Alert
+                {
+                    AlertMessage = Resources.LargeNumberOfExternalDomainAlert + $"[{settings.TargetToAndCcExternalDomainsNum}]",
+                    IsImportant = true,
+                    IsWhite = false,
+                    IsChecked = false
+                });
+
+                return checkList;
+            }
+
+            return checkList;
+        }
+
+        /// <summary>
+        /// 指定した宛先をTo及びCcから削除し、Bccへ追加する。
+        /// </summary>
+        /// <param name="mail">Mail</param>
+        /// <param name="mailItemsRecipientAndMailAddress">メールアドレスとMailItemのRecipient</param>
+        /// <param name="senderMailAddress">送信元メールアドレス</param>
+        /// <param name="isNeedsAddToSender">Toへ送信元アドレスを追加するか否か</param>
+        private void ChangeToBcc(Outlook._MailItem mail, IReadOnlyCollection<MailItemsRecipientAndMailAddress> mailItemsRecipientAndMailAddress, string senderMailAddress, bool isNeedsAddToSender)
+        {
+            if (mail is null) return;
+
+            var targetMailAddressAndRecipient = new Dictionary<string, string>();
+
+            foreach (Outlook.Recipient recipient in mail.Recipients)
+            {
+                foreach (var target in mailItemsRecipientAndMailAddress)
+                {
+                    if (recipient.Address == target.MailItemsRecipient) targetMailAddressAndRecipient[target.MailAddress] = target.MailItemsRecipient;
+                }
+            }
+
+            //Indexを使用してRemoveした場合、Indexがずれ、複数を正しく削除できないため、削除対象を探して削除する。
+            var targetCount = targetMailAddressAndRecipient.Count;
+            while (targetCount != 0)
+            {
+                foreach (var target in targetMailAddressAndRecipient)
+                {
+                    foreach (Outlook.Recipient recipient in mail.Recipients)
+                    {
+                        if (recipient.Address != target.Value) continue;
+                        mail.Recipients.Remove(recipient.Index);
+                        targetCount--;
+                    }
+                }
+            }
+
+            foreach (var addTarget in targetMailAddressAndRecipient.Select(mailAddress => mail.Recipients.Add(mailAddress.Key)))
+            {
+                addTarget.Type = (int)Outlook.OlMailRecipientType.olBCC;
+            }
+
+            if (isNeedsAddToSender)
+            {
+                var senderRecipient = mail.Recipients.Add(senderMailAddress);
+                senderRecipient.Type = (int)Outlook.OlMailRecipientType.olTo;
+            }
+
+            mail.Recipients.ResolveAll();
+        }
+
+        /// <summary>
+        /// 条件に該当する場合、ToとCcの外部アドレスをBccに変換する。
+        /// </summary>
+        /// <param name="mail">Mail</param>
+        /// <param name="displayNameAndRecipient">宛先アドレスと名称</param>
+        /// <param name="settings">外部ドメイン数の警告と自動Bcc変換の設定</param>
+        /// <param name="internalDomains">内部ドメイン</param>
+        /// <param name="externalDomainNumToAndCc">ToとCcの外部ドメイン数</param>
+        /// <param name="senderDomain">送信元ドメイン</param>
+        /// <param name="senderMailAddress">送信元アドレス</param>
+        /// <returns>DisplayNameAndRecipient</returns>
+        private DisplayNameAndRecipient ExternalDomainsChangeToBccIfNeeded(Outlook._MailItem mail, DisplayNameAndRecipient displayNameAndRecipient, ExternalDomainsWarningAndAutoChangeToBcc settings, ICollection<InternalDomain> internalDomains, int externalDomainNumToAndCc, string senderDomain, string senderMailAddress)
+        {
+            if (!settings.IsAutoChangeToBccWhenLargeNumberOfExternalDomains || settings.TargetToAndCcExternalDomainsNum > externalDomainNumToAndCc) return displayNameAndRecipient;
+
+            internalDomains.Add(new InternalDomain { Domain = senderDomain });
+            var removeTarget = new List<string>();
+
+            foreach (var to in displayNameAndRecipient.To)
+            {
+                var isInternal = false;
+                foreach (var _ in internalDomains.Where(internalDomain => to.Key.Contains(internalDomain.Domain)))
+                {
+                    isInternal = true;
+                }
+                if (isInternal) continue;
+
+                displayNameAndRecipient.Bcc[to.Key] = to.Value;
+                removeTarget.Add(to.Key);
+            }
+            foreach (var target in removeTarget)
+            {
+                displayNameAndRecipient.To.Remove(target);
+            }
+
+            removeTarget.Clear();
+
+            foreach (var cc in displayNameAndRecipient.Cc)
+            {
+                var isInternal = false;
+                foreach (var _ in internalDomains.Where(internalDomain => cc.Key.Contains(internalDomain.Domain)))
+                {
+                    isInternal = true;
+                }
+                if (isInternal) continue;
+
+                displayNameAndRecipient.Bcc[cc.Key] = cc.Value;
+                removeTarget.Add(cc.Key);
+            }
+            foreach (var target in removeTarget)
+            {
+                displayNameAndRecipient.Cc.Remove(target);
+            }
+
+            AddAlerts(Resources.ExternalDomainsChangeToBccAlert + $"[{settings.TargetToAndCcExternalDomainsNum}]", true, false, false);
+
+            //Toが存在しなくなる場合、送信者をToに追加する。
+            var isNeedsAddToSender = false;
+            if (displayNameAndRecipient.To.Count == 0)
+            {
+                displayNameAndRecipient.To[senderMailAddress] = senderMailAddress;
+                AddAlerts(Resources.AutoAddSendersAddressToAlert, true, false, false);
+                isNeedsAddToSender = true;
+            }
+
+            var targetMailRecipientsIndex = new List<MailItemsRecipientAndMailAddress>();
+            //元からBccの宛先には何もしない。
+            foreach (var recipient in displayNameAndRecipient.MailRecipientsIndex.Where(recipient => recipient.Type != (int)Outlook.OlMailRecipientType.olBCC))
+            {
+                var isExternal = true;
+                foreach (var _ in internalDomains.Where(internalDomain => recipient.MailAddress.Contains(internalDomain.Domain)))
+                {
+                    isExternal = false;
+                }
+
+                if (isExternal) targetMailRecipientsIndex.Add(recipient);
+            }
+
+            ChangeToBcc(mail, targetMailRecipientsIndex, senderMailAddress, isNeedsAddToSender);
+
+            return displayNameAndRecipient;
+        }
+
+        /// <summary>
+        /// 警告を追加する。
+        /// </summary>
+        /// <param name="alertMessage">警告文</param>
+        /// <param name="isImportant">重要か否か</param>
+        /// <param name="isWhite">一旦未使用</param>
+        /// <param name="isChecked">既定のチェック有無</param>
+        private void AddAlerts(string alertMessage, bool isImportant, bool isWhite, bool isChecked)
+        {
+            _checkList.Alerts.Add(new Alert
+            {
+                AlertMessage = alertMessage,
+                IsImportant = isImportant,
+                IsWhite = isWhite,
+                IsChecked = isChecked
+            });
         }
     }
 }

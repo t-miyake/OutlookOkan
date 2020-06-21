@@ -3,6 +3,7 @@ using System;
 using System.Text.RegularExpressions;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Input;
 
 namespace OutlookOkan.Views
 {
@@ -112,6 +113,23 @@ namespace OutlookOkan.Views
                 if (!inputText.Equals("@")) return;
                 MessageBox.Show(Properties.Resources.InputMailaddressOrDomain, Properties.Resources.AppName, MessageBoxButton.OK);
                 e.Cancel = true;
+            }
+        }
+
+        private void ExternalDomainsNumBox_OnPreviewTextInput(object sender, TextCompositionEventArgs e)
+        {
+            var regex = new Regex("[^0-9]+$");
+
+            if (!regex.IsMatch(ExternalDomainsNumBox.Text + e.Text)) return;
+            ExternalDomainsNumBox.Text = "10";
+            e.Handled = true;
+        }
+
+        private void ExternalDomainsNumBox_OnPreviewExecuted(object sender, ExecutedRoutedEventArgs e)
+        {
+            if (e.Command == ApplicationCommands.Paste)
+            {
+                e.Handled = true;
             }
         }
 

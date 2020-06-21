@@ -690,6 +690,155 @@ namespace OutlookOkanTest
 
         #endregion
 
+        #region ExternalDomainsWarningIfNeeded
+
+        [TestMethod, TestCategory("_GenerateCheckList"), TestCategory("ExternalDomainsWarningIfNeeded")]
+        public void 外部ドメイン数の警告_警告設定が有効_外部ドメイン0()
+        {
+            var checkList = new CheckList();
+            var externalDomainsWarningAndAutoChangeToBccSettings = new ExternalDomainsWarningAndAutoChangeToBcc
+            {
+                TargetToAndCcExternalDomainsNum = 10,
+                IsWarningWhenLargeNumberOfExternalDomains = true,
+                IsProhibitedWhenLargeNumberOfExternalDomains = false,
+                IsAutoChangeToBccWhenLargeNumberOfExternalDomains = false
+            };
+            const int externalDomainNumToAndCc = 0;
+
+            var generateCheckList = new GenerateCheckList();
+            var privateObject = new PrivateObject(generateCheckList);
+            var args = new object[] { checkList, externalDomainsWarningAndAutoChangeToBccSettings, externalDomainNumToAndCc };
+            var result = (CheckList)privateObject.Invoke("ExternalDomainsWarningIfNeeded", args);
+
+            Assert.AreEqual(result.Alerts.Count, 0);
+        }
+
+        [TestMethod, TestCategory("_GenerateCheckList"), TestCategory("ExternalDomainsWarningIfNeeded")]
+        public void 外部ドメイン数の警告_警告設定が有効_外部ドメインが基準値以上()
+        {
+            var checkList = new CheckList();
+            var externalDomainsWarningAndAutoChangeToBccSettings = new ExternalDomainsWarningAndAutoChangeToBcc
+            {
+                TargetToAndCcExternalDomainsNum = 10,
+                IsWarningWhenLargeNumberOfExternalDomains = true,
+                IsProhibitedWhenLargeNumberOfExternalDomains = false,
+                IsAutoChangeToBccWhenLargeNumberOfExternalDomains = false
+            };
+            const int externalDomainNumToAndCc = 11;
+
+            var generateCheckList = new GenerateCheckList();
+            var privateObject = new PrivateObject(generateCheckList);
+            var args = new object[] { checkList, externalDomainsWarningAndAutoChangeToBccSettings, externalDomainNumToAndCc };
+            var result = (CheckList)privateObject.Invoke("ExternalDomainsWarningIfNeeded", args);
+
+            Assert.AreEqual(result.Alerts[0].AlertMessage, Resources.LargeNumberOfExternalDomainAlert + "[10]");
+        }
+
+        [TestMethod, TestCategory("_GenerateCheckList"), TestCategory("ExternalDomainsWarningIfNeeded")]
+        public void 外部ドメイン数の警告_警告設定と送信禁止設定が有効_外部ドメインが基準値以上()
+        {
+            var checkList = new CheckList();
+            var externalDomainsWarningAndAutoChangeToBccSettings = new ExternalDomainsWarningAndAutoChangeToBcc
+            {
+                TargetToAndCcExternalDomainsNum = 10,
+                IsWarningWhenLargeNumberOfExternalDomains = true,
+                IsProhibitedWhenLargeNumberOfExternalDomains = true,
+                IsAutoChangeToBccWhenLargeNumberOfExternalDomains = false
+            };
+            const int externalDomainNumToAndCc = 11;
+
+            var generateCheckList = new GenerateCheckList();
+            var privateObject = new PrivateObject(generateCheckList);
+            var args = new object[] { checkList, externalDomainsWarningAndAutoChangeToBccSettings, externalDomainNumToAndCc };
+            var result = (CheckList)privateObject.Invoke("ExternalDomainsWarningIfNeeded", args);
+
+            Assert.AreEqual(result.Alerts.Count, 0);
+            Assert.AreEqual(result.CanNotSendMailMessage, Resources.ProhibitedWhenLargeNumberOfExternalDomainsAlert + "[10]");
+            Assert.IsTrue(result.IsCanNotSendMail);
+        }
+
+        #endregion
+
+        #region ExternalDomainsChangeToBccIfNeeded
+
+        [TestMethod, TestCategory("_GenerateCheckList"), TestCategory("ExternalDomainsChangeToBccIfNeeded")]
+        public void 自動Bcc変換_設定有効_対象あり()
+        {
+            var displayNameAndRecipient = new DisplayNameAndRecipient();
+            displayNameAndRecipient.To.Add("sample1@sample.com", "サンプル太郎");
+            displayNameAndRecipient.To.Add("sample1@externalsample.com", "サンプルサンプル太郎");
+            displayNameAndRecipient.To.Add("sample2@externalsample.com", "サンプルサンプル次郎");
+            displayNameAndRecipient.To.Add("sample3@externalsample.com", "サンプルサンプル三郎");
+            displayNameAndRecipient.Cc.Add("sample1@sample2.com", "サンプル2太郎");
+            displayNameAndRecipient.Cc.Add("sample1@sample3.com", "サンプル3太郎");
+            displayNameAndRecipient.Cc.Add("miyake@noraneko.co.jp", "みやけ");
+            displayNameAndRecipient.Bcc.Add("sample1@samplesamplesample.com", "BccSample太郎");
+
+            var externalDomainsWarningAndAutoChangeToBccSettings = new ExternalDomainsWarningAndAutoChangeToBcc
+            {
+                TargetToAndCcExternalDomainsNum = 2,
+                IsWarningWhenLargeNumberOfExternalDomains = false,
+                IsProhibitedWhenLargeNumberOfExternalDomains = false,
+                IsAutoChangeToBccWhenLargeNumberOfExternalDomains = true
+            };
+            var internalDomains = new List<InternalDomain>
+            {
+                new InternalDomain {Domain = "@sample.com"}, new InternalDomain {Domain = "@sample2.com"}
+            };
+            const int externalDomainNumToAndCc = 4;
+            const string senderDomain = "@noraneko.co.jp";
+            const string senderMailAddress = "miyake@noraneko.co.jp";
+
+            var generateCheckList = new GenerateCheckList();
+            var privateObject = new PrivateObject(generateCheckList);
+            var args = new object[] { null, displayNameAndRecipient, externalDomainsWarningAndAutoChangeToBccSettings, internalDomains, externalDomainNumToAndCc, senderDomain, senderMailAddress };
+            var result = (DisplayNameAndRecipient)privateObject.Invoke("ExternalDomainsChangeToBccIfNeeded", args);
+
+            Assert.AreEqual(result.To.Count, 1);
+            Assert.AreEqual(result.Cc.Count, 2);
+            Assert.AreEqual(result.Bcc.Count, 5);
+        }
+
+        [TestMethod, TestCategory("_GenerateCheckList"), TestCategory("ExternalDomainsChangeToBccIfNeeded")]
+        public void 自動Bcc変換_設定有効_対象あり_Toが0になる場合()
+        {
+            var displayNameAndRecipient = new DisplayNameAndRecipient();
+            displayNameAndRecipient.To.Add("sample1@externalsample.com", "サンプルサンプル太郎");
+            displayNameAndRecipient.To.Add("sample2@externalsample.com", "サンプルサンプル次郎");
+            displayNameAndRecipient.To.Add("sample3@externalsample.com", "サンプルサンプル三郎");
+            displayNameAndRecipient.Cc.Add("sample1@sample2.com", "サンプル2太郎");
+            displayNameAndRecipient.Cc.Add("sample1@sample3.com", "サンプル3太郎");
+            displayNameAndRecipient.Cc.Add("miyake@noraneko.co.jp", "みやけ");
+            displayNameAndRecipient.Bcc.Add("sample1@samplesamplesample.com", "BccSample太郎");
+
+            var externalDomainsWarningAndAutoChangeToBccSettings = new ExternalDomainsWarningAndAutoChangeToBcc
+            {
+                TargetToAndCcExternalDomainsNum = 2,
+                IsWarningWhenLargeNumberOfExternalDomains = false,
+                IsProhibitedWhenLargeNumberOfExternalDomains = false,
+                IsAutoChangeToBccWhenLargeNumberOfExternalDomains = true
+            };
+            var internalDomains = new List<InternalDomain>
+            {
+                new InternalDomain {Domain = "@sample.com"}, new InternalDomain {Domain = "@sample2.com"}
+            };
+            const int externalDomainNumToAndCc = 4;
+            const string senderDomain = "@noraneko.co.jp";
+            const string senderMailAddress = "miyake@noraneko.co.jp";
+
+            var generateCheckList = new GenerateCheckList();
+            var privateObject = new PrivateObject(generateCheckList);
+            var args = new object[] { null, displayNameAndRecipient, externalDomainsWarningAndAutoChangeToBccSettings, internalDomains, externalDomainNumToAndCc, senderDomain, senderMailAddress };
+            var result = (DisplayNameAndRecipient)privateObject.Invoke("ExternalDomainsChangeToBccIfNeeded", args);
+
+            Assert.AreEqual(result.To.Count, 1);
+            Assert.AreEqual(result.To[senderMailAddress], senderMailAddress);
+            Assert.AreEqual(result.Cc.Count, 2);
+            Assert.AreEqual(result.Bcc.Count, 5);
+        }
+
+        #endregion
+
         #endregion
 
         #region ThisAddIn

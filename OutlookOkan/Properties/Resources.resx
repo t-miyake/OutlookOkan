@@ -525,4 +525,42 @@ The domain of the sender's email address is always treated as an internal domain
   <data name="IsDoNotUseXIfAllRecipientsAreInternalDomain" xml:space="preserve">
     <value>Disable this feature if the recipient's domains are all internal domains.</value>
   </data>
+  <data name="BasicSettings" xml:space="preserve">
+    <value>Basic Settings</value>
+  </data>
+  <data name="ExternalDomainsWarningAndAutoChangeToBcc" xml:space="preserve">
+    <value>External domains warning and auto change to Bcc</value>
+  </data>
+  <data name="IsAutoChangeToBccWhenLargeNumberOfExternalDomains" xml:space="preserve">
+    <value>The external recipient of To and Cc are automatically converted to Bcc 
+when the recipients (To/Cc) has a large number of external domains.</value>
+  </data>
+  <data name="IsProhibitedWhenLargeNumberOfExternalDomains" xml:space="preserve">
+    <value>Sending is prohibited when the recipients (To/Cc) has a large number of external domains.</value>
+  </data>
+  <data name="IsWarningWhenLargeNumberOfExternalDomains" xml:space="preserve">
+    <value>Displays a warning when the recipients (To/Cc) has a large number of external domains.</value>
+  </data>
+  <data name="SettingExampleExternalDomainsWarningAndAutoChangeToBcc" xml:space="preserve">
+    <value>aa</value>
+  </data>
+  <data name="TargetToAndCcExternalDomainsNum" xml:space="preserve">
+    <value>The number of external domains of the recipients (To/Cc) to be covered by this feature.</value>
+  </data>
+  <data name="TargetToAndCcExternalDomainsNumInfo" xml:space="preserve">
+    <value>* If the external domain included in the To and Cc of the email is greater than or equal to this setting, 
+this feature will be applied.</value>
+  </data>
+  <data name="AutoAddSendersAddressToAlert" xml:space="preserve">
+    <value>The sender's Email address was automatically added to the To. (because the To no longer exists due to auto change to Bcc.)</value>
+  </data>
+  <data name="ExternalDomainsChangeToBccAlert" xml:space="preserve">
+    <value>As the external domains of To and Cc are above the threshold, the external domain recipients has been changed to Bcc.</value>
+  </data>
+  <data name="LargeNumberOfExternalDomainAlert" xml:space="preserve">
+    <value>The number of external domains in To and Cc is higher than the threshold. Please reconfirm the pros and cons of the sending.</value>
+  </data>
+  <data name="ProhibitedWhenLargeNumberOfExternalDomainsAlert" xml:space="preserve">
+    <value>The number of external domains in To and Cc is above the threshold.</value>
+  </data>
 </root>

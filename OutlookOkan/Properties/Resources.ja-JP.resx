@@ -528,4 +528,40 @@ CcあるいはBccに指定したアドレスが自動で追加されます。</v
   <data name="IsDoNotUseXIfAllRecipientsAreInternalDomain" xml:space="preserve">
     <value>全ての宛先のドメインが内部ドメインの場合、この機能を使用しない。</value>
   </data>
+  <data name="BasicSettings" xml:space="preserve">
+    <value>基本設定</value>
+  </data>
+  <data name="ExternalDomainsWarningAndAutoChangeToBcc" xml:space="preserve">
+    <value>外部ドメイン数警告とBcc自動変換</value>
+  </data>
+  <data name="IsAutoChangeToBccWhenLargeNumberOfExternalDomains" xml:space="preserve">
+    <value>宛先(TO/Cc)の外部ドメイン数が多い場合、ToとCcの外部アドレスをBccに自動変換する。</value>
+  </data>
+  <data name="IsProhibitedWhenLargeNumberOfExternalDomains" xml:space="preserve">
+    <value>宛先(To/Cc)の外部ドメイン数が多い場合、メールの送信を禁止する。※他の設定より優先されます。</value>
+  </data>
+  <data name="IsWarningWhenLargeNumberOfExternalDomains" xml:space="preserve">
+    <value>宛先(To/Cc)の外部ドメイン数が多い場合、確認画面に警告を表示する。</value>
+  </data>
+  <data name="SettingExampleExternalDomainsWarningAndAutoChangeToBcc" xml:space="preserve">
+    <value>aa</value>
+  </data>
+  <data name="TargetToAndCcExternalDomainsNum" xml:space="preserve">
+    <value>基準とする宛先(To/Cc)の外部ドメイン数。</value>
+  </data>
+  <data name="TargetToAndCcExternalDomainsNumInfo" xml:space="preserve">
+    <value>※メールのToとCcに含まれる外部ドメインが、この設定値以上の場合に、以下の機能の対象となります。</value>
+  </data>
+  <data name="AutoAddSendersAddressToAlert" xml:space="preserve">
+    <value>Toに送信者のアドレスを自動追加しました。(Bcc変換によりToが存在しなくなるため)</value>
+  </data>
+  <data name="ExternalDomainsChangeToBccAlert" xml:space="preserve">
+    <value>To及びCcの外部ドメイン数が基準値以上のため、外部ドメインの宛先をBccに変更しました。</value>
+  </data>
+  <data name="LargeNumberOfExternalDomainAlert" xml:space="preserve">
+    <value>To及びCcの外部ドメイン数が基準値以上です。再度、送信の是非を確認してください。</value>
+  </data>
+  <data name="ProhibitedWhenLargeNumberOfExternalDomainsAlert" xml:space="preserve">
+    <value>To及びCcの外部ドメイン数が基準値以上です。</value>
+  </data>
 </root>
