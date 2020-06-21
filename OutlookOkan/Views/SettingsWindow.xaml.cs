@@ -104,14 +104,14 @@ namespace OutlookOkan.Views
             var inputText = ((TextBox)e.EditingElement).Text;
             if (string.IsNullOrEmpty(inputText) || !inputText.Contains("@"))
             {
-                MessageBox.Show(Properties.Resources.InputMailaddressOrDomain);
+                MessageBox.Show(Properties.Resources.InputDomain);
                 e.Cancel = true;
             }
             else
             {
                 //@のみで登録すると全てのメールアドレスが対象になるため、それを禁止。
                 if (!inputText.Equals("@")) return;
-                MessageBox.Show(Properties.Resources.InputMailaddressOrDomain, Properties.Resources.AppName, MessageBoxButton.OK);
+                MessageBox.Show(Properties.Resources.InputDomain, Properties.Resources.AppName, MessageBoxButton.OK);
                 e.Cancel = true;
             }
         }
