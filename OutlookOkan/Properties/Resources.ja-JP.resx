@@ -516,7 +516,7 @@ CcあるいはBccに指定したアドレスが自動で追加されます。</v
     <value>内部ドメイン</value>
   </data>
   <data name="SettingExampleInternalDomainList" xml:space="preserve">
-    <value>ドメイン：@miyake.me
+    <value>ドメイン：@noraneko.co.jp
 
 内部(社内)ドメインとして取り扱う、ドメインを登録します。
 

@@ -1148,7 +1148,7 @@ namespace OutlookOkan.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Domain: @miyake.me
+        ///   Looks up a localized string similar to Domain: @noraneko.co.jp
         ///
         ///Register a domain to be handled as an internal (company) domain.
         ///
