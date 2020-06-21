@@ -35,7 +35,7 @@ namespace SetupCustomAction
                 }
                 catch (Exception)
                 {
-                    //throw new InstallException();
+                    //Do Nothing.
                 }
             }
         }
