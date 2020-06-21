@@ -9,11 +9,11 @@ namespace OutlookOkan.Types
         public bool IsAutoCheckIfAllRecipientsAreSameDomain { get; set; }
         public string LanguageCode { get; set; }
         public bool IsShowConfirmationToMultipleDomain { get; set; }
-        public bool EnableForgottenToAttachAlert { get; set; }
+        public bool EnableForgottenToAttachAlert { get; set; } = true;
         public bool EnableGetContactGroupMembers { get; set; }
         public bool EnableGetExchangeDistributionListMembers { get; set; }
-        public bool ContactGroupMembersAreWhite { get; set; }
-        public bool ExchangeDistributionListMembersAreWhite { get; set; }
+        public bool ContactGroupMembersAreWhite { get; set; } = true;
+        public bool ExchangeDistributionListMembersAreWhite { get; set; } = true;
         public bool IsNotTreatedAsAttachmentsAtHtmlEmbeddedFiles { get; set; }
         public bool IsDoNotUseAutoCcBccAttachedFileIfAllRecipientsAreInternalDomain { get; set; }
         public bool IsDoNotUseDeferredDeliveryIfAllRecipientsAreInternalDomain { get; set; }
