@@ -565,4 +565,7 @@ this feature will be applied.</value>
   <data name="ProhibitedWhenLargeNumberOfExternalDomainsAlert" xml:space="preserve">
     <value>The number of external domains in To and Cc is above the threshold.</value>
   </data>
+  <data name="DefaultAlertMessage" xml:space="preserve">
+    <value>The warning keyword is included in the body of the email.</value>
+  </data>
 </root>

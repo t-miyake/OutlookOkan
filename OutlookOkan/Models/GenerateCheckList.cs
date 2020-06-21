@@ -674,11 +674,15 @@ namespace OutlookOkan.Models
         private CheckList CheckKeyword(CheckList checkList, IReadOnlyCollection<AlertKeywordAndMessage> alertKeywordAndMessageList)
         {
             if (alertKeywordAndMessageList.Count == 0) return checkList;
+
             foreach (var alertKeywordAndMessage in alertKeywordAndMessageList)
             {
                 if (!checkList.MailBody.Contains(alertKeywordAndMessage.AlertKeyword)) continue;
 
-                checkList.Alerts.Add(new Alert { AlertMessage = alertKeywordAndMessage.Message, IsImportant = true, IsWhite = false, IsChecked = false });
+                var alertMessage = Resources.DefaultAlertMessage + $"[{alertKeywordAndMessage.AlertKeyword}]";
+                if (!string.IsNullOrEmpty(alertKeywordAndMessage.Message)) alertMessage = alertKeywordAndMessage.Message;
+
+                checkList.Alerts.Add(new Alert { AlertMessage = alertMessage, IsImportant = true, IsWhite = false, IsChecked = false });
 
                 if (!alertKeywordAndMessage.IsCanNotSend) continue;
 

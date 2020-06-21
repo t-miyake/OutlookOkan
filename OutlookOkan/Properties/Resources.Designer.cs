@@ -415,6 +415,15 @@ namespace OutlookOkan.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to The warning keyword is included in the body of the email..
+        /// </summary>
+        public static string DefaultAlertMessage {
+            get {
+                return ResourceManager.GetString("DefaultAlertMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Deferred delivery.
         /// </summary>
         public static string DeferredDelivery {

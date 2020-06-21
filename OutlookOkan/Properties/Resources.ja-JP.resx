@@ -566,4 +566,7 @@ CcあるいはBccに指定したアドレスが自動で追加されます。</v
   <data name="ProhibitedWhenLargeNumberOfExternalDomainsAlert" xml:space="preserve">
     <value>To及びCcの外部ドメイン数が基準値以上です。</value>
   </data>
+  <data name="DefaultAlertMessage" xml:space="preserve">
+    <value>警告対象のキーワードが含まれています。</value>
+  </data>
 </root>
