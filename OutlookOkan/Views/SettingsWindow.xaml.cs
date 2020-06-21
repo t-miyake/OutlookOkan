@@ -17,9 +17,6 @@ namespace OutlookOkan.Views
 
         #region Validations
 
-        /// <summary>
-        /// WhiteListへの入力バリデーション
-        /// </summary>
         private void DataGrid_WhiteList_OnCellEditEnding(object sender, DataGridCellEditEndingEventArgs e)
         {
             var inputText = ((TextBox)e.EditingElement).Text;

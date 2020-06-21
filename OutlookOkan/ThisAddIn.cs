@@ -42,7 +42,7 @@ namespace OutlookOkan
             Application.ItemSend += Application_ItemSend;
         }
 
-        //送信トレイのファイルを開く際の警告。
+        //送信トレイのアイテムを開く際の警告。
         private void OpenOutboxItemInspector(Outlook.Inspector inspector)
         {
             if (!(inspector.CurrentItem is Outlook._MailItem)) return;
@@ -56,7 +56,7 @@ namespace OutlookOkan
 
         private void Application_ItemSend(object item, ref bool cancel)
         {
-            //MailItemにキャストできないものは会議招待などメールではないものなので、何もしない。
+            //MailItemにキャストできないものは、会議招待などメールではないもののため、何もしない。
             if (!(item is Outlook._MailItem)) return;
 
             //何らかの問題で確認画面が表示されないと、意図せずメールが送られてしまう恐れがあるため、念のための処理。
@@ -72,7 +72,6 @@ namespace OutlookOkan
                 var generateCheckList = new GenerateCheckList();
                 var checklist = generateCheckList.GenerateCheckListFromMail((Outlook._MailItem)item, _generalSetting);
 
-                //送信先と同一のドメインはあらかじめチェックを入れるオプションが有効な場合、それを実行。
                 if (_generalSetting.IsAutoCheckIfAllRecipientsAreSameDomain)
                 {
                     foreach (var to in checklist.ToAddresses.Where(to => !to.IsExternal))
@@ -91,7 +90,6 @@ namespace OutlookOkan
                     }
                 }
 
-                //送信禁止フラグの確認。
                 if (checklist.IsCanNotSendMail)
                 {
                     //送信禁止条件に該当するため、確認画面を表示するのではなく、送信禁止画面を表示する。
@@ -111,7 +109,6 @@ namespace OutlookOkan
 
                     cancel = true;
                 }
-                //確認画面の表示条件に合致しいた場合。
                 else if (IsShowConfirmationWindow(checklist))
                 {
                     //OutlookのWindowを親として確認画面をモーダル表示。

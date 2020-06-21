@@ -27,7 +27,9 @@ namespace OutlookOkan.Models
         /// <param name="generalSetting">一般設定</param>
         public CheckList GenerateCheckListFromMail(Outlook._MailItem mail, GeneralSetting generalSetting)
         {
-            //Load Settings.
+            var whitelistCsv = new ReadAndWriteCsv("Whitelist.csv");
+            _whitelist.AddRange(whitelistCsv.GetCsvRecords<Whitelist>(whitelistCsv.LoadCsv<WhitelistMap>()));
+
             var alertKeywordAndMessageListCsv = new ReadAndWriteCsv("AlertKeywordAndMessageList.csv");
             var alertKeywordAndMessageList = alertKeywordAndMessageListCsv.GetCsvRecords<AlertKeywordAndMessage>(alertKeywordAndMessageListCsv.LoadCsv<AlertKeywordAndMessageMap>());
 
@@ -39,9 +41,6 @@ namespace OutlookOkan.Models
 
             var autoCcBccRecipientListCsv = new ReadAndWriteCsv("AutoCcBccRecipientList.csv");
             var autoCcBccRecipientList = autoCcBccRecipientListCsv.GetCsvRecords<AutoCcBccRecipient>(autoCcBccRecipientListCsv.LoadCsv<AutoCcBccRecipientMap>());
-
-            var whitelistCsv = new ReadAndWriteCsv("Whitelist.csv");
-            _whitelist.AddRange(whitelistCsv.GetCsvRecords<Whitelist>(whitelistCsv.LoadCsv<WhitelistMap>()));
 
             var alertAddressCsv = new ReadAndWriteCsv("AlertAddressList.csv");
             var alertAddressList = alertAddressCsv.GetCsvRecords<AlertAddress>(alertAddressCsv.LoadCsv<AlertAddressMap>());
@@ -154,7 +153,7 @@ namespace OutlookOkan.Models
 
                 if (checkList.Sender.Contains("@") && !checkList.Sender.Contains("/o=ExchangeLabs"))
                 {
-                    //メールアドレスが取得できる場合はそのままでよい。
+                    //メールアドレスが取得できる場合はそのまま使う。。
                     checkList.SenderDomain = checkList.Sender.Substring(checkList.Sender.IndexOf("@", StringComparison.Ordinal));
                     checkList.Sender = $@"{checkList.Sender} ([{mail.SentOnBehalfOfName}] {Resources.SentOnBehalf})";
                 }
@@ -410,7 +409,7 @@ namespace OutlookOkan.Models
                         //Do Nothing.
                     }
 
-                    // 入れ子になった配布リストは、Exchangeサーバへの負荷が大きく時間もかかるため展開しない。
+                    // 入れ子になった配布リストは、Exchangeサーバへの負荷が大きく、取得に時間もかかるため展開しない。
                     exchangeDistributionListMembers.Add(new NameAndRecipient { MailAddress = mailAddress, NameAndMailAddress = (member.Name ?? Resources.FailedToGetInformation) + $@" ({mailAddress})", IncludedGroupAndList = $@" [{distributionList.Name}]" });
 
                     if (exchangeDistributionListMembersAreWhite)
@@ -551,7 +550,6 @@ namespace OutlookOkan.Models
                         displayNameAndRecipient.All[nameAndRecipient.MailAddress] = nameAndRecipient.NameAndMailAddress + nameAndRecipient.IncludedGroupAndList;
                     }
 
-                    //名称と差出人とメールアドレスの紐づけをTO/CC/BCCそれぞれに格納。
                     switch (recipient.Type)
                     {
                         case 1:
@@ -719,7 +717,6 @@ namespace OutlookOkan.Models
 
                     _checkList.Alerts.Add(new Alert { AlertMessage = Resources.AutoAddDestination + $@"[{autoCcBccKeyword.CcOrBcc}] [{autoCcBccKeyword.AutoAddAddress}] (" + Resources.ApplicableKeywords + $" 「{autoCcBccKeyword.Keyword}」)", IsImportant = false, IsWhite = true, IsChecked = true });
 
-                    // 自動追加されたアドレスはホワイトリスト登録アドレス扱い。
                     _whitelist.Add(new Whitelist { WhiteName = autoCcBccKeyword.AutoAddAddress });
                 }
             }
@@ -753,7 +750,6 @@ namespace OutlookOkan.Models
 
                         _checkList.Alerts.Add(new Alert { AlertMessage = Resources.AutoAddDestination + $@"[{autoCcBccAttachedFile.CcOrBcc}] [{autoCcBccAttachedFile.AutoAddAddress}] (" + Resources.Attachments + ")", IsImportant = false, IsWhite = true, IsChecked = true });
 
-                        // 自動追加されたアドレスはホワイトリスト登録アドレス扱い。
                         _whitelist.Add(new Whitelist { WhiteName = autoCcBccAttachedFile.AutoAddAddress });
                     }
                 }
@@ -787,7 +783,6 @@ namespace OutlookOkan.Models
 
                     _checkList.Alerts.Add(new Alert { AlertMessage = Resources.AutoAddDestination + $@"[{autoCcBccRecipient.CcOrBcc}] [{autoCcBccRecipient.AutoAddAddress}] (" + Resources.ApplicableDestination + $" 「{autoCcBccRecipient.TargetRecipient}」)", IsImportant = false, IsWhite = true, IsChecked = true });
 
-                    // 自動追加されたアドレスはホワイトリスト登録アドレス扱い。
                     _whitelist.Add(new Whitelist { WhiteName = autoCcBccRecipient.AutoAddAddress });
                 }
             }
@@ -844,7 +839,6 @@ namespace OutlookOkan.Models
                     fileSize = Math.Round(((double)mail.Attachments[i + 1].Size / 1024), 0, MidpointRounding.AwayFromZero).ToString("##,###") + "KB";
                 }
 
-                //10Mbyte以上の添付ファイルは警告も表示。
                 if (mail.Attachments[i + 1].Size >= 10485760)
                 {
                     checkList.Alerts.Add(new Alert { AlertMessage = Resources.IsBigAttachedFile + $"[{mail.Attachments[i + 1].FileName}]", IsChecked = false, IsImportant = true, IsWhite = false });
@@ -863,7 +857,6 @@ namespace OutlookOkan.Models
 
                 var isDangerous = false;
 
-                //実行ファイル(.exe)を添付していたら警告を表示。
                 if (fileType == ".exe")
                 {
                     checkList.Alerts.Add(new Alert { AlertMessage = Resources.IsAttachedExe + $"[{mail.Attachments[i + 1].FileName}]", IsChecked = false, IsImportant = true, IsWhite = false });
@@ -929,10 +922,8 @@ namespace OutlookOkan.Models
         {
             if (displayNameAndRecipient is null) return checkList;
 
-            //メールの本文中に、登録された名称があるか確認。
             var recipientCandidateDomains = (from nameAndDomain in nameAndDomainsList where checkList.MailBody.Contains(nameAndDomain.Name) select nameAndDomain.Domain).ToList();
 
-            //登録された名称かつ本文中に登場した名称以外のドメインが宛先に含まれている場合、警告を表示。
             //送信先の候補が見つからない場合、何もしない。(見つからない場合の方が多いため、警告ばかりになってしまう。)
             if (recipientCandidateDomains.Count == 0) return checkList;
 
@@ -960,11 +951,6 @@ namespace OutlookOkan.Models
         /// <returns>CheckList</returns>
         private CheckList GetRecipient(CheckList checkList, DisplayNameAndRecipient displayNameAndRecipient, IReadOnlyCollection<AlertAddress> alertAddressList, List<InternalDomain> internalDomainList)
         {
-            // 宛先や登録名から、表示用テキスト(メールアドレスや登録名)を各エリアに表示。
-            // 宛先ドメインが送信元ドメインと異なる場合、色を変更するフラグをtrue、そうでない場合falseとする。
-            // ホワイトリストに含まれる宛先の場合、ListのIsCheckedフラグをtrueにして、最初からチェック済みとする。
-            // 警告アドレスリストに含まれる宛先の場合、AlertBoxにその旨を追加する。
-
             if (displayNameAndRecipient is null) return checkList;
 
             var internalDomains = internalDomainList;
@@ -1001,7 +987,6 @@ namespace OutlookOkan.Models
                     IsChecked = false
                 });
 
-                //送信禁止アドレスに該当する場合、禁止フラグを立て対象メールアドレスを説明文へ追加。
                 foreach (var alertAddress in alertAddressList)
                 {
                     if (!to.Key.Contains(alertAddress.TargetAddress) || !alertAddress.IsCanNotSend) continue;
@@ -1042,7 +1027,6 @@ namespace OutlookOkan.Models
                     IsChecked = false
                 });
 
-                //送信禁止アドレスに該当する場合、禁止フラグを立て対象メールアドレスを説明文へ追加。
                 foreach (var alertAddress in alertAddressList)
                 {
                     if (!cc.Key.Contains(alertAddress.TargetAddress) || !alertAddress.IsCanNotSend) continue;
@@ -1083,7 +1067,6 @@ namespace OutlookOkan.Models
                     IsChecked = false
                 });
 
-                //送信禁止アドレスに該当する場合、禁止フラグを立て対象メールアドレスを説明文へ追加。
                 foreach (var alertAddress in alertAddressList)
                 {
                     if (!bcc.Key.Contains(alertAddress.TargetAddress) || !alertAddress.IsCanNotSend) continue;

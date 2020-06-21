@@ -19,7 +19,7 @@ namespace OutlookOkan.CsvTools
         /// <returns>インポートするCSVファイルのパス</returns>
         public string ImportCsv()
         {
-            MessageBox.Show(Resources.CSVImportAlert, Properties.Resources.AppName, MessageBoxButton.OK);
+            MessageBox.Show(Resources.CSVImportAlert, Resources.AppName, MessageBoxButton.OK);
 
             var openFileDialog = new OpenFileDialog
             {
@@ -76,11 +76,11 @@ namespace OutlookOkan.CsvTools
                 csvWriter.WriteRecords(records);
                 csvWriter.Dispose();
 
-                MessageBox.Show(Resources.SuccessfulExport, Properties.Resources.AppName, MessageBoxButton.OK);
+                MessageBox.Show(Resources.SuccessfulExport, Resources.AppName, MessageBoxButton.OK);
             }
             catch (Exception e)
             {
-                MessageBox.Show(Resources.ExportFailed + e, Properties.Resources.AppName, MessageBoxButton.OK);
+                MessageBox.Show(Resources.ExportFailed + e, Resources.AppName, MessageBoxButton.OK);
             }
         }
     }
