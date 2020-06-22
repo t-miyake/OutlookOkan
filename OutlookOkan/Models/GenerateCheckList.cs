@@ -689,7 +689,7 @@ namespace OutlookOkan.Models
                 if (!alertKeywordAndMessage.IsCanNotSend) continue;
 
                 checkList.IsCanNotSendMail = true;
-                checkList.CanNotSendMailMessage = alertKeywordAndMessage.Message;
+                checkList.CanNotSendMailMessage = alertMessage;
             }
 
             return checkList;
