@@ -535,7 +535,7 @@ CcあるいはBccに指定したアドレスが自動で追加されます。</v
     <value>外部ドメイン数警告とBcc自動変換</value>
   </data>
   <data name="IsAutoChangeToBccWhenLargeNumberOfExternalDomains" xml:space="preserve">
-    <value>宛先(TO/Cc)の外部ドメイン数が多い場合、ToとCcの外部アドレスをBccに自動変換する。</value>
+    <value>宛先(To/Cc)の外部ドメイン数が多い場合、ToとCcの外部アドレスをBccに自動変換する。</value>
   </data>
   <data name="IsProhibitedWhenLargeNumberOfExternalDomains" xml:space="preserve">
     <value>宛先(To/Cc)の外部ドメイン数が多い場合、メールの送信を禁止する。※他の設定より優先されます。</value>
