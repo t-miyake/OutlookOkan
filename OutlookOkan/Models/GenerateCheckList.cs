@@ -945,7 +945,10 @@ namespace OutlookOkan.Models
         {
             if (displayNameAndRecipient is null) return checkList;
 
-            var recipientCandidateDomains = (from nameAndDomain in nameAndDomainsList where checkList.MailBody.Contains(nameAndDomain.Name) select nameAndDomain.Domain).ToList();
+            //空の設定値があると誤検知するため、空を省く。
+            var cleanedNameAndDomains = nameAndDomainsList.Where(nameAndDomain => !string.IsNullOrEmpty(nameAndDomain.Domain) && !string.IsNullOrEmpty(nameAndDomain.Name)).ToList();
+
+            var recipientCandidateDomains = (from nameAndDomain in cleanedNameAndDomains where checkList.MailBody.Contains(nameAndDomain.Name) select nameAndDomain.Domain).ToList();
 
             //送信先の候補が見つからない場合、何もしない。(見つからない場合の方が多いため、警告ばかりになってしまう。)
             if (recipientCandidateDomains.Count == 0) return checkList;
