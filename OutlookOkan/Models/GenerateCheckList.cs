@@ -70,7 +70,7 @@ namespace OutlookOkan.Models
 
             var displayNameAndRecipient = MakeDisplayNameAndRecipient(mail.Recipients, new DisplayNameAndRecipient(), generalSetting);
 
-            _checkList = CheckForgotAttach(in mail, _checkList, generalSetting);
+            _checkList = CheckForgotAttach(_checkList, generalSetting);
 
             _checkList = CheckKeyword(_checkList, alertKeywordAndMessageList);
 
@@ -613,18 +613,16 @@ namespace OutlookOkan.Models
         /// <summary>
         /// ファイルの添付忘れを確認。
         /// </summary>
-        /// <param name="mail">Mail</param>
         /// <param name="checkList">CheckList</param>
         /// <param name="generalSetting">一般設定</param>
         /// <returns>CheckList</returns>
-        private CheckList CheckForgotAttach(in Outlook._MailItem mail, CheckList checkList, GeneralSetting generalSetting)
+        private CheckList CheckForgotAttach(CheckList checkList, GeneralSetting generalSetting)
         {
-            if (mail.Attachments.Count >= 1) return checkList;
+            if (checkList.Attachments.Count >= 1) return checkList;
 
             if (!generalSetting.EnableForgottenToAttachAlert) return checkList;
 
             string attachmentsKeyword;
-
             switch (generalSetting.LanguageCode)
             {
                 case "ja-JP":
@@ -634,7 +632,9 @@ namespace OutlookOkan.Models
                     attachmentsKeyword = "attached file";
                     break;
                 default:
-                    return checkList;
+                    //設定値がなければ、日本語環境として扱う。
+                    attachmentsKeyword = "添付";
+                    break;
             }
 
             if (checkList.MailBody.Contains(attachmentsKeyword))
