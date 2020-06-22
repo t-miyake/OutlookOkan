@@ -1260,7 +1260,7 @@ namespace OutlookOkan.Models
         /// <returns>DisplayNameAndRecipient</returns>
         private DisplayNameAndRecipient ExternalDomainsChangeToBccIfNeeded(Outlook._MailItem mail, DisplayNameAndRecipient displayNameAndRecipient, ExternalDomainsWarningAndAutoChangeToBcc settings, ICollection<InternalDomain> internalDomains, int externalDomainNumToAndCc, string senderDomain, string senderMailAddress)
         {
-            if (!settings.IsAutoChangeToBccWhenLargeNumberOfExternalDomains || settings.TargetToAndCcExternalDomainsNum > externalDomainNumToAndCc) return displayNameAndRecipient;
+            if (!settings.IsAutoChangeToBccWhenLargeNumberOfExternalDomains || settings.IsProhibitedWhenLargeNumberOfExternalDomains || settings.TargetToAndCcExternalDomainsNum > externalDomainNumToAndCc) return displayNameAndRecipient;
 
             internalDomains.Add(new InternalDomain { Domain = senderDomain });
             var removeTarget = new List<string>();
