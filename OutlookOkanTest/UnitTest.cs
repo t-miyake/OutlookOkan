@@ -376,7 +376,7 @@ namespace OutlookOkanTest
             Assert.AreEqual(result.CcAddresses[0].MailAddress, cc1);
 
             Assert.AreEqual(result.Alerts[0].AlertMessage, Resources.IsAlertAddressToAlert + $"[{to2}]");
-            Assert.IsFalse(testCheckList.IsCanNotSendMail);
+            Assert.IsFalse(result.IsCanNotSendMail);
         }
 
         [TestMethod, TestCategory("_GenerateCheckList"), TestCategory("GetRecipient")]
@@ -414,8 +414,8 @@ namespace OutlookOkanTest
             Assert.AreEqual(result.CcAddresses[0].MailAddress, cc1);
 
             Assert.AreEqual(result.Alerts[0].AlertMessage, Resources.IsAlertAddressToAlert + $"[{to2}]");
-            Assert.IsTrue(testCheckList.IsCanNotSendMail);
-            Assert.AreEqual(testCheckList.CanNotSendMailMessage, Resources.SendingForbidAddress + $"[{to2}]");
+            Assert.IsTrue(result.IsCanNotSendMail);
+            Assert.AreEqual(result.CanNotSendMailMessage, Resources.SendingForbidAddress + $"[{to2}]");
         }
 
         [TestMethod, TestCategory("_GenerateCheckList"), TestCategory("GetRecipient")]
