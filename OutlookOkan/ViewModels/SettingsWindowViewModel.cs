@@ -16,7 +16,7 @@ namespace OutlookOkan.ViewModels
     {
         public SettingsWindowViewModel()
         {
-            //Add button command
+            //Add button command.
             ImportWhiteList = new RelayCommand(ImportWhiteListFromCsv);
             ExportWhiteList = new RelayCommand(ExportWhiteListToCsv);
 
@@ -41,7 +41,10 @@ namespace OutlookOkan.ViewModels
             ImportDeferredDeliveryMinutesList = new RelayCommand(ImportDeferredDeliveryMinutesFromCsv);
             ExportDeferredDeliveryMinutesList = new RelayCommand(ExportDeferredDeliveryMinutesToCsv);
 
-            //言語コードと名称をロード
+            ImportInternalDomainList = new RelayCommand(ImportInternalDomainListFromCsv);
+            ExportInternalDomainList = new RelayCommand(ExportInternalDomainListToCsv);
+
+            //Load language code and name.
             var languages = new Languages();
             Languages = languages.Language;
 
@@ -55,6 +58,8 @@ namespace OutlookOkan.ViewModels
             LoadAutoCcBccRecipientsData();
             LoadAutoCcBccAttachedFilesData();
             LoadDeferredDeliveryMinutesData();
+            LoadInternalDomainListData();
+            LoadExternalDomainsWarningAndAutoChangeToBccData();
         }
 
         public async Task SaveSettings()
@@ -69,7 +74,9 @@ namespace OutlookOkan.ViewModels
                     SaveAlertAddressesToCsv(),
                     SaveAutoCcBccRecipientsToCsv(),
                     SaveAutoCcBccAttachedFilesToCsv(),
-                    SaveDeferredDeliveryMinutesToCsv()
+                    SaveDeferredDeliveryMinutesToCsv(),
+                    SaveInternalDomainListToCsv(),
+                    SaveExternalDomainsWarningAndAutoChangeToBccToCsv()
                 };
 
             await Task.WhenAll(saveTasks);
@@ -135,7 +142,7 @@ namespace OutlookOkan.ViewModels
             set
             {
                 _whitelist = value;
-                OnPropertyChanged("Whitelist");
+                OnPropertyChanged(nameof(Whitelist));
             }
         }
 
@@ -201,7 +208,7 @@ namespace OutlookOkan.ViewModels
             set
             {
                 _nameAndDomains = value;
-                OnPropertyChanged("NameAndDomains");
+                OnPropertyChanged(nameof(NameAndDomains));
             }
         }
 
@@ -267,7 +274,7 @@ namespace OutlookOkan.ViewModels
             set
             {
                 _alertKeywordAndMessages = value;
-                OnPropertyChanged("AlertKeywordAndMessages");
+                OnPropertyChanged(nameof(AlertKeywordAndMessages));
             }
         }
 
@@ -333,7 +340,7 @@ namespace OutlookOkan.ViewModels
             set
             {
                 _alertAddresses = value;
-                OnPropertyChanged("AlertAddresses");
+                OnPropertyChanged(nameof(AlertAddresses));
             }
         }
 
@@ -399,7 +406,7 @@ namespace OutlookOkan.ViewModels
             set
             {
                 _autoCcBccKeywords = value;
-                OnPropertyChanged("AutoCcBccKeywords");
+                OnPropertyChanged(nameof(AutoCcBccKeywords));
             }
         }
 
@@ -465,7 +472,7 @@ namespace OutlookOkan.ViewModels
             set
             {
                 _autoCcBccRecipients = value;
-                OnPropertyChanged("AutoCcBccRecipients");
+                OnPropertyChanged(nameof(AutoCcBccRecipients));
             }
         }
 
@@ -531,7 +538,7 @@ namespace OutlookOkan.ViewModels
             set
             {
                 _autoCcBccAttachedFiles = value;
-                OnPropertyChanged("AutoCcBccAttachedFiles");
+                OnPropertyChanged(nameof(AutoCcBccAttachedFiles));
             }
         }
 
@@ -597,7 +604,159 @@ namespace OutlookOkan.ViewModels
             set
             {
                 _deferredDeliveryMinutes = value;
-                OnPropertyChanged("DeferredDeliveryMinutes");
+                OnPropertyChanged(nameof(DeferredDeliveryMinutes));
+            }
+        }
+
+        #endregion
+
+        #region InternalDomain
+
+        public ICommand ImportInternalDomainList { get; }
+        public ICommand ExportInternalDomainList { get; }
+
+        private void LoadInternalDomainListData()
+        {
+            var readCsv = new ReadAndWriteCsv("InternalDomainList.csv");
+            var internalDomainList = readCsv.GetCsvRecords<InternalDomain>(readCsv.LoadCsv<InternalDomainMap>());
+
+            foreach (var data in internalDomainList)
+            {
+                InternalDomainList.Add(data);
+            }
+        }
+
+        private async Task SaveInternalDomainListToCsv()
+        {
+            var list = InternalDomainList.Cast<object>().ToList();
+            var writeCsv = new ReadAndWriteCsv("InternalDomainList.csv");
+            await Task.Run(() => writeCsv.WriteRecordsToCsv<InternalDomainMap>(list));
+        }
+
+        private void ImportInternalDomainListFromCsv()
+        {
+            var importAction = new CsvImportAndExport();
+            var filePath = importAction.ImportCsv();
+
+            if (filePath is null) return;
+
+            try
+            {
+                var importData = new List<InternalDomain>(importAction.GetCsvRecords<InternalDomain>(importAction.LoadCsv<InternalDomainMap>(filePath)));
+                foreach (var data in importData)
+                {
+                    InternalDomainList.Add(data);
+                }
+
+                MessageBox.Show(Properties.Resources.SuccessfulImport, Properties.Resources.AppName, MessageBoxButton.OK);
+            }
+            catch (Exception)
+            {
+                MessageBox.Show(Properties.Resources.ImportFailed, Properties.Resources.AppName, MessageBoxButton.OK);
+            }
+        }
+
+        private void ExportInternalDomainListToCsv()
+        {
+            var list = InternalDomainList.Cast<object>().ToList();
+            var exportAction = new CsvImportAndExport();
+            exportAction.CsvExport<InternalDomainMap>(list, "InternalDomainList.csv");
+        }
+
+        private ObservableCollection<InternalDomain> _internalDomainList = new ObservableCollection<InternalDomain>();
+        public ObservableCollection<InternalDomain> InternalDomainList
+        {
+            get => _internalDomainList;
+            set
+            {
+                _internalDomainList = value;
+                OnPropertyChanged(nameof(InternalDomainList));
+            }
+        }
+
+        #endregion
+
+        #region ExternalDomainsWarningAndAutoChangeToBcc
+
+        private void LoadExternalDomainsWarningAndAutoChangeToBccData()
+        {
+            var readCsv = new ReadAndWriteCsv("ExternalDomainsWarningAndAutoChangeToBccSetting.csv");
+            //1行しかないはずだが、2行以上あるとロード時にエラーとなる恐れがあるため、全行ロードする。
+            foreach (var data in readCsv.GetCsvRecords<ExternalDomainsWarningAndAutoChangeToBcc>(readCsv.LoadCsv<ExternalDomainsWarningAndAutoChangeToBccMap>()))
+            {
+                _externalDomainsWarningAndAutoChangeToBcc.Add(data);
+            }
+
+            if (_externalDomainsWarningAndAutoChangeToBcc.Count == 0) return;
+
+            //実際に使用するのは1行目の設定のみ
+            TargetToAndCcExternalDomainsNum = _externalDomainsWarningAndAutoChangeToBcc[0].TargetToAndCcExternalDomainsNum;
+            IsWarningWhenLargeNumberOfExternalDomains = _externalDomainsWarningAndAutoChangeToBcc[0].IsWarningWhenLargeNumberOfExternalDomains;
+            IsProhibitedWhenLargeNumberOfExternalDomains = _externalDomainsWarningAndAutoChangeToBcc[0].IsProhibitedWhenLargeNumberOfExternalDomains;
+            IsAutoChangeToBccWhenLargeNumberOfExternalDomains = _externalDomainsWarningAndAutoChangeToBcc[0].IsAutoChangeToBccWhenLargeNumberOfExternalDomains;
+        }
+
+        private async Task SaveExternalDomainsWarningAndAutoChangeToBccToCsv()
+        {
+            var tempExternalDomainsWarningAndAutoChangeToBcc = new List<ExternalDomainsWarningAndAutoChangeToBcc>
+            {
+                new ExternalDomainsWarningAndAutoChangeToBcc
+                {
+                    TargetToAndCcExternalDomainsNum = TargetToAndCcExternalDomainsNum,
+                    IsWarningWhenLargeNumberOfExternalDomains = IsWarningWhenLargeNumberOfExternalDomains,
+                    IsProhibitedWhenLargeNumberOfExternalDomains = IsProhibitedWhenLargeNumberOfExternalDomains,
+                    IsAutoChangeToBccWhenLargeNumberOfExternalDomains = IsAutoChangeToBccWhenLargeNumberOfExternalDomains
+                }
+            };
+
+            var list = tempExternalDomainsWarningAndAutoChangeToBcc.Cast<object>().ToList();
+            var writeCsv = new ReadAndWriteCsv("ExternalDomainsWarningAndAutoChangeToBccSetting.csv");
+            await Task.Run(() => writeCsv.WriteRecordsToCsv<ExternalDomainsWarningAndAutoChangeToBccMap>(list));
+        }
+
+        private readonly List<ExternalDomainsWarningAndAutoChangeToBcc> _externalDomainsWarningAndAutoChangeToBcc = new List<ExternalDomainsWarningAndAutoChangeToBcc>();
+
+        private int _targetToAndCcExternalDomainsNum = 10;
+        public int TargetToAndCcExternalDomainsNum
+        {
+            get => _targetToAndCcExternalDomainsNum;
+            set
+            {
+                _targetToAndCcExternalDomainsNum = value;
+                OnPropertyChanged(nameof(TargetToAndCcExternalDomainsNum));
+            }
+        }
+
+        private bool _isWarningWhenLargeNumberOfExternalDomains = true;
+        public bool IsWarningWhenLargeNumberOfExternalDomains
+        {
+            get => _isWarningWhenLargeNumberOfExternalDomains;
+            set
+            {
+                _isWarningWhenLargeNumberOfExternalDomains = value;
+                OnPropertyChanged(nameof(IsWarningWhenLargeNumberOfExternalDomains));
+            }
+        }
+
+        private bool _isProhibitedWhenLargeNumberOfExternalDomains;
+        public bool IsProhibitedWhenLargeNumberOfExternalDomains
+        {
+            get => _isProhibitedWhenLargeNumberOfExternalDomains;
+            set
+            {
+                _isProhibitedWhenLargeNumberOfExternalDomains = value;
+                OnPropertyChanged(nameof(IsProhibitedWhenLargeNumberOfExternalDomains));
+            }
+        }
+
+        private bool _isAutoChangeToBccWhenLargeNumberOfExternalDomains;
+        public bool IsAutoChangeToBccWhenLargeNumberOfExternalDomains
+        {
+            get => _isAutoChangeToBccWhenLargeNumberOfExternalDomains;
+            set
+            {
+                _isAutoChangeToBccWhenLargeNumberOfExternalDomains = value;
+                OnPropertyChanged(nameof(IsAutoChangeToBccWhenLargeNumberOfExternalDomains));
             }
         }
 
@@ -608,10 +767,10 @@ namespace OutlookOkan.ViewModels
         private void LoadGeneralSettingData()
         {
             var readCsv = new ReadAndWriteCsv("GeneralSetting.csv");
-            //1行しかないはずだが、何かの間違いで2行以上あるとまずいので、全行ロードする。
+            //1行しかないはずだが、2行以上あるとロード時にエラーとなる恐れがあるため、全行ロードする。
             foreach (var data in readCsv.GetCsvRecords<GeneralSetting>(readCsv.LoadCsv<GeneralSettingMap>()))
             {
-                _generalSetting.Add((data));
+                _generalSetting.Add(data);
             }
 
             if (_generalSetting.Count == 0) return;
@@ -627,6 +786,9 @@ namespace OutlookOkan.ViewModels
             ContactGroupMembersAreWhite = _generalSetting[0].ContactGroupMembersAreWhite;
             ExchangeDistributionListMembersAreWhite = _generalSetting[0].ExchangeDistributionListMembersAreWhite;
             IsNotTreatedAsAttachmentsAtHtmlEmbeddedFiles = _generalSetting[0].IsNotTreatedAsAttachmentsAtHtmlEmbeddedFiles;
+            IsDoNotUseAutoCcBccAttachedFileIfAllRecipientsAreInternalDomain = _generalSetting[0].IsDoNotUseAutoCcBccAttachedFileIfAllRecipientsAreInternalDomain;
+            IsDoNotUseDeferredDeliveryIfAllRecipientsAreInternalDomain = _generalSetting[0].IsDoNotUseDeferredDeliveryIfAllRecipientsAreInternalDomain;
+            IsDoNotUseAutoCcBccKeywordIfAllRecipientsAreInternalDomain = _generalSetting[0].IsDoNotUseAutoCcBccKeywordIfAllRecipientsAreInternalDomain;
 
             if (_generalSetting[0].LanguageCode is null) return;
 
@@ -663,7 +825,10 @@ namespace OutlookOkan.ViewModels
                     EnableGetExchangeDistributionListMembers = EnableGetExchangeDistributionListMembers,
                     ContactGroupMembersAreWhite = ContactGroupMembersAreWhite,
                     ExchangeDistributionListMembersAreWhite = ExchangeDistributionListMembersAreWhite,
-                    IsNotTreatedAsAttachmentsAtHtmlEmbeddedFiles = IsNotTreatedAsAttachmentsAtHtmlEmbeddedFiles
+                    IsNotTreatedAsAttachmentsAtHtmlEmbeddedFiles = IsNotTreatedAsAttachmentsAtHtmlEmbeddedFiles,
+                    IsDoNotUseAutoCcBccAttachedFileIfAllRecipientsAreInternalDomain = IsDoNotUseAutoCcBccAttachedFileIfAllRecipientsAreInternalDomain,
+                    IsDoNotUseDeferredDeliveryIfAllRecipientsAreInternalDomain = IsDoNotUseDeferredDeliveryIfAllRecipientsAreInternalDomain,
+                    IsDoNotUseAutoCcBccKeywordIfAllRecipientsAreInternalDomain = IsDoNotUseAutoCcBccKeywordIfAllRecipientsAreInternalDomain
                 }
             };
 
@@ -681,7 +846,7 @@ namespace OutlookOkan.ViewModels
             set
             {
                 _isDoNotConfirmationIfAllRecipientsAreSameDomain = value;
-                OnPropertyChanged("IsDoNotConfirmationIfAllRecipientsAreSameDomain");
+                OnPropertyChanged(nameof(IsDoNotConfirmationIfAllRecipientsAreSameDomain));
             }
         }
 
@@ -692,7 +857,7 @@ namespace OutlookOkan.ViewModels
             set
             {
                 _isDoDoNotConfirmationIfAllWhite = value;
-                OnPropertyChanged("IsDoDoNotConfirmationIfAllWhite");
+                OnPropertyChanged(nameof(IsDoDoNotConfirmationIfAllWhite));
             }
         }
 
@@ -703,7 +868,7 @@ namespace OutlookOkan.ViewModels
             set
             {
                 _isAutoCheckIfAllRecipientsAreSameDomain = value;
-                OnPropertyChanged("IsAutoCheckIfAllRecipientsAreSameDomain");
+                OnPropertyChanged(nameof(IsAutoCheckIfAllRecipientsAreSameDomain));
             }
         }
 
@@ -714,7 +879,7 @@ namespace OutlookOkan.ViewModels
             set
             {
                 _isShowConfirmationToMultipleDomain = value;
-                OnPropertyChanged("IsShowConfirmationToMultipleDomain");
+                OnPropertyChanged(nameof(IsShowConfirmationToMultipleDomain));
             }
         }
 
@@ -725,7 +890,7 @@ namespace OutlookOkan.ViewModels
             set
             {
                 _enableForgottenToAttachAlert = value;
-                OnPropertyChanged("EnableForgottenToAttachAlert");
+                OnPropertyChanged(nameof(EnableForgottenToAttachAlert));
             }
         }
 
@@ -736,7 +901,7 @@ namespace OutlookOkan.ViewModels
             set
             {
                 _enableGetContactGroupMembers = value;
-                OnPropertyChanged("EnableGetContactGroupMembers");
+                OnPropertyChanged(nameof(EnableGetContactGroupMembers));
             }
         }
 
@@ -747,7 +912,7 @@ namespace OutlookOkan.ViewModels
             set
             {
                 _enableGetExchangeDistributionListMembers = value;
-                OnPropertyChanged("EnableGetExchangeDistributionListMembers");
+                OnPropertyChanged(nameof(EnableGetExchangeDistributionListMembers));
             }
         }
 
@@ -758,7 +923,7 @@ namespace OutlookOkan.ViewModels
             set
             {
                 _contactGroupMembersAreWhite = value;
-                OnPropertyChanged("ContactGroupMembersAreWhite");
+                OnPropertyChanged(nameof(ContactGroupMembersAreWhite));
             }
         }
 
@@ -769,19 +934,51 @@ namespace OutlookOkan.ViewModels
             set
             {
                 _exchangeDistributionListMembersAreWhite = value;
-                OnPropertyChanged("ExchangeDistributionListMembersAreWhite");
+                OnPropertyChanged(nameof(ExchangeDistributionListMembersAreWhite));
             }
         }
 
         private bool _isNotTreatedAsAttachmentsAtHtmlEmbeddedFiles;
-
         public bool IsNotTreatedAsAttachmentsAtHtmlEmbeddedFiles
         {
             get => _isNotTreatedAsAttachmentsAtHtmlEmbeddedFiles;
             set
             {
                 _isNotTreatedAsAttachmentsAtHtmlEmbeddedFiles = value;
-                OnPropertyChanged("IsNotTreatedAsAttachmentsAtHtmlEmbeddedFiles");
+                OnPropertyChanged(nameof(IsNotTreatedAsAttachmentsAtHtmlEmbeddedFiles));
+            }
+        }
+
+        private bool _isDoNotUseAutoCcBccAttachedFileIfAllRecipientsAreInternalDomain;
+        public bool IsDoNotUseAutoCcBccAttachedFileIfAllRecipientsAreInternalDomain
+        {
+            get => _isDoNotUseAutoCcBccAttachedFileIfAllRecipientsAreInternalDomain;
+            set
+            {
+                _isDoNotUseAutoCcBccAttachedFileIfAllRecipientsAreInternalDomain = value;
+                OnPropertyChanged(nameof(IsDoNotUseAutoCcBccAttachedFileIfAllRecipientsAreInternalDomain));
+            }
+        }
+
+        private bool _isDoNotUseDeferredDeliveryIfAllRecipientsAreInternalDomain;
+        public bool IsDoNotUseDeferredDeliveryIfAllRecipientsAreInternalDomain
+        {
+            get => _isDoNotUseDeferredDeliveryIfAllRecipientsAreInternalDomain;
+            set
+            {
+                _isDoNotUseDeferredDeliveryIfAllRecipientsAreInternalDomain = value;
+                OnPropertyChanged(nameof(IsDoNotUseDeferredDeliveryIfAllRecipientsAreInternalDomain));
+            }
+        }
+
+        private bool _isDoNotUseAutoCcBccKeywordIfAllRecipientsAreInternalDomain;
+        public bool IsDoNotUseAutoCcBccKeywordIfAllRecipientsAreInternalDomain
+        {
+            get => _isDoNotUseAutoCcBccKeywordIfAllRecipientsAreInternalDomain;
+            set
+            {
+                _isDoNotUseAutoCcBccKeywordIfAllRecipientsAreInternalDomain = value;
+                OnPropertyChanged(nameof(IsDoNotUseAutoCcBccKeywordIfAllRecipientsAreInternalDomain));
             }
         }
 
@@ -792,7 +989,7 @@ namespace OutlookOkan.ViewModels
             set
             {
                 _language = value;
-                OnPropertyChanged("Language");
+                OnPropertyChanged(nameof(Language));
             }
         }
 
@@ -803,7 +1000,7 @@ namespace OutlookOkan.ViewModels
             set
             {
                 _languages = value;
-                OnPropertyChanged("Languages");
+                OnPropertyChanged(nameof(Languages));
             }
         }
 
@@ -814,7 +1011,7 @@ namespace OutlookOkan.ViewModels
             set
             {
                 _languageNumber = value;
-                OnPropertyChanged("LanguageNumber");
+                OnPropertyChanged(nameof(LanguageNumber));
             }
         }
 

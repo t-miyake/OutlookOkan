@@ -129,7 +129,7 @@
   <data name="AlertMailAddress" xml:space="preserve">
     <value>Alert recipients</value>
   </data>
-  <data name="AlertMailddressAndDomain" xml:space="preserve">
+  <data name="AlertMailAddressAndDomain" xml:space="preserve">
     <value>Alerting recipients or domains</value>
   </data>
   <data name="ApplicableDestination" xml:space="preserve">
@@ -148,16 +148,16 @@
     <value>Attachments</value>
   </data>
   <data name="AutoAddCCorBCCByKeyword" xml:space="preserve">
-    <value>Automatic CC/BCC addition(by keywords)</value>
+    <value>Automatic Cc/Bcc addition(by keywords)</value>
   </data>
   <data name="AutoAddCCorBCCByKeywordInfo" xml:space="preserve">
-    <value>Keywords that automatically add CCs or BCCs.</value>
+    <value>Keywords that automatically add Ccs or Bccs.</value>
   </data>
   <data name="AutoAddCCorBCCByMailAddressOrDomain" xml:space="preserve">
-    <value>Automatic CC/BCC addition(by recipients)</value>
+    <value>Automatic Cc/Bcc addition(by recipients)</value>
   </data>
   <data name="AutoAddCCorBCCByMailAddressOrDomainInfo" xml:space="preserve">
-    <value>Recipients or domains that automatically add CCs or BCCs.</value>
+    <value>Recipients or domains that automatically add Ccs or Bccs.</value>
   </data>
   <data name="AutoAddDestination" xml:space="preserve">
     <value>Added automatically.</value>
@@ -169,7 +169,7 @@
     <value>Auto-check setting</value>
   </data>
   <data name="AutoCheckSameDomain" xml:space="preserve">
-    <value>The same domain recipients as the sender address will be auto-checked.</value>
+    <value>The internal domain recipients will be auto-checked.</value>
   </data>
   <data name="CSVImportAlert" xml:space="preserve">
     <value>Don't import CSV file with wrong format.</value>
@@ -178,7 +178,7 @@
     <value>Cancel</value>
   </data>
   <data name="CCorBCC" xml:space="preserve">
-    <value>CC/BCC</value>
+    <value>Cc/Bcc</value>
   </data>
   <data name="ChangeLanguage" xml:space="preserve">
     <value>Change the display language</value>
@@ -204,7 +204,7 @@
   <data name="Domain" xml:space="preserve">
     <value>Domain</value>
   </data>
-  <data name="DontShowConfirmationScreen" xml:space="preserve">
+  <data name="DoNotShowConfirmationScreen" xml:space="preserve">
     <value>Skip the confirmation window</value>
   </data>
   <data name="ExportFailed" xml:space="preserve">
@@ -222,14 +222,14 @@
   <data name="Help" xml:space="preserve">
     <value>Help</value>
   </data>
-  <data name="HowToDaleteRow" xml:space="preserve">
+  <data name="HowToDeleteRow" xml:space="preserve">
     <value>* Delete row: Select the row and press the delete key.</value>
   </data>
   <data name="HTML" xml:space="preserve">
     <value>HTML</value>
   </data>
   <data name="IfAllSameDomain" xml:space="preserve">
-    <value>If all recipient's domains are the same domain as the source address, skip the confirmation window.</value>
+    <value>If all recipient's domains are internal domain, skip the confirmation window.</value>
   </data>
   <data name="IfAllWhite" xml:space="preserve">
     <value>If there is no check target in the recipients, skip the confirmation window. (e.g., if all recipients are included in the whitelist.)</value>
@@ -244,7 +244,7 @@
     <value>Failed to import.</value>
   </data>
   <data name="InputCCorBCC" xml:space="preserve">
-    <value>Enter "CC" or "BCC".</value>
+    <value>Enter "Cc" or "Bcc".</value>
   </data>
   <data name="InputDomainInfo" xml:space="preserve">
     <value>Enter the domain from @.</value>
@@ -253,13 +253,13 @@
     <value>Enter email address or domain.</value>
   </data>
   <data name="InputNameInfo" xml:space="preserve">
-    <value>Enter the name.(ex. Company name)</value>
+    <value>Enter the name. (ex. Company name)</value>
   </data>
   <data name="IsAlertAddressBccAlert" xml:space="preserve">
-    <value>The recipients (BCC) contains an address or domain that has been registered as an alert.</value>
+    <value>The recipients (Bcc) contains an address or domain that has been registered as an alert.</value>
   </data>
   <data name="IsAlertAddressCcAlert" xml:space="preserve">
-    <value>The recipients (CC) contains an address or domain that has been registered as an alert.</value>
+    <value>The recipients (Cc) contains an address or domain that has been registered as an alert.</value>
   </data>
   <data name="IsAlertAddressMaybeIrrelevant" xml:space="preserve">
     <value>This recipient may be unrelated to the intended destination.</value>
@@ -279,7 +279,7 @@
   <data name="MailBody" xml:space="preserve">
     <value>Message body (Text format)</value>
   </data>
-  <data name="MailddressAndDomain" xml:space="preserve">
+  <data name="MailAddressAndDomain" xml:space="preserve">
     <value>Recipient address/domain</value>
   </data>
   <data name="MailInfo" xml:space="preserve">
@@ -361,7 +361,7 @@
     <value>Copyright (C) 2020 Noraneko Inc.</value>
   </data>
   <data name="Version" xml:space="preserve">
-    <value>Version 2.3.5</value>
+    <value>Version 2.5.0</value>
   </data>
   <data name="VersionInfo" xml:space="preserve">
     <value>About</value>
@@ -385,18 +385,18 @@ Register an email address or domain.
 If you send an email to an email address or domain that you have registered here, you will receive an alert in advance.</value>
   </data>
   <data name="SettingExampleAutoAddCCorBCCByKeyword" xml:space="preserve">
-    <value>Type: CC or BCC
+    <value>Type: Cc or Bcc
 Keywords: Confidential
 Email address: boss@noraneko.co.jp
 
-When the keywords are included in the mail, The specified address is automatically added to the CC or BCC.</value>
+When the keywords are included in the mail, The specified address is automatically added to the Cc or Bcc.</value>
   </data>
   <data name="SettingExampleAutoAddCCorBCCByMailAddressOrDomain" xml:space="preserve">
-    <value>Type: CC or BCC
+    <value>Type: Cc or Bcc
 To: warning@xxxxxxx.com
 Email address: boss@noraneko.co.jp
 
-When sending mail to registered recipients and domains, The specified address is automatically added to the CC or BCC.</value>
+When sending mail to registered recipients and domains, The specified address is automatically added to the Cc or Bcc.</value>
   </data>
   <data name="SettingExampleNameAndDomain" xml:space="preserve">
     <value>Name: Noraneko Inc
@@ -487,15 +487,85 @@ Do you want to download it?</value>
     <value>This add-in is the latest version.</value>
   </data>
   <data name="AutoAddCCorBCCByAttachedFile" xml:space="preserve">
-    <value>Automatic CC/BCC addition(by attachments)</value>
+    <value>Automatic Cc/Bcc addition(by attachments)</value>
   </data>
   <data name="IsNotTreatedAsAttachmentsAtHtmlEmbeddedFiles" xml:space="preserve">
     <value>A file embedded in an HTML mail is not treated as an attachment.</value>
   </data>
   <data name="SettingExampleAutoAddCCorBCCByAttachedFile" xml:space="preserve">
-    <value>Type: CC or BCC
+    <value>Type: Cc or Bcc
 Email address: boss@noraneko.co.jp
 
-When you send an email with a file attached, The specified address is automatically added to the CC or BCC.</value>
+When you send an email with a file attached, The specified address is automatically added to the Cc or Bcc.</value>
+  </data>
+  <data name="CanceledSendingMail" xml:space="preserve">
+    <value>Canceled sending this email.</value>
+  </data>
+  <data name="CanceledSendingMailMessage" xml:space="preserve">
+    <value>Canceled sending this email. You can reedit this.
+To send this email, you must click on the Send button.
+(Closing the edit screen will not send this email.)</value>
+  </data>
+  <data name="InputDomain" xml:space="preserve">
+    <value>Enter domain.</value>
+  </data>
+  <data name="InternalDomain" xml:space="preserve">
+    <value>Internal domain</value>
+  </data>
+  <data name="SettingExampleInternalDomainList" xml:space="preserve">
+    <value>Domain: @noraneko.co.jp
+
+Register a domain to be handled as an internal (company) domain.
+
+The domain of the sender's email address is always treated as an internal domain.</value>
+  </data>
+  <data name="ExclusionSettings" xml:space="preserve">
+    <value>Exclusion settings</value>
+  </data>
+  <data name="IsDoNotUseXIfAllRecipientsAreInternalDomain" xml:space="preserve">
+    <value>Disable this feature if the recipient's domains are all internal domains.</value>
+  </data>
+  <data name="BasicSettings" xml:space="preserve">
+    <value>Basic Settings</value>
+  </data>
+  <data name="ExternalDomainsWarningAndAutoChangeToBcc" xml:space="preserve">
+    <value>External domains warning and auto change to Bcc</value>
+  </data>
+  <data name="IsAutoChangeToBccWhenLargeNumberOfExternalDomains" xml:space="preserve">
+    <value>The external recipient of To and Cc are automatically converted to Bcc 
+when the recipients (To/Cc) has a large number of external domains.</value>
+  </data>
+  <data name="IsProhibitedWhenLargeNumberOfExternalDomains" xml:space="preserve">
+    <value>Sending is prohibited when the recipients (To/Cc) has a large number of external domains.</value>
+  </data>
+  <data name="IsWarningWhenLargeNumberOfExternalDomains" xml:space="preserve">
+    <value>Displays a warning when the recipients (To/Cc) has a large number of external domains.</value>
+  </data>
+  <data name="SettingExampleExternalDomainsWarningAndAutoChangeToBcc" xml:space="preserve">
+    <value>Set the number of external domains to be used as a basis for warnings and automatic change to Bcc, and turn each one on or off.
+
+If the To does not exist after automatic change to Bcc, the sender's address will be automatically added to the To.</value>
+  </data>
+  <data name="TargetToAndCcExternalDomainsNum" xml:space="preserve">
+    <value>The number of external domains of the recipients (To/Cc) to be covered by this feature.</value>
+  </data>
+  <data name="TargetToAndCcExternalDomainsNumInfo" xml:space="preserve">
+    <value>* If the external domain included in the To and Cc of the email is greater than or equal to this setting, 
+this feature will be applied.</value>
+  </data>
+  <data name="AutoAddSendersAddressToAlert" xml:space="preserve">
+    <value>The sender's Email address was automatically added to the To. (because the To no longer exists due to auto change to Bcc.)</value>
+  </data>
+  <data name="ExternalDomainsChangeToBccAlert" xml:space="preserve">
+    <value>As the external domains of To and Cc are above the threshold, the external domain recipients has been changed to Bcc.</value>
+  </data>
+  <data name="LargeNumberOfExternalDomainAlert" xml:space="preserve">
+    <value>The number of external domains in To and Cc is higher than the threshold. Please reconfirm the pros and cons of the sending.</value>
+  </data>
+  <data name="ProhibitedWhenLargeNumberOfExternalDomainsAlert" xml:space="preserve">
+    <value>The number of external domains in To and Cc is above the threshold.</value>
+  </data>
+  <data name="DefaultAlertMessage" xml:space="preserve">
+    <value>The warning keyword is included in the body of the email.</value>
   </data>
 </root>

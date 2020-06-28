@@ -35,14 +35,14 @@
     <PublishUrl>publish\</PublishUrl>
     <InstallUrl />
     <TargetCulture>en</TargetCulture>
-    <ApplicationVersion>2.3.5.0</ApplicationVersion>
+    <ApplicationVersion>2.5.0.0</ApplicationVersion>
     <AutoIncrementApplicationRevision>false</AutoIncrementApplicationRevision>
     <UpdateEnabled>false</UpdateEnabled>
     <UpdateInterval>0</UpdateInterval>
     <UpdateIntervalUnits>days</UpdateIntervalUnits>
     <ProductName>OutlookOkan</ProductName>
-    <PublisherName />
-    <SupportUrl />
+    <PublisherName>Noraneko Inc.</PublisherName>
+    <SupportUrl>https://www.noraneko.co.jp/</SupportUrl>
     <FriendlyName>OutlookOkan</FriendlyName>
     <OfficeApplicationDescription />
     <LoadBehavior>3</LoadBehavior>
@@ -97,7 +97,7 @@
     <WarningLevel>4</WarningLevel>
     <TreatWarningsAsErrors>false</TreatWarningsAsErrors>
     <PlatformTarget>AnyCPU</PlatformTarget>
-    <RunCodeAnalysis>true</RunCodeAnalysis>
+    <RunCodeAnalysis>false</RunCodeAnalysis>
   </PropertyGroup>
   <!--
     This section defines properties that are set when the "Release" configuration is selected.
@@ -216,8 +216,12 @@
     <Compile Include="Types\CcOrBcc.cs" />
     <Compile Include="Types\CheckList.cs" />
     <Compile Include="Types\DeferredDeliveryMinutes.cs" />
+    <Compile Include="Types\DisplayNameAndRecipient.cs" />
+    <Compile Include="Types\ExternalDomainsWarningAndAutoChangeToBcc.cs" />
     <Compile Include="Types\GeneralSetting.cs" />
+    <Compile Include="Types\InternalDomain.cs" />
     <Compile Include="Types\Languages.cs" />
+    <Compile Include="Types\MailItemsRecipientAndMailAddress.cs" />
     <Compile Include="Types\NameAndDomains.cs" />
     <Compile Include="Types\NameAndRecipient.cs" />
     <Compile Include="Types\Whitelist.cs" />
@@ -297,7 +301,7 @@
     <ManifestKeyFile>CodeSigningCertificate_NoranekoInc.pfx</ManifestKeyFile>
   </PropertyGroup>
   <PropertyGroup>
-    <ManifestCertificateThumbprint>95F309D2E9A9720D0A43B6F732CD6F4FF93DA500</ManifestCertificateThumbprint>
+    <ManifestCertificateThumbprint>5DD07B3828604DA1DBA17EA76BBE4B5D7476B206</ManifestCertificateThumbprint>
   </PropertyGroup>
   <PropertyGroup>
     <SignAssembly>false</SignAssembly>

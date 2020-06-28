@@ -3,6 +3,7 @@ using System;
 using System.Text.RegularExpressions;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Input;
 
 namespace OutlookOkan.Views
 {
@@ -17,9 +18,6 @@ namespace OutlookOkan.Views
 
         #region Validations
 
-        /// <summary>
-        /// WhiteListへの入力バリデーション
-        /// </summary>
         private void DataGrid_WhiteList_OnCellEditEnding(object sender, DataGridCellEditEndingEventArgs e)
         {
             var inputText = ((TextBox)e.EditingElement).Text;
@@ -98,6 +96,38 @@ namespace OutlookOkan.Views
                     break;
                 default:
                     return;
+            }
+        }
+
+        private void DataGrid_InternalDomainList_OnCellEditEnding(object sender, DataGridCellEditEndingEventArgs e)
+        {
+            var inputText = ((TextBox)e.EditingElement).Text;
+            if (string.IsNullOrEmpty(inputText) || !inputText.Contains("@"))
+            {
+                MessageBox.Show(Properties.Resources.InputDomain);
+                e.Cancel = true;
+            }
+            else
+            {
+                //@のみで登録すると全てのメールアドレスが対象になるため、それを禁止。
+                if (!inputText.Equals("@")) return;
+                MessageBox.Show(Properties.Resources.InputDomain, Properties.Resources.AppName, MessageBoxButton.OK);
+                e.Cancel = true;
+            }
+        }
+
+        private void ExternalDomainsNumBox_OnPreviewTextInput(object sender, TextCompositionEventArgs e)
+        {
+            var regex = new Regex("[^0-9]+$");
+            if (!regex.IsMatch(ExternalDomainsNumBox.Text + e.Text)) return;
+            e.Handled = true;
+        }
+
+        private void ExternalDomainsNumBox_OnPreviewExecuted(object sender, ExecutedRoutedEventArgs e)
+        {
+            if (e.Command == ApplicationCommands.Paste)
+            {
+                e.Handled = true;
             }
         }
 

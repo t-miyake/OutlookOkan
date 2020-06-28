@@ -99,9 +99,9 @@ namespace OutlookOkan.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Alerting recipients or domains.
         /// </summary>
-        public static string AlertMailddressAndDomain {
+        public static string AlertMailAddressAndDomain {
             get {
-                return ResourceManager.GetString("AlertMailddressAndDomain", resourceCulture);
+                return ResourceManager.GetString("AlertMailAddressAndDomain", resourceCulture);
             }
         }
         
@@ -151,7 +151,7 @@ namespace OutlookOkan.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Automatic CC/BCC addition(by attachments).
+        ///   Looks up a localized string similar to Automatic Cc/Bcc addition(by attachments).
         /// </summary>
         public static string AutoAddCCorBCCByAttachedFile {
             get {
@@ -160,7 +160,7 @@ namespace OutlookOkan.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Automatic CC/BCC addition(by keywords).
+        ///   Looks up a localized string similar to Automatic Cc/Bcc addition(by keywords).
         /// </summary>
         public static string AutoAddCCorBCCByKeyword {
             get {
@@ -169,7 +169,7 @@ namespace OutlookOkan.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Keywords that automatically add CCs or BCCs..
+        ///   Looks up a localized string similar to Keywords that automatically add Ccs or Bccs..
         /// </summary>
         public static string AutoAddCCorBCCByKeywordInfo {
             get {
@@ -178,7 +178,7 @@ namespace OutlookOkan.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Automatic CC/BCC addition(by recipients).
+        ///   Looks up a localized string similar to Automatic Cc/Bcc addition(by recipients).
         /// </summary>
         public static string AutoAddCCorBCCByMailAddressOrDomain {
             get {
@@ -187,7 +187,7 @@ namespace OutlookOkan.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Recipients or domains that automatically add CCs or BCCs..
+        ///   Looks up a localized string similar to Recipients or domains that automatically add Ccs or Bccs..
         /// </summary>
         public static string AutoAddCCorBCCByMailAddressOrDomainInfo {
             get {
@@ -214,6 +214,15 @@ namespace OutlookOkan.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to The sender&apos;s Email address was automatically added to the To. (because the To no longer exists due to auto change to Bcc.).
+        /// </summary>
+        public static string AutoAddSendersAddressToAlert {
+            get {
+                return ResourceManager.GetString("AutoAddSendersAddressToAlert", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Auto-check setting.
         /// </summary>
         public static string AutoCheckConfig {
@@ -232,11 +241,20 @@ namespace OutlookOkan.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to The same domain recipients as the sender address will be auto-checked..
+        ///   Looks up a localized string similar to The internal domain recipients will be auto-checked..
         /// </summary>
         public static string AutoCheckSameDomain {
             get {
                 return ResourceManager.GetString("AutoCheckSameDomain", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Basic Settings.
+        /// </summary>
+        public static string BasicSettings {
+            get {
+                return ResourceManager.GetString("BasicSettings", resourceCulture);
             }
         }
         
@@ -246,6 +264,26 @@ namespace OutlookOkan.Properties {
         public static string Cancel {
             get {
                 return ResourceManager.GetString("Cancel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Canceled sending this email..
+        /// </summary>
+        public static string CanceledSendingMail {
+            get {
+                return ResourceManager.GetString("CanceledSendingMail", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Canceled sending this email. You can reedit this.
+        ///To send this email, you must click on the Send button.
+        ///(Closing the edit screen will not send this email.).
+        /// </summary>
+        public static string CanceledSendingMailMessage {
+            get {
+                return ResourceManager.GetString("CanceledSendingMailMessage", resourceCulture);
             }
         }
         
@@ -260,7 +298,7 @@ namespace OutlookOkan.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to CC/BCC.
+        ///   Looks up a localized string similar to Cc/Bcc.
         /// </summary>
         public static string CCorBCC {
             get {
@@ -377,6 +415,15 @@ namespace OutlookOkan.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to The warning keyword is included in the body of the email..
+        /// </summary>
+        public static string DefaultAlertMessage {
+            get {
+                return ResourceManager.GetString("DefaultAlertMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Deferred delivery.
         /// </summary>
         public static string DeferredDelivery {
@@ -433,9 +480,9 @@ namespace OutlookOkan.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Skip the confirmation window.
         /// </summary>
-        public static string DontShowConfirmationScreen {
+        public static string DoNotShowConfirmationScreen {
             get {
-                return ResourceManager.GetString("DontShowConfirmationScreen", resourceCulture);
+                return ResourceManager.GetString("DoNotShowConfirmationScreen", resourceCulture);
             }
         }
         
@@ -449,11 +496,38 @@ namespace OutlookOkan.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Exclusion settings.
+        /// </summary>
+        public static string ExclusionSettings {
+            get {
+                return ResourceManager.GetString("ExclusionSettings", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Failed to export..
         /// </summary>
         public static string ExportFailed {
             get {
                 return ResourceManager.GetString("ExportFailed", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to As the external domains of To and Cc are above the threshold, the external domain recipients has been changed to Bcc..
+        /// </summary>
+        public static string ExternalDomainsChangeToBccAlert {
+            get {
+                return ResourceManager.GetString("ExternalDomainsChangeToBccAlert", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to External domains warning and auto change to Bcc.
+        /// </summary>
+        public static string ExternalDomainsWarningAndAutoChangeToBcc {
+            get {
+                return ResourceManager.GetString("ExternalDomainsWarningAndAutoChangeToBcc", resourceCulture);
             }
         }
         
@@ -523,9 +597,9 @@ namespace OutlookOkan.Properties {
         /// <summary>
         ///   Looks up a localized string similar to * Delete row: Select the row and press the delete key..
         /// </summary>
-        public static string HowToDaleteRow {
+        public static string HowToDeleteRow {
             get {
-                return ResourceManager.GetString("HowToDaleteRow", resourceCulture);
+                return ResourceManager.GetString("HowToDeleteRow", resourceCulture);
             }
         }
         
@@ -539,7 +613,7 @@ namespace OutlookOkan.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to If all recipient&apos;s domains are the same domain as the source address, skip the confirmation window..
+        ///   Looks up a localized string similar to If all recipient&apos;s domains are internal domain, skip the confirmation window..
         /// </summary>
         public static string IfAllSameDomain {
             get {
@@ -584,7 +658,7 @@ namespace OutlookOkan.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Enter &quot;CC&quot; or &quot;BCC&quot;..
+        ///   Looks up a localized string similar to Enter &quot;Cc&quot; or &quot;Bcc&quot;..
         /// </summary>
         public static string InputCCorBCC {
             get {
@@ -598,6 +672,15 @@ namespace OutlookOkan.Properties {
         public static string InputDeferredDeliveryTime {
             get {
                 return ResourceManager.GetString("InputDeferredDeliveryTime", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Enter domain..
+        /// </summary>
+        public static string InputDomain {
+            get {
+                return ResourceManager.GetString("InputDomain", resourceCulture);
             }
         }
         
@@ -620,7 +703,7 @@ namespace OutlookOkan.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Enter the name.(ex. Company name).
+        ///   Looks up a localized string similar to Enter the name. (ex. Company name).
         /// </summary>
         public static string InputNameInfo {
             get {
@@ -629,7 +712,16 @@ namespace OutlookOkan.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to The recipients (BCC) contains an address or domain that has been registered as an alert..
+        ///   Looks up a localized string similar to Internal domain.
+        /// </summary>
+        public static string InternalDomain {
+            get {
+                return ResourceManager.GetString("InternalDomain", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The recipients (Bcc) contains an address or domain that has been registered as an alert..
         /// </summary>
         public static string IsAlertAddressBccAlert {
             get {
@@ -638,7 +730,7 @@ namespace OutlookOkan.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to The recipients (CC) contains an address or domain that has been registered as an alert..
+        ///   Looks up a localized string similar to The recipients (Cc) contains an address or domain that has been registered as an alert..
         /// </summary>
         public static string IsAlertAddressCcAlert {
             get {
@@ -674,6 +766,16 @@ namespace OutlookOkan.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to The external recipient of To and Cc are automatically converted to Bcc 
+        ///when the recipients (To/Cc) has a large number of external domains..
+        /// </summary>
+        public static string IsAutoChangeToBccWhenLargeNumberOfExternalDomains {
+            get {
+                return ResourceManager.GetString("IsAutoChangeToBccWhenLargeNumberOfExternalDomains", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to There is a 10Mbyte or larger file attached to this email..
         /// </summary>
         public static string IsBigAttachedFile {
@@ -692,11 +794,29 @@ namespace OutlookOkan.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Disable this feature if the recipient&apos;s domains are all internal domains..
+        /// </summary>
+        public static string IsDoNotUseXIfAllRecipientsAreInternalDomain {
+            get {
+                return ResourceManager.GetString("IsDoNotUseXIfAllRecipientsAreInternalDomain", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to A file embedded in an HTML mail is not treated as an attachment..
         /// </summary>
         public static string IsNotTreatedAsAttachmentsAtHtmlEmbeddedFiles {
             get {
                 return ResourceManager.GetString("IsNotTreatedAsAttachmentsAtHtmlEmbeddedFiles", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Sending is prohibited when the recipients (To/Cc) has a large number of external domains..
+        /// </summary>
+        public static string IsProhibitedWhenLargeNumberOfExternalDomains {
+            get {
+                return ResourceManager.GetString("IsProhibitedWhenLargeNumberOfExternalDomains", resourceCulture);
             }
         }
         
@@ -728,6 +848,15 @@ namespace OutlookOkan.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Displays a warning when the recipients (To/Cc) has a large number of external domains..
+        /// </summary>
+        public static string IsWarningWhenLargeNumberOfExternalDomains {
+            get {
+                return ResourceManager.GetString("IsWarningWhenLargeNumberOfExternalDomains", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Keywords.
         /// </summary>
         public static string Keyword {
@@ -737,20 +866,29 @@ namespace OutlookOkan.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Message body (Text format).
+        ///   Looks up a localized string similar to The number of external domains in To and Cc is higher than the threshold. Please reconfirm the pros and cons of the sending..
         /// </summary>
-        public static string MailBody {
+        public static string LargeNumberOfExternalDomainAlert {
             get {
-                return ResourceManager.GetString("MailBody", resourceCulture);
+                return ResourceManager.GetString("LargeNumberOfExternalDomainAlert", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Looks up a localized string similar to Recipient address/domain.
         /// </summary>
-        public static string MailddressAndDomain {
+        public static string MailAddressAndDomain {
             get {
-                return ResourceManager.GetString("MailddressAndDomain", resourceCulture);
+                return ResourceManager.GetString("MailAddressAndDomain", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Message body (Text format).
+        /// </summary>
+        public static string MailBody {
+            get {
+                return ResourceManager.GetString("MailBody", resourceCulture);
             }
         }
         
@@ -805,6 +943,15 @@ namespace OutlookOkan.Properties {
         public static string OK {
             get {
                 return ResourceManager.GetString("OK", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The number of external domains in To and Cc is above the threshold..
+        /// </summary>
+        public static string ProhibitedWhenLargeNumberOfExternalDomainsAlert {
+            get {
+                return ResourceManager.GetString("ProhibitedWhenLargeNumberOfExternalDomainsAlert", resourceCulture);
             }
         }
         
@@ -944,10 +1091,10 @@ namespace OutlookOkan.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Type: CC or BCC
+        ///   Looks up a localized string similar to Type: Cc or Bcc
         ///Email address: boss@noraneko.co.jp
         ///
-        ///When you send an email with a file attached, The specified address is automatically added to the CC or BCC..
+        ///When you send an email with a file attached, The specified address is automatically added to the Cc or Bcc..
         /// </summary>
         public static string SettingExampleAutoAddCCorBCCByAttachedFile {
             get {
@@ -956,11 +1103,11 @@ namespace OutlookOkan.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Type: CC or BCC
+        ///   Looks up a localized string similar to Type: Cc or Bcc
         ///Keywords: Confidential
         ///Email address: boss@noraneko.co.jp
         ///
-        ///When the keywords are included in the mail, The specified address is automatically added to the CC or BCC..
+        ///When the keywords are included in the mail, The specified address is automatically added to the Cc or Bcc..
         /// </summary>
         public static string SettingExampleAutoAddCCorBCCByKeyword {
             get {
@@ -969,11 +1116,11 @@ namespace OutlookOkan.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Type: CC or BCC
+        ///   Looks up a localized string similar to Type: Cc or Bcc
         ///To: warning@xxxxxxx.com
         ///Email address: boss@noraneko.co.jp
         ///
-        ///When sending mail to registered recipients and domains, The specified address is automatically added to the CC or BCC..
+        ///When sending mail to registered recipients and domains, The specified address is automatically added to the Cc or Bcc..
         /// </summary>
         public static string SettingExampleAutoAddCCorBCCByMailAddressOrDomain {
             get {
@@ -995,6 +1142,30 @@ namespace OutlookOkan.Properties {
         public static string SettingExampleDeferredDelivery {
             get {
                 return ResourceManager.GetString("SettingExampleDeferredDelivery", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Set the number of external domains to be used as a basis for warnings and automatic change to Bcc, and turn each one on or off.
+        ///
+        ///If the To does not exist after automatic change to Bcc, the sender&apos;s address will be automatically added to the To..
+        /// </summary>
+        public static string SettingExampleExternalDomainsWarningAndAutoChangeToBcc {
+            get {
+                return ResourceManager.GetString("SettingExampleExternalDomainsWarningAndAutoChangeToBcc", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Domain: @noraneko.co.jp
+        ///
+        ///Register a domain to be handled as an internal (company) domain.
+        ///
+        ///The domain of the sender&apos;s email address is always treated as an internal domain..
+        /// </summary>
+        public static string SettingExampleInternalDomainList {
+            get {
+                return ResourceManager.GetString("SettingExampleInternalDomainList", resourceCulture);
             }
         }
         
@@ -1060,6 +1231,25 @@ namespace OutlookOkan.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to The number of external domains of the recipients (To/Cc) to be covered by this feature..
+        /// </summary>
+        public static string TargetToAndCcExternalDomainsNum {
+            get {
+                return ResourceManager.GetString("TargetToAndCcExternalDomainsNum", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to * If the external domain included in the To and Cc of the email is greater than or equal to this setting, 
+        ///this feature will be applied..
+        /// </summary>
+        public static string TargetToAndCcExternalDomainsNumInfo {
+            get {
+                return ResourceManager.GetString("TargetToAndCcExternalDomainsNumInfo", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Plain-text.
         /// </summary>
         public static string Text {
@@ -1078,7 +1268,7 @@ namespace OutlookOkan.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Version 2.3.5.
+        ///   Looks up a localized string similar to Version 2.5.0.
         /// </summary>
         public static string Version {
             get {
