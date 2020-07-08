@@ -1067,7 +1067,9 @@ namespace OutlookOkan.Properties {
         ///   Looks up a localized string similar to Keywords: Confidential
         ///Alerting text: It includes the phrase &quot;Confidential&quot;.
         ///
-        ///Register the keywords to be alert and their alerting text..
+        ///Register the keywords to be alert and their alerting text.
+        ///
+        ///If the alerting text is blank, the confirmation screen will show the default alerting text..
         /// </summary>
         public static string SettingExampleAlertKeyword {
             get {
@@ -1268,7 +1270,7 @@ namespace OutlookOkan.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Version 2.5.0.
+        ///   Looks up a localized string similar to Version 2.5.1.
         /// </summary>
         public static string Version {
             get {

@@ -361,7 +361,7 @@
     <value>Copyright (C) 2020 Noraneko Inc.</value>
   </data>
   <data name="Version" xml:space="preserve">
-    <value>バージョン 2.5.0</value>
+    <value>バージョン 2.5.1</value>
   </data>
   <data name="VersionInfo" xml:space="preserve">
     <value>バージョン情報</value>
@@ -373,7 +373,9 @@
     <value>キーワード：機密
 警告文：機密という言葉が含まれています。
 
-警告するキーワードとその警告文を登録します。</value>
+警告するキーワードとその警告文を登録します。
+
+※警告文が空欄の場合、デフォルトの警告文が表示されます。</value>
   </data>
   <data name="SettingExampleAlertMailAddress" xml:space="preserve">
     <value>アドレス：info@noraneko.co.jp

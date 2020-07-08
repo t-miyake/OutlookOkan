@@ -839,6 +839,47 @@ namespace OutlookOkanTest
 
         #endregion
 
+        #region IsValidEmailAddress
+
+        [TestMethod, TestCategory("_GenerateCheckList"), TestCategory("IsValidEmailAddress")]
+        public void メールアドレス判定_普通のメールアドレス()
+        {
+            const string mailAddress = "mike@neko.email";
+
+            var generateCheckList = new GenerateCheckList();
+            var privateObject = new PrivateObject(generateCheckList);
+            var result = (bool) privateObject.Invoke("IsValidEmailAddress", mailAddress);
+
+            Assert.IsTrue(result);
+        }
+
+        [TestMethod, TestCategory("_GenerateCheckList"), TestCategory("IsValidEmailAddress")]
+        public void メールアドレス判定_メールアドレスでないもの()
+        {
+            const string mailAddress = "mike@neko.email.";
+
+            var generateCheckList = new GenerateCheckList();
+            var privateObject = new PrivateObject(generateCheckList);
+            var result = (bool)privateObject.Invoke("IsValidEmailAddress", mailAddress);
+
+            Assert.IsFalse(result);
+        }
+
+        [TestMethod, TestCategory("_GenerateCheckList"), TestCategory("IsValidEmailAddress")]
+        public void メールアドレス判定_RFC違反のキャリアアドレス()
+        {
+            const string mailAddress = "mike..@neko.email.";
+
+            var generateCheckList = new GenerateCheckList();
+            var privateObject = new PrivateObject(generateCheckList);
+            var result = (bool)privateObject.Invoke("IsValidEmailAddress", mailAddress);
+
+            Assert.IsFalse(result);
+        }
+
+        #endregion
+
+
         #endregion
 
         #region ThisAddIn

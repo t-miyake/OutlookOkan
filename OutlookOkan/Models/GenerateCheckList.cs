@@ -4,6 +4,7 @@ using OutlookOkan.Types;
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Runtime.InteropServices;
 using System.Text.RegularExpressions;
@@ -28,31 +29,39 @@ namespace OutlookOkan.Models
         public CheckList GenerateCheckListFromMail(Outlook._MailItem mail, GeneralSetting generalSetting)
         {
             var whitelistCsv = new ReadAndWriteCsv("Whitelist.csv");
-            _whitelist.AddRange(whitelistCsv.GetCsvRecords<Whitelist>(whitelistCsv.LoadCsv<WhitelistMap>()));
+            _whitelist.AddRange(whitelistCsv.GetCsvRecords<Whitelist>(whitelistCsv.LoadCsv<WhitelistMap>()).Where(x => !string.IsNullOrEmpty(x.WhiteName)));
 
             var alertKeywordAndMessageListCsv = new ReadAndWriteCsv("AlertKeywordAndMessageList.csv");
-            var alertKeywordAndMessageList = alertKeywordAndMessageListCsv.GetCsvRecords<AlertKeywordAndMessage>(alertKeywordAndMessageListCsv.LoadCsv<AlertKeywordAndMessageMap>());
+            var alertKeywordAndMessageList = alertKeywordAndMessageListCsv.GetCsvRecords<AlertKeywordAndMessage>(alertKeywordAndMessageListCsv.LoadCsv<AlertKeywordAndMessageMap>())
+                .Where(x => !string.IsNullOrEmpty(x.AlertKeyword)).ToList();
 
             var autoCcBccKeywordListCsv = new ReadAndWriteCsv("AutoCcBccKeywordList.csv");
-            var autoCcBccKeywordList = autoCcBccKeywordListCsv.GetCsvRecords<AutoCcBccKeyword>(autoCcBccKeywordListCsv.LoadCsv<AutoCcBccKeywordMap>());
+            var autoCcBccKeywordList = autoCcBccKeywordListCsv.GetCsvRecords<AutoCcBccKeyword>(autoCcBccKeywordListCsv.LoadCsv<AutoCcBccKeywordMap>())
+                .Where(x => !string.IsNullOrEmpty(x.AutoAddAddress) && !string.IsNullOrEmpty(x.Keyword)).ToList();
 
             var autoCcBccAttachedFilesListCsv = new ReadAndWriteCsv("AutoCcBccAttachedFileList.csv");
-            var autoCcBccAttachedFilesList = autoCcBccAttachedFilesListCsv.GetCsvRecords<AutoCcBccAttachedFile>(autoCcBccAttachedFilesListCsv.LoadCsv<AutoCcBccAttachedFileMap>());
+            var autoCcBccAttachedFilesList = autoCcBccAttachedFilesListCsv.GetCsvRecords<AutoCcBccAttachedFile>(autoCcBccAttachedFilesListCsv.LoadCsv<AutoCcBccAttachedFileMap>())
+                .Where(x => !string.IsNullOrEmpty(x.AutoAddAddress)).ToList();
 
             var autoCcBccRecipientListCsv = new ReadAndWriteCsv("AutoCcBccRecipientList.csv");
-            var autoCcBccRecipientList = autoCcBccRecipientListCsv.GetCsvRecords<AutoCcBccRecipient>(autoCcBccRecipientListCsv.LoadCsv<AutoCcBccRecipientMap>());
+            var autoCcBccRecipientList = autoCcBccRecipientListCsv.GetCsvRecords<AutoCcBccRecipient>(autoCcBccRecipientListCsv.LoadCsv<AutoCcBccRecipientMap>())
+                .Where(x => !string.IsNullOrEmpty(x.AutoAddAddress) && !string.IsNullOrEmpty(x.TargetRecipient)).ToList();
 
             var alertAddressCsv = new ReadAndWriteCsv("AlertAddressList.csv");
-            var alertAddressList = alertAddressCsv.GetCsvRecords<AlertAddress>(alertAddressCsv.LoadCsv<AlertAddressMap>());
+            var alertAddressList = alertAddressCsv.GetCsvRecords<AlertAddress>(alertAddressCsv.LoadCsv<AlertAddressMap>())
+                .Where(x => !string.IsNullOrEmpty(x.TargetAddress)).ToList();
 
             var nameAndDomainsCsv = new ReadAndWriteCsv("NameAndDomains.csv");
-            var nameAndDomainsList = nameAndDomainsCsv.GetCsvRecords<NameAndDomains>(nameAndDomainsCsv.LoadCsv<NameAndDomainsMap>());
+            var nameAndDomainsList = nameAndDomainsCsv.GetCsvRecords<NameAndDomains>(nameAndDomainsCsv.LoadCsv<NameAndDomainsMap>())
+                .Where(x => !string.IsNullOrEmpty(x.Domain) && !string.IsNullOrEmpty(x.Name));
 
             var deferredDeliveryMinutesCsv = new ReadAndWriteCsv("DeferredDeliveryMinutes.csv");
-            var deferredDeliveryMinutes = deferredDeliveryMinutesCsv.GetCsvRecords<DeferredDeliveryMinutes>(deferredDeliveryMinutesCsv.LoadCsv<DeferredDeliveryMinutesMap>());
+            var deferredDeliveryMinutes = deferredDeliveryMinutesCsv.GetCsvRecords<DeferredDeliveryMinutes>(deferredDeliveryMinutesCsv.LoadCsv<DeferredDeliveryMinutesMap>())
+                .Where(x => !string.IsNullOrEmpty(x.TargetAddress)).ToList();
 
             var internalDomainListCsv = new ReadAndWriteCsv("InternalDomainList.csv");
-            var internalDomainList = internalDomainListCsv.GetCsvRecords<InternalDomain>(internalDomainListCsv.LoadCsv<InternalDomainMap>());
+            var internalDomainList = internalDomainListCsv.GetCsvRecords<InternalDomain>(internalDomainListCsv.LoadCsv<InternalDomainMap>())
+                .Where(x => !string.IsNullOrEmpty(x.Domain)).ToList();
 
             var externalDomainsWarningAndAutoChangeToBccSetting = new ExternalDomainsWarningAndAutoChangeToBcc();
             var externalDomainsWarningAndAutoChangeToBccCsv = new ReadAndWriteCsv("ExternalDomainsWarningAndAutoChangeToBccSetting.csv");
@@ -111,7 +120,7 @@ namespace OutlookOkan.Models
             {
                 checkList.Sender = mail.SendUsingAccount?.SmtpAddress ?? Resources.FailedToGetInformation;
 
-                if (mail.SenderEmailType == "EX" && !checkList.Sender.Contains("@"))
+                if (mail.SenderEmailType == "EX" && !IsValidEmailAddress(checkList.Sender))
                 {
                     var tempOutlookApp = new Outlook.Application();
                     var tempRecipient = tempOutlookApp.Session.CreateRecipient(mail.SenderEmailAddress);
@@ -145,13 +154,13 @@ namespace OutlookOkan.Models
                 }
                 else
                 {
-                    if (!checkList.Sender.Contains("@"))
+                    if (!IsValidEmailAddress(checkList.Sender))
                     {
                         checkList.Sender = mail.SenderEmailAddress ?? Resources.FailedToGetInformation;
                     }
                 }
 
-                if (!checkList.Sender.Contains("@"))
+                if (!IsValidEmailAddress(checkList.Sender))
                 {
                     checkList.Sender = Resources.FailedToGetInformation;
                 }
@@ -163,9 +172,9 @@ namespace OutlookOkan.Models
                 //代理送信の場合。
                 checkList.Sender = mail.Sender?.Address ?? Resources.FailedToGetInformation;
 
-                if (checkList.Sender.Contains("@") && !checkList.Sender.Contains("/o=ExchangeLabs"))
+                if (IsValidEmailAddress(checkList.Sender))
                 {
-                    //メールアドレスが取得できる場合はそのまま使う。。
+                    //メールアドレスが取得できる場合はそのまま使う。
                     checkList.SenderDomain = checkList.Sender.Substring(checkList.Sender.IndexOf("@", StringComparison.Ordinal));
                     checkList.Sender = $@"{checkList.Sender} ([{mail.SentOnBehalfOfName}] {Resources.SentOnBehalf})";
                 }
@@ -284,31 +293,45 @@ namespace OutlookOkan.Models
         private IEnumerable<NameAndRecipient> GetNameAndRecipient(Outlook.Recipient recipient)
         {
             var mailAddress = Resources.FailedToGetInformation;
-            if (recipient.Name?.Contains("@") == true) mailAddress = recipient.Name;
-
-            try
+            if (IsValidEmailAddress(recipient.Name))
             {
-                var isDone = false;
-                var errorCount = 0;
-                while (!isDone && errorCount < 200)
-                {
-                    try
-                    {
-                        mailAddress = recipient.PropertyAccessor.GetProperty("http://schemas.microsoft.com/mapi/proptag/0x39FE001E").ToString() ?? Resources.FailedToGetInformation;
+                mailAddress = recipient.Name;
+            }
+            else
+            {
+                if (IsValidEmailAddress(recipient.Address)) mailAddress = recipient.Address;
+            }
 
-                        isDone = true;
-                    }
-                    catch (COMException)
+
+            if (!IsValidEmailAddress(mailAddress))
+            {
+                try
+                {
+                    var isDone = false;
+                    var errorCount = 0;
+                    while (!isDone && errorCount < 200)
                     {
-                        //HRESULT:0x80004004 対策
-                        Thread.Sleep(30);
-                        errorCount++;
+                        try
+                        {
+                            var propertyAccessor = recipient.PropertyAccessor;
+                            Thread.Sleep(10);
+
+                            mailAddress = propertyAccessor.GetProperty(@"http://schemas.microsoft.com/mapi/proptag/0x39FE001E").ToString() ?? Resources.FailedToGetInformation;
+
+                            isDone = true;
+                        }
+                        catch (COMException)
+                        {
+                            //HRESULT:0x80004004 対策
+                            Thread.Sleep(30);
+                            errorCount++;
+                        }
                     }
                 }
-            }
-            catch (Exception)
-            {
-                // Do Nothing.
+                catch (Exception)
+                {
+                    // Do Nothing.
+                }
             }
 
             string nameAndMailAddress;
@@ -321,11 +344,7 @@ namespace OutlookOkan.Models
                 nameAndMailAddress = recipient.Name.Contains($@" ({mailAddress})") ? recipient.Name : recipient.Name + $@" ({mailAddress})";
             }
 
-            //ケースによってメールアドレスのみを正しく取得できない恐れがあるため、その場合は、表示名称をメールアドレスとして登録する。
-            if (mailAddress?.Contains("@") != true)
-            {
-                mailAddress = nameAndMailAddress;
-            }
+            if (!IsValidEmailAddress(mailAddress)) mailAddress = nameAndMailAddress;
 
             return new List<NameAndRecipient> { new NameAndRecipient { MailAddress = mailAddress, NameAndMailAddress = nameAndMailAddress } };
         }
@@ -405,7 +424,10 @@ namespace OutlookOkan.Models
                         {
                             try
                             {
-                                mailAddress = tempRecipient.AddressEntry.PropertyAccessor.GetProperty("http://schemas.microsoft.com/mapi/proptag/0x39FE001E").ToString() ?? Resources.FailedToGetInformation;
+                                var propertyAccessor = tempRecipient.AddressEntry.PropertyAccessor;
+                                Thread.Sleep(10);
+
+                                mailAddress = propertyAccessor.GetProperty(@"http://schemas.microsoft.com/mapi/proptag/0x39FE001E").ToString() ?? Resources.FailedToGetInformation;
                                 isDone = true;
                             }
                             catch (COMException)
@@ -1346,6 +1368,41 @@ namespace OutlookOkan.Models
                 IsWhite = isWhite,
                 IsChecked = isChecked
             });
+        }
+
+        /// <summary>
+        /// メールアドレスか否か判定する。
+        /// </summary>
+        /// <param name="emailAddress">判定したい文字列</param>
+        /// <returns>メールアドレスか否か</returns>
+        private bool IsValidEmailAddress(string emailAddress)
+        {
+            if (string.IsNullOrWhiteSpace(emailAddress)) return false;
+
+            try
+            {
+                emailAddress = Regex.Replace(emailAddress, @"(@)(.+)$", DomainMapper, RegexOptions.None, TimeSpan.FromMilliseconds(500));
+                string DomainMapper(Match match)
+                {
+                    var idnMapping = new IdnMapping();
+                    var domainName = idnMapping.GetAscii(match.Groups[2].Value);
+                    return match.Groups[1].Value + domainName;
+                }
+            }
+            catch (Exception)
+            {
+                return false;
+            }
+
+            try
+            {
+                return Regex.IsMatch(emailAddress, @"^(?("")("".+?(?<!\\)""@)|(([0-9a-z]((\.(?!\.))|[-!#\$%&'\*\+/=\?\^`\{\}\|~\w])*)(?<=[0-9a-z])@))" + @"(?(\[)(\[(\d{1,3}\.){3}\d{1,3}\])|(([0-9a-z][-0-9a-z]*[0-9a-z]*\.)+[a-z0-9][\-a-z0-9]{0,22}[a-z0-9]))$",
+                    RegexOptions.IgnoreCase, TimeSpan.FromMilliseconds(500));
+            }
+            catch (Exception)
+            {
+                return false;
+            }
         }
     }
 }
