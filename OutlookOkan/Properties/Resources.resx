@@ -373,7 +373,9 @@
     <value>Keywords: Confidential
 Alerting text: It includes the phrase "Confidential".
 
-Register the keywords to be alert and their alerting text.</value>
+Register the keywords to be alert and their alerting text.
+
+If the alerting text is blank, the confirmation screen will show the default alerting text.</value>
   </data>
   <data name="SettingExampleAlertMailAddress" xml:space="preserve">
     <value>Email address: info@noraneko.co.jp
