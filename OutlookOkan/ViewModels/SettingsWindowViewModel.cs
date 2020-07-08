@@ -92,7 +92,7 @@ namespace OutlookOkan.ViewModels
             var readCsv = new ReadAndWriteCsv("Whitelist.csv");
             var whitelist = readCsv.GetCsvRecords<Whitelist>(readCsv.LoadCsv<WhitelistMap>());
 
-            foreach (var data in whitelist)
+            foreach (var data in whitelist.Where(x => !string.IsNullOrEmpty(x.WhiteName)))
             {
                 Whitelist.Add(data);
             }
@@ -100,7 +100,7 @@ namespace OutlookOkan.ViewModels
 
         private async Task SaveWhiteListToCsv()
         {
-            var list = Whitelist.Cast<object>().ToList();
+            var list = Whitelist.Where(x => !string.IsNullOrEmpty(x.WhiteName)).Cast<object>().ToList();
             var writeCsv = new ReadAndWriteCsv("Whitelist.csv");
             await Task.Run(() => writeCsv.WriteRecordsToCsv<WhitelistMap>(list));
         }
@@ -115,7 +115,7 @@ namespace OutlookOkan.ViewModels
             try
             {
                 var importData = new List<Whitelist>(importAction.GetCsvRecords<Whitelist>(importAction.LoadCsv<WhitelistMap>(filePath)));
-                foreach (var data in importData)
+                foreach (var data in importData.Where(x => !string.IsNullOrEmpty(x.WhiteName)))
                 {
                     Whitelist.Add(data);
                 }
@@ -130,7 +130,7 @@ namespace OutlookOkan.ViewModels
 
         private void ExportWhiteListToCsv()
         {
-            var list = Whitelist.Cast<object>().ToList();
+            var list = Whitelist.Where(x => !string.IsNullOrEmpty(x.WhiteName)).Cast<object>().ToList();
             var exportAction = new CsvImportAndExport();
             exportAction.CsvExport<WhitelistMap>(list, "Whitelist.csv");
         }
@@ -158,7 +158,7 @@ namespace OutlookOkan.ViewModels
             var readCsv = new ReadAndWriteCsv("NameAndDomains.csv");
             var nameAndDomains = readCsv.GetCsvRecords<NameAndDomains>(readCsv.LoadCsv<NameAndDomainsMap>());
 
-            foreach (var data in nameAndDomains)
+            foreach (var data in nameAndDomains.Where(x => !string.IsNullOrEmpty(x.Domain) && !string.IsNullOrEmpty(x.Name)))
             {
                 NameAndDomains.Add(data);
             }
@@ -166,7 +166,7 @@ namespace OutlookOkan.ViewModels
 
         private async Task SaveNameAndDomainsToCsv()
         {
-            var list = NameAndDomains.Cast<object>().ToList();
+            var list = NameAndDomains.Where(x => !string.IsNullOrEmpty(x.Domain) && !string.IsNullOrEmpty(x.Name)).Cast<object>().ToList();
             var writeCsv = new ReadAndWriteCsv("NameAndDomains.csv");
             await Task.Run(() => writeCsv.WriteRecordsToCsv<NameAndDomainsMap>(list));
         }
@@ -181,7 +181,7 @@ namespace OutlookOkan.ViewModels
             try
             {
                 var importData = new List<NameAndDomains>(importAction.GetCsvRecords<NameAndDomains>(importAction.LoadCsv<NameAndDomainsMap>(filePath)));
-                foreach (var data in importData)
+                foreach (var data in importData.Where(x => !string.IsNullOrEmpty(x.Domain) && !string.IsNullOrEmpty(x.Name)))
                 {
                     NameAndDomains.Add(data);
                 }
@@ -196,7 +196,7 @@ namespace OutlookOkan.ViewModels
 
         private void ExportNameAndDomainsToCsv()
         {
-            var list = NameAndDomains.Cast<object>().ToList();
+            var list = NameAndDomains.Where(x => !string.IsNullOrEmpty(x.Domain) && !string.IsNullOrEmpty(x.Name)).Cast<object>().ToList();
             var exportAction = new CsvImportAndExport();
             exportAction.CsvExport<NameAndDomainsMap>(list, "NameAndDomains.csv");
         }
@@ -224,7 +224,7 @@ namespace OutlookOkan.ViewModels
             var readCsv = new ReadAndWriteCsv("AlertKeywordAndMessageList.csv");
             var alertKeywordAndMessages = readCsv.GetCsvRecords<AlertKeywordAndMessage>(readCsv.LoadCsv<AlertKeywordAndMessageMap>());
 
-            foreach (var data in alertKeywordAndMessages)
+            foreach (var data in alertKeywordAndMessages.Where(x => !string.IsNullOrEmpty(x.AlertKeyword)))
             {
                 AlertKeywordAndMessages.Add(data);
             }
@@ -232,7 +232,7 @@ namespace OutlookOkan.ViewModels
 
         private async Task SaveAlertKeywordAndMessageToCsv()
         {
-            var list = AlertKeywordAndMessages.Cast<object>().ToList();
+            var list = AlertKeywordAndMessages.Where(x => !string.IsNullOrEmpty(x.AlertKeyword)).Cast<object>().ToList();
             var writeCsv = new ReadAndWriteCsv("AlertKeywordAndMessageList.csv");
             await Task.Run(() => writeCsv.WriteRecordsToCsv<AlertKeywordAndMessageMap>(list));
         }
@@ -247,7 +247,7 @@ namespace OutlookOkan.ViewModels
             try
             {
                 var importData = new List<AlertKeywordAndMessage>(importAction.GetCsvRecords<AlertKeywordAndMessage>(importAction.LoadCsv<AlertKeywordAndMessageMap>(filePath)));
-                foreach (var data in importData)
+                foreach (var data in importData.Where(x => !string.IsNullOrEmpty(x.AlertKeyword)))
                 {
                     AlertKeywordAndMessages.Add(data);
                 }
@@ -262,7 +262,7 @@ namespace OutlookOkan.ViewModels
 
         private void ExportAlertKeywordAndMessagesToCsv()
         {
-            var list = AlertKeywordAndMessages.Cast<object>().ToList();
+            var list = AlertKeywordAndMessages.Where(x => !string.IsNullOrEmpty(x.AlertKeyword)).Cast<object>().ToList();
             var exportAction = new CsvImportAndExport();
             exportAction.CsvExport<AlertKeywordAndMessageMap>(list, "AlertKeywordAndMessageList.csv");
         }
@@ -290,7 +290,7 @@ namespace OutlookOkan.ViewModels
             var readCsv = new ReadAndWriteCsv("AlertAddressList.csv");
             var alertAddresses = readCsv.GetCsvRecords<AlertAddress>(readCsv.LoadCsv<AlertAddressMap>());
 
-            foreach (var data in alertAddresses)
+            foreach (var data in alertAddresses.Where(x => !string.IsNullOrEmpty(x.TargetAddress)))
             {
                 AlertAddresses.Add(data);
             }
@@ -298,7 +298,7 @@ namespace OutlookOkan.ViewModels
 
         private async Task SaveAlertAddressesToCsv()
         {
-            var list = AlertAddresses.Cast<object>().ToList();
+            var list = AlertAddresses.Where(x => !string.IsNullOrEmpty(x.TargetAddress)).Cast<object>().ToList();
             var writeCsv = new ReadAndWriteCsv("AlertAddressList.csv");
             await Task.Run(() => writeCsv.WriteRecordsToCsv<AlertAddressMap>(list));
         }
@@ -313,7 +313,7 @@ namespace OutlookOkan.ViewModels
             try
             {
                 var importData = new List<AlertAddress>(importAction.GetCsvRecords<AlertAddress>(importAction.LoadCsv<AlertAddressMap>(filePath)));
-                foreach (var data in importData)
+                foreach (var data in importData.Where(x => !string.IsNullOrEmpty(x.TargetAddress)))
                 {
                     AlertAddresses.Add(data);
                 }
@@ -328,7 +328,7 @@ namespace OutlookOkan.ViewModels
 
         private void ExportAlertAddressesToCsv()
         {
-            var list = AlertAddresses.Cast<object>().ToList();
+            var list = AlertAddresses.Where(x => !string.IsNullOrEmpty(x.TargetAddress)).Cast<object>().ToList();
             var exportAction = new CsvImportAndExport();
             exportAction.CsvExport<AlertAddressMap>(list, "AlertAddressList.csv");
         }
@@ -356,7 +356,7 @@ namespace OutlookOkan.ViewModels
             var readCsv = new ReadAndWriteCsv("AutoCcBccKeywordList.csv");
             var autoCcBccKeywords = readCsv.GetCsvRecords<AutoCcBccKeyword>(readCsv.LoadCsv<AutoCcBccKeywordMap>());
 
-            foreach (var data in autoCcBccKeywords)
+            foreach (var data in autoCcBccKeywords.Where(x => !string.IsNullOrEmpty(x.Keyword) && !string.IsNullOrEmpty(x.AutoAddAddress)))
             {
                 AutoCcBccKeywords.Add(data);
             }
@@ -364,7 +364,7 @@ namespace OutlookOkan.ViewModels
 
         private async Task SaveAutoCcBccKeywordsToCsv()
         {
-            var list = AutoCcBccKeywords.Cast<object>().ToList();
+            var list = AutoCcBccKeywords.Where(x => !string.IsNullOrEmpty(x.Keyword) && !string.IsNullOrEmpty(x.AutoAddAddress)).Cast<object>().ToList();
             var writeCsv = new ReadAndWriteCsv("AutoCcBccKeywordList.csv");
             await Task.Run(() => writeCsv.WriteRecordsToCsv<AutoCcBccKeywordMap>(list));
         }
@@ -379,7 +379,7 @@ namespace OutlookOkan.ViewModels
             try
             {
                 var importData = new List<AutoCcBccKeyword>(importAction.GetCsvRecords<AutoCcBccKeyword>(importAction.LoadCsv<AutoCcBccKeywordMap>(filePath)));
-                foreach (var data in importData)
+                foreach (var data in importData.Where(x => !string.IsNullOrEmpty(x.Keyword) && !string.IsNullOrEmpty(x.AutoAddAddress)))
                 {
                     AutoCcBccKeywords.Add(data);
                 }
@@ -394,7 +394,7 @@ namespace OutlookOkan.ViewModels
 
         private void ExportAutoCcBccKeywordsToCsv()
         {
-            var list = AutoCcBccKeywords.Cast<object>().ToList();
+            var list = AutoCcBccKeywords.Where(x => !string.IsNullOrEmpty(x.Keyword) && !string.IsNullOrEmpty(x.AutoAddAddress)).Cast<object>().ToList();
             var exportAction = new CsvImportAndExport();
             exportAction.CsvExport<AutoCcBccKeywordMap>(list, "AutoCcBccKeywordList.csv");
         }
@@ -422,7 +422,7 @@ namespace OutlookOkan.ViewModels
             var readCsv = new ReadAndWriteCsv("AutoCcBccRecipientList.csv");
             var autoCcBccRecipient = readCsv.GetCsvRecords<AutoCcBccRecipient>(readCsv.LoadCsv<AutoCcBccRecipientMap>());
 
-            foreach (var data in autoCcBccRecipient)
+            foreach (var data in autoCcBccRecipient.Where(x => !string.IsNullOrEmpty(x.TargetRecipient) && !string.IsNullOrEmpty(x.AutoAddAddress)))
             {
                 AutoCcBccRecipients.Add(data);
             }
@@ -430,7 +430,7 @@ namespace OutlookOkan.ViewModels
 
         private async Task SaveAutoCcBccRecipientsToCsv()
         {
-            var list = AutoCcBccRecipients.Cast<object>().ToList();
+            var list = AutoCcBccRecipients.Where(x => !string.IsNullOrEmpty(x.TargetRecipient) && !string.IsNullOrEmpty(x.AutoAddAddress)).Cast<object>().ToList();
             var writeCsv = new ReadAndWriteCsv("AutoCcBccRecipientList.csv");
             await Task.Run(() => writeCsv.WriteRecordsToCsv<AutoCcBccRecipientMap>(list));
         }
@@ -445,7 +445,7 @@ namespace OutlookOkan.ViewModels
             try
             {
                 var importData = new List<AutoCcBccRecipient>(importAction.GetCsvRecords<AutoCcBccRecipient>(importAction.LoadCsv<AutoCcBccRecipientMap>(filePath)));
-                foreach (var data in importData)
+                foreach (var data in importData.Where(x => !string.IsNullOrEmpty(x.TargetRecipient) && !string.IsNullOrEmpty(x.AutoAddAddress)))
                 {
                     AutoCcBccRecipients.Add(data);
                 }
@@ -460,7 +460,7 @@ namespace OutlookOkan.ViewModels
 
         private void ExportAutoCcBccRecipientsToCsv()
         {
-            var list = AutoCcBccRecipients.Cast<object>().ToList();
+            var list = AutoCcBccRecipients.Where(x => !string.IsNullOrEmpty(x.TargetRecipient) && !string.IsNullOrEmpty(x.AutoAddAddress)).Cast<object>().ToList();
             var exportAction = new CsvImportAndExport();
             exportAction.CsvExport<AutoCcBccRecipientMap>(list, "AutoCcBccRecipientList.csv");
         }
@@ -488,7 +488,7 @@ namespace OutlookOkan.ViewModels
             var readCsv = new ReadAndWriteCsv("AutoCcBccAttachedFileList.csv");
             var autoCcBccAttachedFile = readCsv.GetCsvRecords<AutoCcBccAttachedFile>(readCsv.LoadCsv<AutoCcBccAttachedFileMap>());
 
-            foreach (var data in autoCcBccAttachedFile)
+            foreach (var data in autoCcBccAttachedFile.Where(x => !string.IsNullOrEmpty(x.AutoAddAddress)))
             {
                 AutoCcBccAttachedFiles.Add(data);
             }
@@ -496,7 +496,7 @@ namespace OutlookOkan.ViewModels
 
         private async Task SaveAutoCcBccAttachedFilesToCsv()
         {
-            var list = AutoCcBccAttachedFiles.Cast<object>().ToList();
+            var list = AutoCcBccAttachedFiles.Where(x => !string.IsNullOrEmpty(x.AutoAddAddress)).Cast<object>().ToList();
             var writeCsv = new ReadAndWriteCsv("AutoCcBccAttachedFileList.csv");
             await Task.Run(() => writeCsv.WriteRecordsToCsv<AutoCcBccAttachedFileMap>(list));
         }
@@ -511,7 +511,7 @@ namespace OutlookOkan.ViewModels
             try
             {
                 var importData = new List<AutoCcBccAttachedFile>(importAction.GetCsvRecords<AutoCcBccAttachedFile>(importAction.LoadCsv<AutoCcBccAttachedFileMap>(filePath)));
-                foreach (var data in importData)
+                foreach (var data in importData.Where(x => !string.IsNullOrEmpty(x.AutoAddAddress)))
                 {
                     AutoCcBccAttachedFiles.Add(data);
                 }
@@ -526,7 +526,7 @@ namespace OutlookOkan.ViewModels
 
         private void ExportAutoCcBccAttachedFilesToCsv()
         {
-            var list = AutoCcBccAttachedFiles.Cast<object>().ToList();
+            var list = AutoCcBccAttachedFiles.Where(x => !string.IsNullOrEmpty(x.AutoAddAddress)).Cast<object>().ToList();
             var exportAction = new CsvImportAndExport();
             exportAction.CsvExport<AutoCcBccAttachedFileMap>(list, "AutoCcBccAttachedFileList.csv");
         }
@@ -554,7 +554,7 @@ namespace OutlookOkan.ViewModels
             var readCsv = new ReadAndWriteCsv("DeferredDeliveryMinutes.csv");
             var deferredDeliveryMinutes = readCsv.GetCsvRecords<DeferredDeliveryMinutes>(readCsv.LoadCsv<DeferredDeliveryMinutesMap>());
 
-            foreach (var data in deferredDeliveryMinutes)
+            foreach (var data in deferredDeliveryMinutes.Where(x => !string.IsNullOrEmpty(x.TargetAddress)))
             {
                 DeferredDeliveryMinutes.Add(data);
             }
@@ -562,7 +562,7 @@ namespace OutlookOkan.ViewModels
 
         private async Task SaveDeferredDeliveryMinutesToCsv()
         {
-            var list = DeferredDeliveryMinutes.Cast<object>().ToList();
+            var list = DeferredDeliveryMinutes.Where(x => !string.IsNullOrEmpty(x.TargetAddress)).Cast<object>().ToList();
             var writeCsv = new ReadAndWriteCsv("DeferredDeliveryMinutes.csv");
             await Task.Run(() => writeCsv.WriteRecordsToCsv<DeferredDeliveryMinutesMap>(list));
         }
@@ -577,7 +577,7 @@ namespace OutlookOkan.ViewModels
             try
             {
                 var importData = new List<DeferredDeliveryMinutes>(importAction.GetCsvRecords<DeferredDeliveryMinutes>(importAction.LoadCsv<DeferredDeliveryMinutesMap>(filePath)));
-                foreach (var data in importData)
+                foreach (var data in importData.Where(x => !string.IsNullOrEmpty(x.TargetAddress)))
                 {
                     DeferredDeliveryMinutes.Add(data);
                 }
@@ -592,7 +592,7 @@ namespace OutlookOkan.ViewModels
 
         private void ExportDeferredDeliveryMinutesToCsv()
         {
-            var list = DeferredDeliveryMinutes.Cast<object>().ToList();
+            var list = DeferredDeliveryMinutes.Where(x => !string.IsNullOrEmpty(x.TargetAddress)).Cast<object>().ToList();
             var exportAction = new CsvImportAndExport();
             exportAction.CsvExport<DeferredDeliveryMinutesMap>(list, "DeferredDeliveryMinutes.csv");
         }
@@ -620,7 +620,7 @@ namespace OutlookOkan.ViewModels
             var readCsv = new ReadAndWriteCsv("InternalDomainList.csv");
             var internalDomainList = readCsv.GetCsvRecords<InternalDomain>(readCsv.LoadCsv<InternalDomainMap>());
 
-            foreach (var data in internalDomainList)
+            foreach (var data in internalDomainList.Where(x => !string.IsNullOrEmpty(x.Domain)))
             {
                 InternalDomainList.Add(data);
             }
@@ -628,7 +628,7 @@ namespace OutlookOkan.ViewModels
 
         private async Task SaveInternalDomainListToCsv()
         {
-            var list = InternalDomainList.Cast<object>().ToList();
+            var list = InternalDomainList.Where(x => !string.IsNullOrEmpty(x.Domain)).Cast<object>().ToList();
             var writeCsv = new ReadAndWriteCsv("InternalDomainList.csv");
             await Task.Run(() => writeCsv.WriteRecordsToCsv<InternalDomainMap>(list));
         }
@@ -643,7 +643,7 @@ namespace OutlookOkan.ViewModels
             try
             {
                 var importData = new List<InternalDomain>(importAction.GetCsvRecords<InternalDomain>(importAction.LoadCsv<InternalDomainMap>(filePath)));
-                foreach (var data in importData)
+                foreach (var data in importData.Where(x => !string.IsNullOrEmpty(x.Domain)))
                 {
                     InternalDomainList.Add(data);
                 }
@@ -658,7 +658,7 @@ namespace OutlookOkan.ViewModels
 
         private void ExportInternalDomainListToCsv()
         {
-            var list = InternalDomainList.Cast<object>().ToList();
+            var list = InternalDomainList.Where(x => !string.IsNullOrEmpty(x.Domain)).Cast<object>().ToList();
             var exportAction = new CsvImportAndExport();
             exportAction.CsvExport<InternalDomainMap>(list, "InternalDomainList.csv");
         }
