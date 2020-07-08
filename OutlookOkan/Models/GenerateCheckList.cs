@@ -313,7 +313,10 @@ namespace OutlookOkan.Models
                     {
                         try
                         {
-                            mailAddress = recipient.PropertyAccessor.GetProperty("http://schemas.microsoft.com/mapi/proptag/0x39FE001E").ToString() ?? Resources.FailedToGetInformation;
+                            var propertyAccessor = recipient.PropertyAccessor;
+                            Thread.Sleep(10);
+
+                            mailAddress = propertyAccessor.GetProperty(@"http://schemas.microsoft.com/mapi/proptag/0x39FE001E").ToString() ?? Resources.FailedToGetInformation;
 
                             isDone = true;
                         }
@@ -421,7 +424,10 @@ namespace OutlookOkan.Models
                         {
                             try
                             {
-                                mailAddress = tempRecipient.AddressEntry.PropertyAccessor.GetProperty("http://schemas.microsoft.com/mapi/proptag/0x39FE001E").ToString() ?? Resources.FailedToGetInformation;
+                                var propertyAccessor = tempRecipient.AddressEntry.PropertyAccessor;
+                                Thread.Sleep(10);
+
+                                mailAddress = propertyAccessor.GetProperty(@"http://schemas.microsoft.com/mapi/proptag/0x39FE001E").ToString() ?? Resources.FailedToGetInformation;
                                 isDone = true;
                             }
                             catch (COMException)
