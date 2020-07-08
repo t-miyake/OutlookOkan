@@ -33,7 +33,7 @@ namespace OutlookOkan.Models
 
             var alertKeywordAndMessageListCsv = new ReadAndWriteCsv("AlertKeywordAndMessageList.csv");
             var alertKeywordAndMessageList = alertKeywordAndMessageListCsv.GetCsvRecords<AlertKeywordAndMessage>(alertKeywordAndMessageListCsv.LoadCsv<AlertKeywordAndMessageMap>())
-                .Where(x => !string.IsNullOrEmpty(x.AlertKeyword) && !string.IsNullOrEmpty(x.Message)).ToList();
+                .Where(x => !string.IsNullOrEmpty(x.AlertKeyword)).ToList();
 
             var autoCcBccKeywordListCsv = new ReadAndWriteCsv("AutoCcBccKeywordList.csv");
             var autoCcBccKeywordList = autoCcBccKeywordListCsv.GetCsvRecords<AutoCcBccKeyword>(autoCcBccKeywordListCsv.LoadCsv<AutoCcBccKeywordMap>())
