@@ -84,5 +84,75 @@ namespace OutlookOkan.Views
                 e.Handled = true;
             }
         }
+
+        #region MouseUpEvent_OnHandler
+
+        private void AlertGridMouseUpEvent_OnHandler(object sender, MouseButtonEventArgs e)
+        {
+            //左クリック以外は無視する。(CurrentItemがずれる場合があるため)
+            if (e.ChangedButton != MouseButton.Left) return;
+
+            var currentItem = (Alert)AlertGrid.CurrentItem;
+            currentItem.IsChecked = !currentItem.IsChecked;
+            AlertGrid.Items.Refresh();
+
+            var viewModel = DataContext as ConfirmationWindowViewModel;
+            viewModel?.ToggleSendButton();
+        }
+
+        private void ToGridMouseUpEvent_OnHandler(object sender, MouseButtonEventArgs e)
+        {
+            //左クリック以外は無視する。(CurrentItemがずれる場合があるため)
+            if (e.ChangedButton != MouseButton.Left) return;
+
+            var currentItem = (Address)ToGrid.CurrentItem;
+            currentItem.IsChecked = !currentItem.IsChecked;
+            ToGrid.Items.Refresh();
+
+            var viewModel = DataContext as ConfirmationWindowViewModel;
+            viewModel?.ToggleSendButton();
+        }
+
+        private void CcGridMouseUpEvent_OnHandler(object sender, MouseButtonEventArgs e)
+        {
+            //左クリック以外は無視する。(CurrentItemがずれる場合があるため)
+            if (e.ChangedButton != MouseButton.Left) return;
+
+            var currentItem = (Address)CcGrid.CurrentItem;
+            currentItem.IsChecked = !currentItem.IsChecked;
+            CcGrid.Items.Refresh();
+
+            var viewModel = DataContext as ConfirmationWindowViewModel;
+            viewModel?.ToggleSendButton();
+        }
+
+        private void BccGridMouseUpEvent_OnHandler(object sender, MouseButtonEventArgs e)
+        {
+            //左クリック以外は無視する。(CurrentItemがずれる場合があるため)
+            if (e.ChangedButton != MouseButton.Left) return;
+
+            var currentItem = (Address)BccGrid.CurrentItem;
+            currentItem.IsChecked = !currentItem.IsChecked;
+            BccGrid.Items.Refresh();
+
+            var viewModel = DataContext as ConfirmationWindowViewModel;
+            viewModel?.ToggleSendButton();
+        }
+
+        private void AttachmentGridMouseUpEvent_OnHandler(object sender, MouseButtonEventArgs e)
+        {
+            //左クリック以外は無視する。(CurrentItemがずれる場合があるため)
+            if (e.ChangedButton != MouseButton.Left) return;
+
+            var currentItem = (Attachment)AttachmentGrid.CurrentItem;
+            currentItem.IsChecked = !currentItem.IsChecked;
+            AttachmentGrid.Items.Refresh();
+
+            var viewModel = DataContext as ConfirmationWindowViewModel;
+            viewModel?.ToggleSendButton();
+        }
+
+        #endregion
+
     }
 }
