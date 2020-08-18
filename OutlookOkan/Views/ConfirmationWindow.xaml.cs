@@ -21,7 +21,6 @@ namespace OutlookOkan.Views
 
             //送信遅延時間を表示(設定)欄に入れる。
             DeferredDeliveryMinutesBox.Text = checkList.DeferredMinutes.ToString();
-
         }
 
         /// <summary>
