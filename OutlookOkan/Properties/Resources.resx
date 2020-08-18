@@ -509,7 +509,7 @@ To send this email, you must click on the Send button.
 (Closing the edit screen will not send this email.)</value>
   </data>
   <data name="InputDomain" xml:space="preserve">
-    <value>Enter domain.</value>
+    <value>Enter the domain.</value>
   </data>
   <data name="InternalDomain" xml:space="preserve">
     <value>Internal domain</value>
