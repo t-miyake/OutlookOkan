@@ -390,7 +390,7 @@
 キーワード：機密情報
 アドレス：boss@noraneko.co.jp
 
-キーワードに本文に含まれる場合、
+キーワードが本文に含まれる場合、
 CcあるいはBccに指定したアドレスが自動で追加されます。</value>
   </data>
   <data name="SettingExampleAutoAddCCorBCCByMailAddressOrDomain" xml:space="preserve">
