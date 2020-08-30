@@ -390,16 +390,14 @@
 キーワード：機密情報
 アドレス：boss@noraneko.co.jp
 
-キーワードが本文に含まれる場合、
-CcあるいはBccに指定したアドレスが自動で追加されます。</value>
+キーワードが本文に含まれる場合、CcあるいはBccに指定したアドレスが自動で追加されます。</value>
   </data>
   <data name="SettingExampleAutoAddCCorBCCByMailAddressOrDomain" xml:space="preserve">
     <value>種別：Cc または Bcc
 宛先：warning@xxxxxxx.com
 アドレス：boss@noraneko.co.jp
 
-登録した宛先やドメインへのメール送信時に、
-CcあるいはBccに指定したアドレスが自動で追加されます。</value>
+登録した宛先やドメインへのメール送信時に、CcあるいはBccに指定したアドレスが自動で追加されます。</value>
   </data>
   <data name="SettingExampleNameAndDomain" xml:space="preserve">
     <value>名称：のらねこ
@@ -458,8 +456,7 @@ CcあるいはBccに指定したアドレスが自動で追加されます。</v
 または、
 ドメイン：@noraneko.co.jp
 
-アドレスまたはドメインを登録し、
-分単位で遅延時間を登録します。
+アドレスまたはドメインを登録し、分単位で遅延時間を登録します。
 
 ※@のみを登録すると全てのメールの標準の遅延時間を登録できます。
 
@@ -500,8 +497,7 @@ CcあるいはBccに指定したアドレスが自動で追加されます。</v
     <value>種別：Cc または Bcc
 アドレス：boss@noraneko.co.jp
 
-ファイルを添付したメールの送信時に、
-CcあるいはBccに指定したアドレスが自動で追加されます。</value>
+ファイルを添付したメールの送信時に、CcあるいはBccに指定したアドレスが自動で追加されます。</value>
   </data>
   <data name="CanceledSendingMail" xml:space="preserve">
     <value>送信をキャンセルしました。</value>
