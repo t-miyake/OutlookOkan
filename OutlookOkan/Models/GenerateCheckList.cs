@@ -128,7 +128,7 @@ namespace OutlookOkan.Models
                     {
                         var isDone = false;
                         var errorCount = 0;
-                        while (!isDone && errorCount < 300)
+                        while (!isDone && errorCount < 100)
                         {
                             try
                             {
@@ -140,7 +140,7 @@ namespace OutlookOkan.Models
                             catch (COMException)
                             {
                                 //HRESULT:0x80004004 対策
-                                Thread.Sleep(33);
+                                Thread.Sleep(10);
                                 errorCount++;
                             }
                         }
@@ -189,7 +189,7 @@ namespace OutlookOkan.Models
 
                     var isDone = false;
                     var errorCount = 0;
-                    while (!isDone && errorCount < 300)
+                    while (!isDone && errorCount < 100)
                     {
                         try
                         {
@@ -201,7 +201,7 @@ namespace OutlookOkan.Models
                         catch (COMException)
                         {
                             //HRESULT:0x80004004 対策
-                            Thread.Sleep(33);
+                            Thread.Sleep(10);
                             errorCount++;
                         }
                     }
@@ -309,12 +309,12 @@ namespace OutlookOkan.Models
                 {
                     var isDone = false;
                     var errorCount = 0;
-                    while (!isDone && errorCount < 200)
+                    while (!isDone && errorCount < 100)
                     {
                         try
                         {
                             var propertyAccessor = recipient.PropertyAccessor;
-                            Thread.Sleep(10);
+                            Thread.Sleep(15);
 
                             mailAddress = propertyAccessor.GetProperty(@"http://schemas.microsoft.com/mapi/proptag/0x39FE001E").ToString() ?? Resources.FailedToGetInformation;
 
@@ -323,7 +323,7 @@ namespace OutlookOkan.Models
                         catch (COMException)
                         {
                             //HRESULT:0x80004004 対策
-                            Thread.Sleep(30);
+                            Thread.Sleep(10);
                             errorCount++;
                         }
                     }
@@ -377,7 +377,7 @@ namespace OutlookOkan.Models
             {
                 var isDone = false;
                 var errorCount = 0;
-                while (!isDone && errorCount < 200)
+                while (!isDone && errorCount < 100)
                 {
                     try
                     {
@@ -389,7 +389,7 @@ namespace OutlookOkan.Models
                     catch (COMException)
                     {
                         //HRESULT:0x80004004 対策
-                        Thread.Sleep(30);
+                        Thread.Sleep(10);
                         errorCount++;
                     }
                 }
@@ -420,12 +420,12 @@ namespace OutlookOkan.Models
                     {
                         isDone = false;
                         errorCount = 0;
-                        while (!isDone && errorCount < 200)
+                        while (!isDone && errorCount < 100)
                         {
                             try
                             {
                                 var propertyAccessor = tempRecipient.AddressEntry.PropertyAccessor;
-                                Thread.Sleep(10);
+                                Thread.Sleep(15);
 
                                 mailAddress = propertyAccessor.GetProperty(@"http://schemas.microsoft.com/mapi/proptag/0x39FE001E").ToString() ?? Resources.FailedToGetInformation;
                                 isDone = true;
@@ -433,7 +433,7 @@ namespace OutlookOkan.Models
                             catch (COMException)
                             {
                                 //HRESULT:0x80004004 対策
-                                Thread.Sleep(30);
+                                Thread.Sleep(10);
                                 errorCount++;
                             }
                         }
