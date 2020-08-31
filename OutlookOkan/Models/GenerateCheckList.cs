@@ -53,7 +53,7 @@ namespace OutlookOkan.Models
 
             var nameAndDomainsCsv = new ReadAndWriteCsv("NameAndDomains.csv");
             var nameAndDomainsList = nameAndDomainsCsv.GetCsvRecords<NameAndDomains>(nameAndDomainsCsv.LoadCsv<NameAndDomainsMap>())
-                .Where(x => !string.IsNullOrEmpty(x.Domain) && !string.IsNullOrEmpty(x.Name));
+                .Where(x => !string.IsNullOrEmpty(x.Domain) && !string.IsNullOrEmpty(x.Name)).ToList();
 
             var deferredDeliveryMinutesCsv = new ReadAndWriteCsv("DeferredDeliveryMinutes.csv");
             var deferredDeliveryMinutes = deferredDeliveryMinutesCsv.GetCsvRecords<DeferredDeliveryMinutes>(deferredDeliveryMinutesCsv.LoadCsv<DeferredDeliveryMinutesMap>())
@@ -128,7 +128,7 @@ namespace OutlookOkan.Models
                     {
                         var isDone = false;
                         var errorCount = 0;
-                        while (!isDone && errorCount < 300)
+                        while (!isDone && errorCount < 100)
                         {
                             try
                             {
@@ -140,7 +140,7 @@ namespace OutlookOkan.Models
                             catch (COMException)
                             {
                                 //HRESULT:0x80004004 対策
-                                Thread.Sleep(33);
+                                Thread.Sleep(10);
                                 errorCount++;
                             }
                         }
@@ -189,7 +189,7 @@ namespace OutlookOkan.Models
 
                     var isDone = false;
                     var errorCount = 0;
-                    while (!isDone && errorCount < 300)
+                    while (!isDone && errorCount < 100)
                     {
                         try
                         {
@@ -201,7 +201,7 @@ namespace OutlookOkan.Models
                         catch (COMException)
                         {
                             //HRESULT:0x80004004 対策
-                            Thread.Sleep(33);
+                            Thread.Sleep(10);
                             errorCount++;
                         }
                     }
@@ -307,15 +307,15 @@ namespace OutlookOkan.Models
             {
                 try
                 {
+                    var propertyAccessor = recipient.PropertyAccessor;
+                    Thread.Sleep(20);
+
                     var isDone = false;
                     var errorCount = 0;
-                    while (!isDone && errorCount < 200)
+                    while (!isDone && errorCount < 100)
                     {
                         try
                         {
-                            var propertyAccessor = recipient.PropertyAccessor;
-                            Thread.Sleep(10);
-
                             mailAddress = propertyAccessor.GetProperty(@"http://schemas.microsoft.com/mapi/proptag/0x39FE001E").ToString() ?? Resources.FailedToGetInformation;
 
                             isDone = true;
@@ -323,7 +323,7 @@ namespace OutlookOkan.Models
                         catch (COMException)
                         {
                             //HRESULT:0x80004004 対策
-                            Thread.Sleep(30);
+                            Thread.Sleep(10);
                             errorCount++;
                         }
                     }
@@ -377,7 +377,7 @@ namespace OutlookOkan.Models
             {
                 var isDone = false;
                 var errorCount = 0;
-                while (!isDone && errorCount < 200)
+                while (!isDone && errorCount < 100)
                 {
                     try
                     {
@@ -389,7 +389,7 @@ namespace OutlookOkan.Models
                     catch (COMException)
                     {
                         //HRESULT:0x80004004 対策
-                        Thread.Sleep(30);
+                        Thread.Sleep(10);
                         errorCount++;
                     }
                 }
@@ -418,22 +418,22 @@ namespace OutlookOkan.Models
 
                     try
                     {
+                        var propertyAccessor = tempRecipient.AddressEntry.PropertyAccessor;
+                        Thread.Sleep(20);
+
                         isDone = false;
                         errorCount = 0;
-                        while (!isDone && errorCount < 200)
+                        while (!isDone && errorCount < 100)
                         {
                             try
                             {
-                                var propertyAccessor = tempRecipient.AddressEntry.PropertyAccessor;
-                                Thread.Sleep(10);
-
                                 mailAddress = propertyAccessor.GetProperty(@"http://schemas.microsoft.com/mapi/proptag/0x39FE001E").ToString() ?? Resources.FailedToGetInformation;
                                 isDone = true;
                             }
                             catch (COMException)
                             {
                                 //HRESULT:0x80004004 対策
-                                Thread.Sleep(30);
+                                Thread.Sleep(10);
                                 errorCount++;
                             }
                         }

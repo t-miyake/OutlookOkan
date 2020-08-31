@@ -23,7 +23,7 @@ namespace OutlookOkan.Views
             var inputText = ((TextBox)e.EditingElement).Text;
             if (string.IsNullOrEmpty(inputText) || !inputText.Contains("@"))
             {
-                MessageBox.Show(Properties.Resources.InputMailaddressOrDomain);
+                MessageBox.Show(Properties.Resources.InputMailaddressOrDomain, Properties.Resources.AppName, MessageBoxButton.OK);
                 e.Cancel = true;
             }
             else
@@ -104,7 +104,7 @@ namespace OutlookOkan.Views
             var inputText = ((TextBox)e.EditingElement).Text;
             if (string.IsNullOrEmpty(inputText) || !inputText.Contains("@"))
             {
-                MessageBox.Show(Properties.Resources.InputDomain);
+                MessageBox.Show(Properties.Resources.InputDomain, Properties.Resources.AppName, MessageBoxButton.OK);
                 e.Cancel = true;
             }
             else

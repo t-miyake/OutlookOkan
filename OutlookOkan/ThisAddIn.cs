@@ -9,6 +9,7 @@ using System.Linq;
 using System.Windows;
 using System.Windows.Interop;
 using Outlook = Microsoft.Office.Interop.Outlook;
+using Word = Microsoft.Office.Interop.Word;
 
 namespace OutlookOkan
 {
@@ -62,6 +63,25 @@ namespace OutlookOkan
             //何らかの問題で確認画面が表示されないと、意図せずメールが送られてしまう恐れがあるため、念のための処理。
             try
             {
+                try
+                {
+                    //FIXME: 暫定処置。
+                    //HACK: 添付ファイルをリンクとして添付する際に、メール本文が自動更新されない問題を回避。
+                    //HACK: ※WordEditorで本文を編集すると、本文の更新処理が行われるため問題を回避できる。
+                    var tempMailItem = (Outlook._MailItem)item;
+                    var mailItemWordEditor = (Word.Document)tempMailItem.GetInspector.WordEditor;
+                    var defaultCount = mailItemWordEditor.Characters.Count;
+                    var range = mailItemWordEditor.Range(0, defaultCount);
+                    //Ctrl + Z でユーザにこの処理が見えるため、違和感のないスペース1つのみとする。
+                    range.InsertAfter(" ");
+                    range = mailItemWordEditor.Range(defaultCount - 1, mailItemWordEditor.Characters.Count);
+                    range.Delete();
+                }
+                catch (Exception)
+                {
+                    //Do nothing.
+                }
+
                 //Outlook起動後にユーザが設定を変更する可能性があるため、毎回ユーザ設定をロード。
                 LoadGeneralSetting(false);
                 if (!(_generalSetting.LanguageCode is null))

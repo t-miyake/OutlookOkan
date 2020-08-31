@@ -4,6 +4,7 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:services="clr-namespace:OutlookOkan.Services"
+             xmlns:types="clr-namespace:OutlookOkan.Types"
              mc:Ignorable="d"
         Title="{Binding Source={x:Static services:ResourceService.Instance}, Path=Resources.Confirmation, Mode=OneWay}"
         ResizeMode="NoResize" ShowInTaskbar="False" WindowStartupLocation="CenterOwner" Height="590" Width="780">
@@ -12,13 +13,18 @@
             <Label Content="{Binding Source={x:Static services:ResourceService.Instance}, Path=Resources.ConfirmationMessage1, Mode=OneWay}" FontSize="12" Padding="0" />
             <Label Content="{Binding Source={x:Static services:ResourceService.Instance}, Path=Resources.ConfirmationMessage2, Mode=OneWay}" FontSize="11" Padding="0" Margin="0,3" />
         </StackPanel>
-        <StackPanel  Margin="8,7,8,8">
+        <StackPanel Margin="8,7,8,8">
             <GroupBox Header="{Binding AlertCount}" FontSize="11" Padding="3,3,3,3">
                 <DataGrid x:Name="AlertGrid" Height="64" VerticalScrollBarVisibility="Visible" HorizontalScrollBarVisibility="Auto" BorderBrush="#FFD5DFE5" HeadersVisibility="None" ItemsSource="{Binding Alerts,Mode=TwoWay}" AutoGenerateColumns="False" CanUserAddRows="false" CanUserDeleteRows="false" CanUserResizeColumns="false" CanUserResizeRows="false" CanUserSortColumns="false" HorizontalGridLinesBrush="#FFD5DFE5" VerticalGridLinesBrush="#FFD5DFE5">
+                    <DataGrid.ItemContainerStyle>
+                        <Style TargetType="DataGridRow">
+                            <EventSetter Event="MouseUp" Handler="AlertGridMouseUpEvent_OnHandler" />
+                        </Style>
+                    </DataGrid.ItemContainerStyle>
                     <DataGrid.Columns>
                         <DataGridTemplateColumn IsReadOnly="True">
                             <DataGridTemplateColumn.CellTemplate>
-                                <DataTemplate>
+                                <DataTemplate DataType="types:Alert">
                                     <CheckBox IsChecked="{Binding IsChecked, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Center" VerticalAlignment="Center" Checked="ToggleButton_OnChecked" Unchecked="ToggleButton_OnUnchecked" />
                                 </DataTemplate>
                             </DataGridTemplateColumn.CellTemplate>
@@ -58,15 +64,20 @@
                 <ColumnDefinition/>
             </Grid.ColumnDefinitions>
             <StackPanel Grid.Column="0" Margin="8,2,8,8">
-                <GroupBox Header="{Binding AddressCount}" FontSize="11" Padding="3,3,3,3" >
+                <GroupBox Header="{Binding AddressCount}" FontSize="11" Padding="3,3,3,3">
                     <StackPanel>
                         <Label Content="{Binding ToAddressCount}" Margin="0,5,0,0" Padding="0" VerticalAlignment="Bottom" FontSize="11" />
-                        <DataGrid Height="82" VerticalScrollBarVisibility="Visible" HorizontalScrollBarVisibility="Auto" BorderBrush="#FFD5DFE5" HeadersVisibility="None" ItemsSource="{Binding ToAddresses,Mode=TwoWay}" AutoGenerateColumns="False" CanUserAddRows="false" CanUserDeleteRows="false" CanUserResizeColumns="false" CanUserResizeRows="false" CanUserSortColumns="false" HorizontalGridLinesBrush="#FFD5DFE5" VerticalGridLinesBrush="#FFD5DFE5" >
+                        <DataGrid Name="ToGrid" Height="82" VerticalScrollBarVisibility="Visible" HorizontalScrollBarVisibility="Auto" BorderBrush="#FFD5DFE5" HeadersVisibility="None" ItemsSource="{Binding ToAddresses,Mode=TwoWay}" AutoGenerateColumns="False" CanUserAddRows="false" CanUserDeleteRows="false" CanUserResizeColumns="false" CanUserResizeRows="false" CanUserSortColumns="false" HorizontalGridLinesBrush="#FFD5DFE5" VerticalGridLinesBrush="#FFD5DFE5">
+                            <DataGrid.ItemContainerStyle>
+                                <Style TargetType="DataGridRow">
+                                    <EventSetter Event="MouseUp" Handler="ToGridMouseUpEvent_OnHandler" />
+                                </Style>
+                            </DataGrid.ItemContainerStyle>
                             <DataGrid.Columns>
                                 <DataGridTemplateColumn IsReadOnly="True">
                                     <DataGridTemplateColumn.CellTemplate>
-                                        <DataTemplate>
-                                            <CheckBox IsChecked="{Binding IsChecked, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Center" VerticalAlignment="Center"  Checked="ToggleButton_OnChecked" Unchecked="ToggleButton_OnUnchecked" />
+                                        <DataTemplate DataType="types:Address">
+                                            <CheckBox IsChecked="{Binding IsChecked, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Center" VerticalAlignment="Center" Checked="ToggleButton_OnChecked" Unchecked="ToggleButton_OnUnchecked" />
                                         </DataTemplate>
                                     </DataGridTemplateColumn.CellTemplate>
                                     <DataGridTemplateColumn.CellStyle>
@@ -111,11 +122,16 @@
                             </DataGrid.Resources>
                         </DataGrid>
                         <Label Content="{Binding CcAddressCount}" Margin="0,6,0,0" Padding="0" VerticalAlignment="Bottom" FontSize="11" />
-                        <DataGrid Height="82" VerticalScrollBarVisibility="Visible" HorizontalScrollBarVisibility="Auto" BorderBrush="#FFD5DFE5" HeadersVisibility="None" ItemsSource="{Binding CcAddresses,Mode=TwoWay}" AutoGenerateColumns="False" CanUserAddRows="false" CanUserDeleteRows="false" CanUserResizeColumns="false" CanUserResizeRows="false" CanUserSortColumns="false" HorizontalGridLinesBrush="#FFD5DFE5" VerticalGridLinesBrush="#FFD5DFE5" >
+                        <DataGrid Name="CcGrid" Height="82" VerticalScrollBarVisibility="Visible" HorizontalScrollBarVisibility="Auto" BorderBrush="#FFD5DFE5" HeadersVisibility="None" ItemsSource="{Binding CcAddresses,Mode=TwoWay}" AutoGenerateColumns="False" CanUserAddRows="false" CanUserDeleteRows="false" CanUserResizeColumns="false" CanUserResizeRows="false" CanUserSortColumns="false" HorizontalGridLinesBrush="#FFD5DFE5" VerticalGridLinesBrush="#FFD5DFE5">
+                            <DataGrid.ItemContainerStyle>
+                                <Style TargetType="DataGridRow">
+                                    <EventSetter Event="MouseUp" Handler="CcGridMouseUpEvent_OnHandler" />
+                                </Style>
+                            </DataGrid.ItemContainerStyle>
                             <DataGrid.Columns>
                                 <DataGridTemplateColumn IsReadOnly="True">
                                     <DataGridTemplateColumn.CellTemplate>
-                                        <DataTemplate>
+                                        <DataTemplate DataType="types:Address">
                                             <CheckBox IsChecked="{Binding IsChecked, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Center" VerticalAlignment="Center" Checked="ToggleButton_OnChecked" Unchecked="ToggleButton_OnUnchecked" />
                                         </DataTemplate>
                                     </DataGridTemplateColumn.CellTemplate>
@@ -161,11 +177,16 @@
                             </DataGrid.Resources>
                         </DataGrid>
                         <Label Content="{Binding BccAddressCount}" Margin="0,6,0,0" Padding="0" VerticalAlignment="Bottom" FontSize="11" />
-                        <DataGrid Height="82" VerticalScrollBarVisibility="Visible" HorizontalScrollBarVisibility="Auto" BorderBrush="#FFD5DFE5" HeadersVisibility="None" ItemsSource="{Binding BccAddresses,Mode=TwoWay}" AutoGenerateColumns="False" CanUserAddRows="false" CanUserDeleteRows="false" CanUserResizeColumns="false" CanUserResizeRows="false" CanUserSortColumns="false" HorizontalGridLinesBrush="#FFD5DFE5" VerticalGridLinesBrush="#FFD5DFE5" >
+                        <DataGrid Name="BccGrid" Height="82" VerticalScrollBarVisibility="Visible" HorizontalScrollBarVisibility="Auto" BorderBrush="#FFD5DFE5" HeadersVisibility="None" ItemsSource="{Binding BccAddresses,Mode=TwoWay}" AutoGenerateColumns="False" CanUserAddRows="false" CanUserDeleteRows="false" CanUserResizeColumns="false" CanUserResizeRows="false" CanUserSortColumns="false" HorizontalGridLinesBrush="#FFD5DFE5" VerticalGridLinesBrush="#FFD5DFE5">
+                            <DataGrid.ItemContainerStyle>
+                                <Style TargetType="DataGridRow">
+                                    <EventSetter Event="MouseUp" Handler="BccGridMouseUpEvent_OnHandler" />
+                                </Style>
+                            </DataGrid.ItemContainerStyle>
                             <DataGrid.Columns>
                                 <DataGridTemplateColumn IsReadOnly="True">
                                     <DataGridTemplateColumn.CellTemplate>
-                                        <DataTemplate>
+                                        <DataTemplate DataType="types:Address">
                                             <CheckBox IsChecked="{Binding IsChecked, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Center" VerticalAlignment="Center" Checked="ToggleButton_OnChecked" Unchecked="ToggleButton_OnUnchecked" />
                                         </DataTemplate>
                                     </DataGridTemplateColumn.CellTemplate>
@@ -215,12 +236,17 @@
             </StackPanel>
             <GridSplitter Grid.Column="1" IsTabStop="False" />
             <StackPanel Grid.Column="2" Margin="0,2,8,0">
-                <GroupBox Header="{Binding AttachmentCount}"  FontSize="11" Padding="3,3,3,3">
-                    <DataGrid Height="88" VerticalScrollBarVisibility="Visible" HorizontalScrollBarVisibility="Auto" BorderBrush="#FFD5DFE5" HeadersVisibility="None" ItemsSource="{Binding Attachments,Mode=TwoWay}" AutoGenerateColumns="False" CanUserAddRows="false" CanUserDeleteRows="false" CanUserResizeColumns="false" CanUserResizeRows="false" CanUserSortColumns="false" HorizontalGridLinesBrush="#FFD5DFE5" VerticalGridLinesBrush="#FFD5DFE5" >
+                <GroupBox Header="{Binding AttachmentCount}" FontSize="11" Padding="3,3,3,3">
+                    <DataGrid Name="AttachmentGrid" Height="88" VerticalScrollBarVisibility="Visible" HorizontalScrollBarVisibility="Auto" BorderBrush="#FFD5DFE5" HeadersVisibility="None" ItemsSource="{Binding Attachments,Mode=TwoWay}" AutoGenerateColumns="False" CanUserAddRows="false" CanUserDeleteRows="false" CanUserResizeColumns="false" CanUserResizeRows="false" CanUserSortColumns="false" HorizontalGridLinesBrush="#FFD5DFE5" VerticalGridLinesBrush="#FFD5DFE5">
+                        <DataGrid.ItemContainerStyle>
+                            <Style TargetType="DataGridRow">
+                                <EventSetter Event="MouseUp" Handler="AttachmentGridMouseUpEvent_OnHandler" />
+                            </Style>
+                        </DataGrid.ItemContainerStyle>
                         <DataGrid.Columns>
                             <DataGridTemplateColumn IsReadOnly="True">
                                 <DataGridTemplateColumn.CellTemplate>
-                                    <DataTemplate>
+                                    <DataTemplate DataType="types:Attachment">
                                         <CheckBox IsChecked="{Binding IsChecked, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Center" VerticalAlignment="Center" Checked="ToggleButton_OnChecked" Unchecked="ToggleButton_OnUnchecked" />
                                     </DataTemplate>
                                 </DataGridTemplateColumn.CellTemplate>

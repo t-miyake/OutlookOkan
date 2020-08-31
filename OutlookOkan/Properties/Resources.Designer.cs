@@ -676,7 +676,7 @@ namespace OutlookOkan.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Enter domain..
+        ///   Looks up a localized string similar to Enter the domain..
         /// </summary>
         public static string InputDomain {
             get {
@@ -1270,7 +1270,7 @@ namespace OutlookOkan.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Version 2.5.1.
+        ///   Looks up a localized string similar to Version 2.5.2.
         /// </summary>
         public static string Version {
             get {

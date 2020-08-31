@@ -2,7 +2,7 @@
 
 namespace OutlookOkan.Types
 {
-    public class ExternalDomainsWarningAndAutoChangeToBcc
+    public sealed class ExternalDomainsWarningAndAutoChangeToBcc
     {
         public int TargetToAndCcExternalDomainsNum { get; set; } = 10;
         public bool IsWarningWhenLargeNumberOfExternalDomains { get; set; } = true;
