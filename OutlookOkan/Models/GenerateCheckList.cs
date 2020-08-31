@@ -307,15 +307,15 @@ namespace OutlookOkan.Models
             {
                 try
                 {
+                    var propertyAccessor = recipient.PropertyAccessor;
+                    Thread.Sleep(20);
+
                     var isDone = false;
                     var errorCount = 0;
                     while (!isDone && errorCount < 100)
                     {
                         try
                         {
-                            var propertyAccessor = recipient.PropertyAccessor;
-                            Thread.Sleep(15);
-
                             mailAddress = propertyAccessor.GetProperty(@"http://schemas.microsoft.com/mapi/proptag/0x39FE001E").ToString() ?? Resources.FailedToGetInformation;
 
                             isDone = true;
@@ -418,15 +418,15 @@ namespace OutlookOkan.Models
 
                     try
                     {
+                        var propertyAccessor = tempRecipient.AddressEntry.PropertyAccessor;
+                        Thread.Sleep(20);
+
                         isDone = false;
                         errorCount = 0;
                         while (!isDone && errorCount < 100)
                         {
                             try
                             {
-                                var propertyAccessor = tempRecipient.AddressEntry.PropertyAccessor;
-                                Thread.Sleep(15);
-
                                 mailAddress = propertyAccessor.GetProperty(@"http://schemas.microsoft.com/mapi/proptag/0x39FE001E").ToString() ?? Resources.FailedToGetInformation;
                                 isDone = true;
                             }
