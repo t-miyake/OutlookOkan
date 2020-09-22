@@ -126,22 +126,31 @@ namespace OutlookOkan.Models
                     var tempRecipient = tempOutlookApp.Session.CreateRecipient(mail.SenderEmailAddress);
                     try
                     {
+                        var addressEntry = tempRecipient.AddressEntry;
+
                         var isDone = false;
                         var errorCount = 0;
                         while (!isDone && errorCount < 100)
                         {
                             try
                             {
-                                var exchangeUser = tempRecipient.AddressEntry.GetExchangeUser();
+                                var exchangeUser = addressEntry?.GetExchangeUser();
                                 if (!(exchangeUser is null)) checkList.Sender = exchangeUser.PrimarySmtpAddress ?? Resources.FailedToGetInformation;
 
                                 isDone = true;
                             }
-                            catch (COMException)
+                            catch (COMException e)
                             {
-                                //HRESULT:0x80004004 対策
-                                Thread.Sleep(10);
-                                errorCount++;
+                                if (e.ErrorCode == -2147467260)
+                                {
+                                    //HRESULT:0x80004004 対策
+                                    Thread.Sleep(10);
+                                    errorCount++;
+                                }
+                                else
+                                {
+                                    isDone = true;
+                                }
                             }
                         }
                     }
@@ -187,22 +196,31 @@ namespace OutlookOkan.Models
                     Outlook.ExchangeDistributionList exchangeDistributionList = null;
                     Outlook.ExchangeUser exchangeUser = null;
 
+                    var sender = mail.Sender;
+
                     var isDone = false;
                     var errorCount = 0;
                     while (!isDone && errorCount < 100)
                     {
                         try
                         {
-                            exchangeDistributionList = mail.Sender?.GetExchangeDistributionList();
-                            exchangeUser = mail.Sender?.GetExchangeUser();
+                            exchangeDistributionList = sender?.GetExchangeDistributionList();
+                            exchangeUser = sender?.GetExchangeUser();
 
                             isDone = true;
                         }
-                        catch (COMException)
+                        catch (COMException e)
                         {
-                            //HRESULT:0x80004004 対策
-                            Thread.Sleep(10);
-                            errorCount++;
+                            if (e.ErrorCode == -2147467260)
+                            {
+                                //HRESULT:0x80004004 対策
+                                Thread.Sleep(10);
+                                errorCount++;
+                            }
+                            else
+                            {
+                                isDone = true;
+                            }
                         }
                     }
 
@@ -302,7 +320,6 @@ namespace OutlookOkan.Models
                 if (IsValidEmailAddress(recipient.Address)) mailAddress = recipient.Address;
             }
 
-
             if (!IsValidEmailAddress(mailAddress))
             {
                 try
@@ -320,11 +337,18 @@ namespace OutlookOkan.Models
 
                             isDone = true;
                         }
-                        catch (COMException)
+                        catch (COMException e)
                         {
-                            //HRESULT:0x80004004 対策
-                            Thread.Sleep(10);
-                            errorCount++;
+                            if (e.ErrorCode == -2147467260)
+                            {
+                                //HRESULT:0x80004004 対策
+                                Thread.Sleep(10);
+                                errorCount++;
+                            }
+                            else
+                            {
+                                isDone = true;
+                            }
                         }
                     }
                 }
@@ -386,11 +410,18 @@ namespace OutlookOkan.Models
 
                         isDone = true;
                     }
-                    catch (COMException)
+                    catch (COMException e)
                     {
-                        //HRESULT:0x80004004 対策
-                        Thread.Sleep(10);
-                        errorCount++;
+                        if (e.ErrorCode == -2147467260)
+                        {
+                            //HRESULT:0x80004004 対策
+                            Thread.Sleep(10);
+                            errorCount++;
+                        }
+                        else
+                        {
+                            isDone = true;
+                        }
                     }
                 }
 
@@ -430,11 +461,18 @@ namespace OutlookOkan.Models
                                 mailAddress = propertyAccessor.GetProperty(@"http://schemas.microsoft.com/mapi/proptag/0x39FE001E").ToString() ?? Resources.FailedToGetInformation;
                                 isDone = true;
                             }
-                            catch (COMException)
+                            catch (COMException e)
                             {
-                                //HRESULT:0x80004004 対策
-                                Thread.Sleep(10);
-                                errorCount++;
+                                if (e.ErrorCode == -2147467260)
+                                {
+                                    //HRESULT:0x80004004 対策
+                                    Thread.Sleep(10);
+                                    errorCount++;
+                                }
+                                else
+                                {
+                                    isDone = true;
+                                }
                             }
                         }
                     }
