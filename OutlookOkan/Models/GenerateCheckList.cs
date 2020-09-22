@@ -399,14 +399,20 @@ namespace OutlookOkan.Models
 
             try
             {
+                var addressEntry = recipient.AddressEntry;
+
                 var isDone = false;
                 var errorCount = 0;
                 while (!isDone && errorCount < 100)
                 {
                     try
                     {
-                        distributionList = recipient.AddressEntry.GetExchangeDistributionList();
-                        addressEntries = distributionList.GetExchangeDistributionListMembers();
+                        distributionList = addressEntry?.GetExchangeDistributionList();
+
+                        if (enableGetExchangeDistributionListMembers)
+                        {
+                            addressEntries = distributionList?.GetExchangeDistributionListMembers();
+                        }
 
                         isDone = true;
                     }
@@ -425,18 +431,13 @@ namespace OutlookOkan.Models
                     }
                 }
 
-                if (addressEntries is null) return null;
+                if (distributionList is null) return null;
 
                 var exchangeDistributionListMembers = new List<NameAndRecipient>();
 
-                if (addressEntries.Count == 0 || !enableGetExchangeDistributionListMembers)
+                if (addressEntries is null || addressEntries.Count == 0)
                 {
-                    exchangeDistributionListMembers.Add(new NameAndRecipient { MailAddress = distributionList.PrimarySmtpAddress, NameAndMailAddress = distributionList.Name + $@" ({distributionList.PrimarySmtpAddress})" });
-
-                    if (exchangeDistributionListMembersAreWhite && enableGetExchangeDistributionListMembers)
-                    {
-                        _whitelist.Add(new Whitelist { WhiteName = distributionList.PrimarySmtpAddress });
-                    }
+                    exchangeDistributionListMembers.Add(new NameAndRecipient { MailAddress = distributionList.PrimarySmtpAddress ?? Resources.FailedToGetInformation, NameAndMailAddress = (distributionList.Name ?? Resources.FailedToGetInformation) + $@" ({distributionList.PrimarySmtpAddress ?? Resources.FailedToGetInformation})" });
 
                     return exchangeDistributionListMembers;
                 }
