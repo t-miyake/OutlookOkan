@@ -1270,7 +1270,7 @@ namespace OutlookOkan.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Version 2.5.2.
+        ///   Looks up a localized string similar to Version 2.5.3.
         /// </summary>
         public static string Version {
             get {
