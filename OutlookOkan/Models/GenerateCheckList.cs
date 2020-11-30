@@ -5,6 +5,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Globalization;
+using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices;
 using System.Text.RegularExpressions;
@@ -68,6 +69,11 @@ namespace OutlookOkan.Models
             var externalDomainsWarningAndAutoChangeToBccSettingList = externalDomainsWarningAndAutoChangeToBccCsv.GetCsvRecords<ExternalDomainsWarningAndAutoChangeToBcc>(externalDomainsWarningAndAutoChangeToBccCsv.LoadCsv<ExternalDomainsWarningAndAutoChangeToBccMap>());
             if (externalDomainsWarningAndAutoChangeToBccSettingList.Count > 0) externalDomainsWarningAndAutoChangeToBccSetting = externalDomainsWarningAndAutoChangeToBccSettingList[0];
 
+            var attachmentsSetting = new AttachmentsSetting();
+            var attachmentsSettingCsv = new ReadAndWriteCsv("AttachmentsSetting.csv");
+            var attachmentsSettingList = attachmentsSettingCsv.GetCsvRecords<AttachmentsSetting>(attachmentsSettingCsv.LoadCsv<AttachmentsSettingMap>());
+            if (attachmentsSettingList.Count > 0) attachmentsSetting = attachmentsSettingList[0];
+
             _checkList.Subject = mail.Subject ?? Resources.FailedToGetInformation;
             _checkList.MailType = GetMailBodyFormat(mail.BodyFormat) ?? Resources.FailedToGetInformation;
             _checkList.MailBody = GetMailBody(mail.BodyFormat, mail.Body ?? Resources.FailedToGetInformation);
@@ -75,7 +81,7 @@ namespace OutlookOkan.Models
 
             _checkList = GetSenderAndSenderDomain(in mail, _checkList);
 
-            _checkList = GetAttachmentsInformation(in mail, _checkList, generalSetting.IsNotTreatedAsAttachmentsAtHtmlEmbeddedFiles);
+            _checkList = GetAttachmentsInformation(in mail, _checkList, generalSetting.IsNotTreatedAsAttachmentsAtHtmlEmbeddedFiles, attachmentsSetting);
 
             var displayNameAndRecipient = MakeDisplayNameAndRecipient(mail.Recipients, new DisplayNameAndRecipient(), generalSetting);
 
@@ -945,7 +951,7 @@ namespace OutlookOkan.Models
         /// <param name="checkList">CheckList</param>
         /// <param name="isNotTreatedAsAttachmentsAtHtmlEmbeddedFiles">HTML埋め込みの添付ファイル無視設定</param>
         /// <returns>CheckList</returns>
-        private CheckList GetAttachmentsInformation(in Outlook._MailItem mail, CheckList checkList, bool isNotTreatedAsAttachmentsAtHtmlEmbeddedFiles)
+        private CheckList GetAttachmentsInformation(in Outlook._MailItem mail, CheckList checkList, bool isNotTreatedAsAttachmentsAtHtmlEmbeddedFiles, AttachmentsSetting attachmentsSetting)
         {
             if (mail.Attachments.Count == 0) return checkList;
 
@@ -954,6 +960,9 @@ namespace OutlookOkan.Models
             {
                 embeddedAttachmentsName = MakeEmbeddedAttachmentsList(in mail);
             }
+
+            var tempDirectoryPath = Path.Combine(Path.GetTempPath(), Guid.NewGuid().ToString("N"));
+            Directory.CreateDirectory(tempDirectoryPath);
 
             for (var i = 0; i < mail.Attachments.Count; i++)
             {
@@ -999,6 +1008,44 @@ namespace OutlookOkan.Models
                 //情報取得に完全に失敗した添付ファイルは無視する。(リッチテキスト形式の埋め込み画像など)
                 if (fileName == Resources.Unknown && fileSize == "?KB" && fileType == Resources.Unknown) continue;
 
+                //電子署名付きメールの証明書はあえて無視する。
+                if (fileType == ".p7s" || fileType == "p7s") continue;
+
+                var isEncrypted = false;
+
+                try
+                {
+                    if ((attachmentsSetting.IsWarningWhenEncryptedZipIsAttached || attachmentsSetting.IsProhibitedWhenEncryptedZipIsAttached) && fileName != Resources.Unknown)
+                    {
+                        if (attachmentsSetting.IsEnableAllAttachedFilesAreDetectEncryptedZip || fileType == ".zip" || fileType == "zip")
+                        {
+                            var tempFilePath = Path.Combine(tempDirectoryPath, fileName);
+                            mail.Attachments[i + 1].SaveAsFile(tempFilePath);
+
+                            var zipTools = new ZipTools();
+                            if (zipTools.CheckZipIsEncrypted(tempFilePath))
+                            {
+                                File.Delete(tempFilePath);
+
+                                isEncrypted = true;
+                                AddAlerts(Resources.AttachedIsAnEncryptedZipFile + $" [{fileName}]", true, false, false);
+
+                                if (attachmentsSetting.IsProhibitedWhenEncryptedZipIsAttached)
+                                {
+                                    checkList.IsCanNotSendMail = true;
+                                    checkList.CanNotSendMailMessage = Resources.AttachedIsAnEncryptedZipFile + $"{Environment.NewLine}[{fileName}]";
+                                }
+                            }
+
+                            File.Delete(tempFilePath);
+                        }
+                    }
+                }
+                catch (Exception)
+                {
+                    //Do Nothing.
+                }
+
                 if (embeddedAttachmentsName is null)
                 {
                     checkList.Attachments.Add(new Attachment
@@ -1007,7 +1054,7 @@ namespace OutlookOkan.Models
                         FileSize = fileSize,
                         FileType = fileType,
                         IsTooBig = mail.Attachments[i + 1].Size >= 10485760,
-                        IsEncrypted = false,
+                        IsEncrypted = isEncrypted,
                         IsChecked = false,
                         IsDangerous = isDangerous
                     });
@@ -1024,7 +1071,7 @@ namespace OutlookOkan.Models
                         FileSize = fileSize,
                         FileType = fileType,
                         IsTooBig = mail.Attachments[i + 1].Size >= 10485760,
-                        IsEncrypted = false,
+                        IsEncrypted = isEncrypted,
                         IsChecked = false,
                         IsDangerous = isDangerous
                     });

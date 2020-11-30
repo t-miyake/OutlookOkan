@@ -574,4 +574,28 @@ this feature will be applied.</value>
   <data name="DefaultAlertMessage" xml:space="preserve">
     <value>The warning keyword is included in the body of the email.</value>
   </data>
+  <data name="IsEnableRecipientsAreSortedByDomain" xml:space="preserve">
+    <value>Recipients are sorted by domain on the confirmation screen.</value>
+  </data>
+  <data name="AttachedIsAnEncryptedZipFile" xml:space="preserve">
+    <value>Attached is an encrypted ZIP file.</value>
+  </data>
+  <data name="EncryptedZipBeta" xml:space="preserve">
+    <value>Encrypted Zip (Beta)</value>
+  </data>
+  <data name="IsEnableAllAttachedFilesAreDetectEncryptedZip" xml:space="preserve">
+    <value>Attached files with an extension other than ".zip" also detect whether they are encrypted ZIP or not.</value>
+  </data>
+  <data name="IsProhibitedWhenEncryptedZipIsAttached" xml:space="preserve">
+    <value>Sending is prohibited when an encrypted ZIP file is attached.</value>
+  </data>
+  <data name="IsWarningWhenEncryptedZipIsAttached" xml:space="preserve">
+    <value>Display a warning when an encrypted ZIP file is attached.</value>
+  </data>
+  <data name="NoticeOfIsEnableAllAttachedFilesAreDetectEncryptedZip" xml:space="preserve">
+    <value>* The processing of emails with attachments may take longer.</value>
+  </data>
+  <data name="SettingExampleAttachments" xml:space="preserve">
+    <value>If an email has an encrypted ZIP file attached to it, you can display a warning or prohibit the sending of that email.</value>
+  </data>
 </root>

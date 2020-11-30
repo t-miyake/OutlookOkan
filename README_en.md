@@ -53,6 +53,7 @@ About window
   - Prohibit the sending of emails to the specified destination or domain.
   - Prohibit the sending of emails containing the specified keyword in the body.
   - Prohibit the sending of mail when the number of destinations (To/Cc) external domains is large.
+  - Prohibit the sending of mail if it is accompanied by an encrypted ZIP file.
 
 - Allowlist
   - Allowlisted domains and email addresses do not need to be checked on the confirmation winodw.
@@ -82,6 +83,9 @@ About window
 - Deferred delivery(Delayed delivery)
   - You can delay (put on hold) the sending of an email for a set amount of time (in minutes).
   - You can set a default delay time for each domain or email address.
+
+- Others
+  - Displays a warning if an encrypted ZIP file is attached. (can be turned on or off) 
 
 - Importing and exporting settings
   - You can import and export your settings as a CSV file.

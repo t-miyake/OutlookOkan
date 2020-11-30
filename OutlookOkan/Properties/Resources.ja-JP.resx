@@ -572,4 +572,28 @@
   <data name="DefaultAlertMessage" xml:space="preserve">
     <value>警告対象のキーワードが含まれています。</value>
   </data>
+  <data name="IsEnableRecipientsAreSortedByDomain" xml:space="preserve">
+    <value>確認画面で、宛先をドメイン順に並べ替えて表示する。</value>
+  </data>
+  <data name="AttachedIsAnEncryptedZipFile" xml:space="preserve">
+    <value>暗号化ZIPが添付されています。</value>
+  </data>
+  <data name="EncryptedZipBeta" xml:space="preserve">
+    <value>暗号化Zip (Beta)</value>
+  </data>
+  <data name="IsEnableAllAttachedFilesAreDetectEncryptedZip" xml:space="preserve">
+    <value>拡張子が「.zip」以外の添付ファイルも、暗号化ZIPファイルか否かの検知を行う。</value>
+  </data>
+  <data name="IsProhibitedWhenEncryptedZipIsAttached" xml:space="preserve">
+    <value>暗号化ZIPファイルが添付されている場合に、メールの送信を禁止する。※他の設定より優先されます。</value>
+  </data>
+  <data name="IsWarningWhenEncryptedZipIsAttached" xml:space="preserve">
+    <value>暗号化ZIPファイルが添付されている場合に、警告を表示する。</value>
+  </data>
+  <data name="NoticeOfIsEnableAllAttachedFilesAreDetectEncryptedZip" xml:space="preserve">
+    <value>※添付ファイル付きメールの処理に、時間がかかる場合があります。</value>
+  </data>
+  <data name="SettingExampleAttachments" xml:space="preserve">
+    <value>暗号化ZIPファイル(パスワード付きZIPファイル)が添付されている場合に、警告を表示したり、メールの送信を禁止できます。</value>
+  </data>
 </root>

@@ -5,6 +5,7 @@ using OutlookOkan.Types;
 using OutlookOkanTest.Types;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using Outlook = Microsoft.Office.Interop.Outlook;
 
 namespace OutlookOkanTest
@@ -887,5 +888,76 @@ namespace OutlookOkanTest
         //TODO
 
         #endregion
+
+        #region ZipTools
+
+        [TestMethod, TestCategory("_ZipTools"), TestCategory("CheckZipIsEncrypted")]
+        public void 暗号化ZIP判定_暗号化なし_Zipファイル()
+        {
+            var zipFile = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, @"../../../OutlookOkanTest/TestFiles/暗号化なし.zip");
+            var zipTools = new ZipTools();
+            var privateObject = new PrivateObject(zipTools);
+            var result = (bool)privateObject.Invoke("CheckZipIsEncrypted", zipFile);
+
+            Assert.IsFalse(result);
+        }
+
+        [TestMethod, TestCategory("_ZipTools"), TestCategory("CheckZipIsEncrypted")]
+        public void 暗号化ZIP判定_暗号化あり_Zipファイル()
+        {
+            var zipFile = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, @"../../../OutlookOkanTest/TestFiles/暗号化あり_12345_Test.zip");
+            var zipTools = new ZipTools();
+            var privateObject = new PrivateObject(zipTools);
+            var result = (bool)privateObject.Invoke("CheckZipIsEncrypted", zipFile);
+
+            Assert.IsTrue(result);
+        }
+
+        [TestMethod, TestCategory("_ZipTools"), TestCategory("CheckZipIsEncrypted")]
+        public void 暗号化ZIP判定_暗号化あり_AES_Zipファイル()
+        {
+            var zipFile = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, @"../../../OutlookOkanTest/TestFiles/暗号化あり_AES_12345_Test.zip");
+            var zipTools = new ZipTools();
+            var privateObject = new PrivateObject(zipTools);
+            var result = (bool)privateObject.Invoke("CheckZipIsEncrypted", zipFile);
+
+            Assert.IsTrue(result);
+        }
+
+        [TestMethod, TestCategory("_ZipTools"), TestCategory("CheckZipIsEncrypted")]
+        public void 暗号化ZIP判定_ZIP以外_パスワード付きExcelファイル()
+        {
+            var zipFile = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, @"../../../OutlookOkanTest/TestFiles/Excel_Password.xlsx");
+            var zipTools = new ZipTools();
+            var privateObject = new PrivateObject(zipTools);
+            var result = (bool)privateObject.Invoke("CheckZipIsEncrypted", zipFile);
+
+            Assert.IsFalse(result);
+        }
+
+        [TestMethod, TestCategory("_ZipTools"), TestCategory("CheckZipIsEncrypted")]
+        public void 暗号化ZIP判定_ZIP以外_Excelファイル()
+        {
+            var zipFile = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, @"../../../OutlookOkanTest/TestFiles/Excel_Password.xlsx");
+            var zipTools = new ZipTools();
+            var privateObject = new PrivateObject(zipTools);
+            var result = (bool)privateObject.Invoke("CheckZipIsEncrypted", zipFile);
+
+            Assert.IsFalse(result);
+        }
+
+        [TestMethod, TestCategory("_ZipTools"), TestCategory("CheckZipIsEncrypted")]
+        public void 暗号化ZIP判定_ZIP以外_プレーンテキスト()
+        {
+            var zipFile = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, @"../../../OutlookOkanTest/TestFiles/PlainText.txt");
+            var zipTools = new ZipTools();
+            var privateObject = new PrivateObject(zipTools);
+            var result = (bool)privateObject.Invoke("CheckZipIsEncrypted", zipFile);
+
+            Assert.IsFalse(result);
+        }
+
+        #endregion
+
     }
 }

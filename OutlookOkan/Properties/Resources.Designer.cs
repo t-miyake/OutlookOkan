@@ -142,6 +142,15 @@ namespace OutlookOkan.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Attached is an encrypted ZIP file..
+        /// </summary>
+        public static string AttachedIsAnEncryptedZipFile {
+            get {
+                return ResourceManager.GetString("AttachedIsAnEncryptedZipFile", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Attachments.
         /// </summary>
         public static string Attachments {
@@ -496,6 +505,15 @@ namespace OutlookOkan.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Encrypted Zip (Beta).
+        /// </summary>
+        public static string EncryptedZipBeta {
+            get {
+                return ResourceManager.GetString("EncryptedZipBeta", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Exclusion settings.
         /// </summary>
         public static string ExclusionSettings {
@@ -803,11 +821,38 @@ namespace OutlookOkan.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Attached files with an extension other than &quot;.zip&quot; also detect whether they are encrypted ZIP or not..
+        /// </summary>
+        public static string IsEnableAllAttachedFilesAreDetectEncryptedZip {
+            get {
+                return ResourceManager.GetString("IsEnableAllAttachedFilesAreDetectEncryptedZip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Recipients are sorted by domain on the confirmation screen..
+        /// </summary>
+        public static string IsEnableRecipientsAreSortedByDomain {
+            get {
+                return ResourceManager.GetString("IsEnableRecipientsAreSortedByDomain", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to A file embedded in an HTML mail is not treated as an attachment..
         /// </summary>
         public static string IsNotTreatedAsAttachmentsAtHtmlEmbeddedFiles {
             get {
                 return ResourceManager.GetString("IsNotTreatedAsAttachmentsAtHtmlEmbeddedFiles", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Sending is prohibited when an encrypted ZIP file is attached..
+        /// </summary>
+        public static string IsProhibitedWhenEncryptedZipIsAttached {
+            get {
+                return ResourceManager.GetString("IsProhibitedWhenEncryptedZipIsAttached", resourceCulture);
             }
         }
         
@@ -844,6 +889,15 @@ namespace OutlookOkan.Properties {
         public static string IsSkipConfirmationInfo {
             get {
                 return ResourceManager.GetString("IsSkipConfirmationInfo", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Display a warning when an encrypted ZIP file is attached..
+        /// </summary>
+        public static string IsWarningWhenEncryptedZipIsAttached {
+            get {
+                return ResourceManager.GetString("IsWarningWhenEncryptedZipIsAttached", resourceCulture);
             }
         }
         
@@ -934,6 +988,15 @@ namespace OutlookOkan.Properties {
         public static string NoAlert {
             get {
                 return ResourceManager.GetString("NoAlert", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to * The processing of emails with attachments may take longer..
+        /// </summary>
+        public static string NoticeOfIsEnableAllAttachedFilesAreDetectEncryptedZip {
+            get {
+                return ResourceManager.GetString("NoticeOfIsEnableAllAttachedFilesAreDetectEncryptedZip", resourceCulture);
             }
         }
         
@@ -1089,6 +1152,15 @@ namespace OutlookOkan.Properties {
         public static string SettingExampleAlertMailAddress {
             get {
                 return ResourceManager.GetString("SettingExampleAlertMailAddress", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to If an email has an encrypted ZIP file attached to it, you can display a warning or prohibit the sending of that email..
+        /// </summary>
+        public static string SettingExampleAttachments {
+            get {
+                return ResourceManager.GetString("SettingExampleAttachments", resourceCulture);
             }
         }
         

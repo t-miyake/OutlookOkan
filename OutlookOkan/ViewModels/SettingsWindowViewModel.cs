@@ -60,6 +60,7 @@ namespace OutlookOkan.ViewModels
             LoadDeferredDeliveryMinutesData();
             LoadInternalDomainListData();
             LoadExternalDomainsWarningAndAutoChangeToBccData();
+            LoadAttachmentsSettingData();
         }
 
         public async Task SaveSettings()
@@ -76,7 +77,8 @@ namespace OutlookOkan.ViewModels
                     SaveAutoCcBccAttachedFilesToCsv(),
                     SaveDeferredDeliveryMinutesToCsv(),
                     SaveInternalDomainListToCsv(),
-                    SaveExternalDomainsWarningAndAutoChangeToBccToCsv()
+                    SaveExternalDomainsWarningAndAutoChangeToBccToCsv(),
+                    SaveAttachmentsSettingToCsv()
                 };
 
             await Task.WhenAll(saveTasks);
@@ -765,6 +767,86 @@ namespace OutlookOkan.ViewModels
         public bool IsWarningWhenLargeNumberOfExternalDomainsCheckBoxIsEnabled => !IsProhibitedWhenLargeNumberOfExternalDomains;
 
         public bool IsAutoChangeToBccWhenLargeNumberOfExternalDomainsCheckBoxIsEnabled => !IsProhibitedWhenLargeNumberOfExternalDomains;
+
+        #endregion
+
+        #region AttachmentsSetting
+
+        private void LoadAttachmentsSettingData()
+        {
+            var readCsv = new ReadAndWriteCsv("AttachmentsSetting.csv");
+            //1行しかないはずだが、2行以上あるとロード時にエラーとなる恐れがあるため、全行ロードする。
+            foreach (var data in readCsv.GetCsvRecords<AttachmentsSetting>(readCsv.LoadCsv<AttachmentsSettingMap>()))
+            {
+                _attachmentsSetting.Add(data);
+            }
+
+            if (_attachmentsSetting.Count == 0) return;
+
+            //実際に使用するのは1行目の設定のみ
+            IsWarningWhenEncryptedZipIsAttached = _attachmentsSetting[0].IsWarningWhenEncryptedZipIsAttached;
+            IsProhibitedWhenEncryptedZipIsAttached = _attachmentsSetting[0].IsProhibitedWhenEncryptedZipIsAttached;
+            IsEnableAllAttachedFilesAreDetectEncryptedZip = _attachmentsSetting[0].IsEnableAllAttachedFilesAreDetectEncryptedZip;
+        }
+
+        private async Task SaveAttachmentsSettingToCsv()
+        {
+            var tempAttachmentsSetting = new List<AttachmentsSetting>
+            {
+                new AttachmentsSetting
+                {
+                    IsWarningWhenEncryptedZipIsAttached = IsWarningWhenEncryptedZipIsAttached,
+                    IsProhibitedWhenEncryptedZipIsAttached = IsProhibitedWhenEncryptedZipIsAttached,
+                    IsEnableAllAttachedFilesAreDetectEncryptedZip = IsEnableAllAttachedFilesAreDetectEncryptedZip
+                }
+            };
+
+            var list = tempAttachmentsSetting.Cast<object>().ToList();
+            var writeCsv = new ReadAndWriteCsv("AttachmentsSetting.csv");
+            await Task.Run(() => writeCsv.WriteRecordsToCsv<AttachmentsSettingMap>(list));
+        }
+
+        private readonly List<AttachmentsSetting> _attachmentsSetting = new List<AttachmentsSetting>();
+
+        private bool _isWarningWhenEncryptedZipIsAttached;
+        public bool IsWarningWhenEncryptedZipIsAttached
+        {
+            get => _isWarningWhenEncryptedZipIsAttached;
+            set
+            {
+                _isWarningWhenEncryptedZipIsAttached = value;
+                OnPropertyChanged(nameof(IsWarningWhenEncryptedZipIsAttached));
+                OnPropertyChanged(nameof(IsEnableAllAttachedFilesAreDetectEncryptedZipCheckBoxIsEnabled));
+            }
+        }
+
+        private bool _isProhibitedWhenEncryptedZipIsAttached;
+        public bool IsProhibitedWhenEncryptedZipIsAttached
+        {
+            get => _isProhibitedWhenEncryptedZipIsAttached;
+            set
+            {
+                _isProhibitedWhenEncryptedZipIsAttached = value;
+                OnPropertyChanged(nameof(IsProhibitedWhenEncryptedZipIsAttached));
+                OnPropertyChanged(nameof(IsEnableAllAttachedFilesAreDetectEncryptedZipCheckBoxIsEnabled));
+                OnPropertyChanged(nameof(IsWarningWhenEncryptedZipIsAttachedCheckBoxIsEnabled));
+            }
+        }
+
+        private bool _isEnableAllAttachedFilesAreDetectEncryptedZip;
+        public bool IsEnableAllAttachedFilesAreDetectEncryptedZip
+        {
+            get => _isEnableAllAttachedFilesAreDetectEncryptedZip;
+            set
+            {
+                _isEnableAllAttachedFilesAreDetectEncryptedZip = value;
+                OnPropertyChanged(nameof(IsEnableAllAttachedFilesAreDetectEncryptedZip));
+            }
+        }
+
+        public bool IsWarningWhenEncryptedZipIsAttachedCheckBoxIsEnabled => !IsProhibitedWhenEncryptedZipIsAttached;
+
+        public bool IsEnableAllAttachedFilesAreDetectEncryptedZipCheckBoxIsEnabled => IsWarningWhenEncryptedZipIsAttached || IsProhibitedWhenEncryptedZipIsAttached;
 
         #endregion
 
