@@ -596,7 +596,7 @@
                         <GroupBox Header="{Binding Source={x:Static services:ResourceService.Instance}, Path=Resources.Settings, Mode=OneWay}" FontSize="11" Padding="3,3,3,3">
                             <StackPanel Orientation="Vertical">
                                 <StackPanel Orientation="Horizontal">
-                                    <CheckBox Margin="0,0,8,0" IsChecked="{Binding IsWarningWhenLargeNumberOfExternalDomains, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Center" />
+                                    <CheckBox Margin="0,0,8,0" IsChecked="{Binding IsWarningWhenLargeNumberOfExternalDomains, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Center" IsEnabled="{Binding IsWarningWhenLargeNumberOfExternalDomainsCheckBoxIsEnabled, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}" />
                                     <TextBlock Text="{Binding Source={x:Static services:ResourceService.Instance}, Path=Resources.IsWarningWhenLargeNumberOfExternalDomains, Mode=OneWay}" VerticalAlignment="Center" />
                                 </StackPanel>
                                 <StackPanel Orientation="Horizontal" Margin="0,5,0,0">
@@ -604,7 +604,7 @@
                                     <TextBlock Text="{Binding Source={x:Static services:ResourceService.Instance}, Path=Resources.IsProhibitedWhenLargeNumberOfExternalDomains, Mode=OneWay}" VerticalAlignment="Center" />
                                 </StackPanel>
                                 <StackPanel Orientation="Horizontal" Margin="0,5,0,0">
-                                    <CheckBox Margin="0,0,8,0" IsChecked="{Binding IsAutoChangeToBccWhenLargeNumberOfExternalDomains, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Center" />
+                                    <CheckBox Margin="0,0,8,0" IsChecked="{Binding IsAutoChangeToBccWhenLargeNumberOfExternalDomains, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Center" IsEnabled="{Binding IsAutoChangeToBccWhenLargeNumberOfExternalDomainsCheckBoxIsEnabled, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}" />
                                     <TextBlock Text="{Binding Source={x:Static services:ResourceService.Instance}, Path=Resources.IsAutoChangeToBccWhenLargeNumberOfExternalDomains, Mode=OneWay}" VerticalAlignment="Center" />
                                 </StackPanel>
                             </StackPanel>

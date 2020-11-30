@@ -746,6 +746,8 @@ namespace OutlookOkan.ViewModels
             {
                 _isProhibitedWhenLargeNumberOfExternalDomains = value;
                 OnPropertyChanged(nameof(IsProhibitedWhenLargeNumberOfExternalDomains));
+                OnPropertyChanged(nameof(IsWarningWhenLargeNumberOfExternalDomainsCheckBoxIsEnabled));
+                OnPropertyChanged(nameof(IsAutoChangeToBccWhenLargeNumberOfExternalDomainsCheckBoxIsEnabled));
             }
         }
 
@@ -759,6 +761,10 @@ namespace OutlookOkan.ViewModels
                 OnPropertyChanged(nameof(IsAutoChangeToBccWhenLargeNumberOfExternalDomains));
             }
         }
+
+        public bool IsWarningWhenLargeNumberOfExternalDomainsCheckBoxIsEnabled => !IsProhibitedWhenLargeNumberOfExternalDomains;
+
+        public bool IsAutoChangeToBccWhenLargeNumberOfExternalDomainsCheckBoxIsEnabled => !IsProhibitedWhenLargeNumberOfExternalDomains;
 
         #endregion
 
