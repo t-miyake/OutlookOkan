@@ -795,6 +795,7 @@ namespace OutlookOkan.ViewModels
             IsDoNotUseAutoCcBccAttachedFileIfAllRecipientsAreInternalDomain = _generalSetting[0].IsDoNotUseAutoCcBccAttachedFileIfAllRecipientsAreInternalDomain;
             IsDoNotUseDeferredDeliveryIfAllRecipientsAreInternalDomain = _generalSetting[0].IsDoNotUseDeferredDeliveryIfAllRecipientsAreInternalDomain;
             IsDoNotUseAutoCcBccKeywordIfAllRecipientsAreInternalDomain = _generalSetting[0].IsDoNotUseAutoCcBccKeywordIfAllRecipientsAreInternalDomain;
+            IsEnableRecipientsAreSortedByDomain = _generalSetting[0].IsEnableRecipientsAreSortedByDomain;
 
             if (_generalSetting[0].LanguageCode is null) return;
 
@@ -834,7 +835,8 @@ namespace OutlookOkan.ViewModels
                     IsNotTreatedAsAttachmentsAtHtmlEmbeddedFiles = IsNotTreatedAsAttachmentsAtHtmlEmbeddedFiles,
                     IsDoNotUseAutoCcBccAttachedFileIfAllRecipientsAreInternalDomain = IsDoNotUseAutoCcBccAttachedFileIfAllRecipientsAreInternalDomain,
                     IsDoNotUseDeferredDeliveryIfAllRecipientsAreInternalDomain = IsDoNotUseDeferredDeliveryIfAllRecipientsAreInternalDomain,
-                    IsDoNotUseAutoCcBccKeywordIfAllRecipientsAreInternalDomain = IsDoNotUseAutoCcBccKeywordIfAllRecipientsAreInternalDomain
+                    IsDoNotUseAutoCcBccKeywordIfAllRecipientsAreInternalDomain = IsDoNotUseAutoCcBccKeywordIfAllRecipientsAreInternalDomain,
+                    IsEnableRecipientsAreSortedByDomain = IsEnableRecipientsAreSortedByDomain
                 }
             };
 
@@ -985,6 +987,17 @@ namespace OutlookOkan.ViewModels
             {
                 _isDoNotUseAutoCcBccKeywordIfAllRecipientsAreInternalDomain = value;
                 OnPropertyChanged(nameof(IsDoNotUseAutoCcBccKeywordIfAllRecipientsAreInternalDomain));
+            }
+        }
+
+        private bool _isEnableRecipientsAreSortedByDomain;
+        public bool IsEnableRecipientsAreSortedByDomain
+        {
+            get => _isEnableRecipientsAreSortedByDomain;
+            set
+            {
+                _isEnableRecipientsAreSortedByDomain = value;
+                OnPropertyChanged(nameof(IsEnableRecipientsAreSortedByDomain));
             }
         }
 

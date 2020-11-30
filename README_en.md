@@ -46,7 +46,8 @@ About window
   - External domains are shown in red letters.
   - Show subject and sender addresses, a list of attachments, and the body of the email.
   - Warn of missing attachments or large attachments.
-  - Expand distribution lists and contact groups to show each recipient. (can be turned on or off)
+  - Expand distribution lists and contact groups to show each recipient. (can be turned on or off)  
+  - Sort and display the recipients by domain. (can be turned on or off)  
 
 - Prohibit the sending of mails that match the conditions.
   - Prohibit the sending of emails to the specified destination or domain.
