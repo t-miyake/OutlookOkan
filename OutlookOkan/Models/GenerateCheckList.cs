@@ -158,8 +158,6 @@ namespace OutlookOkan.Models
                     {
                         //Do Nothing.
                     }
-
-                    tempOutlookApp.Quit();
                 }
                 else
                 {
@@ -490,8 +488,6 @@ namespace OutlookOkan.Models
                         _whitelist.Add(new Whitelist { WhiteName = mailAddress });
                     }
                 }
-
-                tempOutlookApp.Quit();
 
                 return exchangeDistributionListMembers;
             }
