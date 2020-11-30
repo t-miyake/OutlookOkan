@@ -42,7 +42,7 @@ About window
 
 - Confirmation before sending an email.  
   - Confirmation window is displayed before sending a mail and all items must be checked before sending a mail.
-  - It is also possible not to display the confirmation before sending, such as an email to the same domain.
+  - It is also possible not to display the confirmation before sending, such as an email to the internal domain.
   - External domains are shown in red letters.
   - Show subject and sender addresses, a list of attachments, and the body of the email.
   - Warn of missing attachments or large attachments.

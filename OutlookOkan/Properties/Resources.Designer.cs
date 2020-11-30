@@ -884,7 +884,7 @@ namespace OutlookOkan.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Message body (Text format).
+        ///   Looks up a localized string similar to Message body (Plain-text).
         /// </summary>
         public static string MailBody {
             get {
@@ -1175,7 +1175,9 @@ namespace OutlookOkan.Properties {
         ///   Looks up a localized string similar to Name: Noraneko Inc
         ///Domain: @noraneko.co.jp
         ///
-        ///Register the name (ex. Company name) and domain..
+        ///Register the name (ex. Company name) and domain.
+        ///
+        ///Displays a warning if the name in the email body and the recipients domain do not match..
         /// </summary>
         public static string SettingExampleNameAndDomain {
             get {
@@ -1188,7 +1190,9 @@ namespace OutlookOkan.Properties {
         ///or
         ///Domain: @noraneko.co.jp
         ///
-        ///Register Email address or domain..
+        ///Register Email address or domain.
+        ///
+        ///The relevant recipients will be pre-checked in the confirmation screen..
         /// </summary>
         public static string SettingExampleWhiteList {
             get {

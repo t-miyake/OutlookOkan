@@ -277,7 +277,7 @@
     <value>Keywords</value>
   </data>
   <data name="MailBody" xml:space="preserve">
-    <value>Message body (Text format)</value>
+    <value>Message body (Plain-text)</value>
   </data>
   <data name="MailAddressAndDomain" xml:space="preserve">
     <value>Recipient address/domain</value>
@@ -404,14 +404,18 @@ When sending mail to registered recipients and domains, The specified address is
     <value>Name: Noraneko Inc
 Domain: @noraneko.co.jp
 
-Register the name (ex. Company name) and domain.</value>
+Register the name (ex. Company name) and domain.
+
+Displays a warning if the name in the email body and the recipients domain do not match.</value>
   </data>
   <data name="SettingExampleWhiteList" xml:space="preserve">
     <value>Email address: info@noraneko.co.jp
 or
 Domain: @noraneko.co.jp
 
-Register Email address or domain.</value>
+Register Email address or domain.
+
+The relevant recipients will be pre-checked in the confirmation screen.</value>
   </data>
   <data name="ChangeRibbonLanguageInfo" xml:space="preserve">
     <value>The display language of the ribbon (menu) is updated when Outlook is restarted.</value>
