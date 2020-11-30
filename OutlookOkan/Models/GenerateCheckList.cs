@@ -126,6 +126,7 @@ namespace OutlookOkan.Models
                     var tempRecipient = tempOutlookApp.Session.CreateRecipient(mail.SenderEmailAddress);
                     try
                     {
+                        tempRecipient.Resolve();
                         var addressEntry = tempRecipient.AddressEntry;
 
                         var isDone = false;
@@ -356,6 +357,47 @@ namespace OutlookOkan.Models
                 }
             }
 
+            if (!IsValidEmailAddress(mailAddress))
+            {
+                var tempOutlookApp = new Outlook.Application();
+                var tempRecipient = tempOutlookApp.Session.CreateRecipient(recipient.Address);
+
+                try
+                {
+                    recipient.Resolve();
+                    var propertyAccessor = tempRecipient.AddressEntry.PropertyAccessor;
+                    Thread.Sleep(20);
+
+                    var isDone = false;
+                    var errorCount = 0;
+                    while (!isDone && errorCount < 100)
+                    {
+                        try
+                        {
+                            mailAddress = propertyAccessor.GetProperty(@"http://schemas.microsoft.com/mapi/proptag/0x39FE001E").ToString() ?? Resources.FailedToGetInformation;
+                            isDone = true;
+                        }
+                        catch (COMException e)
+                        {
+                            if (e.ErrorCode == -2147467260)
+                            {
+                                //HRESULT:0x80004004 対策
+                                Thread.Sleep(10);
+                                errorCount++;
+                            }
+                            else
+                            {
+                                isDone = true;
+                            }
+                        }
+                    }
+                }
+                catch (Exception)
+                {
+                    //Do Nothing.
+                }
+            }
+
             string nameAndMailAddress;
             if (string.IsNullOrEmpty(recipient.Name))
             {
@@ -448,6 +490,7 @@ namespace OutlookOkan.Models
 
                     try
                     {
+                        tempRecipient.Resolve();
                         var propertyAccessor = tempRecipient.AddressEntry.PropertyAccessor;
                         Thread.Sleep(20);
 
