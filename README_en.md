@@ -53,8 +53,8 @@ About window
   - Prohibit the sending of emails containing the specified keyword in the body.
   - Prohibit the sending of mail when the number of destinations (To/Cc) external domains is large.
 
-- Whitelist
-  - Whitelisted domains and email addresses do not need to be checked on the confirmation winodw.
+- Allowlist
+  - Allowlisted domains and email addresses do not need to be checked on the confirmation winodw.
 
 - Name and recipient registration and alerts
   - If the name in the body of the message and the address or domain of the recipient do not match, a alertings is displayed.

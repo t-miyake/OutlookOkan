@@ -127,7 +127,7 @@
     <value>警告するキーワード。</value>
   </data>
   <data name="AlertMailAddress" xml:space="preserve">
-    <value>警告アドレス</value>
+    <value>警告宛先</value>
   </data>
   <data name="AlertMailAddressAndDomain" xml:space="preserve">
     <value>警告するアドレス / ドメイン(@から)</value>
@@ -232,7 +232,7 @@
     <value>全ての宛先のドメインが内部ドメインの場合、確認画面を表示しない。</value>
   </data>
   <data name="IfAllWhite" xml:space="preserve">
-    <value>宛先にチェック対象が存在しない場合、確認画面を表示しない。(全ての宛先がホワイトリストに含まれる場合など)</value>
+    <value>宛先にチェック対象が存在しない場合、確認画面を表示しない。(全ての宛先が許可リストに含まれる場合など)</value>
   </data>
   <data name="ImportAndExport" xml:space="preserve">
     <value>インポート/エクスポート</value>
@@ -292,7 +292,7 @@
     <value>名称</value>
   </data>
   <data name="NameAndDomain" xml:space="preserve">
-    <value>名称/ドメイン</value>
+    <value>宛先名称/ドメイン</value>
   </data>
   <data name="NoAlert" xml:space="preserve">
     <value>重要な警告はありません。</value>
@@ -352,7 +352,7 @@
     <value>確認画面に表示される警告文</value>
   </data>
   <data name="WhiteList" xml:space="preserve">
-    <value>ホワイトリスト</value>
+    <value>許可リスト</value>
   </data>
   <data name="CompanyName" xml:space="preserve">
     <value>株式会社のらねこ</value>

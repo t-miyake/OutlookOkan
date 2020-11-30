@@ -232,7 +232,7 @@
     <value>If all recipient's domains are internal domain, skip the confirmation window.</value>
   </data>
   <data name="IfAllWhite" xml:space="preserve">
-    <value>If there is no check target in the recipients, skip the confirmation window. (e.g., if all recipients are included in the whitelist.)</value>
+    <value>If there is no check target in the recipients, skip the confirmation window. (e.g., if all recipients are included in the allowlist.)</value>
   </data>
   <data name="ImportAndExport" xml:space="preserve">
     <value>Import/Export</value>
@@ -352,7 +352,7 @@
     <value>Alerting text on confirmation window.</value>
   </data>
   <data name="WhiteList" xml:space="preserve">
-    <value>Whitelist</value>
+    <value>Allowlist</value>
   </data>
   <data name="CompanyName" xml:space="preserve">
     <value>Noraneko Inc.</value>

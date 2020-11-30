@@ -622,7 +622,7 @@ namespace OutlookOkan.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to If there is no check target in the recipients, skip the confirmation window. (e.g., if all recipients are included in the whitelist.).
+        ///   Looks up a localized string similar to If there is no check target in the recipients, skip the confirmation window. (e.g., if all recipients are included in the allowlist.).
         /// </summary>
         public static string IfAllWhite {
             get {
@@ -1306,7 +1306,7 @@ namespace OutlookOkan.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Whitelist.
+        ///   Looks up a localized string similar to Allowlist.
         /// </summary>
         public static string WhiteList {
             get {
