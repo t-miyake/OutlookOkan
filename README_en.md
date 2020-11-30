@@ -42,19 +42,21 @@ About window
 
 - Confirmation before sending an email.  
   - Confirmation window is displayed before sending a mail and all items must be checked before sending a mail.
-  - It is also possible not to display the confirmation before sending, such as an email to the same domain.
+  - It is also possible not to display the confirmation before sending, such as an email to the internal domain.
   - External domains are shown in red letters.
   - Show subject and sender addresses, a list of attachments, and the body of the email.
   - Warn of missing attachments or large attachments.
-  - Expand distribution lists and contact groups to show each recipient. (can be turned on or off)
+  - Expand distribution lists and contact groups to show each recipient. (can be turned on or off)  
+  - Sort and display the recipients by domain. (can be turned on or off)  
 
 - Prohibit the sending of mails that match the conditions.
   - Prohibit the sending of emails to the specified destination or domain.
   - Prohibit the sending of emails containing the specified keyword in the body.
   - Prohibit the sending of mail when the number of destinations (To/Cc) external domains is large.
+  - Prohibit the sending of mail if it is accompanied by an encrypted ZIP file.
 
-- Whitelist
-  - Whitelisted domains and email addresses do not need to be checked on the confirmation winodw.
+- Allowlist
+  - Allowlisted domains and email addresses do not need to be checked on the confirmation winodw.
 
 - Name and recipient registration and alerts
   - If the name in the body of the message and the address or domain of the recipient do not match, a alertings is displayed.
@@ -81,6 +83,9 @@ About window
 - Deferred delivery(Delayed delivery)
   - You can delay (put on hold) the sending of an email for a set amount of time (in minutes).
   - You can set a default delay time for each domain or email address.
+
+- Others
+  - Displays a warning if an encrypted ZIP file is attached. (can be turned on or off) 
 
 - Importing and exporting settings
   - You can import and export your settings as a CSV file.

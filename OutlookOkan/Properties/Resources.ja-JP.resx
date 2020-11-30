@@ -127,7 +127,7 @@
     <value>警告するキーワード。</value>
   </data>
   <data name="AlertMailAddress" xml:space="preserve">
-    <value>警告アドレス</value>
+    <value>警告宛先</value>
   </data>
   <data name="AlertMailAddressAndDomain" xml:space="preserve">
     <value>警告するアドレス / ドメイン(@から)</value>
@@ -232,7 +232,7 @@
     <value>全ての宛先のドメインが内部ドメインの場合、確認画面を表示しない。</value>
   </data>
   <data name="IfAllWhite" xml:space="preserve">
-    <value>宛先にチェック対象が存在しない場合、確認画面を表示しない。(全ての宛先がホワイトリストに含まれる場合など)</value>
+    <value>宛先にチェック対象が存在しない場合、確認画面を表示しない。(全ての宛先が許可リストに含まれる場合など)</value>
   </data>
   <data name="ImportAndExport" xml:space="preserve">
     <value>インポート/エクスポート</value>
@@ -292,7 +292,7 @@
     <value>名称</value>
   </data>
   <data name="NameAndDomain" xml:space="preserve">
-    <value>名称/ドメイン</value>
+    <value>宛先名称/ドメイン</value>
   </data>
   <data name="NoAlert" xml:space="preserve">
     <value>重要な警告はありません。</value>
@@ -352,7 +352,7 @@
     <value>確認画面に表示される警告文</value>
   </data>
   <data name="WhiteList" xml:space="preserve">
-    <value>ホワイトリスト</value>
+    <value>許可リスト</value>
   </data>
   <data name="CompanyName" xml:space="preserve">
     <value>株式会社のらねこ</value>
@@ -361,7 +361,7 @@
     <value>Copyright (C) 2020 Noraneko Inc.</value>
   </data>
   <data name="Version" xml:space="preserve">
-    <value>バージョン 2.5.3</value>
+    <value>バージョン 2.5.4</value>
   </data>
   <data name="VersionInfo" xml:space="preserve">
     <value>バージョン情報</value>
@@ -383,6 +383,7 @@
 ドメイン：@noraneko.co.jp
 
 メールアドレスまたはドメインを登録します。
+
 登録するとその宛先への送信時に警告が表示されます。</value>
   </data>
   <data name="SettingExampleAutoAddCCorBCCByKeyword" xml:space="preserve">
@@ -403,14 +404,18 @@
     <value>名称：のらねこ
 ドメイン：@noraneko.co.jp
 
-名称(社名等)とドメインを登録します。</value>
+名称(社名等)とドメインを登録します。
+
+メール本文に記載された名称と宛先ドメインが一致しない場合、警告を表示します。</value>
   </data>
   <data name="SettingExampleWhiteList" xml:space="preserve">
     <value>アドレス：info@noraneko.co.jp
 または、
 ドメイン：@noraneko.co.jp
 
-アドレスまたはドメインを登録します。</value>
+アドレスまたはドメインを登録します。
+
+該当する宛先は、確認画面であらかじめチェックが付いた状態となります。</value>
   </data>
   <data name="ChangeRibbonLanguageInfo" xml:space="preserve">
     <value>リボン(メニュー)の表示言語は、Outlookを再起動すると更新されます。</value>
@@ -422,7 +427,7 @@
     <value>メールを送信しますか？</value>
   </data>
   <data name="IsShowConfirmationToMultipleDomain" xml:space="preserve">
-    <value>宛先に複数の外部ドメインが含まれている場合、必ず確認画面を表示する。(確認画面をスキップしません)</value>
+    <value>宛先に複数の異なった外部ドメインが含まれている場合、必ず確認画面を表示する。(確認画面をスキップしない)</value>
   </data>
   <data name="IsSkipConfirmation" xml:space="preserve">
     <value>確認画面をスキップ</value>
@@ -566,5 +571,29 @@
   </data>
   <data name="DefaultAlertMessage" xml:space="preserve">
     <value>警告対象のキーワードが含まれています。</value>
+  </data>
+  <data name="IsEnableRecipientsAreSortedByDomain" xml:space="preserve">
+    <value>確認画面で、宛先をドメイン順に並べ替えて表示する。</value>
+  </data>
+  <data name="AttachedIsAnEncryptedZipFile" xml:space="preserve">
+    <value>暗号化ZIPが添付されています。</value>
+  </data>
+  <data name="EncryptedZipBeta" xml:space="preserve">
+    <value>暗号化Zip (Beta)</value>
+  </data>
+  <data name="IsEnableAllAttachedFilesAreDetectEncryptedZip" xml:space="preserve">
+    <value>拡張子が「.zip」以外の添付ファイルも、暗号化ZIPファイルか否かの検知を行う。</value>
+  </data>
+  <data name="IsProhibitedWhenEncryptedZipIsAttached" xml:space="preserve">
+    <value>暗号化ZIPファイルが添付されている場合に、メールの送信を禁止する。※他の設定より優先されます。</value>
+  </data>
+  <data name="IsWarningWhenEncryptedZipIsAttached" xml:space="preserve">
+    <value>暗号化ZIPファイルが添付されている場合に、警告を表示する。</value>
+  </data>
+  <data name="NoticeOfIsEnableAllAttachedFilesAreDetectEncryptedZip" xml:space="preserve">
+    <value>※添付ファイル付きメールの処理に、時間がかかる場合があります。</value>
+  </data>
+  <data name="SettingExampleAttachments" xml:space="preserve">
+    <value>暗号化ZIPファイル(パスワード付きZIPファイル)が添付されている場合に、警告を表示したり、メールの送信を禁止できます。</value>
   </data>
 </root>

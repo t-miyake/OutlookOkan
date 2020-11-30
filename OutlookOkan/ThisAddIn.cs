@@ -13,7 +13,7 @@ using Word = Microsoft.Office.Interop.Word;
 
 namespace OutlookOkan
 {
-    public partial class ThisAddIn
+    public partial class ThisAddIn 
     {
         private readonly GeneralSetting _generalSetting = new GeneralSetting();
         private Outlook.Inspectors _inspectors;
@@ -66,15 +66,14 @@ namespace OutlookOkan
                 try
                 {
                     //FIXME: 暫定処置。
-                    //HACK: 添付ファイルをリンクとして添付する際に、メール本文が自動更新されない問題を回避。
+                    //HACK: 添付ファイルをリンクとして添付する際に、メール本文が自動更新されない問題を回避するための処置。
                     //HACK: ※WordEditorで本文を編集すると、本文の更新処理が行われるため問題を回避できる。
+                    //HACK: ※メールの文頭に半角スペースを挿入し、それを削除することで、本文の編集処理とさせる。
                     var tempMailItem = (Outlook._MailItem)item;
                     var mailItemWordEditor = (Word.Document)tempMailItem.GetInspector.WordEditor;
-                    var defaultCount = mailItemWordEditor.Characters.Count;
-                    var range = mailItemWordEditor.Range(0, defaultCount);
-                    //Ctrl + Z でユーザにこの処理が見えるため、違和感のないスペース1つのみとする。
+                    var range = mailItemWordEditor.Range(0, 0);
                     range.InsertAfter(" ");
-                    range = mailItemWordEditor.Range(defaultCount - 1, mailItemWordEditor.Characters.Count);
+                    range = mailItemWordEditor.Range(0, 0);
                     range.Delete();
                 }
                 catch (Exception)
@@ -88,7 +87,7 @@ namespace OutlookOkan
                 {
                     ResourceService.Instance.ChangeCulture(_generalSetting.LanguageCode);
                 }
-
+                
                 var generateCheckList = new GenerateCheckList();
                 var checklist = generateCheckList.GenerateCheckListFromMail((Outlook._MailItem)item, _generalSetting);
 
@@ -108,6 +107,13 @@ namespace OutlookOkan
                     {
                         bcc.IsChecked = true;
                     }
+                }
+
+                if (_generalSetting.IsEnableRecipientsAreSortedByDomain)
+                {
+                    checklist.ToAddresses = checklist.ToAddresses.OrderBy(x => x.MailAddress.Substring((int)Math.Sqrt(Math.Pow(x.MailAddress.IndexOf("@", StringComparison.Ordinal), 2)))).ToList();
+                    checklist.CcAddresses = checklist.CcAddresses.OrderBy(x => x.MailAddress.Substring((int)Math.Sqrt(Math.Pow(x.MailAddress.IndexOf("@", StringComparison.Ordinal), 2)))).ToList();
+                    checklist.BccAddresses = checklist.BccAddresses.OrderBy(x => x.MailAddress.Substring((int)Math.Sqrt(Math.Pow(x.MailAddress.IndexOf("@", StringComparison.Ordinal), 2)))).ToList();
                 }
 
                 if (checklist.IsCanNotSendMail)
@@ -195,6 +201,7 @@ namespace OutlookOkan
             _generalSetting.IsDoNotUseAutoCcBccAttachedFileIfAllRecipientsAreInternalDomain = generalSetting[0].IsDoNotUseAutoCcBccAttachedFileIfAllRecipientsAreInternalDomain;
             _generalSetting.IsDoNotUseDeferredDeliveryIfAllRecipientsAreInternalDomain = generalSetting[0].IsDoNotUseDeferredDeliveryIfAllRecipientsAreInternalDomain;
             _generalSetting.IsDoNotUseAutoCcBccKeywordIfAllRecipientsAreInternalDomain = generalSetting[0].IsDoNotUseAutoCcBccKeywordIfAllRecipientsAreInternalDomain;
+            _generalSetting.IsEnableRecipientsAreSortedByDomain = generalSetting[0].IsEnableRecipientsAreSortedByDomain;
         }
 
         /// <summary>

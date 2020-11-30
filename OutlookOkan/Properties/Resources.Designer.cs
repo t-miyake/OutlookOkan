@@ -142,6 +142,15 @@ namespace OutlookOkan.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Attached is an encrypted ZIP file..
+        /// </summary>
+        public static string AttachedIsAnEncryptedZipFile {
+            get {
+                return ResourceManager.GetString("AttachedIsAnEncryptedZipFile", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Attachments.
         /// </summary>
         public static string Attachments {
@@ -496,6 +505,15 @@ namespace OutlookOkan.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Encrypted Zip (Beta).
+        /// </summary>
+        public static string EncryptedZipBeta {
+            get {
+                return ResourceManager.GetString("EncryptedZipBeta", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Exclusion settings.
         /// </summary>
         public static string ExclusionSettings {
@@ -622,7 +640,7 @@ namespace OutlookOkan.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to If there is no check target in the recipients, skip the confirmation window. (e.g., if all recipients are included in the whitelist.).
+        ///   Looks up a localized string similar to If there is no check target in the recipients, skip the confirmation window. (e.g., if all recipients are included in the allowlist.).
         /// </summary>
         public static string IfAllWhite {
             get {
@@ -803,11 +821,38 @@ namespace OutlookOkan.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Attached files with an extension other than &quot;.zip&quot; also detect whether they are encrypted ZIP or not..
+        /// </summary>
+        public static string IsEnableAllAttachedFilesAreDetectEncryptedZip {
+            get {
+                return ResourceManager.GetString("IsEnableAllAttachedFilesAreDetectEncryptedZip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Recipients are sorted by domain on the confirmation screen..
+        /// </summary>
+        public static string IsEnableRecipientsAreSortedByDomain {
+            get {
+                return ResourceManager.GetString("IsEnableRecipientsAreSortedByDomain", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to A file embedded in an HTML mail is not treated as an attachment..
         /// </summary>
         public static string IsNotTreatedAsAttachmentsAtHtmlEmbeddedFiles {
             get {
                 return ResourceManager.GetString("IsNotTreatedAsAttachmentsAtHtmlEmbeddedFiles", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Sending is prohibited when an encrypted ZIP file is attached..
+        /// </summary>
+        public static string IsProhibitedWhenEncryptedZipIsAttached {
+            get {
+                return ResourceManager.GetString("IsProhibitedWhenEncryptedZipIsAttached", resourceCulture);
             }
         }
         
@@ -848,6 +893,15 @@ namespace OutlookOkan.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Display a warning when an encrypted ZIP file is attached..
+        /// </summary>
+        public static string IsWarningWhenEncryptedZipIsAttached {
+            get {
+                return ResourceManager.GetString("IsWarningWhenEncryptedZipIsAttached", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Displays a warning when the recipients (To/Cc) has a large number of external domains..
         /// </summary>
         public static string IsWarningWhenLargeNumberOfExternalDomains {
@@ -884,7 +938,7 @@ namespace OutlookOkan.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Message body (Text format).
+        ///   Looks up a localized string similar to Message body (Plain-text).
         /// </summary>
         public static string MailBody {
             get {
@@ -934,6 +988,15 @@ namespace OutlookOkan.Properties {
         public static string NoAlert {
             get {
                 return ResourceManager.GetString("NoAlert", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to * The processing of emails with attachments may take longer..
+        /// </summary>
+        public static string NoticeOfIsEnableAllAttachedFilesAreDetectEncryptedZip {
+            get {
+                return ResourceManager.GetString("NoticeOfIsEnableAllAttachedFilesAreDetectEncryptedZip", resourceCulture);
             }
         }
         
@@ -1093,6 +1156,15 @@ namespace OutlookOkan.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to If an email has an encrypted ZIP file attached to it, you can display a warning or prohibit the sending of that email..
+        /// </summary>
+        public static string SettingExampleAttachments {
+            get {
+                return ResourceManager.GetString("SettingExampleAttachments", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Type: Cc or Bcc
         ///Email address: boss@noraneko.co.jp
         ///
@@ -1175,7 +1247,9 @@ namespace OutlookOkan.Properties {
         ///   Looks up a localized string similar to Name: Noraneko Inc
         ///Domain: @noraneko.co.jp
         ///
-        ///Register the name (ex. Company name) and domain..
+        ///Register the name (ex. Company name) and domain.
+        ///
+        ///Displays a warning if the name in the email body and the recipients domain do not match..
         /// </summary>
         public static string SettingExampleNameAndDomain {
             get {
@@ -1188,7 +1262,9 @@ namespace OutlookOkan.Properties {
         ///or
         ///Domain: @noraneko.co.jp
         ///
-        ///Register Email address or domain..
+        ///Register Email address or domain.
+        ///
+        ///The relevant recipients will be pre-checked in the confirmation screen..
         /// </summary>
         public static string SettingExampleWhiteList {
             get {
@@ -1270,7 +1346,7 @@ namespace OutlookOkan.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Version 2.5.3.
+        ///   Looks up a localized string similar to Version 2.5.4.
         /// </summary>
         public static string Version {
             get {
@@ -1306,7 +1382,7 @@ namespace OutlookOkan.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Whitelist.
+        ///   Looks up a localized string similar to Allowlist.
         /// </summary>
         public static string WhiteList {
             get {

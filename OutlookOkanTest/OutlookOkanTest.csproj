@@ -59,6 +59,11 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
+    <None Include="TestFiles\Excel.xlsx" />
+    <None Include="TestFiles\Excel_Password.xlsx" />
+    <None Include="TestFiles\暗号化あり_12345_Test.zip" />
+    <None Include="TestFiles\暗号化あり_AES_12345_Test.zip" />
+    <None Include="TestFiles\暗号化なし.zip" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\OutlookOkan\OutlookOkan.csproj">
@@ -66,7 +71,9 @@
       <Name>OutlookOkan</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Content Include="TestFiles\PlainText.txt" />
+  </ItemGroup>
   <Import Project="$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets" Condition="Exists('$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets')" />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
