@@ -66,15 +66,14 @@ namespace OutlookOkan
                 try
                 {
                     //FIXME: 暫定処置。
-                    //HACK: 添付ファイルをリンクとして添付する際に、メール本文が自動更新されない問題を回避。
+                    //HACK: 添付ファイルをリンクとして添付する際に、メール本文が自動更新されない問題を回避するための処置。
                     //HACK: ※WordEditorで本文を編集すると、本文の更新処理が行われるため問題を回避できる。
+                    //HACK: ※メールの文頭に半角スペースを挿入し、それを削除することで、本文の編集処理とさせる。
                     var tempMailItem = (Outlook._MailItem)item;
                     var mailItemWordEditor = (Word.Document)tempMailItem.GetInspector.WordEditor;
-                    var defaultCount = mailItemWordEditor.Characters.Count;
-                    var range = mailItemWordEditor.Range(0, defaultCount);
-                    //Ctrl + Z でユーザにこの処理が見えるため、違和感のないスペース1つのみとする。
+                    var range = mailItemWordEditor.Range(0, 0);
                     range.InsertAfter(" ");
-                    range = mailItemWordEditor.Range(defaultCount - 1, mailItemWordEditor.Characters.Count);
+                    range = mailItemWordEditor.Range(0, 0);
                     range.Delete();
                 }
                 catch (Exception)
