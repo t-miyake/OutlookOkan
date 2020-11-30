@@ -124,6 +124,7 @@ namespace OutlookOkan.Models
                 {
                     var tempOutlookApp = new Outlook.Application();
                     var tempRecipient = tempOutlookApp.Session.CreateRecipient(mail.SenderEmailAddress);
+
                     try
                     {
                         tempRecipient.Resolve();
@@ -979,7 +980,6 @@ namespace OutlookOkan.Models
                 }
 
                 var isDangerous = false;
-
                 if (fileType == ".exe")
                 {
                     checkList.Alerts.Add(new Alert { AlertMessage = Resources.IsAttachedExe + $"[{mail.Attachments[i + 1].FileName}]", IsChecked = false, IsImportant = true, IsWhite = false });

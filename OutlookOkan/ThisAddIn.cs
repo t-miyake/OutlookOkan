@@ -13,7 +13,7 @@ using Word = Microsoft.Office.Interop.Word;
 
 namespace OutlookOkan
 {
-    public partial class ThisAddIn
+    public partial class ThisAddIn 
     {
         private readonly GeneralSetting _generalSetting = new GeneralSetting();
         private Outlook.Inspectors _inspectors;
@@ -88,7 +88,7 @@ namespace OutlookOkan
                 {
                     ResourceService.Instance.ChangeCulture(_generalSetting.LanguageCode);
                 }
-
+                
                 var generateCheckList = new GenerateCheckList();
                 var checklist = generateCheckList.GenerateCheckListFromMail((Outlook._MailItem)item, _generalSetting);
 
