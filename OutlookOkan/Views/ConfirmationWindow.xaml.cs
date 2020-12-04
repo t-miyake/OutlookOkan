@@ -30,8 +30,21 @@ namespace OutlookOkan.Views
         {
             //送信時刻の設定
             int.TryParse(DeferredDeliveryMinutesBox.Text, out var deferredDeliveryMinutes);
-            _mailItem.DeferredDeliveryTime = deferredDeliveryMinutes == 0 ? _mailItem.CreationTime : DateTime.Now.AddMinutes(deferredDeliveryMinutes);
 
+            if (deferredDeliveryMinutes != 0)
+            {
+                if (_mailItem.DeferredDeliveryTime == new DateTime(4501, 1, 1, 0, 0, 0))
+                {
+                    //アドインの機能のみで保留時間が設定された場合
+                    _mailItem.DeferredDeliveryTime = DateTime.Now.AddMinutes(deferredDeliveryMinutes);
+                }
+                else
+                {
+                    //アドインの機能と同時に、Outlookの標準機能でも保留時間(配信タイミング)が設定された場合
+                    _mailItem.DeferredDeliveryTime = _mailItem.DeferredDeliveryTime.AddMinutes(deferredDeliveryMinutes);
+                }
+            }
+            
             DialogResult = true;
         }
 
