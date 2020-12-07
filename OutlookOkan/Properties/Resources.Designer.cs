@@ -287,8 +287,10 @@ namespace OutlookOkan.Properties {
         
         /// <summary>
         ///   Looks up a localized string similar to Canceled sending this email. You can reedit this.
+        ///The estimated time of sending this email has been cleared.
+        ///
         ///To send this email, you must click on the Send button.
-        ///(Closing the edit screen will not send this email.).
+        ///Closing the edit screen will not send this email..
         /// </summary>
         public static string CanceledSendingMailMessage {
             get {
@@ -1346,7 +1348,7 @@ namespace OutlookOkan.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Version 2.5.4.
+        ///   Looks up a localized string similar to Version 2.5.4.1.
         /// </summary>
         public static string Version {
             get {

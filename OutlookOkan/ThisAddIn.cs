@@ -49,9 +49,14 @@ namespace OutlookOkan
             if (!(inspector.CurrentItem is Outlook._MailItem)) return;
             if (!(inspector.CurrentItem is Outlook.MailItem mailItem)) return;
 
+            //送信保留中のメールのみ対象とする。
             if (mailItem.Submitted)
             {
                 MessageBox.Show(Properties.Resources.CanceledSendingMailMessage, Properties.Resources.CanceledSendingMail, MessageBoxButton.OK, MessageBoxImage.Warning);
+
+                //再編集のため、配信指定日時をクリアする。
+                mailItem.DeferredDeliveryTime = new DateTime(4501, 1, 1, 0, 0, 0);
+                mailItem.Save();
             }
         }
 

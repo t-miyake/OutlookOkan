@@ -361,7 +361,7 @@
     <value>Copyright (C) 2020 Noraneko Inc.</value>
   </data>
   <data name="Version" xml:space="preserve">
-    <value>バージョン 2.5.4</value>
+    <value>バージョン 2.5.4.1</value>
   </data>
   <data name="VersionInfo" xml:space="preserve">
     <value>バージョン情報</value>
@@ -509,8 +509,10 @@
   </data>
   <data name="CanceledSendingMailMessage" xml:space="preserve">
     <value>メールの送信をキャンセルし、再編集します。
+※配信指定日時(保留時間)はクリアされます。
+
 送信する場合、必ず送信ボタンを押してください。
-(×ボタン等で編集画面を閉じた場合、送信されません。)</value>
+×ボタン等で編集画面を閉じた場合、送信されません。</value>
   </data>
   <data name="InputDomain" xml:space="preserve">
     <value>ドメイン(@から)を登録してください。</value>

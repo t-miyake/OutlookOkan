@@ -361,7 +361,7 @@
     <value>Copyright (C) 2020 Noraneko Inc.</value>
   </data>
   <data name="Version" xml:space="preserve">
-    <value>Version 2.5.4</value>
+    <value>Version 2.5.4.1</value>
   </data>
   <data name="VersionInfo" xml:space="preserve">
     <value>About</value>
@@ -509,8 +509,10 @@ When you send an email with a file attached, The specified address is automatica
   </data>
   <data name="CanceledSendingMailMessage" xml:space="preserve">
     <value>Canceled sending this email. You can reedit this.
+The estimated time of sending this email has been cleared.
+
 To send this email, you must click on the Send button.
-(Closing the edit screen will not send this email.)</value>
+Closing the edit screen will not send this email.</value>
   </data>
   <data name="InputDomain" xml:space="preserve">
     <value>Enter the domain.</value>
