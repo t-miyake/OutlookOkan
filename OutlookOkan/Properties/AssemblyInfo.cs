@@ -10,7 +10,7 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("Noraneko Inc.")]
 [assembly: AssemblyProduct("OutlookOkan")]
-[assembly: AssemblyCopyright("Copyright © Noraneko Inc. 2020")]
+[assembly: AssemblyCopyright("Copyright © Noraneko Inc. 2021")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
@@ -32,7 +32,7 @@ using System.Runtime.InteropServices;
 // You can specify all the values or you can default the Build and Revision Numbers 
 // by using the '*' as shown below:
 // [assembly: AssemblyVersion("1.0.*")]
-[assembly: AssemblyVersion("2.5.4.1")]
-[assembly: AssemblyFileVersion("2.5.4.1")]
+[assembly: AssemblyVersion("2.5.4.2")]
+[assembly: AssemblyFileVersion("2.5.4.2")]
 [assembly: NeutralResourcesLanguage("en-US")]
 
