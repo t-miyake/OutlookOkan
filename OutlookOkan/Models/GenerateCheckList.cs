@@ -512,15 +512,20 @@ namespace OutlookOkan.Models
                             }
                             catch (COMException e)
                             {
-                                if (e.ErrorCode == -2147467260)
+                                switch (e.ErrorCode)
                                 {
-                                    //HRESULT:0x80004004 対策
-                                    Thread.Sleep(10);
-                                    errorCount++;
-                                }
-                                else
-                                {
-                                    isDone = true;
+                                    case -2147467260:
+                                        //HRESULT:0x80004004 対策
+                                        Thread.Sleep(10);
+                                        errorCount++;
+                                        break;
+                                    case -2147467259:
+                                        mailAddress = Resources.ExternalRecipient;
+                                        isDone = true;
+                                        break;
+                                    default:
+                                        isDone = true;
+                                        break;
                                 }
                             }
                         }

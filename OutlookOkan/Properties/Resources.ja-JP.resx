@@ -598,4 +598,7 @@
   <data name="SettingExampleAttachments" xml:space="preserve">
     <value>暗号化ZIPファイル(パスワード付きZIPファイル)が添付されている場合に、警告を表示したり、メールの送信を禁止できます。</value>
   </data>
+  <data name="ExternalRecipient" xml:space="preserve">
+    <value>社外アドレス</value>
+  </data>
 </root>

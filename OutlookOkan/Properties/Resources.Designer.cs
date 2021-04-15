@@ -552,6 +552,15 @@ namespace OutlookOkan.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to External recipient.
+        /// </summary>
+        public static string ExternalRecipient {
+            get {
+                return ResourceManager.GetString("ExternalRecipient", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Failed to get the information..
         /// </summary>
         public static string FailedToGetInformation {

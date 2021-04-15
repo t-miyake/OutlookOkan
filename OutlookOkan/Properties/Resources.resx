@@ -600,4 +600,7 @@ this feature will be applied.</value>
   <data name="SettingExampleAttachments" xml:space="preserve">
     <value>If an email has an encrypted ZIP file attached to it, you can display a warning or prohibit the sending of that email.</value>
   </data>
+  <data name="ExternalRecipient" xml:space="preserve">
+    <value>External recipient</value>
+  </data>
 </root>
