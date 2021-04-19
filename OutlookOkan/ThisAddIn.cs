@@ -6,6 +6,7 @@ using OutlookOkan.Types;
 using OutlookOkan.Views;
 using System;
 using System.Linq;
+using System.Runtime.InteropServices;
 using System.Windows;
 using System.Windows.Interop;
 using Outlook = Microsoft.Office.Interop.Outlook;
@@ -13,7 +14,7 @@ using Word = Microsoft.Office.Interop.Word;
 
 namespace OutlookOkan
 {
-    public partial class ThisAddIn 
+    public partial class ThisAddIn
     {
         private readonly GeneralSetting _generalSetting = new GeneralSetting();
         private Outlook.Inspectors _inspectors;
@@ -47,17 +48,26 @@ namespace OutlookOkan
         private void OpenOutboxItemInspector(Outlook.Inspector inspector)
         {
             if (!(inspector.CurrentItem is Outlook._MailItem)) return;
-            if (!(inspector.CurrentItem is Outlook.MailItem mailItem)) return;
+            var currentItem = (Outlook._MailItem)inspector.CurrentItem;
 
             //送信保留中のメールのみ対象とする。
-            if (mailItem.Submitted)
+            if (currentItem.Submitted)
             {
                 MessageBox.Show(Properties.Resources.CanceledSendingMailMessage, Properties.Resources.CanceledSendingMail, MessageBoxButton.OK, MessageBoxImage.Warning);
 
                 //再編集のため、配信指定日時をクリアする。
-                mailItem.DeferredDeliveryTime = new DateTime(4501, 1, 1, 0, 0, 0);
-                mailItem.Save();
+                currentItem.DeferredDeliveryTime = new DateTime(4501, 1, 1, 0, 0, 0);
+                currentItem.Save();
             }
+
+            ((Outlook.InspectorEvents_Event)inspector).Close += () =>
+            {
+                Marshal.ReleaseComObject(currentItem);
+                currentItem = null;
+                GC.Collect();
+                GC.WaitForPendingFinalizers();
+                GC.Collect();
+            };
         }
 
         private void Application_ItemSend(object item, ref bool cancel)
@@ -92,7 +102,7 @@ namespace OutlookOkan
                 {
                     ResourceService.Instance.ChangeCulture(_generalSetting.LanguageCode);
                 }
-                
+
                 var generateCheckList = new GenerateCheckList();
                 var checklist = generateCheckList.GenerateCheckListFromMail((Outlook._MailItem)item, _generalSetting);
 

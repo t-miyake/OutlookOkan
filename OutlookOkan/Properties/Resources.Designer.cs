@@ -390,7 +390,7 @@ namespace OutlookOkan.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Copyright (C) 2020 Noraneko Inc..
+        ///   Looks up a localized string similar to Copyright (C) 2021 Noraneko Inc..
         /// </summary>
         public static string Copyright {
             get {
@@ -548,6 +548,15 @@ namespace OutlookOkan.Properties {
         public static string ExternalDomainsWarningAndAutoChangeToBcc {
             get {
                 return ResourceManager.GetString("ExternalDomainsWarningAndAutoChangeToBcc", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to External recipient.
+        /// </summary>
+        public static string ExternalRecipient {
+            get {
+                return ResourceManager.GetString("ExternalRecipient", resourceCulture);
             }
         }
         
@@ -1348,7 +1357,7 @@ namespace OutlookOkan.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Version 2.5.4.1.
+        ///   Looks up a localized string similar to Version 2.5.4.2.
         /// </summary>
         public static string Version {
             get {

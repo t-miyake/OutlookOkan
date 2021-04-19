@@ -358,10 +358,10 @@
     <value>Noraneko Inc.</value>
   </data>
   <data name="Copyright" xml:space="preserve">
-    <value>Copyright (C) 2020 Noraneko Inc.</value>
+    <value>Copyright (C) 2021 Noraneko Inc.</value>
   </data>
   <data name="Version" xml:space="preserve">
-    <value>Version 2.5.4.1</value>
+    <value>Version 2.5.4.2</value>
   </data>
   <data name="VersionInfo" xml:space="preserve">
     <value>About</value>
@@ -599,5 +599,8 @@ this feature will be applied.</value>
   </data>
   <data name="SettingExampleAttachments" xml:space="preserve">
     <value>If an email has an encrypted ZIP file attached to it, you can display a warning or prohibit the sending of that email.</value>
+  </data>
+  <data name="ExternalRecipient" xml:space="preserve">
+    <value>External recipient</value>
   </data>
 </root>
