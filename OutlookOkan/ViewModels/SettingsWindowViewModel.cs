@@ -12,9 +12,9 @@ using System.Windows.Input;
 
 namespace OutlookOkan.ViewModels
 {
-    public sealed class SettingsWindowViewModel : ViewModelBase
+    internal sealed class SettingsWindowViewModel : ViewModelBase
     {
-        public SettingsWindowViewModel()
+        internal SettingsWindowViewModel()
         {
             //Add button command.
             ImportWhiteList = new RelayCommand(ImportWhiteListFromCsv);
@@ -63,7 +63,7 @@ namespace OutlookOkan.ViewModels
             LoadAttachmentsSettingData();
         }
 
-        public async Task SaveSettings()
+        internal async Task SaveSettings()
         {
             IEnumerable<Task> saveTasks = new[]
                 {

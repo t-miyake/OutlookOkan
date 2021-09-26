@@ -7,13 +7,13 @@ namespace OutlookOkan.Models
     /// <summary>
     /// 新しいバージョンの有無を確認する。
     /// </summary>
-    public sealed class CheckNewVersion
+    internal sealed class CheckNewVersion
     {
         /// <summary>
         /// 新バージョンのダウンロード可否を返す。
         /// </summary>
         /// <returns>新バージョンのダウンロード可否</returns>
-        public bool IsCanDownloadNewVersion()
+        internal bool IsCanDownloadNewVersion()
         {
             using (var client = new WebClient())
             {

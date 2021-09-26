@@ -4,9 +4,9 @@ using System.Linq;
 
 namespace OutlookOkan.ViewModels
 {
-    public sealed class ConfirmationWindowViewModel : ViewModelBase
+    internal sealed class ConfirmationWindowViewModel : ViewModelBase
     {
-        public ConfirmationWindowViewModel(CheckList checkList)
+        internal ConfirmationWindowViewModel(CheckList checkList)
         {
             _checkList = checkList;
 

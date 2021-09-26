@@ -5,11 +5,11 @@ using System.Windows.Input;
 
 namespace OutlookOkan.ViewModels
 {
-    public sealed class AboutWindowViewModel : ViewModelBase
+    internal sealed class AboutWindowViewModel : ViewModelBase
     {
         private readonly CheckNewVersion _checkNewVersion = new CheckNewVersion();
 
-        public AboutWindowViewModel()
+        internal AboutWindowViewModel()
         {
             CheckNewVersionButtonCommand = new RelayCommand(CheckNewVersion);
         }
