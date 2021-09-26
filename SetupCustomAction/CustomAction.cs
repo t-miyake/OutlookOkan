@@ -17,6 +17,7 @@ namespace SetupCustomAction
             var outlookProcess = Process.GetProcessesByName("OUTLOOK");
             if (outlookProcess.Length > 0)
             {
+                _ = MessageBox.Show("Outlookが起動しています。Outlookを終了してからインストールしてください。", "エラー", MessageBoxButton.OK, MessageBoxImage.Error, MessageBoxResult.OK, MessageBoxOptions.ServiceNotification);
                 throw new InstallException();
             }
         }
