@@ -29,7 +29,7 @@ namespace OutlookOkan.Views
         private void SendButton_OnClick(object sender, RoutedEventArgs e)
         {
             //送信時刻の設定
-            int.TryParse(DeferredDeliveryMinutesBox.Text, out var deferredDeliveryMinutes);
+            _ = int.TryParse(DeferredDeliveryMinutesBox.Text, out var deferredDeliveryMinutes);
 
             if (deferredDeliveryMinutes != 0)
             {

@@ -13,9 +13,9 @@ namespace OutlookOkan.Types
     {
         public AutoCcBccKeywordMap()
         {
-            Map(m => m.Keyword).Index(0);
-            Map(m => m.CcOrBcc).Index(1);
-            Map(m => m.AutoAddAddress).Index(2);
+            _ = Map(m => m.Keyword).Index(0);
+            _ = Map(m => m.CcOrBcc).Index(1);
+            _ = Map(m => m.AutoAddAddress).Index(2);
         }
     }
 }

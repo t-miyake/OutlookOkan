@@ -23,12 +23,12 @@ namespace OutlookOkan.ViewModels
                 var result = MessageBox.Show(Properties.Resources.CanGetNewVersion, Properties.Resources.AppName, MessageBoxButton.YesNo);
                 if (result == MessageBoxResult.Yes)
                 {
-                    Process.Start("https://github.com/t-miyake/OutlookOkan/releases");
+                    _ = Process.Start("https://github.com/t-miyake/OutlookOkan/releases");
                 }
             }
             else
             {
-                MessageBox.Show(Properties.Resources.YouHaveLatest, Properties.Resources.AppName, MessageBoxButton.OK);
+                _ = MessageBox.Show(Properties.Resources.YouHaveLatest, Properties.Resources.AppName, MessageBoxButton.OK);
             }
         }
     }

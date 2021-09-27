@@ -12,8 +12,8 @@ namespace OutlookOkan.Types
     {
         public NameAndDomainsMap()
         {
-            Map(m => m.Name).Index(0);
-            Map(m => m.Domain).Index(1);
+            _ = Map(m => m.Name).Index(0);
+            _ = Map(m => m.Domain).Index(1);
         }
     }
 }

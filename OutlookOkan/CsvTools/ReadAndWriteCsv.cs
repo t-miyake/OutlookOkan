@@ -31,8 +31,9 @@ namespace OutlookOkan.CsvTools
         private void CheckFileAndDirectoryExists()
         {
             if (!Directory.Exists(_directoryPath))
-                Directory.CreateDirectory(_directoryPath);
-
+            {
+                _ = Directory.CreateDirectory(_directoryPath);
+            }
 
             if (!File.Exists(_filePath))
                 File.Create(_filePath).Close();
@@ -47,7 +48,7 @@ namespace OutlookOkan.CsvTools
         {
             var csvReader = new CsvReader(new StreamReader(_filePath, _fileEncoding));
             csvReader.Configuration.HasHeaderRecord = false;
-            csvReader.Configuration.RegisterClassMap<TMaptype>();
+            _ = csvReader.Configuration.RegisterClassMap<TMaptype>();
 
             return csvReader;
         }
@@ -61,7 +62,7 @@ namespace OutlookOkan.CsvTools
         {
             var csvWriter = new CsvWriter(new StreamWriter(_filePath, false, Encoding.UTF8));
             csvWriter.Configuration.HasHeaderRecord = false;
-            csvWriter.Configuration.RegisterClassMap<TMaptype>();
+            _ = csvWriter.Configuration.RegisterClassMap<TMaptype>();
 
             csvWriter.WriteRecords(records);
 

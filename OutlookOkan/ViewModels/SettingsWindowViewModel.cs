@@ -122,11 +122,11 @@ namespace OutlookOkan.ViewModels
                     Whitelist.Add(data);
                 }
 
-                MessageBox.Show(Properties.Resources.SuccessfulImport, Properties.Resources.AppName, MessageBoxButton.OK);
+                _ = MessageBox.Show(Properties.Resources.SuccessfulImport, Properties.Resources.AppName, MessageBoxButton.OK);
             }
             catch (Exception)
             {
-                MessageBox.Show(Properties.Resources.ImportFailed, Properties.Resources.AppName, MessageBoxButton.OK);
+                _ = MessageBox.Show(Properties.Resources.ImportFailed, Properties.Resources.AppName, MessageBoxButton.OK);
             }
         }
 
@@ -188,11 +188,11 @@ namespace OutlookOkan.ViewModels
                     NameAndDomains.Add(data);
                 }
 
-                MessageBox.Show(Properties.Resources.SuccessfulImport, Properties.Resources.AppName, MessageBoxButton.OK);
+                _ = MessageBox.Show(Properties.Resources.SuccessfulImport, Properties.Resources.AppName, MessageBoxButton.OK);
             }
             catch (Exception)
             {
-                MessageBox.Show(Properties.Resources.ImportFailed, Properties.Resources.AppName, MessageBoxButton.OK);
+                _ = MessageBox.Show(Properties.Resources.ImportFailed, Properties.Resources.AppName, MessageBoxButton.OK);
             }
         }
 
@@ -254,11 +254,11 @@ namespace OutlookOkan.ViewModels
                     AlertKeywordAndMessages.Add(data);
                 }
 
-                MessageBox.Show(Properties.Resources.SuccessfulImport, Properties.Resources.AppName, MessageBoxButton.OK);
+                _ = MessageBox.Show(Properties.Resources.SuccessfulImport, Properties.Resources.AppName, MessageBoxButton.OK);
             }
             catch (Exception)
             {
-                MessageBox.Show(Properties.Resources.ImportFailed, Properties.Resources.AppName, MessageBoxButton.OK);
+                _ = MessageBox.Show(Properties.Resources.ImportFailed, Properties.Resources.AppName, MessageBoxButton.OK);
             }
         }
 
@@ -320,11 +320,11 @@ namespace OutlookOkan.ViewModels
                     AlertAddresses.Add(data);
                 }
 
-                MessageBox.Show(Properties.Resources.SuccessfulImport, Properties.Resources.AppName, MessageBoxButton.OK);
+                _ = MessageBox.Show(Properties.Resources.SuccessfulImport, Properties.Resources.AppName, MessageBoxButton.OK);
             }
             catch (Exception)
             {
-                MessageBox.Show(Properties.Resources.ImportFailed, Properties.Resources.AppName, MessageBoxButton.OK);
+                _ = MessageBox.Show(Properties.Resources.ImportFailed, Properties.Resources.AppName, MessageBoxButton.OK);
             }
         }
 
@@ -386,11 +386,11 @@ namespace OutlookOkan.ViewModels
                     AutoCcBccKeywords.Add(data);
                 }
 
-                MessageBox.Show(Properties.Resources.SuccessfulImport, Properties.Resources.AppName, MessageBoxButton.OK);
+                _ = MessageBox.Show(Properties.Resources.SuccessfulImport, Properties.Resources.AppName, MessageBoxButton.OK);
             }
             catch (Exception)
             {
-                MessageBox.Show(Properties.Resources.ImportFailed, Properties.Resources.AppName, MessageBoxButton.OK);
+                _ = MessageBox.Show(Properties.Resources.ImportFailed, Properties.Resources.AppName, MessageBoxButton.OK);
             }
         }
 
@@ -452,11 +452,11 @@ namespace OutlookOkan.ViewModels
                     AutoCcBccRecipients.Add(data);
                 }
 
-                MessageBox.Show(Properties.Resources.SuccessfulImport, Properties.Resources.AppName, MessageBoxButton.OK);
+                _ = MessageBox.Show(Properties.Resources.SuccessfulImport, Properties.Resources.AppName, MessageBoxButton.OK);
             }
             catch (Exception)
             {
-                MessageBox.Show(Properties.Resources.ImportFailed, Properties.Resources.AppName, MessageBoxButton.OK);
+                _ = MessageBox.Show(Properties.Resources.ImportFailed, Properties.Resources.AppName, MessageBoxButton.OK);
             }
         }
 
@@ -518,11 +518,11 @@ namespace OutlookOkan.ViewModels
                     AutoCcBccAttachedFiles.Add(data);
                 }
 
-                MessageBox.Show(Properties.Resources.SuccessfulImport, Properties.Resources.AppName, MessageBoxButton.OK);
+                _ = MessageBox.Show(Properties.Resources.SuccessfulImport, Properties.Resources.AppName, MessageBoxButton.OK);
             }
             catch (Exception)
             {
-                MessageBox.Show(Properties.Resources.ImportFailed, Properties.Resources.AppName, MessageBoxButton.OK);
+                _ = MessageBox.Show(Properties.Resources.ImportFailed, Properties.Resources.AppName, MessageBoxButton.OK);
             }
         }
 
@@ -584,11 +584,11 @@ namespace OutlookOkan.ViewModels
                     DeferredDeliveryMinutes.Add(data);
                 }
 
-                MessageBox.Show(Properties.Resources.SuccessfulImport, Properties.Resources.AppName, MessageBoxButton.OK);
+                _ = MessageBox.Show(Properties.Resources.SuccessfulImport, Properties.Resources.AppName, MessageBoxButton.OK);
             }
             catch (Exception)
             {
-                MessageBox.Show(Properties.Resources.ImportFailed, Properties.Resources.AppName, MessageBoxButton.OK);
+                _ = MessageBox.Show(Properties.Resources.ImportFailed, Properties.Resources.AppName, MessageBoxButton.OK);
             }
         }
 
@@ -650,11 +650,11 @@ namespace OutlookOkan.ViewModels
                     InternalDomainList.Add(data);
                 }
 
-                MessageBox.Show(Properties.Resources.SuccessfulImport, Properties.Resources.AppName, MessageBoxButton.OK);
+                _ = MessageBox.Show(Properties.Resources.SuccessfulImport, Properties.Resources.AppName, MessageBoxButton.OK);
             }
             catch (Exception)
             {
-                MessageBox.Show(Properties.Resources.ImportFailed, Properties.Resources.AppName, MessageBoxButton.OK);
+                _ = MessageBox.Show(Properties.Resources.ImportFailed, Properties.Resources.AppName, MessageBoxButton.OK);
             }
         }
 

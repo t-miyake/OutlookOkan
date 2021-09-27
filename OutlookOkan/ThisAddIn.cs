@@ -53,7 +53,7 @@ namespace OutlookOkan
             //送信保留中のメールのみ対象とする。
             if (currentItem.Submitted)
             {
-                MessageBox.Show(Properties.Resources.CanceledSendingMailMessage, Properties.Resources.CanceledSendingMail, MessageBoxButton.OK, MessageBoxImage.Warning);
+                _ = MessageBox.Show(Properties.Resources.CanceledSendingMailMessage, Properties.Resources.CanceledSendingMail, MessageBoxButton.OK, MessageBoxImage.Warning);
 
                 //再編集のため、配信指定日時をクリアする。
                 currentItem.DeferredDeliveryTime = new DateTime(4501, 1, 1, 0, 0, 0);
@@ -62,7 +62,7 @@ namespace OutlookOkan
 
             ((Outlook.InspectorEvents_Event)inspector).Close += () =>
             {
-                Marshal.ReleaseComObject(currentItem);
+                _ = Marshal.ReleaseComObject(currentItem);
                 currentItem = null;
                 GC.Collect();
                 GC.WaitForPendingFinalizers();
@@ -89,7 +89,7 @@ namespace OutlookOkan
                     var range = mailItemWordEditor.Range(0, 0);
                     range.InsertAfter(" ");
                     range = mailItemWordEditor.Range(0, 0);
-                    range.Delete();
+                    _ = range.Delete();
                 }
                 catch (Exception)
                 {
@@ -137,7 +137,7 @@ namespace OutlookOkan
                     //このタイミングで落ちると、メールが送信されてしまうので、念のためのTry Catch。
                     try
                     {
-                        MessageBox.Show(checklist.CanNotSendMailMessage, Properties.Resources.SendingForbid, MessageBoxButton.OK, MessageBoxImage.Error);
+                        _ = MessageBox.Show(checklist.CanNotSendMailMessage, Properties.Resources.SendingForbid, MessageBoxButton.OK, MessageBoxImage.Error);
                     }
                     catch (Exception)
                     {

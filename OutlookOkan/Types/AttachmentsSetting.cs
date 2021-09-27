@@ -13,13 +13,14 @@ namespace OutlookOkan.Types
     {
         public AttachmentsSettingMap()
         {
-            Map(m => m.IsWarningWhenEncryptedZipIsAttached).Index(0).TypeConverterOption
+            _ = Map(m => m.IsWarningWhenEncryptedZipIsAttached).Index(0).TypeConverterOption
                 .BooleanValues(true, true, "Yes", "Y").TypeConverterOption.BooleanValues(false, true, "No", "N").Default(false);
 
-            Map(m => m.IsProhibitedWhenEncryptedZipIsAttached).Index(1).TypeConverterOption
+            _ = Map(m => m.IsProhibitedWhenEncryptedZipIsAttached).Index(1).TypeConverterOption
                 .BooleanValues(true, true, "Yes", "Y").TypeConverterOption.BooleanValues(false, true, "No", "N").Default(false);
 
-            Map(m => m.IsEnableAllAttachedFilesAreDetectEncryptedZip).Index(2).TypeConverterOption
+            _ = Map(m => m.IsEnableAllAttachedFilesAreDetectEncryptedZip).Index(2).TypeConverterOption
+                .BooleanValues(true, true, "Yes", "Y").TypeConverterOption.BooleanValues(false, true, "No", "N").Default(false);
                 .BooleanValues(true, true, "Yes", "Y").TypeConverterOption.BooleanValues(false, true, "No", "N").Default(false);
         }
     }

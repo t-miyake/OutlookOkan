@@ -93,7 +93,7 @@ namespace OutlookOkan.Models
             if (autoAddRecipients?.Count > 0)
             {
                 displayNameAndRecipient = MakeDisplayNameAndRecipient(autoAddRecipients, displayNameAndRecipient, generalSetting);
-                mail.Recipients.ResolveAll();
+                _ = mail.Recipients.ResolveAll();
             }
 
             displayNameAndRecipient = ExternalDomainsChangeToBccIfNeeded(mail, displayNameAndRecipient,
@@ -277,12 +277,12 @@ namespace OutlookOkan.Models
             {
                 foreach (var recipient in displayNameAndRecipient.To.Select(mail => mail.Key).Where(recipient => recipient != Resources.FailedToGetInformation && recipient.Contains("@")))
                 {
-                    domainList.Add(recipient.Substring(recipient.IndexOf("@", StringComparison.Ordinal)));
+                    _ = domainList.Add(recipient.Substring(recipient.IndexOf("@", StringComparison.Ordinal)));
                 }
 
                 foreach (var recipient in displayNameAndRecipient.Cc.Select(mail => mail.Key).Where(recipient => recipient != Resources.FailedToGetInformation && recipient.Contains("@")))
                 {
-                    domainList.Add(recipient.Substring(recipient.IndexOf("@", StringComparison.Ordinal)));
+                    _ = domainList.Add(recipient.Substring(recipient.IndexOf("@", StringComparison.Ordinal)));
                 }
             }
             else
@@ -371,7 +371,7 @@ namespace OutlookOkan.Models
 
                 try
                 {
-                    recipient.Resolve();
+                    _ = recipient.Resolve();
                     var propertyAccessor = tempRecipient.AddressEntry.PropertyAccessor;
                     Thread.Sleep(20);
 
@@ -497,7 +497,7 @@ namespace OutlookOkan.Models
 
                     try
                     {
-                        tempRecipient.Resolve();
+                        _ = tempRecipient.Resolve();
                         var propertyAccessor = tempRecipient.AddressEntry.PropertyAccessor;
                         Thread.Sleep(20);
 
@@ -967,7 +967,7 @@ namespace OutlookOkan.Models
             }
 
             var tempDirectoryPath = Path.Combine(Path.GetTempPath(), Guid.NewGuid().ToString("N"));
-            Directory.CreateDirectory(tempDirectoryPath);
+            _ = Directory.CreateDirectory(tempDirectoryPath);
 
             for (var i = 0; i < mail.Attachments.Count; i++)
             {
@@ -1396,7 +1396,7 @@ namespace OutlookOkan.Models
                 senderRecipient.Type = (int)Outlook.OlMailRecipientType.olTo;
             }
 
-            mail.Recipients.ResolveAll();
+            _ = mail.Recipients.ResolveAll();
         }
 
         /// <summary>
@@ -1431,7 +1431,7 @@ namespace OutlookOkan.Models
             }
             foreach (var target in removeTarget)
             {
-                displayNameAndRecipient.To.Remove(target);
+                _ = displayNameAndRecipient.To.Remove(target);
             }
 
             removeTarget.Clear();
@@ -1450,7 +1450,7 @@ namespace OutlookOkan.Models
             }
             foreach (var target in removeTarget)
             {
-                displayNameAndRecipient.Cc.Remove(target);
+                _ = displayNameAndRecipient.Cc.Remove(target);
             }
 
             AddAlerts(Resources.ExternalDomainsChangeToBccAlert + $"[{settings.TargetToAndCcExternalDomainsNum}]", true, false, false);

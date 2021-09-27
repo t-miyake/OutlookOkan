@@ -19,7 +19,7 @@ namespace OutlookOkan.CsvTools
         /// <returns>インポートするCSVファイルのパス</returns>
         internal string ImportCsv()
         {
-            MessageBox.Show(Resources.CSVImportAlert, Resources.AppName, MessageBoxButton.OK);
+            _ = MessageBox.Show(Resources.CSVImportAlert, Resources.AppName, MessageBoxButton.OK);
 
             var openFileDialog = new OpenFileDialog
             {
@@ -45,7 +45,7 @@ namespace OutlookOkan.CsvTools
         {
             var csvReader = new CsvReader(new StreamReader(filePath, _fileEncoding));
             csvReader.Configuration.HasHeaderRecord = false;
-            csvReader.Configuration.RegisterClassMap<TMaptype>();
+            _ = csvReader.Configuration.RegisterClassMap<TMaptype>();
 
             return csvReader;
         }
@@ -72,15 +72,15 @@ namespace OutlookOkan.CsvTools
             {
                 var csvWriter = new CsvWriter(new StreamWriter(saveFileDialog.FileName, false, Encoding.UTF8));
                 csvWriter.Configuration.HasHeaderRecord = false;
-                csvWriter.Configuration.RegisterClassMap<TMaptype>();
+                _ = csvWriter.Configuration.RegisterClassMap<TMaptype>();
                 csvWriter.WriteRecords(records);
                 csvWriter.Dispose();
 
-                MessageBox.Show(Resources.SuccessfulExport, Resources.AppName, MessageBoxButton.OK);
+                _ = MessageBox.Show(Resources.SuccessfulExport, Resources.AppName, MessageBoxButton.OK);
             }
             catch (Exception e)
             {
-                MessageBox.Show(Resources.ExportFailed + e, Resources.AppName, MessageBoxButton.OK);
+                _ = MessageBox.Show(Resources.ExportFailed + e, Resources.AppName, MessageBoxButton.OK);
             }
         }
     }
