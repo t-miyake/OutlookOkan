@@ -86,6 +86,7 @@ namespace OutlookOkan.Models
             _checkList.MailHtmlBody = mail.HTMLBody ?? Resources.FailedToGetInformation;
 
             _checkList = GetSenderAndSenderDomain(in mail, _checkList);
+            internalDomainList.Add(new InternalDomain { Domain = _checkList.SenderDomain });
 
             _checkList = GetAttachmentsInformation(in mail, _checkList, generalSetting.IsNotTreatedAsAttachmentsAtHtmlEmbeddedFiles, attachmentsSetting);
 
@@ -1144,17 +1145,14 @@ namespace OutlookOkan.Models
         /// <param name="alertAddressList">警告アドレス設定</param>
         /// <param name="internalDomainList">内部ドメイン設定</param>
         /// <returns>CheckList</returns>
-        private CheckList GetRecipient(CheckList checkList, DisplayNameAndRecipient displayNameAndRecipient, IReadOnlyCollection<AlertAddress> alertAddressList, List<InternalDomain> internalDomainList)
+        private CheckList GetRecipient(CheckList checkList, DisplayNameAndRecipient displayNameAndRecipient, IReadOnlyCollection<AlertAddress> alertAddressList, IReadOnlyCollection<InternalDomain> internalDomainList)
         {
             if (displayNameAndRecipient is null) return checkList;
-
-            var internalDomains = internalDomainList;
-            internalDomains.Add(new InternalDomain { Domain = checkList.SenderDomain });
 
             foreach (var to in displayNameAndRecipient.To)
             {
                 var isExternal = true;
-                foreach (var _ in internalDomains.Where(settings => to.Key.Contains(settings.Domain)))
+                foreach (var _ in internalDomainList.Where(settings => to.Key.Contains(settings.Domain)))
                 {
                     isExternal = false;
                 }
@@ -1194,7 +1192,7 @@ namespace OutlookOkan.Models
             foreach (var cc in displayNameAndRecipient.Cc)
             {
                 var isExternal = true;
-                foreach (var _ in internalDomains.Where(settings => cc.Key.Contains(settings.Domain)))
+                foreach (var _ in internalDomainList.Where(settings => cc.Key.Contains(settings.Domain)))
                 {
                     isExternal = false;
                 }
@@ -1234,7 +1232,7 @@ namespace OutlookOkan.Models
             foreach (var bcc in displayNameAndRecipient.Bcc)
             {
                 var isExternal = true;
-                foreach (var _ in internalDomains.Where(settings => bcc.Key.Contains(settings.Domain)))
+                foreach (var _ in internalDomainList.Where(settings => bcc.Key.Contains(settings.Domain)))
                 {
                     isExternal = false;
                 }
