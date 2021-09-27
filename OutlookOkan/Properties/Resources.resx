@@ -603,4 +603,7 @@ this feature will be applied.</value>
   <data name="ExternalRecipient" xml:space="preserve">
     <value>External recipient</value>
   </data>
+  <data name="DistributionList" xml:space="preserve">
+    <value>Distribution list</value>
+  </data>
 </root>

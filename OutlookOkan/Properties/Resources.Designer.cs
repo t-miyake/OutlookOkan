@@ -480,6 +480,15 @@ namespace OutlookOkan.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Distribution list.
+        /// </summary>
+        public static string DistributionList {
+            get {
+                return ResourceManager.GetString("DistributionList", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Domain.
         /// </summary>
         public static string Domain {

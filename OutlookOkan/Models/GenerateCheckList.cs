@@ -21,6 +21,7 @@ namespace OutlookOkan.Models
     {
         private CheckList _checkList = new CheckList();
         private readonly List<Whitelist> _whitelist = new List<Whitelist>();
+        private int _failedToGetInformationOfRecipientsMailAddressCounter;
 
         /// <summary>
         /// メール送信前の確認画面で使用するチェックリストの生成。
@@ -329,7 +330,9 @@ namespace OutlookOkan.Models
         /// <returns>宛先メールアドレスと宛先名称</returns>
         private IEnumerable<NameAndRecipient> GetNameAndRecipient(Outlook.Recipient recipient)
         {
-            var mailAddress = Resources.FailedToGetInformation;
+            _failedToGetInformationOfRecipientsMailAddressCounter++;
+
+            var mailAddress = Resources.FailedToGetInformation + "_" + _failedToGetInformationOfRecipientsMailAddressCounter;
             if (IsValidEmailAddress(recipient.Name))
             {
                 mailAddress = recipient.Name;
@@ -352,7 +355,7 @@ namespace OutlookOkan.Models
                     {
                         try
                         {
-                            mailAddress = propertyAccessor.GetProperty(@"http://schemas.microsoft.com/mapi/proptag/0x39FE001E").ToString() ?? Resources.FailedToGetInformation;
+                            mailAddress = propertyAccessor.GetProperty(@"http://schemas.microsoft.com/mapi/proptag/0x39FE001E").ToString() ?? Resources.FailedToGetInformation + "_" + _failedToGetInformationOfRecipientsMailAddressCounter;
 
                             isDone = true;
                         }
@@ -394,7 +397,7 @@ namespace OutlookOkan.Models
                     {
                         try
                         {
-                            mailAddress = propertyAccessor.GetProperty(@"http://schemas.microsoft.com/mapi/proptag/0x39FE001E").ToString() ?? Resources.FailedToGetInformation;
+                            mailAddress = propertyAccessor.GetProperty(@"http://schemas.microsoft.com/mapi/proptag/0x39FE001E").ToString() ?? Resources.FailedToGetInformation + "_" + _failedToGetInformationOfRecipientsMailAddressCounter;
                             isDone = true;
                         }
                         catch (COMException e)
@@ -442,6 +445,7 @@ namespace OutlookOkan.Models
         /// <returns>宛先メールアドレスと宛先名称</returns>
         private IEnumerable<NameAndRecipient> GetExchangeDistributionListMembers(Outlook.Recipient recipient, bool enableGetExchangeDistributionListMembers, bool exchangeDistributionListMembersAreWhite)
         {
+            _failedToGetInformationOfRecipientsMailAddressCounter++;
             Outlook.OlAddressEntryUserType recipientAddressEntryUserType;
             try
             {
@@ -497,7 +501,7 @@ namespace OutlookOkan.Models
 
                 if (addressEntries is null || addressEntries.Count == 0)
                 {
-                    exchangeDistributionListMembers.Add(new NameAndRecipient { MailAddress = distributionList.PrimarySmtpAddress ?? Resources.FailedToGetInformation, NameAndMailAddress = (distributionList.Name ?? Resources.FailedToGetInformation) + $@" ({distributionList.PrimarySmtpAddress ?? Resources.FailedToGetInformation})" });
+                    exchangeDistributionListMembers.Add(new NameAndRecipient { MailAddress = distributionList.PrimarySmtpAddress ?? Resources.FailedToGetInformation + "_" + _failedToGetInformationOfRecipientsMailAddressCounter, NameAndMailAddress = (distributionList.Name ?? Resources.FailedToGetInformation) + $@" ({distributionList.PrimarySmtpAddress ?? Resources.DistributionList})" });
 
                     return exchangeDistributionListMembers;
                 }
@@ -506,7 +510,7 @@ namespace OutlookOkan.Models
                 foreach (Outlook.AddressEntry member in addressEntries)
                 {
                     var tempRecipient = tempOutlookApp.Session.CreateRecipient(member.Address);
-                    var mailAddress = Resources.FailedToGetInformation;
+                    var mailAddress = Resources.FailedToGetInformation + "_" + _failedToGetInformationOfRecipientsMailAddressCounter;
 
                     try
                     {
@@ -520,7 +524,7 @@ namespace OutlookOkan.Models
                         {
                             try
                             {
-                                mailAddress = propertyAccessor.GetProperty(@"http://schemas.microsoft.com/mapi/proptag/0x39FE001E").ToString() ?? Resources.FailedToGetInformation;
+                                mailAddress = propertyAccessor.GetProperty(@"http://schemas.microsoft.com/mapi/proptag/0x39FE001E").ToString() ?? Resources.FailedToGetInformation + "_" + _failedToGetInformationOfRecipientsMailAddressCounter;
                                 isDone = true;
                             }
                             catch (COMException e)
