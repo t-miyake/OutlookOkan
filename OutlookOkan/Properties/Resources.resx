@@ -148,13 +148,13 @@
     <value>Attachments</value>
   </data>
   <data name="AutoAddCCorBCCByKeyword" xml:space="preserve">
-    <value>Automatic Cc/Bcc addition(by keywords)</value>
+    <value>Automatic Cc/Bcc addition (by keywords)</value>
   </data>
   <data name="AutoAddCCorBCCByKeywordInfo" xml:space="preserve">
     <value>Keywords that automatically add Ccs or Bccs.</value>
   </data>
   <data name="AutoAddCCorBCCByMailAddressOrDomain" xml:space="preserve">
-    <value>Automatic Cc/Bcc addition(by recipients)</value>
+    <value>Automatic Cc/Bcc addition (by recipients)</value>
   </data>
   <data name="AutoAddCCorBCCByMailAddressOrDomainInfo" xml:space="preserve">
     <value>Recipients or domains that automatically add Ccs or Bccs.</value>
@@ -232,7 +232,8 @@
     <value>If all recipient's domains are internal domain, skip the confirmation window.</value>
   </data>
   <data name="IfAllWhite" xml:space="preserve">
-    <value>If there is no check target in the recipients, skip the confirmation window. (e.g., if all recipients are included in the allowlist.)</value>
+    <value>If there is no check target in the recipients, skip the confirmation window.
+(e.g., if all recipients are included in the allowlist.)</value>
   </data>
   <data name="ImportAndExport" xml:space="preserve">
     <value>Import/Export</value>
@@ -283,7 +284,7 @@
     <value>Recipient address/domain</value>
   </data>
   <data name="MailInfo" xml:space="preserve">
-    <value>Mail Infomation</value>
+    <value>Mail Information</value>
   </data>
   <data name="MailType" xml:space="preserve">
     <value>Type</value>
@@ -292,7 +293,7 @@
     <value>Name</value>
   </data>
   <data name="NameAndDomain" xml:space="preserve">
-    <value>Name/Domain</value>
+    <value>Relating recipient's name and domain</value>
   </data>
   <data name="NoAlert" xml:space="preserve">
     <value>There are no important alerts.</value>
@@ -429,7 +430,8 @@ The relevant recipients will be pre-checked in the confirmation screen.</value>
     <value>Would you like to send this email?</value>
   </data>
   <data name="IsShowConfirmationToMultipleDomain" xml:space="preserve">
-    <value>If the recipients contains multiple external domains, display the confirmation window. (Doesn't skip the confirmation window.)</value>
+    <value>If the recipients contains multiple external domains, display the confirmation window. 
+(Doesn't skip the confirmation window.)</value>
   </data>
   <data name="IsSkipConfirmation" xml:space="preserve">
     <value>Skip confirmation window.</value>
@@ -495,7 +497,7 @@ Do you want to download it?</value>
     <value>This add-in is the latest version.</value>
   </data>
   <data name="AutoAddCCorBCCByAttachedFile" xml:space="preserve">
-    <value>Automatic Cc/Bcc addition(by attachments)</value>
+    <value>Automatic Cc/Bcc addition (by attachments)</value>
   </data>
   <data name="IsNotTreatedAsAttachmentsAtHtmlEmbeddedFiles" xml:space="preserve">
     <value>A file embedded in an HTML mail is not treated as an attachment.</value>
@@ -539,7 +541,8 @@ The domain of the sender's email address is always treated as an internal domain
     <value>Basic Settings</value>
   </data>
   <data name="ExternalDomainsWarningAndAutoChangeToBcc" xml:space="preserve">
-    <value>External domains warning and auto change to Bcc</value>
+    <value>External domains warning and 
+auto change to Bcc</value>
   </data>
   <data name="IsAutoChangeToBccWhenLargeNumberOfExternalDomains" xml:space="preserve">
     <value>The external recipient of To and Cc are automatically converted to Bcc 
@@ -560,8 +563,7 @@ If the To does not exist after automatic change to Bcc, the sender's address wil
     <value>The number of external domains of the recipients (To/Cc) to be covered by this feature.</value>
   </data>
   <data name="TargetToAndCcExternalDomainsNumInfo" xml:space="preserve">
-    <value>* If the external domain included in the To and Cc of the email is greater than or equal to this setting, 
-this feature will be applied.</value>
+    <value>* If the external domain included in the To and Cc of the email is greater than or equal to this setting, this feature will be applied.</value>
   </data>
   <data name="AutoAddSendersAddressToAlert" xml:space="preserve">
     <value>The sender's Email address was automatically added to the To. (because the To no longer exists due to auto change to Bcc.)</value>
@@ -585,7 +587,7 @@ this feature will be applied.</value>
     <value>Attached is an encrypted ZIP file.</value>
   </data>
   <data name="EncryptedZipBeta" xml:space="preserve">
-    <value>Encrypted Zip (Beta)</value>
+    <value>Encrypted Zip file attachment warning</value>
   </data>
   <data name="IsEnableAllAttachedFilesAreDetectEncryptedZip" xml:space="preserve">
     <value>Attached files with an extension other than ".zip" also detect whether they are encrypted ZIP or not.</value>

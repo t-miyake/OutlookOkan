@@ -960,12 +960,9 @@ namespace OutlookOkan.ViewModels
 
             //設定ファイル内に言語設定があればそれをロードする。
             Language.LanguageCode = _generalSetting[0].LanguageCode;
-            foreach (var lang in Languages)
+            foreach (var lang in Languages.Where(lang => lang.LanguageCode == Language.LanguageCode))
             {
-                if (lang.LanguageCode == Language.LanguageCode)
-                {
-                    LanguageNumber = lang.LanguageNumber;
-                }
+                LanguageNumber = lang.LanguageNumber;
             }
         }
 

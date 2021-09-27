@@ -88,6 +88,24 @@ namespace OutlookOkan.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Alert Keywords (Body).
+        /// </summary>
+        public static string AlertKeywordForBody {
+            get {
+                return ResourceManager.GetString("AlertKeywordForBody", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Alert Keywords (Subject).
+        /// </summary>
+        public static string AlertKeywordForSubject {
+            get {
+                return ResourceManager.GetString("AlertKeywordForSubject", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Keywords to alert.
         /// </summary>
         public static string AlertKeywordInfo {
@@ -178,7 +196,6 @@ namespace OutlookOkan.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Automatic Cc/Bcc addition(by attachments).
         /// </summary>
         public static string AutoAddCCorBCCByAttachedFile {
             get {
@@ -187,7 +204,7 @@ namespace OutlookOkan.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Automatic Cc/Bcc addition(by keywords).
+        ///   Looks up a localized string similar to Automatic Cc/Bcc addition (by keywords).
         /// </summary>
         public static string AutoAddCCorBCCByKeyword {
             get {
@@ -205,7 +222,7 @@ namespace OutlookOkan.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Automatic Cc/Bcc addition(by recipients).
+        ///   Looks up a localized string similar to Automatic Cc/Bcc addition (by recipients).
         /// </summary>
         public static string AutoAddCCorBCCByMailAddressOrDomain {
             get {
@@ -543,7 +560,7 @@ namespace OutlookOkan.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Encrypted Zip (Beta).
+        ///   Looks up a localized string similar to Encrypted Zip file attachment warning.
         /// </summary>
         public static string EncryptedZipBeta {
             get {
@@ -579,7 +596,8 @@ namespace OutlookOkan.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to External domains warning and auto change to Bcc.
+        ///   Looks up a localized string similar to External domains warning and 
+        ///auto change to Bcc.
         /// </summary>
         public static string ExternalDomainsWarningAndAutoChangeToBcc {
             get {
@@ -687,7 +705,8 @@ namespace OutlookOkan.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to If there is no check target in the recipients, skip the confirmation window. (e.g., if all recipients are included in the allowlist.).
+        ///   Looks up a localized string similar to If there is no check target in the recipients, skip the confirmation window.
+        ///(e.g., if all recipients are included in the allowlist.).
         /// </summary>
         public static string IfAllWhite {
             get {
@@ -941,7 +960,7 @@ namespace OutlookOkan.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to If the recipients contains multiple external domains, display the confirmation window. (Doesn&apos;t skip the confirmation window.).
+        ///   Looks up a localized string similar to Prohibits sending mail if the recipient is not registered in the Contacts..
         /// </summary>
         public static string IsShowConfirmationToMultipleDomain {
             get {
@@ -1030,7 +1049,7 @@ namespace OutlookOkan.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Mail Infomation.
+        ///   Looks up a localized string similar to Mail Information.
         /// </summary>
         public static string MailInfo {
             get {
@@ -1057,7 +1076,7 @@ namespace OutlookOkan.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Name/Domain.
+        ///   Looks up a localized string similar to Relating recipient&apos;s name and domain.
         /// </summary>
         public static string NameAndDomain {
             get {
@@ -1224,6 +1243,8 @@ namespace OutlookOkan.Properties {
         ///
         ///Register the keywords to be alert and their alerting text.
         ///
+        ///If the keyword is included in the body you can display a warning or prohibit the sending of that email.
+        ///
         ///If the alerting text is blank, the confirmation screen will show the default alerting text..
         /// </summary>
         public static string SettingExampleAlertKeyword {
@@ -1350,6 +1371,22 @@ namespace OutlookOkan.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Keywords: Confidential
+        ///Alerting text: It includes the phrase &quot;Confidential&quot;.
+        ///
+        ///Register the keywords to be alert and their alerting text.
+        ///
+        ///If the keyword is included in the subject you can display a warning or prohibit the sending of that email.
+        ///
+        ///If the alerting text is blank, the confirmation screen will show the default alerting text..
+        /// </summary>
+        public static string SettingExampleAlertKeywordForSubject {
+            get {
+                return ResourceManager.GetString("SettingExampleAlertKeywordForSubject", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Email address: info@noraneko.co.jp
         ///or
         ///Domain: @noraneko.co.jp
@@ -1410,8 +1447,7 @@ namespace OutlookOkan.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to * If the external domain included in the To and Cc of the email is greater than or equal to this setting, 
-        ///this feature will be applied..
+        ///   Looks up a localized string similar to * If the external domain included in the To and Cc of the email is greater than or equal to this setting, this feature will be applied..
         /// </summary>
         public static string TargetToAndCcExternalDomainsNumInfo {
             get {

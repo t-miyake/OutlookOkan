@@ -148,13 +148,13 @@
     <value>添付ファイル</value>
   </data>
   <data name="AutoAddCCorBCCByKeyword" xml:space="preserve">
-    <value>自動Cc/Bcc追加(キーワード)</value>
+    <value>自動Cc/Bcc追加 (キーワード)</value>
   </data>
   <data name="AutoAddCCorBCCByKeywordInfo" xml:space="preserve">
     <value>自動でCcやBccを追加したいキーワード。</value>
   </data>
   <data name="AutoAddCCorBCCByMailAddressOrDomain" xml:space="preserve">
-    <value>自動Cc/Bcc追加(宛先)</value>
+    <value>自動Cc/Bcc追加 (宛先)</value>
   </data>
   <data name="AutoAddCCorBCCByMailAddressOrDomainInfo" xml:space="preserve">
     <value>自動でCcやBccを追加したいアドレスまたはドメイン。(@から)</value>
@@ -232,7 +232,8 @@
     <value>全ての宛先のドメインが内部ドメインの場合、確認画面を表示しない。</value>
   </data>
   <data name="IfAllWhite" xml:space="preserve">
-    <value>宛先にチェック対象が存在しない場合、確認画面を表示しない。(全ての宛先が許可リストに含まれる場合など)</value>
+    <value>宛先にチェック対象が存在しない場合、確認画面を表示しない。
+(全ての宛先が許可リストに含まれる場合など)</value>
   </data>
   <data name="ImportAndExport" xml:space="preserve">
     <value>インポート/エクスポート</value>
@@ -292,7 +293,7 @@
     <value>名称</value>
   </data>
   <data name="NameAndDomain" xml:space="preserve">
-    <value>宛先名称/ドメイン</value>
+    <value>宛先名称とドメインの紐づけ</value>
   </data>
   <data name="NoAlert" xml:space="preserve">
     <value>重要な警告はありません。</value>
@@ -429,7 +430,8 @@
     <value>メールを送信しますか？</value>
   </data>
   <data name="IsShowConfirmationToMultipleDomain" xml:space="preserve">
-    <value>宛先に複数の異なった外部ドメインが含まれている場合、必ず確認画面を表示する。(確認画面をスキップしない)</value>
+    <value>宛先に複数の異なった外部ドメインが含まれている場合、必ず確認画面を表示する。
+(確認画面をスキップしない)</value>
   </data>
   <data name="IsSkipConfirmation" xml:space="preserve">
     <value>確認画面をスキップ</value>
@@ -479,7 +481,7 @@
     <value>連絡先グループのメンバーを表示する。</value>
   </data>
   <data name="GetMembersOfTheExDistList" xml:space="preserve">
-    <value>Exchange配布リストのメンバーを表示する。(表示に時間がかかる場合があります。)</value>
+    <value>Exchange配布リストのメンバーを表示する。(処理に時間がかかる場合があります。)</value>
   </data>
   <data name="GetMembersOfTheList" xml:space="preserve">
     <value>Exchange配布リストや連絡先グループのメンバー表示設定</value>
@@ -495,7 +497,7 @@
     <value>最新版をご利用です。</value>
   </data>
   <data name="AutoAddCCorBCCByAttachedFile" xml:space="preserve">
-    <value>自動Cc/Bcc追加(添付ファイル)</value>
+    <value>自動Cc/Bcc追加 (添付ファイル)</value>
   </data>
   <data name="IsNotTreatedAsAttachmentsAtHtmlEmbeddedFiles" xml:space="preserve">
     <value>HTMLメールに埋め込まれたファイルは、添付ファイルとして扱わない。</value>
@@ -583,7 +585,7 @@
     <value>暗号化ZIPが添付されています。</value>
   </data>
   <data name="EncryptedZipBeta" xml:space="preserve">
-    <value>暗号化Zip (Beta)</value>
+    <value>暗号化Zipファイル添付の警告</value>
   </data>
   <data name="IsEnableAllAttachedFilesAreDetectEncryptedZip" xml:space="preserve">
     <value>拡張子が「.zip」以外の添付ファイルも、暗号化ZIPファイルか否かの検知を行う。</value>

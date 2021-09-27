@@ -94,13 +94,11 @@ namespace OutlookOkan.Models
             internalDomainList.Add(new InternalDomain { Domain = _checkList.SenderDomain });
 
             _checkList = GetAttachmentsInformation(in mail, _checkList, generalSetting.IsNotTreatedAsAttachmentsAtHtmlEmbeddedFiles, attachmentsSetting);
-
-            var displayNameAndRecipient = MakeDisplayNameAndRecipient(mail.Recipients, new DisplayNameAndRecipient(), generalSetting);
-
             _checkList = CheckForgotAttach(_checkList, generalSetting);
-
             _checkList = CheckKeyword(_checkList, alertKeywordAndMessageList);
             _checkList = CheckKeywordForSubject(_checkList, alertKeywordAndMessageForSubjectList);
+
+            var displayNameAndRecipient = MakeDisplayNameAndRecipient(mail.Recipients, new DisplayNameAndRecipient(), generalSetting);
 
             var autoAddRecipients = AutoAddCcAndBcc(mail, generalSetting, displayNameAndRecipient, autoCcBccKeywordList, autoCcBccAttachedFilesList, autoCcBccRecipientList, CountRecipientExternalDomains(displayNameAndRecipient, _checkList.SenderDomain, internalDomainList, false), _checkList.Sender, generalSetting.IsAutoAddSenderToBcc);
             if (autoAddRecipients?.Count > 0)
@@ -109,18 +107,13 @@ namespace OutlookOkan.Models
                 _ = mail.Recipients.ResolveAll();
             }
 
-            displayNameAndRecipient = ExternalDomainsChangeToBccIfNeeded(mail, displayNameAndRecipient,
-                externalDomainsWarningAndAutoChangeToBccSetting, internalDomainList,
-                CountRecipientExternalDomains(displayNameAndRecipient, _checkList.SenderDomain, internalDomainList, true),
-                _checkList.SenderDomain, _checkList.Sender);
+            displayNameAndRecipient = ExternalDomainsChangeToBccIfNeeded(mail, displayNameAndRecipient, externalDomainsWarningAndAutoChangeToBccSetting, internalDomainList, CountRecipientExternalDomains(displayNameAndRecipient, _checkList.SenderDomain, internalDomainList, true), _checkList.SenderDomain, _checkList.Sender);
 
             _checkList = GetRecipient(_checkList, displayNameAndRecipient, alertAddressList, internalDomainList);
 
             _checkList = CheckMailBodyAndRecipient(_checkList, displayNameAndRecipient, nameAndDomainsList, generalSetting.IsCheckNameAndDomainsFromRecipients);
             _checkList.RecipientExternalDomainNumAll = CountRecipientExternalDomains(displayNameAndRecipient, _checkList.SenderDomain, internalDomainList, false);
-
             _checkList = ExternalDomainsWarningIfNeeded(_checkList, externalDomainsWarningAndAutoChangeToBccSetting, CountRecipientExternalDomains(displayNameAndRecipient, _checkList.SenderDomain, internalDomainList, true));
-
             _checkList.DeferredMinutes = CalcDeferredMinutes(displayNameAndRecipient, deferredDeliveryMinutes, generalSetting.IsDoNotUseDeferredDeliveryIfAllRecipientsAreInternalDomain, _checkList.RecipientExternalDomainNumAll);
 
             if (!(contacts is null))
