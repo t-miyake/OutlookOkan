@@ -187,6 +187,24 @@ namespace OutlookOkan.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Attachment prohibited address.
+        /// </summary>
+        public static string AttachmentProhibitedRecipients {
+            get {
+                return ResourceManager.GetString("AttachmentProhibitedRecipients", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to This recipients who are prohibited from sending attachments..
+        /// </summary>
+        public static string AttachmentProhibitedRecipientsMessage {
+            get {
+                return ResourceManager.GetString("AttachmentProhibitedRecipientsMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Attachments.
         /// </summary>
         public static string Attachments {
@@ -204,6 +222,26 @@ namespace OutlookOkan.Properties {
             }
         }
         
+        /// <summary>
+        ///   Looks up a localized string similar to Attachments name/Keyword.
+        /// </summary>
+        public static string AttachmentsName {
+            get {
+                return ResourceManager.GetString("AttachmentsName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Sending e-mail with attachments is prohibited..
+        /// </summary>
+        public static string AttachmentsProhibitedMessage {
+            get {
+                return ResourceManager.GetString("AttachmentsProhibitedMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Automatic Cc/Bcc addition (by attachments).
         /// </summary>
         public static string AutoAddCCorBCCByAttachedFile {
             get {
@@ -876,6 +914,15 @@ namespace OutlookOkan.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Sending is prohibited when a file is attached..
+        /// </summary>
+        public static string IsAttachmentsProhibited {
+            get {
+                return ResourceManager.GetString("IsAttachmentsProhibited", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to The external recipient of To and Cc are automatically converted to Bcc 
         ///when the recipients (To/Cc) has a large number of external domains..
         /// </summary>
@@ -988,6 +1035,16 @@ namespace OutlookOkan.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Prohibits sending mail if the recipient is not registered in the Contacts..
         /// </summary>
+        public static string IsProhibitsSendingMailIfRecipientsIsNotRegistered {
+            get {
+                return ResourceManager.GetString("IsProhibitsSendingMailIfRecipientsIsNotRegistered", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to If the recipients contains multiple external domains, display the confirmation window. 
+        ///(Doesn&apos;t skip the confirmation window.).
+        /// </summary>
         public static string IsShowConfirmationToMultipleDomain {
             get {
                 return ResourceManager.GetString("IsShowConfirmationToMultipleDomain", resourceCulture);
@@ -1020,6 +1077,16 @@ namespace OutlookOkan.Properties {
                 return ResourceManager.GetString("IsWarningIfRecipientsIsNotRegistered", resourceCulture);
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to If a file is attached, it is recommended to attach it as a link on the confirmation window..
+        /// </summary>
+        public static string IsWarningWhenAttachedRealFile {
+            get {
+                return ResourceManager.GetString("IsWarningWhenAttachedRealFile", resourceCulture);
+            }
+        }
+        
         /// <summary>
         ///   Looks up a localized string similar to Display a warning when an encrypted ZIP file is attached..
         /// </summary>
@@ -1143,6 +1210,42 @@ namespace OutlookOkan.Properties {
         public static string ProhibitedWhenLargeNumberOfExternalDomainsAlert {
             get {
                 return ResourceManager.GetString("ProhibitedWhenLargeNumberOfExternalDomainsAlert", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Sending e-mail to an unregistered contact is prohibited..
+        /// </summary>
+        public static string ProhibitsSendingMailIfRecipientsIsNotRegisteredMessage {
+            get {
+                return ResourceManager.GetString("ProhibitsSendingMailIfRecipientsIsNotRegisteredMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Relating recipient&apos;s and Attachment Names.
+        /// </summary>
+        public static string RecipientsAndAttachmentsName {
+            get {
+                return ResourceManager.GetString("RecipientsAndAttachmentsName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Unrelated recipients and attachments..
+        /// </summary>
+        public static string RecipientsAndAttachmentsNameMessage {
+            get {
+                return ResourceManager.GetString("RecipientsAndAttachmentsNameMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to It is recommended that you attach the file as a link..
+        /// </summary>
+        public static string RecommendationOfAttachFileAsLink {
+            get {
+                return ResourceManager.GetString("RecommendationOfAttachFileAsLink", resourceCulture);
             }
         }
         
@@ -1280,6 +1383,22 @@ namespace OutlookOkan.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Keywords: Confidential
+        ///Alerting text: It includes the phrase &quot;Confidential&quot;.
+        ///
+        ///Register the keywords to be alert and their alerting text.
+        ///
+        ///If the keyword is included in the subject you can display a warning or prohibit the sending of that email.
+        ///
+        ///If the alerting text is blank, the confirmation screen will show the default alerting text..
+        /// </summary>
+        public static string SettingExampleAlertKeywordForSubject {
+            get {
+                return ResourceManager.GetString("SettingExampleAlertKeywordForSubject", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Email address: info@noraneko.co.jp
         ///or
         ///Domain: @noraneko.co.jp
@@ -1295,7 +1414,24 @@ namespace OutlookOkan.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to If an email has an encrypted ZIP file attached to it, you can display a warning or prohibit the sending of that email..
+        ///   Looks up a localized string similar to Email address: info@noraneko.co.jp
+        ///or
+        ///Domain: @noraneko.co.jp
+        ///
+        ///Register Email address or domain.
+        ///
+        ///You will not be able to send emails with attachments to that recipients..
+        /// </summary>
+        public static string SettingExampleAttachmentProhibitedRecipients {
+            get {
+                return ResourceManager.GetString("SettingExampleAttachmentProhibitedRecipients", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to You can prevent emails with attachments from being sent, or display a warning that recommends attaching the file as a link.
+        ///
+        ///You can also display a warning or prohibit sending an email when an encrypted ZIP file (ZIP file with password) is attached..
         /// </summary>
         public static string SettingExampleAttachments {
             get {
@@ -1397,18 +1533,18 @@ namespace OutlookOkan.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Keywords: Confidential
-        ///Alerting text: It includes the phrase &quot;Confidential&quot;.
+        ///   Looks up a localized string similar to Email address: info@noraneko.co.jp
+        ///or
+        ///Domain: @noraneko.co.jp
+        ///Attachments name/Keyword: Invoice to Noraneko
         ///
-        ///Register the keywords to be alert and their alerting text.
+        ///Register Email address or domain and the attachment file name or attachment keyword.
         ///
-        ///If the keyword is included in the subject you can display a warning or prohibit the sending of that email.
-        ///
-        ///If the alerting text is blank, the confirmation screen will show the default alerting text..
+        ///If the recipients and the attached file name do not match, a warning will be displayed..
         /// </summary>
-        public static string SettingExampleAlertKeywordForSubject {
+        public static string SettingExampleRecipientsAndAttachmentsName {
             get {
-                return ResourceManager.GetString("SettingExampleAlertKeywordForSubject", resourceCulture);
+                return ResourceManager.GetString("SettingExampleRecipientsAndAttachmentsName", resourceCulture);
             }
         }
         

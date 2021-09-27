@@ -82,6 +82,13 @@ namespace OutlookOkan.Models
             var attachmentsSettingList = attachmentsSettingCsv.GetCsvRecords<AttachmentsSetting>(attachmentsSettingCsv.LoadCsv<AttachmentsSettingMap>());
             if (attachmentsSettingList.Count > 0) attachmentsSetting = attachmentsSettingList[0];
 
+            var recipientsAndAttachmentsNameCsv = new ReadAndWriteCsv("RecipientsAndAttachmentsName.csv");
+            var recipientsAndAttachmentsNameList = recipientsAndAttachmentsNameCsv.GetCsvRecords<RecipientsAndAttachmentsName>(recipientsAndAttachmentsNameCsv.LoadCsv<RecipientsAndAttachmentsNameMap>())
+                .Where(x => !string.IsNullOrEmpty(x.Recipient) && !string.IsNullOrEmpty(x.AttachmentsName)).ToList();
+
+            var attachmentProhibitedRecipientsCsv = new ReadAndWriteCsv("AttachmentProhibitedRecipients.csv");
+            var attachmentProhibitedRecipientsList = attachmentProhibitedRecipientsCsv.GetCsvRecords<AttachmentProhibitedRecipients>(attachmentProhibitedRecipientsCsv.LoadCsv<AttachmentProhibitedRecipientsMap>())
+                .Where(x => !string.IsNullOrEmpty(x.Recipient)).ToList();
 
             #endregion
 
@@ -110,7 +117,7 @@ namespace OutlookOkan.Models
             displayNameAndRecipient = ExternalDomainsChangeToBccIfNeeded(mail, displayNameAndRecipient, externalDomainsWarningAndAutoChangeToBccSetting, internalDomainList, CountRecipientExternalDomains(displayNameAndRecipient, _checkList.SenderDomain, internalDomainList, true), _checkList.SenderDomain, _checkList.Sender);
 
             _checkList = GetRecipient(_checkList, displayNameAndRecipient, alertAddressList, internalDomainList);
-
+            _checkList = CheckRecipientsAndAttachments(_checkList, attachmentsSetting.IsAttachmentsProhibited, attachmentsSetting.IsWarningWhenAttachedRealFile, attachmentProhibitedRecipientsList, recipientsAndAttachmentsNameList);
             _checkList = CheckMailBodyAndRecipient(_checkList, displayNameAndRecipient, nameAndDomainsList, generalSetting.IsCheckNameAndDomainsFromRecipients);
             _checkList.RecipientExternalDomainNumAll = CountRecipientExternalDomains(displayNameAndRecipient, _checkList.SenderDomain, internalDomainList, false);
             _checkList = ExternalDomainsWarningIfNeeded(_checkList, externalDomainsWarningAndAutoChangeToBccSetting, CountRecipientExternalDomains(displayNameAndRecipient, _checkList.SenderDomain, internalDomainList, true));
@@ -1063,6 +1070,7 @@ namespace OutlookOkan.Models
         /// <param name="mail">Mail</param>
         /// <param name="checkList">CheckList</param>
         /// <param name="isNotTreatedAsAttachmentsAtHtmlEmbeddedFiles">HTML埋め込みの添付ファイル無視設定</param>
+        /// <param name="attachmentsSetting">添付ファイルに関する設定</param>
         /// <returns>CheckList</returns>
         private CheckList GetAttachmentsInformation(in Outlook._MailItem mail, CheckList checkList, bool isNotTreatedAsAttachmentsAtHtmlEmbeddedFiles, AttachmentsSetting attachmentsSetting)
         {
@@ -1627,6 +1635,103 @@ namespace OutlookOkan.Models
             ChangeToBcc(mail, targetMailRecipientsIndex, senderMailAddress, isNeedsAddToSender);
 
             return displayNameAndRecipient;
+        }
+
+        /// <summary>
+        /// 宛先と添付ファイル名の紐づけなどを確認する。
+        /// </summary>
+        /// <param name="checkList">CheckList</param>
+        /// <param name="isAttachmentsProhibited">添付ファイル付きのメールを送信を禁止するか否か</param>
+        /// <param name="isWarningWhenAttachedRealFile">実ファイルが添付されている場合、リンクとして添付を推奨する旨の警告を表示する否か</param>
+        /// <param name="attachmentProhibitedRecipientsList">添付ファイル禁止宛先設定</param>
+        /// <param name="recipientsAndAttachmentsNameList">宛先と添付ファイル名の紐づけ設定</param>
+        /// <returns>CheckList</returns>
+        private CheckList CheckRecipientsAndAttachments(CheckList checkList, bool isAttachmentsProhibited, bool isWarningWhenAttachedRealFile, List<AttachmentProhibitedRecipients> attachmentProhibitedRecipientsList, List<RecipientsAndAttachmentsName> recipientsAndAttachmentsNameList)
+        {
+            if (isAttachmentsProhibited && _checkList.Attachments.Count > 0)
+            {
+                _checkList.IsCanNotSendMail = true;
+                _checkList.CanNotSendMailMessage = Resources.AttachmentsProhibitedMessage;
+
+                return checkList;
+            }
+
+            if (attachmentProhibitedRecipientsList.Count > 0 && _checkList.Attachments.Count > 0)
+            {
+                var prohibitedRecipients = "";
+                var isProhibited = false;
+
+                foreach (var prohibitedRecipient in attachmentProhibitedRecipientsList)
+                {
+                    foreach (var to in _checkList.ToAddresses.Where(to => to.MailAddress.Contains(prohibitedRecipient.Recipient)))
+                    {
+                        _checkList.IsCanNotSendMail = true;
+                        isProhibited = true;
+                        prohibitedRecipients += " " + to.MailAddress;
+                    }
+
+                    foreach (var cc in _checkList.CcAddresses.Where(cc => cc.MailAddress.Contains(prohibitedRecipient.Recipient)))
+                    {
+                        _checkList.IsCanNotSendMail = true;
+                        isProhibited = true;
+                        prohibitedRecipients += " " + cc.MailAddress;
+                    }
+
+                    foreach (var bcc in _checkList.BccAddresses.Where(bcc => bcc.MailAddress.Contains(prohibitedRecipient.Recipient)))
+                    {
+                        _checkList.IsCanNotSendMail = true;
+                        isProhibited = true;
+                        prohibitedRecipients += " " + bcc.MailAddress;
+                    }
+                }
+
+                if (isProhibited)
+                {
+                    _checkList.CanNotSendMailMessage = Resources.AttachmentProhibitedRecipientsMessage + "：" + prohibitedRecipients;
+
+                    return checkList;
+                }
+            }
+
+            if (recipientsAndAttachmentsNameList.Count > 0 && _checkList.Attachments.Count > 0)
+            {
+                foreach (var recipientsAndAttachmentsName in recipientsAndAttachmentsNameList)
+                {
+                    foreach (var attachment in _checkList.Attachments.Where(attachment => attachment.FileName.Contains(recipientsAndAttachmentsName.AttachmentsName)))
+                    {
+                        foreach (var to in _checkList.ToAddresses.Where(to => to.IsExternal))
+                        {
+                            if (!to.MailAddress.Contains(recipientsAndAttachmentsName.Recipient))
+                            {
+                                AddAlerts(Resources.RecipientsAndAttachmentsNameMessage + "：" + to.MailAddress + " / " + attachment.FileName, true, true, false);
+                            }
+                        }
+
+                        foreach (var cc in _checkList.CcAddresses.Where(cc => cc.IsExternal))
+                        {
+                            if (!cc.MailAddress.Contains(recipientsAndAttachmentsName.Recipient))
+                            {
+                                AddAlerts(Resources.RecipientsAndAttachmentsNameMessage + "：" + cc.MailAddress + " / " + attachment.FileName, true, true, false);
+                            }
+                        }
+
+                        foreach (var bcc in _checkList.BccAddresses.Where(bcc => bcc.IsExternal))
+                        {
+                            if (!bcc.MailAddress.Contains(recipientsAndAttachmentsName.Recipient))
+                            {
+                                AddAlerts(Resources.RecipientsAndAttachmentsNameMessage + "：" + bcc.MailAddress + " / " + attachment.FileName, true, true, false);
+                            }
+                        }
+                    }
+                }
+            }
+
+            if (isWarningWhenAttachedRealFile && _checkList.Attachments.Count > 0)
+            {
+                AddAlerts(Resources.RecommendationOfAttachFileAsLink, false, true, false);
+            }
+
+            return checkList;
         }
 
         /// <summary>

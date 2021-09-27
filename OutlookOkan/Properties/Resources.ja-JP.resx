@@ -600,7 +600,9 @@
     <value>※添付ファイル付きメールの処理に、時間がかかる場合があります。</value>
   </data>
   <data name="SettingExampleAttachments" xml:space="preserve">
-    <value>暗号化ZIPファイル(パスワード付きZIPファイル)が添付されている場合に、警告を表示したり、メールの送信を禁止できます。</value>
+    <value>添付ファイル付きのメールを送信できなくしたり、リンクとして添付を推奨する警告を表示させることが可能です。
+
+また、暗号化ZIPファイル(パスワード付きZIPファイル)が添付されている場合に、警告を表示したり、メールの送信を禁止できます。</value>
   </data>
   <data name="ExternalRecipient" xml:space="preserve">
     <value>社外アドレス</value>
@@ -636,6 +638,51 @@
   </data>
   <data name="AttachmentsKeyword" xml:space="preserve">
     <value>添付</value>
+  </data>
+  <data name="IsAttachmentsProhibited" xml:space="preserve">
+    <value>ファイルが添付されている場合に、メールの送信を禁止する。※他の設定より優先されます。</value>
+  </data>
+  <data name="IsWarningWhenAttachedRealFile" xml:space="preserve">
+    <value>実ファイルが添付されている場合、リンクとして添付を推奨する旨の警告を表示する。</value>
+  </data>
+  <data name="AttachmentProhibitedRecipients" xml:space="preserve">
+    <value>添付ファイル禁止宛先</value>
+  </data>
+  <data name="AttachmentsName" xml:space="preserve">
+    <value>添付ファイル名/キーワード</value>
+  </data>
+  <data name="RecipientsAndAttachmentsName" xml:space="preserve">
+    <value>宛先と添付ファイル名の紐づけ</value>
+  </data>
+  <data name="SettingExampleAttachmentProhibitedRecipients" xml:space="preserve">
+    <value>アドレス：info@noraneko.co.jp
+または、
+ドメイン：@noraneko.co.jp
+
+アドレスまたはドメインを登録します。
+
+該当する宛先には、添付ファイル付きのメールが送信できなくなります。</value>
+  </data>
+  <data name="SettingExampleRecipientsAndAttachmentsName" xml:space="preserve">
+    <value>アドレス：info@noraneko.co.jp
+または、
+ドメイン：@noraneko.co.jp
+添付ファイル名/キーワード：のらねこ様_請求書
+
+アドレスまたはドメインと、添付ファイル名や添付ファイルのキーワードを登録します。
+宛先と添付ファイル名が一致しない場合、警告を表示します。</value>
+  </data>
+  <data name="RecommendationOfAttachFileAsLink" xml:space="preserve">
+    <value>ファイルはリンクとして添付することをお勧めします。</value>
+  </data>
+  <data name="AttachmentProhibitedRecipientsMessage" xml:space="preserve">
+    <value>添付ファイルの送信が禁止された宛先です。</value>
+  </data>
+  <data name="AttachmentsProhibitedMessage" xml:space="preserve">
+    <value>添付ファイル付きメールの送信は禁止されています。</value>
+  </data>
+  <data name="RecipientsAndAttachmentsNameMessage" xml:space="preserve">
+    <value>紐づけられていない宛先と添付ファイルです。</value>
   </data>
   <data name="Bcc" xml:space="preserve">
     <value>Bcc</value>

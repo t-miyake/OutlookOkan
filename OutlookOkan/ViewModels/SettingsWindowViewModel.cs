@@ -47,6 +47,12 @@ namespace OutlookOkan.ViewModels
             ImportAlertKeywordAndMessagesForSubjectList = new RelayCommand(ImportAlertKeywordAndMessagesForSubjectFromCsv);
             ExportAlertKeywordAndMessagesForSubjectList = new RelayCommand(ExportAlertKeywordAndMessagesForSubjectToCsv);
 
+            ImportRecipientsAndAttachmentsName = new RelayCommand(ImportRecipientsAndAttachmentsNameFromCsv);
+            ExportRecipientsAndAttachmentsName = new RelayCommand(ExportRecipientsAndAttachmentsNameToCsv);
+
+            ImportAttachmentProhibitedRecipients = new RelayCommand(ImportAttachmentProhibitedRecipientsFromCsv);
+            ExportAttachmentProhibitedRecipients = new RelayCommand(ExportAttachmentProhibitedRecipientsToCsv);
+
             //Load language code and name.
             var languages = new Languages();
             Languages = languages.Language;
@@ -65,6 +71,8 @@ namespace OutlookOkan.ViewModels
             LoadInternalDomainListData();
             LoadExternalDomainsWarningAndAutoChangeToBccData();
             LoadAttachmentsSettingData();
+            LoadRecipientsAndAttachmentsNameData();
+            LoadAttachmentProhibitedRecipientsData();
         }
 
         internal async Task SaveSettings()
@@ -83,7 +91,9 @@ namespace OutlookOkan.ViewModels
                     SaveDeferredDeliveryMinutesToCsv(),
                     SaveInternalDomainListToCsv(),
                     SaveExternalDomainsWarningAndAutoChangeToBccToCsv(),
-                    SaveAttachmentsSettingToCsv()
+                    SaveAttachmentsSettingToCsv(),
+                    SaveRecipientsAndAttachmentsNameToCsv(),
+                    SaveAttachmentProhibitedRecipientsToCsv()
                 };
 
             await Task.WhenAll(saveTasks);
@@ -858,6 +868,8 @@ namespace OutlookOkan.ViewModels
             IsWarningWhenEncryptedZipIsAttached = _attachmentsSetting[0].IsWarningWhenEncryptedZipIsAttached;
             IsProhibitedWhenEncryptedZipIsAttached = _attachmentsSetting[0].IsProhibitedWhenEncryptedZipIsAttached;
             IsEnableAllAttachedFilesAreDetectEncryptedZip = _attachmentsSetting[0].IsEnableAllAttachedFilesAreDetectEncryptedZip;
+            IsAttachmentsProhibited = _attachmentsSetting[0].IsAttachmentsProhibited;
+            IsWarningWhenAttachedRealFile = _attachmentsSetting[0].IsWarningWhenAttachedRealFile;
         }
 
         private async Task SaveAttachmentsSettingToCsv()
@@ -868,7 +880,9 @@ namespace OutlookOkan.ViewModels
                 {
                     IsWarningWhenEncryptedZipIsAttached = IsWarningWhenEncryptedZipIsAttached,
                     IsProhibitedWhenEncryptedZipIsAttached = IsProhibitedWhenEncryptedZipIsAttached,
-                    IsEnableAllAttachedFilesAreDetectEncryptedZip = IsEnableAllAttachedFilesAreDetectEncryptedZip
+                    IsEnableAllAttachedFilesAreDetectEncryptedZip = IsEnableAllAttachedFilesAreDetectEncryptedZip,
+                    IsAttachmentsProhibited = IsAttachmentsProhibited,
+                    IsWarningWhenAttachedRealFile = IsWarningWhenAttachedRealFile
                 }
             };
 
@@ -915,9 +929,166 @@ namespace OutlookOkan.ViewModels
             }
         }
 
+        private bool _isAttachmentsProhibited;
+        public bool IsAttachmentsProhibited
+        {
+            get => _isAttachmentsProhibited;
+            set
+            {
+                _isAttachmentsProhibited = value;
+                OnPropertyChanged(nameof(IsAttachmentsProhibited));
+                OnPropertyChanged(nameof(IsWarningWhenAttachedRealFileCheckBoxIsEnabled));
+            }
+        }
+
+        private bool _isWarningWhenAttachedRealFile;
+        public bool IsWarningWhenAttachedRealFile
+        {
+            get => _isWarningWhenAttachedRealFile;
+            set
+            {
+                _isWarningWhenAttachedRealFile = value;
+                OnPropertyChanged(nameof(IsWarningWhenAttachedRealFile));
+            }
+        }
+
         public bool IsWarningWhenEncryptedZipIsAttachedCheckBoxIsEnabled => !IsProhibitedWhenEncryptedZipIsAttached;
 
         public bool IsEnableAllAttachedFilesAreDetectEncryptedZipCheckBoxIsEnabled => IsWarningWhenEncryptedZipIsAttached || IsProhibitedWhenEncryptedZipIsAttached;
+
+        public bool IsWarningWhenAttachedRealFileCheckBoxIsEnabled => !IsAttachmentsProhibited;
+
+        #endregion
+
+        #region RecipientsAndAttachmentsName
+
+        public ICommand ImportRecipientsAndAttachmentsName { get; }
+        public ICommand ExportRecipientsAndAttachmentsName { get; }
+
+        private void LoadRecipientsAndAttachmentsNameData()
+        {
+            var readCsv = new ReadAndWriteCsv("RecipientsAndAttachmentsName.csv");
+            var recipientsAndAttachmentsName = readCsv.GetCsvRecords<RecipientsAndAttachmentsName>(readCsv.LoadCsv<RecipientsAndAttachmentsNameMap>());
+
+            foreach (var data in recipientsAndAttachmentsName.Where(x => !string.IsNullOrEmpty(x.AttachmentsName) && !string.IsNullOrEmpty(x.Recipient)))
+            {
+                RecipientsAndAttachmentsName.Add(data);
+            }
+        }
+
+        private async Task SaveRecipientsAndAttachmentsNameToCsv()
+        {
+            var list = RecipientsAndAttachmentsName.Where(x => !string.IsNullOrEmpty(x.AttachmentsName) && !string.IsNullOrEmpty(x.Recipient)).Cast<object>().ToList();
+            var writeCsv = new ReadAndWriteCsv("RecipientsAndAttachmentsName.csv");
+            await Task.Run(() => writeCsv.WriteRecordsToCsv<RecipientsAndAttachmentsNameMap>(list));
+        }
+
+        private void ImportRecipientsAndAttachmentsNameFromCsv()
+        {
+            var importAction = new CsvImportAndExport();
+            var filePath = importAction.ImportCsv();
+
+            if (filePath is null) return;
+
+            try
+            {
+                var importData = new List<RecipientsAndAttachmentsName>(importAction.GetCsvRecords<RecipientsAndAttachmentsName>(importAction.LoadCsv<RecipientsAndAttachmentsNameMap>(filePath)));
+                foreach (var data in importData.Where(x => !string.IsNullOrEmpty(x.AttachmentsName) && !string.IsNullOrEmpty(x.Recipient)))
+                {
+                    RecipientsAndAttachmentsName.Add(data);
+                }
+
+                _ = MessageBox.Show(Properties.Resources.SuccessfulImport, Properties.Resources.AppName, MessageBoxButton.OK);
+            }
+            catch (Exception)
+            {
+                _ = MessageBox.Show(Properties.Resources.ImportFailed, Properties.Resources.AppName, MessageBoxButton.OK);
+            }
+        }
+
+        private void ExportRecipientsAndAttachmentsNameToCsv()
+        {
+            var list = RecipientsAndAttachmentsName.Where(x => !string.IsNullOrEmpty(x.AttachmentsName) && !string.IsNullOrEmpty(x.Recipient)).Cast<object>().ToList();
+            var exportAction = new CsvImportAndExport();
+            exportAction.CsvExport<RecipientsAndAttachmentsNameMap>(list, "RecipientsAndAttachmentsName.csv");
+        }
+
+        private ObservableCollection<RecipientsAndAttachmentsName> _recipientsAndAttachmentsName = new ObservableCollection<RecipientsAndAttachmentsName>();
+        public ObservableCollection<RecipientsAndAttachmentsName> RecipientsAndAttachmentsName
+        {
+            get => _recipientsAndAttachmentsName;
+            set
+            {
+                _recipientsAndAttachmentsName = value;
+                OnPropertyChanged(nameof(RecipientsAndAttachmentsName));
+            }
+        }
+
+        #endregion
+
+        #region AttachmentProhibitedRecipients
+
+        public ICommand ImportAttachmentProhibitedRecipients { get; }
+        public ICommand ExportAttachmentProhibitedRecipients { get; }
+
+        private void LoadAttachmentProhibitedRecipientsData()
+        {
+            var readCsv = new ReadAndWriteCsv("AttachmentProhibitedRecipients.csv");
+            var attachmentProhibitedRecipients = readCsv.GetCsvRecords<AttachmentProhibitedRecipients>(readCsv.LoadCsv<AttachmentProhibitedRecipientsMap>());
+
+            foreach (var data in attachmentProhibitedRecipients.Where(x => !string.IsNullOrEmpty(x.Recipient)))
+            {
+                AttachmentProhibitedRecipients.Add(data);
+            }
+        }
+
+        private async Task SaveAttachmentProhibitedRecipientsToCsv()
+        {
+            var list = AttachmentProhibitedRecipients.Where(x => !string.IsNullOrEmpty(x.Recipient)).Cast<object>().ToList();
+            var writeCsv = new ReadAndWriteCsv("AttachmentProhibitedRecipients.csv");
+            await Task.Run(() => writeCsv.WriteRecordsToCsv<AttachmentProhibitedRecipientsMap>(list));
+        }
+
+        private void ImportAttachmentProhibitedRecipientsFromCsv()
+        {
+            var importAction = new CsvImportAndExport();
+            var filePath = importAction.ImportCsv();
+
+            if (filePath is null) return;
+
+            try
+            {
+                var importData = new List<AttachmentProhibitedRecipients>(importAction.GetCsvRecords<AttachmentProhibitedRecipients>(importAction.LoadCsv<AttachmentProhibitedRecipientsMap>(filePath)));
+                foreach (var data in importData.Where(x => !string.IsNullOrEmpty(x.Recipient)))
+                {
+                    AttachmentProhibitedRecipients.Add(data);
+                }
+
+                _ = MessageBox.Show(Properties.Resources.SuccessfulImport, Properties.Resources.AppName, MessageBoxButton.OK);
+            }
+            catch (Exception)
+            {
+                _ = MessageBox.Show(Properties.Resources.ImportFailed, Properties.Resources.AppName, MessageBoxButton.OK);
+            }
+        }
+
+        private void ExportAttachmentProhibitedRecipientsToCsv()
+        {
+            var list = AttachmentProhibitedRecipients.Where(x => !string.IsNullOrEmpty(x.Recipient)).Cast<object>().ToList();
+            var exportAction = new CsvImportAndExport();
+            exportAction.CsvExport<AttachmentProhibitedRecipientsMap>(list, "AttachmentProhibitedRecipients.csv");
+        }
+
+        private ObservableCollection<AttachmentProhibitedRecipients> _attachmentProhibitedRecipients = new ObservableCollection<AttachmentProhibitedRecipients>();
+        public ObservableCollection<AttachmentProhibitedRecipients> AttachmentProhibitedRecipients
+        {
+            get => _attachmentProhibitedRecipients;
+            set
+            {
+                _attachmentProhibitedRecipients = value;
+                OnPropertyChanged(nameof(AttachmentProhibitedRecipients));
+            }
+        }
 
         #endregion
 

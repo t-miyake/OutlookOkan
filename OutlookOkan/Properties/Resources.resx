@@ -602,7 +602,9 @@ If the To does not exist after automatic change to Bcc, the sender's address wil
     <value>* The processing of emails with attachments may take longer.</value>
   </data>
   <data name="SettingExampleAttachments" xml:space="preserve">
-    <value>If an email has an encrypted ZIP file attached to it, you can display a warning or prohibit the sending of that email.</value>
+    <value>You can prevent emails with attachments from being sent, or display a warning that recommends attaching the file as a link.
+
+You can also display a warning or prohibit sending an email when an encrypted ZIP file (ZIP file with password) is attached.</value>
   </data>
   <data name="ExternalRecipient" xml:space="preserve">
     <value>External recipient</value>
@@ -638,6 +640,52 @@ If the alerting text is blank, the confirmation screen will show the default ale
   </data>
   <data name="AttachmentsKeyword" xml:space="preserve">
     <value>attached file</value>
+  </data>
+  <data name="IsAttachmentsProhibited" xml:space="preserve">
+    <value>Sending is prohibited when a file is attached.</value>
+  </data>
+  <data name="IsWarningWhenAttachedRealFile" xml:space="preserve">
+    <value>If a file is attached, it is recommended to attach it as a link on the confirmation window.</value>
+  </data>
+  <data name="AttachmentProhibitedRecipients" xml:space="preserve">
+    <value>Attachment prohibited address</value>
+  </data>
+  <data name="AttachmentsName" xml:space="preserve">
+    <value>Attachments name/Keyword</value>
+  </data>
+  <data name="RecipientsAndAttachmentsName" xml:space="preserve">
+    <value>Relating recipient's and Attachment Names</value>
+  </data>
+  <data name="SettingExampleAttachmentProhibitedRecipients" xml:space="preserve">
+    <value>Email address: info@noraneko.co.jp
+or
+Domain: @noraneko.co.jp
+
+Register Email address or domain.
+
+You will not be able to send emails with attachments to that recipients.</value>
+  </data>
+  <data name="SettingExampleRecipientsAndAttachmentsName" xml:space="preserve">
+    <value>Email address: info@noraneko.co.jp
+or
+Domain: @noraneko.co.jp
+Attachments name/Keyword: Invoice to Noraneko
+
+Register Email address or domain and the attachment file name or attachment keyword.
+
+If the recipients and the attached file name do not match, a warning will be displayed.</value>
+  </data>
+  <data name="RecommendationOfAttachFileAsLink" xml:space="preserve">
+    <value>It is recommended that you attach the file as a link.</value>
+  </data>
+  <data name="AttachmentProhibitedRecipientsMessage" xml:space="preserve">
+    <value>This recipients who are prohibited from sending attachments.</value>
+  </data>
+  <data name="AttachmentsProhibitedMessage" xml:space="preserve">
+    <value>Sending e-mail with attachments is prohibited.</value>
+  </data>
+  <data name="RecipientsAndAttachmentsNameMessage" xml:space="preserve">
+    <value>Unrelated recipients and attachments.</value>
   </data>
   <data name="Bcc" xml:space="preserve">
     <value>Bcc</value>
