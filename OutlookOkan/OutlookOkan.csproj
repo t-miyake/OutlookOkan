@@ -309,10 +309,11 @@
     <SignManifests>true</SignManifests>
   </PropertyGroup>
   <PropertyGroup>
-    <ManifestKeyFile>CodeSigningCertificate_NoranekoInc.pfx</ManifestKeyFile>
+    <ManifestKeyFile>
+    </ManifestKeyFile>
   </PropertyGroup>
   <PropertyGroup>
-    <ManifestCertificateThumbprint>5DD07B3828604DA1DBA17EA76BBE4B5D7476B206</ManifestCertificateThumbprint>
+    <ManifestCertificateThumbprint>2D87A382896E579AFE953BA4E742DFDA1BCB31E5</ManifestCertificateThumbprint>
   </PropertyGroup>
   <PropertyGroup>
     <SignAssembly>false</SignAssembly>
