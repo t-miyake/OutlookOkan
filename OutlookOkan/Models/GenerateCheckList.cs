@@ -23,12 +23,14 @@ namespace OutlookOkan.Models
         private readonly List<Whitelist> _whitelist = new List<Whitelist>();
 
         /// <summary>
-        /// メール送信の確認画面を表示。
+        /// メール送信前の確認画面で使用するチェックリストの生成。
         /// </summary>
         /// <param name="mail">送信するメールアイテム</param>
         /// <param name="generalSetting">一般設定</param>
         public CheckList GenerateCheckListFromMail(Outlook._MailItem mail, GeneralSetting generalSetting)
         {
+            #region LoadSettings
+
             var whitelistCsv = new ReadAndWriteCsv("Whitelist.csv");
             _whitelist.AddRange(whitelistCsv.GetCsvRecords<Whitelist>(whitelistCsv.LoadCsv<WhitelistMap>()).Where(x => !string.IsNullOrEmpty(x.WhiteName)));
 
@@ -73,6 +75,9 @@ namespace OutlookOkan.Models
             var attachmentsSettingCsv = new ReadAndWriteCsv("AttachmentsSetting.csv");
             var attachmentsSettingList = attachmentsSettingCsv.GetCsvRecords<AttachmentsSetting>(attachmentsSettingCsv.LoadCsv<AttachmentsSettingMap>());
             if (attachmentsSettingList.Count > 0) attachmentsSetting = attachmentsSettingList[0];
+
+
+            #endregion
 
             _checkList.Subject = mail.Subject ?? Resources.FailedToGetInformation;
             _checkList.MailType = GetMailBodyFormat(mail.BodyFormat) ?? Resources.FailedToGetInformation;
@@ -425,7 +430,7 @@ namespace OutlookOkan.Models
         /// </summary>
         /// <param name="recipient">メールの宛先</param>
         /// <param name="enableGetExchangeDistributionListMembers">配布リスト展開のオンオフ設定</param>
-        /// <param name="exchangeDistributionListMembersAreWhite">配布リストで展開したアドレスをホワイトリスト化するか否かの設定</param>
+        /// <param name="exchangeDistributionListMembersAreWhite">配布リストで展開したアドレスを許可リスト登録扱いするか否かの設定</param>
         /// <returns>宛先メールアドレスと宛先名称</returns>
         private IEnumerable<NameAndRecipient> GetExchangeDistributionListMembers(Outlook.Recipient recipient, bool enableGetExchangeDistributionListMembers, bool exchangeDistributionListMembersAreWhite)
         {
@@ -558,7 +563,7 @@ namespace OutlookOkan.Models
         /// <param name="recipient">メールの宛先</param>
         /// <param name="contactGroupId">既に確認したGroupID</param>
         /// <param name="enableGetContactGroupMembers">連絡先グループ展開のオンオフ設定</param>
-        /// <param name="contactGroupMembersAreWhite">連絡先グループで展開したアドレスをホワイトリスト化するか否かの設定</param>
+        /// <param name="contactGroupMembersAreWhite">連絡先グループで展開したアドレスを許可リスト登録扱いするか否かの設定</param>
         /// <returns>宛先メールアドレスと宛先名称</returns>
         private IEnumerable<NameAndRecipient> GetContactGroupMembers(Outlook.Recipient recipient, string contactGroupId, bool enableGetContactGroupMembers, bool contactGroupMembersAreWhite)
         {

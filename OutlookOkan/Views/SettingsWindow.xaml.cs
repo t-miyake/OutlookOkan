@@ -44,6 +44,10 @@ namespace OutlookOkan.Views
         {
         }
 
+        private void DataGrid_AlertKeywordAndMessageForSubject_OnCellEditEnding(object sender, DataGridCellEditEndingEventArgs e)
+        {
+        }
+
         private void DataGrid_AlertAddresses_OnCellEditEnding(object sender, DataGridCellEditEndingEventArgs e)
         {
             try
@@ -91,13 +95,15 @@ namespace OutlookOkan.Views
                     _ = MessageBox.Show(Properties.Resources.InputMailaddressOrDomain, Properties.Resources.AppName, MessageBoxButton.OK);
                     e.Cancel = true;
                     return;
+
                 case 1:
                     var regex = new Regex("[^0-9]+$");
                     if (!regex.IsMatch(((TextBox)e.EditingElement).Text)) return;
 
                     _ = MessageBox.Show(Properties.Resources.InputDeferredDeliveryTime, Properties.Resources.AppName, MessageBoxButton.OK);
                     e.Cancel = true;
-                    break;
+                    return;
+
                 default:
                     return;
             }
@@ -128,6 +134,7 @@ namespace OutlookOkan.Views
         {
             var regex = new Regex("[^0-9]+$");
             if (!regex.IsMatch(ExternalDomainsNumBox.Text + e.Text)) return;
+
             e.Handled = true;
         }
 

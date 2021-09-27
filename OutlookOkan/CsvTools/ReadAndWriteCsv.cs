@@ -36,7 +36,9 @@ namespace OutlookOkan.CsvTools
             }
 
             if (!File.Exists(_filePath))
+            {
                 File.Create(_filePath).Close();
+            }
         }
 
         /// <summary>

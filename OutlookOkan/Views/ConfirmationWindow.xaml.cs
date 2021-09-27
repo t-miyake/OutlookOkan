@@ -44,7 +44,7 @@ namespace OutlookOkan.Views
                     _mailItem.DeferredDeliveryTime = _mailItem.DeferredDeliveryTime.AddMinutes(deferredDeliveryMinutes);
                 }
             }
-            
+
             DialogResult = true;
         }
 
@@ -80,8 +80,8 @@ namespace OutlookOkan.Views
         private void DeferredDeliveryMinutesBox_OnPreviewTextInput(object sender, TextCompositionEventArgs e)
         {
             var regex = new Regex("[^0-9]+$");
-
             if (!regex.IsMatch(DeferredDeliveryMinutesBox.Text + e.Text)) return;
+
             DeferredDeliveryMinutesBox.Text = "0";
             e.Handled = true;
         }

@@ -27,8 +27,8 @@ namespace OutlookOkan
         /// <summary>
         /// アドインのロード時(Outlookの起動時)の処理。
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
+        /// <param name="sender">Sender</param>
+        /// <param name="e">EventArgs</param>
         private void ThisAddIn_Startup(object sender, EventArgs e)
         {
             //ユーザ設定をロード。(このタイミングでロードしないと、リボンの表示言語を変更できない。)
@@ -44,7 +44,10 @@ namespace OutlookOkan
             Application.ItemSend += Application_ItemSend;
         }
 
-        //送信トレイのアイテムを開く際の警告。
+        /// <summary>
+        /// 送信トレイのアイテムを開く際の警告。
+        /// </summary>
+        /// <param name="inspector">Inspector</param>
         private void OpenOutboxItemInspector(Outlook.Inspector inspector)
         {
             if (!(inspector.CurrentItem is Outlook._MailItem)) return;
@@ -70,6 +73,11 @@ namespace OutlookOkan
             };
         }
 
+        /// <summary>
+        /// メール送信時(送信ボタン押下時)に確認画面を生成する。
+        /// </summary>
+        /// <param name="item">Item</param>
+        /// <param name="cancel">Cancel</param>
         private void Application_ItemSend(object item, ref bool cancel)
         {
             //MailItemにキャストできないものは、会議招待などメールではないもののため、何もしない。
@@ -191,7 +199,7 @@ namespace OutlookOkan
         /// <summary>
         /// 一般設定を設定ファイルから読み込む。
         /// </summary>
-        /// <param name="isLaunch">Outlookの起動時か否か。</param>
+        /// <param name="isLaunch">Outlookの起動時か否か</param>
         private void LoadGeneralSetting(bool isLaunch)
         {
             var readCsv = new ReadAndWriteCsv("GeneralSetting.csv");
@@ -222,8 +230,8 @@ namespace OutlookOkan
         /// <summary>
         /// 全てのチェック対象がチェックされているか否かの判定。(ホワイトリスト登録の宛先など、事前にチェックされている場合がある)
         /// </summary>
-        /// <param name="checkList"></param>
-        /// <returns>全てのチェック対象がチェックされているか否か。</returns>
+        /// <param name="checkList">CheckList</param>
+        /// <returns>全てのチェック対象がチェックされているか否か</returns>
         private bool IsAllChecked(CheckList checkList)
         {
             var isToAddressesCompleteChecked = checkList.ToAddresses.Count(x => x.IsChecked) == checkList.ToAddresses.Count;
@@ -239,7 +247,7 @@ namespace OutlookOkan
         /// 全ての宛先が内部(社内)ドメインであるか否かの判定。
         /// </summary>
         /// <param name="checkList">CheckList</param>
-        /// <returns>全ての宛先が内部(社内)ドメインであるか否か。</returns>
+        /// <returns>全ての宛先が内部(社内)ドメインであるか否か</returns>
         private bool IsAllRecipientsAreSameDomain(CheckList checkList)
         {
             var isAllToRecipientsAreSameDomain = checkList.ToAddresses.Count(x => !x.IsExternal) == checkList.ToAddresses.Count;
@@ -253,7 +261,7 @@ namespace OutlookOkan
         /// 送信前の確認画面の表示有無を判定。
         /// </summary>
         /// <param name="checklist">CheckList</param>
-        /// <returns>送信前の確認画面の表示有無。</returns>
+        /// <returns>送信前の確認画面の表示有無</returns>
         private bool IsShowConfirmationWindow(CheckList checklist)
         {
             if (checklist.RecipientExternalDomainNumAll >= 2 && _generalSetting.IsShowConfirmationToMultipleDomain)

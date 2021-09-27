@@ -849,7 +849,7 @@ namespace OutlookOkanTest
 
             var generateCheckList = new GenerateCheckList();
             var privateObject = new PrivateObject(generateCheckList);
-            var result = (bool) privateObject.Invoke("IsValidEmailAddress", mailAddress);
+            var result = (bool)privateObject.Invoke("IsValidEmailAddress", mailAddress);
 
             Assert.IsTrue(result);
         }

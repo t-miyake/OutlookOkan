@@ -9,9 +9,7 @@ namespace OutlookOkan.Services
     {
         // Singleton instance.
         public static ResourceService Instance { get; } = new ResourceService();
-        private ResourceService()
-        {
-        }
+        private ResourceService() { }
 
         public Resources Resources { get; } = new Resources();
 
