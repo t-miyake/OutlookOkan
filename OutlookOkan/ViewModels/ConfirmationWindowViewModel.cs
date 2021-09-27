@@ -63,9 +63,9 @@ namespace OutlookOkan.ViewModels
             AlertCount = Properties.Resources.ImportantAlert + " (" + Alerts.Count + ")";
 
             AddressCount = Properties.Resources.DestinationEmailaddress + " (" + (ToAddresses.Count + CcAddresses.Count + BccAddresses.Count) + ")";
-            ToAddressCount = "To (" + ToAddresses.Count + ")";
-            CcAddressCount = "Cc (" + CcAddresses.Count + ")";
-            BccAddressCount = "Bcc (" + BccAddresses.Count + ")";
+            ToAddressCount = ToAddresses.Count.ToString();
+            CcAddressCount = CcAddresses.Count.ToString();
+            BccAddressCount = BccAddresses.Count.ToString();
 
             AttachmentCount = Properties.Resources.Attachments + " (" + Attachments.Count + ")";
         }

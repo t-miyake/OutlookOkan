@@ -311,6 +311,15 @@ namespace OutlookOkan.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Bcc.
+        /// </summary>
+        public static string Bcc {
+            get {
+                return ResourceManager.GetString("Bcc", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Cancel.
         /// </summary>
         public static string Cancel {
@@ -357,6 +366,15 @@ namespace OutlookOkan.Properties {
         public static string CanNotFindTheLinkedName {
             get {
                 return ResourceManager.GetString("CanNotFindTheLinkedName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Cc.
+        /// </summary>
+        public static string Cc {
+            get {
+                return ResourceManager.GetString("Cc", resourceCulture);
             }
         }
         
@@ -1469,6 +1487,15 @@ namespace OutlookOkan.Properties {
         public static string Text {
             get {
                 return ResourceManager.GetString("Text", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to To.
+        /// </summary>
+        public static string To {
+            get {
+                return ResourceManager.GetString("To", resourceCulture);
             }
         }
         

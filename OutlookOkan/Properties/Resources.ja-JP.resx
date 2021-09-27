@@ -637,6 +637,15 @@
   <data name="AttachmentsKeyword" xml:space="preserve">
     <value>添付</value>
   </data>
+  <data name="Bcc" xml:space="preserve">
+    <value>Bcc</value>
+  </data>
+  <data name="Cc" xml:space="preserve">
+    <value>Cc</value>
+  </data>
+  <data name="To" xml:space="preserve">
+    <value>To</value>
+  </data>
   <data name="CanNotFindTheLinkedName" xml:space="preserve">
     <value>本文内に紐づけられた名称が見つかりません。</value>
   </data>

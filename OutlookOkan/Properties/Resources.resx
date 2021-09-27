@@ -639,6 +639,15 @@ If the alerting text is blank, the confirmation screen will show the default ale
   <data name="AttachmentsKeyword" xml:space="preserve">
     <value>attached file</value>
   </data>
+  <data name="Bcc" xml:space="preserve">
+    <value>Bcc</value>
+  </data>
+  <data name="Cc" xml:space="preserve">
+    <value>Cc</value>
+  </data>
+  <data name="To" xml:space="preserve">
+    <value>To</value>
+  </data>
   <data name="CanNotFindTheLinkedName" xml:space="preserve">
     <value>Cannot find the linked name in the mail body.</value>
   </data>

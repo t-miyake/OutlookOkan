@@ -67,7 +67,12 @@
             <StackPanel Grid.Column="0" Margin="8,2,8,8">
                 <GroupBox Header="{Binding AddressCount}" FontSize="11" Padding="3,3,3,3">
                     <StackPanel>
-                        <Label Content="{Binding ToAddressCount}" Margin="0,5,0,0" Padding="0" VerticalAlignment="Bottom" FontSize="11" />
+                        <StackPanel Orientation="Horizontal" Margin="0,5,0,0">
+                            <Label Content="{Binding Source={x:Static services:ResourceService.Instance}, Path=Resources.To, Mode=OneWay}" Margin="0" Padding="0" VerticalAlignment="Bottom" FontSize="11" />
+                            <Label Content=" (" Margin="0" Padding="0" VerticalAlignment="Bottom" FontSize="11" />
+                            <Label Content="{Binding ToAddressCount}" Margin="0" Padding="0" VerticalAlignment="Bottom" FontSize="11" />
+                            <Label Content=")" Margin="0" Padding="0" VerticalAlignment="Bottom" FontSize="11" />
+                        </StackPanel>
                         <DataGrid Name="ToGrid" Height="82" VerticalScrollBarVisibility="Visible" HorizontalScrollBarVisibility="Auto" BorderBrush="#FFD5DFE5" HeadersVisibility="None" ItemsSource="{Binding ToAddresses,Mode=TwoWay}" AutoGenerateColumns="False" CanUserAddRows="false" CanUserDeleteRows="false" CanUserResizeColumns="false" CanUserResizeRows="false" CanUserSortColumns="false" HorizontalGridLinesBrush="#FFD5DFE5" VerticalGridLinesBrush="#FFD5DFE5">
                             <DataGrid.ItemContainerStyle>
                                 <Style TargetType="DataGridRow">
@@ -122,7 +127,12 @@
                                 <SolidColorBrush x:Key="{x:Static SystemColors.InactiveSelectionHighlightBrushKey}" Color="Transparent" />
                             </DataGrid.Resources>
                         </DataGrid>
-                        <Label Content="{Binding CcAddressCount}" Margin="0,6,0,0" Padding="0" VerticalAlignment="Bottom" FontSize="11" />
+                        <StackPanel Orientation="Horizontal" Margin="0,6,0,0">
+                            <Label Content="{Binding Source={x:Static services:ResourceService.Instance}, Path=Resources.Cc, Mode=OneWay}" Margin="0" Padding="0" VerticalAlignment="Bottom" FontSize="11" />
+                            <Label Content=" (" Margin="0" Padding="0" VerticalAlignment="Bottom" FontSize="11" />
+                            <Label Content="{Binding CcAddressCount}" Margin="0" Padding="0" VerticalAlignment="Bottom" FontSize="11" />
+                            <Label Content=")" Margin="0" Padding="0" VerticalAlignment="Bottom" FontSize="11" />
+                        </StackPanel>
                         <DataGrid Name="CcGrid" Height="82" VerticalScrollBarVisibility="Visible" HorizontalScrollBarVisibility="Auto" BorderBrush="#FFD5DFE5" HeadersVisibility="None" ItemsSource="{Binding CcAddresses,Mode=TwoWay}" AutoGenerateColumns="False" CanUserAddRows="false" CanUserDeleteRows="false" CanUserResizeColumns="false" CanUserResizeRows="false" CanUserSortColumns="false" HorizontalGridLinesBrush="#FFD5DFE5" VerticalGridLinesBrush="#FFD5DFE5">
                             <DataGrid.ItemContainerStyle>
                                 <Style TargetType="DataGridRow">
@@ -177,7 +187,12 @@
                                 <SolidColorBrush x:Key="{x:Static SystemColors.InactiveSelectionHighlightBrushKey}" Color="Transparent" />
                             </DataGrid.Resources>
                         </DataGrid>
-                        <Label Content="{Binding BccAddressCount}" Margin="0,6,0,0" Padding="0" VerticalAlignment="Bottom" FontSize="11" />
+                        <StackPanel Orientation="Horizontal" Margin="0,6,0,0">
+                            <Label Content="{Binding Source={x:Static services:ResourceService.Instance}, Path=Resources.Bcc, Mode=OneWay}" Margin="0" Padding="0" VerticalAlignment="Bottom" FontSize="11" />
+                            <Label Content=" (" Margin="0" Padding="0" VerticalAlignment="Bottom" FontSize="11" />
+                            <Label Content="{Binding BccAddressCount}" Margin="0" Padding="0" VerticalAlignment="Bottom" FontSize="11" />
+                            <Label Content=")" Margin="0" Padding="0" VerticalAlignment="Bottom" FontSize="11" />
+                        </StackPanel>
                         <DataGrid Name="BccGrid" Height="82" VerticalScrollBarVisibility="Visible" HorizontalScrollBarVisibility="Auto" BorderBrush="#FFD5DFE5" HeadersVisibility="None" ItemsSource="{Binding BccAddresses,Mode=TwoWay}" AutoGenerateColumns="False" CanUserAddRows="false" CanUserDeleteRows="false" CanUserResizeColumns="false" CanUserResizeRows="false" CanUserSortColumns="false" HorizontalGridLinesBrush="#FFD5DFE5" VerticalGridLinesBrush="#FFD5DFE5">
                             <DataGrid.ItemContainerStyle>
                                 <Style TargetType="DataGridRow">
