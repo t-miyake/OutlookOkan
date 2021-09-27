@@ -1,0 +1,730 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="About" xml:space="preserve">
+    <value>Über das Programm</value>
+  </data>
+  <data name="AddressBook" xml:space="preserve">
+    <value>Kontakte</value>
+  </data>
+  <data name="AlertKeyword" xml:space="preserve">
+    <value>Alert-Schlüsselwörter</value>
+  </data>
+  <data name="AlertKeywordForBody" xml:space="preserve">
+    <value>Alert-Schlüsselwörter (Body)</value>
+  </data>
+  <data name="AlertKeywordForSubject" xml:space="preserve">
+    <value>Alert-Schlüsselwörter (Betreff)</value>
+  </data>
+  <data name="AlertKeywordInfo" xml:space="preserve">
+    <value>Schlüsselwörter zur Warnung</value>
+  </data>
+  <data name="AlertMailAddress" xml:space="preserve">
+    <value>Empfänger von Warnungen</value>
+  </data>
+  <data name="AlertMailAddressAndDomain" xml:space="preserve">
+    <value>Warnung von Empfängern oder Domänen</value>
+  </data>
+  <data name="AlwaysAddTheSendersAddressToBcc" xml:space="preserve">
+    <value>Fügen Sie die Adresse des Absenders immer automatisch zu Bcc hinzu.</value>
+  </data>
+  <data name="ApplicableDestination" xml:space="preserve">
+    <value>Förderfähige Begünstigte</value>
+  </data>
+  <data name="ApplicableKeywords" xml:space="preserve">
+    <value>Anwendbare Schlüsselwörter</value>
+  </data>
+  <data name="Apply" xml:space="preserve">
+    <value>Anmeldung</value>
+  </data>
+  <data name="AppName" xml:space="preserve">
+    <value>OutlookOkan</value>
+  </data>
+  <data name="AttachedIsAnEncryptedZipFile" xml:space="preserve">
+    <value>Im Anhang finden Sie eine verschlüsselte ZIP-Datei.</value>
+  </data>
+  <data name="AttachmentProhibitedRecipients" xml:space="preserve">
+    <value>Pfändung verbotene Adresse</value>
+  </data>
+  <data name="AttachmentProhibitedRecipientsMessage" xml:space="preserve">
+    <value>Diese Empfänger dürfen keine Anhänge versenden.</value>
+  </data>
+  <data name="Attachments" xml:space="preserve">
+    <value>Anhänge</value>
+  </data>
+  <data name="AttachmentsKeyword" xml:space="preserve">
+    <value>angehängte Datei</value>
+  </data>
+  <data name="AttachmentsName" xml:space="preserve">
+    <value>Name des Anhangs/Stichwort</value>
+  </data>
+  <data name="AttachmentsProhibitedMessage" xml:space="preserve">
+    <value>Der Versand von E-Mails mit Anhängen ist verboten.</value>
+  </data>
+  <data name="AutoAddCCorBCCByAttachedFile" xml:space="preserve">
+    <value>Automatisches Hinzufügen von Cc/Bcc
+(durch Anhänge)</value>
+  </data>
+  <data name="AutoAddCCorBCCByKeyword" xml:space="preserve">
+    <value>Automatisches Hinzufügen von Cc/Bcc
+(nach Schlüsselwörtern)</value>
+  </data>
+  <data name="AutoAddCCorBCCByKeywordInfo" xml:space="preserve">
+    <value>Schlüsselwörter, die automatisch Cc oder Bcc hinzufügen.</value>
+  </data>
+  <data name="AutoAddCCorBCCByMailAddressOrDomain" xml:space="preserve">
+    <value>Automatisches Hinzufügen von Cc/Bcc
+(durch Empfänger)</value>
+  </data>
+  <data name="AutoAddCCorBCCByMailAddressOrDomainInfo" xml:space="preserve">
+    <value>Empfänger oder Domänen, die automatisch Cc oder Bcc hinzufügen.</value>
+  </data>
+  <data name="AutoAddDestination" xml:space="preserve">
+    <value>Automatisch hinzugefügt.</value>
+  </data>
+  <data name="AutoAddMailAddress" xml:space="preserve">
+    <value>Automatisches Hinzufügen von Empfängern.</value>
+  </data>
+  <data name="AutoAddSendersAddressToAlert" xml:space="preserve">
+    <value>Die E-Mail-Adresse des Absenders wurde automatisch der Adresse "An" hinzugefügt. (weil die Adresse "An" aufgrund der automatischen Änderung in "Bcc" nicht mehr existiert).</value>
+  </data>
+  <data name="AutoCheckConfig" xml:space="preserve">
+    <value>Auto-Check-Einstellung</value>
+  </data>
+  <data name="AutoCheckMembersAddress" xml:space="preserve">
+    <value>Die E-Mail-Adressen der Mitglieder werden automatisch überprüft.</value>
+  </data>
+  <data name="AutoCheckSameDomain" xml:space="preserve">
+    <value>Die internen Domänenempfänger werden automatisch überprüft.</value>
+  </data>
+  <data name="BasicSettings" xml:space="preserve">
+    <value>Grundeinstellungen</value>
+  </data>
+  <data name="Bcc" xml:space="preserve">
+    <value>Bcc</value>
+  </data>
+  <data name="Cancel" xml:space="preserve">
+    <value>Abbrechen</value>
+  </data>
+  <data name="CanceledSendingMail" xml:space="preserve">
+    <value>Der Versand dieser E-Mail wurde abgebrochen.</value>
+  </data>
+  <data name="CanceledSendingMailMessage" xml:space="preserve">
+    <value>Der Versand dieser E-Mail wurde abgebrochen. Sie können sie erneut bearbeiten.
+Die geschätzte Zeit für den Versand dieser E-Mail wurde gelöscht.
+
+Um diese E-Mail zu senden, müssen Sie auf die Schaltfläche Senden klicken.
+Wenn Sie den Bearbeitungsbildschirm schließen, wird diese E-Mail nicht versendet.</value>
+  </data>
+  <data name="CanGetNewVersion" xml:space="preserve">
+    <value>Es gibt eine neue Version dieses Add-Ins.
+Möchten Sie es herunterladen?</value>
+  </data>
+  <data name="CanNotFindTheLinkedName" xml:space="preserve">
+    <value>Der verknüpfte Name kann im Mailtext nicht gefunden werden.</value>
+  </data>
+  <data name="Cc" xml:space="preserve">
+    <value>Cc</value>
+  </data>
+  <data name="CCorBCC" xml:space="preserve">
+    <value>Cc/Bcc</value>
+  </data>
+  <data name="ChangeLanguage" xml:space="preserve">
+    <value>Ändern der Anzeigesprache</value>
+  </data>
+  <data name="ChangeRibbonLanguageInfo" xml:space="preserve">
+    <value>Die Anzeigesprache der Multifunktionsleiste (Menü) wird aktualisiert, wenn Outlook neu gestartet wird.</value>
+  </data>
+  <data name="CheckNewVersion" xml:space="preserve">
+    <value>Prüfen Sie die neue Version.</value>
+  </data>
+  <data name="CompanyName" xml:space="preserve">
+    <value>Noraneko Inc.</value>
+  </data>
+  <data name="Confirmation" xml:space="preserve">
+    <value>Bestätigung vor dem Versand einer E-Mail.</value>
+  </data>
+  <data name="ConfirmationMessage1" xml:space="preserve">
+    <value>Möchten Sie diese E-Mail versenden?</value>
+  </data>
+  <data name="ConfirmationMessage2" xml:space="preserve">
+    <value>Nachdem Sie alle Punkte überprüft haben, können Sie auf die Schaltfläche Senden klicken.</value>
+  </data>
+  <data name="ContactGroup" xml:space="preserve">
+    <value>Kontakt Gruppe</value>
+  </data>
+  <data name="Copyright" xml:space="preserve">
+    <value>Copyright (C) 2021 Noraneko Inc.</value>
+  </data>
+  <data name="CSVExport" xml:space="preserve">
+    <value>CSV exportieren</value>
+  </data>
+  <data name="CSVImport" xml:space="preserve">
+    <value>CSV importieren</value>
+  </data>
+  <data name="CSVImportAlert" xml:space="preserve">
+    <value>Importieren Sie keine CSV-Datei mit falschem Format.</value>
+  </data>
+  <data name="DefaultAlertMessage" xml:space="preserve">
+    <value>Der Text der E-Mail enthält das Schlüsselwort, für das Sie gewarnt werden.</value>
+  </data>
+  <data name="DeferredDelivery" xml:space="preserve">
+    <value>Aufgeschobene Lieferung</value>
+  </data>
+  <data name="DeferredDeliveryEmailAddressOrDomainInfo" xml:space="preserve">
+    <value>Geben Sie die E-Mail-Adresse oder die Domäne ein, die Sie später zustellen möchten.</value>
+  </data>
+  <data name="DeferredDeliveryMinutes" xml:space="preserve">
+    <value>Aufgeschobene Lieferfrist (min)</value>
+  </data>
+  <data name="DeferredDeliveryTime" xml:space="preserve">
+    <value>Aufgeschobene Lieferfrist (min)</value>
+  </data>
+  <data name="DestinationEmailaddress" xml:space="preserve">
+    <value>Empfänger</value>
+  </data>
+  <data name="DistributionList" xml:space="preserve">
+    <value>Verteilerliste</value>
+  </data>
+  <data name="Domain" xml:space="preserve">
+    <value>Domäne</value>
+  </data>
+  <data name="DoNotShowConfirmationScreen" xml:space="preserve">
+    <value>Überspringen Sie das Bestätigungsfenster</value>
+  </data>
+  <data name="EnableForgottenToAttachAlert" xml:space="preserve">
+    <value>Wenn im Text der Satz "angehängte Datei" steht, es aber keine angehängte Datei gibt, wird eine Warnung ausgegeben.</value>
+  </data>
+  <data name="EncryptedZipBeta" xml:space="preserve">
+    <value>Warnung vor verschlüsseltem Zip-Dateianhang</value>
+  </data>
+  <data name="ExclusionSettings" xml:space="preserve">
+    <value>Ausschluss-Einstellungen</value>
+  </data>
+  <data name="ExportFailed" xml:space="preserve">
+    <value>Der Export ist fehlgeschlagen.</value>
+  </data>
+  <data name="ExternalDomainsChangeToBccAlert" xml:space="preserve">
+    <value>Da die externen Domänen von To und Cc über dem Schwellenwert liegen, wurde die externe Domäne der Empfänger in Bcc geändert.</value>
+  </data>
+  <data name="ExternalDomainsWarningAndAutoChangeToBcc" xml:space="preserve">
+    <value>Warnung vor externen Domänen und
+automatischer Wechsel zu Bcc</value>
+  </data>
+  <data name="ExternalRecipient" xml:space="preserve">
+    <value>Externer Empfänger</value>
+  </data>
+  <data name="FailedToGetInformation" xml:space="preserve">
+    <value>Die Informationen konnten nicht abgerufen werden.</value>
+  </data>
+  <data name="ForgottenToAttachAlert" xml:space="preserve">
+    <value>Das Wort "angehängte Datei" steht im Text, aber es gibt keinen Anhang.</value>
+  </data>
+  <data name="General" xml:space="preserve">
+    <value>Allgemein</value>
+  </data>
+  <data name="GetMembersOfTheContactGroup" xml:space="preserve">
+    <value>Zeigt die Mitglieder einer Kontaktgruppe an.</value>
+  </data>
+  <data name="GetMembersOfTheExDistList" xml:space="preserve">
+    <value>Zeigen Sie die Mitglieder einer Exchange-Verteilerliste an. (Dies kann lange dauern.)</value>
+  </data>
+  <data name="GetMembersOfTheList" xml:space="preserve">
+    <value>Anzeigen der Mitglieder einer Exchange-Verteilerliste oder einer Kontaktgruppe</value>
+  </data>
+  <data name="Help" xml:space="preserve">
+    <value>Anweisungen</value>
+  </data>
+  <data name="HowToDeleteRow" xml:space="preserve">
+    <value>* Zeile löschen: Markieren Sie die Zeile und drücken Sie die Löschtaste.</value>
+  </data>
+  <data name="HTML" xml:space="preserve">
+    <value>HTML</value>
+  </data>
+  <data name="IfAllSameDomain" xml:space="preserve">
+    <value>Wenn es sich bei allen Empfängerdomänen um interne Domänen handelt, können Sie das Bestätigungsfenster überspringen.</value>
+  </data>
+  <data name="IfAllWhite" xml:space="preserve">
+    <value>Wenn in der Empfängerliste kein Kontrollziel vorhanden ist, wird das Bestätigungsfenster übersprungen.
+(z. B. wenn alle Empfänger in der Erlaubnisliste enthalten sind.)</value>
+  </data>
+  <data name="ImportAndExport" xml:space="preserve">
+    <value>Importieren/Exportieren</value>
+  </data>
+  <data name="ImportantAlert" xml:space="preserve">
+    <value>Wichtige Warnungen.</value>
+  </data>
+  <data name="ImportFailed" xml:space="preserve">
+    <value>Der Import ist fehlgeschlagen.</value>
+  </data>
+  <data name="InputCCorBCC" xml:space="preserve">
+    <value>Geben Sie "Cc" oder "Bcc" ein.</value>
+  </data>
+  <data name="InputDeferredDeliveryTime" xml:space="preserve">
+    <value>Geben Sie die Verzögerungszeit in Minuten ein.</value>
+  </data>
+  <data name="InputDomain" xml:space="preserve">
+    <value>Geben Sie die Domäne ein.</value>
+  </data>
+  <data name="InputDomainInfo" xml:space="preserve">
+    <value>Geben Sie die Domäne von @ ein.</value>
+  </data>
+  <data name="InputMailaddressOrDomain" xml:space="preserve">
+    <value>E-Mail-Adresse oder Domäne eingeben.</value>
+  </data>
+  <data name="InputNameInfo" xml:space="preserve">
+    <value>Geben Sie den Namen ein. (z. B. Firmenname)</value>
+  </data>
+  <data name="InternalDomain" xml:space="preserve">
+    <value>Interner Domäne</value>
+  </data>
+  <data name="IsAlertAddressBccAlert" xml:space="preserve">
+    <value>Der Empfänger (Bcc) enthält eine Adresse oder Domäne, die als Warnmeldung registriert wurde.</value>
+  </data>
+  <data name="IsAlertAddressCcAlert" xml:space="preserve">
+    <value>Der Empfänger (Cc) enthält eine Adresse oder Domäne, die als Warnmeldung registriert wurde.</value>
+  </data>
+  <data name="IsAlertAddressMaybeIrrelevant" xml:space="preserve">
+    <value>Dieser Empfänger ist möglicherweise nicht mit dem beabsichtigten Ziel verbunden.</value>
+  </data>
+  <data name="IsAlertAddressToAlert" xml:space="preserve">
+    <value>Der Empfänger (To) enthält eine Adresse oder Domäne, die als Warnmeldung registriert wurde.</value>
+  </data>
+  <data name="IsAttachedExe" xml:space="preserve">
+    <value>Eine ausführbare Datei (.exe) ist beigefügt.</value>
+  </data>
+  <data name="IsAttachmentsProhibited" xml:space="preserve">
+    <value>Das Versenden ist verboten, wenn eine Datei angehängt ist.</value>
+  </data>
+  <data name="IsAutoChangeToBccWhenLargeNumberOfExternalDomains" xml:space="preserve">
+    <value>Die externen Empfänger von To und Cc werden automatisch in Bcc umgewandelt 
+konvertiert, wenn die Empfänger (To/Cc) eine große Anzahl von externen Domänen haben.</value>
+  </data>
+  <data name="IsAutoCheckRegisteredInContacts" xml:space="preserve">
+    <value>Die in den Kontakten registrierten Empfänger werden automatisch überprüft. (Dies kann einige Zeit dauern.)</value>
+  </data>
+  <data name="IsAutoCheckRegisteredInContactsAndMemberOfContactLists" xml:space="preserve">
+    <value>Empfänger einbeziehen, die als Mitglieder einer Kontaktliste registriert sind.
+(Wenn Sie viele Kontaktgruppen haben, kann der Vorgang länger dauern.)</value>
+  </data>
+  <data name="IsBigAttachedFile" xml:space="preserve">
+    <value>Dieser E-Mail ist eine Datei mit einer Größe von 10 MB oder mehr beigefügt.</value>
+  </data>
+  <data name="IsCanNotShowConfirmation" xml:space="preserve">
+    <value>Das Bestätigungsfenster konnte nicht angezeigt werden.</value>
+  </data>
+  <data name="IsCheckNameAndDomainsFromRecipients" xml:space="preserve">
+    <value>Eine Warnung wird auch angezeigt, wenn der Name des Empfängers nicht im Text der E-Mail enthalten ist.</value>
+  </data>
+  <data name="IsDoNotUseXIfAllRecipientsAreInternalDomain" xml:space="preserve">
+    <value>Deaktivieren Sie diese Funktion, wenn es sich bei den Domänen des Empfängers ausschließlich um interne Domänen handelt.</value>
+  </data>
+  <data name="IsEnableAllAttachedFilesAreDetectEncryptedZip" xml:space="preserve">
+    <value>Bei angehängten Dateien mit einer anderen Erweiterung als ".zip" wird auch erkannt, ob es sich um verschlüsselte ZIP-Dateien handelt oder nicht.</value>
+  </data>
+  <data name="IsEnableRecipientsAreSortedByDomain" xml:space="preserve">
+    <value>Die Empfänger werden auf dem Bestätigungsbildschirm nach Domäne sortiert.</value>
+  </data>
+  <data name="IsNotTreatedAsAttachmentsAtHtmlEmbeddedFiles" xml:space="preserve">
+    <value>Eine in eine HTML-Mail eingebettete Datei wird nicht als Anhang behandelt.</value>
+  </data>
+  <data name="IsProhibitedWhenEncryptedZipIsAttached" xml:space="preserve">
+    <value>Das Versenden ist verboten, wenn eine verschlüsselte ZIP-Datei angehängt ist.</value>
+  </data>
+  <data name="IsProhibitedWhenLargeNumberOfExternalDomains" xml:space="preserve">
+    <value>Das Senden ist verboten, wenn die Empfänger (To/Cc) eine große Anzahl externer Domänen haben.</value>
+  </data>
+  <data name="IsProhibitsSendingMailIfRecipientsIsNotRegistered" xml:space="preserve">
+    <value>Verbietet den Versand von E-Mails, wenn der Empfänger nicht in den Kontakten registriert ist.</value>
+  </data>
+  <data name="IsShowConfirmationToMultipleDomain" xml:space="preserve">
+    <value>Wenn die Empfänger mehrere externe Domänen enthalten, wird das Bestätigungsfenster angezeigt.
+(Das Bestätigungsfenster wird nicht übersprungen.)</value>
+  </data>
+  <data name="IsSkipConfirmation" xml:space="preserve">
+    <value>Bestätigungsfenster überspringen.</value>
+  </data>
+  <data name="IsSkipConfirmationInfo" xml:space="preserve">
+    <value>Überspringen Sie das Bestätigungsfenster, wenn Sie eine E-Mail nur an die ausgewählten Empfänger senden.</value>
+  </data>
+  <data name="IsWarningIfRecipientsIsNotRegistered" xml:space="preserve">
+    <value>Wenn der Empfänger nicht in den Kontakten registriert ist,
+wird auf dem Bestätigungsbildschirm eine Warnung angezeigt.</value>
+  </data>
+  <data name="IsWarningWhenAttachedRealFile" xml:space="preserve">
+    <value>Wenn eine Datei angehängt ist, empfiehlt es sich, sie als Link auf dem Bestätigungsbildschirm anzuhängen.</value>
+  </data>
+  <data name="IsWarningWhenEncryptedZipIsAttached" xml:space="preserve">
+    <value>Anzeige einer Warnung, wenn eine verschlüsselte ZIP-Datei angehängt ist.</value>
+  </data>
+  <data name="IsWarningWhenLargeNumberOfExternalDomains" xml:space="preserve">
+    <value>Zeigt eine Warnung an, wenn die Empfänger (An/Cc) eine große Anzahl von externen Domänen haben.</value>
+  </data>
+  <data name="Keyword" xml:space="preserve">
+    <value>Schlüsselwörter</value>
+  </data>
+  <data name="LargeNumberOfExternalDomainAlert" xml:space="preserve">
+    <value>Die Anzahl der externen Domains in To und Cc ist höher als der Schwellenwert. Bitte bestätigen Sie noch einmal die Vor- und Nachteile des Versands.</value>
+  </data>
+  <data name="MailAddressAndDomain" xml:space="preserve">
+    <value>Adresse/Domäne des Empfängers</value>
+  </data>
+  <data name="MailBody" xml:space="preserve">
+    <value>Nachrichtentext (Klartext)</value>
+  </data>
+  <data name="MailInfo" xml:space="preserve">
+    <value>E-Mail-Informationen</value>
+  </data>
+  <data name="MailType" xml:space="preserve">
+    <value>Typ</value>
+  </data>
+  <data name="Name" xml:space="preserve">
+    <value>Name</value>
+  </data>
+  <data name="NameAndDomain" xml:space="preserve">
+    <value>Name und Domäne des Empfängers im
+Zusammenhang</value>
+  </data>
+  <data name="NoAlert" xml:space="preserve">
+    <value>Es gibt keine wichtigen Warnmeldungen.</value>
+  </data>
+  <data name="NoticeOfIsEnableAllAttachedFilesAreDetectEncryptedZip" xml:space="preserve">
+    <value>* Die Bearbeitung von E-Mails mit Anhängen kann länger dauern.</value>
+  </data>
+  <data name="OK" xml:space="preserve">
+    <value>OK</value>
+  </data>
+  <data name="ProhibitedWhenLargeNumberOfExternalDomainsAlert" xml:space="preserve">
+    <value>Die Anzahl der externen Domänen in To und Cc liegt über dem Schwellenwert.</value>
+  </data>
+  <data name="ProhibitsSendingMailIfRecipientsIsNotRegisteredMessage" xml:space="preserve">
+    <value>Das Senden von E-Mails an nicht registrierte Kontakte ist verboten.</value>
+  </data>
+  <data name="RecipientsAndAttachmentsName" xml:space="preserve">
+    <value>Namen des Empfängers und des Anhangs in
+Beziehung setzen</value>
+  </data>
+  <data name="RecipientsAndAttachmentsNameMessage" xml:space="preserve">
+    <value>Unverbundene Empfänger und Anhänge.</value>
+  </data>
+  <data name="RecommendationOfAttachFileAsLink" xml:space="preserve">
+    <value>Es wird empfohlen, die Datei als Link anzuhängen.</value>
+  </data>
+  <data name="RichText" xml:space="preserve">
+    <value>Rich-Text</value>
+  </data>
+  <data name="SaveSettings" xml:space="preserve">
+    <value>Die Einstellungen sind aktualisiert worden.</value>
+  </data>
+  <data name="SelectCSVFile" xml:space="preserve">
+    <value>Wählen Sie eine CSV-Datei aus.</value>
+  </data>
+  <data name="SelectSaveDestination" xml:space="preserve">
+    <value>Wählen Sie aus, wo Sie es speichern möchten.</value>
+  </data>
+  <data name="Send" xml:space="preserve">
+    <value>Senden Sie</value>
+  </data>
+  <data name="Sender" xml:space="preserve">
+    <value>Sender</value>
+  </data>
+  <data name="SendersDomainAndInternalDomainAreNotCovered" xml:space="preserve">
+    <value>*Sowohl die Domäne des Absenders als auch die interne Domäne sind nicht abgedeckt.</value>
+  </data>
+  <data name="SendingForbid" xml:space="preserve">
+    <value>Nicht senden</value>
+  </data>
+  <data name="SendingForbidAddress" xml:space="preserve">
+    <value>Verbotene Empfänger.</value>
+  </data>
+  <data name="SendingForbidInfo" xml:space="preserve">
+    <value>Wenn Sie dieses Kontrollkästchen aktivieren, können Sie weder eine E-Mail an den Empfänger senden noch das Schlüsselwort angeben.</value>
+  </data>
+  <data name="SendMailConfirmation" xml:space="preserve">
+    <value>Möchten Sie diese E-Mail versenden?</value>
+  </data>
+  <data name="SentOnBehalf" xml:space="preserve">
+    <value>Agent Zustellung oder Senden als.</value>
+  </data>
+  <data name="SettingExample" xml:space="preserve">
+    <value>Beispiel für Einstellungen.</value>
+  </data>
+  <data name="SettingExampleAlertKeyword" xml:space="preserve">
+    <value>Schlüsselwörter: Vertraulich
+Alarmierender Text: Er enthält die Phrase "Vertraulich".
+
+Registrieren Sie die zu warnenden Schlüsselwörter und ihren Warntext.
+
+Wenn das Schlüsselwort im Text enthalten ist, können Sie eine Warnung anzeigen oder den Versand dieser E-Mail verbieten.
+
+Wenn der Warntext leer ist, wird auf dem Bestätigungsbildschirm der Standard-Warntext angezeigt.</value>
+  </data>
+  <data name="SettingExampleAlertKeywordForSubject" xml:space="preserve">
+    <value>Schlüsselwörter: Vertraulich
+Alarmierender Text: Er enthält die Phrase "Vertraulich".
+
+Registrieren Sie die zu warnenden Schlüsselwörter und ihren Warntext.
+
+Wenn das Schlüsselwort in der Betreffzeile enthalten ist, können Sie eine Warnung anzeigen oder den Versand dieser E-Mail verbieten.
+
+Wenn der Warntext leer ist, wird auf dem Bestätigungsbildschirm der Standard-Warntext angezeigt.</value>
+  </data>
+  <data name="SettingExampleAlertMailAddress" xml:space="preserve">
+    <value>E-Mail Adresse: info@noraneko.co.jp
+oder
+Domäne: @noraneko.co.jp
+
+Registrieren Sie eine E-Mail-Adresse oder eine Domäne.
+
+Wenn Sie eine E-Mail an eine E-Mail-Adresse oder Domäne senden, die Sie hier registriert haben, erhalten Sie eine Benachrichtigung im Voraus.</value>
+  </data>
+  <data name="SettingExampleAttachmentProhibitedRecipients" xml:space="preserve">
+    <value>E-Mail Adresse: info@noraneko.co.jp
+oder
+Domain: @noraneko.co.jp
+
+E-Mail-Adresse oder Domäne registrieren.
+
+Sie können dann keine E-Mails mit Anhängen an diese Empfänger senden.</value>
+  </data>
+  <data name="SettingExampleAttachments" xml:space="preserve">
+    <value>Sie können verhindern, dass E-Mails mit Anhängen gesendet werden, oder eine Warnung anzeigen, die empfiehlt, die Datei als Link anzuhängen.
+
+Sie können auch eine Warnung anzeigen oder den Versand einer E-Mail verbieten, wenn eine verschlüsselte ZIP-Datei (ZIP-Datei mit Kennwort) angehängt ist.</value>
+  </data>
+  <data name="SettingExampleAutoAddCCorBCCByAttachedFile" xml:space="preserve">
+    <value>Typ: Cc oder Bcc
+E-Mail Adresse: boss@noraneko.co.jp
+
+Wenn Sie eine E-Mail mit einer angehängten Datei senden, wird die angegebene Adresse automatisch zu Cc oder Bcc hinzugefügt.</value>
+  </data>
+  <data name="SettingExampleAutoAddCCorBCCByKeyword" xml:space="preserve">
+    <value>Typ: Cc oder Bcc
+Schlüsselwörter: Vertraulich
+E-Mail Adresse: boss@noraneko.co.jp
+
+Wenn die Schlüsselwörter in der E-Mail enthalten sind, wird die angegebene Adresse automatisch zu Cc oder Bcc hinzugefügt.</value>
+  </data>
+  <data name="SettingExampleAutoAddCCorBCCByMailAddressOrDomain" xml:space="preserve">
+    <value>Typ: Cc oder Bcc
+To: warning@xxxxxxx.com
+E-Mail Adresse: boss@noraneko.co.jp
+
+Beim Senden von E-Mails an registrierte Empfänger und Domänen wird die angegebene Adresse automatisch zu Cc oder Bcc hinzugefügt.</value>
+  </data>
+  <data name="SettingExampleDeferredDelivery" xml:space="preserve">
+    <value>E-Mail Adresse: info@noraneko.co.jp
+oder
+Domäne: @noraneko.co.jp
+
+Registrieren Sie Ihre E-Mail-Adresse oder Domäne und registrieren Sie die minutengenaue Verzögerungszeit.
+
+* Wenn Sie nur @ registrieren, können Sie die Standard-Aufschiebungszeit für alle Mails registrieren.
+
+* Wenn mehrere Bedingungen erfüllt sind, wird die längste Verzögerungszeit angewendet.</value>
+  </data>
+  <data name="SettingExampleExternalDomainsWarningAndAutoChangeToBcc" xml:space="preserve">
+    <value>Legen Sie die Anzahl der externen Domänen fest, die als Grundlage für Warnungen und den automatischen Wechsel zu Bcc verwendet werden sollen, und schalten Sie jede einzelne ein oder aus.
+
+Wenn die Adresse "To" nach der automatischen Umstellung auf "Bcc" nicht vorhanden ist, wird die Adresse des Absenders automatisch der Adresse "To" hinzugefügt.</value>
+  </data>
+  <data name="SettingExampleInternalDomainList" xml:space="preserve">
+    <value>Domäne: @noraneko.co.jp
+
+Registrieren Sie eine Domäne, die als interne (Unternehmens-)Domäne behandelt werden soll.
+
+Die Domäne der E-Mail-Adresse des Absenders wird immer als interne Domäne behandelt.</value>
+  </data>
+  <data name="SettingExampleNameAndDomain" xml:space="preserve">
+    <value>Name: Noraneko Inc
+Domain: @noraneko.co.jp
+
+Registrieren Sie den Namen (z. B. Firmenname) und die Domäne.
+
+Zeigt eine Warnung an, wenn der Name im E-Mail-Text und die Domäne des Empfängers nicht übereinstimmen.</value>
+  </data>
+  <data name="SettingExampleRecipientsAndAttachmentsName" xml:space="preserve">
+    <value>E-Mail Adresse: info@noraneko.co.jp
+oder
+Domain: @noraneko.co.jp
+Name des Anhangs/Stichwort: Rechnung an Noraneko
+
+Registrieren Sie die E-Mail-Adresse oder die Domäne und den Dateinamen oder das Schlüsselwort des Anhangs.
+
+Wenn die Empfänger und der Name der angehängten Datei nicht übereinstimmen, wird eine Warnung angezeigt.</value>
+  </data>
+  <data name="SettingExampleWhiteList" xml:space="preserve">
+    <value>E-Mail Adresse: info@noraneko.co.jp
+oder
+Domain: @noraneko.co.jp
+
+E-Mail-Adresse oder Domäne registrieren.
+
+Die entsprechenden Empfänger werden auf dem Bestätigungsbildschirm angekreuzt.</value>
+  </data>
+  <data name="Settings" xml:space="preserve">
+    <value>Einstellungen</value>
+  </data>
+  <data name="Subject" xml:space="preserve">
+    <value>Betreff</value>
+  </data>
+  <data name="SuccessfulExport" xml:space="preserve">
+    <value>Der Export ist nun abgeschlossen.</value>
+  </data>
+  <data name="SuccessfulImport" xml:space="preserve">
+    <value>Der Import ist nun abgeschlossen.</value>
+  </data>
+  <data name="TargetToAndCcExternalDomainsNum" xml:space="preserve">
+    <value>Die Anzahl der externen Domänen der Empfänger (To/Cc), die von dieser Funktion abgedeckt werden sollen.</value>
+  </data>
+  <data name="TargetToAndCcExternalDomainsNumInfo" xml:space="preserve">
+    <value>* Wenn die externe Domäne, die in To und Cc der E-Mail enthalten ist, größer als oder gleich dieser Einstellung ist, 
+wird diese Funktion angewendet.</value>
+  </data>
+  <data name="Text" xml:space="preserve">
+    <value>Klartext</value>
+  </data>
+  <data name="To" xml:space="preserve">
+    <value>To</value>
+  </data>
+  <data name="Unknown" xml:space="preserve">
+    <value>Unbekannt</value>
+  </data>
+  <data name="Version" xml:space="preserve">
+    <value>Version 2.6.0.0</value>
+  </data>
+  <data name="VersionInfo" xml:space="preserve">
+    <value>Über das Programm</value>
+  </data>
+  <data name="WarningIfRecipientsIsNotRegisteredMessage" xml:space="preserve">
+    <value>Diese Adresse ist nicht in Ihren Kontakten gespeichert.</value>
+  </data>
+  <data name="WarningText" xml:space="preserve">
+    <value>Warnungstext</value>
+  </data>
+  <data name="WarningTextInfo" xml:space="preserve">
+    <value>Warnungstext im Bestätigungsfenster.</value>
+  </data>
+  <data name="WhiteList" xml:space="preserve">
+    <value>Erlaubnisliste</value>
+  </data>
+  <data name="YouHaveLatest" xml:space="preserve">
+    <value>Dieses Add-In ist die neueste Version.</value>
+  </data>
+</root>

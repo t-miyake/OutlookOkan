@@ -12,8 +12,8 @@ namespace OutlookOkan.Types
     {
         public AutoCcBccAttachedFileMap()
         {
-            Map(m => m.CcOrBcc).Index(0);
-            Map(m => m.AutoAddAddress).Index(1);
+            _ = Map(m => m.CcOrBcc).Index(0);
+            _ = Map(m => m.AutoAddAddress).Index(1);
         }
     }
 }

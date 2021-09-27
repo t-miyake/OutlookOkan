@@ -12,8 +12,8 @@ namespace OutlookOkan.Types
     {
         public WhitelistMap()
         {
-            Map(m => m.WhiteName).Index(0);
-            Map(m => m.IsSkipConfirmation).Index(1).TypeConverterOption.BooleanValues(true, true, "Yes", "Y").TypeConverterOption.BooleanValues(false, true, "No", "N").Default(false);
+            _ = Map(m => m.WhiteName).Index(0);
+            _ = Map(m => m.IsSkipConfirmation).Index(1).TypeConverterOption.BooleanValues(true, true, "Yes", "Y").TypeConverterOption.BooleanValues(false, true, "No", "N").Default(false);
         }
     }
 }

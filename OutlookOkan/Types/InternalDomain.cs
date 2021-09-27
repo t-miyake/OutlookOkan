@@ -11,7 +11,7 @@ namespace OutlookOkan.Types
     {
         public InternalDomainMap()
         {
-            Map(m => m.Domain).Index(0);
+            _ = Map(m => m.Domain).Index(0);
         }
     }
 }

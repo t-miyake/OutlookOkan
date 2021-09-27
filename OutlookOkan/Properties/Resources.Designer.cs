@@ -70,11 +70,38 @@ namespace OutlookOkan.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Contacts.
+        /// </summary>
+        public static string AddressBook {
+            get {
+                return ResourceManager.GetString("AddressBook", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Alert keywords.
         /// </summary>
         public static string AlertKeyword {
             get {
                 return ResourceManager.GetString("AlertKeyword", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Alert Keywords (Body).
+        /// </summary>
+        public static string AlertKeywordForBody {
+            get {
+                return ResourceManager.GetString("AlertKeywordForBody", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Alert Keywords (Subject).
+        /// </summary>
+        public static string AlertKeywordForSubject {
+            get {
+                return ResourceManager.GetString("AlertKeywordForSubject", resourceCulture);
             }
         }
         
@@ -102,6 +129,15 @@ namespace OutlookOkan.Properties {
         public static string AlertMailAddressAndDomain {
             get {
                 return ResourceManager.GetString("AlertMailAddressAndDomain", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Always add the sender&apos;s address to Bcc automatically..
+        /// </summary>
+        public static string AlwaysAddTheSendersAddressToBcc {
+            get {
+                return ResourceManager.GetString("AlwaysAddTheSendersAddressToBcc", resourceCulture);
             }
         }
         
@@ -151,6 +187,24 @@ namespace OutlookOkan.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Attachment prohibited address.
+        /// </summary>
+        public static string AttachmentProhibitedRecipients {
+            get {
+                return ResourceManager.GetString("AttachmentProhibitedRecipients", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to This recipients who are prohibited from sending attachments..
+        /// </summary>
+        public static string AttachmentProhibitedRecipientsMessage {
+            get {
+                return ResourceManager.GetString("AttachmentProhibitedRecipientsMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Attachments.
         /// </summary>
         public static string Attachments {
@@ -160,7 +214,34 @@ namespace OutlookOkan.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Automatic Cc/Bcc addition(by attachments).
+        ///   Looks up a localized string similar to attached file.
+        /// </summary>
+        public static string AttachmentsKeyword {
+            get {
+                return ResourceManager.GetString("AttachmentsKeyword", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Attachments name/Keyword.
+        /// </summary>
+        public static string AttachmentsName {
+            get {
+                return ResourceManager.GetString("AttachmentsName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Sending e-mail with attachments is prohibited..
+        /// </summary>
+        public static string AttachmentsProhibitedMessage {
+            get {
+                return ResourceManager.GetString("AttachmentsProhibitedMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Automatic Cc/Bcc addition (by attachments).
         /// </summary>
         public static string AutoAddCCorBCCByAttachedFile {
             get {
@@ -169,7 +250,7 @@ namespace OutlookOkan.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Automatic Cc/Bcc addition(by keywords).
+        ///   Looks up a localized string similar to Automatic Cc/Bcc addition (by keywords).
         /// </summary>
         public static string AutoAddCCorBCCByKeyword {
             get {
@@ -187,7 +268,7 @@ namespace OutlookOkan.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Automatic Cc/Bcc addition(by recipients).
+        ///   Looks up a localized string similar to Automatic Cc/Bcc addition (by recipients).
         /// </summary>
         public static string AutoAddCCorBCCByMailAddressOrDomain {
             get {
@@ -268,6 +349,15 @@ namespace OutlookOkan.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Bcc.
+        /// </summary>
+        public static string Bcc {
+            get {
+                return ResourceManager.GetString("Bcc", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Cancel.
         /// </summary>
         public static string Cancel {
@@ -305,6 +395,24 @@ namespace OutlookOkan.Properties {
         public static string CanGetNewVersion {
             get {
                 return ResourceManager.GetString("CanGetNewVersion", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Cannot find the linked name in the mail body..
+        /// </summary>
+        public static string CanNotFindTheLinkedName {
+            get {
+                return ResourceManager.GetString("CanNotFindTheLinkedName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Cc.
+        /// </summary>
+        public static string Cc {
+            get {
+                return ResourceManager.GetString("Cc", resourceCulture);
             }
         }
         
@@ -480,6 +588,15 @@ namespace OutlookOkan.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Distribution list.
+        /// </summary>
+        public static string DistributionList {
+            get {
+                return ResourceManager.GetString("DistributionList", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Domain.
         /// </summary>
         public static string Domain {
@@ -507,7 +624,7 @@ namespace OutlookOkan.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Encrypted Zip (Beta).
+        ///   Looks up a localized string similar to Encrypted Zip file attachment warning.
         /// </summary>
         public static string EncryptedZipBeta {
             get {
@@ -543,7 +660,8 @@ namespace OutlookOkan.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to External domains warning and auto change to Bcc.
+        ///   Looks up a localized string similar to External domains warning and 
+        ///auto change to Bcc.
         /// </summary>
         public static string ExternalDomainsWarningAndAutoChangeToBcc {
             get {
@@ -651,7 +769,8 @@ namespace OutlookOkan.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to If there is no check target in the recipients, skip the confirmation window. (e.g., if all recipients are included in the allowlist.).
+        ///   Looks up a localized string similar to If there is no check target in the recipients, skip the confirmation window.
+        ///(e.g., if all recipients are included in the allowlist.).
         /// </summary>
         public static string IfAllWhite {
             get {
@@ -795,12 +914,40 @@ namespace OutlookOkan.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Sending is prohibited when a file is attached..
+        /// </summary>
+        public static string IsAttachmentsProhibited {
+            get {
+                return ResourceManager.GetString("IsAttachmentsProhibited", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to The external recipient of To and Cc are automatically converted to Bcc 
         ///when the recipients (To/Cc) has a large number of external domains..
         /// </summary>
         public static string IsAutoChangeToBccWhenLargeNumberOfExternalDomains {
             get {
                 return ResourceManager.GetString("IsAutoChangeToBccWhenLargeNumberOfExternalDomains", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Recipients registered in Contacts will be auto-checked. (It may take a long time.).
+        /// </summary>
+        public static string IsAutoCheckRegisteredInContacts {
+            get {
+                return ResourceManager.GetString("IsAutoCheckRegisteredInContacts", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Include recipients who are registered as members of a contact list.
+        ///(If you have many contact groups, the process may take longer.).
+        /// </summary>
+        public static string IsAutoCheckRegisteredInContactsAndMemberOfContactLists {
+            get {
+                return ResourceManager.GetString("IsAutoCheckRegisteredInContactsAndMemberOfContactLists", resourceCulture);
             }
         }
         
@@ -819,6 +966,15 @@ namespace OutlookOkan.Properties {
         public static string IsCanNotShowConfirmation {
             get {
                 return ResourceManager.GetString("IsCanNotShowConfirmation", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to A warning is also displayed when there is no recipient&apos;s name in the mail body..
+        /// </summary>
+        public static string IsCheckNameAndDomainsFromRecipients {
+            get {
+                return ResourceManager.GetString("IsCheckNameAndDomainsFromRecipients", resourceCulture);
             }
         }
         
@@ -877,7 +1033,17 @@ namespace OutlookOkan.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to If the recipients contains multiple external domains, display the confirmation window. (Doesn&apos;t skip the confirmation window.).
+        ///   Looks up a localized string similar to Prohibits sending mail if the recipient is not registered in the Contacts..
+        /// </summary>
+        public static string IsProhibitsSendingMailIfRecipientsIsNotRegistered {
+            get {
+                return ResourceManager.GetString("IsProhibitsSendingMailIfRecipientsIsNotRegistered", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to If the recipients contains multiple external domains, display the confirmation window. 
+        ///(Doesn&apos;t skip the confirmation window.).
         /// </summary>
         public static string IsShowConfirmationToMultipleDomain {
             get {
@@ -900,6 +1066,24 @@ namespace OutlookOkan.Properties {
         public static string IsSkipConfirmationInfo {
             get {
                 return ResourceManager.GetString("IsSkipConfirmationInfo", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to If the recipient is not registered in the contacts, a warning is displayed on the confirmation window..
+        /// </summary>
+        public static string IsWarningIfRecipientsIsNotRegistered {
+            get {
+                return ResourceManager.GetString("IsWarningIfRecipientsIsNotRegistered", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to If a file is attached, it is recommended to attach it as a link on the confirmation window..
+        /// </summary>
+        public static string IsWarningWhenAttachedRealFile {
+            get {
+                return ResourceManager.GetString("IsWarningWhenAttachedRealFile", resourceCulture);
             }
         }
         
@@ -958,7 +1142,7 @@ namespace OutlookOkan.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Mail Infomation.
+        ///   Looks up a localized string similar to Mail Information.
         /// </summary>
         public static string MailInfo {
             get {
@@ -985,7 +1169,7 @@ namespace OutlookOkan.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Name/Domain.
+        ///   Looks up a localized string similar to Relating recipient&apos;s name and domain.
         /// </summary>
         public static string NameAndDomain {
             get {
@@ -1026,6 +1210,42 @@ namespace OutlookOkan.Properties {
         public static string ProhibitedWhenLargeNumberOfExternalDomainsAlert {
             get {
                 return ResourceManager.GetString("ProhibitedWhenLargeNumberOfExternalDomainsAlert", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Sending e-mail to an unregistered contact is prohibited..
+        /// </summary>
+        public static string ProhibitsSendingMailIfRecipientsIsNotRegisteredMessage {
+            get {
+                return ResourceManager.GetString("ProhibitsSendingMailIfRecipientsIsNotRegisteredMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Relating recipient&apos;s and Attachment Names.
+        /// </summary>
+        public static string RecipientsAndAttachmentsName {
+            get {
+                return ResourceManager.GetString("RecipientsAndAttachmentsName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Unrelated recipients and attachments..
+        /// </summary>
+        public static string RecipientsAndAttachmentsNameMessage {
+            get {
+                return ResourceManager.GetString("RecipientsAndAttachmentsNameMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to It is recommended that you attach the file as a link..
+        /// </summary>
+        public static string RecommendationOfAttachFileAsLink {
+            get {
+                return ResourceManager.GetString("RecommendationOfAttachFileAsLink", resourceCulture);
             }
         }
         
@@ -1080,6 +1300,15 @@ namespace OutlookOkan.Properties {
         public static string Sender {
             get {
                 return ResourceManager.GetString("Sender", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to *Both the sender&apos;s domain and the internal domain are not covered..
+        /// </summary>
+        public static string SendersDomainAndInternalDomainAreNotCovered {
+            get {
+                return ResourceManager.GetString("SendersDomainAndInternalDomainAreNotCovered", resourceCulture);
             }
         }
         
@@ -1143,11 +1372,29 @@ namespace OutlookOkan.Properties {
         ///
         ///Register the keywords to be alert and their alerting text.
         ///
+        ///If the keyword is included in the body you can display a warning or prohibit the sending of that email.
+        ///
         ///If the alerting text is blank, the confirmation screen will show the default alerting text..
         /// </summary>
         public static string SettingExampleAlertKeyword {
             get {
                 return ResourceManager.GetString("SettingExampleAlertKeyword", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Keywords: Confidential
+        ///Alerting text: It includes the phrase &quot;Confidential&quot;.
+        ///
+        ///Register the keywords to be alert and their alerting text.
+        ///
+        ///If the keyword is included in the subject you can display a warning or prohibit the sending of that email.
+        ///
+        ///If the alerting text is blank, the confirmation screen will show the default alerting text..
+        /// </summary>
+        public static string SettingExampleAlertKeywordForSubject {
+            get {
+                return ResourceManager.GetString("SettingExampleAlertKeywordForSubject", resourceCulture);
             }
         }
         
@@ -1167,7 +1414,24 @@ namespace OutlookOkan.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to If an email has an encrypted ZIP file attached to it, you can display a warning or prohibit the sending of that email..
+        ///   Looks up a localized string similar to Email address: info@noraneko.co.jp
+        ///or
+        ///Domain: @noraneko.co.jp
+        ///
+        ///Register Email address or domain.
+        ///
+        ///You will not be able to send emails with attachments to that recipients..
+        /// </summary>
+        public static string SettingExampleAttachmentProhibitedRecipients {
+            get {
+                return ResourceManager.GetString("SettingExampleAttachmentProhibitedRecipients", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to You can prevent emails with attachments from being sent, or display a warning that recommends attaching the file as a link.
+        ///
+        ///You can also display a warning or prohibit sending an email when an encrypted ZIP file (ZIP file with password) is attached..
         /// </summary>
         public static string SettingExampleAttachments {
             get {
@@ -1272,6 +1536,22 @@ namespace OutlookOkan.Properties {
         ///   Looks up a localized string similar to Email address: info@noraneko.co.jp
         ///or
         ///Domain: @noraneko.co.jp
+        ///Attachments name/Keyword: Invoice to Noraneko
+        ///
+        ///Register Email address or domain and the attachment file name or attachment keyword.
+        ///
+        ///If the recipients and the attached file name do not match, a warning will be displayed..
+        /// </summary>
+        public static string SettingExampleRecipientsAndAttachmentsName {
+            get {
+                return ResourceManager.GetString("SettingExampleRecipientsAndAttachmentsName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Email address: info@noraneko.co.jp
+        ///or
+        ///Domain: @noraneko.co.jp
         ///
         ///Register Email address or domain.
         ///
@@ -1329,8 +1609,7 @@ namespace OutlookOkan.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to * If the external domain included in the To and Cc of the email is greater than or equal to this setting, 
-        ///this feature will be applied..
+        ///   Looks up a localized string similar to * If the external domain included in the To and Cc of the email is greater than or equal to this setting, this feature will be applied..
         /// </summary>
         public static string TargetToAndCcExternalDomainsNumInfo {
             get {
@@ -1348,6 +1627,15 @@ namespace OutlookOkan.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to To.
+        /// </summary>
+        public static string To {
+            get {
+                return ResourceManager.GetString("To", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Unknown.
         /// </summary>
         public static string Unknown {
@@ -1357,7 +1645,7 @@ namespace OutlookOkan.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Version 2.5.4.2.
+        ///   Looks up a localized string similar to Version 2.6.0.0.
         /// </summary>
         public static string Version {
             get {
@@ -1371,6 +1659,15 @@ namespace OutlookOkan.Properties {
         public static string VersionInfo {
             get {
                 return ResourceManager.GetString("VersionInfo", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to This address is not registered in your Contacts..
+        /// </summary>
+        public static string WarningIfRecipientsIsNotRegisteredMessage {
+            get {
+                return ResourceManager.GetString("WarningIfRecipientsIsNotRegisteredMessage", resourceCulture);
             }
         }
         

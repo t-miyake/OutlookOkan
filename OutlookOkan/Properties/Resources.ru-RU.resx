@@ -1,0 +1,728 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="About" xml:space="preserve">
+    <value>О программе</value>
+  </data>
+  <data name="AddressBook" xml:space="preserve">
+    <value>Контакты</value>
+  </data>
+  <data name="AlertKeyword" xml:space="preserve">
+    <value>Ключевые слова предупреждения</value>
+  </data>
+  <data name="AlertKeywordForBody" xml:space="preserve">
+    <value>Ключевые слова оповещения (Тело)</value>
+  </data>
+  <data name="AlertKeywordForSubject" xml:space="preserve">
+    <value>Ключевые слова оповещения (Тема)</value>
+  </data>
+  <data name="AlertKeywordInfo" xml:space="preserve">
+    <value>Ключевые слова для оповещения</value>
+  </data>
+  <data name="AlertMailAddress" xml:space="preserve">
+    <value>Получатели предупреждений</value>
+  </data>
+  <data name="AlertMailAddressAndDomain" xml:space="preserve">
+    <value>Оповещение получателей или доменов</value>
+  </data>
+  <data name="AlwaysAddTheSendersAddressToBcc" xml:space="preserve">
+    <value>Всегда автоматически добавляйте адрес отправителя в Bcc.</value>
+  </data>
+  <data name="ApplicableDestination" xml:space="preserve">
+    <value>Применимые получатели</value>
+  </data>
+  <data name="ApplicableKeywords" xml:space="preserve">
+    <value>Применимые ключевые слова</value>
+  </data>
+  <data name="Apply" xml:space="preserve">
+    <value>Применить</value>
+  </data>
+  <data name="AppName" xml:space="preserve">
+    <value>OutlookOkan</value>
+  </data>
+  <data name="AttachedIsAnEncryptedZipFile" xml:space="preserve">
+    <value>Прилагается зашифрованный ZIP-файл.</value>
+  </data>
+  <data name="AttachmentProhibitedRecipients" xml:space="preserve">
+    <value>Вложение запрещенный адрес</value>
+  </data>
+  <data name="AttachmentProhibitedRecipientsMessage" xml:space="preserve">
+    <value>Это получатели, которым запрещено отправлять вложения.</value>
+  </data>
+  <data name="Attachments" xml:space="preserve">
+    <value>Вложения</value>
+  </data>
+  <data name="AttachmentsKeyword" xml:space="preserve">
+    <value>вложенный файл</value>
+  </data>
+  <data name="AttachmentsName" xml:space="preserve">
+    <value>Название вложений/ключевое слово</value>
+  </data>
+  <data name="AttachmentsProhibitedMessage" xml:space="preserve">
+    <value>Отправка электронной почты с вложениями запрещена.</value>
+  </data>
+  <data name="AutoAddCCorBCCByAttachedFile" xml:space="preserve">
+    <value>Автоматическое добавление Cc/Bcc
+(по вложениям)</value>
+  </data>
+  <data name="AutoAddCCorBCCByKeyword" xml:space="preserve">
+    <value>Автоматическое добавление Cc/Bcc
+(по ключевым словам)</value>
+  </data>
+  <data name="AutoAddCCorBCCByKeywordInfo" xml:space="preserve">
+    <value>Ключевые слова, которые автоматически добавляют Ccs или Bcc.</value>
+  </data>
+  <data name="AutoAddCCorBCCByMailAddressOrDomain" xml:space="preserve">
+    <value>Автоматическое добавление Cc/Bcc
+(по получателям)</value>
+  </data>
+  <data name="AutoAddCCorBCCByMailAddressOrDomainInfo" xml:space="preserve">
+    <value>Получатели или домены, которые автоматически добавляют Ccs или Bcc.</value>
+  </data>
+  <data name="AutoAddDestination" xml:space="preserve">
+    <value>Добавляется автоматически.</value>
+  </data>
+  <data name="AutoAddMailAddress" xml:space="preserve">
+    <value>Автоматическое добавление получателей.</value>
+  </data>
+  <data name="AutoAddSendersAddressToAlert" xml:space="preserve">
+    <value>Адрес электронной почты отправителя был автоматически добавлен в To. (поскольку адреса "Кому" больше не существует из-за автоматического изменения на "Bcc").</value>
+  </data>
+  <data name="AutoCheckConfig" xml:space="preserve">
+    <value>Настройка автопроверки</value>
+  </data>
+  <data name="AutoCheckMembersAddress" xml:space="preserve">
+    <value>Адреса электронной почты участников будут автоматически проверяться.</value>
+  </data>
+  <data name="AutoCheckSameDomain" xml:space="preserve">
+    <value>Получатели внутреннего домена будут автоматически проверены.</value>
+  </data>
+  <data name="BasicSettings" xml:space="preserve">
+    <value>Основные настройки</value>
+  </data>
+  <data name="Bcc" xml:space="preserve">
+    <value>Bcc</value>
+  </data>
+  <data name="Cancel" xml:space="preserve">
+    <value>Отмена</value>
+  </data>
+  <data name="CanceledSendingMail" xml:space="preserve">
+    <value>Отменена отправка этого письма.</value>
+  </data>
+  <data name="CanceledSendingMailMessage" xml:space="preserve">
+    <value>Отменена отправка этого письма. Вы можете отредактировать его повторно.
+Расчетное время отправки этого письма было очищено.
+Чтобы отправить это письмо, необходимо нажать кнопку Отправить.
+Закрытие экрана редактирования не приведет к отправке этого письма.</value>
+  </data>
+  <data name="CanGetNewVersion" xml:space="preserve">
+    <value>Существует новая версия этого дополнения.
+Вы хотите загрузить ее?</value>
+  </data>
+  <data name="CanNotFindTheLinkedName" xml:space="preserve">
+    <value>Невозможно найти связанное имя в теле письма.</value>
+  </data>
+  <data name="Cc" xml:space="preserve">
+    <value>Cc</value>
+  </data>
+  <data name="CCorBCC" xml:space="preserve">
+    <value>Cc/Bcc</value>
+  </data>
+  <data name="ChangeLanguage" xml:space="preserve">
+    <value>Изменение языка дисплея</value>
+  </data>
+  <data name="ChangeRibbonLanguageInfo" xml:space="preserve">
+    <value>Язык отображения ленты (меню) обновляется при перезапуске Outlook.</value>
+  </data>
+  <data name="CheckNewVersion" xml:space="preserve">
+    <value>Проверьте новую версию.</value>
+  </data>
+  <data name="CompanyName" xml:space="preserve">
+    <value>Noraneko Inc.</value>
+  </data>
+  <data name="Confirmation" xml:space="preserve">
+    <value>Подтверждение перед отправкой электронного письма.</value>
+  </data>
+  <data name="ConfirmationMessage1" xml:space="preserve">
+    <value>Хотите ли вы отправить это письмо?</value>
+  </data>
+  <data name="ConfirmationMessage2" xml:space="preserve">
+    <value>После проверки всех пунктов можно нажать кнопку отправки.</value>
+  </data>
+  <data name="ContactGroup" xml:space="preserve">
+    <value>Контактная группа</value>
+  </data>
+  <data name="Copyright" xml:space="preserve">
+    <value>Copyright (C) 2021 Noraneko Inc.</value>
+  </data>
+  <data name="CSVExport" xml:space="preserve">
+    <value>Экспорт CSV</value>
+  </data>
+  <data name="CSVImport" xml:space="preserve">
+    <value>Импорт CSV</value>
+  </data>
+  <data name="CSVImportAlert" xml:space="preserve">
+    <value>Не импортируйте CSV-файл с неправильным форматом.</value>
+  </data>
+  <data name="DefaultAlertMessage" xml:space="preserve">
+    <value>Не импортируйте CSV-файл с неправильным форматом.</value>
+  </data>
+  <data name="DeferredDelivery" xml:space="preserve">
+    <value>Отложенная поставка</value>
+  </data>
+  <data name="DeferredDeliveryEmailAddressOrDomainInfo" xml:space="preserve">
+    <value>Введите адрес электронной почты или домен, который вы хотите отложить доставку.</value>
+  </data>
+  <data name="DeferredDeliveryMinutes" xml:space="preserve">
+    <value>Время отсрочки поставки.(мин)</value>
+  </data>
+  <data name="DeferredDeliveryTime" xml:space="preserve">
+    <value>Время отсрочки поставки.(мин)</value>
+  </data>
+  <data name="DestinationEmailaddress" xml:space="preserve">
+    <value>Получатели</value>
+  </data>
+  <data name="DistributionList" xml:space="preserve">
+    <value>Список рассылки</value>
+  </data>
+  <data name="Domain" xml:space="preserve">
+    <value>Домен</value>
+  </data>
+  <data name="DoNotShowConfirmationScreen" xml:space="preserve">
+    <value>Пропустить окно подтверждения</value>
+  </data>
+  <data name="EnableForgottenToAttachAlert" xml:space="preserve">
+    <value>Если в тексте есть предложение "прикрепленный файл", а прикрепленного файла нет, предупредите об этом.</value>
+  </data>
+  <data name="EncryptedZipBeta" xml:space="preserve">
+    <value>Предупреждение о вложении зашифрованного Zip-файла</value>
+  </data>
+  <data name="ExclusionSettings" xml:space="preserve">
+    <value>Параметры исключения</value>
+  </data>
+  <data name="ExportFailed" xml:space="preserve">
+    <value>Не удалось экспортировать.</value>
+  </data>
+  <data name="ExternalDomainsChangeToBccAlert" xml:space="preserve">
+    <value>Поскольку внешние домены To и Cc превышают пороговое значение, внешний домен получателей был изменен на Bcc.</value>
+  </data>
+  <data name="ExternalDomainsWarningAndAutoChangeToBcc" xml:space="preserve">
+    <value>Предупреждение о внешних доменах и
+автоматическое изменение на Bcc</value>
+  </data>
+  <data name="ExternalRecipient" xml:space="preserve">
+    <value>Внешний адресат</value>
+  </data>
+  <data name="FailedToGetInformation" xml:space="preserve">
+    <value>Не удалось получить информацию.</value>
+  </data>
+  <data name="ForgottenToAttachAlert" xml:space="preserve">
+    <value>В тексте есть слово "вложенный файл", но вложения нет.</value>
+  </data>
+  <data name="General" xml:space="preserve">
+    <value>Общий</value>
+  </data>
+  <data name="GetMembersOfTheContactGroup" xml:space="preserve">
+    <value>Показать членов группы Contact.</value>
+  </data>
+  <data name="GetMembersOfTheExDistList" xml:space="preserve">
+    <value>Показать членов списка рассылки Exchange. (Это может занять много времени.)</value>
+  </data>
+  <data name="GetMembersOfTheList" xml:space="preserve">
+    <value>Показать членов списка рассылки Exchange или группы контактов</value>
+  </data>
+  <data name="Help" xml:space="preserve">
+    <value>Руководство</value>
+  </data>
+  <data name="HowToDeleteRow" xml:space="preserve">
+    <value>* Удалить ряд: Выберите строку и нажмите клавишу удаления.</value>
+  </data>
+  <data name="HTML" xml:space="preserve">
+    <value>HTML</value>
+  </data>
+  <data name="IfAllSameDomain" xml:space="preserve">
+    <value>Если все домены получателя являются внутренними доменами, пропустите окно подтверждения.</value>
+  </data>
+  <data name="IfAllWhite" xml:space="preserve">
+    <value>Если в списке получателей нет цели проверки, пропустите окно подтверждения.
+(Например, если все получатели включены в список разрешенных).</value>
+  </data>
+  <data name="ImportAndExport" xml:space="preserve">
+    <value>Импорт/экспорт</value>
+  </data>
+  <data name="ImportantAlert" xml:space="preserve">
+    <value>Важные предупреждения.</value>
+  </data>
+  <data name="ImportFailed" xml:space="preserve">
+    <value>Не удалось выполнить импорт.</value>
+  </data>
+  <data name="InputCCorBCC" xml:space="preserve">
+    <value>Введите "Cc" или "Bcc".</value>
+  </data>
+  <data name="InputDeferredDeliveryTime" xml:space="preserve">
+    <value>Введите время отсрочки в минутах.</value>
+  </data>
+  <data name="InputDomain" xml:space="preserve">
+    <value>Введите домен.</value>
+  </data>
+  <data name="InputDomainInfo" xml:space="preserve">
+    <value>Введите домен из @.</value>
+  </data>
+  <data name="InputMailaddressOrDomain" xml:space="preserve">
+    <value>Введите адрес электронной почты или домен.</value>
+  </data>
+  <data name="InputNameInfo" xml:space="preserve">
+    <value>Введите название. (например, название компании)</value>
+  </data>
+  <data name="InternalDomain" xml:space="preserve">
+    <value>Внутренний домен</value>
+  </data>
+  <data name="IsAlertAddressBccAlert" xml:space="preserve">
+    <value>Получатели (Bcc) содержат адрес или домен, который был зарегистрирован как оповещение.</value>
+  </data>
+  <data name="IsAlertAddressCcAlert" xml:space="preserve">
+    <value>Получатели (Cc) содержат адрес или домен, который был зарегистрирован в качестве оповещения.</value>
+  </data>
+  <data name="IsAlertAddressMaybeIrrelevant" xml:space="preserve">
+    <value>Этот получатель может быть не связан с адресатом.</value>
+  </data>
+  <data name="IsAlertAddressToAlert" xml:space="preserve">
+    <value>Получатели (To) содержит адрес или домен, который был зарегистрирован в качестве оповещения.</value>
+  </data>
+  <data name="IsAttachedExe" xml:space="preserve">
+    <value>Прилагается исполняемый файл (.exe).</value>
+  </data>
+  <data name="IsAttachmentsProhibited" xml:space="preserve">
+    <value>Отправка запрещена, если прикреплен файл.</value>
+  </data>
+  <data name="IsAutoChangeToBccWhenLargeNumberOfExternalDomains" xml:space="preserve">
+    <value>Внешние получатели To и Cc автоматически преобразуются в Bcc 
+когда получатели (To/Cc) имеют большое количество внешних доменов.</value>
+  </data>
+  <data name="IsAutoCheckRegisteredInContacts" xml:space="preserve">
+    <value>Получатели, зарегистрированные в разделе Контакты, будут автоматически проверены.
+(Это может занять длительное время).</value>
+  </data>
+  <data name="IsAutoCheckRegisteredInContactsAndMemberOfContactLists" xml:space="preserve">
+    <value>Включить получателей, зарегистрированных в качестве членов списка контактов.
+(Если у вас много контактных групп, процесс может занять больше времени).</value>
+  </data>
+  <data name="IsBigAttachedFile" xml:space="preserve">
+    <value>К этому письму прикреплен файл размером 10 Мбайт или больше.</value>
+  </data>
+  <data name="IsCanNotShowConfirmation" xml:space="preserve">
+    <value>Не удалось отобразить окно подтверждения.</value>
+  </data>
+  <data name="IsCheckNameAndDomainsFromRecipients" xml:space="preserve">
+    <value>Предупреждение также отображается, если в теле письма отсутствует имя получателя.</value>
+  </data>
+  <data name="IsDoNotUseXIfAllRecipientsAreInternalDomain" xml:space="preserve">
+    <value>Отключите эту функцию, если все домены получателя являются внутренними доменами.</value>
+  </data>
+  <data name="IsEnableAllAttachedFilesAreDetectEncryptedZip" xml:space="preserve">
+    <value>Прикрепленные файлы с расширением, отличным от ".zip", также определяют, являются ли они зашифрованным ZIP или нет.</value>
+  </data>
+  <data name="IsEnableRecipientsAreSortedByDomain" xml:space="preserve">
+    <value>На экране подтверждения получатели сортируются по доменам.</value>
+  </data>
+  <data name="IsNotTreatedAsAttachmentsAtHtmlEmbeddedFiles" xml:space="preserve">
+    <value>Файл, встроенный в HTML-почту, не рассматривается как вложение.</value>
+  </data>
+  <data name="IsProhibitedWhenEncryptedZipIsAttached" xml:space="preserve">
+    <value>Отправка запрещена, если прикреплен зашифрованный ZIP-файл.</value>
+  </data>
+  <data name="IsProhibitedWhenLargeNumberOfExternalDomains" xml:space="preserve">
+    <value>Отправка запрещена, если получатели (To/Cc) имеют большое количество внешних доменов.</value>
+  </data>
+  <data name="IsProhibitsSendingMailIfRecipientsIsNotRegistered" xml:space="preserve">
+    <value>Запрещает отправку почты, если получатель не зарегистрирован в списке контактов.</value>
+  </data>
+  <data name="IsShowConfirmationToMultipleDomain" xml:space="preserve">
+    <value>Если получатели содержат несколько внешних доменов, отобразите окно подтверждения.
+(Не пропускает окно подтверждения).</value>
+  </data>
+  <data name="IsSkipConfirmation" xml:space="preserve">
+    <value>Пропустить окно подтверждения.</value>
+  </data>
+  <data name="IsSkipConfirmationInfo" xml:space="preserve">
+    <value>Пропустите окно подтверждения при отправке сообщения электронной почты только выбранным получателям.</value>
+  </data>
+  <data name="IsWarningIfRecipientsIsNotRegistered" xml:space="preserve">
+    <value>Если получатель не зарегистрирован в контактах, на экране подтверждения отображается предупреждение.</value>
+  </data>
+  <data name="IsWarningWhenAttachedRealFile" xml:space="preserve">
+    <value>Если файл прикреплен, рекомендуется прикрепить его в виде ссылки на экране подтверждения.</value>
+  </data>
+  <data name="IsWarningWhenEncryptedZipIsAttached" xml:space="preserve">
+    <value>Отображение предупреждения при вложении зашифрованного ZIP-файла.</value>
+  </data>
+  <data name="IsWarningWhenLargeNumberOfExternalDomains" xml:space="preserve">
+    <value>Отображает предупреждение, когда получатели (To/Cc) имеют большое количество внешних доменов.</value>
+  </data>
+  <data name="Keyword" xml:space="preserve">
+    <value>Ключевые слова</value>
+  </data>
+  <data name="LargeNumberOfExternalDomainAlert" xml:space="preserve">
+    <value>Количество внешних доменов в To и Cc превышает пороговое значение. Пожалуйста, подтвердите плюсы и минусы отправки.</value>
+  </data>
+  <data name="MailAddressAndDomain" xml:space="preserve">
+    <value>Адрес/домен получателя</value>
+  </data>
+  <data name="MailBody" xml:space="preserve">
+    <value>Тело сообщения (простой текст)</value>
+  </data>
+  <data name="MailInfo" xml:space="preserve">
+    <value>Почтовая информация</value>
+  </data>
+  <data name="MailType" xml:space="preserve">
+    <value>Тип</value>
+  </data>
+  <data name="Name" xml:space="preserve">
+    <value>Имя</value>
+  </data>
+  <data name="NameAndDomain" xml:space="preserve">
+    <value>Имя и домен получателя</value>
+  </data>
+  <data name="NoAlert" xml:space="preserve">
+    <value>Нет никаких важных предупреждений.</value>
+  </data>
+  <data name="NoticeOfIsEnableAllAttachedFilesAreDetectEncryptedZip" xml:space="preserve">
+    <value>* Обработка писем с вложениями может занять больше времени.</value>
+  </data>
+  <data name="OK" xml:space="preserve">
+    <value>OK</value>
+  </data>
+  <data name="ProhibitedWhenLargeNumberOfExternalDomainsAlert" xml:space="preserve">
+    <value>Количество внешних доменов в To и Cc выше порогового значения.</value>
+  </data>
+  <data name="ProhibitsSendingMailIfRecipientsIsNotRegisteredMessage" xml:space="preserve">
+    <value>Отправка электронной почты незарегистрированному контакту запрещена.</value>
+  </data>
+  <data name="RecipientsAndAttachmentsName" xml:space="preserve">
+    <value>Соотношение имен получателя и
+вложения</value>
+  </data>
+  <data name="RecipientsAndAttachmentsNameMessage" xml:space="preserve">
+    <value>Несвязанные получатели и вложения.</value>
+  </data>
+  <data name="RecommendationOfAttachFileAsLink" xml:space="preserve">
+    <value>Рекомендуется прикреплять файл в виде ссылки.</value>
+  </data>
+  <data name="RichText" xml:space="preserve">
+    <value>Богатый текст</value>
+  </data>
+  <data name="SaveSettings" xml:space="preserve">
+    <value>Настройки были обновлены.</value>
+  </data>
+  <data name="SelectCSVFile" xml:space="preserve">
+    <value>Выберите файл CSV.</value>
+  </data>
+  <data name="SelectSaveDestination" xml:space="preserve">
+    <value>Выберите место сохранения.</value>
+  </data>
+  <data name="Send" xml:space="preserve">
+    <value>Отправить</value>
+  </data>
+  <data name="Sender" xml:space="preserve">
+    <value>Отправитель</value>
+  </data>
+  <data name="SendersDomainAndInternalDomainAreNotCovered" xml:space="preserve">
+    <value>*Домен отправителя и внутренний домен не покрываются.</value>
+  </data>
+  <data name="SendingForbid" xml:space="preserve">
+    <value>Отправка запрещена</value>
+  </data>
+  <data name="SendingForbidAddress" xml:space="preserve">
+    <value>Запрещенные получатели.</value>
+  </data>
+  <data name="SendingForbidInfo" xml:space="preserve">
+    <value>Если вы установите этот флажок, вы не сможете отправить письмо получателю или включить ключевое слово.</value>
+  </data>
+  <data name="SendMailConfirmation" xml:space="preserve">
+    <value>Хотите ли вы отправить это письмо?</value>
+  </data>
+  <data name="SentOnBehalf" xml:space="preserve">
+    <value>Отправить от имени или Отправить как.</value>
+  </data>
+  <data name="SettingExample" xml:space="preserve">
+    <value>Пример настроек.</value>
+  </data>
+  <data name="SettingExampleAlertKeyword" xml:space="preserve">
+    <value>Ключевые слова: Конфиденциально
+Предупреждающий текст: Включает фразу "Конфиденциально".
+
+Зарегистрируйте ключевые слова для оповещения и их текст оповещения.
+
+Если ключевое слово включено в тело письма, вы можете отобразить предупреждение или запретить отправку этого письма.
+
+Если текст предупреждения пуст, на экране подтверждения будет показан текст предупреждения по умолчанию.</value>
+  </data>
+  <data name="SettingExampleAlertKeywordForSubject" xml:space="preserve">
+    <value>Ключевые слова: Конфиденциально
+Предупреждающий текст: Включает фразу "Конфиденциально".
+
+Зарегистрируйте ключевые слова для оповещения и их текст оповещения.
+
+Если ключевое слово включено в тему письма, вы можете отобразить предупреждение или запретить отправку этого письма.
+
+Если текст предупреждения пуст, на экране подтверждения будет показан текст предупреждения по умолчанию.</value>
+  </data>
+  <data name="SettingExampleAlertMailAddress" xml:space="preserve">
+    <value>Адрес электронной почты: info@noraneko.co.jp
+или
+Домен: @noraneko.co.jp
+
+Зарегистрируйте адрес электронной почты или домен.
+
+Если вы отправляете письмо на адрес электронной почты или домен, который вы зарегистрировали здесь, вы получите предварительное уведомление.</value>
+  </data>
+  <data name="SettingExampleAttachmentProhibitedRecipients" xml:space="preserve">
+    <value>Адрес электронной почты: info@noraneko.co.jp
+или
+Домен: @noraneko.co.jp
+
+Зарегистрируйте адрес электронной почты или домен.
+
+Вы не сможете отправлять электронные письма с вложениями этим получателям.</value>
+  </data>
+  <data name="SettingExampleAttachments" xml:space="preserve">
+    <value>Можно запретить отправку сообщений электронной почты с вложениями или отобразить предупреждение, рекомендующее прикрепить файл в виде ссылки.
+
+Можно также отобразить предупреждение или запретить отправку письма, если вложен ZIP-файл с шифрованием (ZIP-файл с паролем).</value>
+  </data>
+  <data name="SettingExampleAutoAddCCorBCCByAttachedFile" xml:space="preserve">
+    <value>Тип: Cc или Bcc
+Адрес электронной почты: boss@noraneko.co.jp
+
+При отправке сообщения электронной почты с прикрепленным файлом указанный адрес автоматически добавляется в Cc или Bcc.</value>
+  </data>
+  <data name="SettingExampleAutoAddCCorBCCByKeyword" xml:space="preserve">
+    <value>Тип: Cc или Bcc
+Ключевые слова: Конфиденциально
+Адрес электронной почты: boss@noraneko.co.jp
+
+Когда ключевые слова включены в письмо, указанный адрес автоматически добавляется в Cc или Bcc.</value>
+  </data>
+  <data name="SettingExampleAutoAddCCorBCCByMailAddressOrDomain" xml:space="preserve">
+    <value>Тип: Cc или Bcc
+Кому: warning@xxxxxxx.com
+Адрес электронной почты: boss@noraneko.co.jp
+
+При отправке почты зарегистрированным получателям и доменам, указанный адрес автоматически добавляется в Cc или Bcc.</value>
+  </data>
+  <data name="SettingExampleDeferredDelivery" xml:space="preserve">
+    <value>Адрес электронной почты: info@noraneko.co.jp
+или
+Домен: @noraneko.co.jp
+
+Зарегистрируйте свой адрес электронной почты или домен и зарегистрируйте поминутное время отсрочки.
+
+* Если вы зарегистрируете только @, вы можете зарегистрировать стандартное время отсрочки для всех писем.
+
+* При выполнении нескольких условий будет применено самое длительное время отсрочки.</value>
+  </data>
+  <data name="SettingExampleExternalDomainsWarningAndAutoChangeToBcc" xml:space="preserve">
+    <value>Задайте количество внешних доменов, которые будут использоваться в качестве основы для предупреждений и автоматического изменения на Bcc, и включите или выключите каждый из них.
+
+Если после автоматического изменения Bcc адрес "To" не существует, адрес отправителя будет автоматически добавлен в "To".</value>
+  </data>
+  <data name="SettingExampleInternalDomainList" xml:space="preserve">
+    <value>Домен: @noraneko.co.jp
+
+Зарегистрируйте домен, который будет рассматриваться как внутренний домен (компании).
+
+Домен адреса электронной почты отправителя всегда рассматривается как внутренний домен.</value>
+  </data>
+  <data name="SettingExampleNameAndDomain" xml:space="preserve">
+    <value>Название: Noraneko Inc
+Домен: @noraneko.co.jp
+
+Зарегистрируйте имя (например, название компании) и домен.
+
+Отображает предупреждение, если имя в теле сообщения электронной почты и домен получателя не совпадают.</value>
+  </data>
+  <data name="SettingExampleRecipientsAndAttachmentsName" xml:space="preserve">
+    <value>Адрес электронной почты: info@noraneko.co.jp
+или
+Домен: @noraneko.co.jp
+Имя вложения/ключевое слово: Счет-фактура для Noraneko
+
+Зарегистрируйте адрес электронной почты или домен и имя файла вложения или ключевое слово вложения.
+
+Если адресаты и имя прикрепленного файла не совпадают, отобразится предупреждение.</value>
+  </data>
+  <data name="SettingExampleWhiteList" xml:space="preserve">
+    <value>Адрес электронной почты: info@noraneko.co.jp
+или
+Домен: @noraneko.co.jp
+
+Зарегистрируйте адрес электронной почты или домен.
+
+Соответствующие получатели будут предварительно отмечены на экране подтверждения.</value>
+  </data>
+  <data name="Settings" xml:space="preserve">
+    <value>Настройки</value>
+  </data>
+  <data name="Subject" xml:space="preserve">
+    <value>Тема</value>
+  </data>
+  <data name="SuccessfulExport" xml:space="preserve">
+    <value>Теперь экспорт завершен.</value>
+  </data>
+  <data name="SuccessfulImport" xml:space="preserve">
+    <value>Теперь импорт завершен.</value>
+  </data>
+  <data name="TargetToAndCcExternalDomainsNum" xml:space="preserve">
+    <value>Количество внешних доменов получателей (To/Cc), которые будут охвачены этой функцией.</value>
+  </data>
+  <data name="TargetToAndCcExternalDomainsNumInfo" xml:space="preserve">
+    <value>* Если внешний домен, включенный в поля To и Cc электронного письма, больше или равен этому параметру, 
+эта функция будет применена.</value>
+  </data>
+  <data name="Text" xml:space="preserve">
+    <value>Обычный текст</value>
+  </data>
+  <data name="To" xml:space="preserve">
+    <value>To</value>
+  </data>
+  <data name="Unknown" xml:space="preserve">
+    <value>Неизвестно</value>
+  </data>
+  <data name="Version" xml:space="preserve">
+    <value>Version 2.6.0.0</value>
+  </data>
+  <data name="VersionInfo" xml:space="preserve">
+    <value>О программе.</value>
+  </data>
+  <data name="WarningIfRecipientsIsNotRegisteredMessage" xml:space="preserve">
+    <value>Этот адрес не зарегистрирован в Контактах.</value>
+  </data>
+  <data name="WarningText" xml:space="preserve">
+    <value>Предупреждающий текст</value>
+  </data>
+  <data name="WarningTextInfo" xml:space="preserve">
+    <value>Текст предупреждения в окне подтверждения.</value>
+  </data>
+  <data name="WhiteList" xml:space="preserve">
+    <value>Список разрешений</value>
+  </data>
+  <data name="YouHaveLatest" xml:space="preserve">
+    <value>Это дополнение является последней версией.</value>
+  </data>
+</root>

@@ -27,8 +27,8 @@ namespace OutlookOkan
         /// <summary>
         /// アドインのロード時(Outlookの起動時)の処理。
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
+        /// <param name="sender">Sender</param>
+        /// <param name="e">EventArgs</param>
         private void ThisAddIn_Startup(object sender, EventArgs e)
         {
             //ユーザ設定をロード。(このタイミングでロードしないと、リボンの表示言語を変更できない。)
@@ -44,16 +44,18 @@ namespace OutlookOkan
             Application.ItemSend += Application_ItemSend;
         }
 
-        //送信トレイのアイテムを開く際の警告。
+        /// <summary>
+        /// 送信トレイのアイテムを開く際の警告。
+        /// </summary>
+        /// <param name="inspector">Inspector</param>
         private void OpenOutboxItemInspector(Outlook.Inspector inspector)
         {
-            if (!(inspector.CurrentItem is Outlook._MailItem)) return;
-            var currentItem = (Outlook._MailItem)inspector.CurrentItem;
+            if (!(inspector.CurrentItem is Outlook._MailItem currentItem)) return;
 
             //送信保留中のメールのみ対象とする。
             if (currentItem.Submitted)
             {
-                MessageBox.Show(Properties.Resources.CanceledSendingMailMessage, Properties.Resources.CanceledSendingMail, MessageBoxButton.OK, MessageBoxImage.Warning);
+                _ = MessageBox.Show(Properties.Resources.CanceledSendingMailMessage, Properties.Resources.CanceledSendingMail, MessageBoxButton.OK, MessageBoxImage.Warning);
 
                 //再編集のため、配信指定日時をクリアする。
                 currentItem.DeferredDeliveryTime = new DateTime(4501, 1, 1, 0, 0, 0);
@@ -62,7 +64,7 @@ namespace OutlookOkan
 
             ((Outlook.InspectorEvents_Event)inspector).Close += () =>
             {
-                Marshal.ReleaseComObject(currentItem);
+                _ = Marshal.ReleaseComObject(currentItem);
                 currentItem = null;
                 GC.Collect();
                 GC.WaitForPendingFinalizers();
@@ -70,10 +72,18 @@ namespace OutlookOkan
             };
         }
 
+        /// <summary>
+        /// メール送信時(送信ボタン押下時)に確認画面を生成する。
+        /// </summary>
+        /// <param name="item">Item</param>
+        /// <param name="cancel">Cancel</param>
         private void Application_ItemSend(object item, ref bool cancel)
         {
             //MailItemにキャストできないものは、会議招待などメールではないもののため、何もしない。
-            if (!(item is Outlook._MailItem)) return;
+            if (!(item is Outlook._MailItem mailItem)) return;
+
+            //Moderationでの返信には何もしない。(キャンセルすると、承認や非承認ができなくなる場合があるため)
+            if (mailItem.MessageClass == "IPM.Note.Microsoft.Approval.Reply.Approve" || mailItem.MessageClass == "IPM.Note.Microsoft.Approval.Reply.Reject") return;
 
             //何らかの問題で確認画面が表示されないと、意図せずメールが送られてしまう恐れがあるため、念のための処理。
             try
@@ -84,12 +94,11 @@ namespace OutlookOkan
                     //HACK: 添付ファイルをリンクとして添付する際に、メール本文が自動更新されない問題を回避するための処置。
                     //HACK: ※WordEditorで本文を編集すると、本文の更新処理が行われるため問題を回避できる。
                     //HACK: ※メールの文頭に半角スペースを挿入し、それを削除することで、本文の編集処理とさせる。
-                    var tempMailItem = (Outlook._MailItem)item;
-                    var mailItemWordEditor = (Word.Document)tempMailItem.GetInspector.WordEditor;
+                    var mailItemWordEditor = (Word.Document)mailItem.GetInspector.WordEditor;
                     var range = mailItemWordEditor.Range(0, 0);
                     range.InsertAfter(" ");
                     range = mailItemWordEditor.Range(0, 0);
-                    range.Delete();
+                    _ = range.Delete();
                 }
                 catch (Exception)
                 {
@@ -103,8 +112,15 @@ namespace OutlookOkan
                     ResourceService.Instance.ChangeCulture(_generalSetting.LanguageCode);
                 }
 
+                //「連絡先に登録された宛先はあらかじめチェックを自動付与する。」など連絡先が必要な機能が有効な場合、連絡先をまとめて取得する。
+                Outlook.MAPIFolder contacts = null;
+                if (_generalSetting.IsAutoCheckRegisteredInContacts || _generalSetting.IsWarningIfRecipientsIsNotRegistered || _generalSetting.IsProhibitsSendingMailIfRecipientsIsNotRegistered)
+                {
+                    contacts = Application.ActiveExplorer().Session.GetDefaultFolder(Outlook.OlDefaultFolders.olFolderContacts);
+                }
+
                 var generateCheckList = new GenerateCheckList();
-                var checklist = generateCheckList.GenerateCheckListFromMail((Outlook._MailItem)item, _generalSetting);
+                var checklist = generateCheckList.GenerateCheckListFromMail(mailItem, _generalSetting, contacts);
 
                 if (_generalSetting.IsAutoCheckIfAllRecipientsAreSameDomain)
                 {
@@ -137,7 +153,7 @@ namespace OutlookOkan
                     //このタイミングで落ちると、メールが送信されてしまうので、念のためのTry Catch。
                     try
                     {
-                        MessageBox.Show(checklist.CanNotSendMailMessage, Properties.Resources.SendingForbid, MessageBoxButton.OK, MessageBoxImage.Error);
+                        _ = MessageBox.Show(checklist.CanNotSendMailMessage, Properties.Resources.SendingForbid, MessageBoxButton.OK, MessageBoxImage.Error);
                     }
                     catch (Exception)
                     {
@@ -153,7 +169,7 @@ namespace OutlookOkan
                 else if (IsShowConfirmationWindow(checklist))
                 {
                     //OutlookのWindowを親として確認画面をモーダル表示。
-                    var confirmationWindow = new ConfirmationWindow(checklist, (Outlook._MailItem)item);
+                    var confirmationWindow = new ConfirmationWindow(checklist, mailItem);
                     var activeWindow = Globals.ThisAddIn.Application.ActiveWindow();
                     var outlookHandle = new NativeMethods(activeWindow).Handle;
                     _ = new WindowInteropHelper(confirmationWindow) { Owner = outlookHandle };
@@ -191,7 +207,7 @@ namespace OutlookOkan
         /// <summary>
         /// 一般設定を設定ファイルから読み込む。
         /// </summary>
-        /// <param name="isLaunch">Outlookの起動時か否か。</param>
+        /// <param name="isLaunch">Outlookの起動時か否か</param>
         private void LoadGeneralSetting(bool isLaunch)
         {
             var readCsv = new ReadAndWriteCsv("GeneralSetting.csv");
@@ -217,13 +233,19 @@ namespace OutlookOkan
             _generalSetting.IsDoNotUseDeferredDeliveryIfAllRecipientsAreInternalDomain = generalSetting[0].IsDoNotUseDeferredDeliveryIfAllRecipientsAreInternalDomain;
             _generalSetting.IsDoNotUseAutoCcBccKeywordIfAllRecipientsAreInternalDomain = generalSetting[0].IsDoNotUseAutoCcBccKeywordIfAllRecipientsAreInternalDomain;
             _generalSetting.IsEnableRecipientsAreSortedByDomain = generalSetting[0].IsEnableRecipientsAreSortedByDomain;
+            _generalSetting.IsAutoAddSenderToBcc = generalSetting[0].IsAutoAddSenderToBcc;
+            _generalSetting.IsAutoCheckRegisteredInContacts = generalSetting[0].IsAutoCheckRegisteredInContacts;
+            _generalSetting.IsAutoCheckRegisteredInContactsAndMemberOfContactLists = generalSetting[0].IsAutoCheckRegisteredInContactsAndMemberOfContactLists;
+            _generalSetting.IsCheckNameAndDomainsFromRecipients = generalSetting[0].IsCheckNameAndDomainsFromRecipients;
+            _generalSetting.IsWarningIfRecipientsIsNotRegistered = generalSetting[0].IsWarningIfRecipientsIsNotRegistered;
+            _generalSetting.IsProhibitsSendingMailIfRecipientsIsNotRegistered = generalSetting[0].IsProhibitsSendingMailIfRecipientsIsNotRegistered;
         }
 
         /// <summary>
         /// 全てのチェック対象がチェックされているか否かの判定。(ホワイトリスト登録の宛先など、事前にチェックされている場合がある)
         /// </summary>
-        /// <param name="checkList"></param>
-        /// <returns>全てのチェック対象がチェックされているか否か。</returns>
+        /// <param name="checkList">CheckList</param>
+        /// <returns>全てのチェック対象がチェックされているか否か</returns>
         private bool IsAllChecked(CheckList checkList)
         {
             var isToAddressesCompleteChecked = checkList.ToAddresses.Count(x => x.IsChecked) == checkList.ToAddresses.Count;
@@ -239,7 +261,7 @@ namespace OutlookOkan
         /// 全ての宛先が内部(社内)ドメインであるか否かの判定。
         /// </summary>
         /// <param name="checkList">CheckList</param>
-        /// <returns>全ての宛先が内部(社内)ドメインであるか否か。</returns>
+        /// <returns>全ての宛先が内部(社内)ドメインであるか否か</returns>
         private bool IsAllRecipientsAreSameDomain(CheckList checkList)
         {
             var isAllToRecipientsAreSameDomain = checkList.ToAddresses.Count(x => !x.IsExternal) == checkList.ToAddresses.Count;
@@ -253,7 +275,7 @@ namespace OutlookOkan
         /// 送信前の確認画面の表示有無を判定。
         /// </summary>
         /// <param name="checklist">CheckList</param>
-        /// <returns>送信前の確認画面の表示有無。</returns>
+        /// <returns>送信前の確認画面の表示有無</returns>
         private bool IsShowConfirmationWindow(CheckList checklist)
         {
             if (checklist.RecipientExternalDomainNumAll >= 2 && _generalSetting.IsShowConfirmationToMultipleDomain)

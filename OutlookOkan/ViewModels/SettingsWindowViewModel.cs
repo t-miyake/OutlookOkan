@@ -12,9 +12,9 @@ using System.Windows.Input;
 
 namespace OutlookOkan.ViewModels
 {
-    public sealed class SettingsWindowViewModel : ViewModelBase
+    internal sealed class SettingsWindowViewModel : ViewModelBase
     {
-        public SettingsWindowViewModel()
+        internal SettingsWindowViewModel()
         {
             //Add button command.
             ImportWhiteList = new RelayCommand(ImportWhiteListFromCsv);
@@ -44,6 +44,15 @@ namespace OutlookOkan.ViewModels
             ImportInternalDomainList = new RelayCommand(ImportInternalDomainListFromCsv);
             ExportInternalDomainList = new RelayCommand(ExportInternalDomainListToCsv);
 
+            ImportAlertKeywordAndMessagesForSubjectList = new RelayCommand(ImportAlertKeywordAndMessagesForSubjectFromCsv);
+            ExportAlertKeywordAndMessagesForSubjectList = new RelayCommand(ExportAlertKeywordAndMessagesForSubjectToCsv);
+
+            ImportRecipientsAndAttachmentsName = new RelayCommand(ImportRecipientsAndAttachmentsNameFromCsv);
+            ExportRecipientsAndAttachmentsName = new RelayCommand(ExportRecipientsAndAttachmentsNameToCsv);
+
+            ImportAttachmentProhibitedRecipients = new RelayCommand(ImportAttachmentProhibitedRecipientsFromCsv);
+            ExportAttachmentProhibitedRecipients = new RelayCommand(ExportAttachmentProhibitedRecipientsToCsv);
+
             //Load language code and name.
             var languages = new Languages();
             Languages = languages.Language;
@@ -53,6 +62,7 @@ namespace OutlookOkan.ViewModels
             LoadWhitelistData();
             LoadNameAndDomainsData();
             LoadAlertKeywordAndMessagesData();
+            LoadAlertKeywordAndMessagesForSubjectData();
             LoadAlertAddressesData();
             LoadAutoCcBccKeywordsData();
             LoadAutoCcBccRecipientsData();
@@ -61,9 +71,11 @@ namespace OutlookOkan.ViewModels
             LoadInternalDomainListData();
             LoadExternalDomainsWarningAndAutoChangeToBccData();
             LoadAttachmentsSettingData();
+            LoadRecipientsAndAttachmentsNameData();
+            LoadAttachmentProhibitedRecipientsData();
         }
 
-        public async Task SaveSettings()
+        internal async Task SaveSettings()
         {
             IEnumerable<Task> saveTasks = new[]
                 {
@@ -71,6 +83,7 @@ namespace OutlookOkan.ViewModels
                     SaveWhiteListToCsv(),
                     SaveNameAndDomainsToCsv(),
                     SaveAlertKeywordAndMessageToCsv(),
+                    SaveAlertKeywordAndMessageForSubjectToCsv(),
                     SaveAutoCcBccKeywordsToCsv(),
                     SaveAlertAddressesToCsv(),
                     SaveAutoCcBccRecipientsToCsv(),
@@ -78,7 +91,9 @@ namespace OutlookOkan.ViewModels
                     SaveDeferredDeliveryMinutesToCsv(),
                     SaveInternalDomainListToCsv(),
                     SaveExternalDomainsWarningAndAutoChangeToBccToCsv(),
-                    SaveAttachmentsSettingToCsv()
+                    SaveAttachmentsSettingToCsv(),
+                    SaveRecipientsAndAttachmentsNameToCsv(),
+                    SaveAttachmentProhibitedRecipientsToCsv()
                 };
 
             await Task.WhenAll(saveTasks);
@@ -122,11 +137,11 @@ namespace OutlookOkan.ViewModels
                     Whitelist.Add(data);
                 }
 
-                MessageBox.Show(Properties.Resources.SuccessfulImport, Properties.Resources.AppName, MessageBoxButton.OK);
+                _ = MessageBox.Show(Properties.Resources.SuccessfulImport, Properties.Resources.AppName, MessageBoxButton.OK);
             }
             catch (Exception)
             {
-                MessageBox.Show(Properties.Resources.ImportFailed, Properties.Resources.AppName, MessageBoxButton.OK);
+                _ = MessageBox.Show(Properties.Resources.ImportFailed, Properties.Resources.AppName, MessageBoxButton.OK);
             }
         }
 
@@ -188,11 +203,11 @@ namespace OutlookOkan.ViewModels
                     NameAndDomains.Add(data);
                 }
 
-                MessageBox.Show(Properties.Resources.SuccessfulImport, Properties.Resources.AppName, MessageBoxButton.OK);
+                _ = MessageBox.Show(Properties.Resources.SuccessfulImport, Properties.Resources.AppName, MessageBoxButton.OK);
             }
             catch (Exception)
             {
-                MessageBox.Show(Properties.Resources.ImportFailed, Properties.Resources.AppName, MessageBoxButton.OK);
+                _ = MessageBox.Show(Properties.Resources.ImportFailed, Properties.Resources.AppName, MessageBoxButton.OK);
             }
         }
 
@@ -211,6 +226,72 @@ namespace OutlookOkan.ViewModels
             {
                 _nameAndDomains = value;
                 OnPropertyChanged(nameof(NameAndDomains));
+            }
+        }
+
+        #endregion
+
+        #region AlertKeywordAndMessagesForSubject
+
+        public ICommand ImportAlertKeywordAndMessagesForSubjectList { get; }
+        public ICommand ExportAlertKeywordAndMessagesForSubjectList { get; }
+
+        private void LoadAlertKeywordAndMessagesForSubjectData()
+        {
+            var readCsv = new ReadAndWriteCsv("AlertKeywordAndMessageListForSubject.csv");
+            var alertKeywordAndMessagesForSubject = readCsv.GetCsvRecords<AlertKeywordAndMessageForSubject>(readCsv.LoadCsv<AlertKeywordAndMessageForSubjectMap>());
+
+            foreach (var data in alertKeywordAndMessagesForSubject.Where(x => !string.IsNullOrEmpty(x.AlertKeyword)))
+            {
+                AlertKeywordAndMessagesForSubject.Add(data);
+            }
+        }
+
+        private async Task SaveAlertKeywordAndMessageForSubjectToCsv()
+        {
+            var list = AlertKeywordAndMessagesForSubject.Where(x => !string.IsNullOrEmpty(x.AlertKeyword)).Cast<object>().ToList();
+            var writeCsv = new ReadAndWriteCsv("AlertKeywordAndMessageListForSubject.csv");
+            await Task.Run(() => writeCsv.WriteRecordsToCsv<AlertKeywordAndMessageForSubjectMap>(list));
+        }
+
+        private void ImportAlertKeywordAndMessagesForSubjectFromCsv()
+        {
+            var importAction = new CsvImportAndExport();
+            var filePath = importAction.ImportCsv();
+
+            if (filePath is null) return;
+
+            try
+            {
+                var importData = new List<AlertKeywordAndMessageForSubject>(importAction.GetCsvRecords<AlertKeywordAndMessageForSubject>(importAction.LoadCsv<AlertKeywordAndMessageForSubjectMap>(filePath)));
+                foreach (var data in importData.Where(x => !string.IsNullOrEmpty(x.AlertKeyword)))
+                {
+                    AlertKeywordAndMessagesForSubject.Add(data);
+                }
+
+                _ = MessageBox.Show(Properties.Resources.SuccessfulImport, Properties.Resources.AppName, MessageBoxButton.OK);
+            }
+            catch (Exception)
+            {
+                _ = MessageBox.Show(Properties.Resources.ImportFailed, Properties.Resources.AppName, MessageBoxButton.OK);
+            }
+        }
+
+        private void ExportAlertKeywordAndMessagesForSubjectToCsv()
+        {
+            var list = AlertKeywordAndMessagesForSubject.Where(x => !string.IsNullOrEmpty(x.AlertKeyword)).Cast<object>().ToList();
+            var exportAction = new CsvImportAndExport();
+            exportAction.CsvExport<AlertKeywordAndMessageForSubjectMap>(list, "AlertKeywordAndMessageListForSubject.csv");
+        }
+
+        private ObservableCollection<AlertKeywordAndMessageForSubject> _alertKeywordAndMessagesForSubject = new ObservableCollection<AlertKeywordAndMessageForSubject>();
+        public ObservableCollection<AlertKeywordAndMessageForSubject> AlertKeywordAndMessagesForSubject
+        {
+            get => _alertKeywordAndMessagesForSubject;
+            set
+            {
+                _alertKeywordAndMessagesForSubject = value;
+                OnPropertyChanged(nameof(AlertKeywordAndMessagesForSubject));
             }
         }
 
@@ -254,11 +335,11 @@ namespace OutlookOkan.ViewModels
                     AlertKeywordAndMessages.Add(data);
                 }
 
-                MessageBox.Show(Properties.Resources.SuccessfulImport, Properties.Resources.AppName, MessageBoxButton.OK);
+                _ = MessageBox.Show(Properties.Resources.SuccessfulImport, Properties.Resources.AppName, MessageBoxButton.OK);
             }
             catch (Exception)
             {
-                MessageBox.Show(Properties.Resources.ImportFailed, Properties.Resources.AppName, MessageBoxButton.OK);
+                _ = MessageBox.Show(Properties.Resources.ImportFailed, Properties.Resources.AppName, MessageBoxButton.OK);
             }
         }
 
@@ -320,11 +401,11 @@ namespace OutlookOkan.ViewModels
                     AlertAddresses.Add(data);
                 }
 
-                MessageBox.Show(Properties.Resources.SuccessfulImport, Properties.Resources.AppName, MessageBoxButton.OK);
+                _ = MessageBox.Show(Properties.Resources.SuccessfulImport, Properties.Resources.AppName, MessageBoxButton.OK);
             }
             catch (Exception)
             {
-                MessageBox.Show(Properties.Resources.ImportFailed, Properties.Resources.AppName, MessageBoxButton.OK);
+                _ = MessageBox.Show(Properties.Resources.ImportFailed, Properties.Resources.AppName, MessageBoxButton.OK);
             }
         }
 
@@ -386,11 +467,11 @@ namespace OutlookOkan.ViewModels
                     AutoCcBccKeywords.Add(data);
                 }
 
-                MessageBox.Show(Properties.Resources.SuccessfulImport, Properties.Resources.AppName, MessageBoxButton.OK);
+                _ = MessageBox.Show(Properties.Resources.SuccessfulImport, Properties.Resources.AppName, MessageBoxButton.OK);
             }
             catch (Exception)
             {
-                MessageBox.Show(Properties.Resources.ImportFailed, Properties.Resources.AppName, MessageBoxButton.OK);
+                _ = MessageBox.Show(Properties.Resources.ImportFailed, Properties.Resources.AppName, MessageBoxButton.OK);
             }
         }
 
@@ -452,11 +533,11 @@ namespace OutlookOkan.ViewModels
                     AutoCcBccRecipients.Add(data);
                 }
 
-                MessageBox.Show(Properties.Resources.SuccessfulImport, Properties.Resources.AppName, MessageBoxButton.OK);
+                _ = MessageBox.Show(Properties.Resources.SuccessfulImport, Properties.Resources.AppName, MessageBoxButton.OK);
             }
             catch (Exception)
             {
-                MessageBox.Show(Properties.Resources.ImportFailed, Properties.Resources.AppName, MessageBoxButton.OK);
+                _ = MessageBox.Show(Properties.Resources.ImportFailed, Properties.Resources.AppName, MessageBoxButton.OK);
             }
         }
 
@@ -518,11 +599,11 @@ namespace OutlookOkan.ViewModels
                     AutoCcBccAttachedFiles.Add(data);
                 }
 
-                MessageBox.Show(Properties.Resources.SuccessfulImport, Properties.Resources.AppName, MessageBoxButton.OK);
+                _ = MessageBox.Show(Properties.Resources.SuccessfulImport, Properties.Resources.AppName, MessageBoxButton.OK);
             }
             catch (Exception)
             {
-                MessageBox.Show(Properties.Resources.ImportFailed, Properties.Resources.AppName, MessageBoxButton.OK);
+                _ = MessageBox.Show(Properties.Resources.ImportFailed, Properties.Resources.AppName, MessageBoxButton.OK);
             }
         }
 
@@ -584,11 +665,11 @@ namespace OutlookOkan.ViewModels
                     DeferredDeliveryMinutes.Add(data);
                 }
 
-                MessageBox.Show(Properties.Resources.SuccessfulImport, Properties.Resources.AppName, MessageBoxButton.OK);
+                _ = MessageBox.Show(Properties.Resources.SuccessfulImport, Properties.Resources.AppName, MessageBoxButton.OK);
             }
             catch (Exception)
             {
-                MessageBox.Show(Properties.Resources.ImportFailed, Properties.Resources.AppName, MessageBoxButton.OK);
+                _ = MessageBox.Show(Properties.Resources.ImportFailed, Properties.Resources.AppName, MessageBoxButton.OK);
             }
         }
 
@@ -650,11 +731,11 @@ namespace OutlookOkan.ViewModels
                     InternalDomainList.Add(data);
                 }
 
-                MessageBox.Show(Properties.Resources.SuccessfulImport, Properties.Resources.AppName, MessageBoxButton.OK);
+                _ = MessageBox.Show(Properties.Resources.SuccessfulImport, Properties.Resources.AppName, MessageBoxButton.OK);
             }
             catch (Exception)
             {
-                MessageBox.Show(Properties.Resources.ImportFailed, Properties.Resources.AppName, MessageBoxButton.OK);
+                _ = MessageBox.Show(Properties.Resources.ImportFailed, Properties.Resources.AppName, MessageBoxButton.OK);
             }
         }
 
@@ -787,6 +868,8 @@ namespace OutlookOkan.ViewModels
             IsWarningWhenEncryptedZipIsAttached = _attachmentsSetting[0].IsWarningWhenEncryptedZipIsAttached;
             IsProhibitedWhenEncryptedZipIsAttached = _attachmentsSetting[0].IsProhibitedWhenEncryptedZipIsAttached;
             IsEnableAllAttachedFilesAreDetectEncryptedZip = _attachmentsSetting[0].IsEnableAllAttachedFilesAreDetectEncryptedZip;
+            IsAttachmentsProhibited = _attachmentsSetting[0].IsAttachmentsProhibited;
+            IsWarningWhenAttachedRealFile = _attachmentsSetting[0].IsWarningWhenAttachedRealFile;
         }
 
         private async Task SaveAttachmentsSettingToCsv()
@@ -797,7 +880,9 @@ namespace OutlookOkan.ViewModels
                 {
                     IsWarningWhenEncryptedZipIsAttached = IsWarningWhenEncryptedZipIsAttached,
                     IsProhibitedWhenEncryptedZipIsAttached = IsProhibitedWhenEncryptedZipIsAttached,
-                    IsEnableAllAttachedFilesAreDetectEncryptedZip = IsEnableAllAttachedFilesAreDetectEncryptedZip
+                    IsEnableAllAttachedFilesAreDetectEncryptedZip = IsEnableAllAttachedFilesAreDetectEncryptedZip,
+                    IsAttachmentsProhibited = IsAttachmentsProhibited,
+                    IsWarningWhenAttachedRealFile = IsWarningWhenAttachedRealFile
                 }
             };
 
@@ -844,9 +929,166 @@ namespace OutlookOkan.ViewModels
             }
         }
 
+        private bool _isAttachmentsProhibited;
+        public bool IsAttachmentsProhibited
+        {
+            get => _isAttachmentsProhibited;
+            set
+            {
+                _isAttachmentsProhibited = value;
+                OnPropertyChanged(nameof(IsAttachmentsProhibited));
+                OnPropertyChanged(nameof(IsWarningWhenAttachedRealFileCheckBoxIsEnabled));
+            }
+        }
+
+        private bool _isWarningWhenAttachedRealFile;
+        public bool IsWarningWhenAttachedRealFile
+        {
+            get => _isWarningWhenAttachedRealFile;
+            set
+            {
+                _isWarningWhenAttachedRealFile = value;
+                OnPropertyChanged(nameof(IsWarningWhenAttachedRealFile));
+            }
+        }
+
         public bool IsWarningWhenEncryptedZipIsAttachedCheckBoxIsEnabled => !IsProhibitedWhenEncryptedZipIsAttached;
 
         public bool IsEnableAllAttachedFilesAreDetectEncryptedZipCheckBoxIsEnabled => IsWarningWhenEncryptedZipIsAttached || IsProhibitedWhenEncryptedZipIsAttached;
+
+        public bool IsWarningWhenAttachedRealFileCheckBoxIsEnabled => !IsAttachmentsProhibited;
+
+        #endregion
+
+        #region RecipientsAndAttachmentsName
+
+        public ICommand ImportRecipientsAndAttachmentsName { get; }
+        public ICommand ExportRecipientsAndAttachmentsName { get; }
+
+        private void LoadRecipientsAndAttachmentsNameData()
+        {
+            var readCsv = new ReadAndWriteCsv("RecipientsAndAttachmentsName.csv");
+            var recipientsAndAttachmentsName = readCsv.GetCsvRecords<RecipientsAndAttachmentsName>(readCsv.LoadCsv<RecipientsAndAttachmentsNameMap>());
+
+            foreach (var data in recipientsAndAttachmentsName.Where(x => !string.IsNullOrEmpty(x.AttachmentsName) && !string.IsNullOrEmpty(x.Recipient)))
+            {
+                RecipientsAndAttachmentsName.Add(data);
+            }
+        }
+
+        private async Task SaveRecipientsAndAttachmentsNameToCsv()
+        {
+            var list = RecipientsAndAttachmentsName.Where(x => !string.IsNullOrEmpty(x.AttachmentsName) && !string.IsNullOrEmpty(x.Recipient)).Cast<object>().ToList();
+            var writeCsv = new ReadAndWriteCsv("RecipientsAndAttachmentsName.csv");
+            await Task.Run(() => writeCsv.WriteRecordsToCsv<RecipientsAndAttachmentsNameMap>(list));
+        }
+
+        private void ImportRecipientsAndAttachmentsNameFromCsv()
+        {
+            var importAction = new CsvImportAndExport();
+            var filePath = importAction.ImportCsv();
+
+            if (filePath is null) return;
+
+            try
+            {
+                var importData = new List<RecipientsAndAttachmentsName>(importAction.GetCsvRecords<RecipientsAndAttachmentsName>(importAction.LoadCsv<RecipientsAndAttachmentsNameMap>(filePath)));
+                foreach (var data in importData.Where(x => !string.IsNullOrEmpty(x.AttachmentsName) && !string.IsNullOrEmpty(x.Recipient)))
+                {
+                    RecipientsAndAttachmentsName.Add(data);
+                }
+
+                _ = MessageBox.Show(Properties.Resources.SuccessfulImport, Properties.Resources.AppName, MessageBoxButton.OK);
+            }
+            catch (Exception)
+            {
+                _ = MessageBox.Show(Properties.Resources.ImportFailed, Properties.Resources.AppName, MessageBoxButton.OK);
+            }
+        }
+
+        private void ExportRecipientsAndAttachmentsNameToCsv()
+        {
+            var list = RecipientsAndAttachmentsName.Where(x => !string.IsNullOrEmpty(x.AttachmentsName) && !string.IsNullOrEmpty(x.Recipient)).Cast<object>().ToList();
+            var exportAction = new CsvImportAndExport();
+            exportAction.CsvExport<RecipientsAndAttachmentsNameMap>(list, "RecipientsAndAttachmentsName.csv");
+        }
+
+        private ObservableCollection<RecipientsAndAttachmentsName> _recipientsAndAttachmentsName = new ObservableCollection<RecipientsAndAttachmentsName>();
+        public ObservableCollection<RecipientsAndAttachmentsName> RecipientsAndAttachmentsName
+        {
+            get => _recipientsAndAttachmentsName;
+            set
+            {
+                _recipientsAndAttachmentsName = value;
+                OnPropertyChanged(nameof(RecipientsAndAttachmentsName));
+            }
+        }
+
+        #endregion
+
+        #region AttachmentProhibitedRecipients
+
+        public ICommand ImportAttachmentProhibitedRecipients { get; }
+        public ICommand ExportAttachmentProhibitedRecipients { get; }
+
+        private void LoadAttachmentProhibitedRecipientsData()
+        {
+            var readCsv = new ReadAndWriteCsv("AttachmentProhibitedRecipients.csv");
+            var attachmentProhibitedRecipients = readCsv.GetCsvRecords<AttachmentProhibitedRecipients>(readCsv.LoadCsv<AttachmentProhibitedRecipientsMap>());
+
+            foreach (var data in attachmentProhibitedRecipients.Where(x => !string.IsNullOrEmpty(x.Recipient)))
+            {
+                AttachmentProhibitedRecipients.Add(data);
+            }
+        }
+
+        private async Task SaveAttachmentProhibitedRecipientsToCsv()
+        {
+            var list = AttachmentProhibitedRecipients.Where(x => !string.IsNullOrEmpty(x.Recipient)).Cast<object>().ToList();
+            var writeCsv = new ReadAndWriteCsv("AttachmentProhibitedRecipients.csv");
+            await Task.Run(() => writeCsv.WriteRecordsToCsv<AttachmentProhibitedRecipientsMap>(list));
+        }
+
+        private void ImportAttachmentProhibitedRecipientsFromCsv()
+        {
+            var importAction = new CsvImportAndExport();
+            var filePath = importAction.ImportCsv();
+
+            if (filePath is null) return;
+
+            try
+            {
+                var importData = new List<AttachmentProhibitedRecipients>(importAction.GetCsvRecords<AttachmentProhibitedRecipients>(importAction.LoadCsv<AttachmentProhibitedRecipientsMap>(filePath)));
+                foreach (var data in importData.Where(x => !string.IsNullOrEmpty(x.Recipient)))
+                {
+                    AttachmentProhibitedRecipients.Add(data);
+                }
+
+                _ = MessageBox.Show(Properties.Resources.SuccessfulImport, Properties.Resources.AppName, MessageBoxButton.OK);
+            }
+            catch (Exception)
+            {
+                _ = MessageBox.Show(Properties.Resources.ImportFailed, Properties.Resources.AppName, MessageBoxButton.OK);
+            }
+        }
+
+        private void ExportAttachmentProhibitedRecipientsToCsv()
+        {
+            var list = AttachmentProhibitedRecipients.Where(x => !string.IsNullOrEmpty(x.Recipient)).Cast<object>().ToList();
+            var exportAction = new CsvImportAndExport();
+            exportAction.CsvExport<AttachmentProhibitedRecipientsMap>(list, "AttachmentProhibitedRecipients.csv");
+        }
+
+        private ObservableCollection<AttachmentProhibitedRecipients> _attachmentProhibitedRecipients = new ObservableCollection<AttachmentProhibitedRecipients>();
+        public ObservableCollection<AttachmentProhibitedRecipients> AttachmentProhibitedRecipients
+        {
+            get => _attachmentProhibitedRecipients;
+            set
+            {
+                _attachmentProhibitedRecipients = value;
+                OnPropertyChanged(nameof(AttachmentProhibitedRecipients));
+            }
+        }
 
         #endregion
 
@@ -878,17 +1120,20 @@ namespace OutlookOkan.ViewModels
             IsDoNotUseDeferredDeliveryIfAllRecipientsAreInternalDomain = _generalSetting[0].IsDoNotUseDeferredDeliveryIfAllRecipientsAreInternalDomain;
             IsDoNotUseAutoCcBccKeywordIfAllRecipientsAreInternalDomain = _generalSetting[0].IsDoNotUseAutoCcBccKeywordIfAllRecipientsAreInternalDomain;
             IsEnableRecipientsAreSortedByDomain = _generalSetting[0].IsEnableRecipientsAreSortedByDomain;
+            IsAutoAddSenderToBcc = _generalSetting[0].IsAutoAddSenderToBcc;
+            IsAutoCheckRegisteredInContacts = _generalSetting[0].IsAutoCheckRegisteredInContacts;
+            IsAutoCheckRegisteredInContactsAndMemberOfContactLists = _generalSetting[0].IsAutoCheckRegisteredInContactsAndMemberOfContactLists;
+            IsCheckNameAndDomainsFromRecipients = _generalSetting[0].IsCheckNameAndDomainsFromRecipients;
+            IsWarningIfRecipientsIsNotRegistered = _generalSetting[0].IsWarningIfRecipientsIsNotRegistered;
+            IsProhibitsSendingMailIfRecipientsIsNotRegistered = _generalSetting[0].IsProhibitsSendingMailIfRecipientsIsNotRegistered;
 
             if (_generalSetting[0].LanguageCode is null) return;
 
             //設定ファイル内に言語設定があればそれをロードする。
             Language.LanguageCode = _generalSetting[0].LanguageCode;
-            foreach (var lang in Languages)
+            foreach (var lang in Languages.Where(lang => lang.LanguageCode == Language.LanguageCode))
             {
-                if (lang.LanguageCode == Language.LanguageCode)
-                {
-                    LanguageNumber = lang.LanguageNumber;
-                }
+                LanguageNumber = lang.LanguageNumber;
             }
         }
 
@@ -918,7 +1163,13 @@ namespace OutlookOkan.ViewModels
                     IsDoNotUseAutoCcBccAttachedFileIfAllRecipientsAreInternalDomain = IsDoNotUseAutoCcBccAttachedFileIfAllRecipientsAreInternalDomain,
                     IsDoNotUseDeferredDeliveryIfAllRecipientsAreInternalDomain = IsDoNotUseDeferredDeliveryIfAllRecipientsAreInternalDomain,
                     IsDoNotUseAutoCcBccKeywordIfAllRecipientsAreInternalDomain = IsDoNotUseAutoCcBccKeywordIfAllRecipientsAreInternalDomain,
-                    IsEnableRecipientsAreSortedByDomain = IsEnableRecipientsAreSortedByDomain
+                    IsEnableRecipientsAreSortedByDomain = IsEnableRecipientsAreSortedByDomain,
+                    IsAutoAddSenderToBcc = IsAutoAddSenderToBcc,
+                    IsAutoCheckRegisteredInContacts = IsAutoCheckRegisteredInContacts,
+                    IsAutoCheckRegisteredInContactsAndMemberOfContactLists = IsAutoCheckRegisteredInContactsAndMemberOfContactLists,
+                    IsCheckNameAndDomainsFromRecipients = IsCheckNameAndDomainsFromRecipients,
+                    IsWarningIfRecipientsIsNotRegistered = IsWarningIfRecipientsIsNotRegistered,
+                    IsProhibitsSendingMailIfRecipientsIsNotRegistered = IsProhibitsSendingMailIfRecipientsIsNotRegistered
                 }
             };
 
@@ -1082,6 +1333,75 @@ namespace OutlookOkan.ViewModels
                 OnPropertyChanged(nameof(IsEnableRecipientsAreSortedByDomain));
             }
         }
+
+        private bool _isAutoAddSenderToBcc;
+        public bool IsAutoAddSenderToBcc
+        {
+            get => _isAutoAddSenderToBcc;
+            set
+            {
+                _isAutoAddSenderToBcc = value;
+                OnPropertyChanged(nameof(IsAutoAddSenderToBcc));
+            }
+        }
+
+        private bool _isAutoCheckRegisteredInContacts;
+        public bool IsAutoCheckRegisteredInContacts
+        {
+            get => _isAutoCheckRegisteredInContacts;
+            set
+            {
+                _isAutoCheckRegisteredInContacts = value;
+                OnPropertyChanged(nameof(IsAutoCheckRegisteredInContacts));
+            }
+        }
+
+        private bool _isAutoCheckRegisteredInContactsAndMemberOfContactLists;
+        public bool IsAutoCheckRegisteredInContactsAndMemberOfContactLists
+        {
+            get => _isAutoCheckRegisteredInContactsAndMemberOfContactLists;
+            set
+            {
+                _isAutoCheckRegisteredInContactsAndMemberOfContactLists = value;
+                OnPropertyChanged(nameof(IsAutoCheckRegisteredInContactsAndMemberOfContactLists));
+            }
+        }
+
+        private bool _isCheckNameAndDomainsFromRecipients;
+        public bool IsCheckNameAndDomainsFromRecipients
+        {
+            get => _isCheckNameAndDomainsFromRecipients;
+            set
+            {
+                _isCheckNameAndDomainsFromRecipients = value;
+                OnPropertyChanged(nameof(IsCheckNameAndDomainsFromRecipients));
+            }
+        }
+
+        private bool _isWarningIfRecipientsIsNotRegistered;
+        public bool IsWarningIfRecipientsIsNotRegistered
+        {
+            get => _isWarningIfRecipientsIsNotRegistered;
+            set
+            {
+                _isWarningIfRecipientsIsNotRegistered = value;
+                OnPropertyChanged(nameof(IsWarningIfRecipientsIsNotRegistered));
+            }
+        }
+
+        private bool _isProhibitsSendingMailIfRecipientsIsNotRegistered;
+        public bool IsProhibitsSendingMailIfRecipientsIsNotRegistered
+        {
+            get => _isProhibitsSendingMailIfRecipientsIsNotRegistered;
+            set
+            {
+                _isProhibitsSendingMailIfRecipientsIsNotRegistered = value;
+                OnPropertyChanged(nameof(IsProhibitsSendingMailIfRecipientsIsNotRegistered));
+                OnPropertyChanged(nameof(IsWarningIfRecipientsIsNotRegisteredCheckBoxIsEnabled));
+            }
+        }
+
+        public bool IsWarningIfRecipientsIsNotRegisteredCheckBoxIsEnabled => !IsProhibitsSendingMailIfRecipientsIsNotRegistered;
 
         private LanguageCodeAndName _language = new LanguageCodeAndName();
         public LanguageCodeAndName Language

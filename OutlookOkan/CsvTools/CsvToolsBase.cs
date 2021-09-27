@@ -6,7 +6,7 @@ using System.Linq;
 
 namespace OutlookOkan.CsvTools
 {
-    public class CsvToolsBase
+    internal class CsvToolsBase
     {
         /// <summary>
         /// 文字コードの確認
@@ -38,7 +38,7 @@ namespace OutlookOkan.CsvTools
         /// <typeparam name="TCsvType"></typeparam>
         /// <param name="loadedCsv">読み込んだCSVデータ</param>
         /// <returns>CSVデータ(List<T/>)</returns>
-        public List<TCsvType> GetCsvRecords<TCsvType>(CsvReader loadedCsv)
+        internal List<TCsvType> GetCsvRecords<TCsvType>(CsvReader loadedCsv)
         {
             loadedCsv.Configuration.MissingFieldFound = null;
             var list = loadedCsv.GetRecords<TCsvType>().ToList();

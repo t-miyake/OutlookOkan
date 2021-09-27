@@ -23,14 +23,15 @@ namespace OutlookOkan.Views
             var inputText = ((TextBox)e.EditingElement).Text;
             if (string.IsNullOrEmpty(inputText) || !inputText.Contains("@"))
             {
-                MessageBox.Show(Properties.Resources.InputMailaddressOrDomain, Properties.Resources.AppName, MessageBoxButton.OK);
+                _ = MessageBox.Show(Properties.Resources.InputMailaddressOrDomain, Properties.Resources.AppName, MessageBoxButton.OK);
                 e.Cancel = true;
             }
             else
             {
                 //@のみで登録すると全てのメールアドレスが対象になるため、それを禁止。
                 if (!inputText.Equals("@")) return;
-                MessageBox.Show(Properties.Resources.InputMailaddressOrDomain, Properties.Resources.AppName, MessageBoxButton.OK);
+
+                _ = MessageBox.Show(Properties.Resources.InputMailaddressOrDomain, Properties.Resources.AppName, MessageBoxButton.OK);
                 e.Cancel = true;
             }
         }
@@ -43,6 +44,10 @@ namespace OutlookOkan.Views
         {
         }
 
+        private void DataGrid_AlertKeywordAndMessageForSubject_OnCellEditEnding(object sender, DataGridCellEditEndingEventArgs e)
+        {
+        }
+
         private void DataGrid_AlertAddresses_OnCellEditEnding(object sender, DataGridCellEditEndingEventArgs e)
         {
             try
@@ -50,14 +55,15 @@ namespace OutlookOkan.Views
                 var inputText = ((TextBox)e.EditingElement).Text;
                 if (string.IsNullOrEmpty(inputText) || !inputText.Contains("@"))
                 {
-                    MessageBox.Show(Properties.Resources.InputMailaddressOrDomain, Properties.Resources.AppName, MessageBoxButton.OK);
+                    _ = MessageBox.Show(Properties.Resources.InputMailaddressOrDomain, Properties.Resources.AppName, MessageBoxButton.OK);
                     e.Cancel = true;
                 }
                 else
                 {
                     //@のみで登録すると全てのメールアドレスが対象になるため、それを禁止。
                     if (!inputText.Equals("@")) return;
-                    MessageBox.Show(Properties.Resources.InputMailaddressOrDomain, Properties.Resources.AppName, MessageBoxButton.OK);
+
+                    _ = MessageBox.Show(Properties.Resources.InputMailaddressOrDomain, Properties.Resources.AppName, MessageBoxButton.OK);
                     e.Cancel = true;
                 }
             }
@@ -85,15 +91,19 @@ namespace OutlookOkan.Views
             {
                 case 0:
                     if (!string.IsNullOrEmpty(((TextBox)e.EditingElement).Text) && ((TextBox)e.EditingElement).Text.Contains("@")) return;
-                    MessageBox.Show(Properties.Resources.InputMailaddressOrDomain, Properties.Resources.AppName, MessageBoxButton.OK);
+
+                    _ = MessageBox.Show(Properties.Resources.InputMailaddressOrDomain, Properties.Resources.AppName, MessageBoxButton.OK);
                     e.Cancel = true;
                     return;
+
                 case 1:
                     var regex = new Regex("[^0-9]+$");
                     if (!regex.IsMatch(((TextBox)e.EditingElement).Text)) return;
-                    MessageBox.Show(Properties.Resources.InputDeferredDeliveryTime, Properties.Resources.AppName, MessageBoxButton.OK);
+
+                    _ = MessageBox.Show(Properties.Resources.InputDeferredDeliveryTime, Properties.Resources.AppName, MessageBoxButton.OK);
                     e.Cancel = true;
-                    break;
+                    return;
+
                 default:
                     return;
             }
@@ -104,14 +114,62 @@ namespace OutlookOkan.Views
             var inputText = ((TextBox)e.EditingElement).Text;
             if (string.IsNullOrEmpty(inputText) || !inputText.Contains("@"))
             {
-                MessageBox.Show(Properties.Resources.InputDomain, Properties.Resources.AppName, MessageBoxButton.OK);
+                _ = MessageBox.Show(Properties.Resources.InputDomain, Properties.Resources.AppName, MessageBoxButton.OK);
                 e.Cancel = true;
             }
             else
             {
                 //@のみで登録すると全てのメールアドレスが対象になるため、それを禁止。
                 if (!inputText.Equals("@")) return;
-                MessageBox.Show(Properties.Resources.InputDomain, Properties.Resources.AppName, MessageBoxButton.OK);
+
+                _ = MessageBox.Show(Properties.Resources.InputDomain, Properties.Resources.AppName, MessageBoxButton.OK);
+                e.Cancel = true;
+            }
+        }
+
+        private void DataGrid_RecipientsAndAttachmentsName_OnCellEditEnding(object sender, DataGridCellEditEndingEventArgs e)
+        {
+            switch (e.Column.DisplayIndex)
+            {
+                case 0:
+                    var inputText = ((TextBox)e.EditingElement).Text;
+                    if (string.IsNullOrEmpty(inputText) || !inputText.Contains("@"))
+                    {
+                        _ = MessageBox.Show(Properties.Resources.InputMailaddressOrDomain, Properties.Resources.AppName, MessageBoxButton.OK);
+                        e.Cancel = true;
+                    }
+                    else
+                    {
+                        //@のみで登録すると全てのメールアドレスが対象になるため、それを禁止。
+                        if (!inputText.Equals("@")) return;
+
+                        _ = MessageBox.Show(Properties.Resources.InputMailaddressOrDomain, Properties.Resources.AppName, MessageBoxButton.OK);
+                        e.Cancel = true;
+                    }
+                    return;
+
+                case 1:
+                    return;
+
+                default:
+                    return;
+            }
+        }
+
+        private void DataGrid_AttachmentProhibitedRecipients_OnCellEditEnding(object sender, DataGridCellEditEndingEventArgs e)
+        {
+            var inputText = ((TextBox)e.EditingElement).Text;
+            if (string.IsNullOrEmpty(inputText) || !inputText.Contains("@"))
+            {
+                _ = MessageBox.Show(Properties.Resources.InputMailaddressOrDomain, Properties.Resources.AppName, MessageBoxButton.OK);
+                e.Cancel = true;
+            }
+            else
+            {
+                //@のみで登録すると全てのメールアドレスが対象になるため、それを禁止。
+                if (!inputText.Equals("@")) return;
+
+                _ = MessageBox.Show(Properties.Resources.InputMailaddressOrDomain, Properties.Resources.AppName, MessageBoxButton.OK);
                 e.Cancel = true;
             }
         }
@@ -120,6 +178,7 @@ namespace OutlookOkan.Views
         {
             var regex = new Regex("[^0-9]+$");
             if (!regex.IsMatch(ExternalDomainsNumBox.Text + e.Text)) return;
+
             e.Handled = true;
         }
 
@@ -138,7 +197,7 @@ namespace OutlookOkan.Views
         private void OkButton_OnClick(object sender, RoutedEventArgs e)
         {
             var viewModel = DataContext as SettingsWindowViewModel;
-            viewModel?.SaveSettings();
+            _ = viewModel?.SaveSettings();
 
             DialogResult = true;
         }
@@ -151,9 +210,9 @@ namespace OutlookOkan.Views
         private void ApplyButton_OnClick(object sender, RoutedEventArgs e)
         {
             var viewModel = DataContext as SettingsWindowViewModel;
-            viewModel?.SaveSettings();
+            _ = viewModel?.SaveSettings();
 
-            MessageBox.Show(Properties.Resources.SaveSettings, Properties.Resources.AppName, MessageBoxButton.OK);
+            _ = MessageBox.Show(Properties.Resources.SaveSettings, Properties.Resources.AppName, MessageBoxButton.OK);
         }
 
         #endregion

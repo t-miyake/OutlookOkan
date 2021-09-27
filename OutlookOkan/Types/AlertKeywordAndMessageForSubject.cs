@@ -2,16 +2,16 @@
 
 namespace OutlookOkan.Types
 {
-    public sealed class AlertKeywordAndMessage
+    public sealed class AlertKeywordAndMessageForSubject
     {
         public string AlertKeyword { get; set; }
         public string Message { get; set; }
         public bool IsCanNotSend { get; set; }
     }
 
-    public sealed class AlertKeywordAndMessageMap : ClassMap<AlertKeywordAndMessage>
+    public sealed class AlertKeywordAndMessageForSubjectMap : ClassMap<AlertKeywordAndMessageForSubject>
     {
-        public AlertKeywordAndMessageMap()
+        public AlertKeywordAndMessageForSubjectMap()
         {
             _ = Map(m => m.AlertKeyword).Index(0);
             _ = Map(m => m.Message).Index(1);

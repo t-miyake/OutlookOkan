@@ -12,8 +12,8 @@ namespace OutlookOkan.Types
     {
         public AlertAddressMap()
         {
-            Map(m => m.TargetAddress).Index(0);
-            Map(m => m.IsCanNotSend).Index(1).TypeConverterOption.BooleanValues(true, true, "Yes", "Y").TypeConverterOption.BooleanValues(false, true, "No", "N").Default(false);
+            _ = Map(m => m.TargetAddress).Index(0);
+            _ = Map(m => m.IsCanNotSend).Index(1).TypeConverterOption.BooleanValues(true, true, "Yes", "Y").TypeConverterOption.BooleanValues(false, true, "No", "N").Default(false);
         }
     }
 }

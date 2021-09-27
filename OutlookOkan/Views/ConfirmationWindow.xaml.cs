@@ -29,7 +29,7 @@ namespace OutlookOkan.Views
         private void SendButton_OnClick(object sender, RoutedEventArgs e)
         {
             //送信時刻の設定
-            int.TryParse(DeferredDeliveryMinutesBox.Text, out var deferredDeliveryMinutes);
+            _ = int.TryParse(DeferredDeliveryMinutesBox.Text, out var deferredDeliveryMinutes);
 
             if (deferredDeliveryMinutes != 0)
             {
@@ -41,10 +41,18 @@ namespace OutlookOkan.Views
                 else
                 {
                     //アドインの機能と同時に、Outlookの標準機能でも保留時間(配信タイミング)が設定された場合
-                    _mailItem.DeferredDeliveryTime = _mailItem.DeferredDeliveryTime.AddMinutes(deferredDeliveryMinutes);
+                    if (DateTime.Now.AddMinutes(deferredDeliveryMinutes) > _mailItem.DeferredDeliveryTime.AddMinutes(deferredDeliveryMinutes))
+                    {
+                        //[既に設定されている送信予定日時+アドインによる保留時間] が [現在日時+アドインによる保留時間] より前の日時となるため、後者を採用する。
+                        _mailItem.DeferredDeliveryTime = DateTime.Now.AddMinutes(deferredDeliveryMinutes);
+                    }
+                    else
+                    {
+                        _mailItem.DeferredDeliveryTime = _mailItem.DeferredDeliveryTime.AddMinutes(deferredDeliveryMinutes);
+                    }
                 }
             }
-            
+
             DialogResult = true;
         }
 
@@ -80,8 +88,8 @@ namespace OutlookOkan.Views
         private void DeferredDeliveryMinutesBox_OnPreviewTextInput(object sender, TextCompositionEventArgs e)
         {
             var regex = new Regex("[^0-9]+$");
-
             if (!regex.IsMatch(DeferredDeliveryMinutesBox.Text + e.Text)) return;
+
             DeferredDeliveryMinutesBox.Text = "0";
             e.Handled = true;
         }

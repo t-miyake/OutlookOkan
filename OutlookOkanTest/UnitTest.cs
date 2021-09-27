@@ -254,7 +254,7 @@ namespace OutlookOkanTest
         public void 表示名とメールアドレスを表示用に変換_Nameが名称()
         {
             const string recipient = "test";
-            var nameAndMailAddress = $"test ({Resources.FailedToGetInformation})";
+            var nameAndMailAddress = $"test ({Resources.FailedToGetInformation}_1)";
             var testRecipient = new TestRecipient { Name = recipient };
 
             var generateCheckList = new GenerateCheckList();
@@ -322,6 +322,116 @@ namespace OutlookOkanTest
             var privateObject = new PrivateObject(generateCheckList);
             var args = new object[] { testCheckList, testAlertKeywordAndMessages };
             var result = (CheckList)privateObject.Invoke("CheckKeyword", args);
+
+            Assert.AreEqual(result.Alerts[0].AlertMessage, message0);
+            Assert.AreEqual(result.Alerts[1].AlertMessage, message1);
+            Assert.AreEqual(result.Alerts[2].AlertMessage, message2);
+        }
+
+        [TestMethod, TestCategory("_GenerateCheckList"), TestCategory("CheckKeyword")]
+        public void 警告キーワードのチェック_該当キーワードがアスタリスクのみ()
+        {
+            const string alertKeyword0 = "*";
+            const string message0 = "常に表示されるメッセージ";
+            const string alertKeyword1 = "あいうえお";
+            const string message1 = "あいうえおが含まれます。";
+            const string alertKeyword2 = "さしすせそ";
+            const string message2 = "さしすせそが含まれます。";
+
+            var testAlertKeywordAndMessages = new List<AlertKeywordAndMessage>
+            {
+                new AlertKeywordAndMessage {AlertKeyword = alertKeyword0, Message = message0, IsCanNotSend = false},
+                new AlertKeywordAndMessage {AlertKeyword = alertKeyword1, Message = message1, IsCanNotSend = false},
+                new AlertKeywordAndMessage {AlertKeyword = alertKeyword2, Message = message2, IsCanNotSend = true},
+                new AlertKeywordAndMessage {AlertKeyword = "ほげほげ", Message = "ほげほげ", IsCanNotSend = true},
+            };
+            var testCheckList = new CheckList { MailBody = "TEST あいうえお さしすせそ なにぬねの ほげ" };
+
+            var generateCheckList = new GenerateCheckList();
+            var privateObject = new PrivateObject(generateCheckList);
+            var args = new object[] { testCheckList, testAlertKeywordAndMessages };
+            var result = (CheckList)privateObject.Invoke("CheckKeyword", args);
+
+            Assert.AreEqual(result.Alerts[0].AlertMessage, message0);
+            Assert.AreEqual(result.Alerts[1].AlertMessage, message1);
+            Assert.AreEqual(result.Alerts[2].AlertMessage, message2);
+        }
+
+        #endregion
+
+        #region CheckKeywordForSubject
+
+        [TestMethod, TestCategory("_GenerateCheckList"), TestCategory("CheckKeywordForSubject")]
+        public void 警告キーワード件名のチェック_該当キーワードが1件あり()
+        {
+            const string alertKeyword = "TEST";
+            const string message = "TESTが含まれます。";
+            var testAlertKeywordAndMessages = new List<AlertKeywordAndMessageForSubject>
+            {
+                new AlertKeywordAndMessageForSubject {AlertKeyword = alertKeyword, Message = message, IsCanNotSend = false}
+            };
+            var testCheckList = new CheckList { Subject = "TEST あいうえお" };
+
+            var generateCheckList = new GenerateCheckList();
+            var privateObject = new PrivateObject(generateCheckList);
+            var args = new object[] { testCheckList, testAlertKeywordAndMessages };
+            var result = (CheckList)privateObject.Invoke("CheckKeywordForSubject", args);
+
+            Assert.AreEqual(result.Alerts[0].AlertMessage, message);
+        }
+
+        [TestMethod, TestCategory("_GenerateCheckList"), TestCategory("CheckKeywordForSubject")]
+        public void 警告キーワード件名のチェック_該当キーワードが3件あり()
+        {
+            const string alertKeyword0 = "TEST";
+            const string message0 = "TESTが含まれます。";
+            const string alertKeyword1 = "あいうえお";
+            const string message1 = "あいうえおが含まれます。";
+            const string alertKeyword2 = "さしすせそ";
+            const string message2 = "さしすせそが含まれます。";
+
+            var testAlertKeywordAndMessages = new List<AlertKeywordAndMessageForSubject>
+            {
+                new AlertKeywordAndMessageForSubject {AlertKeyword = alertKeyword0, Message = message0, IsCanNotSend = false},
+                new AlertKeywordAndMessageForSubject {AlertKeyword = alertKeyword1, Message = message1, IsCanNotSend = false},
+                new AlertKeywordAndMessageForSubject {AlertKeyword = alertKeyword2, Message = message2, IsCanNotSend = true},
+                new AlertKeywordAndMessageForSubject {AlertKeyword = "ほげほげ", Message = "ほげほげ", IsCanNotSend = true},
+            };
+            var testCheckList = new CheckList { Subject = "TEST あいうえお さしすせそ なにぬねの ほげ" };
+
+            var generateCheckList = new GenerateCheckList();
+            var privateObject = new PrivateObject(generateCheckList);
+            var args = new object[] { testCheckList, testAlertKeywordAndMessages };
+            var result = (CheckList)privateObject.Invoke("CheckKeywordForSubject", args);
+
+            Assert.AreEqual(result.Alerts[0].AlertMessage, message0);
+            Assert.AreEqual(result.Alerts[1].AlertMessage, message1);
+            Assert.AreEqual(result.Alerts[2].AlertMessage, message2);
+        }
+
+        [TestMethod, TestCategory("_GenerateCheckList"), TestCategory("CheckKeywordForSubject")]
+        public void 警告キーワード件名のチェック_該当キーワードがアスタリスクのみ()
+        {
+            const string alertKeyword0 = "*";
+            const string message0 = "常に表示されるメッセージ";
+            const string alertKeyword1 = "あいうえお";
+            const string message1 = "あいうえおが含まれます。";
+            const string alertKeyword2 = "さしすせそ";
+            const string message2 = "さしすせそが含まれます。";
+
+            var testAlertKeywordAndMessages = new List<AlertKeywordAndMessageForSubject>
+            {
+                new AlertKeywordAndMessageForSubject {AlertKeyword = alertKeyword0, Message = message0, IsCanNotSend = false},
+                new AlertKeywordAndMessageForSubject {AlertKeyword = alertKeyword1, Message = message1, IsCanNotSend = false},
+                new AlertKeywordAndMessageForSubject {AlertKeyword = alertKeyword2, Message = message2, IsCanNotSend = true},
+                new AlertKeywordAndMessageForSubject {AlertKeyword = "ほげほげ", Message = "ほげほげ", IsCanNotSend = true},
+            };
+            var testCheckList = new CheckList { Subject = "TEST あいうえお さしすせそ なにぬねの ほげ" };
+
+            var generateCheckList = new GenerateCheckList();
+            var privateObject = new PrivateObject(generateCheckList);
+            var args = new object[] { testCheckList, testAlertKeywordAndMessages };
+            var result = (CheckList)privateObject.Invoke("CheckKeywordForSubject", args);
 
             Assert.AreEqual(result.Alerts[0].AlertMessage, message0);
             Assert.AreEqual(result.Alerts[1].AlertMessage, message1);
@@ -476,7 +586,7 @@ namespace OutlookOkanTest
 
             var generateCheckList = new GenerateCheckList();
             var privateObject = new PrivateObject(generateCheckList);
-            var args = new object[] { testCheckList, displayNameAndRecipient, nameAndDomainsList };
+            var args = new object[] { testCheckList, displayNameAndRecipient, nameAndDomainsList, false };
             var result = (CheckList)privateObject.Invoke("CheckMailBodyAndRecipient", args);
 
             Assert.AreEqual(result.Alerts[0].AlertMessage, "たろう (taro@sample.com)" + " : " + Resources.IsAlertAddressMaybeIrrelevant);
@@ -497,7 +607,49 @@ namespace OutlookOkanTest
 
             var generateCheckList = new GenerateCheckList();
             var privateObject = new PrivateObject(generateCheckList);
-            var args = new object[] { testCheckList, displayNameAndRecipient, nameAndDomainsList };
+            var args = new object[] { testCheckList, displayNameAndRecipient, nameAndDomainsList, false };
+            var result = (CheckList)privateObject.Invoke("CheckMailBodyAndRecipient", args);
+
+            Assert.AreEqual(result.Alerts.Count, 0);
+        }
+
+        [TestMethod, TestCategory("_GenerateCheckList"), TestCategory("CheckMailBodyAndRecipient")]
+        public void 名称と宛先の紐づけ確認_ドメインからも探すオプション有効_警告あり()
+        {
+            var testCheckList = new CheckList { SenderDomain = "@noraneko.co.jp", MailBody = "ほげ株式会社" };
+            var displayNameAndRecipient = new DisplayNameAndRecipient
+            {
+                All = { ["taro@sample.hogehoge"] = "たろう (taro@sample.hogehoge)", ["info@noraneko.co.jp"] = "(株)のらねこ (info@noraneko.co.jp)" }
+            };
+            var nameAndDomainsList = new List<NameAndDomains>
+            {
+                new NameAndDomains {Name = "ほげほげ株式会社", Domain = "@sample.hogehoge"}
+            };
+
+            var generateCheckList = new GenerateCheckList();
+            var privateObject = new PrivateObject(generateCheckList);
+            var args = new object[] { testCheckList, displayNameAndRecipient, nameAndDomainsList, true };
+            var result = (CheckList)privateObject.Invoke("CheckMailBodyAndRecipient", args);
+
+            Assert.AreEqual(result.Alerts[0].AlertMessage, $"たろう (taro@sample.hogehoge) : {Resources.CanNotFindTheLinkedName} (ほげほげ株式会社)");
+        }
+
+        [TestMethod, TestCategory("_GenerateCheckList"), TestCategory("CheckMailBodyAndRecipient")]
+        public void 名称と宛先の紐づけ確認_ドメインからも探すオプション有効_警告なし()
+        {
+            var testCheckList = new CheckList { SenderDomain = "@noraneko.co.jp", MailBody = "ほげほげ株式会社" };
+            var displayNameAndRecipient = new DisplayNameAndRecipient
+            {
+                All = { ["taro@sample.hogehoge"] = "たろう (taro@sample.hogehoge)", ["info@noraneko.co.jp"] = "(株)のらねこ (info@noraneko.co.jp)" }
+            };
+            var nameAndDomainsList = new List<NameAndDomains>
+            {
+                new NameAndDomains {Name = "ほげほげ株式会社", Domain = "@sample.hogehoge"}
+            };
+
+            var generateCheckList = new GenerateCheckList();
+            var privateObject = new PrivateObject(generateCheckList);
+            var args = new object[] { testCheckList, displayNameAndRecipient, nameAndDomainsList, true };
             var result = (CheckList)privateObject.Invoke("CheckMailBodyAndRecipient", args);
 
             Assert.AreEqual(result.Alerts.Count, 0);
@@ -849,7 +1001,7 @@ namespace OutlookOkanTest
 
             var generateCheckList = new GenerateCheckList();
             var privateObject = new PrivateObject(generateCheckList);
-            var result = (bool) privateObject.Invoke("IsValidEmailAddress", mailAddress);
+            var result = (bool)privateObject.Invoke("IsValidEmailAddress", mailAddress);
 
             Assert.IsTrue(result);
         }
@@ -880,6 +1032,25 @@ namespace OutlookOkanTest
 
         #endregion
 
+        #region CheckRecipientsAndAttachments
+
+        [TestMethod, TestCategory("_GenerateCheckList"), TestCategory("CheckRecipientsAndAttachments")]
+        public void CheckRecipientsAndAttachments()
+        {
+            //TODO
+        }
+
+        #endregion
+
+        #region AddAlertOrProhibitsSendingMailIfIfRecipientsIsNotRegistered
+
+        [TestMethod, TestCategory("_GenerateCheckList"), TestCategory("AddAlertOrProhibitsSendingMailIfIfRecipientsIsNotRegistered")]
+        public void AddAlertOrProhibitsSendingMailIfIfRecipientsIsNotRegistered()
+        {
+            //TODO
+        }
+
+        #endregion
 
         #endregion
 

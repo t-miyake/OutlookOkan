@@ -12,8 +12,8 @@ namespace OutlookOkan.Types
     {
         public DeferredDeliveryMinutesMap()
         {
-            Map(m => m.TargetAddress).Index(0);
-            Map(m => m.DeferredMinutes).Index(1).Default(0);
+            _ = Map(m => m.TargetAddress).Index(0);
+            _ = Map(m => m.DeferredMinutes).Index(1).Default(0);
         }
     }
 }

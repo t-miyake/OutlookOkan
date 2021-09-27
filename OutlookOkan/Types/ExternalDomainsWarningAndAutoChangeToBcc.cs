@@ -14,15 +14,15 @@ namespace OutlookOkan.Types
     {
         public ExternalDomainsWarningAndAutoChangeToBccMap()
         {
-            Map(m => m.TargetToAndCcExternalDomainsNum).Index(0).Default(10);
+            _ = Map(m => m.TargetToAndCcExternalDomainsNum).Index(0).Default(10);
 
-            Map(m => m.IsWarningWhenLargeNumberOfExternalDomains).Index(1).TypeConverterOption
+            _ = Map(m => m.IsWarningWhenLargeNumberOfExternalDomains).Index(1).TypeConverterOption
                 .BooleanValues(true, true, "Yes", "Y").TypeConverterOption.BooleanValues(false, true, "No", "N").Default(true);
 
-            Map(m => m.IsProhibitedWhenLargeNumberOfExternalDomains).Index(2).TypeConverterOption
+            _ = Map(m => m.IsProhibitedWhenLargeNumberOfExternalDomains).Index(2).TypeConverterOption
                 .BooleanValues(true, true, "Yes", "Y").TypeConverterOption.BooleanValues(false, true, "No", "N").Default(false);
 
-            Map(m => m.IsAutoChangeToBccWhenLargeNumberOfExternalDomains).Index(3).TypeConverterOption
+            _ = Map(m => m.IsAutoChangeToBccWhenLargeNumberOfExternalDomains).Index(3).TypeConverterOption
                 .BooleanValues(true, true, "Yes", "Y").TypeConverterOption.BooleanValues(false, true, "No", "N").Default(false);
         }
     }

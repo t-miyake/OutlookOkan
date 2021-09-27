@@ -18,7 +18,7 @@ namespace OutlookOkan
 
         public void ShowHelp(Office.IRibbonControl control)
         {
-            Process.Start("https://github.com/t-miyake/OutlookOkan/wiki/Manual");
+            _ = Process.Start("https://github.com/t-miyake/OutlookOkan/wiki/Manual");
         }
 
         public void ShowSettings(Office.IRibbonControl control)
@@ -28,7 +28,7 @@ namespace OutlookOkan
             var outlookHandle = new NativeMethods(activeWindow).Handle;
             _ = new WindowInteropHelper(settingsWindow) { Owner = outlookHandle };
 
-            settingsWindow.ShowDialog();
+            _ = settingsWindow.ShowDialog();
         }
 
         public void ShowAbout(Office.IRibbonControl control)
@@ -38,7 +38,7 @@ namespace OutlookOkan
             var outlookHandle = new NativeMethods(activeWindow).Handle;
             _ = new WindowInteropHelper(aboutWindow) { Owner = outlookHandle };
 
-            aboutWindow.ShowDialog();
+            _ = aboutWindow.ShowDialog();
         }
 
         /// <summary>

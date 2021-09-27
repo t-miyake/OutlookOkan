@@ -4,6 +4,7 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:services="clr-namespace:OutlookOkan.Services"
+             xmlns:viewmodels="clr-namespace:OutlookOkan.ViewModels" d:DataContext="{d:DesignInstance Type=viewmodels:AboutWindowViewModel}"
              mc:Ignorable="d" 
              Title="{Binding Source={x:Static services:ResourceService.Instance}, Path=Resources.VersionInfo, Mode=OneWay}"
              ResizeMode="NoResize" ShowInTaskbar="False" WindowStartupLocation="CenterOwner"

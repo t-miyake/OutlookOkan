@@ -9,7 +9,7 @@ using System.Windows;
 
 namespace OutlookOkan.CsvTools
 {
-    public sealed class CsvImportAndExport : CsvToolsBase
+    internal sealed class CsvImportAndExport : CsvToolsBase
     {
         private Encoding _fileEncoding;
 
@@ -17,9 +17,9 @@ namespace OutlookOkan.CsvTools
         /// CSVファイルをインポートするパスを取得する。
         /// </summary>
         /// <returns>インポートするCSVファイルのパス</returns>
-        public string ImportCsv()
+        internal string ImportCsv()
         {
-            MessageBox.Show(Resources.CSVImportAlert, Resources.AppName, MessageBoxButton.OK);
+            _ = MessageBox.Show(Resources.CSVImportAlert, Resources.AppName, MessageBoxButton.OK);
 
             var openFileDialog = new OpenFileDialog
             {
@@ -41,11 +41,11 @@ namespace OutlookOkan.CsvTools
         /// <typeparam name="TMaptype">CsvClassMap型</typeparam>
         /// <param name="filePath">CSVファイルのパス</param>
         /// <returns>パースされたCSV</returns>
-        public CsvReader LoadCsv<TMaptype>(string filePath) where TMaptype : CsvHelper.Configuration.ClassMap
+        internal CsvReader LoadCsv<TMaptype>(string filePath) where TMaptype : CsvHelper.Configuration.ClassMap
         {
             var csvReader = new CsvReader(new StreamReader(filePath, _fileEncoding));
             csvReader.Configuration.HasHeaderRecord = false;
-            csvReader.Configuration.RegisterClassMap<TMaptype>();
+            _ = csvReader.Configuration.RegisterClassMap<TMaptype>();
 
             return csvReader;
         }
@@ -56,7 +56,7 @@ namespace OutlookOkan.CsvTools
         /// <typeparam name="TMaptype">CsvClassMap型</typeparam>
         /// <param name="records">エクスポートするデータ</param>
         /// <param name="defaultFileName">デフォルトのファイル名(.csvと付けること)</param>
-        public void CsvExport<TMaptype>(List<object> records, string defaultFileName) where TMaptype : CsvHelper.Configuration.ClassMap
+        internal void CsvExport<TMaptype>(List<object> records, string defaultFileName) where TMaptype : CsvHelper.Configuration.ClassMap
         {
             var saveFileDialog = new SaveFileDialog
             {
@@ -72,15 +72,15 @@ namespace OutlookOkan.CsvTools
             {
                 var csvWriter = new CsvWriter(new StreamWriter(saveFileDialog.FileName, false, Encoding.UTF8));
                 csvWriter.Configuration.HasHeaderRecord = false;
-                csvWriter.Configuration.RegisterClassMap<TMaptype>();
+                _ = csvWriter.Configuration.RegisterClassMap<TMaptype>();
                 csvWriter.WriteRecords(records);
                 csvWriter.Dispose();
 
-                MessageBox.Show(Resources.SuccessfulExport, Resources.AppName, MessageBoxButton.OK);
+                _ = MessageBox.Show(Resources.SuccessfulExport, Resources.AppName, MessageBoxButton.OK);
             }
             catch (Exception e)
             {
-                MessageBox.Show(Resources.ExportFailed + e, Resources.AppName, MessageBoxButton.OK);
+                _ = MessageBox.Show(Resources.ExportFailed + e, Resources.AppName, MessageBoxButton.OK);
             }
         }
     }
