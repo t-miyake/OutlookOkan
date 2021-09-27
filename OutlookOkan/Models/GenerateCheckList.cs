@@ -520,6 +520,7 @@ namespace OutlookOkan.Models
                     return exchangeDistributionListMembers;
                 }
 
+                var externalRecipientCounter = 1;
                 var tempOutlookApp = new Outlook.Application();
                 foreach (Outlook.AddressEntry member in addressEntries)
                 {
@@ -551,7 +552,8 @@ namespace OutlookOkan.Models
                                         errorCount++;
                                         break;
                                     case -2147467259:
-                                        mailAddress = Resources.ExternalRecipient;
+                                        mailAddress = Resources.ExternalRecipient + "_" + externalRecipientCounter;
+                                        externalRecipientCounter++;
                                         isDone = true;
                                         break;
                                     default:
