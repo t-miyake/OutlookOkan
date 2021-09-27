@@ -5,6 +5,7 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:services="clr-namespace:OutlookOkan.Services"
              xmlns:types="clr-namespace:OutlookOkan.Types"
+             xmlns:viewmodels="clr-namespace:OutlookOkan.ViewModels" d:DataContext="{d:DesignInstance Type=viewmodels:ConfirmationWindowViewModel}"
              mc:Ignorable="d"
         Title="{Binding Source={x:Static services:ResourceService.Instance}, Path=Resources.Confirmation, Mode=OneWay}"
         ResizeMode="NoResize" ShowInTaskbar="False" WindowStartupLocation="CenterOwner" Height="590" Width="780">
