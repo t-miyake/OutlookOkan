@@ -248,7 +248,7 @@
                     </StackPanel>
                 </Grid>
             </TabItem>
-            <TabItem Header="{Binding Source={x:Static services:ResourceService.Instance}, Path=Resources.AlertKeyword, Mode=OneWay}">
+            <TabItem Header="{Binding Source={x:Static services:ResourceService.Instance}, Path=Resources.AlertKeywordForBody, Mode=OneWay}" MinHeight="28" VerticalAlignment="Top" Width="250">
                 <Grid>
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="3*" />
@@ -300,7 +300,7 @@
                     </StackPanel>
                 </Grid>
             </TabItem>
-            <TabItem Header="{Binding Source={x:Static services:ResourceService.Instance}, Path=Resources.AlertMailAddress, Mode=OneWay}">
+            <TabItem Header="{Binding Source={x:Static services:ResourceService.Instance}, Path=Resources.AlertKeywordForSubject, Mode=OneWay}" MinHeight="28" VerticalAlignment="Top" Width="250">
                 <Grid>
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="3*" />
@@ -309,7 +309,59 @@
                     </Grid.ColumnDefinitions>
                     <StackPanel Grid.Column="0" Margin="8,2,8,8">
                         <GroupBox Header="{Binding Source={x:Static services:ResourceService.Instance}, Path=Resources.Settings, Mode=OneWay}" FontSize="11" Padding="3,3,3,3">
-                            <DataGrid Height="373" VerticalScrollBarVisibility="Visible" HorizontalScrollBarVisibility="Visible" BorderBrush="#FFD5DFE5" HeadersVisibility="All" RowHeaderWidth="15" ItemsSource="{Binding AlertAddresses, Mode=TwoWay}" AutoGenerateColumns="False" CanUserAddRows="True" CanUserDeleteRows="True" CanUserResizeColumns="True" CanUserResizeRows="false" CanUserSortColumns="True" HorizontalGridLinesBrush="#FFD5DFE5" VerticalGridLinesBrush="#FFD5DFE5" CellEditEnding="DataGrid_AlertAddresses_OnCellEditEnding">
+                            <DataGrid Height="558" VerticalScrollBarVisibility="Visible" HorizontalScrollBarVisibility="Visible" BorderBrush="#FFD5DFE5" HeadersVisibility="All" RowHeaderWidth="15" ItemsSource="{Binding AlertKeywordAndMessagesForSubject, Mode=TwoWay}" AutoGenerateColumns="False" CanUserAddRows="True" CanUserDeleteRows="True" CanUserResizeColumns="True" CanUserResizeRows="false" CanUserSortColumns="True" HorizontalGridLinesBrush="#FFD5DFE5" VerticalGridLinesBrush="#FFD5DFE5" CellEditEnding="DataGrid_AlertKeywordAndMessageForSubject_OnCellEditEnding">
+                                <DataGrid.Columns>
+                                    <DataGridTextColumn Header="{Binding Source={x:Static services:ResourceService.Instance}, Path=Resources.AlertKeyword, Mode=OneWay}" Binding="{Binding AlertKeyword, Mode=TwoWay}" Width="*">
+                                        <DataGridTextColumn.ElementStyle>
+                                            <Style TargetType="TextBlock">
+                                                <Setter Property="ToolTipService.ToolTip" Value="{Binding Source={x:Static services:ResourceService.Instance}, Path=Resources.AlertKeywordInfo, Mode=OneWay}" />
+                                            </Style>
+                                        </DataGridTextColumn.ElementStyle>
+                                    </DataGridTextColumn>
+                                    <DataGridTextColumn Header="{Binding Source={x:Static services:ResourceService.Instance}, Path=Resources.WarningText, Mode=OneWay}" Binding="{Binding Message, Mode=TwoWay}" Width="*">
+                                        <DataGridTextColumn.ElementStyle>
+                                            <Style TargetType="TextBlock">
+                                                <Setter Property="ToolTipService.ToolTip" Value="{Binding Source={x:Static services:ResourceService.Instance}, Path=Resources.WarningTextInfo, Mode=OneWay}" />
+                                            </Style>
+                                        </DataGridTextColumn.ElementStyle>
+                                    </DataGridTextColumn>
+                                    <DataGridCheckBoxColumn Header="{Binding Source={x:Static services:ResourceService.Instance}, Path=Resources.SendingForbid, Mode=OneWay}" Binding="{Binding IsCanNotSend, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Width="Auto">
+                                        <DataGridCheckBoxColumn.ElementStyle>
+                                            <Style TargetType="CheckBox">
+                                                <Setter Property="ToolTip" Value="{Binding Source={x:Static services:ResourceService.Instance}, Path=Resources.SendingForbidInfo, Mode=OneWay}" />
+                                                <Setter Property="VerticalAlignment" Value="Center" />
+                                                <Setter Property="HorizontalAlignment" Value="Center" />
+                                            </Style>
+                                        </DataGridCheckBoxColumn.ElementStyle>
+                                    </DataGridCheckBoxColumn>
+                                </DataGrid.Columns>
+                            </DataGrid>
+                        </GroupBox>
+                    </StackPanel>
+                    <GridSplitter Grid.Column="1" />
+                    <StackPanel Grid.Column="2" Margin="1,2,8,8">
+                        <GroupBox Header="{Binding Source={x:Static services:ResourceService.Instance}, Path=Resources.SettingExample, Mode=OneWay}" FontSize="11" Padding="3,3,3,3">
+                            <TextBox Height="477" BorderBrush="White" FontSize="11" TextWrapping="Wrap" Text="{Binding Source={x:Static services:ResourceService.Instance}, Path=Resources.SettingExampleAlertKeywordForSubject, Mode=OneWay}" Padding="0,12,0,0" IsReadOnly="True" />
+                        </GroupBox>
+                        <GroupBox Header="{Binding Source={x:Static services:ResourceService.Instance}, Path=Resources.ImportAndExport, Mode=OneWay}" FontSize="11" Padding="3,3,3,3">
+                            <StackPanel Margin="4">
+                                <Button Content="{Binding Source={x:Static services:ResourceService.Instance}, Path=Resources.CSVImport, Mode=OneWay}" Width="120" Padding="0" Margin="0,1,0,3" Command="{Binding ImportAlertKeywordAndMessagesForSubjectList}" />
+                                <Button Content="{Binding Source={x:Static services:ResourceService.Instance}, Path=Resources.CSVExport, Mode=OneWay}" Width="120" Padding="0" Margin="0,8,0,0" Command="{Binding ExportAlertKeywordAndMessagesForSubjectList}" />
+                            </StackPanel>
+                        </GroupBox>
+                    </StackPanel>
+                </Grid>
+            </TabItem>
+            <TabItem Header="{Binding Source={x:Static services:ResourceService.Instance}, Path=Resources.AlertMailAddress, Mode=OneWay}" MinHeight="28" VerticalAlignment="Top" Width="250">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="3*" />
+                        <ColumnDefinition Width="Auto" />
+                        <ColumnDefinition Width="1*" />
+                    </Grid.ColumnDefinitions>
+                    <StackPanel Grid.Column="0" Margin="8,2,8,8">
+                        <GroupBox Header="{Binding Source={x:Static services:ResourceService.Instance}, Path=Resources.Settings, Mode=OneWay}" FontSize="11" Padding="3,3,3,3">
+                            <DataGrid Height="558" VerticalScrollBarVisibility="Visible" HorizontalScrollBarVisibility="Visible" BorderBrush="#FFD5DFE5" HeadersVisibility="All" RowHeaderWidth="15" ItemsSource="{Binding AlertAddresses, Mode=TwoWay}" AutoGenerateColumns="False" CanUserAddRows="True" CanUserDeleteRows="True" CanUserResizeColumns="True" CanUserResizeRows="false" CanUserSortColumns="True" HorizontalGridLinesBrush="#FFD5DFE5" VerticalGridLinesBrush="#FFD5DFE5" CellEditEnding="DataGrid_AlertAddresses_OnCellEditEnding">
                                 <DataGrid.Columns>
                                     <DataGridTextColumn Header="{Binding Source={x:Static services:ResourceService.Instance}, Path=Resources.AlertMailAddressAndDomain, Mode=OneWay}" Binding="{Binding TargetAddress, Mode=TwoWay}" Width="*">
                                         <DataGridTextColumn.ElementStyle>

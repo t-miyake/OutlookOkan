@@ -375,6 +375,8 @@ Alerting text: It includes the phrase "Confidential".
 
 Register the keywords to be alert and their alerting text.
 
+If the keyword is included in the body you can display a warning or prohibit the sending of that email.
+
 If the alerting text is blank, the confirmation screen will show the default alerting text.</value>
   </data>
   <data name="SettingExampleAlertMailAddress" xml:space="preserve">
@@ -605,6 +607,22 @@ this feature will be applied.</value>
   </data>
   <data name="AlwaysAddTheSendersAddressToBcc" xml:space="preserve">
     <value>Always add the sender's address to Bcc automatically.</value>
+  </data>
+  <data name="AlertKeywordForBody" xml:space="preserve">
+    <value>Alert Keywords (Body)</value>
+  </data>
+  <data name="AlertKeywordForSubject" xml:space="preserve">
+    <value>Alert Keywords (Subject)</value>
+  </data>
+  <data name="SettingExampleAlertKeywordForSubject" xml:space="preserve">
+    <value>Keywords: Confidential
+Alerting text: It includes the phrase "Confidential".
+
+Register the keywords to be alert and their alerting text.
+
+If the keyword is included in the subject you can display a warning or prohibit the sending of that email.
+
+If the alerting text is blank, the confirmation screen will show the default alerting text.</value>
   </data>
   <data name="DistributionList" xml:space="preserve">
     <value>Distribution list</value>

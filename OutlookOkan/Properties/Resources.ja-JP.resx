@@ -375,6 +375,8 @@
 
 警告するキーワードとその警告文を登録します。
 
+キーワードがメール本文に含まれる場合、警告を表示したり、メール送信を禁止したりできます。
+
 ※警告文が空欄の場合、デフォルトの警告文が表示されます。</value>
   </data>
   <data name="SettingExampleAlertMailAddress" xml:space="preserve">
@@ -603,6 +605,22 @@
   </data>
   <data name="AlwaysAddTheSendersAddressToBcc" xml:space="preserve">
     <value>常に送信者のアドレスをBccに自動で追加する。</value>
+  </data>
+  <data name="AlertKeywordForBody" xml:space="preserve">
+    <value>警告キーワード (本文)</value>
+  </data>
+  <data name="AlertKeywordForSubject" xml:space="preserve">
+    <value>警告キーワード (件名)</value>
+  </data>
+  <data name="SettingExampleAlertKeywordForSubject" xml:space="preserve">
+    <value>キーワード：機密
+警告文：機密という言葉が含まれています。
+
+警告するキーワードとその警告文を登録します。
+
+キーワードがメールの件名に含まれる場合、警告を表示したり、メール送信を禁止したりできます。
+
+※警告文が空欄の場合、デフォルトの警告文が表示されます。</value>
   </data>
   <data name="DistributionList" xml:space="preserve">
     <value>配付リスト</value>

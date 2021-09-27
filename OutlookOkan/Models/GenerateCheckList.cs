@@ -40,6 +40,10 @@ namespace OutlookOkan.Models
             var alertKeywordAndMessageList = alertKeywordAndMessageListCsv.GetCsvRecords<AlertKeywordAndMessage>(alertKeywordAndMessageListCsv.LoadCsv<AlertKeywordAndMessageMap>())
                 .Where(x => !string.IsNullOrEmpty(x.AlertKeyword)).ToList();
 
+            var alertKeywordAndMessageForSubjectListCsv = new ReadAndWriteCsv("AlertKeywordAndMessageListForSubject.csv");
+            var alertKeywordAndMessageForSubjectList = alertKeywordAndMessageForSubjectListCsv.GetCsvRecords<AlertKeywordAndMessageForSubject>(alertKeywordAndMessageForSubjectListCsv.LoadCsv<AlertKeywordAndMessageForSubjectMap>())
+                .Where(x => !string.IsNullOrEmpty(x.AlertKeyword)).ToList();
+
             var autoCcBccKeywordListCsv = new ReadAndWriteCsv("AutoCcBccKeywordList.csv");
             var autoCcBccKeywordList = autoCcBccKeywordListCsv.GetCsvRecords<AutoCcBccKeyword>(autoCcBccKeywordListCsv.LoadCsv<AutoCcBccKeywordMap>())
                 .Where(x => !string.IsNullOrEmpty(x.AutoAddAddress) && !string.IsNullOrEmpty(x.Keyword)).ToList();
@@ -96,6 +100,7 @@ namespace OutlookOkan.Models
             _checkList = CheckForgotAttach(_checkList, generalSetting);
 
             _checkList = CheckKeyword(_checkList, alertKeywordAndMessageList);
+            _checkList = CheckKeywordForSubject(_checkList, alertKeywordAndMessageForSubjectList);
 
             var autoAddRecipients = AutoAddCcAndBcc(mail, generalSetting, displayNameAndRecipient, autoCcBccKeywordList, autoCcBccAttachedFilesList, autoCcBccRecipientList, CountRecipientExternalDomains(displayNameAndRecipient, _checkList.SenderDomain, internalDomainList, false), _checkList.Sender, generalSetting.IsAutoAddSenderToBcc);
             if (autoAddRecipients?.Count > 0)
@@ -817,7 +822,35 @@ namespace OutlookOkan.Models
 
             foreach (var alertKeywordAndMessage in alertKeywordAndMessageList)
             {
-                if (!checkList.MailBody.Contains(alertKeywordAndMessage.AlertKeyword)) continue;
+                if (!checkList.MailBody.Contains(alertKeywordAndMessage.AlertKeyword) && alertKeywordAndMessage.AlertKeyword != "*") continue;
+
+                var alertMessage = Resources.DefaultAlertMessage + $"[{alertKeywordAndMessage.AlertKeyword}]";
+                if (!string.IsNullOrEmpty(alertKeywordAndMessage.Message)) alertMessage = alertKeywordAndMessage.Message;
+
+                checkList.Alerts.Add(new Alert { AlertMessage = alertMessage, IsImportant = true, IsWhite = false, IsChecked = false });
+
+                if (!alertKeywordAndMessage.IsCanNotSend) continue;
+
+                checkList.IsCanNotSendMail = true;
+                checkList.CanNotSendMailMessage = alertMessage;
+            }
+
+            return checkList;
+        }
+
+        /// <summary>
+        /// 件名に登録したキーワードがある場合、登録した警告文を表示する。
+        /// </summary>
+        /// <param name="checkList">CheckList</param>>
+        /// <param name="alertKeywordAndMessageForSubjectList">警告キーワード設定</param>>
+        /// <returns>CheckList</returns>
+        private CheckList CheckKeywordForSubject(CheckList checkList, IReadOnlyCollection<AlertKeywordAndMessageForSubject> alertKeywordAndMessageForSubjectList)
+        {
+            if (alertKeywordAndMessageForSubjectList.Count == 0) return checkList;
+
+            foreach (var alertKeywordAndMessage in alertKeywordAndMessageForSubjectList)
+            {
+                if (!checkList.Subject.Contains(alertKeywordAndMessage.AlertKeyword) && alertKeywordAndMessage.AlertKeyword != "*") continue;
 
                 var alertMessage = Resources.DefaultAlertMessage + $"[{alertKeywordAndMessage.AlertKeyword}]";
                 if (!string.IsNullOrEmpty(alertKeywordAndMessage.Message)) alertMessage = alertKeywordAndMessage.Message;

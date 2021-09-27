@@ -44,6 +44,9 @@ namespace OutlookOkan.ViewModels
             ImportInternalDomainList = new RelayCommand(ImportInternalDomainListFromCsv);
             ExportInternalDomainList = new RelayCommand(ExportInternalDomainListToCsv);
 
+            ImportAlertKeywordAndMessagesForSubjectList = new RelayCommand(ImportAlertKeywordAndMessagesForSubjectFromCsv);
+            ExportAlertKeywordAndMessagesForSubjectList = new RelayCommand(ExportAlertKeywordAndMessagesForSubjectToCsv);
+
             //Load language code and name.
             var languages = new Languages();
             Languages = languages.Language;
@@ -53,6 +56,7 @@ namespace OutlookOkan.ViewModels
             LoadWhitelistData();
             LoadNameAndDomainsData();
             LoadAlertKeywordAndMessagesData();
+            LoadAlertKeywordAndMessagesForSubjectData();
             LoadAlertAddressesData();
             LoadAutoCcBccKeywordsData();
             LoadAutoCcBccRecipientsData();
@@ -71,6 +75,7 @@ namespace OutlookOkan.ViewModels
                     SaveWhiteListToCsv(),
                     SaveNameAndDomainsToCsv(),
                     SaveAlertKeywordAndMessageToCsv(),
+                    SaveAlertKeywordAndMessageForSubjectToCsv(),
                     SaveAutoCcBccKeywordsToCsv(),
                     SaveAlertAddressesToCsv(),
                     SaveAutoCcBccRecipientsToCsv(),
@@ -211,6 +216,72 @@ namespace OutlookOkan.ViewModels
             {
                 _nameAndDomains = value;
                 OnPropertyChanged(nameof(NameAndDomains));
+            }
+        }
+
+        #endregion
+
+        #region AlertKeywordAndMessagesForSubject
+
+        public ICommand ImportAlertKeywordAndMessagesForSubjectList { get; }
+        public ICommand ExportAlertKeywordAndMessagesForSubjectList { get; }
+
+        private void LoadAlertKeywordAndMessagesForSubjectData()
+        {
+            var readCsv = new ReadAndWriteCsv("AlertKeywordAndMessageListForSubject.csv");
+            var alertKeywordAndMessagesForSubject = readCsv.GetCsvRecords<AlertKeywordAndMessageForSubject>(readCsv.LoadCsv<AlertKeywordAndMessageForSubjectMap>());
+
+            foreach (var data in alertKeywordAndMessagesForSubject.Where(x => !string.IsNullOrEmpty(x.AlertKeyword)))
+            {
+                AlertKeywordAndMessagesForSubject.Add(data);
+            }
+        }
+
+        private async Task SaveAlertKeywordAndMessageForSubjectToCsv()
+        {
+            var list = AlertKeywordAndMessagesForSubject.Where(x => !string.IsNullOrEmpty(x.AlertKeyword)).Cast<object>().ToList();
+            var writeCsv = new ReadAndWriteCsv("AlertKeywordAndMessageListForSubject.csv");
+            await Task.Run(() => writeCsv.WriteRecordsToCsv<AlertKeywordAndMessageForSubjectMap>(list));
+        }
+
+        private void ImportAlertKeywordAndMessagesForSubjectFromCsv()
+        {
+            var importAction = new CsvImportAndExport();
+            var filePath = importAction.ImportCsv();
+
+            if (filePath is null) return;
+
+            try
+            {
+                var importData = new List<AlertKeywordAndMessageForSubject>(importAction.GetCsvRecords<AlertKeywordAndMessageForSubject>(importAction.LoadCsv<AlertKeywordAndMessageForSubjectMap>(filePath)));
+                foreach (var data in importData.Where(x => !string.IsNullOrEmpty(x.AlertKeyword)))
+                {
+                    AlertKeywordAndMessagesForSubject.Add(data);
+                }
+
+                _ = MessageBox.Show(Properties.Resources.SuccessfulImport, Properties.Resources.AppName, MessageBoxButton.OK);
+            }
+            catch (Exception)
+            {
+                _ = MessageBox.Show(Properties.Resources.ImportFailed, Properties.Resources.AppName, MessageBoxButton.OK);
+            }
+        }
+
+        private void ExportAlertKeywordAndMessagesForSubjectToCsv()
+        {
+            var list = AlertKeywordAndMessagesForSubject.Where(x => !string.IsNullOrEmpty(x.AlertKeyword)).Cast<object>().ToList();
+            var exportAction = new CsvImportAndExport();
+            exportAction.CsvExport<AlertKeywordAndMessageForSubjectMap>(list, "AlertKeywordAndMessageListForSubject.csv");
+        }
+
+        private ObservableCollection<AlertKeywordAndMessageForSubject> _alertKeywordAndMessagesForSubject = new ObservableCollection<AlertKeywordAndMessageForSubject>();
+        public ObservableCollection<AlertKeywordAndMessageForSubject> AlertKeywordAndMessagesForSubject
+        {
+            get => _alertKeywordAndMessagesForSubject;
+            set
+            {
+                _alertKeywordAndMessagesForSubject = value;
+                OnPropertyChanged(nameof(AlertKeywordAndMessagesForSubject));
             }
         }
 
