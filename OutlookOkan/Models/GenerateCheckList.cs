@@ -1157,6 +1157,11 @@ namespace OutlookOkan.Models
                     isExternal = false;
                 }
 
+                if (to.Value.Contains(Resources.DistributionList) && to.Key.Contains(Resources.FailedToGetInformation))
+                {
+                    isExternal = false;
+                }
+
                 var isWhite = _whitelist.Count != 0 && _whitelist.Any(x => to.Key.Contains(x.WhiteName));
                 var isSkip = false;
 
@@ -1197,6 +1202,11 @@ namespace OutlookOkan.Models
                     isExternal = false;
                 }
 
+                if (cc.Value.Contains(Resources.DistributionList) && cc.Key.Contains(Resources.FailedToGetInformation))
+                {
+                    isExternal = false;
+                }
+
                 var isWhite = _whitelist.Count != 0 && _whitelist.Any(x => cc.Key.Contains(x.WhiteName));
                 var isSkip = false;
 
@@ -1233,6 +1243,11 @@ namespace OutlookOkan.Models
             {
                 var isExternal = true;
                 foreach (var _ in internalDomainList.Where(settings => bcc.Key.Contains(settings.Domain)))
+                {
+                    isExternal = false;
+                }
+
+                if (bcc.Value.Contains(Resources.DistributionList) && bcc.Key.Contains(Resources.FailedToGetInformation))
                 {
                     isExternal = false;
                 }
