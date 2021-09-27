@@ -1,0 +1,724 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="About" xml:space="preserve">
+    <value>कार्यक्रम के बारे में</value>
+  </data>
+  <data name="AddressBook" xml:space="preserve">
+    <value>संपर्क</value>
+  </data>
+  <data name="AlertKeyword" xml:space="preserve">
+    <value>अलर्ट कीवर्ड</value>
+  </data>
+  <data name="AlertKeywordForBody" xml:space="preserve">
+    <value>अलर्ट कीवर्ड (बॉडी)</value>
+  </data>
+  <data name="AlertKeywordForSubject" xml:space="preserve">
+    <value>अलर्ट कीवर्ड (विषय)</value>
+  </data>
+  <data name="AlertKeywordInfo" xml:space="preserve">
+    <value>सचेत करने के लिए कीवर्ड</value>
+  </data>
+  <data name="AlertMailAddress" xml:space="preserve">
+    <value>अलर्ट प्राप्तकर्ता</value>
+  </data>
+  <data name="AlertMailAddressAndDomain" xml:space="preserve">
+    <value>प्राप्तकर्ताओं या डोमेन को सचेत करना</value>
+  </data>
+  <data name="AlwaysAddTheSendersAddressToBcc" xml:space="preserve">
+    <value>प्रेषक का पता हमेशा गुप्त प्रतिलिपि में स्वचालित रूप से जोड़ें।</value>
+  </data>
+  <data name="ApplicableDestination" xml:space="preserve">
+    <value>लागू प्राप्तकर्ता</value>
+  </data>
+  <data name="ApplicableKeywords" xml:space="preserve">
+    <value>लागू कीवर्ड</value>
+  </data>
+  <data name="Apply" xml:space="preserve">
+    <value>लागू करना</value>
+  </data>
+  <data name="AppName" xml:space="preserve">
+    <value>OutlookOkan</value>
+  </data>
+  <data name="AttachedIsAnEncryptedZipFile" xml:space="preserve">
+    <value>संलग्न एक एन्क्रिप्टेड ज़िप फ़ाइल है।</value>
+  </data>
+  <data name="AttachmentProhibitedRecipients" xml:space="preserve">
+    <value>संलग्नक निषिद्ध पता</value>
+  </data>
+  <data name="AttachmentProhibitedRecipientsMessage" xml:space="preserve">
+    <value>यह प्राप्तकर्ता जिन्हें अनुलग्नक भेजने से प्रतिबंधित किया गया है।</value>
+  </data>
+  <data name="Attachments" xml:space="preserve">
+    <value>अटैचमेंट</value>
+  </data>
+  <data name="AttachmentsKeyword" xml:space="preserve">
+    <value>संलग्न फाइल</value>
+  </data>
+  <data name="AttachmentsName" xml:space="preserve">
+    <value>अटैचमेंट का नाम/कीवर्ड</value>
+  </data>
+  <data name="AttachmentsProhibitedMessage" xml:space="preserve">
+    <value>अनुलग्नकों के साथ ई-मेल भेजना प्रतिबंधित है।</value>
+  </data>
+  <data name="AutoAddCCorBCCByAttachedFile" xml:space="preserve">
+    <value>स्वचालित प्रतिलिपि/गुप्त प्रति जोड़ (संलग्नक द्वारा)</value>
+  </data>
+  <data name="AutoAddCCorBCCByKeyword" xml:space="preserve">
+    <value>स्वचालित प्रतिलिपि/गुप्त प्रति जोड़ (कीवर्ड द्वारा)</value>
+  </data>
+  <data name="AutoAddCCorBCCByKeywordInfo" xml:space="preserve">
+    <value>वे कीवर्ड जो स्वचालित रूप से प्रतिलिपि या गुप्त प्रतिलिपि जोड़ते हैं।</value>
+  </data>
+  <data name="AutoAddCCorBCCByMailAddressOrDomain" xml:space="preserve">
+    <value>स्वचालित प्रतिलिपि/गुप्त प्रति जोड़
+(प्राप्तकर्ताओं द्वारा)</value>
+  </data>
+  <data name="AutoAddCCorBCCByMailAddressOrDomainInfo" xml:space="preserve">
+    <value>प्राप्तकर्ता या डोमेन जो स्वचालित रूप से प्रतिलिपि या गुप्त प्रतिलिपि जोड़ते हैं।</value>
+  </data>
+  <data name="AutoAddDestination" xml:space="preserve">
+    <value>स्वचालित रूप से जोड़ा गया।</value>
+  </data>
+  <data name="AutoAddMailAddress" xml:space="preserve">
+    <value>प्राप्तकर्ताओं को स्वचालित रूप से जोड़ें।</value>
+  </data>
+  <data name="AutoAddSendersAddressToAlert" xml:space="preserve">
+    <value>प्रेषक का ईमेल पता स्वचालित रूप से प्रति में जोड़ दिया गया था। (क्योंकि बीसीसी में स्वतः परिवर्तन के कारण To अब मौजूद नहीं है।)</value>
+  </data>
+  <data name="AutoCheckConfig" xml:space="preserve">
+    <value>ऑटो-चेक सेटिंग</value>
+  </data>
+  <data name="AutoCheckMembersAddress" xml:space="preserve">
+    <value>सदस्यों के ईमेल पतों की स्वतः जांच की जाएगी।</value>
+  </data>
+  <data name="AutoCheckSameDomain" xml:space="preserve">
+    <value>आंतरिक डोमेन प्राप्तकर्ताओं की स्वतः जांच की जाएगी।</value>
+  </data>
+  <data name="BasicSettings" xml:space="preserve">
+    <value>मूल सेटिंग्स</value>
+  </data>
+  <data name="Bcc" xml:space="preserve">
+    <value>Bcc</value>
+  </data>
+  <data name="Cancel" xml:space="preserve">
+    <value>रद्द करें</value>
+  </data>
+  <data name="CanceledSendingMail" xml:space="preserve">
+    <value>यह ईमेल भेजना रद्द किया गया।</value>
+  </data>
+  <data name="CanceledSendingMailMessage" xml:space="preserve">
+    <value>यह ईमेल भेजना रद्द किया गया। आप इसे फिर से संपादित कर सकते हैं।
+इस ईमेल को भेजने का अनुमानित समय साफ़ कर दिया गया है।
+
+इस ईमेल को भेजने के लिए आपको सेंड बटन पर क्लिक करना होगा।
+संपादन स्क्रीन को बंद करने से यह ईमेल नहीं भेजा जाएगा।</value>
+  </data>
+  <data name="CanGetNewVersion" xml:space="preserve">
+    <value>इस ऐड-इन का एक नया संस्करण है।
+क्या आप इसे डाउनलोड करना चाहते हैं?</value>
+  </data>
+  <data name="CanNotFindTheLinkedName" xml:space="preserve">
+    <value>मेल बॉडी में लिंक किया गया नाम नहीं मिल रहा है।</value>
+  </data>
+  <data name="Cc" xml:space="preserve">
+    <value>Cc</value>
+  </data>
+  <data name="CCorBCC" xml:space="preserve">
+    <value>सीसी बीसीसी</value>
+  </data>
+  <data name="ChangeLanguage" xml:space="preserve">
+    <value>प्रदर्शन भाषा बदलें</value>
+  </data>
+  <data name="ChangeRibbonLanguageInfo" xml:space="preserve">
+    <value>आउटलुक के पुनरारंभ होने पर रिबन (मेनू) की प्रदर्शन भाषा अपडेट की जाती है।</value>
+  </data>
+  <data name="CheckNewVersion" xml:space="preserve">
+    <value>नए संस्करण की जाँच करें।</value>
+  </data>
+  <data name="CompanyName" xml:space="preserve">
+    <value>Noraneko Inc.</value>
+  </data>
+  <data name="Confirmation" xml:space="preserve">
+    <value>ईमेल भेजने से पहले पुष्टि।</value>
+  </data>
+  <data name="ConfirmationMessage1" xml:space="preserve">
+    <value>क्या आप यह ईमेल भेजना चाहेंगे?</value>
+  </data>
+  <data name="ConfirmationMessage2" xml:space="preserve">
+    <value>सभी आइटम चेक करने के बाद आप सेंड बटन दबा सकते हैं।</value>
+  </data>
+  <data name="ContactGroup" xml:space="preserve">
+    <value>संपर्क समूह</value>
+  </data>
+  <data name="Copyright" xml:space="preserve">
+    <value>Copyright (C) 2021 Noraneko Inc.</value>
+  </data>
+  <data name="CSVExport" xml:space="preserve">
+    <value>निर्यात सीएसवी</value>
+  </data>
+  <data name="CSVImport" xml:space="preserve">
+    <value>सीएसवी आयात करें</value>
+  </data>
+  <data name="CSVImportAlert" xml:space="preserve">
+    <value>CSV फ़ाइल को गलत प्रारूप के साथ आयात न करें।</value>
+  </data>
+  <data name="DefaultAlertMessage" xml:space="preserve">
+    <value>चेतावनी कीवर्ड ईमेल के मुख्य भाग में शामिल है।</value>
+  </data>
+  <data name="DeferredDelivery" xml:space="preserve">
+    <value>स्थगित वितरण</value>
+  </data>
+  <data name="DeferredDeliveryEmailAddressOrDomainInfo" xml:space="preserve">
+    <value>वह ईमेल पता या डोमेन दर्ज करें जिसे आप डिलीवरी स्थगित करना चाहते हैं।</value>
+  </data>
+  <data name="DeferredDeliveryMinutes" xml:space="preserve">
+    <value>आस्थगित प्रसव के समय। (मिनट)</value>
+  </data>
+  <data name="DeferredDeliveryTime" xml:space="preserve">
+    <value>आस्थगित प्रसव के समय। (मिनट)</value>
+  </data>
+  <data name="DestinationEmailaddress" xml:space="preserve">
+    <value>प्राप्तकर्ताओं</value>
+  </data>
+  <data name="DistributionList" xml:space="preserve">
+    <value>वितरण सूची</value>
+  </data>
+  <data name="Domain" xml:space="preserve">
+    <value>कार्यक्षेत्र</value>
+  </data>
+  <data name="DoNotShowConfirmationScreen" xml:space="preserve">
+    <value>पुष्टिकरण विंडो छोड़ें</value>
+  </data>
+  <data name="EnableForgottenToAttachAlert" xml:space="preserve">
+    <value>यदि पाठ में एक वाक्य "संलग्न फ़ाइल" है और कोई संलग्न फ़ाइल नहीं है, तो उसके बारे में चेतावनी दें।</value>
+  </data>
+  <data name="EncryptedZipBeta" xml:space="preserve">
+    <value>एन्क्रिप्टेड ज़िप फ़ाइल अटैचमेंट चेतावनी</value>
+  </data>
+  <data name="ExclusionSettings" xml:space="preserve">
+    <value>बहिष्करण सेटिंग</value>
+  </data>
+  <data name="ExportFailed" xml:space="preserve">
+    <value>निर्यात करने में विफल.</value>
+  </data>
+  <data name="ExternalDomainsChangeToBccAlert" xml:space="preserve">
+    <value>चूंकि To और Cc के बाहरी डोमेन थ्रेशोल्ड से ऊपर हैं, बाहरी डोमेन प्राप्तकर्ताओं को Bcc में बदल दिया गया है।</value>
+  </data>
+  <data name="ExternalDomainsWarningAndAutoChangeToBcc" xml:space="preserve">
+    <value>बाहरी डोमेन अलर्ट और
+गुप्त प्रतिलिपि में स्वतः परिवर्तन</value>
+  </data>
+  <data name="ExternalRecipient" xml:space="preserve">
+    <value>बाहरी प्राप्तकर्ता</value>
+  </data>
+  <data name="FailedToGetInformation" xml:space="preserve">
+    <value>जानकारी प्राप्त करने में विफल।</value>
+  </data>
+  <data name="ForgottenToAttachAlert" xml:space="preserve">
+    <value>शब्द "संलग्न फ़ाइल" पाठ में है, लेकिन कोई अनुलग्नक नहीं है।</value>
+  </data>
+  <data name="General" xml:space="preserve">
+    <value>सामान्य वस्तुएँ</value>
+  </data>
+  <data name="GetMembersOfTheContactGroup" xml:space="preserve">
+    <value>संपर्क समूह के सदस्यों को दिखाएं।</value>
+  </data>
+  <data name="GetMembersOfTheExDistList" xml:space="preserve">
+    <value>एक्सचेंज वितरण सूची के सदस्यों को दिखाएं। (इसमें लंबा समय लग सकता है।)</value>
+  </data>
+  <data name="GetMembersOfTheList" xml:space="preserve">
+    <value>एक्सचेंज वितरण सूची या संपर्क समूह के सदस्यों को दिखाएं</value>
+  </data>
+  <data name="Help" xml:space="preserve">
+    <value>मैं</value>
+  </data>
+  <data name="HowToDeleteRow" xml:space="preserve">
+    <value>* पंक्ति हटाएं: पंक्ति का चयन करें और हटाएं कुंजी दबाएं।</value>
+  </data>
+  <data name="HTML" xml:space="preserve">
+    <value>HTML</value>
+  </data>
+  <data name="IfAllSameDomain" xml:space="preserve">
+    <value>यदि सभी प्राप्तकर्ता के डोमेन आंतरिक डोमेन हैं, तो पुष्टिकरण विंडो को छोड़ दें।</value>
+  </data>
+  <data name="IfAllWhite" xml:space="preserve">
+    <value>यदि प्राप्तकर्ताओं में कोई चेक लक्ष्य नहीं है, तो पुष्टिकरण विंडो को छोड़ दें।
+(उदाहरण के लिए, यदि सभी प्राप्तकर्ताओं को अनुमति सूची में शामिल किया गया है।)</value>
+  </data>
+  <data name="ImportAndExport" xml:space="preserve">
+    <value>आयात निर्यात</value>
+  </data>
+  <data name="ImportantAlert" xml:space="preserve">
+    <value>महत्वपूर्ण अलर्ट।</value>
+  </data>
+  <data name="ImportFailed" xml:space="preserve">
+    <value>आयात करने में विफल।</value>
+  </data>
+  <data name="InputCCorBCC" xml:space="preserve">
+    <value>"प्रतिलिपि" या "गुप्त प्रति" दर्ज करें।</value>
+  </data>
+  <data name="InputDeferredDeliveryTime" xml:space="preserve">
+    <value>आस्थगित समय मिनटों में दर्ज करें।</value>
+  </data>
+  <data name="InputDomain" xml:space="preserve">
+    <value>डोमेन दर्ज करें।</value>
+  </data>
+  <data name="InputDomainInfo" xml:space="preserve">
+    <value>@ से डोमेन दर्ज करें।</value>
+  </data>
+  <data name="InputMailaddressOrDomain" xml:space="preserve">
+    <value>ईमेल पता या डोमेन दर्ज करें।</value>
+  </data>
+  <data name="InputNameInfo" xml:space="preserve">
+    <value>नाम दर्ज करें। (उदा. कंपनी का नाम)</value>
+  </data>
+  <data name="InternalDomain" xml:space="preserve">
+    <value>आंतरिक डोमेन</value>
+  </data>
+  <data name="IsAlertAddressBccAlert" xml:space="preserve">
+    <value>प्राप्तकर्ताओं (बीसीसी) में एक पता या डोमेन होता है जिसे अलर्ट के रूप में पंजीकृत किया गया है।</value>
+  </data>
+  <data name="IsAlertAddressCcAlert" xml:space="preserve">
+    <value>प्राप्तकर्ताओं (सीसी) में एक पता या डोमेन होता है जिसे अलर्ट के रूप में पंजीकृत किया गया है।</value>
+  </data>
+  <data name="IsAlertAddressMaybeIrrelevant" xml:space="preserve">
+    <value>यह प्राप्तकर्ता इच्छित गंतव्य से संबंधित नहीं हो सकता है।</value>
+  </data>
+  <data name="IsAlertAddressToAlert" xml:space="preserve">
+    <value>प्राप्तकर्ताओं (टू) में एक पता या डोमेन होता है जिसे अलर्ट के रूप में पंजीकृत किया गया है।</value>
+  </data>
+  <data name="IsAttachedExe" xml:space="preserve">
+    <value>एक निष्पादन योग्य फ़ाइल (.exe) संलग्न है।</value>
+  </data>
+  <data name="IsAttachmentsProhibited" xml:space="preserve">
+    <value>फ़ाइल संलग्न होने पर भेजना प्रतिबंधित है।</value>
+  </data>
+  <data name="IsAutoChangeToBccWhenLargeNumberOfExternalDomains" xml:space="preserve">
+    <value>To और Cc के बाहरी प्राप्तकर्ता स्वचालित रूप से Bcc . में परिवर्तित हो जाते हैं
+जब प्राप्तकर्ताओं (To/Cc) के पास बड़ी संख्या में बाहरी डोमेन हों।</value>
+  </data>
+  <data name="IsAutoCheckRegisteredInContacts" xml:space="preserve">
+    <value>संपर्क में पंजीकृत प्राप्तकर्ताओं की स्वतः जांच की जाएगी। (इसमें लंबा समय लग सकता है।)</value>
+  </data>
+  <data name="IsAutoCheckRegisteredInContactsAndMemberOfContactLists" xml:space="preserve">
+    <value>उन प्राप्तकर्ताओं को शामिल करें जो संपर्क सूची के सदस्यों के रूप में पंजीकृत हैं।
+(यदि आपके पास कई संपर्क समूह हैं, तो प्रक्रिया में अधिक समय लग सकता है।)</value>
+  </data>
+  <data name="IsBigAttachedFile" xml:space="preserve">
+    <value>इस ईमेल के साथ 10Mbyte या इससे बड़ी फ़ाइल संलग्न है।</value>
+  </data>
+  <data name="IsCanNotShowConfirmation" xml:space="preserve">
+    <value>पुष्टिकरण विंडो प्रदर्शित नहीं की जा सकी।</value>
+  </data>
+  <data name="IsCheckNameAndDomainsFromRecipients" xml:space="preserve">
+    <value>मेल बॉडी में प्राप्तकर्ता का नाम नहीं होने पर एक चेतावनी भी प्रदर्शित होती है।</value>
+  </data>
+  <data name="IsDoNotUseXIfAllRecipientsAreInternalDomain" xml:space="preserve">
+    <value>यदि प्राप्तकर्ता के डोमेन सभी आंतरिक डोमेन हैं, तो इस सुविधा को अक्षम करें।</value>
+  </data>
+  <data name="IsEnableAllAttachedFilesAreDetectEncryptedZip" xml:space="preserve">
+    <value>".zip" के अलावा किसी अन्य एक्सटेंशन के साथ संलग्न फ़ाइलें यह भी पता लगाती हैं कि वे एन्क्रिप्टेड ज़िप हैं या नहीं।</value>
+  </data>
+  <data name="IsEnableRecipientsAreSortedByDomain" xml:space="preserve">
+    <value>पुष्टिकरण स्क्रीन पर प्राप्तकर्ताओं को डोमेन द्वारा क्रमबद्ध किया जाता है।</value>
+  </data>
+  <data name="IsNotTreatedAsAttachmentsAtHtmlEmbeddedFiles" xml:space="preserve">
+    <value>HTML मेल में एम्बेड की गई फ़ाइल को अनुलग्नक के रूप में नहीं माना जाता है।</value>
+  </data>
+  <data name="IsProhibitedWhenEncryptedZipIsAttached" xml:space="preserve">
+    <value>एन्क्रिप्टेड ज़िप फ़ाइल संलग्न होने पर भेजना प्रतिबंधित है।</value>
+  </data>
+  <data name="IsProhibitedWhenLargeNumberOfExternalDomains" xml:space="preserve">
+    <value>जब प्राप्तकर्ताओं (To/Cc) के पास बड़ी संख्या में बाहरी डोमेन हों तो भेजना प्रतिबंधित है।</value>
+  </data>
+  <data name="IsProhibitsSendingMailIfRecipientsIsNotRegistered" xml:space="preserve">
+    <value>यदि प्राप्तकर्ता संपर्क में पंजीकृत नहीं है तो मेल भेजने पर रोक लगाता है।</value>
+  </data>
+  <data name="IsShowConfirmationToMultipleDomain" xml:space="preserve">
+    <value>यदि प्राप्तकर्ताओं में एक से अधिक बाहरी डोमेन हैं, तो पुष्टिकरण विंडो प्रदर्शित करें।
+(पुष्टिकरण विंडो को नहीं छोड़ता है।)</value>
+  </data>
+  <data name="IsSkipConfirmation" xml:space="preserve">
+    <value>पुष्टिकरण विंडो छोड़ें।</value>
+  </data>
+  <data name="IsSkipConfirmationInfo" xml:space="preserve">
+    <value>जब आप केवल चयनित प्राप्तकर्ताओं को ईमेल भेजते हैं तो पुष्टिकरण विंडो को छोड़ दें।</value>
+  </data>
+  <data name="IsWarningIfRecipientsIsNotRegistered" xml:space="preserve">
+    <value>यदि प्राप्तकर्ता संपर्क में पंजीकृत नहीं है, तो पुष्टिकरण स्क्रीन पर एक चेतावनी प्रदर्शित होती है।</value>
+  </data>
+  <data name="IsWarningWhenAttachedRealFile" xml:space="preserve">
+    <value>यदि कोई फ़ाइल संलग्न है, तो उसे पुष्टिकरण स्क्रीन पर एक लिंक के रूप में संलग्न करने की अनुशंसा की जाती है।</value>
+  </data>
+  <data name="IsWarningWhenEncryptedZipIsAttached" xml:space="preserve">
+    <value>एन्क्रिप्टेड ज़िप फ़ाइल संलग्न होने पर एक चेतावनी प्रदर्शित करें।</value>
+  </data>
+  <data name="IsWarningWhenLargeNumberOfExternalDomains" xml:space="preserve">
+    <value>प्राप्तकर्ताओं (To/Cc) के पास बड़ी संख्या में बाहरी डोमेन होने पर चेतावनी प्रदर्शित करता है।</value>
+  </data>
+  <data name="Keyword" xml:space="preserve">
+    <value>कीवर्ड</value>
+  </data>
+  <data name="LargeNumberOfExternalDomainAlert" xml:space="preserve">
+    <value>To और Cc में बाहरी डोमेन की संख्या सीमा से अधिक है। कृपया भेजने के पेशेवरों और विपक्षों की पुन: पुष्टि करें।</value>
+  </data>
+  <data name="MailAddressAndDomain" xml:space="preserve">
+    <value>प्राप्तकर्ता का पता/डोमेन</value>
+  </data>
+  <data name="MailBody" xml:space="preserve">
+    <value>संदेश का मुख्य भाग (सादा-पाठ)</value>
+  </data>
+  <data name="MailInfo" xml:space="preserve">
+    <value>मेल सूचना</value>
+  </data>
+  <data name="MailType" xml:space="preserve">
+    <value>प्रकार</value>
+  </data>
+  <data name="Name" xml:space="preserve">
+    <value>नाम</value>
+  </data>
+  <data name="NameAndDomain" xml:space="preserve">
+    <value>संबंधित प्राप्तकर्ता का नाम और डोमेन</value>
+  </data>
+  <data name="NoAlert" xml:space="preserve">
+    <value>कोई महत्वपूर्ण अलर्ट नहीं हैं।</value>
+  </data>
+  <data name="NoticeOfIsEnableAllAttachedFilesAreDetectEncryptedZip" xml:space="preserve">
+    <value>* अटैचमेंट वाले ईमेल के संसाधन में अधिक समय लग सकता है।</value>
+  </data>
+  <data name="OK" xml:space="preserve">
+    <value>ठीक है</value>
+  </data>
+  <data name="ProhibitedWhenLargeNumberOfExternalDomainsAlert" xml:space="preserve">
+    <value>To और Cc में बाहरी डोमेन की संख्या सीमा से ऊपर है।</value>
+  </data>
+  <data name="ProhibitsSendingMailIfRecipientsIsNotRegisteredMessage" xml:space="preserve">
+    <value>अपंजीकृत संपर्क को ई-मेल भेजना प्रतिबंधित है।</value>
+  </data>
+  <data name="RecipientsAndAttachmentsName" xml:space="preserve">
+    <value>संबंधित प्राप्तकर्ता और अनुलग्नक के नाम</value>
+  </data>
+  <data name="RecipientsAndAttachmentsNameMessage" xml:space="preserve">
+    <value>असंबंधित प्राप्तकर्ता और अनुलग्नक।</value>
+  </data>
+  <data name="RecommendationOfAttachFileAsLink" xml:space="preserve">
+    <value>यह अनुशंसा की जाती है कि आप फ़ाइल को एक लिंक के रूप में संलग्न करें।</value>
+  </data>
+  <data name="RichText" xml:space="preserve">
+    <value>रिच पाठ</value>
+  </data>
+  <data name="SaveSettings" xml:space="preserve">
+    <value>सेटिंग्स को अपडेट कर दिया गया है।</value>
+  </data>
+  <data name="SelectCSVFile" xml:space="preserve">
+    <value>एक CSV फ़ाइल चुनें.</value>
+  </data>
+  <data name="SelectSaveDestination" xml:space="preserve">
+    <value>चुनें कि आप इसे कहाँ सहेजना चाहते हैं।</value>
+  </data>
+  <data name="Send" xml:space="preserve">
+    <value>भेजना</value>
+  </data>
+  <data name="Sender" xml:space="preserve">
+    <value>प्रेषक</value>
+  </data>
+  <data name="SendersDomainAndInternalDomainAreNotCovered" xml:space="preserve">
+    <value>*प्रेषक का डोमेन और आंतरिक डोमेन दोनों शामिल नहीं हैं।</value>
+  </data>
+  <data name="SendingForbid" xml:space="preserve">
+    <value>भेजना प्रतिबंधित</value>
+  </data>
+  <data name="SendingForbidAddress" xml:space="preserve">
+    <value>प्रतिबंधित प्राप्तकर्ता।</value>
+  </data>
+  <data name="SendingForbidInfo" xml:space="preserve">
+    <value>यदि आप इस बॉक्स को चेक करते हैं, तो आप प्राप्तकर्ता को ईमेल नहीं भेज सकते हैं या कीवर्ड शामिल नहीं कर सकते हैं।</value>
+  </data>
+  <data name="SendMailConfirmation" xml:space="preserve">
+    <value>क्या आप यह ईमेल भेजना चाहेंगे?</value>
+  </data>
+  <data name="SentOnBehalf" xml:space="preserve">
+    <value>ओर से भेजें या इस रूप में भेजें।</value>
+  </data>
+  <data name="SettingExample" xml:space="preserve">
+    <value>सेटिंग्स का उदाहरण।</value>
+  </data>
+  <data name="SettingExampleAlertKeyword" xml:space="preserve">
+    <value>कीवर्ड: गोपनीय
+चेतावनी पाठ: इसमें "गोपनीय" वाक्यांश शामिल है।
+
+सचेत रहने के लिए खोजशब्दों को पंजीकृत करें और उनका चेतावनी पाठ।
+
+यदि कीवर्ड मुख्य भाग में शामिल है तो आप एक चेतावनी प्रदर्शित कर सकते हैं या उस ईमेल को भेजने पर रोक लगा सकते हैं।
+
+अगर अलर्ट करने वाला टेक्स्ट खाली है, तो कन्फर्मेशन स्क्रीन डिफॉल्ट अलर्टिंग टेक्स्ट दिखाएगी।</value>
+  </data>
+  <data name="SettingExampleAlertKeywordForSubject" xml:space="preserve">
+    <value>कीवर्ड: गोपनीय
+चेतावनी पाठ: इसमें "गोपनीय" वाक्यांश शामिल है।
+
+सचेत रहने के लिए खोजशब्दों को पंजीकृत करें और उनका चेतावनी पाठ।
+
+यदि कीवर्ड विषय में शामिल है तो आप एक चेतावनी प्रदर्शित कर सकते हैं या उस ईमेल को भेजने पर रोक लगा सकते हैं।
+
+अगर अलर्ट करने वाला टेक्स्ट खाली है, तो कन्फर्मेशन स्क्रीन डिफॉल्ट अलर्टिंग टेक्स्ट दिखाएगी।</value>
+  </data>
+  <data name="SettingExampleAlertMailAddress" xml:space="preserve">
+    <value>ईमेल पता: info@noraneko.co.jp
+या
+डोमेन: @noraneko.co.jp
+
+एक ईमेल पता या डोमेन पंजीकृत करें।
+
+यदि आप किसी ईमेल पते या डोमेन पर ईमेल भेजते हैं जिसे आपने यहां पंजीकृत किया है, तो आपको पहले से एक अलर्ट प्राप्त होगा।</value>
+  </data>
+  <data name="SettingExampleAttachmentProhibitedRecipients" xml:space="preserve">
+    <value>ईमेल पता: info@noraneko.co.jp
+या
+डोमेन: @noraneko.co.jp
+
+ईमेल पता या डोमेन पंजीकृत करें।
+
+आप उस प्राप्तकर्ताओं को अटैचमेंट वाले ईमेल नहीं भेज पाएंगे।</value>
+  </data>
+  <data name="SettingExampleAttachments" xml:space="preserve">
+    <value>आप अटैचमेंट वाले ईमेल को भेजे जाने से रोक सकते हैं, या एक चेतावनी प्रदर्शित कर सकते हैं जो फ़ाइल को लिंक के रूप में संलग्न करने की अनुशंसा करती है।
+
+एन्क्रिप्टेड ज़िप फ़ाइल (पासवर्ड के साथ ज़िप फ़ाइल) संलग्न होने पर आप एक चेतावनी प्रदर्शित कर सकते हैं या ईमेल भेजने पर रोक लगा सकते हैं।</value>
+  </data>
+  <data name="SettingExampleAutoAddCCorBCCByAttachedFile" xml:space="preserve">
+    <value>प्रकार: प्रतिलिपि या गुप्त प्रतिलिपि
+ईमेल पता: Boss@noraneko.co.jp
+
+जब आप संलग्न फ़ाइल के साथ एक ईमेल भेजते हैं, तो निर्दिष्ट पता स्वचालित रूप से प्रतिलिपि या गुप्त प्रतिलिपि में जोड़ दिया जाता है।</value>
+  </data>
+  <data name="SettingExampleAutoAddCCorBCCByKeyword" xml:space="preserve">
+    <value>प्रकार: प्रतिलिपि या गुप्त प्रतिलिपि
+कीवर्ड: गोपनीय
+ईमेल पता: Boss@noraneko.co.jp
+
+जब कीवर्ड मेल में शामिल किए जाते हैं, तो निर्दिष्ट पता स्वचालित रूप से Cc या Bcc में जुड़ जाता है।</value>
+  </data>
+  <data name="SettingExampleAutoAddCCorBCCByMailAddressOrDomain" xml:space="preserve">
+    <value>प्रकार: प्रतिलिपि या गुप्त प्रतिलिपि
+प्रति: चेतावनी@xxxxxxx.com
+ईमेल पता: Boss@noraneko.co.jp
+
+पंजीकृत प्राप्तकर्ताओं और डोमेन को मेल भेजते समय, निर्दिष्ट पता स्वचालित रूप से प्रतिलिपि या गुप्त प्रतिलिपि में जोड़ दिया जाता है।</value>
+  </data>
+  <data name="SettingExampleDeferredDelivery" xml:space="preserve">
+    <value>ईमेल पता: info@noraneko.co.jp
+या
+डोमेन: @noraneko.co.jp
+
+अपना ईमेल पता या डोमेन पंजीकृत करें और आस्थगित समय को मिनट के हिसाब से पंजीकृत करें।
+
+* यदि आप केवल @ पंजीकृत करते हैं, तो आप सभी मेलों के मानक आस्थगित समय को पंजीकृत कर सकते हैं।
+
+* यदि कई शर्तें पूरी होती हैं, तो सबसे लंबा आस्थगित समय लागू किया जाएगा।</value>
+  </data>
+  <data name="SettingExampleExternalDomainsWarningAndAutoChangeToBcc" xml:space="preserve">
+    <value>चेतावनियों और स्वचालित परिवर्तन के लिए आधार के रूप में उपयोग किए जाने वाले बाहरी डोमेन की संख्या को गुप्त प्रतिलिपि में सेट करें, और प्रत्येक को चालू या बंद करें।
+यदि गुप्त प्रतिलिपि में स्वत: परिवर्तन के बाद To मौजूद नहीं है, तो प्रेषक का पता स्वतः प्रति में जोड़ दिया जाएगा।</value>
+  </data>
+  <data name="SettingExampleInternalDomainList" xml:space="preserve">
+    <value>डोमेन: @noraneko.co.jp
+
+एक आंतरिक (कंपनी) डोमेन के रूप में नियंत्रित किए जाने वाले डोमेन को पंजीकृत करें।
+
+प्रेषक के ईमेल पते के डोमेन को हमेशा आंतरिक डोमेन माना जाता है।</value>
+  </data>
+  <data name="SettingExampleNameAndDomain" xml:space="preserve">
+    <value>नाम: नोरानेको इंक
+डोमेन: @noraneko.co.jp
+
+नाम (उदा. कंपनी का नाम) और डोमेन पंजीकृत करें।
+
+यदि ईमेल के मुख्य भाग और प्राप्तकर्ता डोमेन में नाम मेल नहीं खाता है तो एक चेतावनी प्रदर्शित करता है।</value>
+  </data>
+  <data name="SettingExampleRecipientsAndAttachmentsName" xml:space="preserve">
+    <value>ईमेल पता: info@noraneko.co.jp
+या
+डोमेन: @noraneko.co.jp
+अटैचमेंट का नाम/कीवर्ड: नोरानेको को चालान
+
+ईमेल पता या डोमेन और अटैचमेंट फ़ाइल नाम या अटैचमेंट कीवर्ड पंजीकृत करें।
+
+यदि प्राप्तकर्ता और संलग्न फ़ाइल नाम मेल नहीं खाते हैं, तो एक चेतावनी प्रदर्शित की जाएगी।</value>
+  </data>
+  <data name="SettingExampleWhiteList" xml:space="preserve">
+    <value>ईमेल पता: info@noraneko.co.jp
+या
+डोमेन: @noraneko.co.jp
+
+ईमेल पता या डोमेन पंजीकृत करें।
+
+पुष्टिकरण स्क्रीन में संबंधित प्राप्तकर्ताओं की पूर्व-जांच की जाएगी।</value>
+  </data>
+  <data name="Settings" xml:space="preserve">
+    <value>समायोजन</value>
+  </data>
+  <data name="Subject" xml:space="preserve">
+    <value>विषय</value>
+  </data>
+  <data name="SuccessfulExport" xml:space="preserve">
+    <value>निर्यात अब पूरा हो गया है।</value>
+  </data>
+  <data name="SuccessfulImport" xml:space="preserve">
+    <value>आयात अब पूरा हो गया है।</value>
+  </data>
+  <data name="TargetToAndCcExternalDomainsNum" xml:space="preserve">
+    <value>इस सुविधा द्वारा कवर किए जाने वाले प्राप्तकर्ताओं (To/Cc) के बाहरी डोमेन की संख्या।</value>
+  </data>
+  <data name="TargetToAndCcExternalDomainsNumInfo" xml:space="preserve">
+    <value>* यदि ईमेल के प्रति और प्रतिलिपि में शामिल बाहरी डोमेन इस सेटिंग से बड़ा या उसके बराबर है,
+यह सुविधा लागू होगी।</value>
+  </data>
+  <data name="Text" xml:space="preserve">
+    <value>सादे पाठ</value>
+  </data>
+  <data name="To" xml:space="preserve">
+    <value>To</value>
+  </data>
+  <data name="Unknown" xml:space="preserve">
+    <value>अनजान</value>
+  </data>
+  <data name="Version" xml:space="preserve">
+    <value>Version 2.6.0.0</value>
+  </data>
+  <data name="VersionInfo" xml:space="preserve">
+    <value>कार्यक्रम के बारे में</value>
+  </data>
+  <data name="WarningIfRecipientsIsNotRegisteredMessage" xml:space="preserve">
+    <value>यह पता आपके संपर्क में पंजीकृत नहीं है।</value>
+  </data>
+  <data name="WarningText" xml:space="preserve">
+    <value>चेतावनी पाठ</value>
+  </data>
+  <data name="WarningTextInfo" xml:space="preserve">
+    <value>पुष्टिकरण विंडो पर चेतावनी पाठ।</value>
+  </data>
+  <data name="WhiteList" xml:space="preserve">
+    <value>अनुमति सूची</value>
+  </data>
+  <data name="YouHaveLatest" xml:space="preserve">
+    <value>यह ऐड-इन नवीनतम संस्करण है।</value>
+  </data>
+</root>
