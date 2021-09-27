@@ -603,6 +603,9 @@ this feature will be applied.</value>
   <data name="ExternalRecipient" xml:space="preserve">
     <value>External recipient</value>
   </data>
+  <data name="AlwaysAddTheSendersAddressToBcc" xml:space="preserve">
+    <value>Always add the sender's address to Bcc automatically.</value>
+  </data>
   <data name="DistributionList" xml:space="preserve">
     <value>Distribution list</value>
   </data>

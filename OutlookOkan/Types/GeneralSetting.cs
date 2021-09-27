@@ -19,6 +19,7 @@ namespace OutlookOkan.Types
         public bool IsDoNotUseDeferredDeliveryIfAllRecipientsAreInternalDomain { get; set; }
         public bool IsDoNotUseAutoCcBccKeywordIfAllRecipientsAreInternalDomain { get; set; }
         public bool IsEnableRecipientsAreSortedByDomain { get; set; }
+        public bool IsAutoAddSenderToBcc { get; set; }
     }
 
     public sealed class GeneralSettingMap : ClassMap<GeneralSetting>
@@ -67,6 +68,9 @@ namespace OutlookOkan.Types
                 .BooleanValues(true, true, "Yes", "Y").TypeConverterOption.BooleanValues(false, true, "No", "N").Default(false);
 
             _ = Map(m => m.IsEnableRecipientsAreSortedByDomain).Index(14).TypeConverterOption
+                .BooleanValues(true, true, "Yes", "Y").TypeConverterOption.BooleanValues(false, true, "No", "N").Default(false);
+
+            _ = Map(m => m.IsAutoAddSenderToBcc).Index(15).TypeConverterOption
                 .BooleanValues(true, true, "Yes", "Y").TypeConverterOption.BooleanValues(false, true, "No", "N").Default(false);
                 .BooleanValues(true, true, "Yes", "Y").TypeConverterOption.BooleanValues(false, true, "No", "N").Default(false);
         }

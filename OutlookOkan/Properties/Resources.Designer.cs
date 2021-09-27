@@ -106,6 +106,15 @@ namespace OutlookOkan.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Always add the sender&apos;s address to Bcc automatically..
+        /// </summary>
+        public static string AlwaysAddTheSendersAddressToBcc {
+            get {
+                return ResourceManager.GetString("AlwaysAddTheSendersAddressToBcc", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Applicable recipients.
         /// </summary>
         public static string ApplicableDestination {

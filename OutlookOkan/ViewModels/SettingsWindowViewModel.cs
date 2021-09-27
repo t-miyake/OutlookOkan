@@ -878,6 +878,7 @@ namespace OutlookOkan.ViewModels
             IsDoNotUseDeferredDeliveryIfAllRecipientsAreInternalDomain = _generalSetting[0].IsDoNotUseDeferredDeliveryIfAllRecipientsAreInternalDomain;
             IsDoNotUseAutoCcBccKeywordIfAllRecipientsAreInternalDomain = _generalSetting[0].IsDoNotUseAutoCcBccKeywordIfAllRecipientsAreInternalDomain;
             IsEnableRecipientsAreSortedByDomain = _generalSetting[0].IsEnableRecipientsAreSortedByDomain;
+            IsAutoAddSenderToBcc = _generalSetting[0].IsAutoAddSenderToBcc;
 
             if (_generalSetting[0].LanguageCode is null) return;
 
@@ -918,7 +919,8 @@ namespace OutlookOkan.ViewModels
                     IsDoNotUseAutoCcBccAttachedFileIfAllRecipientsAreInternalDomain = IsDoNotUseAutoCcBccAttachedFileIfAllRecipientsAreInternalDomain,
                     IsDoNotUseDeferredDeliveryIfAllRecipientsAreInternalDomain = IsDoNotUseDeferredDeliveryIfAllRecipientsAreInternalDomain,
                     IsDoNotUseAutoCcBccKeywordIfAllRecipientsAreInternalDomain = IsDoNotUseAutoCcBccKeywordIfAllRecipientsAreInternalDomain,
-                    IsEnableRecipientsAreSortedByDomain = IsEnableRecipientsAreSortedByDomain
+                    IsEnableRecipientsAreSortedByDomain = IsEnableRecipientsAreSortedByDomain,
+                    IsAutoAddSenderToBcc = IsAutoAddSenderToBcc,
                 }
             };
 
@@ -1083,6 +1085,16 @@ namespace OutlookOkan.ViewModels
             }
         }
 
+        private bool _isAutoAddSenderToBcc;
+        public bool IsAutoAddSenderToBcc
+        {
+            get => _isAutoAddSenderToBcc;
+            set
+            {
+                _isAutoAddSenderToBcc = value;
+                OnPropertyChanged(nameof(IsAutoAddSenderToBcc));
+            }
+        }
         private LanguageCodeAndName _language = new LanguageCodeAndName();
         public LanguageCodeAndName Language
         {

@@ -601,6 +601,9 @@
   <data name="ExternalRecipient" xml:space="preserve">
     <value>社外アドレス</value>
   </data>
+  <data name="AlwaysAddTheSendersAddressToBcc" xml:space="preserve">
+    <value>常に送信者のアドレスをBccに自動で追加する。</value>
+  </data>
   <data name="DistributionList" xml:space="preserve">
     <value>配付リスト</value>
   </data>
