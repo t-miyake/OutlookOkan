@@ -127,19 +127,89 @@ namespace OutlookOkan.Models
         /// <returns>CheckList</returns>
         private CheckList GetSenderAndSenderDomain(in Outlook._MailItem mail, CheckList checkList)
         {
-            if (string.IsNullOrEmpty(mail.SentOnBehalfOfName))
+            try
             {
-                checkList.Sender = mail.SendUsingAccount?.SmtpAddress ?? Resources.FailedToGetInformation;
-
-                if (mail.SenderEmailType == "EX" && !IsValidEmailAddress(checkList.Sender))
+                if (string.IsNullOrEmpty(mail.SentOnBehalfOfName))
                 {
-                    var tempOutlookApp = new Outlook.Application();
-                    var tempRecipient = tempOutlookApp.Session.CreateRecipient(mail.SenderEmailAddress);
+                    checkList.Sender = mail.SendUsingAccount?.SmtpAddress ?? Resources.FailedToGetInformation;
 
-                    try
+                    if (mail.SenderEmailType == "EX" && !IsValidEmailAddress(checkList.Sender))
                     {
-                        tempRecipient.Resolve();
-                        var addressEntry = tempRecipient.AddressEntry;
+                        var tempOutlookApp = new Outlook.Application();
+                        var tempRecipient = tempOutlookApp.Session.CreateRecipient(mail.SenderEmailAddress);
+
+                        try
+                        {
+                            _ = tempRecipient.Resolve();
+                            var addressEntry = tempRecipient.AddressEntry;
+
+                            var isDone = false;
+                            var errorCount = 0;
+                            while (!isDone && errorCount < 100)
+                            {
+                                try
+                                {
+                                    var exchangeUser = addressEntry?.GetExchangeUser();
+                                    if (!(exchangeUser is null)) checkList.Sender = exchangeUser.PrimarySmtpAddress ?? Resources.FailedToGetInformation;
+
+                                    isDone = true;
+                                }
+                                catch (COMException e)
+                                {
+                                    if (e.ErrorCode == -2147467260)
+                                    {
+                                        //HRESULT:0x80004004 対策
+                                        Thread.Sleep(10);
+                                        errorCount++;
+                                    }
+                                    else
+                                    {
+                                        isDone = true;
+                                    }
+                                }
+                            }
+                        }
+                        catch (Exception)
+                        {
+                            //Do Nothing.
+                        }
+                    }
+                    else
+                    {
+                        if (!IsValidEmailAddress(checkList.Sender))
+                        {
+                            checkList.Sender = mail.SenderEmailAddress ?? Resources.FailedToGetInformation;
+                        }
+                    }
+
+                    if (!IsValidEmailAddress(checkList.Sender))
+                    {
+                        checkList.Sender = Resources.FailedToGetInformation;
+                    }
+
+                    checkList.SenderDomain = checkList.Sender == Resources.FailedToGetInformation ? "------------------" : checkList.Sender.Substring(checkList.Sender.IndexOf("@", StringComparison.Ordinal));
+                }
+                else
+                {
+                    //代理送信の場合。
+                    checkList.Sender = mail.Sender?.Address ?? Resources.FailedToGetInformation;
+
+                    if (IsValidEmailAddress(checkList.Sender))
+                    {
+                        //メールアドレスが取得できる場合はそのまま使う。
+                        checkList.SenderDomain = checkList.Sender.Substring(checkList.Sender.IndexOf("@", StringComparison.Ordinal));
+                        checkList.Sender = $@"{checkList.Sender} ([{mail.SentOnBehalfOfName}] {Resources.SentOnBehalf})";
+                    }
+                    else
+                    {
+                        //代理送信の場合かつExchangeのCN。
+                        checkList.Sender = $@"[{mail.SentOnBehalfOfName}] {Resources.SentOnBehalf}";
+                        checkList.SenderDomain = @"------------------";
+
+                        Outlook.ExchangeDistributionList exchangeDistributionList = null;
+                        Outlook.ExchangeUser exchangeUser = null;
+
+                        var sender = mail.Sender;
 
                         var isDone = false;
                         var errorCount = 0;
@@ -147,8 +217,8 @@ namespace OutlookOkan.Models
                         {
                             try
                             {
-                                var exchangeUser = addressEntry?.GetExchangeUser();
-                                if (!(exchangeUser is null)) checkList.Sender = exchangeUser.PrimarySmtpAddress ?? Resources.FailedToGetInformation;
+                                exchangeDistributionList = sender?.GetExchangeDistributionList();
+                                exchangeUser = sender?.GetExchangeUser();
 
                                 isDone = true;
                             }
@@ -166,89 +236,27 @@ namespace OutlookOkan.Models
                                 }
                             }
                         }
-                    }
-                    catch (Exception)
-                    {
-                        //Do Nothing.
-                    }
-                }
-                else
-                {
-                    if (!IsValidEmailAddress(checkList.Sender))
-                    {
-                        checkList.Sender = mail.SenderEmailAddress ?? Resources.FailedToGetInformation;
-                    }
-                }
 
-                if (!IsValidEmailAddress(checkList.Sender))
-                {
-                    checkList.Sender = Resources.FailedToGetInformation;
-                }
+                        if (!(exchangeUser is null))
+                        {
+                            //ユーザの代理送信。
+                            checkList.Sender = $@"{exchangeUser.PrimarySmtpAddress} ([{mail.SentOnBehalfOfName}] {Resources.SentOnBehalf})";
+                            checkList.SenderDomain = exchangeUser.PrimarySmtpAddress.Substring(exchangeUser.PrimarySmtpAddress.IndexOf("@", StringComparison.Ordinal));
+                        }
 
-                checkList.SenderDomain = checkList.Sender == Resources.FailedToGetInformation ? "------------------" : checkList.Sender.Substring(checkList.Sender.IndexOf("@", StringComparison.Ordinal));
+                        if (!(exchangeDistributionList is null))
+                        {
+                            //配布リストの代理送信。
+                            checkList.Sender = $@"{exchangeDistributionList.PrimarySmtpAddress} ([{mail.SentOnBehalfOfName}] {Resources.SentOnBehalf})";
+                            checkList.SenderDomain = exchangeDistributionList.PrimarySmtpAddress.Substring(exchangeDistributionList.PrimarySmtpAddress.IndexOf("@", StringComparison.Ordinal));
+                        }
+                    }
+                }
             }
-            else
+            catch (Exception)
             {
-                //代理送信の場合。
-                checkList.Sender = mail.Sender?.Address ?? Resources.FailedToGetInformation;
-
-                if (IsValidEmailAddress(checkList.Sender))
-                {
-                    //メールアドレスが取得できる場合はそのまま使う。
-                    checkList.SenderDomain = checkList.Sender.Substring(checkList.Sender.IndexOf("@", StringComparison.Ordinal));
-                    checkList.Sender = $@"{checkList.Sender} ([{mail.SentOnBehalfOfName}] {Resources.SentOnBehalf})";
-                }
-                else
-                {
-                    //代理送信の場合かつExchangeのCN。
-                    checkList.Sender = $@"[{mail.SentOnBehalfOfName}] {Resources.SentOnBehalf}";
-                    checkList.SenderDomain = @"------------------";
-
-                    Outlook.ExchangeDistributionList exchangeDistributionList = null;
-                    Outlook.ExchangeUser exchangeUser = null;
-
-                    var sender = mail.Sender;
-
-                    var isDone = false;
-                    var errorCount = 0;
-                    while (!isDone && errorCount < 100)
-                    {
-                        try
-                        {
-                            exchangeDistributionList = sender?.GetExchangeDistributionList();
-                            exchangeUser = sender?.GetExchangeUser();
-
-                            isDone = true;
-                        }
-                        catch (COMException e)
-                        {
-                            if (e.ErrorCode == -2147467260)
-                            {
-                                //HRESULT:0x80004004 対策
-                                Thread.Sleep(10);
-                                errorCount++;
-                            }
-                            else
-                            {
-                                isDone = true;
-                            }
-                        }
-                    }
-
-                    if (!(exchangeUser is null))
-                    {
-                        //ユーザの代理送信。
-                        checkList.Sender = $@"{exchangeUser.PrimarySmtpAddress} ([{mail.SentOnBehalfOfName}] {Resources.SentOnBehalf})";
-                        checkList.SenderDomain = exchangeUser.PrimarySmtpAddress.Substring(exchangeUser.PrimarySmtpAddress.IndexOf("@", StringComparison.Ordinal));
-                    }
-
-                    if (!(exchangeDistributionList is null))
-                    {
-                        //配布リストの代理送信。
-                        checkList.Sender = $@"{exchangeDistributionList.PrimarySmtpAddress} ([{mail.SentOnBehalfOfName}] {Resources.SentOnBehalf})";
-                        checkList.SenderDomain = exchangeDistributionList.PrimarySmtpAddress.Substring(exchangeDistributionList.PrimarySmtpAddress.IndexOf("@", StringComparison.Ordinal));
-                    }
-                }
+                checkList.Sender = Resources.FailedToGetInformation;
+                checkList.SenderDomain = @"------------------";
             }
 
             return checkList;
