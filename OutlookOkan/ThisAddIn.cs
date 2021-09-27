@@ -82,6 +82,9 @@ namespace OutlookOkan
             //MailItemにキャストできないものは、会議招待などメールではないもののため、何もしない。
             if (!(item is Outlook._MailItem mailItem)) return;
 
+            //Moderationでの返信には何もしない。(キャンセルすると、承認や非承認ができなくなる場合があるため)
+            if (mailItem.MessageClass == "IPM.Note.Microsoft.Approval.Reply.Approve" || mailItem.MessageClass == "IPM.Note.Microsoft.Approval.Reply.Reject") return;
+
             //何らかの問題で確認画面が表示されないと、意図せずメールが送られてしまう恐れがあるため、念のための処理。
             try
             {
