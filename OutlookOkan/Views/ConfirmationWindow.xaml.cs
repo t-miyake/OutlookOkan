@@ -41,7 +41,15 @@ namespace OutlookOkan.Views
                 else
                 {
                     //アドインの機能と同時に、Outlookの標準機能でも保留時間(配信タイミング)が設定された場合
-                    _mailItem.DeferredDeliveryTime = _mailItem.DeferredDeliveryTime.AddMinutes(deferredDeliveryMinutes);
+                    if (DateTime.Now.AddMinutes(deferredDeliveryMinutes) > _mailItem.DeferredDeliveryTime.AddMinutes(deferredDeliveryMinutes))
+                    {
+                        //[既に設定されている送信予定日時+アドインによる保留時間] が [現在日時+アドインによる保留時間] より前の日時となるため、後者を採用する。
+                        _mailItem.DeferredDeliveryTime = DateTime.Now.AddMinutes(deferredDeliveryMinutes);
+                    }
+                    else
+                    {
+                        _mailItem.DeferredDeliveryTime = _mailItem.DeferredDeliveryTime.AddMinutes(deferredDeliveryMinutes);
+                    }
                 }
             }
 
