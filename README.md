@@ -21,39 +21,43 @@ English readme is [here](https://github.com/t-miyake/OutlookOkan/blob/master/REA
 ![Screenshot 1](https://github.com/t-miyake/OutlookOkan/blob/master/Screenshots/Screenshot_v2.5.0_01.png)  
 
 設定ウィンドウ(一般設定)  
-![Screenshot 2](https://github.com/t-miyake/OutlookOkan/blob/master/Screenshots/Screenshot_v2.5.0_04.png)
+![Screenshot 2](https://github.com/t-miyake/OutlookOkan/blob/master/Screenshots/Screenshot_v2.6.0_04.png)
 
 設定ウィンドウ(遅延送信)  
-![Screenshot 3](https://github.com/t-miyake/OutlookOkan/blob/master/Screenshots/Screenshot_v2.5.0_05.png)
+![Screenshot 3](https://github.com/t-miyake/OutlookOkan/blob/master/Screenshots/Screenshot_v2.6.0_05.png)
 
 送信禁止通知  
 ![Screenshot 4](https://github.com/t-miyake/OutlookOkan/blob/master/Screenshots/Screenshot_v2.5.0_03.png)
 
 バージョン情報  
-![Screenshot 5](https://github.com/t-miyake/OutlookOkan/blob/master/Screenshots/Screenshot_v2.5.0_02.png)
+![Screenshot 5](https://github.com/t-miyake/OutlookOkan/blob/master/Screenshots/Screenshot_v2.6.0_02.png)
 
 ## 対応環境
 
-- Windows 7 / 8 / 8.1 / 10
-- Microsoft Outlook 2013 / 2016 / 2019 / Microsoft 365 Apps (32bit版 及び 64bit版)
+- Windows 7 / 8 / 8.1 / 10 / 11
+- Microsoft Outlook 2013 / 2016 / 2019 / 2021 / Microsoft 365 Apps (32bit版 及び 64bit版)
 - .NET Framework 4.6.2 以上
 
 ## 機能一覧(概要)
 
-- メール送信前の確認
+- メール送信前の確認など
   - メール送信前に確認ウインドウを表示し、全ての項目にチェックしないと送信ができない仕様
   - 内部(社内)ドメインへのメールなど、送信前の確認を表示しない設定も可能
   - 外部(社外)ドメインは赤文字で表示
   - 件名や送信者のアドレス、添付ファイルの一覧、メール本文を表示
   - 添付ファイルの添付漏れや大容量の添付ファイルを警告
-  - 配布リストや連絡先グループを展開して、各宛先を表示 (オンオフ可)
-  - 宛先をドメイン別に並べ替えて表示 (オンオフ可)
+  - 配布リストや連絡先グループを展開して、各宛先を表示 (オン/オフ可)
+  - 宛先をドメイン別に並べ替えて表示 (オン/オフ可)
+  - 送信元アドレスを常に自動でBccに追加  (オン/オフ可)
 
 - 送信禁止機能
   - 指定した宛先やドメインへのメール送信を禁止
   - 指定したキーワードが本文に含まれるメールの送信を禁止
-  - 宛先(To/Cc)外部ドメイン数が多い場合に、メールの送信を禁止 (オンオフ可)
-  - 暗号化ZIPファイルが添付されいている場合に、メールの送信を禁止 (オンオフ可)
+  - 指定した宛先やドメインへの添付ファイル付きメールの送信を禁止
+  - 添付ファイル付きメールの送信を禁止 (オン/オフ可)
+  - 連絡先に登録されていない宛先へのメール送信を禁止 (オン/オフ可)
+  - 宛先(To/Cc)外部ドメイン数が多い場合に、メールの送信を禁止 (オン/オフ可)
+  - 暗号化ZIPファイルが添付されいている場合に、メールの送信を禁止 (オン/オフ可)
   - 送信禁止に該当する場合、禁止の旨とその理由を表示
 
 - 許可リスト
@@ -63,7 +67,8 @@ English readme is [here](https://github.com/t-miyake/OutlookOkan/blob/master/REA
   - メール本文中に登場する名称と、送付先のアドレスやドメインが一致しない場合、警告を表示
 
 - 警告キーワードの登録と警告
-  - 登録したキーワードがメール本文に含まれる場合、登録した警告文を表示
+  - 登録したキーワードがメール本文や件名に含まれる場合、登録した警告文を表示
+  - 常に登録した警告メッセージを表示することも可能
 
 - 警告アドレスの登録と警告
   - 登録したアドレスやドメインへメールを送信する際に、警告文を表示
@@ -85,14 +90,17 @@ English readme is [here](https://github.com/t-miyake/OutlookOkan/blob/master/REA
   - 設定した時間(分単位)だけ、メールの送信を遅延(保留)
   - ドメインやメールアドレス毎に、デフォルトの遅延時間を設定可能
 
+- 添付ファイル名と宛先の紐づけ
+  - 添付ファイル名と宛先メールアドレスやドメインを紐づけ、該当しない場合、警告を表示
+
 - その他
-  - 暗号化ZIPファイルが添付されている場合に警告を表示  (オンオフ可)
+  - 暗号化ZIPファイルが添付されている場合に警告を表示  (オン/オフ可)
 
 - 設定のインポート/エクスポート
   - 設定内容をCSVファイルでインポート/エクスポート
 
 - 多言語対応
-  - 日本語と英語に対応しており、言語の追加が可能な設計
+  - 日本語や英語など計10言語に対応しており、言語の追加が可能な設計
 
 ## 使い方
 
