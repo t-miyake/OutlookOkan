@@ -196,6 +196,14 @@ namespace OutlookOkan.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to attached file.
+        /// </summary>
+        public static string AttachmentsKeyword {
+            get {
+                return ResourceManager.GetString("AttachmentsKeyword", resourceCulture);
+            }
+        }
+        
         /// </summary>
         public static string AutoAddCCorBCCByAttachedFile {
             get {

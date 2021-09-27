@@ -636,6 +636,9 @@ If the alerting text is blank, the confirmation screen will show the default ale
     <value>Include recipients who are registered as members of a contact list.
 (If you have many contact groups, the process may take longer.)</value>
   </data>
+  <data name="AttachmentsKeyword" xml:space="preserve">
+    <value>attached file</value>
+  </data>
   <data name="CanNotFindTheLinkedName" xml:space="preserve">
     <value>Cannot find the linked name in the mail body.</value>
   </data>

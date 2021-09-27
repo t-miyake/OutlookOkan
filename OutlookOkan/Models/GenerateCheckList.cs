@@ -759,22 +759,7 @@ namespace OutlookOkan.Models
 
             if (!generalSetting.EnableForgottenToAttachAlert) return checkList;
 
-            string attachmentsKeyword;
-            switch (generalSetting.LanguageCode)
-            {
-                case "ja-JP":
-                    attachmentsKeyword = "添付";
-                    break;
-                case "en-US":
-                    attachmentsKeyword = "attached file";
-                    break;
-                default:
-                    //設定値がなければ、日本語環境として扱う。
-                    attachmentsKeyword = "添付";
-                    break;
-            }
-
-            if (checkList.MailBody.Contains(attachmentsKeyword))
+            if (checkList.MailBody.ToLower().Contains(Resources.AttachmentsKeyword))
             {
                 checkList.Alerts.Add(new Alert { AlertMessage = Resources.ForgottenToAttachAlert, IsImportant = true, IsWhite = false, IsChecked = false });
             }

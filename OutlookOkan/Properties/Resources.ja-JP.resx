@@ -634,6 +634,9 @@
     <value>連絡先グループのメンバーとして登録された宛先も対象に含める。
 (連絡先グループが多い場合、処理に時間がかかる場合があります)</value>
   </data>
+  <data name="AttachmentsKeyword" xml:space="preserve">
+    <value>添付</value>
+  </data>
   <data name="CanNotFindTheLinkedName" xml:space="preserve">
     <value>本文内に紐づけられた名称が見つかりません。</value>
   </data>
