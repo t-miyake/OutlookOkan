@@ -50,8 +50,7 @@ namespace OutlookOkan
         /// <param name="inspector">Inspector</param>
         private void OpenOutboxItemInspector(Outlook.Inspector inspector)
         {
-            if (!(inspector.CurrentItem is Outlook._MailItem)) return;
-            var currentItem = (Outlook._MailItem)inspector.CurrentItem;
+            if (!(inspector.CurrentItem is Outlook._MailItem currentItem)) return;
 
             //送信保留中のメールのみ対象とする。
             if (currentItem.Submitted)
@@ -81,7 +80,7 @@ namespace OutlookOkan
         private void Application_ItemSend(object item, ref bool cancel)
         {
             //MailItemにキャストできないものは、会議招待などメールではないもののため、何もしない。
-            if (!(item is Outlook._MailItem)) return;
+            if (!(item is Outlook._MailItem mailItem)) return;
 
             //何らかの問題で確認画面が表示されないと、意図せずメールが送られてしまう恐れがあるため、念のための処理。
             try
@@ -92,8 +91,7 @@ namespace OutlookOkan
                     //HACK: 添付ファイルをリンクとして添付する際に、メール本文が自動更新されない問題を回避するための処置。
                     //HACK: ※WordEditorで本文を編集すると、本文の更新処理が行われるため問題を回避できる。
                     //HACK: ※メールの文頭に半角スペースを挿入し、それを削除することで、本文の編集処理とさせる。
-                    var tempMailItem = (Outlook._MailItem)item;
-                    var mailItemWordEditor = (Word.Document)tempMailItem.GetInspector.WordEditor;
+                    var mailItemWordEditor = (Word.Document)mailItem.GetInspector.WordEditor;
                     var range = mailItemWordEditor.Range(0, 0);
                     range.InsertAfter(" ");
                     range = mailItemWordEditor.Range(0, 0);
@@ -111,8 +109,15 @@ namespace OutlookOkan
                     ResourceService.Instance.ChangeCulture(_generalSetting.LanguageCode);
                 }
 
+                //「連絡先に登録された宛先はあらかじめチェックを自動付与する。」など連絡先が必要な機能が有効な場合、連絡先をまとめて取得する。
+                Outlook.MAPIFolder contacts = null;
+                if (_generalSetting.IsAutoCheckRegisteredInContacts || _generalSetting.IsWarningIfRecipientsIsNotRegistered || _generalSetting.IsProhibitsSendingMailIfRecipientsIsNotRegistered)
+                {
+                    contacts = Application.ActiveExplorer().Session.GetDefaultFolder(Outlook.OlDefaultFolders.olFolderContacts);
+                }
+
                 var generateCheckList = new GenerateCheckList();
-                var checklist = generateCheckList.GenerateCheckListFromMail((Outlook._MailItem)item, _generalSetting);
+                var checklist = generateCheckList.GenerateCheckListFromMail(mailItem, _generalSetting, contacts);
 
                 if (_generalSetting.IsAutoCheckIfAllRecipientsAreSameDomain)
                 {
@@ -161,7 +166,7 @@ namespace OutlookOkan
                 else if (IsShowConfirmationWindow(checklist))
                 {
                     //OutlookのWindowを親として確認画面をモーダル表示。
-                    var confirmationWindow = new ConfirmationWindow(checklist, (Outlook._MailItem)item);
+                    var confirmationWindow = new ConfirmationWindow(checklist, mailItem);
                     var activeWindow = Globals.ThisAddIn.Application.ActiveWindow();
                     var outlookHandle = new NativeMethods(activeWindow).Handle;
                     _ = new WindowInteropHelper(confirmationWindow) { Owner = outlookHandle };
@@ -226,6 +231,10 @@ namespace OutlookOkan
             _generalSetting.IsDoNotUseAutoCcBccKeywordIfAllRecipientsAreInternalDomain = generalSetting[0].IsDoNotUseAutoCcBccKeywordIfAllRecipientsAreInternalDomain;
             _generalSetting.IsEnableRecipientsAreSortedByDomain = generalSetting[0].IsEnableRecipientsAreSortedByDomain;
             _generalSetting.IsAutoAddSenderToBcc = generalSetting[0].IsAutoAddSenderToBcc;
+            _generalSetting.IsAutoCheckRegisteredInContacts = generalSetting[0].IsAutoCheckRegisteredInContacts;
+            _generalSetting.IsAutoCheckRegisteredInContactsAndMemberOfContactLists = generalSetting[0].IsAutoCheckRegisteredInContactsAndMemberOfContactLists;
+            _generalSetting.IsWarningIfRecipientsIsNotRegistered = generalSetting[0].IsWarningIfRecipientsIsNotRegistered;
+            _generalSetting.IsProhibitsSendingMailIfRecipientsIsNotRegistered = generalSetting[0].IsProhibitsSendingMailIfRecipientsIsNotRegistered;
         }
 
         /// <summary>

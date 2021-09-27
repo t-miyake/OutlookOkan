@@ -20,6 +20,10 @@ namespace OutlookOkan.Types
         public bool IsDoNotUseAutoCcBccKeywordIfAllRecipientsAreInternalDomain { get; set; }
         public bool IsEnableRecipientsAreSortedByDomain { get; set; }
         public bool IsAutoAddSenderToBcc { get; set; }
+        public bool IsAutoCheckRegisteredInContacts { get; set; }
+        public bool IsAutoCheckRegisteredInContactsAndMemberOfContactLists { get; set; }
+        public bool IsWarningIfRecipientsIsNotRegistered { get; set; }
+        public bool IsProhibitsSendingMailIfRecipientsIsNotRegistered { get; set; }
     }
 
     public sealed class GeneralSettingMap : ClassMap<GeneralSetting>
@@ -72,6 +76,17 @@ namespace OutlookOkan.Types
 
             _ = Map(m => m.IsAutoAddSenderToBcc).Index(15).TypeConverterOption
                 .BooleanValues(true, true, "Yes", "Y").TypeConverterOption.BooleanValues(false, true, "No", "N").Default(false);
+
+            _ = Map(m => m.IsAutoCheckRegisteredInContacts).Index(16).TypeConverterOption
+                .BooleanValues(true, true, "Yes", "Y").TypeConverterOption.BooleanValues(false, true, "No", "N").Default(false);
+
+            _ = Map(m => m.IsAutoCheckRegisteredInContactsAndMemberOfContactLists).Index(17).TypeConverterOption
+                .BooleanValues(true, true, "Yes", "Y").TypeConverterOption.BooleanValues(false, true, "No", "N").Default(false);
+
+            _ = Map(m => m.IsWarningIfRecipientsIsNotRegistered).Index(19).TypeConverterOption
+                .BooleanValues(true, true, "Yes", "Y").TypeConverterOption.BooleanValues(false, true, "No", "N").Default(false);
+
+            _ = Map(m => m.IsProhibitsSendingMailIfRecipientsIsNotRegistered).Index(20).TypeConverterOption
                 .BooleanValues(true, true, "Yes", "Y").TypeConverterOption.BooleanValues(false, true, "No", "N").Default(false);
         }
     }

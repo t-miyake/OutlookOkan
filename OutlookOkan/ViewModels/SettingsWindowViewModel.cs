@@ -879,6 +879,10 @@ namespace OutlookOkan.ViewModels
             IsDoNotUseAutoCcBccKeywordIfAllRecipientsAreInternalDomain = _generalSetting[0].IsDoNotUseAutoCcBccKeywordIfAllRecipientsAreInternalDomain;
             IsEnableRecipientsAreSortedByDomain = _generalSetting[0].IsEnableRecipientsAreSortedByDomain;
             IsAutoAddSenderToBcc = _generalSetting[0].IsAutoAddSenderToBcc;
+            IsAutoCheckRegisteredInContacts = _generalSetting[0].IsAutoCheckRegisteredInContacts;
+            IsAutoCheckRegisteredInContactsAndMemberOfContactLists = _generalSetting[0].IsAutoCheckRegisteredInContactsAndMemberOfContactLists;
+            IsWarningIfRecipientsIsNotRegistered = _generalSetting[0].IsWarningIfRecipientsIsNotRegistered;
+            IsProhibitsSendingMailIfRecipientsIsNotRegistered = _generalSetting[0].IsProhibitsSendingMailIfRecipientsIsNotRegistered;
 
             if (_generalSetting[0].LanguageCode is null) return;
 
@@ -921,6 +925,10 @@ namespace OutlookOkan.ViewModels
                     IsDoNotUseAutoCcBccKeywordIfAllRecipientsAreInternalDomain = IsDoNotUseAutoCcBccKeywordIfAllRecipientsAreInternalDomain,
                     IsEnableRecipientsAreSortedByDomain = IsEnableRecipientsAreSortedByDomain,
                     IsAutoAddSenderToBcc = IsAutoAddSenderToBcc,
+                    IsAutoCheckRegisteredInContacts = IsAutoCheckRegisteredInContacts,
+                    IsAutoCheckRegisteredInContactsAndMemberOfContactLists = IsAutoCheckRegisteredInContactsAndMemberOfContactLists,
+                    IsWarningIfRecipientsIsNotRegistered = IsWarningIfRecipientsIsNotRegistered,
+                    IsProhibitsSendingMailIfRecipientsIsNotRegistered = IsProhibitsSendingMailIfRecipientsIsNotRegistered
                 }
             };
 
@@ -1095,6 +1103,53 @@ namespace OutlookOkan.ViewModels
                 OnPropertyChanged(nameof(IsAutoAddSenderToBcc));
             }
         }
+
+        private bool _isAutoCheckRegisteredInContacts;
+        public bool IsAutoCheckRegisteredInContacts
+        {
+            get => _isAutoCheckRegisteredInContacts;
+            set
+            {
+                _isAutoCheckRegisteredInContacts = value;
+                OnPropertyChanged(nameof(IsAutoCheckRegisteredInContacts));
+            }
+        }
+
+        private bool _isAutoCheckRegisteredInContactsAndMemberOfContactLists;
+        public bool IsAutoCheckRegisteredInContactsAndMemberOfContactLists
+        {
+            get => _isAutoCheckRegisteredInContactsAndMemberOfContactLists;
+            set
+            {
+                _isAutoCheckRegisteredInContactsAndMemberOfContactLists = value;
+                OnPropertyChanged(nameof(IsAutoCheckRegisteredInContactsAndMemberOfContactLists));
+            }
+        }
+        private bool _isWarningIfRecipientsIsNotRegistered;
+        public bool IsWarningIfRecipientsIsNotRegistered
+        {
+            get => _isWarningIfRecipientsIsNotRegistered;
+            set
+            {
+                _isWarningIfRecipientsIsNotRegistered = value;
+                OnPropertyChanged(nameof(IsWarningIfRecipientsIsNotRegistered));
+            }
+        }
+
+        private bool _isProhibitsSendingMailIfRecipientsIsNotRegistered;
+        public bool IsProhibitsSendingMailIfRecipientsIsNotRegistered
+        {
+            get => _isProhibitsSendingMailIfRecipientsIsNotRegistered;
+            set
+            {
+                _isProhibitsSendingMailIfRecipientsIsNotRegistered = value;
+                OnPropertyChanged(nameof(IsProhibitsSendingMailIfRecipientsIsNotRegistered));
+                OnPropertyChanged(nameof(IsWarningIfRecipientsIsNotRegisteredCheckBoxIsEnabled));
+            }
+        }
+
+        public bool IsWarningIfRecipientsIsNotRegisteredCheckBoxIsEnabled => !IsProhibitsSendingMailIfRecipientsIsNotRegistered;
+
         private LanguageCodeAndName _language = new LanguageCodeAndName();
         public LanguageCodeAndName Language
         {

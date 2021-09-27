@@ -54,6 +54,28 @@
                                 <CheckBox Margin="0,0,8,0" IsChecked="{Binding IsAutoCheckIfAllRecipientsAreSameDomain, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
                                 <TextBlock Text="{Binding Source={x:Static services:ResourceService.Instance}, Path=Resources.AutoCheckSameDomain, Mode=OneWay}" />
                             </StackPanel>
+                            <StackPanel Orientation="Horizontal" Margin="0,5,0,0">
+                                <CheckBox Margin="0,0,8,0" IsChecked="{Binding IsAutoCheckRegisteredInContacts, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+                                <TextBlock Text="{Binding Source={x:Static services:ResourceService.Instance}, Path=Resources.IsAutoCheckRegisteredInContacts, Mode=OneWay}" />
+                            </StackPanel>
+                            <StackPanel Orientation="Horizontal" Margin="6,3,0,0">
+                                <TextBlock Text="┗━━ " />
+                                <CheckBox Margin="0,0,8,0" IsChecked="{Binding IsAutoCheckRegisteredInContactsAndMemberOfContactLists, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" IsEnabled="{Binding IsAutoCheckRegisteredInContacts, UpdateSourceTrigger=PropertyChanged}" />
+                                <TextBlock Text="{Binding Source={x:Static services:ResourceService.Instance}, Path=Resources.IsAutoCheckRegisteredInContactsAndMemberOfContactLists, Mode=OneWay}" />
+                            </StackPanel>
+                        </StackPanel>
+                    </GroupBox>
+                    <GroupBox Header="{Binding Source={x:Static services:ResourceService.Instance}, Path=Resources.AddressBook, Mode=OneWay}" FontSize="11" Padding="3,3,3,3" Margin="0,5,0,0">
+                        <StackPanel Orientation="Vertical">
+                            <StackPanel Orientation="Horizontal">
+                                <CheckBox Margin="0,0,8,0" IsChecked="{Binding IsWarningIfRecipientsIsNotRegistered, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" IsEnabled="{Binding IsWarningIfRecipientsIsNotRegisteredCheckBoxIsEnabled, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}"/>
+                                <TextBlock Text="{Binding Source={x:Static services:ResourceService.Instance}, Path=Resources.IsWarningIfRecipientsIsNotRegistered, Mode=OneWay}" />
+                            </StackPanel>
+                            <StackPanel Orientation="Horizontal" Margin="0,5,0,0">
+                                <CheckBox Margin="0,0,8,0" IsChecked="{Binding IsProhibitsSendingMailIfRecipientsIsNotRegistered, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+                                <TextBlock Text="{Binding Source={x:Static services:ResourceService.Instance}, Path=Resources.IsProhibitsSendingMailIfRecipientsIsNotRegistered, Mode=OneWay}" />
+                            </StackPanel>
+                            <TextBlock Text="{Binding Source={x:Static services:ResourceService.Instance}, Path=Resources.SendersDomainAndInternalDomainAreNotCovered, Mode=OneWay}" Margin="0,3,0,0" />
                         </StackPanel>
                     </GroupBox>
                     <GroupBox Header="{Binding Source={x:Static services:ResourceService.Instance}, Path=Resources.GetMembersOfTheList, Mode=OneWay}" FontSize="11" Padding="3,3,3,3" Margin="0,5,0,0">

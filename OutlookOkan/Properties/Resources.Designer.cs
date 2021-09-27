@@ -70,6 +70,15 @@ namespace OutlookOkan.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Contacts.
+        /// </summary>
+        public static string AddressBook {
+            get {
+                return ResourceManager.GetString("AddressBook", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Alert keywords.
         /// </summary>
         public static string AlertKeyword {
@@ -823,6 +832,25 @@ namespace OutlookOkan.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Recipients registered in Contacts will be auto-checked. (It may take a long time.).
+        /// </summary>
+        public static string IsAutoCheckRegisteredInContacts {
+            get {
+                return ResourceManager.GetString("IsAutoCheckRegisteredInContacts", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Include recipients who are registered as members of a contact list.
+        ///(If you have many contact groups, the process may take longer.).
+        /// </summary>
+        public static string IsAutoCheckRegisteredInContactsAndMemberOfContactLists {
+            get {
+                return ResourceManager.GetString("IsAutoCheckRegisteredInContactsAndMemberOfContactLists", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to There is a 10Mbyte or larger file attached to this email..
         /// </summary>
         public static string IsBigAttachedFile {
@@ -921,6 +949,14 @@ namespace OutlookOkan.Properties {
             }
         }
         
+        /// <summary>
+        ///   Looks up a localized string similar to If the recipient is not registered in the contacts, a warning is displayed on the confirmation window..
+        /// </summary>
+        public static string IsWarningIfRecipientsIsNotRegistered {
+            get {
+                return ResourceManager.GetString("IsWarningIfRecipientsIsNotRegistered", resourceCulture);
+            }
+        }
         /// <summary>
         ///   Looks up a localized string similar to Display a warning when an encrypted ZIP file is attached..
         /// </summary>
@@ -1098,6 +1134,15 @@ namespace OutlookOkan.Properties {
         public static string Sender {
             get {
                 return ResourceManager.GetString("Sender", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to *Both the sender&apos;s domain and the internal domain are not covered..
+        /// </summary>
+        public static string SendersDomainAndInternalDomainAreNotCovered {
+            get {
+                return ResourceManager.GetString("SendersDomainAndInternalDomainAreNotCovered", resourceCulture);
             }
         }
         
@@ -1389,6 +1434,15 @@ namespace OutlookOkan.Properties {
         public static string VersionInfo {
             get {
                 return ResourceManager.GetString("VersionInfo", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to This address is not registered in your Contacts..
+        /// </summary>
+        public static string WarningIfRecipientsIsNotRegisteredMessage {
+            get {
+                return ResourceManager.GetString("WarningIfRecipientsIsNotRegisteredMessage", resourceCulture);
             }
         }
         

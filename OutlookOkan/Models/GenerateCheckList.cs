@@ -28,7 +28,8 @@ namespace OutlookOkan.Models
         /// </summary>
         /// <param name="mail">送信するメールアイテム</param>
         /// <param name="generalSetting">一般設定</param>
-        public CheckList GenerateCheckListFromMail(Outlook._MailItem mail, GeneralSetting generalSetting)
+        /// <param name="contacts">連絡先(アドレス帳)</param>
+        internal CheckList GenerateCheckListFromMail(Outlook._MailItem mail, GeneralSetting generalSetting, Outlook.MAPIFolder contacts)
         {
             #region LoadSettings
 
@@ -117,6 +118,13 @@ namespace OutlookOkan.Models
             _checkList = ExternalDomainsWarningIfNeeded(_checkList, externalDomainsWarningAndAutoChangeToBccSetting, CountRecipientExternalDomains(displayNameAndRecipient, _checkList.SenderDomain, internalDomainList, true));
 
             _checkList.DeferredMinutes = CalcDeferredMinutes(displayNameAndRecipient, deferredDeliveryMinutes, generalSetting.IsDoNotUseDeferredDeliveryIfAllRecipientsAreInternalDomain, _checkList.RecipientExternalDomainNumAll);
+
+            if (!(contacts is null))
+            {
+                var contactsList = MakeContactsList(contacts);
+                _checkList = AutoCheckRegisteredItemsInContacts(_checkList, displayNameAndRecipient, contactsList, generalSetting.IsAutoCheckRegisteredInContacts);
+                _checkList = AddAlertOrProhibitsSendingMailIfIfRecipientsIsNotRegistered(_checkList, displayNameAndRecipient, contactsList, internalDomainList, generalSetting.IsWarningIfRecipientsIsNotRegistered, generalSetting.IsProhibitsSendingMailIfRecipientsIsNotRegistered);
+            }
 
             return _checkList;
         }
@@ -1583,6 +1591,104 @@ namespace OutlookOkan.Models
         }
 
         /// <summary>
+        /// 連絡先(アドレス帳)に登録された宛先にあらかじめチェックする。
+        /// </summary>
+        /// <param name="checkList">CheckList</param>
+        /// <param name="displayNameAndRecipient">宛先アドレスと名称</param>
+        /// <param name="contactsList">連絡先(アドレス帳)</param>
+        /// <param name="isAutoCheckRegisteredInContacts">連絡先(アドレス帳)に登録された宛先にあらかじめチェックを入れるか否か</param>
+        /// <returns>CheckList</returns>
+        private CheckList AutoCheckRegisteredItemsInContacts(CheckList checkList, DisplayNameAndRecipient displayNameAndRecipient, IEnumerable<string> contactsList, bool isAutoCheckRegisteredInContacts)
+        {
+            if (!isAutoCheckRegisteredInContacts) return checkList;
+
+            foreach (var mailItemsRecipient in contactsList.SelectMany(contact => displayNameAndRecipient.MailRecipientsIndex.Where(mailItemsRecipient => contact == mailItemsRecipient.MailAddress || contact == mailItemsRecipient.MailItemsRecipient)))
+            {
+                foreach (var toAddress in checkList.ToAddresses.Where(toAddress => toAddress.MailAddress.Contains(mailItemsRecipient.MailAddress)))
+                {
+                    toAddress.IsChecked = true;
+                }
+
+                foreach (var ccAddress in checkList.CcAddresses.Where(ccAddress => ccAddress.MailAddress.Contains(mailItemsRecipient.MailAddress)))
+                {
+                    ccAddress.IsChecked = true;
+                }
+
+                foreach (var bccAddress in checkList.BccAddresses.Where(bccAddress => bccAddress.MailAddress.Contains(mailItemsRecipient.MailAddress)))
+                {
+                    bccAddress.IsChecked = true;
+                }
+            }
+
+            return checkList;
+        }
+
+        /// <summary>
+        /// 連絡先(アドレス帳)未登録の宛先に対し、警告を表示したり送信をブロックしたりする。
+        /// </summary>
+        /// <param name="checkList">CheckList</param>
+        /// <param name="displayNameAndRecipient">宛先アドレスと名称</param>
+        /// <param name="contactsList">連絡先(アドレス帳)</param>
+        /// <param name="internalDomainList">内部ドメイン</param>
+        /// <param name="isWarningIfRecipientsIsNotRegistered">連絡先(アドレス帳)未登録の宛先に警告を表示するか否か</param>
+        /// <param name="isProhibitsSendingMailIfRecipientsIsNotRegistered">連絡先(アドレス帳)未登録の宛先が存在する場合、メールの送信を禁止するか否か</param>
+        /// <returns>CheckList</returns>
+        private CheckList AddAlertOrProhibitsSendingMailIfIfRecipientsIsNotRegistered(CheckList checkList, DisplayNameAndRecipient displayNameAndRecipient, IEnumerable<string> contactsList, IEnumerable<InternalDomain> internalDomainList, bool isWarningIfRecipientsIsNotRegistered, bool isProhibitsSendingMailIfRecipientsIsNotRegistered)
+        {
+            if (!(isWarningIfRecipientsIsNotRegistered || isProhibitsSendingMailIfRecipientsIsNotRegistered)) return checkList;
+
+            var internalDomain = internalDomainList.Select(list => list.Domain).ToList();
+            var selectedContactsList = contactsList.SelectMany(contact => displayNameAndRecipient.MailRecipientsIndex.Where(mailItemsRecipient => contact == mailItemsRecipient.MailAddress || contact == mailItemsRecipient.MailItemsRecipient)).Select(x => x.MailAddress).ToList();
+
+            foreach (var to in displayNameAndRecipient.To.Where(to => !selectedContactsList.Contains(to.Key)))
+            {
+                //内部ドメインは対象外
+                if (internalDomain.Any(iDomain => to.Key.Contains(iDomain))) continue;
+
+                if (isProhibitsSendingMailIfRecipientsIsNotRegistered)
+                {
+                    checkList.IsCanNotSendMail = true;
+                    checkList.CanNotSendMailMessage = Resources.ProhibitsSendingMailIfRecipientsIsNotRegisteredMessage + $" [{to.Value}]";
+                    return checkList;
+                }
+
+                AddAlerts(Resources.WarningIfRecipientsIsNotRegisteredMessage + $" [{to.Value}]", true, false, false);
+            }
+
+            foreach (var cc in displayNameAndRecipient.Cc.Where(cc => !selectedContactsList.Contains(cc.Key)))
+            {
+                //内部ドメインは対象外
+                if (internalDomain.Any(iDomain => cc.Key.Contains(iDomain))) continue;
+
+                if (isProhibitsSendingMailIfRecipientsIsNotRegistered)
+                {
+                    checkList.IsCanNotSendMail = true;
+                    checkList.CanNotSendMailMessage = Resources.ProhibitsSendingMailIfRecipientsIsNotRegisteredMessage + $" [{cc.Value}]";
+                    return checkList;
+                }
+
+                AddAlerts(Resources.WarningIfRecipientsIsNotRegisteredMessage + $" [{cc.Value}]", true, false, false);
+            }
+
+            foreach (var bcc in displayNameAndRecipient.Bcc.Where(bcc => !selectedContactsList.Contains(bcc.Key)))
+            {
+                //内部ドメインは対象外
+                if (internalDomain.Any(iDomain => bcc.Key.Contains(iDomain))) continue;
+
+                if (isProhibitsSendingMailIfRecipientsIsNotRegistered)
+                {
+                    checkList.IsCanNotSendMail = true;
+                    checkList.CanNotSendMailMessage = Resources.ProhibitsSendingMailIfRecipientsIsNotRegisteredMessage + $" [{bcc.Value}]";
+                    return checkList;
+                }
+
+                AddAlerts(Resources.WarningIfRecipientsIsNotRegisteredMessage + $" [{bcc.Value}]", true, false, false);
+            }
+
+            return checkList;
+        }
+
+        /// <summary>
         /// 警告を追加する。
         /// </summary>
         /// <param name="alertMessage">警告文</param>
@@ -1599,6 +1705,8 @@ namespace OutlookOkan.Models
                 IsChecked = isChecked
             });
         }
+
+        #region Tools
 
         /// <summary>
         /// メールアドレスか否か判定する。
@@ -1634,5 +1742,137 @@ namespace OutlookOkan.Models
                 return false;
             }
         }
+
+        /// <summary>
+        /// 連絡先に登録されているアドレスをすべて取得する。
+        /// </summary>
+        /// <param name="contacts">連絡先フォルダ</param>
+        /// <returns>連絡先に登録されているアドレスのリスト</returns>
+        private List<string> MakeContactsList(Outlook.MAPIFolder contacts)
+        {
+            if (contacts is null) return null;
+
+            var contactsList = new List<string>();
+            foreach (dynamic contact in contacts.Items)
+            {
+                if (!(contact is Outlook.ContactItem foundContact))
+                {
+                    try
+                    {
+                        var entryId = contact.EntryID;
+
+                        var tempOutlookApp = new Outlook.Application().GetNamespace("MAPI");
+                        var distList = (Outlook.DistListItem)tempOutlookApp.GetItemFromID(entryId);
+
+                        for (var i = 1; i < distList.MemberCount + 1; i++)
+                        {
+                            if (!(distList.GetMember(i).Address is null) && distList.GetMember(i).Address != "Unknown")
+                            {
+                                contactsList.Add(distList.GetMember(i).Address);
+                            }
+
+                        }
+                    }
+                    catch (Exception)
+                    {
+                        // Do Nothing.
+                    }
+                }
+                else
+                {
+                    if (!(foundContact.Email1Address is null))
+                    {
+                        contactsList.Add(foundContact.Email1Address);
+                        if (IsValidEmailAddress(foundContact.Email1Address)) continue;
+                        //登録アドレスがメールアドレスでない場合、ExchangeのCN(X.500)の可能性があるため、一般的なメールアドレスに変換したものも併せて登録する。
+                        var exchangePrimarySmtpAddress = GetExchangePrimarySmtpAddress(foundContact.Email1Address);
+                        if (!(exchangePrimarySmtpAddress is null))
+                        {
+                            contactsList.Add(exchangePrimarySmtpAddress);
+                        }
+                    }
+                    else if (!(foundContact.Email2Address is null))
+                    {
+                        contactsList.Add(foundContact.Email2Address);
+                        if (IsValidEmailAddress(foundContact.Email2Address)) continue;
+                        //登録アドレスがメールアドレスでない場合、ExchangeのCN(X.500)の可能性があるため、一般的なメールアドレスに変換したものも併せて登録する。
+                        var exchangePrimarySmtpAddress = GetExchangePrimarySmtpAddress(foundContact.Email2Address);
+                        if (!(exchangePrimarySmtpAddress is null))
+                        {
+                            contactsList.Add(exchangePrimarySmtpAddress);
+                        }
+                    }
+                    else if (!(foundContact.Email3Address is null))
+                    {
+                        contactsList.Add(foundContact.Email3Address);
+                        if (IsValidEmailAddress(foundContact.Email3Address)) continue;
+                        //登録アドレスがメールアドレスでない場合、ExchangeのCN(X.500)の可能性があるため、一般的なメールアドレスに変換したものも併せて登録する。
+                        var exchangePrimarySmtpAddress = GetExchangePrimarySmtpAddress(foundContact.Email3Address);
+                        if (!(exchangePrimarySmtpAddress is null))
+                        {
+                            contactsList.Add(exchangePrimarySmtpAddress);
+                        }
+                    }
+                }
+
+            }
+
+            return contactsList;
+        }
+
+        /// <summary>
+        /// X500形式のアドレスを一般的なメールアドレスに変換する。
+        /// </summary>
+        /// <param name="x500">x500形式のアドレス</param>
+        /// <returns>一般的なメールアドレス</returns>
+        private string GetExchangePrimarySmtpAddress(string x500)
+        {
+            var tempOutlookApp = new Outlook.Application();
+            var tempRecipient = tempOutlookApp.Session.CreateRecipient(x500);
+
+            try
+            {
+                _ = tempRecipient.Resolve();
+                var addressEntry = tempRecipient.AddressEntry;
+
+                var isDone = false;
+                var errorCount = 0;
+                while (!isDone && errorCount < 100)
+                {
+                    try
+                    {
+                        var exchangeUser = addressEntry?.GetExchangeUser();
+                        if (exchangeUser?.PrimarySmtpAddress != null)
+                        {
+                            return exchangeUser.PrimarySmtpAddress;
+                        }
+
+                        isDone = true;
+                    }
+                    catch (COMException e)
+                    {
+                        if (e.ErrorCode == -2147467260)
+                        {
+                            //HRESULT:0x80004004 対策
+                            Thread.Sleep(10);
+                            errorCount++;
+                        }
+                        else
+                        {
+                            isDone = true;
+                        }
+                    }
+                }
+            }
+            catch (Exception)
+            {
+                //Do Nothing.
+            }
+
+            return null;
+        }
+
+        #endregion
+
     }
 }

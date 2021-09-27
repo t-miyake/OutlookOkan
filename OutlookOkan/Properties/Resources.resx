@@ -609,4 +609,29 @@ this feature will be applied.</value>
   <data name="DistributionList" xml:space="preserve">
     <value>Distribution list</value>
   </data>
+  <data name="IsAutoCheckRegisteredInContacts" xml:space="preserve">
+    <value>Recipients registered in Contacts will be auto-checked. (It may take a long time.)</value>
+  </data>
+  <data name="IsAutoCheckRegisteredInContactsAndMemberOfContactLists" xml:space="preserve">
+    <value>Include recipients who are registered as members of a contact list.
+(If you have many contact groups, the process may take longer.)</value>
+  </data>
+  <data name="AddressBook" xml:space="preserve">
+    <value>Contacts</value>
+  </data>
+  <data name="IsProhibitsSendingMailIfRecipientsIsNotRegistered" xml:space="preserve">
+    <value>Prohibits sending mail if the recipient is not registered in the Contacts.</value>
+  </data>
+  <data name="IsWarningIfRecipientsIsNotRegistered" xml:space="preserve">
+    <value>If the recipient is not registered in the contacts, a warning is displayed on the confirmation window.</value>
+  </data>
+  <data name="ProhibitsSendingMailIfRecipientsIsNotRegisteredMessage" xml:space="preserve">
+    <value>Sending e-mail to an unregistered contact is prohibited.</value>
+  </data>
+  <data name="SendersDomainAndInternalDomainAreNotCovered" xml:space="preserve">
+    <value>*Both the sender's domain and the internal domain are not covered.</value>
+  </data>
+  <data name="WarningIfRecipientsIsNotRegisteredMessage" xml:space="preserve">
+    <value>This address is not registered in your Contacts.</value>
+  </data>
 </root>

@@ -607,4 +607,29 @@
   <data name="DistributionList" xml:space="preserve">
     <value>配付リスト</value>
   </data>
+  <data name="IsAutoCheckRegisteredInContacts" xml:space="preserve">
+    <value>連絡先に登録された宛先は、あらかじめチェックを自動付与する。(処理に時間がかかる場合があります)</value>
+  </data>
+  <data name="IsAutoCheckRegisteredInContactsAndMemberOfContactLists" xml:space="preserve">
+    <value>連絡先グループのメンバーとして登録された宛先も対象に含める。
+(連絡先グループが多い場合、処理に時間がかかる場合があります)</value>
+  </data>
+  <data name="AddressBook" xml:space="preserve">
+    <value>連絡先</value>
+  </data>
+  <data name="IsProhibitsSendingMailIfRecipientsIsNotRegistered" xml:space="preserve">
+    <value>宛先が連絡先に登録されていない場合、メールの送信を禁止する。</value>
+  </data>
+  <data name="IsWarningIfRecipientsIsNotRegistered" xml:space="preserve">
+    <value>宛先が連絡先に登録されていない場合、確認画面に警告を表示する。</value>
+  </data>
+  <data name="ProhibitsSendingMailIfRecipientsIsNotRegisteredMessage" xml:space="preserve">
+    <value>連絡先に未登録の宛先への送信は禁止されています。</value>
+  </data>
+  <data name="SendersDomainAndInternalDomainAreNotCovered" xml:space="preserve">
+    <value>※どちらも送信者のドメインと内部ドメインは対象外です。</value>
+  </data>
+  <data name="WarningIfRecipientsIsNotRegisteredMessage" xml:space="preserve">
+    <value>この宛先は連絡先に登録されていません。</value>
+  </data>
 </root>
