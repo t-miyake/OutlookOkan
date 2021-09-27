@@ -952,6 +952,7 @@ namespace OutlookOkan.ViewModels
             IsAutoAddSenderToBcc = _generalSetting[0].IsAutoAddSenderToBcc;
             IsAutoCheckRegisteredInContacts = _generalSetting[0].IsAutoCheckRegisteredInContacts;
             IsAutoCheckRegisteredInContactsAndMemberOfContactLists = _generalSetting[0].IsAutoCheckRegisteredInContactsAndMemberOfContactLists;
+            IsCheckNameAndDomainsFromRecipients = _generalSetting[0].IsCheckNameAndDomainsFromRecipients;
             IsWarningIfRecipientsIsNotRegistered = _generalSetting[0].IsWarningIfRecipientsIsNotRegistered;
             IsProhibitsSendingMailIfRecipientsIsNotRegistered = _generalSetting[0].IsProhibitsSendingMailIfRecipientsIsNotRegistered;
 
@@ -998,6 +999,7 @@ namespace OutlookOkan.ViewModels
                     IsAutoAddSenderToBcc = IsAutoAddSenderToBcc,
                     IsAutoCheckRegisteredInContacts = IsAutoCheckRegisteredInContacts,
                     IsAutoCheckRegisteredInContactsAndMemberOfContactLists = IsAutoCheckRegisteredInContactsAndMemberOfContactLists,
+                    IsCheckNameAndDomainsFromRecipients = IsCheckNameAndDomainsFromRecipients,
                     IsWarningIfRecipientsIsNotRegistered = IsWarningIfRecipientsIsNotRegistered,
                     IsProhibitsSendingMailIfRecipientsIsNotRegistered = IsProhibitsSendingMailIfRecipientsIsNotRegistered
                 }
@@ -1196,6 +1198,18 @@ namespace OutlookOkan.ViewModels
                 OnPropertyChanged(nameof(IsAutoCheckRegisteredInContactsAndMemberOfContactLists));
             }
         }
+
+        private bool _isCheckNameAndDomainsFromRecipients;
+        public bool IsCheckNameAndDomainsFromRecipients
+        {
+            get => _isCheckNameAndDomainsFromRecipients;
+            set
+            {
+                _isCheckNameAndDomainsFromRecipients = value;
+                OnPropertyChanged(nameof(IsCheckNameAndDomainsFromRecipients));
+            }
+        }
+
         private bool _isWarningIfRecipientsIsNotRegistered;
         public bool IsWarningIfRecipientsIsNotRegistered
         {

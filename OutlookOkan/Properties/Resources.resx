@@ -634,6 +634,12 @@ If the alerting text is blank, the confirmation screen will show the default ale
     <value>Include recipients who are registered as members of a contact list.
 (If you have many contact groups, the process may take longer.)</value>
   </data>
+  <data name="CanNotFindTheLinkedName" xml:space="preserve">
+    <value>Cannot find the linked name in the mail body.</value>
+  </data>
+  <data name="IsCheckNameAndDomainsFromRecipients" xml:space="preserve">
+    <value>A warning is also displayed when there is no recipient's name in the mail body.</value>
+  </data>
   <data name="AddressBook" xml:space="preserve">
     <value>Contacts</value>
   </data>

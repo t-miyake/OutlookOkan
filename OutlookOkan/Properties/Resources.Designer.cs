@@ -327,6 +327,15 @@ namespace OutlookOkan.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Cannot find the linked name in the mail body..
+        /// </summary>
+        public static string CanNotFindTheLinkedName {
+            get {
+                return ResourceManager.GetString("CanNotFindTheLinkedName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Cc/Bcc.
         /// </summary>
         public static string CCorBCC {
@@ -865,6 +874,15 @@ namespace OutlookOkan.Properties {
         public static string IsCanNotShowConfirmation {
             get {
                 return ResourceManager.GetString("IsCanNotShowConfirmation", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to A warning is also displayed when there is no recipient&apos;s name in the mail body..
+        /// </summary>
+        public static string IsCheckNameAndDomainsFromRecipients {
+            get {
+                return ResourceManager.GetString("IsCheckNameAndDomainsFromRecipients", resourceCulture);
             }
         }
         

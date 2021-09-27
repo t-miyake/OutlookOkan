@@ -22,6 +22,7 @@ namespace OutlookOkan.Types
         public bool IsAutoAddSenderToBcc { get; set; }
         public bool IsAutoCheckRegisteredInContacts { get; set; }
         public bool IsAutoCheckRegisteredInContactsAndMemberOfContactLists { get; set; }
+        public bool IsCheckNameAndDomainsFromRecipients { get; set; }
         public bool IsWarningIfRecipientsIsNotRegistered { get; set; }
         public bool IsProhibitsSendingMailIfRecipientsIsNotRegistered { get; set; }
     }
@@ -81,6 +82,9 @@ namespace OutlookOkan.Types
                 .BooleanValues(true, true, "Yes", "Y").TypeConverterOption.BooleanValues(false, true, "No", "N").Default(false);
 
             _ = Map(m => m.IsAutoCheckRegisteredInContactsAndMemberOfContactLists).Index(17).TypeConverterOption
+                .BooleanValues(true, true, "Yes", "Y").TypeConverterOption.BooleanValues(false, true, "No", "N").Default(false);
+
+            _ = Map(m => m.IsCheckNameAndDomainsFromRecipients).Index(18).TypeConverterOption
                 .BooleanValues(true, true, "Yes", "Y").TypeConverterOption.BooleanValues(false, true, "No", "N").Default(false);
 
             _ = Map(m => m.IsWarningIfRecipientsIsNotRegistered).Index(19).TypeConverterOption
