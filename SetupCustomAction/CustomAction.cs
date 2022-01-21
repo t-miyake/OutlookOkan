@@ -26,18 +26,41 @@ namespace SetupCustomAction
         {
             base.Uninstall(savedState);
 
-            var result = MessageBox.Show("設定を削除しますか？", "設定削除の確認", MessageBoxButton.YesNo, MessageBoxImage.Question, MessageBoxResult.Yes, MessageBoxOptions.ServiceNotification);
-            if (result == MessageBoxResult.Yes)
+            try
             {
-                try
+                if (Context.Parameters["silent"] != "true")
                 {
-                    var directoryPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "Noraneko\\OutlookOkan\\");
-                    Directory.Delete(directoryPath, true);
+                    var result = MessageBox.Show("設定を削除しますか？", "設定削除の確認", MessageBoxButton.YesNo, MessageBoxImage.Question, MessageBoxResult.Yes, MessageBoxOptions.ServiceNotification);
+                    if (result == MessageBoxResult.Yes)
+                    {
+                        try
+                        {
+                            var directoryPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "Noraneko\\OutlookOkan\\");
+                            Directory.Delete(directoryPath, true);
+                        }
+                        catch (Exception)
+                        {
+                            //Do Nothing.
+                        }
+                    }
                 }
-                catch (Exception)
+
+                if (Context.Parameters["delconf"] == "true")
                 {
-                    //Do Nothing.
+                    try
+                    {
+                        var directoryPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "Noraneko\\OutlookOkan\\");
+                        Directory.Delete(directoryPath, true);
+                    }
+                    catch (Exception)
+                    {
+                        //Do Nothing.
+                    }
                 }
+            }
+            catch (Exception)
+            {
+                //Do Nothing.
             }
         }
 
