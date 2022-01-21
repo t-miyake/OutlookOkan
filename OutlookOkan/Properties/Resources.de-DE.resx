@@ -494,6 +494,9 @@ wird auf dem Bestätigungsbildschirm eine Warnung angezeigt.</value>
   <data name="MailType" xml:space="preserve">
     <value>Typ</value>
   </data>
+  <data name="MeetingRequest" xml:space="preserve">
+    <value>Anfrage für ein Treffen</value>
+  </data>
   <data name="Name" xml:space="preserve">
     <value>Name</value>
   </data>
@@ -680,6 +683,9 @@ Die entsprechenden Empfänger werden auf dem Bestätigungsbildschirm angekreuzt.
   </data>
   <data name="Settings" xml:space="preserve">
     <value>Einstellungen</value>
+  </data>
+  <data name="ShowConfirmationAtSendMeetingRequest" xml:space="preserve">
+    <value>Außerdem wird ein Bestätigungsbildschirm für die Besprechungsanfrage angezeigt.</value>
   </data>
   <data name="Subject" xml:space="preserve">
     <value>Betreff</value>

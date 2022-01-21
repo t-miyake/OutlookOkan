@@ -717,4 +717,10 @@
   <data name="WarningIfRecipientsIsNotRegisteredMessage" xml:space="preserve">
     <value>この宛先は連絡先に登録されていません。</value>
   </data>
+  <data name="MeetingRequest" xml:space="preserve">
+    <value>会議招待</value>
+  </data>
+  <data name="ShowConfirmationAtSendMeetingRequest" xml:space="preserve">
+    <value>会議招待にも確認画面を表示する。</value>
+  </data>
 </root>

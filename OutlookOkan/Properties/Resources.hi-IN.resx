@@ -491,6 +491,9 @@
   <data name="MailType" xml:space="preserve">
     <value>प्रकार</value>
   </data>
+  <data name="MeetingRequest" xml:space="preserve">
+    <value>बैठक अनुरोध</value>
+  </data>
   <data name="Name" xml:space="preserve">
     <value>नाम</value>
   </data>
@@ -674,6 +677,9 @@
   </data>
   <data name="Settings" xml:space="preserve">
     <value>समायोजन</value>
+  </data>
+  <data name="ShowConfirmationAtSendMeetingRequest" xml:space="preserve">
+    <value>अनुरोध को पूरा करने के लिए पुष्टिकरण स्क्रीन भी प्रदर्शित की जाती है।</value>
   </data>
   <data name="Subject" xml:space="preserve">
     <value>विषय</value>

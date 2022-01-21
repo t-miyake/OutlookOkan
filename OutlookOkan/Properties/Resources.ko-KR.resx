@@ -490,6 +490,9 @@
   <data name="MailType" xml:space="preserve">
     <value>유형</value>
   </data>
+  <data name="MeetingRequest" xml:space="preserve">
+    <value>미팅 요청</value>
+  </data>
   <data name="Name" xml:space="preserve">
     <value>이름</value>
   </data>
@@ -691,6 +694,9 @@
   </data>
   <data name="Text" xml:space="preserve">
     <value>일반 텍스트</value>
+  </data>
+  <data name="The confirmation screen is also displayed for meeting request." xml:space="preserve">
+    <value>회의 요청에 대한 확인 화면도 표시됩니다.</value>
   </data>
   <data name="To" xml:space="preserve">
     <value>To</value>

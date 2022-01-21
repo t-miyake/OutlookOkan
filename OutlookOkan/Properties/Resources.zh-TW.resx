@@ -488,6 +488,9 @@
   <data name="MailType" xml:space="preserve">
     <value>類型</value>
   </data>
+  <data name="MeetingRequest" xml:space="preserve">
+    <value>會議要求</value>
+  </data>
   <data name="Name" xml:space="preserve">
     <value>名稱</value>
   </data>
@@ -672,6 +675,9 @@
   </data>
   <data name="Settings" xml:space="preserve">
     <value>設置</value>
+  </data>
+  <data name="ShowConfirmationAtSendMeetingRequest" xml:space="preserve">
+    <value>會議請求也顯示一個確認屏幕。</value>
   </data>
   <data name="Subject" xml:space="preserve">
     <value>主題</value>

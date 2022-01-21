@@ -492,6 +492,9 @@ cuando los destinatarios (To/Cc) tienen un gran número de dominios externos.</v
   <data name="MailType" xml:space="preserve">
     <value>Tipo</value>
   </data>
+  <data name="MeetingRequest" xml:space="preserve">
+    <value>Solicitud de reunión</value>
+  </data>
   <data name="Name" xml:space="preserve">
     <value>Nombre</value>
   </data>
@@ -678,6 +681,9 @@ Los destinatarios correspondientes se marcarán previamente en la pantalla de co
   </data>
   <data name="Settings" xml:space="preserve">
     <value>Ajustes</value>
+  </data>
+  <data name="ShowConfirmationAtSendMeetingRequest" xml:space="preserve">
+    <value>También se muestra una pantalla de confirmación para la solicitud de reunión.</value>
   </data>
   <data name="Subject" xml:space="preserve">
     <value>Asunto</value>

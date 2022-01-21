@@ -493,6 +493,9 @@
   <data name="MailType" xml:space="preserve">
     <value>Тип</value>
   </data>
+  <data name="MeetingRequest" xml:space="preserve">
+    <value>Запрос на встречу</value>
+  </data>
   <data name="Name" xml:space="preserve">
     <value>Имя</value>
   </data>
@@ -678,6 +681,9 @@
   </data>
   <data name="Settings" xml:space="preserve">
     <value>Настройки</value>
+  </data>
+  <data name="ShowConfirmationAtSendMeetingRequest" xml:space="preserve">
+    <value>Также отображается экран подтверждения запроса на проведение встречи.</value>
   </data>
   <data name="Subject" xml:space="preserve">
     <value>Тема</value>

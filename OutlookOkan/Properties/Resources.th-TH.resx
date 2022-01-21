@@ -490,6 +490,9 @@ bcc โดยอัตโนมัติ</value>
   <data name="MailType" xml:space="preserve">
     <value>ชนิด</value>
   </data>
+  <data name="MeetingRequest" xml:space="preserve">
+    <value>เรียกประชุม</value>
+  </data>
   <data name="Name" xml:space="preserve">
     <value>ชื่อ</value>
   </data>
@@ -673,6 +676,9 @@ bcc โดยอัตโนมัติ</value>
   </data>
   <data name="Settings" xml:space="preserve">
     <value>การตั้งค่า</value>
+  </data>
+  <data name="ShowConfirmationAtSendMeetingRequest" xml:space="preserve">
+    <value>หน้าจอยืนยันจะปรากฏขึ้นสำหรับการเรียกประชุมด้วย</value>
   </data>
   <data name="Subject" xml:space="preserve">
     <value>เรื่อง</value>

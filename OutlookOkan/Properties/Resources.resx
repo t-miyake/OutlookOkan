@@ -720,4 +720,10 @@ If the recipients and the attached file name do not match, a warning will be dis
   <data name="WarningIfRecipientsIsNotRegisteredMessage" xml:space="preserve">
     <value>This address is not registered in your Contacts.</value>
   </data>
+  <data name="MeetingRequest" xml:space="preserve">
+    <value>Meeting request</value>
+  </data>
+  <data name="ShowConfirmationAtSendMeetingRequest" xml:space="preserve">
+    <value>The confirmation screen is also displayed for meeting request.</value>
+  </data>
 </root>

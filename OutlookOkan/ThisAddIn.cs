@@ -79,11 +79,31 @@ namespace OutlookOkan
         /// <param name="cancel">Cancel</param>
         private void Application_ItemSend(object item, ref bool cancel)
         {
-            //MailItemにキャストできないものは、会議招待などメールではないもののため、何もしない。
-            if (!(item is Outlook._MailItem mailItem)) return;
+            //Outlook起動後にユーザが設定を変更する可能性があるため、毎回ユーザ設定をロード。
+            LoadGeneralSetting(false);
+            if (!(_generalSetting.LanguageCode is null))
+            {
+                ResourceService.Instance.ChangeCulture(_generalSetting.LanguageCode);
+            }
+
+            Type type;
+            switch (item)
+            {
+                //MailItem(通常のメール)とMeetingItem(会議招待)の場合にのみ動作させる。
+                case Outlook._MailItem _:
+                    type = typeof(Outlook._MailItem);
+                    break;
+                case Outlook._MeetingItem _ when _generalSetting.IsShowConfirmationAtSendMeetingRequest:
+                    type = typeof(Outlook._MeetingItem);
+                    break;
+                case Outlook._MeetingItem _:
+                    return;
+                default:
+                    return;
+            }
 
             //Moderationでの返信には何もしない。(キャンセルすると、承認や非承認ができなくなる場合があるため)
-            if (mailItem.MessageClass == "IPM.Note.Microsoft.Approval.Reply.Approve" || mailItem.MessageClass == "IPM.Note.Microsoft.Approval.Reply.Reject") return;
+            if (((dynamic)item).MessageClass == "IPM.Note.Microsoft.Approval.Reply.Approve" || ((dynamic)item).MessageClass == "IPM.Note.Microsoft.Approval.Reply.Reject") return;
 
             //何らかの問題で確認画面が表示されないと、意図せずメールが送られてしまう恐れがあるため、念のための処理。
             try
@@ -94,7 +114,7 @@ namespace OutlookOkan
                     //HACK: 添付ファイルをリンクとして添付する際に、メール本文が自動更新されない問題を回避するための処置。
                     //HACK: ※WordEditorで本文を編集すると、本文の更新処理が行われるため問題を回避できる。
                     //HACK: ※メールの文頭に半角スペースを挿入し、それを削除することで、本文の編集処理とさせる。
-                    var mailItemWordEditor = (Word.Document)mailItem.GetInspector.WordEditor;
+                    var mailItemWordEditor = (Word.Document)((dynamic)item).GetInspector.WordEditor;
                     var range = mailItemWordEditor.Range(0, 0);
                     range.InsertAfter(" ");
                     range = mailItemWordEditor.Range(0, 0);
@@ -105,13 +125,6 @@ namespace OutlookOkan
                     //Do nothing.
                 }
 
-                //Outlook起動後にユーザが設定を変更する可能性があるため、毎回ユーザ設定をロード。
-                LoadGeneralSetting(false);
-                if (!(_generalSetting.LanguageCode is null))
-                {
-                    ResourceService.Instance.ChangeCulture(_generalSetting.LanguageCode);
-                }
-
                 //「連絡先に登録された宛先はあらかじめチェックを自動付与する。」など連絡先が必要な機能が有効な場合、連絡先をまとめて取得する。
                 Outlook.MAPIFolder contacts = null;
                 if (_generalSetting.IsAutoCheckRegisteredInContacts || _generalSetting.IsWarningIfRecipientsIsNotRegistered || _generalSetting.IsProhibitsSendingMailIfRecipientsIsNotRegistered)
@@ -120,7 +133,7 @@ namespace OutlookOkan
                 }
 
                 var generateCheckList = new GenerateCheckList();
-                var checklist = generateCheckList.GenerateCheckListFromMail(mailItem, _generalSetting, contacts);
+                var checklist = type == typeof(Outlook._MailItem) ? generateCheckList.GenerateCheckListFromMail((Outlook._MailItem)item, _generalSetting, contacts) : generateCheckList.GenerateCheckListFromMail((Outlook._MeetingItem)item, _generalSetting, contacts);
 
                 if (_generalSetting.IsAutoCheckIfAllRecipientsAreSameDomain)
                 {
@@ -169,7 +182,7 @@ namespace OutlookOkan
                 else if (IsShowConfirmationWindow(checklist))
                 {
                     //OutlookのWindowを親として確認画面をモーダル表示。
-                    var confirmationWindow = new ConfirmationWindow(checklist, mailItem);
+                    var confirmationWindow = new ConfirmationWindow(checklist, item);
                     var activeWindow = Globals.ThisAddIn.Application.ActiveWindow();
                     var outlookHandle = new NativeMethods(activeWindow).Handle;
                     _ = new WindowInteropHelper(confirmationWindow) { Owner = outlookHandle };
@@ -239,6 +252,7 @@ namespace OutlookOkan
             _generalSetting.IsCheckNameAndDomainsFromRecipients = generalSetting[0].IsCheckNameAndDomainsFromRecipients;
             _generalSetting.IsWarningIfRecipientsIsNotRegistered = generalSetting[0].IsWarningIfRecipientsIsNotRegistered;
             _generalSetting.IsProhibitsSendingMailIfRecipientsIsNotRegistered = generalSetting[0].IsProhibitsSendingMailIfRecipientsIsNotRegistered;
+            _generalSetting.IsShowConfirmationAtSendMeetingRequest = generalSetting[0].IsShowConfirmationAtSendMeetingRequest;
         }
 
         /// <summary>

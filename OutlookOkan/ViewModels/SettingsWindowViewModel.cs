@@ -1126,6 +1126,7 @@ namespace OutlookOkan.ViewModels
             IsCheckNameAndDomainsFromRecipients = _generalSetting[0].IsCheckNameAndDomainsFromRecipients;
             IsWarningIfRecipientsIsNotRegistered = _generalSetting[0].IsWarningIfRecipientsIsNotRegistered;
             IsProhibitsSendingMailIfRecipientsIsNotRegistered = _generalSetting[0].IsProhibitsSendingMailIfRecipientsIsNotRegistered;
+            IsShowConfirmationAtSendMeetingRequest = _generalSetting[0].IsShowConfirmationAtSendMeetingRequest;
 
             if (_generalSetting[0].LanguageCode is null) return;
 
@@ -1169,7 +1170,8 @@ namespace OutlookOkan.ViewModels
                     IsAutoCheckRegisteredInContactsAndMemberOfContactLists = IsAutoCheckRegisteredInContactsAndMemberOfContactLists,
                     IsCheckNameAndDomainsFromRecipients = IsCheckNameAndDomainsFromRecipients,
                     IsWarningIfRecipientsIsNotRegistered = IsWarningIfRecipientsIsNotRegistered,
-                    IsProhibitsSendingMailIfRecipientsIsNotRegistered = IsProhibitsSendingMailIfRecipientsIsNotRegistered
+                    IsProhibitsSendingMailIfRecipientsIsNotRegistered = IsProhibitsSendingMailIfRecipientsIsNotRegistered,
+                    IsShowConfirmationAtSendMeetingRequest = IsShowConfirmationAtSendMeetingRequest
                 }
             };
 
@@ -1398,6 +1400,17 @@ namespace OutlookOkan.ViewModels
                 _isProhibitsSendingMailIfRecipientsIsNotRegistered = value;
                 OnPropertyChanged(nameof(IsProhibitsSendingMailIfRecipientsIsNotRegistered));
                 OnPropertyChanged(nameof(IsWarningIfRecipientsIsNotRegisteredCheckBoxIsEnabled));
+            }
+        }
+
+        private bool _isShowConfirmationAtSendMeetingRequest;
+        public bool IsShowConfirmationAtSendMeetingRequest
+        {
+            get => _isShowConfirmationAtSendMeetingRequest;
+            set
+            {
+                _isShowConfirmationAtSendMeetingRequest = value;
+                OnPropertyChanged(nameof(IsShowConfirmationAtSendMeetingRequest));
             }
         }
 

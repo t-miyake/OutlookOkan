@@ -1160,6 +1160,15 @@ namespace OutlookOkan.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Meeting request.
+        /// </summary>
+        public static string MeetingRequest {
+            get {
+                return ResourceManager.GetString("MeetingRequest", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Name.
         /// </summary>
         public static string Name {
@@ -1569,6 +1578,15 @@ namespace OutlookOkan.Properties {
         public static string Settings {
             get {
                 return ResourceManager.GetString("Settings", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The confirmation screen is also displayed for meeting request..
+        /// </summary>
+        public static string ShowConfirmationAtSendMeetingRequest {
+            get {
+                return ResourceManager.GetString("ShowConfirmationAtSendMeetingRequest", resourceCulture);
             }
         }
         
