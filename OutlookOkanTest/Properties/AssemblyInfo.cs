@@ -7,7 +7,7 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("Noraneko Inc.")]
 [assembly: AssemblyProduct("OutlookOkanTest")]
-[assembly: AssemblyCopyright("Copyright © Noraneko Inc. 2020")]
+[assembly: AssemblyCopyright("Copyright © Noraneko Inc. 2022")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
