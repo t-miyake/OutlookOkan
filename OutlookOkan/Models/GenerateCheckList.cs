@@ -1527,7 +1527,7 @@ namespace OutlookOkan.Models
 
             //Indexを使用してRemoveした場合、Indexがずれ、複数を正しく削除できないため、削除対象を探して削除する。
             var targetCount = targetMailAddressAndRecipient.Count;
-            while (targetCount != 0)
+            while (targetCount > 0)
             {
                 foreach (var target in targetMailAddressAndRecipient)
                 {
