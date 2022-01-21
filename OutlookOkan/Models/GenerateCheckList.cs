@@ -102,7 +102,16 @@ namespace OutlookOkan.Models
             {
                 _checkList.MailType = Resources.MeetingRequest;
                 _checkList.MailBody = string.IsNullOrEmpty(((Outlook._MeetingItem)item).Body) ? Resources.FailedToGetInformation : ((Outlook._MeetingItem)item).Body.Replace("\r\n\r\n", "\r\n");
-                _checkList.MailHtmlBody = _checkList.MailBody;
+
+                if (((Outlook._MeetingItem)item).RTFBody is byte[] byteArray)
+                {
+                    var encoding = new System.Text.ASCIIEncoding();
+                    _checkList.MailHtmlBody = encoding.GetString(byteArray);
+                }
+                else
+                {
+                    _checkList.MailHtmlBody = _checkList.MailBody;
+                }
             }
 
             _checkList.Subject = ((dynamic)item).Subject ?? Resources.FailedToGetInformation;
@@ -1060,19 +1069,13 @@ namespace OutlookOkan.Models
         /// <returns>埋め込みファイル名のList</returns>
         private List<string> MakeEmbeddedAttachmentsList<T>(T item)
         {
-            string htmlBody;
             if (typeof(T) == typeof(Outlook._MailItem))
             {
                 //HTML形式の場合のみ、処理対象とする。
                 if (((Outlook._MailItem)item).BodyFormat != Outlook.OlBodyFormat.olFormatHTML) return null;
-                htmlBody = ((Outlook._MailItem)item).HTMLBody;
-            }
-            else
-            {
-                htmlBody = ((Outlook._MeetingItem)item).Body;
             }
 
-            var matches = Regex.Matches(htmlBody, @"cid:.*?@");
+            var matches = Regex.Matches(_checkList.MailHtmlBody, @"cid:.*?@");
 
             if (matches.Count == 0) return null;
 
