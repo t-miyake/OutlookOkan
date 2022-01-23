@@ -359,10 +359,10 @@
     <value>Noraneko Inc.</value>
   </data>
   <data name="Copyright" xml:space="preserve">
-    <value>Copyright (C) 2021 Noraneko Inc.</value>
+    <value>Copyright (C) 2022 Noraneko Inc.</value>
   </data>
   <data name="Version" xml:space="preserve">
-    <value>Version 2.6.0.0</value>
+    <value>Version 2.6.1.0</value>
   </data>
   <data name="VersionInfo" xml:space="preserve">
     <value>About</value>
@@ -719,5 +719,11 @@ If the recipients and the attached file name do not match, a warning will be dis
   </data>
   <data name="WarningIfRecipientsIsNotRegisteredMessage" xml:space="preserve">
     <value>This address is not registered in your Contacts.</value>
+  </data>
+  <data name="MeetingRequest" xml:space="preserve">
+    <value>Meeting request</value>
+  </data>
+  <data name="ShowConfirmationAtSendMeetingRequest" xml:space="preserve">
+    <value>The confirmation screen is also displayed for meeting request.</value>
   </data>
 </root>

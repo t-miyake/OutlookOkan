@@ -359,10 +359,10 @@
     <value>株式会社のらねこ</value>
   </data>
   <data name="Copyright" xml:space="preserve">
-    <value>Copyright (C) 2021 Noraneko Inc.</value>
+    <value>Copyright (C) 2022 Noraneko Inc.</value>
   </data>
   <data name="Version" xml:space="preserve">
-    <value>バージョン 2.6.0.0</value>
+    <value>バージョン 2.6.1.0</value>
   </data>
   <data name="VersionInfo" xml:space="preserve">
     <value>バージョン情報</value>
@@ -716,5 +716,11 @@
   </data>
   <data name="WarningIfRecipientsIsNotRegisteredMessage" xml:space="preserve">
     <value>この宛先は連絡先に登録されていません。</value>
+  </data>
+  <data name="MeetingRequest" xml:space="preserve">
+    <value>会議招待</value>
+  </data>
+  <data name="ShowConfirmationAtSendMeetingRequest" xml:space="preserve">
+    <value>会議招待にも確認画面を表示する。</value>
   </data>
 </root>

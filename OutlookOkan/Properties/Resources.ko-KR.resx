@@ -267,7 +267,7 @@
     <value>연락처 그룹</value>
   </data>
   <data name="Copyright" xml:space="preserve">
-    <value>Copyright (C) 2021 Noraneko Inc.</value>
+    <value>Copyright (C) 2022 Noraneko Inc.</value>
   </data>
   <data name="CSVExport" xml:space="preserve">
     <value>CSV 내보내기</value>
@@ -490,6 +490,9 @@
   <data name="MailType" xml:space="preserve">
     <value>유형</value>
   </data>
+  <data name="MeetingRequest" xml:space="preserve">
+    <value>미팅 요청</value>
+  </data>
   <data name="Name" xml:space="preserve">
     <value>이름</value>
   </data>
@@ -692,6 +695,9 @@
   <data name="Text" xml:space="preserve">
     <value>일반 텍스트</value>
   </data>
+  <data name="The confirmation screen is also displayed for meeting request." xml:space="preserve">
+    <value>회의 요청에 대한 확인 화면도 표시됩니다.</value>
+  </data>
   <data name="To" xml:space="preserve">
     <value>To</value>
   </data>
@@ -699,7 +705,7 @@
     <value>알려지지 않은</value>
   </data>
   <data name="Version" xml:space="preserve">
-    <value>Version 2.6.0.0</value>
+    <value>Version 2.6.1.0</value>
   </data>
   <data name="VersionInfo" xml:space="preserve">
     <value>이 프로그램에 대해</value>

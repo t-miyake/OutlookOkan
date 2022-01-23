@@ -269,7 +269,7 @@ Al cerrar la pantalla de edición no se enviará este correo electrónico.</valu
     <value>Grupo de contacto</value>
   </data>
   <data name="Copyright" xml:space="preserve">
-    <value>Copyright (C) 2021 Noraneko Inc.</value>
+    <value>Copyright (C) 2022 Noraneko Inc.</value>
   </data>
   <data name="CSVExport" xml:space="preserve">
     <value>Exportación de CSV</value>
@@ -492,6 +492,9 @@ cuando los destinatarios (To/Cc) tienen un gran número de dominios externos.</v
   <data name="MailType" xml:space="preserve">
     <value>Tipo</value>
   </data>
+  <data name="MeetingRequest" xml:space="preserve">
+    <value>Solicitud de reunión</value>
+  </data>
   <data name="Name" xml:space="preserve">
     <value>Nombre</value>
   </data>
@@ -679,6 +682,9 @@ Los destinatarios correspondientes se marcarán previamente en la pantalla de co
   <data name="Settings" xml:space="preserve">
     <value>Ajustes</value>
   </data>
+  <data name="ShowConfirmationAtSendMeetingRequest" xml:space="preserve">
+    <value>También se muestra una pantalla de confirmación para la solicitud de reunión.</value>
+  </data>
   <data name="Subject" xml:space="preserve">
     <value>Asunto</value>
   </data>
@@ -705,7 +711,7 @@ se aplicará esta función.</value>
     <value>Desconocido</value>
   </data>
   <data name="Version" xml:space="preserve">
-    <value>Version 2.6.0.0</value>
+    <value>Version 2.6.1.0</value>
   </data>
   <data name="VersionInfo" xml:space="preserve">
     <value>Sobre el programa</value>

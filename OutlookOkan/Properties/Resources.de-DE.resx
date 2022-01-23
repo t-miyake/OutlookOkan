@@ -270,7 +270,7 @@ Möchten Sie es herunterladen?</value>
     <value>Kontakt Gruppe</value>
   </data>
   <data name="Copyright" xml:space="preserve">
-    <value>Copyright (C) 2021 Noraneko Inc.</value>
+    <value>Copyright (C) 2022 Noraneko Inc.</value>
   </data>
   <data name="CSVExport" xml:space="preserve">
     <value>CSV exportieren</value>
@@ -494,6 +494,9 @@ wird auf dem Bestätigungsbildschirm eine Warnung angezeigt.</value>
   <data name="MailType" xml:space="preserve">
     <value>Typ</value>
   </data>
+  <data name="MeetingRequest" xml:space="preserve">
+    <value>Anfrage für ein Treffen</value>
+  </data>
   <data name="Name" xml:space="preserve">
     <value>Name</value>
   </data>
@@ -681,6 +684,9 @@ Die entsprechenden Empfänger werden auf dem Bestätigungsbildschirm angekreuzt.
   <data name="Settings" xml:space="preserve">
     <value>Einstellungen</value>
   </data>
+  <data name="ShowConfirmationAtSendMeetingRequest" xml:space="preserve">
+    <value>Außerdem wird ein Bestätigungsbildschirm für die Besprechungsanfrage angezeigt.</value>
+  </data>
   <data name="Subject" xml:space="preserve">
     <value>Betreff</value>
   </data>
@@ -707,7 +713,7 @@ wird diese Funktion angewendet.</value>
     <value>Unbekannt</value>
   </data>
   <data name="Version" xml:space="preserve">
-    <value>Version 2.6.0.0</value>
+    <value>Version 2.6.1.0</value>
   </data>
   <data name="VersionInfo" xml:space="preserve">
     <value>Über das Programm</value>

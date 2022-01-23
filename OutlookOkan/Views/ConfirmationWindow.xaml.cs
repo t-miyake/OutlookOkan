@@ -4,18 +4,17 @@ using System;
 using System.Text.RegularExpressions;
 using System.Windows;
 using System.Windows.Input;
-using Outlook = Microsoft.Office.Interop.Outlook;
 
 namespace OutlookOkan.Views
 {
     public partial class ConfirmationWindow : Window
     {
-        private readonly Outlook._MailItem _mailItem;
+        private readonly dynamic _item;
 
-        public ConfirmationWindow(CheckList checkList, Outlook._MailItem mailItem)
+        public ConfirmationWindow(CheckList checkList, dynamic item)
         {
             DataContext = new ConfirmationWindowViewModel(checkList);
-            _mailItem = mailItem;
+            _item = item;
 
             InitializeComponent();
 
@@ -33,22 +32,22 @@ namespace OutlookOkan.Views
 
             if (deferredDeliveryMinutes != 0)
             {
-                if (_mailItem.DeferredDeliveryTime == new DateTime(4501, 1, 1, 0, 0, 0))
+                if (_item.DeferredDeliveryTime == new DateTime(4501, 1, 1, 0, 0, 0))
                 {
                     //アドインの機能のみで保留時間が設定された場合
-                    _mailItem.DeferredDeliveryTime = DateTime.Now.AddMinutes(deferredDeliveryMinutes);
+                    _item.DeferredDeliveryTime = DateTime.Now.AddMinutes(deferredDeliveryMinutes);
                 }
                 else
                 {
                     //アドインの機能と同時に、Outlookの標準機能でも保留時間(配信タイミング)が設定された場合
-                    if (DateTime.Now.AddMinutes(deferredDeliveryMinutes) > _mailItem.DeferredDeliveryTime.AddMinutes(deferredDeliveryMinutes))
+                    if (DateTime.Now.AddMinutes(deferredDeliveryMinutes) > _item.DeferredDeliveryTime.AddMinutes(deferredDeliveryMinutes))
                     {
                         //[既に設定されている送信予定日時+アドインによる保留時間] が [現在日時+アドインによる保留時間] より前の日時となるため、後者を採用する。
-                        _mailItem.DeferredDeliveryTime = DateTime.Now.AddMinutes(deferredDeliveryMinutes);
+                        _item.DeferredDeliveryTime = DateTime.Now.AddMinutes(deferredDeliveryMinutes);
                     }
                     else
                     {
-                        _mailItem.DeferredDeliveryTime = _mailItem.DeferredDeliveryTime.AddMinutes(deferredDeliveryMinutes);
+                        _item.DeferredDeliveryTime = _item.DeferredDeliveryTime.AddMinutes(deferredDeliveryMinutes);
                     }
                 }
             }

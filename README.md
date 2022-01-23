@@ -21,7 +21,7 @@ English readme is [here](https://github.com/t-miyake/OutlookOkan/blob/master/REA
 ![Screenshot 1](https://github.com/t-miyake/OutlookOkan/blob/master/Screenshots/Screenshot_v2.5.0_01.png)  
 
 設定ウィンドウ(一般設定)  
-![Screenshot 2](https://github.com/t-miyake/OutlookOkan/blob/master/Screenshots/Screenshot_v2.6.0_04.png)
+![Screenshot 2](https://github.com/t-miyake/OutlookOkan/blob/master/Screenshots/Screenshot_v2.6.1_04.png)
 
 設定ウィンドウ(遅延送信)  
 ![Screenshot 3](https://github.com/t-miyake/OutlookOkan/blob/master/Screenshots/Screenshot_v2.6.0_05.png)
@@ -30,7 +30,7 @@ English readme is [here](https://github.com/t-miyake/OutlookOkan/blob/master/REA
 ![Screenshot 4](https://github.com/t-miyake/OutlookOkan/blob/master/Screenshots/Screenshot_v2.5.0_03.png)
 
 バージョン情報  
-![Screenshot 5](https://github.com/t-miyake/OutlookOkan/blob/master/Screenshots/Screenshot_v2.6.0_02.png)
+![Screenshot 5](https://github.com/t-miyake/OutlookOkan/blob/master/Screenshots/Screenshot_v2.6.1_02.png)
 
 ## 対応環境
 

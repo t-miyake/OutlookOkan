@@ -25,6 +25,7 @@ namespace OutlookOkan.Types
         public bool IsCheckNameAndDomainsFromRecipients { get; set; }
         public bool IsWarningIfRecipientsIsNotRegistered { get; set; }
         public bool IsProhibitsSendingMailIfRecipientsIsNotRegistered { get; set; }
+        public bool IsShowConfirmationAtSendMeetingRequest { get; set; }
     }
 
     public sealed class GeneralSettingMap : ClassMap<GeneralSetting>
@@ -91,6 +92,9 @@ namespace OutlookOkan.Types
                 .BooleanValues(true, true, "Yes", "Y").TypeConverterOption.BooleanValues(false, true, "No", "N").Default(false);
 
             _ = Map(m => m.IsProhibitsSendingMailIfRecipientsIsNotRegistered).Index(20).TypeConverterOption
+                .BooleanValues(true, true, "Yes", "Y").TypeConverterOption.BooleanValues(false, true, "No", "N").Default(false);
+
+            _ = Map(m => m.IsShowConfirmationAtSendMeetingRequest).Index(21).TypeConverterOption
                 .BooleanValues(true, true, "Yes", "Y").TypeConverterOption.BooleanValues(false, true, "No", "N").Default(false);
         }
     }

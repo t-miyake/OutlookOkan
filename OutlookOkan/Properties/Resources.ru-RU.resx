@@ -269,7 +269,7 @@
     <value>Контактная группа</value>
   </data>
   <data name="Copyright" xml:space="preserve">
-    <value>Copyright (C) 2021 Noraneko Inc.</value>
+    <value>Copyright (C) 2022 Noraneko Inc.</value>
   </data>
   <data name="CSVExport" xml:space="preserve">
     <value>Экспорт CSV</value>
@@ -493,6 +493,9 @@
   <data name="MailType" xml:space="preserve">
     <value>Тип</value>
   </data>
+  <data name="MeetingRequest" xml:space="preserve">
+    <value>Запрос на встречу</value>
+  </data>
   <data name="Name" xml:space="preserve">
     <value>Имя</value>
   </data>
@@ -679,6 +682,9 @@
   <data name="Settings" xml:space="preserve">
     <value>Настройки</value>
   </data>
+  <data name="ShowConfirmationAtSendMeetingRequest" xml:space="preserve">
+    <value>Также отображается экран подтверждения запроса на проведение встречи.</value>
+  </data>
   <data name="Subject" xml:space="preserve">
     <value>Тема</value>
   </data>
@@ -705,7 +711,7 @@
     <value>Неизвестно</value>
   </data>
   <data name="Version" xml:space="preserve">
-    <value>Version 2.6.0.0</value>
+    <value>Version 2.6.1.0</value>
   </data>
   <data name="VersionInfo" xml:space="preserve">
     <value>О программе.</value>
