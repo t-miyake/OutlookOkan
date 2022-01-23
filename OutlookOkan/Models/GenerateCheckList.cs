@@ -119,7 +119,7 @@ namespace OutlookOkan.Models
             _checkList = GetSenderAndSenderDomain(in item, _checkList);
             internalDomainList.Add(new InternalDomain { Domain = _checkList.SenderDomain });
 
-            _checkList = GetAttachmentsInformation(in item, _checkList, generalSetting.IsNotTreatedAsAttachmentsAtHtmlEmbeddedFiles, attachmentsSetting);
+            _checkList = GetAttachmentsInformation(in item, _checkList, generalSetting.IsNotTreatedAsAttachmentsAtHtmlEmbeddedFiles, attachmentsSetting, _checkList.MailHtmlBody);
             _checkList = CheckForgotAttach(_checkList, generalSetting);
             _checkList = CheckKeyword(_checkList, alertKeywordAndMessageList);
             _checkList = CheckKeywordForSubject(_checkList, alertKeywordAndMessageForSubjectList);
@@ -1066,8 +1066,9 @@ namespace OutlookOkan.Models
         /// HTML内に埋め込まれた添付ファイル名を取得する。
         /// </summary>
         /// <param name="item">Item</param>
+        /// <param name="mailHtmlBody">メール本文(HTML形式)</param>
         /// <returns>埋め込みファイル名のList</returns>
-        private List<string> MakeEmbeddedAttachmentsList<T>(T item)
+        private List<string> MakeEmbeddedAttachmentsList<T>(T item, string mailHtmlBody)
         {
             if (typeof(T) == typeof(Outlook._MailItem))
             {
@@ -1075,7 +1076,7 @@ namespace OutlookOkan.Models
                 if (((Outlook._MailItem)item).BodyFormat != Outlook.OlBodyFormat.olFormatHTML) return null;
             }
 
-            var matches = Regex.Matches(_checkList.MailHtmlBody, @"cid:.*?@");
+            var matches = Regex.Matches(mailHtmlBody, @"cid:.*?@");
 
             if (matches.Count == 0) return null;
 
@@ -1095,15 +1096,16 @@ namespace OutlookOkan.Models
         /// <param name="checkList">CheckList</param>
         /// <param name="isNotTreatedAsAttachmentsAtHtmlEmbeddedFiles">HTML埋め込みの添付ファイル無視設定</param>
         /// <param name="attachmentsSetting">添付ファイルに関する設定</param>
+        /// <param name="mailHtmlBody">メール本文(HTML形式)</param>
         /// <returns>CheckList</returns>
-        private CheckList GetAttachmentsInformation<T>(in T item, CheckList checkList, bool isNotTreatedAsAttachmentsAtHtmlEmbeddedFiles, AttachmentsSetting attachmentsSetting)
+        private CheckList GetAttachmentsInformation<T>(in T item, CheckList checkList, bool isNotTreatedAsAttachmentsAtHtmlEmbeddedFiles, AttachmentsSetting attachmentsSetting, string mailHtmlBody)
         {
             if (((dynamic)item).Attachments.Count == 0) return checkList;
 
             var embeddedAttachmentsName = new List<string>();
             if (isNotTreatedAsAttachmentsAtHtmlEmbeddedFiles)
             {
-                embeddedAttachmentsName = MakeEmbeddedAttachmentsList(item);
+                embeddedAttachmentsName = MakeEmbeddedAttachmentsList(item, mailHtmlBody);
             }
 
             var tempDirectoryPath = Path.Combine(Path.GetTempPath(), Guid.NewGuid().ToString("N"));
