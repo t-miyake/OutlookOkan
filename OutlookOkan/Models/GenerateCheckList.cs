@@ -1245,7 +1245,7 @@ namespace OutlookOkan.Models
 
             if (isCheckNameAndDomainsFromRecipients)
             {
-                var domainCandidateRecipients = new Dictionary<string, string>();
+                var domainCandidateRecipients = new List<string[]>();
 
                 foreach (var nameAndDomain in cleanedNameAndDomains)
                 {
@@ -1253,19 +1253,19 @@ namespace OutlookOkan.Models
                     {
                         if (recipient.Value.Contains(nameAndDomain.Domain))
                         {
-                            domainCandidateRecipients.Add(recipient.Value, nameAndDomain.Name);
+                            domainCandidateRecipients.Add(new[] { recipient.Value, nameAndDomain.Name });
                         }
                     }
                 }
 
                 foreach (var domainAndName in domainCandidateRecipients)
                 {
-                    if (checkList.MailBody.Contains(domainAndName.Value)) continue;
+                    if (checkList.MailBody.Contains(domainAndName[1])) continue;
 
                     //送信者ドメインは警告対象外。
-                    if (!domainAndName.Key.Contains(checkList.SenderDomain))
+                    if (!domainAndName[0].Contains(checkList.SenderDomain))
                     {
-                        checkList.Alerts.Add(new Alert { AlertMessage = $"{domainAndName.Key} : {Resources.CanNotFindTheLinkedName} ({domainAndName.Value})", IsImportant = true, IsWhite = false, IsChecked = false });
+                        checkList.Alerts.Add(new Alert { AlertMessage = $"{domainAndName[0]} : {Resources.CanNotFindTheLinkedName} ({domainAndName[1]})", IsImportant = true, IsWhite = false, IsChecked = false });
                     }
                 }
             }
