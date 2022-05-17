@@ -92,7 +92,9 @@ namespace OutlookOkan.Models
 
             #endregion
 
-            if (typeof(T) == typeof(Outlook._MailItem))
+            var isMailItem = (typeof(T) == typeof(Outlook._MailItem));
+
+            if (isMailItem)
             {
                 _checkList.MailType = GetMailBodyFormat(((Outlook._MailItem)item).BodyFormat) ?? Resources.FailedToGetInformation;
                 _checkList.MailBody = GetMailBody(((Outlook._MailItem)item).BodyFormat, ((Outlook._MailItem)item).Body ?? Resources.FailedToGetInformation);
@@ -124,12 +126,12 @@ namespace OutlookOkan.Models
             _checkList = CheckKeyword(_checkList, alertKeywordAndMessageList);
             _checkList = CheckKeywordForSubject(_checkList, alertKeywordAndMessageForSubjectList);
 
-            var displayNameAndRecipient = MakeDisplayNameAndRecipient(((dynamic)item).Recipients, new DisplayNameAndRecipient(), generalSetting);
+            var displayNameAndRecipient = MakeDisplayNameAndRecipient(((dynamic)item).Recipients, new DisplayNameAndRecipient(), generalSetting, isMailItem);
 
             var autoAddRecipients = AutoAddCcAndBcc(item, generalSetting, displayNameAndRecipient, autoCcBccKeywordList, autoCcBccAttachedFilesList, autoCcBccRecipientList, CountRecipientExternalDomains(displayNameAndRecipient, _checkList.SenderDomain, internalDomainList, false), _checkList.Sender, generalSetting.IsAutoAddSenderToBcc);
             if (autoAddRecipients?.Count > 0)
             {
-                displayNameAndRecipient = MakeDisplayNameAndRecipient(autoAddRecipients, displayNameAndRecipient, generalSetting);
+                displayNameAndRecipient = MakeDisplayNameAndRecipient(autoAddRecipients, displayNameAndRecipient, generalSetting, isMailItem);
                 _ = ((dynamic)item).Recipients.ResolveAll();
             }
 
@@ -666,14 +668,20 @@ namespace OutlookOkan.Models
         /// <param name="recipients">メールの宛先</param>
         /// <param name="displayNameAndRecipient">宛先アドレスと名称</param>
         /// <param name="generalSetting">一般設定</param>
+        /// <param name="isMailItem">メールアイテムか否か</param>
         /// <returns>宛先アドレスと名称</returns>
-        private DisplayNameAndRecipient MakeDisplayNameAndRecipient(IEnumerable recipients, DisplayNameAndRecipient displayNameAndRecipient, GeneralSetting generalSetting)
+        private DisplayNameAndRecipient MakeDisplayNameAndRecipient(IEnumerable recipients, DisplayNameAndRecipient displayNameAndRecipient, GeneralSetting generalSetting, bool isMailItem)
         {
             foreach (Outlook.Recipient recipient in recipients)
             {
                 var recipientAddressEntryUserType = Outlook.OlAddressEntryUserType.olOtherAddressEntry;
                 try
                 {
+                    if (!isMailItem)
+                    {
+                        if (!recipient.Sendable) continue;
+                    }
+
                     recipientAddressEntryUserType = recipient.AddressEntry.AddressEntryUserType;
                 }
                 catch (Exception)
