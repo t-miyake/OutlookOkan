@@ -160,6 +160,15 @@ namespace OutlookOkan.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Always add the sender&apos;s address to Cc automatically..
+        /// </summary>
+        public static string AlwaysAddTheSendersAddressToCc {
+            get {
+                return ResourceManager.GetString("AlwaysAddTheSendersAddressToCc", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Applicable recipients.
         /// </summary>
         public static string ApplicableDestination {

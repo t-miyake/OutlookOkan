@@ -150,6 +150,9 @@
   <data name="AlwaysAddTheSendersAddressToBcc" xml:space="preserve">
     <value>Fügen Sie die Adresse des Absenders immer automatisch zu Bcc hinzu.</value>
   </data>
+  <data name="AlwaysAddTheSendersAddressToCc" xml:space="preserve">
+    <value>Fügen Sie die Adresse des Absenders immer automatisch zu Cc hinzu.</value>
+  </data>
   <data name="ApplicableDestination" xml:space="preserve">
     <value>Förderfähige Begünstigte</value>
   </data>

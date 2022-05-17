@@ -150,6 +150,9 @@
   <data name="AlwaysAddTheSendersAddressToBcc" xml:space="preserve">
     <value>Añade siempre la dirección del remitente a Bcc automáticamente.</value>
   </data>
+  <data name="AlwaysAddTheSendersAddressToCc" xml:space="preserve">
+    <value>Añade siempre la dirección del remitente a Cc automáticamente.</value>
+  </data>
   <data name="ApplicableDestination" xml:space="preserve">
     <value>Destinatarios aplicables</value>
   </data>

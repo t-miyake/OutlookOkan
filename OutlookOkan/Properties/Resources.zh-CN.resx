@@ -150,6 +150,9 @@
   <data name="AlwaysAddTheSendersAddressToBcc" xml:space="preserve">
     <value>始终将发件人的地址自动添加到Bcc中。</value>
   </data>
+  <data name="AlwaysAddTheSendersAddressToCc" xml:space="preserve">
+    <value>始终将发件人的地址自动添加到Cc中。</value>
+  </data>
   <data name="ApplicableDestination" xml:space="preserve">
     <value>适用对象</value>
   </data>

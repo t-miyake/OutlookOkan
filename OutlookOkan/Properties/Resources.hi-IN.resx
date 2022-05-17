@@ -150,6 +150,9 @@
   <data name="AlwaysAddTheSendersAddressToBcc" xml:space="preserve">
     <value>प्रेषक का पता हमेशा गुप्त प्रतिलिपि में स्वचालित रूप से जोड़ें।</value>
   </data>
+  <data name="AlwaysAddTheSendersAddressToCc" xml:space="preserve">
+    <value>प्रेषक का पता हमेशा सीसी में स्वचालित रूप से जोड़ें।</value>
+  </data>
   <data name="ApplicableDestination" xml:space="preserve">
     <value>लागू प्राप्तकर्ता</value>
   </data>

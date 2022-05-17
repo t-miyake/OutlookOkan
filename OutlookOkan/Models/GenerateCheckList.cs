@@ -131,7 +131,7 @@ namespace OutlookOkan.Models
 
             var displayNameAndRecipient = MakeDisplayNameAndRecipient(((dynamic)item).Recipients, new DisplayNameAndRecipient(), generalSetting, isMailItem);
 
-            var autoAddRecipients = AutoAddCcAndBcc(item, generalSetting, displayNameAndRecipient, autoCcBccKeywordList, autoCcBccAttachedFilesList, autoCcBccRecipientList, CountRecipientExternalDomains(displayNameAndRecipient, _checkList.SenderDomain, internalDomainList, false), _checkList.Sender, generalSetting.IsAutoAddSenderToBcc);
+            var autoAddRecipients = AutoAddCcAndBcc(item, generalSetting, displayNameAndRecipient, autoCcBccKeywordList, autoCcBccAttachedFilesList, autoCcBccRecipientList, CountRecipientExternalDomains(displayNameAndRecipient, _checkList.SenderDomain, internalDomainList, false), _checkList.Sender, generalSetting.IsAutoAddSenderToBcc, generalSetting.IsAutoAddSenderToCc);
             if (autoAddRecipients?.Count > 0)
             {
                 displayNameAndRecipient = MakeDisplayNameAndRecipient(autoAddRecipients, displayNameAndRecipient, generalSetting, isMailItem);
@@ -893,9 +893,10 @@ namespace OutlookOkan.Models
         /// <param name="autoCcBccRecipientList">自動Cc/Bcc追加(宛先)設定</param>
         /// <param name="externalDomainCount">外部ドメイン数</param>
         /// <param name="sender">CheckListのセンダー情報</param>
-        /// <param name="isAutoAddSenderToBcc">自動で送信元アドレスをBCCに追加するか否か</param>
+        /// <param name="isAutoAddSenderToBcc">自動で送信元アドレスをBccに追加するか否か</param>
+        /// <param name="isAutoAddSenderToCc">自動で送信元アドレスをCcに追加するか否か</param>
         /// <returns>CcやBccに自動追加された宛先アドレス</returns>
-        private List<Outlook.Recipient> AutoAddCcAndBcc<T>(T item, GeneralSetting generalSetting, DisplayNameAndRecipient displayNameAndRecipient, IReadOnlyCollection<AutoCcBccKeyword> autoCcBccKeywordList, IReadOnlyCollection<AutoCcBccAttachedFile> autoCcBccAttachedFilesList, IReadOnlyCollection<AutoCcBccRecipient> autoCcBccRecipientList, int externalDomainCount, string sender, bool isAutoAddSenderToBcc)
+        private List<Outlook.Recipient> AutoAddCcAndBcc<T>(T item, GeneralSetting generalSetting, DisplayNameAndRecipient displayNameAndRecipient, IReadOnlyCollection<AutoCcBccKeyword> autoCcBccKeywordList, IReadOnlyCollection<AutoCcBccAttachedFile> autoCcBccAttachedFilesList, IReadOnlyCollection<AutoCcBccRecipient> autoCcBccRecipientList, int externalDomainCount, string sender, bool isAutoAddSenderToBcc, bool isAutoAddSenderToCc)
         {
             var autoAddedCcAddressList = new List<string>();
             var autoAddedBccAddressList = new List<string>();
@@ -999,11 +1000,12 @@ namespace OutlookOkan.Models
                 }
             }
 
-            //常に自分をBccに入れるオプションが有効な場合、それをする。
-            if (isAutoAddSenderToBcc)
+            //常に自分をCcまたはBccに入れるオプションが有効な場合、それをする。
+            if (isAutoAddSenderToCc || isAutoAddSenderToBcc)
             {
-                var addSenderToCc = true;
-                var counter = 0;
+                var addSenderToCc = isAutoAddSenderToCc;
+                var addSenderToBcc = isAutoAddSenderToBcc;
+
                 var mailItemSender = ((dynamic)item).SenderEmailAddress;
 
                 if (typeof(T) == typeof(Outlook._MailItem))
@@ -1014,18 +1016,26 @@ namespace OutlookOkan.Models
                     }
                 }
 
-                while (counter < 10)
+                var counter = 0;
+                while (counter <= 5)
                 {
                     counter++;
                     try
                     {
                         foreach (Outlook.Recipient recipient in ((dynamic)item).Recipients)
                         {
-                            if (recipient.Type != (int)Outlook.OlMailRecipientType.olBCC) continue;
-                            if (recipient.Address.Equals(mailItemSender)) addSenderToCc = false;
-                            counter = 11;
-                            break;
+                            switch (recipient.Type)
+                            {
+                                case (int)Outlook.OlMailRecipientType.olBCC when recipient.Address.Equals(mailItemSender):
+                                    addSenderToBcc = false;
+                                    break;
+                                case (int)Outlook.OlMailRecipientType.olCC when recipient.Address.Equals(mailItemSender):
+                                    addSenderToCc = false;
+                                    break;
+                            }
                         }
+                        counter = 6;
+                        break;
                     }
                     catch (Exception)
                     {
@@ -1034,6 +1044,32 @@ namespace OutlookOkan.Models
                 }
 
                 if (addSenderToCc)
+                {
+                    counter = 0;
+                    while (counter <= 3)
+                    {
+                        counter++;
+                        try
+                        {
+                            var senderAsRecipient = ((dynamic)item).Recipients.Add(mailItemSender);
+                            Thread.Sleep(150);
+
+                            _ = senderAsRecipient.Resolve();
+                            Thread.Sleep(150);
+
+                            senderAsRecipient.Type = (int)Outlook.OlMailRecipientType.olCC;
+                            autoAddRecipients.Add(senderAsRecipient);
+                            mailItemSender = senderAsRecipient.Address;
+                            counter = 4;
+                        }
+                        catch (Exception)
+                        {
+                            Thread.Sleep(10);
+                        }
+                    }
+                }
+
+                if (addSenderToBcc)
                 {
                     counter = 0;
                     while (counter < 3)
@@ -1059,15 +1095,7 @@ namespace OutlookOkan.Models
                     }
                 }
 
-                try
-                {
-                    _whitelist.Add(new Whitelist { WhiteName = sender });
-                }
-                catch (Exception)
-
-                {
-                    //Do Nothing.
-                }
+                _whitelist.Add(new Whitelist { WhiteName = sender, IsSkipConfirmation = false });
             }
 
             return autoAddRecipients;

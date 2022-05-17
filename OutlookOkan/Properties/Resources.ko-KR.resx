@@ -150,6 +150,9 @@
   <data name="AlwaysAddTheSendersAddressToBcc" xml:space="preserve">
     <value>발신자의 주소를 항상 숨은 참조에 자동으로 추가하십시오.</value>
   </data>
+  <data name="AlwaysAddTheSendersAddressToCc" xml:space="preserve">
+    <value>항상 보낸 사람의 주소를 참조에 자동으로 추가합니다.</value>
+  </data>
   <data name="ApplicableDestination" xml:space="preserve">
     <value>적용 대상</value>
   </data>

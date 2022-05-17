@@ -1215,6 +1215,7 @@ namespace OutlookOkan.ViewModels
             IsWarningIfRecipientsIsNotRegistered = _generalSetting[0].IsWarningIfRecipientsIsNotRegistered;
             IsProhibitsSendingMailIfRecipientsIsNotRegistered = _generalSetting[0].IsProhibitsSendingMailIfRecipientsIsNotRegistered;
             IsShowConfirmationAtSendMeetingRequest = _generalSetting[0].IsShowConfirmationAtSendMeetingRequest;
+            IsAutoAddSenderToCc = _generalSetting[0].IsAutoAddSenderToCc;
 
             if (_generalSetting[0].LanguageCode is null) return;
 
@@ -1259,7 +1260,8 @@ namespace OutlookOkan.ViewModels
                     IsCheckNameAndDomainsFromRecipients = IsCheckNameAndDomainsFromRecipients,
                     IsWarningIfRecipientsIsNotRegistered = IsWarningIfRecipientsIsNotRegistered,
                     IsProhibitsSendingMailIfRecipientsIsNotRegistered = IsProhibitsSendingMailIfRecipientsIsNotRegistered,
-                    IsShowConfirmationAtSendMeetingRequest = IsShowConfirmationAtSendMeetingRequest
+                    IsShowConfirmationAtSendMeetingRequest = IsShowConfirmationAtSendMeetingRequest,
+                    IsAutoAddSenderToCc = IsAutoAddSenderToCc,
                 }
             };
 
@@ -1499,6 +1501,17 @@ namespace OutlookOkan.ViewModels
             {
                 _isShowConfirmationAtSendMeetingRequest = value;
                 OnPropertyChanged(nameof(IsShowConfirmationAtSendMeetingRequest));
+            }
+        }
+
+        private bool _isAutoAddSenderToCc;
+        public bool IsAutoAddSenderToCc
+        {
+            get => _isAutoAddSenderToCc;
+            set
+            {
+                _isAutoAddSenderToCc = value;
+                OnPropertyChanged(nameof(IsAutoAddSenderToCc));
             }
         }
 

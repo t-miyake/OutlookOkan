@@ -28,6 +28,10 @@
                                 <TextBlock Text="{Binding Source={x:Static services:ResourceService.Instance}, Path=Resources.IsEnableRecipientsAreSortedByDomain, Mode=OneWay}" />
                             </StackPanel>
                             <StackPanel Orientation="Horizontal" Margin="0,5,0,0">
+                                <CheckBox Margin="0,0,8,0" IsChecked="{Binding IsAutoAddSenderToCc, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+                                <TextBlock Text="{Binding Source={x:Static services:ResourceService.Instance}, Path=Resources.AlwaysAddTheSendersAddressToCc, Mode=OneWay}" />
+                            </StackPanel>
+                            <StackPanel Orientation="Horizontal" Margin="0,5,0,0">
                                 <CheckBox Margin="0,0,8,0" IsChecked="{Binding IsAutoAddSenderToBcc, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
                                 <TextBlock Text="{Binding Source={x:Static services:ResourceService.Instance}, Path=Resources.AlwaysAddTheSendersAddressToBcc, Mode=OneWay}" />
                             </StackPanel>

@@ -726,6 +726,9 @@ If the recipients and the attached file name do not match, a warning will be dis
   <data name="ShowConfirmationAtSendMeetingRequest" xml:space="preserve">
     <value>The confirmation screen is also displayed for meeting request.</value>
   </data>
+  <data name="AlwaysAddTheSendersAddressToCc" xml:space="preserve">
+    <value>Always add the sender's address to Cc automatically.</value>
+  </data>
   <data name="AutoAddMessage" xml:space="preserve">
     <value>Automatic body text addition</value>
   </data>
