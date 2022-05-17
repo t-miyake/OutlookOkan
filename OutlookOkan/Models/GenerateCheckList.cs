@@ -346,7 +346,7 @@ namespace OutlookOkan.Models
 
             var externalDomainsCount = domainList.Count;
 
-            foreach (var _ in internalDomain.Where(settings => domainList.Contains(settings.Domain) && settings.Domain != senderDomain))
+            foreach (var _ in internalDomain.Where(internalDomainSetting => domainList.Any(domain => domain.EndsWith(internalDomainSetting.Domain)) && !senderDomain.EndsWith(internalDomainSetting.Domain)))
             {
                 externalDomainsCount--;
             }
@@ -1342,7 +1342,7 @@ namespace OutlookOkan.Models
             foreach (var to in displayNameAndRecipient.To)
             {
                 var isExternal = true;
-                foreach (var _ in internalDomainList.Where(settings => to.Key.Contains(settings.Domain)))
+                foreach (var _ in internalDomainList.Where(internalDomainSetting => to.Key.EndsWith(internalDomainSetting.Domain)))
                 {
                     isExternal = false;
                 }
@@ -1387,7 +1387,7 @@ namespace OutlookOkan.Models
             foreach (var cc in displayNameAndRecipient.Cc)
             {
                 var isExternal = true;
-                foreach (var _ in internalDomainList.Where(settings => cc.Key.Contains(settings.Domain)))
+                foreach (var _ in internalDomainList.Where(internalDomainSetting => cc.Key.EndsWith(internalDomainSetting.Domain)))
                 {
                     isExternal = false;
                 }
@@ -1432,7 +1432,7 @@ namespace OutlookOkan.Models
             foreach (var bcc in displayNameAndRecipient.Bcc)
             {
                 var isExternal = true;
-                foreach (var _ in internalDomainList.Where(settings => bcc.Key.Contains(settings.Domain)))
+                foreach (var _ in internalDomainList.Where(internalDomainSetting => bcc.Key.EndsWith(internalDomainSetting.Domain)))
                 {
                     isExternal = false;
                 }
@@ -1640,7 +1640,7 @@ namespace OutlookOkan.Models
             foreach (var to in displayNameAndRecipient.To)
             {
                 var isInternal = false;
-                foreach (var _ in internalDomains.Where(internalDomain => to.Key.Contains(internalDomain.Domain)))
+                foreach (var _ in internalDomains.Where(internalDomain => to.Key.EndsWith(internalDomain.Domain)))
                 {
                     isInternal = true;
                 }
@@ -1659,7 +1659,7 @@ namespace OutlookOkan.Models
             foreach (var cc in displayNameAndRecipient.Cc)
             {
                 var isInternal = false;
-                foreach (var _ in internalDomains.Where(internalDomain => cc.Key.Contains(internalDomain.Domain)))
+                foreach (var _ in internalDomains.Where(internalDomain => cc.Key.EndsWith(internalDomain.Domain)))
                 {
                     isInternal = true;
                 }
@@ -1689,7 +1689,7 @@ namespace OutlookOkan.Models
             foreach (var recipient in displayNameAndRecipient.MailRecipientsIndex.Where(recipient => recipient.Type != (int)Outlook.OlMailRecipientType.olBCC))
             {
                 var isExternal = true;
-                foreach (var _ in internalDomains.Where(internalDomain => recipient.MailAddress.Contains(internalDomain.Domain)))
+                foreach (var _ in internalDomains.Where(internalDomain => recipient.MailAddress.EndsWith(internalDomain.Domain)))
                 {
                     isExternal = false;
                 }
@@ -1842,17 +1842,16 @@ namespace OutlookOkan.Models
         /// <param name="isWarningIfRecipientsIsNotRegistered">連絡先(アドレス帳)未登録の宛先に警告を表示するか否か</param>
         /// <param name="isProhibitsSendingMailIfRecipientsIsNotRegistered">連絡先(アドレス帳)未登録の宛先が存在する場合、メールの送信を禁止するか否か</param>
         /// <returns>CheckList</returns>
-        private CheckList AddAlertOrProhibitsSendingMailIfIfRecipientsIsNotRegistered(CheckList checkList, DisplayNameAndRecipient displayNameAndRecipient, IEnumerable<string> contactsList, IEnumerable<InternalDomain> internalDomainList, bool isWarningIfRecipientsIsNotRegistered, bool isProhibitsSendingMailIfRecipientsIsNotRegistered)
+        private CheckList AddAlertOrProhibitsSendingMailIfIfRecipientsIsNotRegistered(CheckList checkList, DisplayNameAndRecipient displayNameAndRecipient, IEnumerable<string> contactsList, IReadOnlyCollection<InternalDomain> internalDomainList, bool isWarningIfRecipientsIsNotRegistered, bool isProhibitsSendingMailIfRecipientsIsNotRegistered)
         {
             if (!(isWarningIfRecipientsIsNotRegistered || isProhibitsSendingMailIfRecipientsIsNotRegistered)) return checkList;
 
-            var internalDomain = internalDomainList.Select(list => list.Domain).ToList();
             var selectedContactsList = contactsList.SelectMany(contact => displayNameAndRecipient.MailRecipientsIndex.Where(mailItemsRecipient => contact == mailItemsRecipient.MailAddress || contact == mailItemsRecipient.MailItemsRecipient)).Select(x => x.MailAddress).ToList();
 
             foreach (var to in displayNameAndRecipient.To.Where(to => !selectedContactsList.Contains(to.Key)))
             {
                 //内部ドメインは対象外
-                if (internalDomain.Any(iDomain => to.Key.Contains(iDomain))) continue;
+                if (internalDomainList.Any(internalDomain => to.Key.EndsWith(internalDomain.Domain))) continue;
 
                 if (isProhibitsSendingMailIfRecipientsIsNotRegistered)
                 {
@@ -1867,7 +1866,7 @@ namespace OutlookOkan.Models
             foreach (var cc in displayNameAndRecipient.Cc.Where(cc => !selectedContactsList.Contains(cc.Key)))
             {
                 //内部ドメインは対象外
-                if (internalDomain.Any(iDomain => cc.Key.Contains(iDomain))) continue;
+                if (internalDomainList.Any(internalDomain => cc.Key.EndsWith(internalDomain.Domain))) continue;
 
                 if (isProhibitsSendingMailIfRecipientsIsNotRegistered)
                 {
@@ -1882,7 +1881,7 @@ namespace OutlookOkan.Models
             foreach (var bcc in displayNameAndRecipient.Bcc.Where(bcc => !selectedContactsList.Contains(bcc.Key)))
             {
                 //内部ドメインは対象外
-                if (internalDomain.Any(iDomain => bcc.Key.Contains(iDomain))) continue;
+                if (internalDomainList.Any(internalDomain => bcc.Key.EndsWith(internalDomain.Domain))) continue;
 
                 if (isProhibitsSendingMailIfRecipientsIsNotRegistered)
                 {

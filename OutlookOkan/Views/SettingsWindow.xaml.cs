@@ -112,7 +112,7 @@ namespace OutlookOkan.Views
         private void DataGrid_InternalDomainList_OnCellEditEnding(object sender, DataGridCellEditEndingEventArgs e)
         {
             var inputText = ((TextBox)e.EditingElement).Text;
-            if (string.IsNullOrEmpty(inputText) || !inputText.Contains("@"))
+            if (string.IsNullOrEmpty(inputText) || (!inputText.StartsWith("@") && !inputText.StartsWith(".")))
             {
                 _ = MessageBox.Show(Properties.Resources.InputDomain, Properties.Resources.AppName, MessageBoxButton.OK);
                 e.Cancel = true;
@@ -120,7 +120,7 @@ namespace OutlookOkan.Views
             else
             {
                 //@のみで登録すると全てのメールアドレスが対象になるため、それを禁止。
-                if (!inputText.Equals("@")) return;
+                if (!inputText.Equals("@") && !inputText.Equals(".")) return;
 
                 _ = MessageBox.Show(Properties.Resources.InputDomain, Properties.Resources.AppName, MessageBoxButton.OK);
                 e.Cancel = true;
