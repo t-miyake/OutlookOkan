@@ -1365,22 +1365,26 @@ namespace OutlookOkan.Models
 
                 checkList.ToAddresses.Add(new Address { MailAddress = to.Value, IsExternal = isExternal, IsWhite = isWhite, IsChecked = isWhite, IsSkip = isSkip });
 
-                if (alertAddressList.Count == 0 || !alertAddressList.Any(address => to.Key.Contains(address.TargetAddress))) continue;
-
-                checkList.Alerts.Add(new Alert
-                {
-                    AlertMessage = Resources.IsAlertAddressToAlert + $"[{to.Value}]",
-                    IsImportant = true,
-                    IsWhite = false,
-                    IsChecked = false
-                });
+                if (alertAddressList.Count == 0) continue;
 
                 foreach (var alertAddress in alertAddressList)
                 {
-                    if (!to.Key.Contains(alertAddress.TargetAddress) || !alertAddress.IsCanNotSend) continue;
+                    if (!to.Key.Contains(alertAddress.TargetAddress)) continue;
 
-                    checkList.IsCanNotSendMail = true;
-                    checkList.CanNotSendMailMessage = Resources.SendingForbidAddress + $"[{to.Value}]";
+                    if (alertAddress.IsCanNotSend)
+                    {
+                        checkList.IsCanNotSendMail = true;
+                        checkList.CanNotSendMailMessage = Resources.SendingForbidAddress + $"[{to.Value}]";
+                        continue;
+                    }
+
+                    checkList.Alerts.Add(new Alert
+                    {
+                        AlertMessage = string.IsNullOrEmpty(alertAddress.Message) ? Resources.IsAlertAddressToAlert + $"[{to.Value}]" : alertAddress.Message + $"[{to.Value}]",
+                        IsImportant = true,
+                        IsWhite = false,
+                        IsChecked = false
+                    });
                 }
             }
 
@@ -1410,22 +1414,26 @@ namespace OutlookOkan.Models
 
                 checkList.CcAddresses.Add(new Address { MailAddress = cc.Value, IsExternal = isExternal, IsWhite = isWhite, IsChecked = isWhite, IsSkip = isSkip });
 
-                if (alertAddressList.Count == 0 || !alertAddressList.Any(address => cc.Key.Contains(address.TargetAddress))) continue;
-
-                checkList.Alerts.Add(new Alert
-                {
-                    AlertMessage = Resources.IsAlertAddressCcAlert + $"[{cc.Value}]",
-                    IsImportant = true,
-                    IsWhite = false,
-                    IsChecked = false
-                });
+                if (alertAddressList.Count == 0) continue;
 
                 foreach (var alertAddress in alertAddressList)
                 {
-                    if (!cc.Key.Contains(alertAddress.TargetAddress) || !alertAddress.IsCanNotSend) continue;
+                    if (!cc.Key.Contains(alertAddress.TargetAddress)) continue;
 
-                    checkList.IsCanNotSendMail = true;
-                    checkList.CanNotSendMailMessage = Resources.SendingForbidAddress + $"[{cc.Value}]";
+                    if (alertAddress.IsCanNotSend)
+                    {
+                        checkList.IsCanNotSendMail = true;
+                        checkList.CanNotSendMailMessage = Resources.SendingForbidAddress + $"[{cc.Value}]";
+                        continue;
+                    }
+
+                    checkList.Alerts.Add(new Alert
+                    {
+                        AlertMessage = string.IsNullOrEmpty(alertAddress.Message) ? Resources.IsAlertAddressToAlert + $"[{cc.Value}]" : alertAddress.Message + $"[{cc.Value}]",
+                        IsImportant = true,
+                        IsWhite = false,
+                        IsChecked = false
+                    });
                 }
             }
 
@@ -1455,22 +1463,26 @@ namespace OutlookOkan.Models
 
                 checkList.BccAddresses.Add(new Address { MailAddress = bcc.Value, IsExternal = isExternal, IsWhite = isWhite, IsChecked = isWhite, IsSkip = isSkip });
 
-                if (alertAddressList.Count == 0 || !alertAddressList.Any(address => bcc.Key.Contains(address.TargetAddress))) continue;
-
-                checkList.Alerts.Add(new Alert
-                {
-                    AlertMessage = Resources.IsAlertAddressBccAlert + $"[{bcc.Value}]",
-                    IsImportant = true,
-                    IsWhite = false,
-                    IsChecked = false
-                });
+                if (alertAddressList.Count == 0) continue;
 
                 foreach (var alertAddress in alertAddressList)
                 {
-                    if (!bcc.Key.Contains(alertAddress.TargetAddress) || !alertAddress.IsCanNotSend) continue;
+                    if (!bcc.Key.Contains(alertAddress.TargetAddress)) continue;
 
-                    checkList.IsCanNotSendMail = true;
-                    checkList.CanNotSendMailMessage = Resources.SendingForbidAddress + $"[{bcc.Value}]";
+                    if (alertAddress.IsCanNotSend)
+                    {
+                        checkList.IsCanNotSendMail = true;
+                        checkList.CanNotSendMailMessage = Resources.SendingForbidAddress + $"[{bcc.Value}]";
+                        continue;
+                    }
+
+                    checkList.Alerts.Add(new Alert
+                    {
+                        AlertMessage = string.IsNullOrEmpty(alertAddress.Message) ? Resources.IsAlertAddressToAlert + $"[{bcc.Value}]" : alertAddress.Message + $"[{bcc.Value}]",
+                        IsImportant = true,
+                        IsWhite = false,
+                        IsChecked = false
+                    });
                 }
             }
 

@@ -391,6 +391,13 @@
                                             </Style>
                                         </DataGridTextColumn.EditingElementStyle>
                                     </DataGridTextColumn>
+                                    <DataGridTextColumn Header="{Binding Source={x:Static services:ResourceService.Instance}, Path=Resources.WarningText, Mode=OneWay}" Binding="{Binding Message, Mode=TwoWay}" Width="*">
+                                        <DataGridTextColumn.ElementStyle>
+                                            <Style TargetType="TextBlock">
+                                                <Setter Property="ToolTipService.ToolTip" Value="{Binding Source={x:Static services:ResourceService.Instance}, Path=Resources.WarningTextInfo, Mode=OneWay}" />
+                                            </Style>
+                                        </DataGridTextColumn.ElementStyle>
+                                    </DataGridTextColumn>
                                     <DataGridCheckBoxColumn Header="{Binding Source={x:Static services:ResourceService.Instance}, Path=Resources.SendingForbid, Mode=OneWay}" Binding="{Binding IsCanNotSend, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Width="Auto">
                                         <DataGridCheckBoxColumn.ElementStyle>
                                             <Style TargetType="CheckBox">

@@ -1475,9 +1475,11 @@ namespace OutlookOkan.Properties {
         ///or
         ///Domain: @noraneko.co.jp
         ///
-        ///Register an email address or domain.
+        ///Register an email address or domain and their alerting text.
         ///
-        ///If you send an email to an email address or domain that you have registered here, you will receive an alert in advance..
+        ///If you send an email to an email address or domain that you have registered here, you will receive an alert in advance.
+        ///
+        ///If the alerting text is blank, the confirmation screen will show the default alerting text..
         /// </summary>
         public static string SettingExampleAlertMailAddress {
             get {

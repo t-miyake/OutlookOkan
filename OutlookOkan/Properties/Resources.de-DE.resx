@@ -614,9 +614,12 @@ Wenn der Warntext leer ist, wird auf dem Bestätigungsbildschirm der Standard-Wa
 oder
 Domäne: @noraneko.co.jp
 
-Registrieren Sie eine E-Mail-Adresse oder eine Domäne.
+Registrieren Sie eine E-Mail-Adresse oder Domäne und ihren Benachrichtigungstext.
 
-Wenn Sie eine E-Mail an eine E-Mail-Adresse oder Domäne senden, die Sie hier registriert haben, erhalten Sie eine Benachrichtigung im Voraus.</value>
+Wenn Sie eine E-Mail an eine E-Mail-Adresse oder Domäne senden, die Sie hier registriert haben, erhalten Sie eine Benachrichtigung im Voraus.
+
+Wenn der Warntext leer ist, wird auf dem Bestätigungsbildschirm der Standard-Warntext angezeigt.</value>
+  </data>
   </data>
   <data name="SettingExampleAttachmentProhibitedRecipients" xml:space="preserve">
     <value>E-Mail Adresse: info@noraneko.co.jp
