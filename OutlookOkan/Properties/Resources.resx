@@ -559,7 +559,9 @@ when the recipients (To/Cc) has a large number of external domains.</value>
   <data name="SettingExampleExternalDomainsWarningAndAutoChangeToBcc" xml:space="preserve">
     <value>Set the number of external domains to be used as a basis for warnings and automatic change to Bcc, and turn each one on or off.
 
-If the To does not exist after automatic change to Bcc, the sender's address will be automatically added to the To.</value>
+If the To does not exist after automatic change to Bcc, the sender's address will be automatically added to the To.
+
+It is also possible to force all recipients to be converted to Bcc.</value>
   </data>
   <data name="TargetToAndCcExternalDomainsNum" xml:space="preserve">
     <value>The number of external domains of the recipients (To/Cc) to be covered by this feature.</value>
@@ -737,11 +739,23 @@ If the recipients and the attached file name do not match, a warning will be dis
   <data name="AutoAddMessage" xml:space="preserve">
     <value>Automatic body text addition</value>
   </data>
+  <data name="ForceAutoChangeRecipientsToBcc" xml:space="preserve">
+    <value>Force auto change to Bcc</value>
+  </data>
+  <data name="ForceAutoChangeRecipientsToBccNotes" xml:space="preserve">
+    <value>The following settings take precedence over the above settings.</value>
+  </data>
   <data name="IsAddMessageToEnd" xml:space="preserve">
     <value>The following text is automatically added to the end of the body.</value>
   </data>
   <data name="IsAddMessageToStart" xml:space="preserve">
     <value>The following text is automatically added to the beginning of the body.</value>
+  </data>
+  <data name="IsForceAutoChangeRecipientsToBcc" xml:space="preserve">
+    <value>Force all external recipients to Bcc.</value>
+  </data>
+  <data name="IsIncludeInternalDomain" xml:space="preserve">
+    <value>Include internal domains. *All recipients will be changed to Bcc.</value>
   </data>
   <data name="SettingExampleAttachmentAlertRecipients" xml:space="preserve">
     <value>Address: info@noraneko.co.jp
@@ -757,6 +771,9 @@ If the warning text is left blank, the default warning text will be displayed.</
   <data name="SettingExampleAutoAddMessage" xml:space="preserve">
     <value>You can automatically add the specified wording to the beginning or end of an e-mail.</value>
   </data>
+  <data name="ToRecipient" xml:space="preserve">
+    <value>Mail address to be set as To *If not set, the sender address is automatically set as To.</value>
+  </data>
   <data name="AddedTextAtTheBeginning" xml:space="preserve">
     <value>Added text at the beginning of the mail.</value>
   </data>
@@ -765,6 +782,12 @@ If the warning text is left blank, the default warning text will be displayed.</
   </data>
   <data name="AttachmentAlertRecipientsMessage" xml:space="preserve">
     <value>Recipient for warning of attachment sending.</value>
+  </data>
+  <data name="AutoAddToRecipientByForceAutoChangeRecipientsToBccAddressToAlert" xml:space="preserve">
+    <value>The specified Email address was automatically added to the To. (because the To no longer exists due to auto change to Bcc.)</value>
+  </data>
+  <data name="ForceAutoChangeRecipientsToBccAlert" xml:space="preserve">
+    <value>The recipients were automatically converted to Bcc.</value>
   </data>
   <data name="NotApplicableToMeetingRequests" xml:space="preserve">
     <value>*Not applicable to meeting requests.</value>

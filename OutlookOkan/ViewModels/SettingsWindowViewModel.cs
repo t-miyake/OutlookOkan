@@ -77,6 +77,7 @@ namespace OutlookOkan.ViewModels
             LoadRecipientsAndAttachmentsNameData();
             LoadAttachmentProhibitedRecipientsData();
             LoadAttachmentAlertRecipientsData();
+            LoadForceAutoChangeRecipientsToBccData();
             LoadAutoAddMessageData();
         }
 
@@ -100,6 +101,7 @@ namespace OutlookOkan.ViewModels
                     SaveRecipientsAndAttachmentsNameToCsv(),
                     SaveAttachmentProhibitedRecipientsToCsv(),
                     SaveAttachmentAlertRecipientsToCsv(),
+                    SaveForceAutoChangeRecipientsToBccToCsv(),
                     SaveAutoAddMessageToCsv()
                 };
 
@@ -852,9 +854,13 @@ namespace OutlookOkan.ViewModels
             }
         }
 
-        public bool IsWarningWhenLargeNumberOfExternalDomainsCheckBoxIsEnabled => !IsProhibitedWhenLargeNumberOfExternalDomains;
+        public bool IsWarningWhenLargeNumberOfExternalDomainsCheckBoxIsEnabled => !IsProhibitedWhenLargeNumberOfExternalDomains && !IsForceAutoChangeRecipientsToBcc;
 
-        public bool IsAutoChangeToBccWhenLargeNumberOfExternalDomainsCheckBoxIsEnabled => !IsProhibitedWhenLargeNumberOfExternalDomains;
+        public bool IsAutoChangeToBccWhenLargeNumberOfExternalDomainsCheckBoxIsEnabled => !IsProhibitedWhenLargeNumberOfExternalDomains && !IsForceAutoChangeRecipientsToBcc;
+
+        public bool TargetToAndCcExternalDomainsNumEnabledIsEnabled => !IsForceAutoChangeRecipientsToBcc;
+
+        public bool IsProhibitedWhenLargeNumberOfExternalDomainsIsEnabled => !IsForceAutoChangeRecipientsToBcc;
 
         #endregion
 
@@ -1160,6 +1166,83 @@ namespace OutlookOkan.ViewModels
             {
                 _attachmentAlertRecipients = value;
                 OnPropertyChanged(nameof(AttachmentAlertRecipients));
+            }
+        }
+
+        #endregion
+
+        #region ForceAutoChangeRecipientsToBcc
+
+        private void LoadForceAutoChangeRecipientsToBccData()
+        {
+            var readCsv = new ReadAndWriteCsv("ForceAutoChangeRecipientsToBcc.csv");
+            //1行しかないはずだが、2行以上あるとロード時にエラーとなる恐れがあるため、全行ロードする。
+            foreach (var data in readCsv.GetCsvRecords<ForceAutoChangeRecipientsToBcc>(readCsv.LoadCsv<ForceAutoChangeRecipientsToBccMap>()))
+            {
+                _forceAutoChangeRecipientsToBcc.Add(data);
+            }
+
+            if (_forceAutoChangeRecipientsToBcc.Count == 0) return;
+
+            //実際に使用するのは1行目の設定のみ
+            IsForceAutoChangeRecipientsToBcc = _forceAutoChangeRecipientsToBcc[0].IsForceAutoChangeRecipientsToBcc;
+            ToRecipient = _forceAutoChangeRecipientsToBcc[0].ToRecipient;
+            IsIncludeInternalDomain = _forceAutoChangeRecipientsToBcc[0].IsIncludeInternalDomain;
+        }
+
+        private async Task SaveForceAutoChangeRecipientsToBccToCsv()
+        {
+            var tempForceAutoChangeRecipientsToBcc = new List<ForceAutoChangeRecipientsToBcc>
+            {
+                new ForceAutoChangeRecipientsToBcc
+                {
+                    IsForceAutoChangeRecipientsToBcc = IsForceAutoChangeRecipientsToBcc,
+                    ToRecipient = ToRecipient,
+                    IsIncludeInternalDomain = IsIncludeInternalDomain
+                }
+            };
+
+            var list = tempForceAutoChangeRecipientsToBcc.Cast<object>().ToList();
+            var writeCsv = new ReadAndWriteCsv("ForceAutoChangeRecipientsToBcc.csv");
+            await Task.Run(() => writeCsv.WriteRecordsToCsv<ForceAutoChangeRecipientsToBccMap>(list));
+        }
+
+        private readonly List<ForceAutoChangeRecipientsToBcc> _forceAutoChangeRecipientsToBcc = new List<ForceAutoChangeRecipientsToBcc>();
+
+        private bool _isForceAutoChangeRecipientsToBcc;
+        public bool IsForceAutoChangeRecipientsToBcc
+        {
+            get => _isForceAutoChangeRecipientsToBcc;
+            set
+            {
+                _isForceAutoChangeRecipientsToBcc = value;
+                OnPropertyChanged(nameof(IsForceAutoChangeRecipientsToBcc));
+                OnPropertyChanged(nameof(IsWarningWhenLargeNumberOfExternalDomainsCheckBoxIsEnabled));
+                OnPropertyChanged(nameof(IsAutoChangeToBccWhenLargeNumberOfExternalDomainsCheckBoxIsEnabled));
+                OnPropertyChanged(nameof(TargetToAndCcExternalDomainsNumEnabledIsEnabled));
+                OnPropertyChanged(nameof(IsProhibitedWhenLargeNumberOfExternalDomainsIsEnabled));
+            }
+        }
+
+        private string _toRecipient;
+        public string ToRecipient
+        {
+            get => _toRecipient;
+            set
+            {
+                _toRecipient = value;
+                OnPropertyChanged(nameof(ToRecipient));
+            }
+        }
+
+        private bool _isIncludeInternalDomain;
+        public bool IsIncludeInternalDomain
+        {
+            get => _isIncludeInternalDomain;
+            set
+            {
+                _isIncludeInternalDomain = value;
+                OnPropertyChanged(nameof(IsIncludeInternalDomain));
             }
         }
 

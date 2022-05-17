@@ -219,6 +219,9 @@
   <data name="AutoAddSendersAddressToAlert" xml:space="preserve">
     <value>ที่อยู่อีเมลของผู้ส่งถูกเพิ่มลงใน To โดยอัตโนมัติ (เนื่องจากไม่มีถึงอีกต่อไปเนื่องจากเปลี่ยนเป็นสำเนาลับอัตโนมัติ)</value>
   </data>
+  <data name="AutoAddToRecipientByForceAutoChangeRecipientsToBccAddressToAlert" xml:space="preserve">
+    <value>ที่อยู่อีเมลที่ระบุถูกเพิ่มลงใน To โดยอัตโนมัติ (เนื่องจากไม่มีถึงอีกต่อไปเนื่องจากเปลี่ยนเป็นสำเนาลับอัตโนมัติ)</value>
+  </data>
   <data name="AutoCheckConfig" xml:space="preserve">
     <value>ตรวจสอบการตั้งค่าอัตโนมัติ</value>
   </data>
@@ -348,6 +351,15 @@ bcc โดยอัตโนมัติ</value>
   <data name="FailedToGetInformation" xml:space="preserve">
     <value>ไม่สามารถรับข้อมูลได้</value>
   </data>
+  <data name="ForceAutoChangeRecipientsToBcc" xml:space="preserve">
+    <value>บังคับให้เปลี่ยนเป็น Bcc . โดยอัตโนมัติ</value>
+  </data>
+  <data name="ForceAutoChangeRecipientsToBccAlert" xml:space="preserve">
+    <value>ผู้รับจะถูกแปลงเป็นสำเนาลับโดยอัตโนมัติ</value>
+  </data>
+  <data name="ForceAutoChangeRecipientsToBccNotes" xml:space="preserve">
+    <value>การตั้งค่าต่อไปนี้มีความสำคัญเหนือการตั้งค่าข้างต้น</value>
+  </data>
   <data name="ForgottenToAttachAlert" xml:space="preserve">
     <value>คำว่า "ไฟล์ที่แนบมา" อยู่ในข้อความ แต่ไม่มีไฟล์แนบ</value>
   </data>
@@ -461,6 +473,12 @@ bcc โดยอัตโนมัติ</value>
   </data>
   <data name="IsEnableRecipientsAreSortedByDomain" xml:space="preserve">
     <value>ผู้รับจะถูกจัดเรียงตามโดเมนบนหน้าจอยืนยัน</value>
+  </data>
+  <data name="IsForceAutoChangeRecipientsToBcc" xml:space="preserve">
+    <value>บังคับผู้รับภายนอกทั้งหมดเป็นสำเนาลับ</value>
+  </data>
+  <data name="IsIncludeInternalDomain" xml:space="preserve">
+    <value>รวมโดเมนภายใน *ผู้รับทั้งหมดจะเปลี่ยนเป็นสำเนาลับ</value>
   </data>
   <data name="IsNotTreatedAsAttachmentsAtHtmlEmbeddedFiles" xml:space="preserve">
     <value>ไฟล์ที่ฝังอยู่ในเมล HTML จะไม่ถือว่าเป็นไฟล์แนบ</value>
@@ -681,7 +699,9 @@ bcc โดยอัตโนมัติ</value>
   </data>
   <data name="SettingExampleExternalDomainsWarningAndAutoChangeToBcc" xml:space="preserve">
     <value>กำหนดจำนวนโดเมนภายนอกที่จะใช้เป็นพื้นฐานสำหรับคำเตือนและเปลี่ยนเป็นสำเนาลับโดยอัตโนมัติ และเปิดหรือปิดแต่ละโดเมน
-หากไม่มี ถึง หลังจากเปลี่ยนเป็น Bcc โดยอัตโนมัติ ที่อยู่ของผู้ส่งจะถูกเพิ่มลงใน ถึง โดยอัตโนมัติ</value>
+หากไม่มี ถึง หลังจากเปลี่ยนเป็น Bcc โดยอัตโนมัติ ที่อยู่ของผู้ส่งจะถูกเพิ่มลงใน ถึง โดยอัตโนมัติ
+
+นอกจากนี้ยังสามารถบังคับให้ผู้รับทั้งหมดถูกแปลงเป็นสำเนาลับถึง</value>
   </data>
   <data name="SettingExampleInternalDomainList" xml:space="preserve">
     <value>โดเมน: @noraneko.co.jp
@@ -744,6 +764,9 @@ bcc โดยอัตโนมัติ</value>
   </data>
   <data name="To" xml:space="preserve">
     <value>To</value>
+  </data>
+  <data name="ToRecipient" xml:space="preserve">
+    <value>ที่อยู่อีเมลที่จะตั้งค่าเป็น ถึง *หากไม่ได้ตั้งค่า ที่อยู่ผู้ส่งจะถูกตั้งค่าเป็น ถึง โดยอัตโนมัติ</value>
   </data>
   <data name="Unknown" xml:space="preserve">
     <value>ไม่รู้จัก</value>

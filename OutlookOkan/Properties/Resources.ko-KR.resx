@@ -219,6 +219,9 @@
   <data name="AutoAddSendersAddressToAlert" xml:space="preserve">
     <value>보낸 사람의 이메일 주소가 받는 사람에 자동으로 추가되었습니다. (숨은 참조로 자동 변경되어 To가 더 이상 존재하지 않기 때문입니다.)</value>
   </data>
+  <data name="AutoAddToRecipientByForceAutoChangeRecipientsToBccAddressToAlert" xml:space="preserve">
+    <value>지정한 이메일 주소가 받는 사람에 자동으로 추가되었습니다. (숨은 참조로 자동 변경되어 To가 더 이상 존재하지 않기 때문입니다.)</value>
+  </data>
   <data name="AutoCheckConfig" xml:space="preserve">
     <value>자동 확인 설정</value>
   </data>
@@ -348,6 +351,15 @@
   <data name="FailedToGetInformation" xml:space="preserve">
     <value>정보를 가져오지 못했습니다.</value>
   </data>
+  <data name="ForceAutoChangeRecipientsToBcc" xml:space="preserve">
+    <value>숨은 참조로 강제 자동 변경</value>
+  </data>
+  <data name="ForceAutoChangeRecipientsToBccAlert" xml:space="preserve">
+    <value>받는 사람은 자동으로 숨은 참조로 변환되었습니다.</value>
+  </data>
+  <data name="ForceAutoChangeRecipientsToBccNotes" xml:space="preserve">
+    <value>다음 설정이 위의 설정보다 우선합니다.</value>
+  </data>
   <data name="ForgottenToAttachAlert" xml:space="preserve">
     <value>본문에 "첨부파일"이라는 단어가 있는데 첨부파일이 없습니다.</value>
   </data>
@@ -461,6 +473,12 @@
   </data>
   <data name="IsEnableRecipientsAreSortedByDomain" xml:space="preserve">
     <value>수신인은 확인 화면에서 도메인별로 정렬됩니다.</value>
+  </data>
+  <data name="IsForceAutoChangeRecipientsToBcc" xml:space="preserve">
+    <value>모든 외부 수신자를 숨은 참조로 설정합니다.</value>
+  </data>
+  <data name="IsIncludeInternalDomain" xml:space="preserve">
+    <value>내부 도메인을 포함합니다. *모든 수신자는 숨은 참조로 변경됩니다.</value>
   </data>
   <data name="IsNotTreatedAsAttachmentsAtHtmlEmbeddedFiles" xml:space="preserve">
     <value>HTML 메일에 포함된 파일은 첨부 파일로 처리되지 않습니다.</value>
@@ -681,7 +699,9 @@
   </data>
   <data name="SettingExampleExternalDomainsWarningAndAutoChangeToBcc" xml:space="preserve">
     <value>경고 및 숨은 참조 자동 변경의 기준으로 사용할 외부 도메인의 수를 설정하고 각각을 켜거나 끕니다.
-숨은 참조로 자동 변경 후 받는 사람이 없으면 받는 사람에 보낸 사람의 주소가 자동으로 추가됩니다.</value>
+숨은 참조로 자동 변경 후 받는 사람이 없으면 받는 사람에 보낸 사람의 주소가 자동으로 추가됩니다.
+
+또한 모든 받는 사람이 숨은 참조로 변환되도록 강제할 수도 있습니다.</value>
   </data>
   <data name="SettingExampleInternalDomainList" xml:space="preserve">
     <value>도메인: @noraneko.co.jp
@@ -743,6 +763,9 @@
   </data>
   <data name="To" xml:space="preserve">
     <value>To</value>
+  </data>
+  <data name="ToRecipient" xml:space="preserve">
+    <value>받는 사람으로 설정할 메일 주소 *설정하지 않으면 보내는 사람 주소가 받는 사람으로 자동 설정됩니다.</value>
   </data>
   <data name="Unknown" xml:space="preserve">
     <value>알려지지 않은</value>

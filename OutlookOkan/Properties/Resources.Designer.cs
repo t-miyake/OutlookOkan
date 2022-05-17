@@ -367,6 +367,15 @@ namespace OutlookOkan.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to The specified Email address was automatically added to the To. (because the To no longer exists due to auto change to Bcc.).
+        /// </summary>
+        public static string AutoAddToRecipientByForceAutoChangeRecipientsToBccAddressToAlert {
+            get {
+                return ResourceManager.GetString("AutoAddToRecipientByForceAutoChangeRecipientsToBccAddressToAlert", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Auto-check setting.
         /// </summary>
         public static string AutoCheckConfig {
@@ -742,6 +751,33 @@ namespace OutlookOkan.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Force auto change to Bcc.
+        /// </summary>
+        public static string ForceAutoChangeRecipientsToBcc {
+            get {
+                return ResourceManager.GetString("ForceAutoChangeRecipientsToBcc", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The recipients were automatically converted to Bcc..
+        /// </summary>
+        public static string ForceAutoChangeRecipientsToBccAlert {
+            get {
+                return ResourceManager.GetString("ForceAutoChangeRecipientsToBccAlert", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The following settings take precedence over the above settings..
+        /// </summary>
+        public static string ForceAutoChangeRecipientsToBccNotes {
+            get {
+                return ResourceManager.GetString("ForceAutoChangeRecipientsToBccNotes", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to The word &quot;attached file&quot; is in the text, but there is no attachment..
         /// </summary>
         public static string ForgottenToAttachAlert {
@@ -1074,6 +1110,24 @@ namespace OutlookOkan.Properties {
         public static string IsEnableRecipientsAreSortedByDomain {
             get {
                 return ResourceManager.GetString("IsEnableRecipientsAreSortedByDomain", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Force all external recipients to Bcc..
+        /// </summary>
+        public static string IsForceAutoChangeRecipientsToBcc {
+            get {
+                return ResourceManager.GetString("IsForceAutoChangeRecipientsToBcc", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Include internal domains. *All recipients will be changed to Bcc..
+        /// </summary>
+        public static string IsIncludeInternalDomain {
+            get {
+                return ResourceManager.GetString("IsIncludeInternalDomain", resourceCulture);
             }
         }
         
@@ -1606,7 +1660,9 @@ namespace OutlookOkan.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Set the number of external domains to be used as a basis for warnings and automatic change to Bcc, and turn each one on or off.
         ///
-        ///If the To does not exist after automatic change to Bcc, the sender&apos;s address will be automatically added to the To..
+        ///If the To does not exist after automatic change to Bcc, the sender&apos;s address will be automatically added to the To.
+        ///
+        ///It is also possible to force all recipients to be converted to Bcc..
         /// </summary>
         public static string SettingExampleExternalDomainsWarningAndAutoChangeToBcc {
             get {
@@ -1759,6 +1815,15 @@ namespace OutlookOkan.Properties {
         public static string To {
             get {
                 return ResourceManager.GetString("To", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Mail address to be set as To *If not set, the sender address is automatically set as To..
+        /// </summary>
+        public static string ToRecipient {
+            get {
+                return ResourceManager.GetString("ToRecipient", resourceCulture);
             }
         }
         

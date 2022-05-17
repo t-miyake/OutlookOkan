@@ -230,6 +230,7 @@
     <Compile Include="Types\DeferredDeliveryMinutes.cs" />
     <Compile Include="Types\DisplayNameAndRecipient.cs" />
     <Compile Include="Types\ExternalDomainsWarningAndAutoChangeToBcc.cs" />
+    <Compile Include="Types\ForceAutoChangeRecipientsToBcc.cs" />
     <Compile Include="Types\GeneralSetting.cs" />
     <Compile Include="Types\InternalDomain.cs" />
     <Compile Include="Types\Languages.cs" />

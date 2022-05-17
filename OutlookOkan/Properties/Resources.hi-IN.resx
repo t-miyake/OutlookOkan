@@ -220,6 +220,9 @@
   <data name="AutoAddSendersAddressToAlert" xml:space="preserve">
     <value>प्रेषक का ईमेल पता स्वचालित रूप से प्रति में जोड़ दिया गया था। (क्योंकि बीसीसी में स्वतः परिवर्तन के कारण To अब मौजूद नहीं है।)</value>
   </data>
+  <data name="AutoAddToRecipientByForceAutoChangeRecipientsToBccAddressToAlert" xml:space="preserve">
+    <value>निर्दिष्ट ईमेल पता स्वचालित रूप से प्रति में जोड़ा गया था। (क्योंकि बीसीसी में स्वतः परिवर्तन के कारण To अब मौजूद नहीं है।)</value>
+  </data>
   <data name="AutoCheckConfig" xml:space="preserve">
     <value>ऑटो-चेक सेटिंग</value>
   </data>
@@ -349,6 +352,15 @@
   <data name="FailedToGetInformation" xml:space="preserve">
     <value>जानकारी प्राप्त करने में विफल।</value>
   </data>
+  <data name="ForceAutoChangeRecipientsToBcc" xml:space="preserve">
+    <value>बलपूर्वक स्वतः परिवर्तन को Bcc . में बदलें</value>
+  </data>
+  <data name="ForceAutoChangeRecipientsToBccAlert" xml:space="preserve">
+    <value>प्राप्तकर्ताओं को स्वचालित रूप से गुप्त प्रतिलिपि में परिवर्तित कर दिया गया था।</value>
+  </data>
+  <data name="ForceAutoChangeRecipientsToBccNotes" xml:space="preserve">
+    <value>उपरोक्त सेटिंग्स पर निम्नलिखित सेटिंग्स को प्राथमिकता दी जाती है।</value>
+  </data>
   <data name="ForgottenToAttachAlert" xml:space="preserve">
     <value>शब्द "संलग्न फ़ाइल" पाठ में है, लेकिन कोई अनुलग्नक नहीं है।</value>
   </data>
@@ -462,6 +474,12 @@
   </data>
   <data name="IsEnableRecipientsAreSortedByDomain" xml:space="preserve">
     <value>पुष्टिकरण स्क्रीन पर प्राप्तकर्ताओं को डोमेन द्वारा क्रमबद्ध किया जाता है।</value>
+  </data>
+  <data name="IsForceAutoChangeRecipientsToBcc" xml:space="preserve">
+    <value>सभी बाहरी प्राप्तकर्ताओं को गुप्त प्रतिलिपि के लिए बाध्य करें।</value>
+  </data>
+  <data name="IsIncludeInternalDomain" xml:space="preserve">
+    <value>आंतरिक डोमेन शामिल करें। *सभी प्राप्तकर्ताओं को गुप्त प्रतिलिपि में बदल दिया जाएगा।</value>
   </data>
   <data name="IsNotTreatedAsAttachmentsAtHtmlEmbeddedFiles" xml:space="preserve">
     <value>HTML मेल में एम्बेड की गई फ़ाइल को अनुलग्नक के रूप में नहीं माना जाता है।</value>
@@ -682,7 +700,9 @@
   </data>
   <data name="SettingExampleExternalDomainsWarningAndAutoChangeToBcc" xml:space="preserve">
     <value>चेतावनियों और स्वचालित परिवर्तन के लिए आधार के रूप में उपयोग किए जाने वाले बाहरी डोमेन की संख्या को गुप्त प्रतिलिपि में सेट करें, और प्रत्येक को चालू या बंद करें।
-यदि गुप्त प्रतिलिपि में स्वत: परिवर्तन के बाद To मौजूद नहीं है, तो प्रेषक का पता स्वतः प्रति में जोड़ दिया जाएगा।</value>
+यदि गुप्त प्रतिलिपि में स्वत: परिवर्तन के बाद To मौजूद नहीं है, तो प्रेषक का पता स्वतः प्रति में जोड़ दिया जाएगा।
+
+सभी प्राप्तकर्ताओं को गुप्त प्रतिलिपि में परिवर्तित करने के लिए बाध्य करना भी संभव है।</value>
   </data>
   <data name="SettingExampleInternalDomainList" xml:space="preserve">
     <value>डोमेन: @noraneko.co.jp
@@ -745,6 +765,9 @@
   </data>
   <data name="To" xml:space="preserve">
     <value>To</value>
+  </data>
+  <data name="ToRecipient" xml:space="preserve">
+    <value>मेल पता To के रूप में सेट किया जाना है *यदि सेट नहीं है, तो प्रेषक का पता स्वचालित रूप से To के रूप में सेट हो जाता है।</value>
   </data>
   <data name="Unknown" xml:space="preserve">
     <value>अनजान</value>

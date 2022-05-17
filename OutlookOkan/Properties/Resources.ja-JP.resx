@@ -557,7 +557,9 @@
   <data name="SettingExampleExternalDomainsWarningAndAutoChangeToBcc" xml:space="preserve">
     <value>外部ドメイン数の警告やBccへの自動変換の基準とする外部ドメイン数と、それぞれのオンオフを設定します。
 
-※Bccへの自動変換によって、Toが存在しなくなる場合、送信者のアドレスがToへ自動追加されます。</value>
+※Bccへの自動変換によって、Toが存在しなくなる場合、送信者のアドレスがToへ自動追加されます。
+
+条件によらず、全ての宛先を強制的にBccに変換することも可能です。</value>
   </data>
   <data name="TargetToAndCcExternalDomainsNum" xml:space="preserve">
     <value>基準とする宛先(To/Cc)の外部ドメイン数。</value>
@@ -733,11 +735,23 @@
   <data name="AutoAddMessage" xml:space="preserve">
     <value>メール本文への文言の自動追加</value>
   </data>
+  <data name="ForceAutoChangeRecipientsToBcc" xml:space="preserve">
+    <value>強制Bcc変換</value>
+  </data>
+  <data name="ForceAutoChangeRecipientsToBccNotes" xml:space="preserve">
+    <value>以下の設定は、上記の設定より優先されます。</value>
+  </data>
   <data name="IsAddMessageToEnd" xml:space="preserve">
     <value>メールの末尾に、以下の文言を自動追加する。</value>
   </data>
   <data name="IsAddMessageToStart" xml:space="preserve">
     <value>メールの冒頭に、以下の文言を自動追加する。</value>
+  </data>
+  <data name="IsForceAutoChangeRecipientsToBcc" xml:space="preserve">
+    <value>全ての外部宛先を強制的にBccに変換する。</value>
+  </data>
+  <data name="IsIncludeInternalDomain" xml:space="preserve">
+    <value>内部ドメインも対象に含める。※全ての宛先がBccに変更されます。</value>
   </data>
   <data name="SettingExampleAttachmentAlertRecipients" xml:space="preserve">
     <value>アドレス：info@noraneko.co.jp
@@ -753,6 +767,9 @@
   <data name="SettingExampleAutoAddMessage" xml:space="preserve">
     <value>メールの冒頭や末尾に、指定した文言を自動で追加できます。</value>
   </data>
+  <data name="ToRecipient" xml:space="preserve">
+    <value>Toに設定する宛先 ※未設定の場合、送信元アドレスを自動でToとします。</value>
+  </data>
   <data name="AddedTextAtTheBeginning" xml:space="preserve">
     <value>メールの冒頭に文言を自動追加しました。</value>
   </data>
@@ -761,6 +778,12 @@
   </data>
   <data name="AttachmentAlertRecipientsMessage" xml:space="preserve">
     <value>添付ファイル送信の警告対象の宛先です。</value>
+  </data>
+  <data name="AutoAddToRecipientByForceAutoChangeRecipientsToBccAddressToAlert" xml:space="preserve">
+    <value>設定されたアドレスをToに自動追加しました。(Bcc変換によりToが存在しなくなるため)</value>
+  </data>
+  <data name="ForceAutoChangeRecipientsToBccAlert" xml:space="preserve">
+    <value>宛先をBccに自動変換しました。</value>
   </data>
   <data name="NotApplicableToMeetingRequests" xml:space="preserve">
     <value>※会議出席依頼には反映されません。</value>

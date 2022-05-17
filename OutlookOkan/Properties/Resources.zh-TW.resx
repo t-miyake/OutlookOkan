@@ -219,6 +219,9 @@
   <data name="AutoAddSendersAddressToAlert" xml:space="preserve">
     <value>發件人的電子郵件地址被自動添加到收件人中。 (因為收件人已經不存在了，因為自動改為Bcc。)</value>
   </data>
+  <data name="AutoAddToRecipientByForceAutoChangeRecipientsToBccAddressToAlert" xml:space="preserve">
+    <value>指定的電子郵件地址被自動添加到收件人中。 (因為收件人已經不存在了，因為自動改為密件)。</value>
+  </data>
   <data name="AutoCheckConfig" xml:space="preserve">
     <value>自動檢查設置</value>
   </data>
@@ -347,6 +350,15 @@
   <data name="FailedToGetInformation" xml:space="preserve">
     <value>沒能獲得信息。</value>
   </data>
+  <data name="ForceAutoChangeRecipientsToBcc" xml:space="preserve">
+    <value>強制自動變更為密件</value>
+  </data>
+  <data name="ForceAutoChangeRecipientsToBccAlert" xml:space="preserve">
+    <value>收件人被自動轉換為Bcc。</value>
+  </data>
+  <data name="ForceAutoChangeRecipientsToBccNotes" xml:space="preserve">
+    <value>以下設置優先於上述設置。</value>
+  </data>
   <data name="ForgottenToAttachAlert" xml:space="preserve">
     <value>文中有 "附件 "一詞，但沒有附件。</value>
   </data>
@@ -459,6 +471,12 @@
   </data>
   <data name="IsEnableRecipientsAreSortedByDomain" xml:space="preserve">
     <value>收件人在確認屏幕上按域名排序。</value>
+  </data>
+  <data name="IsForceAutoChangeRecipientsToBcc" xml:space="preserve">
+    <value>強制所有外部收件人轉為密件。</value>
+  </data>
+  <data name="IsIncludeInternalDomain" xml:space="preserve">
+    <value>在範圍內包括內部域。 *所有收件人將被改為密件。</value>
   </data>
   <data name="IsNotTreatedAsAttachmentsAtHtmlEmbeddedFiles" xml:space="preserve">
     <value>嵌入HTML郵件中的文件不被視為附件。</value>
@@ -680,7 +698,9 @@
   <data name="SettingExampleExternalDomainsWarningAndAutoChangeToBcc" xml:space="preserve">
     <value>設置外部域名的數量，作為警告和自動變更為Bcc的依據，並將每個域名打開或關閉。
 
-如果自動變更為Bcc後，收件人不存在，發件人的地址將被自動添加到收件人中。</value>
+如果自動變更為Bcc後，收件人不存在，發件人的地址將被自動添加到收件人中。
+
+也可以強制將所有收件人轉換為密件。</value>
   </data>
   <data name="SettingExampleInternalDomainList" xml:space="preserve">
     <value>域名。 @noraneko.co.jp
@@ -743,6 +763,9 @@
   </data>
   <data name="To" xml:space="preserve">
     <value>To</value>
+  </data>
+  <data name="ToRecipient" xml:space="preserve">
+    <value>要設置為收件人的郵件地址 *如果不設置，發件人地址會自動設置為收件人。</value>
   </data>
   <data name="Unknown" xml:space="preserve">
     <value>不詳</value>

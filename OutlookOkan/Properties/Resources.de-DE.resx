@@ -222,6 +222,9 @@
   <data name="AutoAddSendersAddressToAlert" xml:space="preserve">
     <value>Die E-Mail-Adresse des Absenders wurde automatisch der Adresse "An" hinzugefügt. (weil die Adresse "An" aufgrund der automatischen Änderung in "Bcc" nicht mehr existiert).</value>
   </data>
+  <data name="AutoAddToRecipientByForceAutoChangeRecipientsToBccAddressToAlert" xml:space="preserve">
+    <value>Die angegebene E-Mail-Adresse wurde automatisch zu "An" hinzugefügt. (weil die Adresse "An" durch die automatische Änderung in "Bcc" nicht mehr existiert).</value>
+  </data>
   <data name="AutoCheckConfig" xml:space="preserve">
     <value>Auto-Check-Einstellung</value>
   </data>
@@ -351,6 +354,15 @@ automatischer Wechsel zu Bcc</value>
   <data name="FailedToGetInformation" xml:space="preserve">
     <value>Die Informationen konnten nicht abgerufen werden.</value>
   </data>
+  <data name="ForceAutoChangeRecipientsToBcc" xml:space="preserve">
+    <value>Automatischen Wechsel zu Bcc erzwingen</value>
+  </data>
+  <data name="ForceAutoChangeRecipientsToBccAlert" xml:space="preserve">
+    <value>Die Empfänger wurden automatisch in Bcc umgewandelt.</value>
+  </data>
+  <data name="ForceAutoChangeRecipientsToBccNotes" xml:space="preserve">
+    <value>Die folgenden Einstellungen haben Vorrang vor den obigen Einstellungen.</value>
+  </data>
   <data name="ForgottenToAttachAlert" xml:space="preserve">
     <value>Das Wort "angehängte Datei" steht im Text, aber es gibt keinen Anhang.</value>
   </data>
@@ -464,6 +476,12 @@ konvertiert, wenn die Empfänger (To/Cc) eine große Anzahl von externen Domäne
   </data>
   <data name="IsEnableRecipientsAreSortedByDomain" xml:space="preserve">
     <value>Die Empfänger werden auf dem Bestätigungsbildschirm nach Domäne sortiert.</value>
+  </data>
+  <data name="IsForceAutoChangeRecipientsToBcc" xml:space="preserve">
+    <value>Alle externen Empfänger auf Bcc setzen.</value>
+  </data>
+  <data name="IsIncludeInternalDomain" xml:space="preserve">
+    <value>Interne Domänen in den Geltungsbereich einbeziehen. *Alle Empfänger werden in Bcc geändert.</value>
   </data>
   <data name="IsNotTreatedAsAttachmentsAtHtmlEmbeddedFiles" xml:space="preserve">
     <value>Eine in eine HTML-Mail eingebettete Datei wird nicht als Anhang behandelt.</value>
@@ -688,7 +706,9 @@ Registrieren Sie Ihre E-Mail-Adresse oder Domäne und registrieren Sie die minut
   <data name="SettingExampleExternalDomainsWarningAndAutoChangeToBcc" xml:space="preserve">
     <value>Legen Sie die Anzahl der externen Domänen fest, die als Grundlage für Warnungen und den automatischen Wechsel zu Bcc verwendet werden sollen, und schalten Sie jede einzelne ein oder aus.
 
-Wenn die Adresse "To" nach der automatischen Umstellung auf "Bcc" nicht vorhanden ist, wird die Adresse des Absenders automatisch der Adresse "To" hinzugefügt.</value>
+Wenn die Adresse "To" nach der automatischen Umstellung auf "Bcc" nicht vorhanden ist, wird die Adresse des Absenders automatisch der Adresse "To" hinzugefügt.
+
+Es ist auch möglich, die Umwandlung aller Empfänger in Bcc zu erzwingen.</value>
   </data>
   <data name="SettingExampleInternalDomainList" xml:space="preserve">
     <value>Domäne: @noraneko.co.jp
@@ -751,6 +771,9 @@ wird diese Funktion angewendet.</value>
   </data>
   <data name="To" xml:space="preserve">
     <value>To</value>
+  </data>
+  <data name="ToRecipient" xml:space="preserve">
+    <value>Mailadresse, die als To gesetzt werden soll *Wenn nicht gesetzt, wird die Absenderadresse automatisch als To gesetzt.</value>
   </data>
   <data name="Unknown" xml:space="preserve">
     <value>Unbekannt</value>

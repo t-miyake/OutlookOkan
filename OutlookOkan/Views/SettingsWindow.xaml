@@ -695,7 +695,7 @@
                         <GroupBox Header="{Binding Source={x:Static services:ResourceService.Instance}, Path=Resources.BasicSettings, Mode=OneWay}" FontSize="11" Padding="3,3,3,3">
                             <StackPanel Orientation="Vertical">
                                 <TextBlock Text="{Binding Source={x:Static services:ResourceService.Instance}, Path=Resources.TargetToAndCcExternalDomainsNum, Mode=OneWay}" VerticalAlignment="Center" />
-                                <TextBox x:Name="ExternalDomainsNumBox" Width="30" Text="{Binding TargetToAndCcExternalDomainsNum, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="0.5,3,0,0" PreviewTextInput="ExternalDomainsNumBox_OnPreviewTextInput" CommandManager.PreviewExecuted="ExternalDomainsNumBox_OnPreviewExecuted" InputMethod.IsInputMethodEnabled="False" />
+                                <TextBox x:Name="ExternalDomainsNumBox" Width="30" Text="{Binding TargetToAndCcExternalDomainsNum, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" IsEnabled="{Binding TargetToAndCcExternalDomainsNumEnabledIsEnabled, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="0.5,3,0,0" PreviewTextInput="ExternalDomainsNumBox_OnPreviewTextInput" CommandManager.PreviewExecuted="ExternalDomainsNumBox_OnPreviewExecuted" InputMethod.IsInputMethodEnabled="False" />
                                 <TextBlock Text="{Binding Source={x:Static services:ResourceService.Instance}, Path=Resources.TargetToAndCcExternalDomainsNumInfo, Mode=OneWay}" VerticalAlignment="Center" Margin="2,3,0,0" TextWrapping="Wrap" />
                             </StackPanel>
                         </GroupBox>
@@ -706,12 +706,33 @@
                                     <TextBlock Text="{Binding Source={x:Static services:ResourceService.Instance}, Path=Resources.IsWarningWhenLargeNumberOfExternalDomains, Mode=OneWay}" VerticalAlignment="Center" />
                                 </StackPanel>
                                 <StackPanel Orientation="Horizontal" Margin="0,5,0,0">
-                                    <CheckBox Margin="0,0,8,0" IsChecked="{Binding IsProhibitedWhenLargeNumberOfExternalDomains, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Center" />
+                                    <CheckBox Margin="0,0,8,0" IsChecked="{Binding IsProhibitedWhenLargeNumberOfExternalDomains, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" IsEnabled="{Binding IsProhibitedWhenLargeNumberOfExternalDomainsIsEnabled, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Center" />
                                     <TextBlock Text="{Binding Source={x:Static services:ResourceService.Instance}, Path=Resources.IsProhibitedWhenLargeNumberOfExternalDomains, Mode=OneWay}" VerticalAlignment="Center" />
                                 </StackPanel>
                                 <StackPanel Orientation="Horizontal" Margin="0,5,0,0">
                                     <CheckBox Margin="0,0,8,0" IsChecked="{Binding IsAutoChangeToBccWhenLargeNumberOfExternalDomains, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Center" IsEnabled="{Binding IsAutoChangeToBccWhenLargeNumberOfExternalDomainsCheckBoxIsEnabled, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}" />
-                                    <TextBlock Text="{Binding Source={x:Static services:ResourceService.Instance}, Path=Resources.IsAutoChangeToBccWhenLargeNumberOfExternalDomains, Mode=OneWay}" VerticalAlignment="Center" />
+                                    <TextBlock Text="{Binding Source={x:Static services:ResourceService.Instance}, Path=Resources.IsAutoChangeToBccWhenLargeNumberOfExternalDomains, Mode=OneWay}" VerticalAlignment="Center" TextWrapping="Wrap" />
+                                </StackPanel>
+                            </StackPanel>
+                        </GroupBox>
+                        <GroupBox Header="{Binding Source={x:Static services:ResourceService.Instance}, Path=Resources.ForceAutoChangeRecipientsToBcc, Mode=OneWay}" FontSize="11" Padding="3,3,3,3" Margin="0,12,0,0">
+                            <StackPanel Orientation="Vertical">
+                                <TextBlock Text="{Binding Source={x:Static services:ResourceService.Instance}, Path=Resources.ForceAutoChangeRecipientsToBccNotes, Mode=OneWay}" VerticalAlignment="Center" Margin="2,3,0,0" TextWrapping="Wrap" />
+                                <StackPanel Orientation="Horizontal" Margin="0,8,0,0">
+                                    <CheckBox Margin="0,0,8,0" IsChecked="{Binding IsForceAutoChangeRecipientsToBcc, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Center" />
+                                    <TextBlock Text="{Binding Source={x:Static services:ResourceService.Instance}, Path=Resources.IsForceAutoChangeRecipientsToBcc, Mode=OneWay}" VerticalAlignment="Center" />
+                                </StackPanel>
+                                <StackPanel Orientation="Vertical" Margin="6,3,0,0">
+                                    <StackPanel Orientation="Horizontal">
+                                        <TextBlock Text="┗━━ " />
+                                        <TextBlock Text="{Binding Source={x:Static services:ResourceService.Instance}, Path=Resources.ToRecipient, Mode=OneWay}" VerticalAlignment="Center" TextWrapping="Wrap" />
+                                    </StackPanel>
+                                    <TextBox Width="360"  HorizontalAlignment="Left" Margin="20,3,0,0" Text="{Binding ToRecipient, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" IsEnabled="{Binding IsForceAutoChangeRecipientsToBcc, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}" InputMethod.IsInputMethodEnabled="False" />
+                                </StackPanel>
+                                <StackPanel Orientation="Horizontal" Margin="6,5,0,0">
+                                    <TextBlock Text="┗━━ " />
+                                    <CheckBox Margin="0,0,8,0" IsChecked="{Binding IsIncludeInternalDomain, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" IsEnabled="{Binding IsForceAutoChangeRecipientsToBcc, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}" />
+                                    <TextBlock Text="{Binding Source={x:Static services:ResourceService.Instance}, Path=Resources.IsIncludeInternalDomain, Mode=OneWay}" TextWrapping="Wrap" />
                                 </StackPanel>
                             </StackPanel>
                         </GroupBox>
