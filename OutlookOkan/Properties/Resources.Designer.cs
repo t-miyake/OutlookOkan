@@ -1587,6 +1587,23 @@ namespace OutlookOkan.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Address: info@noraneko.co.jp
+        ///Or
+        ///Domain: @noraneko.co.jp
+        ///
+        ///Register an e-mail address or domain and its warning text.
+        ///
+        ///Once registered, a warning will be displayed when sending e-mail with attachments to that destination.
+        ///
+        ///If the warning text is left blank, the default warning text will be displayed..
+        /// </summary>
+        public static string SettingExampleAttachmentAlertRecipients {
+            get {
+                return ResourceManager.GetString("SettingExampleAttachmentAlertRecipients", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Email address: info@noraneko.co.jp
         ///or
         ///Domain: @noraneko.co.jp
@@ -1651,19 +1668,11 @@ namespace OutlookOkan.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Address: info@noraneko.co.jp
-        ///Or
-        ///Domain: @noraneko.co.jp
-        ///
-        ///Register an e-mail address or domain and its warning text.
-        ///
-        ///Once registered, a warning will be displayed when sending e-mail with attachments to that destination.
-        ///
-        ///If the warning text is left blank, the default warning text will be displayed..
+        ///   Looks up a localized string similar to You can automatically add the specified wording to the beginning or end of an e-mail..
         /// </summary>
-        public static string SettingExampleAttachmentAlertRecipients {
+        public static string SettingExampleAutoAddMessage {
             get {
-                return ResourceManager.GetString("SettingExampleAttachmentAlertRecipients", resourceCulture);
+                return ResourceManager.GetString("SettingExampleAutoAddMessage", resourceCulture);
             }
         }
         
@@ -1739,15 +1748,6 @@ namespace OutlookOkan.Properties {
         public static string SettingExampleRecipientsAndAttachmentsName {
             get {
                 return ResourceManager.GetString("SettingExampleRecipientsAndAttachmentsName", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to You can automatically add the specified wording to the beginning or end of an e-mail..
-        /// </summary>
-        public static string SettingExampleAutoAddMessage {
-            get {
-                return ResourceManager.GetString("SettingExampleAutoAddMessage", resourceCulture);
             }
         }
         

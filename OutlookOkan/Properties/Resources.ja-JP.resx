@@ -727,7 +727,8 @@
     <value>会議招待</value>
   </data>
   <data name="ShowConfirmationAtSendMeetingRequest" xml:space="preserve">
-    <value>会議招待にも確認画面を表示する。</value>
+    <value>会議出席依頼にも確認画面を表示する。</value>
+  </data>
   <data name="AlwaysAddTheSendersAddressToCc" xml:space="preserve">
     <value>常に送信者のアドレスをCcに自動で追加する。</value>
   </data>

@@ -654,7 +654,7 @@ If the alerting text is blank, the confirmation screen will show the default ale
     <value>If a file is attached, it is recommended to attach it as a link on the confirmation window.</value>
   </data>
   <data name="AttachmentProhibitedRecipients" xml:space="preserve">
-    <value>Attachment prohibited address</value>
+    <value>Attachment prohibited recipients</value>
   </data>
   <data name="AttachmentsName" xml:space="preserve">
     <value>Attachments name/Keyword</value>
