@@ -218,6 +218,7 @@
     <Compile Include="Types\AlertAddress.cs" />
     <Compile Include="Types\AlertKeywordAndMessage.cs" />
     <Compile Include="Types\AlertKeywordAndMessageForSubject.cs" />
+    <Compile Include="Types\AttachmentAlertRecipients.cs" />
     <Compile Include="Types\AttachmentProhibitedRecipients.cs" />
     <Compile Include="Types\AttachmentsSetting.cs" />
     <Compile Include="Types\AutoAddMessage.cs" />

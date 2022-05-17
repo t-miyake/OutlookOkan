@@ -214,7 +214,25 @@ namespace OutlookOkan.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Attachment prohibited address.
+        ///   Looks up a localized string similar to Attachment alerting recipients.
+        /// </summary>
+        public static string AttachmentAlertRecipients {
+            get {
+                return ResourceManager.GetString("AttachmentAlertRecipients", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Recipient for warning of attachment sending..
+        /// </summary>
+        public static string AttachmentAlertRecipientsMessage {
+            get {
+                return ResourceManager.GetString("AttachmentAlertRecipientsMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Attachment prohibited recipients.
         /// </summary>
         public static string AttachmentProhibitedRecipients {
             get {
@@ -1548,6 +1566,23 @@ namespace OutlookOkan.Properties {
         public static string SettingExampleAutoAddCCorBCCByMailAddressOrDomain {
             get {
                 return ResourceManager.GetString("SettingExampleAutoAddCCorBCCByMailAddressOrDomain", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Address: info@noraneko.co.jp
+        ///Or
+        ///Domain: @noraneko.co.jp
+        ///
+        ///Register an e-mail address or domain and its warning text.
+        ///
+        ///Once registered, a warning will be displayed when sending e-mail with attachments to that destination.
+        ///
+        ///If the warning text is left blank, the default warning text will be displayed..
+        /// </summary>
+        public static string SettingExampleAttachmentAlertRecipients {
+            get {
+                return ResourceManager.GetString("SettingExampleAttachmentAlertRecipients", resourceCulture);
             }
         }
         

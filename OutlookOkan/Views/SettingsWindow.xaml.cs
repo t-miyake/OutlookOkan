@@ -193,6 +193,35 @@ namespace OutlookOkan.Views
             }
         }
 
+        private void DataGrid_AttachmentAlertRecipients_OnCellEditEnding(object sender, DataGridCellEditEndingEventArgs e)
+        {
+            switch (e.Column.DisplayIndex)
+            {
+                case 0:
+                    var inputText = ((TextBox)e.EditingElement).Text;
+                    if (string.IsNullOrEmpty(inputText) || !inputText.Contains("@"))
+                    {
+                        _ = MessageBox.Show(Properties.Resources.InputMailaddressOrDomain, Properties.Resources.AppName, MessageBoxButton.OK);
+                        e.Cancel = true;
+                    }
+                    //else
+                    //{
+                    //    //@のみで登録すると全てのメールアドレスが対象になるため、それを禁止。
+                    //    if (!inputText.Equals("@")) return;
+
+                    //    _ = MessageBox.Show(Properties.Resources.InputMailaddressOrDomain, Properties.Resources.AppName, MessageBoxButton.OK);
+                    //    e.Cancel = true;
+                    //}
+                    return;
+
+                case 1:
+                    return;
+
+                default:
+                    return;
+            }
+        }
+
         #endregion
 
         #region Buttons

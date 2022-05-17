@@ -731,6 +731,9 @@ If the recipients and the attached file name do not match, a warning will be dis
   <data name="AlwaysAddTheSendersAddressToCc" xml:space="preserve">
     <value>Always add the sender's address to Cc automatically.</value>
   </data>
+  <data name="AttachmentAlertRecipients" xml:space="preserve">
+    <value>Attachment alerting recipients</value>
+  </data>
   <data name="AutoAddMessage" xml:space="preserve">
     <value>Automatic body text addition</value>
   </data>
@@ -740,6 +743,17 @@ If the recipients and the attached file name do not match, a warning will be dis
   <data name="IsAddMessageToStart" xml:space="preserve">
     <value>The following text is automatically added to the beginning of the body.</value>
   </data>
+  <data name="SettingExampleAttachmentAlertRecipients" xml:space="preserve">
+    <value>Address: info@noraneko.co.jp
+Or
+Domain: @noraneko.co.jp
+
+Register an e-mail address or domain and its warning text.
+
+Once registered, a warning will be displayed when sending e-mail with attachments to that destination.
+
+If the warning text is left blank, the default warning text will be displayed.</value>
+  </data>
   <data name="SettingExampleAutoAddMessage" xml:space="preserve">
     <value>You can automatically add the specified wording to the beginning or end of an e-mail.</value>
   </data>
@@ -748,6 +762,9 @@ If the recipients and the attached file name do not match, a warning will be dis
   </data>
   <data name="AddedTextAtTheEnd" xml:space="preserve">
     <value>Added text at the end of the mail.</value>
+  </data>
+  <data name="AttachmentAlertRecipientsMessage" xml:space="preserve">
+    <value>Recipient for warning of attachment sending.</value>
   </data>
   <data name="NotApplicableToMeetingRequests" xml:space="preserve">
     <value>*Not applicable to meeting requests.</value>

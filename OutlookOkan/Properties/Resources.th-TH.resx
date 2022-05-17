@@ -168,6 +168,12 @@
   <data name="AttachedIsAnEncryptedZipFile" xml:space="preserve">
     <value>ไฟล์แนบเป็นไฟล์ ZIP ที่เข้ารหัส</value>
   </data>
+  <data name="AttachmentAlertRecipients" xml:space="preserve">
+    <value>ที่อยู่แจ้งเตือนไฟล์แนบ</value>
+  </data>
+  <data name="AttachmentAlertRecipientsMessage" xml:space="preserve">
+    <value>ผู้รับคำเตือนการส่งไฟล์แนบ</value>
+  </data>
   <data name="AttachmentProhibitedRecipients" xml:space="preserve">
     <value>ผู้รับสิ่งที่แนบมาห้าม</value>
   </data>
@@ -613,8 +619,17 @@ bcc โดยอัตโนมัติ</value>
 หากคุณส่งอีเมลไปยังที่อยู่อีเมลหรือโดเมนที่คุณได้ลงทะเบียนไว้ที่นี่ คุณจะได้รับการแจ้งเตือนล่วงหน้า
 
 หากข้อความแจ้งเตือนว่างเปล่า หน้าจอยืนยันจะแสดงข้อความแจ้งเตือนเริ่มต้น</value>
-
-หากคุณส่งอีเมลไปยังที่อยู่อีเมลหรือโดเมนที่คุณได้ลงทะเบียนไว้ที่นี่ คุณจะได้รับการแจ้งเตือนล่วงหน้า</value>
+  </data>
+  <data name="SettingExampleAttachmentAlertRecipients" xml:space="preserve">
+    <value>ที่อยู่: info@noraneko.co.jp
+      หรือ.
+      ชื่อโดเมน: @noraneko.co.jp
+      
+      ลงทะเบียนที่อยู่อีเมลหรือชื่อโดเมนและข้อความเตือน
+      
+      หากลงทะเบียนแล้ว คำเตือนจะปรากฏขึ้นเมื่อมีการส่งอีเมลพร้อมไฟล์แนบไปยังที่อยู่นี้
+      
+      หากปล่อยข้อความเตือนว่างไว้ ข้อความเตือนเริ่มต้นจะปรากฏขึ้น</value>
   </data>
   <data name="SettingExampleAttachmentProhibitedRecipients" xml:space="preserve">
     <value>ที่อยู่อีเมล: info@noraneko.co.jp

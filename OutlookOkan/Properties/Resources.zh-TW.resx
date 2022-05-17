@@ -168,6 +168,12 @@
   <data name="AttachedIsAnEncryptedZipFile" xml:space="preserve">
     <value>附件中是一個加密的ZIP文件。</value>
   </data>
+  <data name="AttachmentAlertRecipients" xml:space="preserve">
+    <value>附件提醒地址</value>
+  </data>
+  <data name="AttachmentAlertRecipientsMessage" xml:space="preserve">
+    <value>發送附件警告的收件人。</value>
+  </data>
   <data name="AttachmentProhibitedRecipients" xml:space="preserve">
     <value>附件禁止的地址</value>
   </data>
@@ -612,8 +618,16 @@
 
 如果警報文本為空白，確認屏幕將顯示默認的警報文本。</value>
   </data>
+  <data name="SettingExampleAttachmentAlertRecipients" xml:space="preserve">
+    <value>地址: info@noraneko.co.jp
+或者。
+域名: @noraneko.co.jp
 
-如果你向你在這裡註冊的電子郵件地址或域名發送電子郵件，你會提前收到提醒。</value>
+註冊一個電子郵件地址或域名以及其警告文字。
+
+如果註冊了，在向該地址發送帶有附件的電子郵件時，將顯示警告。
+
+如果警告文本留空，就會顯示默認的警告文本。</value>
   </data>
   <data name="SettingExampleAttachmentProhibitedRecipients" xml:space="preserve">
     <value>電子郵件地址：info@noraneko.co.jp

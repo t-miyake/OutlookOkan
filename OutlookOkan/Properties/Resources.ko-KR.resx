@@ -168,6 +168,12 @@
   <data name="AttachedIsAnEncryptedZipFile" xml:space="preserve">
     <value>첨부 파일은 암호화된 ZIP 파일입니다.</value>
   </data>
+  <data name="AttachmentAlertRecipients" xml:space="preserve">
+    <value>첨부 파일 알림 주소</value>
+  </data>
+  <data name="AttachmentAlertRecipientsMessage" xml:space="preserve">
+    <value>첨부 파일 전송 경고를 받는 사람입니다.</value>
+  </data>
   <data name="AttachmentProhibitedRecipients" xml:space="preserve">
     <value>첨부 금지 주소</value>
   </data>
@@ -614,8 +620,16 @@
 
 경고 텍스트가 비어 있으면 확인 화면에 기본 경고 텍스트가 표시됩니다.</value>
   </data>
+  <data name="SettingExampleAttachmentAlertRecipients" xml:space="preserve">
+    <value>주소: info@noraneko.co.jp
+또는.
+도메인 이름: @noraneko.co.jp
 
-여기에 등록한 이메일 주소나 도메인으로 이메일을 보내면 미리 알림을 받게 됩니다.</value>
+이메일 주소 또는 도메인 이름 및 해당 경고 텍스트를 등록합니다.
+
+등록된 경우 첨부 파일이 있는 이메일이 이 주소로 전송될 때 경고가 표시됩니다.
+
+경고 텍스트가 비어 있으면 기본 경고 텍스트가 표시됩니다.</value>
   </data>
   <data name="SettingExampleAttachmentProhibitedRecipients" xml:space="preserve">
     <value>이메일 주소: info@noraneko.co.jp

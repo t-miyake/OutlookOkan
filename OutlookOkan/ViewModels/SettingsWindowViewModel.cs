@@ -53,6 +53,9 @@ namespace OutlookOkan.ViewModels
             ImportAttachmentProhibitedRecipients = new RelayCommand(ImportAttachmentProhibitedRecipientsFromCsv);
             ExportAttachmentProhibitedRecipients = new RelayCommand(ExportAttachmentProhibitedRecipientsToCsv);
 
+            ImportAttachmentAlertRecipients = new RelayCommand(ImportAttachmentAlertRecipientsFromCsv);
+            ExportAttachmentAlertRecipients = new RelayCommand(ExportAttachmentAlertRecipientsToCsv);
+
             //Load language code and name.
             var languages = new Languages();
             Languages = languages.Language;
@@ -73,6 +76,7 @@ namespace OutlookOkan.ViewModels
             LoadAttachmentsSettingData();
             LoadRecipientsAndAttachmentsNameData();
             LoadAttachmentProhibitedRecipientsData();
+            LoadAttachmentAlertRecipientsData();
             LoadAutoAddMessageData();
         }
 
@@ -94,7 +98,8 @@ namespace OutlookOkan.ViewModels
                     SaveExternalDomainsWarningAndAutoChangeToBccToCsv(),
                     SaveAttachmentsSettingToCsv(),
                     SaveRecipientsAndAttachmentsNameToCsv(),
-                    SaveAttachmentProhibitedRecipientsToCsv()
+                    SaveAttachmentProhibitedRecipientsToCsv(),
+                    SaveAttachmentAlertRecipientsToCsv(),
                     SaveAutoAddMessageToCsv()
                 };
 
@@ -1089,6 +1094,72 @@ namespace OutlookOkan.ViewModels
             {
                 _attachmentProhibitedRecipients = value;
                 OnPropertyChanged(nameof(AttachmentProhibitedRecipients));
+            }
+        }
+
+        #endregion
+
+        #region AttachmentAlertRecipients
+
+        public ICommand ImportAttachmentAlertRecipients { get; }
+        public ICommand ExportAttachmentAlertRecipients { get; }
+
+        private void LoadAttachmentAlertRecipientsData()
+        {
+            var readCsv = new ReadAndWriteCsv("AttachmentAlertRecipients.csv");
+            var attachmentAlertRecipients = readCsv.GetCsvRecords<AttachmentAlertRecipients>(readCsv.LoadCsv<AttachmentAlertRecipientsMap>());
+
+            foreach (var data in attachmentAlertRecipients.Where(x => !string.IsNullOrEmpty(x.Recipient)))
+            {
+                AttachmentAlertRecipients.Add(data);
+            }
+        }
+
+        private async Task SaveAttachmentAlertRecipientsToCsv()
+        {
+            var list = AttachmentAlertRecipients.Where(x => !string.IsNullOrEmpty(x.Recipient)).Cast<object>().ToList();
+            var writeCsv = new ReadAndWriteCsv("AttachmentAlertRecipients.csv");
+            await Task.Run(() => writeCsv.WriteRecordsToCsv<AttachmentAlertRecipientsMap>(list));
+        }
+
+        private void ImportAttachmentAlertRecipientsFromCsv()
+        {
+            var importAction = new CsvImportAndExport();
+            var filePath = importAction.ImportCsv();
+
+            if (filePath is null) return;
+
+            try
+            {
+                var importData = new List<AttachmentAlertRecipients>(importAction.GetCsvRecords<AttachmentAlertRecipients>(importAction.LoadCsv<AttachmentAlertRecipientsMap>(filePath)));
+                foreach (var data in importData.Where(x => !string.IsNullOrEmpty(x.Recipient)))
+                {
+                    AttachmentAlertRecipients.Add(data);
+                }
+
+                _ = MessageBox.Show(Properties.Resources.SuccessfulImport, Properties.Resources.AppName, MessageBoxButton.OK);
+            }
+            catch (Exception)
+            {
+                _ = MessageBox.Show(Properties.Resources.ImportFailed, Properties.Resources.AppName, MessageBoxButton.OK);
+            }
+        }
+
+        private void ExportAttachmentAlertRecipientsToCsv()
+        {
+            var list = AttachmentAlertRecipients.Where(x => !string.IsNullOrEmpty(x.Recipient)).Cast<object>().ToList();
+            var exportAction = new CsvImportAndExport();
+            exportAction.CsvExport<AttachmentAlertRecipientsMap>(list, "AttachmentAlertRecipients.csv");
+        }
+
+        private ObservableCollection<AttachmentAlertRecipients> _attachmentAlertRecipients = new ObservableCollection<AttachmentAlertRecipients>();
+        public ObservableCollection<AttachmentAlertRecipients> AttachmentAlertRecipients
+        {
+            get => _attachmentAlertRecipients;
+            set
+            {
+                _attachmentAlertRecipients = value;
+                OnPropertyChanged(nameof(AttachmentAlertRecipients));
             }
         }
 

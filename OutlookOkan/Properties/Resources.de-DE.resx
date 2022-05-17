@@ -168,6 +168,12 @@
   <data name="AttachedIsAnEncryptedZipFile" xml:space="preserve">
     <value>Im Anhang finden Sie eine verschlüsselte ZIP-Datei.</value>
   </data>
+  <data name="AttachmentAlertRecipients" xml:space="preserve">
+    <value>Anlage Alarmierungsadresse</value>
+  </data>
+  <data name="AttachmentAlertRecipientsMessage" xml:space="preserve">
+    <value>Empfänger für die Warnung vor dem Versand von Anhängen.</value>
+  </data>
   <data name="AttachmentProhibitedRecipients" xml:space="preserve">
     <value>Pfändung verbotene Adresse</value>
   </data>
@@ -620,6 +626,16 @@ Wenn Sie eine E-Mail an eine E-Mail-Adresse oder Domäne senden, die Sie hier re
 
 Wenn der Warntext leer ist, wird auf dem Bestätigungsbildschirm der Standard-Warntext angezeigt.</value>
   </data>
+  <data name="SettingExampleAttachmentAlertRecipients" xml:space="preserve">
+    <value>E-Mail Adresse: info@noraneko.co.jp
+Oder
+Domain: @noraneko.co.jp
+
+Registrieren Sie eine E-Mail-Adresse oder Domäne und deren Warntext.
+
+Nach der Registrierung wird eine Warnung angezeigt, wenn E-Mails mit Anhängen an dieses Ziel gesendet werden.
+
+Wenn der Warntext leer gelassen wird, wird der Standard-Warntext angezeigt.</value>
   </data>
   <data name="SettingExampleAttachmentProhibitedRecipients" xml:space="preserve">
     <value>E-Mail Adresse: info@noraneko.co.jp

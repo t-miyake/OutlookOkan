@@ -168,6 +168,12 @@
   <data name="AttachedIsAnEncryptedZipFile" xml:space="preserve">
     <value>संलग्न एक एन्क्रिप्टेड ज़िप फ़ाइल है।</value>
   </data>
+  <data name="AttachmentAlertRecipients" xml:space="preserve">
+    <value>अटैचमेंट अलर्ट करने वाला पता</value>
+  </data>
+  <data name="AttachmentAlertRecipientsMessage" xml:space="preserve">
+    <value>अनुलग्नक भेजने की चेतावनी के लिए प्राप्तकर्ता।</value>
+  </data>
   <data name="AttachmentProhibitedRecipients" xml:space="preserve">
     <value>संलग्नक निषिद्ध पता</value>
   </data>
@@ -615,8 +621,16 @@
 
 अगर अलर्ट करने वाला टेक्स्ट खाली है, तो कन्फर्मेशन स्क्रीन डिफॉल्ट अलर्टिंग टेक्स्ट दिखाएगी।</value>
   </data>
-
-यदि आप किसी ईमेल पते या डोमेन पर ईमेल भेजते हैं जिसे आपने यहां पंजीकृत किया है, तो आपको पहले से एक अलर्ट प्राप्त होगा।</value>
+  <data name="SettingExampleAttachmentAlertRecipients" xml:space="preserve">
+    <value>पता: info@noraneko.co.jp
+      या।
+      डोमेन नाम: @noraneko.co.jp
+      
+      एक ईमेल पता या डोमेन नाम और उसका चेतावनी पाठ पंजीकृत करें।
+      
+      यदि पंजीकृत है, तो इस पते पर अटैचमेंट वाले ईमेल भेजे जाने पर एक चेतावनी प्रदर्शित होगी।
+      
+      यदि चेतावनी पाठ खाली छोड़ दिया जाता है, तो डिफ़ॉल्ट चेतावनी पाठ प्रदर्शित होता है।</value>
   </data>
   <data name="SettingExampleAttachmentProhibitedRecipients" xml:space="preserve">
     <value>ईमेल पता: info@noraneko.co.jp

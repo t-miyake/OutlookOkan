@@ -727,6 +727,9 @@
   <data name="AlwaysAddTheSendersAddressToCc" xml:space="preserve">
     <value>常に送信者のアドレスをCcに自動で追加する。</value>
   </data>
+  <data name="AttachmentAlertRecipients" xml:space="preserve">
+    <value>添付ファイル警告宛先</value>
+  </data>
   <data name="AutoAddMessage" xml:space="preserve">
     <value>メール本文への文言の自動追加</value>
   </data>
@@ -736,6 +739,17 @@
   <data name="IsAddMessageToStart" xml:space="preserve">
     <value>メールの冒頭に、以下の文言を自動追加する。</value>
   </data>
+  <data name="SettingExampleAttachmentAlertRecipients" xml:space="preserve">
+    <value>アドレス：info@noraneko.co.jp
+または、
+ドメイン：@noraneko.co.jp
+
+メールアドレスまたはドメインとその警告文を登録します。
+
+登録すると、その宛先に対する添付ファイル付きメールの送信時に警告が表示されます。
+
+※警告文が空欄の場合、デフォルトの警告文が表示されます。</value>
+  </data>
   <data name="SettingExampleAutoAddMessage" xml:space="preserve">
     <value>メールの冒頭や末尾に、指定した文言を自動で追加できます。</value>
   </data>
@@ -744,6 +758,9 @@
   </data>
   <data name="AddedTextAtTheEnd" xml:space="preserve">
     <value>メールの末尾に文言を自動追加しました。</value>
+  </data>
+  <data name="AttachmentAlertRecipientsMessage" xml:space="preserve">
+    <value>添付ファイル送信の警告対象の宛先です。</value>
   </data>
   <data name="NotApplicableToMeetingRequests" xml:space="preserve">
     <value>※会議出席依頼には反映されません。</value>

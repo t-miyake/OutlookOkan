@@ -168,6 +168,12 @@
   <data name="AttachedIsAnEncryptedZipFile" xml:space="preserve">
     <value>Прилагается зашифрованный ZIP-файл.</value>
   </data>
+  <data name="AttachmentAlertRecipients" xml:space="preserve">
+    <value>Адрес оповещения о вложениях</value>
+  </data>
+  <data name="AttachmentAlertRecipientsMessage" xml:space="preserve">
+    <value>Получатель для предупреждения об отправке вложения.</value>
+  </data>
   <data name="AttachmentProhibitedRecipients" xml:space="preserve">
     <value>Вложение запрещенный адрес</value>
   </data>
@@ -616,7 +622,18 @@
 
 Если вы отправляете письмо на адрес электронной почты или домен, который вы зарегистрировали здесь, вы получите предварительное уведомление.
 
-Если вы отправляете письмо на адрес электронной почты или домен, который вы зарегистрировали здесь, вы получите предварительное уведомление.</value>
+Если текст предупреждения пуст, на экране подтверждения будет показан текст предупреждения по умолчанию.</value>
+  </data>
+  <data name="SettingExampleAttachmentAlertRecipients" xml:space="preserve">
+    <value>Адрес: info@noraneko.co.jp
+Или.
+Домен: @noraneko.co.jp
+
+Зарегистрируйте адрес электронной почты или домен и его предупреждающий текст.
+
+Если он зарегистрирован, то при отправке писем с вложениями на этот адрес будет отображаться предупреждение.
+
+Если текст предупреждения оставлен пустым, отображается текст предупреждения по умолчанию.</value>
   </data>
   <data name="SettingExampleAttachmentProhibitedRecipients" xml:space="preserve">
     <value>Адрес электронной почты: info@noraneko.co.jp

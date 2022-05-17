@@ -91,6 +91,10 @@ namespace OutlookOkan.Models
             var attachmentProhibitedRecipientsList = attachmentProhibitedRecipientsCsv.GetCsvRecords<AttachmentProhibitedRecipients>(attachmentProhibitedRecipientsCsv.LoadCsv<AttachmentProhibitedRecipientsMap>())
                 .Where(x => !string.IsNullOrEmpty(x.Recipient)).ToList();
 
+            var attachmentAlertRecipientsCsv = new ReadAndWriteCsv("AttachmentAlertRecipients.csv");
+            var attachmentAlertRecipientsList = attachmentAlertRecipientsCsv.GetCsvRecords<AttachmentAlertRecipients>(attachmentAlertRecipientsCsv.LoadCsv<AttachmentAlertRecipientsMap>())
+                .Where(x => !string.IsNullOrEmpty(x.Recipient)).ToList();
+
             #endregion
 
             var isMailItem = (typeof(T) == typeof(Outlook._MailItem));
@@ -141,8 +145,8 @@ namespace OutlookOkan.Models
             displayNameAndRecipient = ExternalDomainsChangeToBccIfNeeded(item, displayNameAndRecipient, externalDomainsWarningAndAutoChangeToBccSetting, internalDomainList, CountRecipientExternalDomains(displayNameAndRecipient, _checkList.SenderDomain, internalDomainList, true), _checkList.SenderDomain, _checkList.Sender);
 
             _checkList = GetRecipient(_checkList, displayNameAndRecipient, alertAddressList, internalDomainList);
-            _checkList = CheckRecipientsAndAttachments(_checkList, attachmentsSetting.IsAttachmentsProhibited, attachmentsSetting.IsWarningWhenAttachedRealFile, attachmentProhibitedRecipientsList, recipientsAndAttachmentsNameList);
             _checkList = CheckMailBodyAndRecipient(_checkList, displayNameAndRecipient, nameAndDomainsList, generalSetting.IsCheckNameAndDomainsFromRecipients);
+            _checkList = CheckRecipientsAndAttachments(_checkList, attachmentsSetting.IsAttachmentsProhibited, attachmentsSetting.IsWarningWhenAttachedRealFile, attachmentProhibitedRecipientsList, recipientsAndAttachmentsNameList, attachmentAlertRecipientsList);
             _checkList.RecipientExternalDomainNumAll = CountRecipientExternalDomains(displayNameAndRecipient, _checkList.SenderDomain, internalDomainList, false);
             _checkList = ExternalDomainsWarningIfNeeded(_checkList, externalDomainsWarningAndAutoChangeToBccSetting, CountRecipientExternalDomains(displayNameAndRecipient, _checkList.SenderDomain, internalDomainList, true));
             _checkList.DeferredMinutes = CalcDeferredMinutes(displayNameAndRecipient, deferredDeliveryMinutes, generalSetting.IsDoNotUseDeferredDeliveryIfAllRecipientsAreInternalDomain, _checkList.RecipientExternalDomainNumAll);
@@ -1722,41 +1726,45 @@ namespace OutlookOkan.Models
         /// <param name="isWarningWhenAttachedRealFile">実ファイルが添付されている場合、リンクとして添付を推奨する旨の警告を表示する否か</param>
         /// <param name="attachmentProhibitedRecipientsList">添付ファイル禁止宛先設定</param>
         /// <param name="recipientsAndAttachmentsNameList">宛先と添付ファイル名の紐づけ設定</param>
+        /// <param name="attachmentAlertRecipientsList">添付ファイル警告宛先と警告文設定</param>
         /// <returns>CheckList</returns>
-        private CheckList CheckRecipientsAndAttachments(CheckList checkList, bool isAttachmentsProhibited, bool isWarningWhenAttachedRealFile, List<AttachmentProhibitedRecipients> attachmentProhibitedRecipientsList, List<RecipientsAndAttachmentsName> recipientsAndAttachmentsNameList)
+        private CheckList CheckRecipientsAndAttachments(CheckList checkList, bool isAttachmentsProhibited, bool isWarningWhenAttachedRealFile, IReadOnlyCollection<AttachmentProhibitedRecipients> attachmentProhibitedRecipientsList, IReadOnlyCollection<RecipientsAndAttachmentsName> recipientsAndAttachmentsNameList, IReadOnlyCollection<AttachmentAlertRecipients> attachmentAlertRecipientsList)
         {
-            if (isAttachmentsProhibited && _checkList.Attachments.Count > 0)
-            {
-                _checkList.IsCanNotSendMail = true;
-                _checkList.CanNotSendMailMessage = Resources.AttachmentsProhibitedMessage;
+            if (checkList.Attachments.Count <= 0) return checkList;
 
+            if (isAttachmentsProhibited)
+            {
+                checkList.IsCanNotSendMail = true;
+                checkList.CanNotSendMailMessage = Resources.AttachmentsProhibitedMessage;
+
+                //添付ファイル付きメールの送信が禁止されているため、これ以上何もしない。
                 return checkList;
             }
 
-            if (attachmentProhibitedRecipientsList.Count > 0 && _checkList.Attachments.Count > 0)
+            if (attachmentProhibitedRecipientsList.Count > 0)
             {
                 var prohibitedRecipients = "";
                 var isProhibited = false;
 
                 foreach (var prohibitedRecipient in attachmentProhibitedRecipientsList)
                 {
-                    foreach (var to in _checkList.ToAddresses.Where(to => to.MailAddress.Contains(prohibitedRecipient.Recipient)))
+                    foreach (var to in checkList.ToAddresses.Where(to => to.MailAddress.Contains(prohibitedRecipient.Recipient)))
                     {
-                        _checkList.IsCanNotSendMail = true;
+                        checkList.IsCanNotSendMail = true;
                         isProhibited = true;
                         prohibitedRecipients += " " + to.MailAddress;
                     }
 
-                    foreach (var cc in _checkList.CcAddresses.Where(cc => cc.MailAddress.Contains(prohibitedRecipient.Recipient)))
+                    foreach (var cc in checkList.CcAddresses.Where(cc => cc.MailAddress.Contains(prohibitedRecipient.Recipient)))
                     {
-                        _checkList.IsCanNotSendMail = true;
+                        checkList.IsCanNotSendMail = true;
                         isProhibited = true;
                         prohibitedRecipients += " " + cc.MailAddress;
                     }
 
-                    foreach (var bcc in _checkList.BccAddresses.Where(bcc => bcc.MailAddress.Contains(prohibitedRecipient.Recipient)))
+                    foreach (var bcc in checkList.BccAddresses.Where(bcc => bcc.MailAddress.Contains(prohibitedRecipient.Recipient)))
                     {
-                        _checkList.IsCanNotSendMail = true;
+                        checkList.IsCanNotSendMail = true;
                         isProhibited = true;
                         prohibitedRecipients += " " + bcc.MailAddress;
                     }
@@ -1764,19 +1772,39 @@ namespace OutlookOkan.Models
 
                 if (isProhibited)
                 {
-                    _checkList.CanNotSendMailMessage = Resources.AttachmentProhibitedRecipientsMessage + "：" + prohibitedRecipients;
+                    checkList.CanNotSendMailMessage = Resources.AttachmentProhibitedRecipientsMessage + "：" + prohibitedRecipients;
 
+                    //添付ファイル付きメールの送付が禁止された宛先のため、これ以上何もしない。
                     return checkList;
                 }
             }
 
-            if (recipientsAndAttachmentsNameList.Count > 0 && _checkList.Attachments.Count > 0)
+            if (attachmentAlertRecipientsList.Count > 0)
+            {
+                foreach (var attachmentAlertRecipient in attachmentAlertRecipientsList)
+                {
+                    foreach (var to in checkList.ToAddresses.Where(to => to.MailAddress.Contains(attachmentAlertRecipient.Recipient)))
+                    {
+                        AddAlerts(string.IsNullOrEmpty(attachmentAlertRecipient.Message) ? Resources.AttachmentAlertRecipientsMessage + $"[{to.MailAddress}]" : attachmentAlertRecipient.Message + $"[{to.MailAddress}]", true, false, false);
+                    }
+                    foreach (var cc in checkList.CcAddresses.Where(cc => cc.MailAddress.Contains(attachmentAlertRecipient.Recipient)))
+                    {
+                        AddAlerts(string.IsNullOrEmpty(attachmentAlertRecipient.Message) ? Resources.AttachmentAlertRecipientsMessage + $"[{cc.MailAddress}]" : attachmentAlertRecipient.Message + $"[{cc.MailAddress}]", true, false, false);
+                    }
+                    foreach (var bcc in checkList.BccAddresses.Where(bcc => bcc.MailAddress.Contains(attachmentAlertRecipient.Recipient)))
+                    {
+                        AddAlerts(string.IsNullOrEmpty(attachmentAlertRecipient.Message) ? Resources.AttachmentAlertRecipientsMessage + $"[{bcc.MailAddress}]" : attachmentAlertRecipient.Message + $"[{bcc.MailAddress}]", true, false, false);
+                    }
+                }
+            }
+
+            if (recipientsAndAttachmentsNameList.Count > 0)
             {
                 foreach (var recipientsAndAttachmentsName in recipientsAndAttachmentsNameList)
                 {
-                    foreach (var attachment in _checkList.Attachments.Where(attachment => attachment.FileName.Contains(recipientsAndAttachmentsName.AttachmentsName)))
+                    foreach (var attachment in checkList.Attachments.Where(attachment => attachment.FileName.Contains(recipientsAndAttachmentsName.AttachmentsName)))
                     {
-                        foreach (var to in _checkList.ToAddresses.Where(to => to.IsExternal))
+                        foreach (var to in checkList.ToAddresses.Where(to => to.IsExternal))
                         {
                             if (!to.MailAddress.Contains(recipientsAndAttachmentsName.Recipient))
                             {
@@ -1784,7 +1812,7 @@ namespace OutlookOkan.Models
                             }
                         }
 
-                        foreach (var cc in _checkList.CcAddresses.Where(cc => cc.IsExternal))
+                        foreach (var cc in checkList.CcAddresses.Where(cc => cc.IsExternal))
                         {
                             if (!cc.MailAddress.Contains(recipientsAndAttachmentsName.Recipient))
                             {
@@ -1792,7 +1820,7 @@ namespace OutlookOkan.Models
                             }
                         }
 
-                        foreach (var bcc in _checkList.BccAddresses.Where(bcc => bcc.IsExternal))
+                        foreach (var bcc in checkList.BccAddresses.Where(bcc => bcc.IsExternal))
                         {
                             if (!bcc.MailAddress.Contains(recipientsAndAttachmentsName.Recipient))
                             {
@@ -1803,7 +1831,7 @@ namespace OutlookOkan.Models
                 }
             }
 
-            if (isWarningWhenAttachedRealFile && _checkList.Attachments.Count > 0)
+            if (isWarningWhenAttachedRealFile)
             {
                 AddAlerts(Resources.RecommendationOfAttachFileAsLink, false, true, false);
             }

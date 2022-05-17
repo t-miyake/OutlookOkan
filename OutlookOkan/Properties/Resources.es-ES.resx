@@ -168,6 +168,12 @@
   <data name="AttachedIsAnEncryptedZipFile" xml:space="preserve">
     <value>Se adjunta un archivo ZIP cifrado.</value>
   </data>
+  <data name="AttachmentAlertRecipients" xml:space="preserve">
+    <value>Dirección de alerta de los archivos adjuntos</value>
+  </data>
+  <data name="AttachmentAlertRecipientsMessage" xml:space="preserve">
+    <value>Destinatario para el aviso de envío de archivos adjuntos.</value>
+  </data>
   <data name="AttachmentProhibitedRecipients" xml:space="preserve">
     <value>Dirección prohibida del anexo</value>
   </data>
@@ -618,6 +624,16 @@ Si envía un correo electrónico a una dirección de correo electrónico o domin
 
 Si el texto de alerta está en blanco, la pantalla de confirmación mostrará el texto de alerta por defecto.</value>
   </data>
+  <data name="SettingExampleAttachmentAlertRecipients" xml:space="preserve">
+    <value>Dirección: info@noraneko.co.jp
+O
+Dominio: @noraneko.co.jp
+
+Registre una dirección de correo electrónico o un dominio y su texto de advertencia.
+
+Una vez registrado, se mostrará una advertencia cuando se envíe un correo electrónico con archivos adjuntos a ese destino.
+
+Si el texto de advertencia se deja en blanco, se mostrará el texto de advertencia por defecto.</value>
   </data>
   <data name="SettingExampleAttachmentProhibitedRecipients" xml:space="preserve">
     <value>Dirección de correo electrónico: info@noraneko.co.jp
