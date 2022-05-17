@@ -86,6 +86,11 @@ namespace OutlookOkan
                 ResourceService.Instance.ChangeCulture(_generalSetting.LanguageCode);
             }
 
+            var autoAddMessageSetting = new AutoAddMessage();
+            var autoAddMessageCsv = new ReadAndWriteCsv("AutoAddMessage.csv");
+            var autoAddMessageSettingList = autoAddMessageCsv.GetCsvRecords<AutoAddMessage>(autoAddMessageCsv.LoadCsv<AutoAddMessageMap>());
+            if (autoAddMessageSettingList.Count > 0) autoAddMessageSetting = autoAddMessageSettingList[0];
+
             Type type;
             switch (item)
             {
@@ -133,7 +138,7 @@ namespace OutlookOkan
                 }
 
                 var generateCheckList = new GenerateCheckList();
-                var checklist = type == typeof(Outlook._MailItem) ? generateCheckList.GenerateCheckListFromMail((Outlook._MailItem)item, _generalSetting, contacts) : generateCheckList.GenerateCheckListFromMail((Outlook._MeetingItem)item, _generalSetting, contacts);
+                var checklist = type == typeof(Outlook._MailItem) ? generateCheckList.GenerateCheckListFromMail((Outlook._MailItem)item, _generalSetting, contacts, autoAddMessageSetting) : generateCheckList.GenerateCheckListFromMail((Outlook._MeetingItem)item, _generalSetting, contacts, autoAddMessageSetting);
 
                 if (_generalSetting.IsAutoCheckIfAllRecipientsAreSameDomain)
                 {
@@ -191,6 +196,9 @@ namespace OutlookOkan
 
                     if (dialogResult)
                     {
+                        //メール本文への文言の自動追加はメール送信時に実行する。
+                        AutoAddMessageToBody(autoAddMessageSetting, item, type == typeof(Outlook._MailItem));
+
                         //Send Mail.
                     }
                     else
@@ -200,6 +208,9 @@ namespace OutlookOkan
                 }
                 else
                 {
+                    //メール本文への文言の自動追加はメール送信時に実行する。
+                    AutoAddMessageToBody(autoAddMessageSetting, item, type == typeof(Outlook._MailItem));
+
                     //Send Mail.
                 }
             }
@@ -208,6 +219,9 @@ namespace OutlookOkan
                 var dialogResult = MessageBox.Show(Properties.Resources.IsCanNotShowConfirmation + Environment.NewLine + Properties.Resources.SendMailConfirmation + Environment.NewLine + Environment.NewLine + e.Message, Properties.Resources.IsCanNotShowConfirmation, MessageBoxButton.YesNo, MessageBoxImage.Warning);
                 if (dialogResult == MessageBoxResult.Yes)
                 {
+                    //メール本文への文言の自動追加はメール送信時に実行する。
+                    AutoAddMessageToBody(autoAddMessageSetting, item, type == typeof(Outlook._MailItem));
+
                     //Send Mail.
                 }
                 else
@@ -253,6 +267,9 @@ namespace OutlookOkan
             _generalSetting.IsWarningIfRecipientsIsNotRegistered = generalSetting[0].IsWarningIfRecipientsIsNotRegistered;
             _generalSetting.IsProhibitsSendingMailIfRecipientsIsNotRegistered = generalSetting[0].IsProhibitsSendingMailIfRecipientsIsNotRegistered;
             _generalSetting.IsShowConfirmationAtSendMeetingRequest = generalSetting[0].IsShowConfirmationAtSendMeetingRequest;
+            _generalSetting.IsAutoAddSenderToCc = generalSetting[0].IsAutoAddSenderToCc;
+            _generalSetting.IsCheckNameAndDomainsIncludeSubject = generalSetting[0].IsCheckNameAndDomainsIncludeSubject;
+            _generalSetting.IsCheckNameAndDomainsFromSubject = generalSetting[0].IsCheckNameAndDomainsFromSubject;
         }
 
         /// <summary>
@@ -319,6 +336,32 @@ namespace OutlookOkan
 
             //どのようなオプション条件にも該当しないため、通常通り確認画面を表示する。
             return true;
+        }
+
+        /// <summary>
+        /// メール本文への文言の自動追加
+        /// </summary>
+        /// <param name="autoAddMessageSetting"></param>
+        /// <param name="item"></param>
+        /// <param name="isMailItem"></param>
+        private void AutoAddMessageToBody(AutoAddMessage autoAddMessageSetting, object item, bool isMailItem)
+        {
+            //一旦、通常のメールのみ対象とする。
+            if (!isMailItem) return;
+
+            if (autoAddMessageSetting.IsAddToStart)
+            {
+                var mailItemWordEditor = (Word.Document)((dynamic)item).GetInspector.WordEditor;
+                var range = mailItemWordEditor.Range(0, 0);
+                range.InsertBefore(autoAddMessageSetting.MessageOfAddToStart + Environment.NewLine + Environment.NewLine);
+            }
+
+            if (autoAddMessageSetting.IsAddToEnd)
+            {
+                var mailItemWordEditor = (Word.Document)((dynamic)item).GetInspector.WordEditor;
+                var range = mailItemWordEditor.Range();
+                range.InsertAfter(Environment.NewLine + Environment.NewLine + autoAddMessageSetting.MessageOfAddToEnd);
+            }
         }
 
         #region VSTO generated code

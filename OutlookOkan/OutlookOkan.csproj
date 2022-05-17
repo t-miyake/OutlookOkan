@@ -35,7 +35,7 @@
     <PublishUrl>publish\</PublishUrl>
     <InstallUrl />
     <TargetCulture>en</TargetCulture>
-    <ApplicationVersion>2.6.1.1</ApplicationVersion>
+    <ApplicationVersion>2.7.0.0</ApplicationVersion>
     <AutoIncrementApplicationRevision>false</AutoIncrementApplicationRevision>
     <UpdateEnabled>false</UpdateEnabled>
     <UpdateInterval>0</UpdateInterval>
@@ -218,8 +218,10 @@
     <Compile Include="Types\AlertAddress.cs" />
     <Compile Include="Types\AlertKeywordAndMessage.cs" />
     <Compile Include="Types\AlertKeywordAndMessageForSubject.cs" />
+    <Compile Include="Types\AttachmentAlertRecipients.cs" />
     <Compile Include="Types\AttachmentProhibitedRecipients.cs" />
     <Compile Include="Types\AttachmentsSetting.cs" />
+    <Compile Include="Types\AutoAddMessage.cs" />
     <Compile Include="Types\AutoCcBccAttachedFile.cs" />
     <Compile Include="Types\AutoCcBccKeyword.cs" />
     <Compile Include="Types\AutoCcBccRecipient.cs" />
@@ -228,6 +230,7 @@
     <Compile Include="Types\DeferredDeliveryMinutes.cs" />
     <Compile Include="Types\DisplayNameAndRecipient.cs" />
     <Compile Include="Types\ExternalDomainsWarningAndAutoChangeToBcc.cs" />
+    <Compile Include="Types\ForceAutoChangeRecipientsToBcc.cs" />
     <Compile Include="Types\GeneralSetting.cs" />
     <Compile Include="Types\InternalDomain.cs" />
     <Compile Include="Types\Languages.cs" />

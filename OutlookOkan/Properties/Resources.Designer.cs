@@ -70,6 +70,24 @@ namespace OutlookOkan.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Added text at the beginning of the mail..
+        /// </summary>
+        public static string AddedTextAtTheBeginning {
+            get {
+                return ResourceManager.GetString("AddedTextAtTheBeginning", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Added text at the end of the mail..
+        /// </summary>
+        public static string AddedTextAtTheEnd {
+            get {
+                return ResourceManager.GetString("AddedTextAtTheEnd", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Contacts.
         /// </summary>
         public static string AddressBook {
@@ -142,6 +160,15 @@ namespace OutlookOkan.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Always add the sender&apos;s address to Cc automatically..
+        /// </summary>
+        public static string AlwaysAddTheSendersAddressToCc {
+            get {
+                return ResourceManager.GetString("AlwaysAddTheSendersAddressToCc", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Applicable recipients.
         /// </summary>
         public static string ApplicableDestination {
@@ -187,7 +214,25 @@ namespace OutlookOkan.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Attachment prohibited address.
+        ///   Looks up a localized string similar to Attachment alerting recipients.
+        /// </summary>
+        public static string AttachmentAlertRecipients {
+            get {
+                return ResourceManager.GetString("AttachmentAlertRecipients", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Recipient for warning of attachment sending..
+        /// </summary>
+        public static string AttachmentAlertRecipientsMessage {
+            get {
+                return ResourceManager.GetString("AttachmentAlertRecipientsMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Attachment prohibited recipients.
         /// </summary>
         public static string AttachmentProhibitedRecipients {
             get {
@@ -304,11 +349,29 @@ namespace OutlookOkan.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Automatic body text addition.
+        /// </summary>
+        public static string AutoAddMessage {
+            get {
+                return ResourceManager.GetString("AutoAddMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to The sender&apos;s Email address was automatically added to the To. (because the To no longer exists due to auto change to Bcc.).
         /// </summary>
         public static string AutoAddSendersAddressToAlert {
             get {
                 return ResourceManager.GetString("AutoAddSendersAddressToAlert", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The specified Email address was automatically added to the To. (because the To no longer exists due to auto change to Bcc.).
+        /// </summary>
+        public static string AutoAddToRecipientByForceAutoChangeRecipientsToBccAddressToAlert {
+            get {
+                return ResourceManager.GetString("AutoAddToRecipientByForceAutoChangeRecipientsToBccAddressToAlert", resourceCulture);
             }
         }
         
@@ -404,6 +467,15 @@ namespace OutlookOkan.Properties {
         public static string CanNotFindTheLinkedName {
             get {
                 return ResourceManager.GetString("CanNotFindTheLinkedName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Cannot find the linked name in the mail subject..
+        /// </summary>
+        public static string CanNotFindTheLinkedNameInSubject {
+            get {
+                return ResourceManager.GetString("CanNotFindTheLinkedNameInSubject", resourceCulture);
             }
         }
         
@@ -688,6 +760,33 @@ namespace OutlookOkan.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Force auto change to Bcc.
+        /// </summary>
+        public static string ForceAutoChangeRecipientsToBcc {
+            get {
+                return ResourceManager.GetString("ForceAutoChangeRecipientsToBcc", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The recipients were automatically converted to Bcc..
+        /// </summary>
+        public static string ForceAutoChangeRecipientsToBccAlert {
+            get {
+                return ResourceManager.GetString("ForceAutoChangeRecipientsToBccAlert", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The following settings take precedence over the above settings..
+        /// </summary>
+        public static string ForceAutoChangeRecipientsToBccNotes {
+            get {
+                return ResourceManager.GetString("ForceAutoChangeRecipientsToBccNotes", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to The word &quot;attached file&quot; is in the text, but there is no attachment..
         /// </summary>
         public static string ForgottenToAttachAlert {
@@ -869,6 +968,24 @@ namespace OutlookOkan.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to The following text is automatically added to the end of the body..
+        /// </summary>
+        public static string IsAddMessageToEnd {
+            get {
+                return ResourceManager.GetString("IsAddMessageToEnd", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The following text is automatically added to the beginning of the body..
+        /// </summary>
+        public static string IsAddMessageToStart {
+            get {
+                return ResourceManager.GetString("IsAddMessageToStart", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to The recipients (Bcc) contains an address or domain that has been registered as an alert..
         /// </summary>
         public static string IsAlertAddressBccAlert {
@@ -979,6 +1096,24 @@ namespace OutlookOkan.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to The warning is also displayed when there is no recipient&apos;s name in the subject..
+        /// </summary>
+        public static string IsCheckNameAndDomainsFromSubject {
+            get {
+                return ResourceManager.GetString("IsCheckNameAndDomainsFromSubject", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Include the subject in the target. *The subject as well as the body will be included in the target..
+        /// </summary>
+        public static string IsCheckNameAndDomainsIncludeSubject {
+            get {
+                return ResourceManager.GetString("IsCheckNameAndDomainsIncludeSubject", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Disable this feature if the recipient&apos;s domains are all internal domains..
         /// </summary>
         public static string IsDoNotUseXIfAllRecipientsAreInternalDomain {
@@ -1002,6 +1137,24 @@ namespace OutlookOkan.Properties {
         public static string IsEnableRecipientsAreSortedByDomain {
             get {
                 return ResourceManager.GetString("IsEnableRecipientsAreSortedByDomain", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Force all external recipients to Bcc..
+        /// </summary>
+        public static string IsForceAutoChangeRecipientsToBcc {
+            get {
+                return ResourceManager.GetString("IsForceAutoChangeRecipientsToBcc", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Include internal domains. *All recipients will be changed to Bcc..
+        /// </summary>
+        public static string IsIncludeInternalDomain {
+            get {
+                return ResourceManager.GetString("IsIncludeInternalDomain", resourceCulture);
             }
         }
         
@@ -1192,6 +1345,15 @@ namespace OutlookOkan.Properties {
         public static string NoAlert {
             get {
                 return ResourceManager.GetString("NoAlert", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to *Not applicable to meeting requests..
+        /// </summary>
+        public static string NotApplicableToMeetingRequests {
+            get {
+                return ResourceManager.GetString("NotApplicableToMeetingRequests", resourceCulture);
             }
         }
         
@@ -1412,13 +1574,32 @@ namespace OutlookOkan.Properties {
         ///or
         ///Domain: @noraneko.co.jp
         ///
-        ///Register an email address or domain.
+        ///Register an email address or domain and their alerting text.
         ///
-        ///If you send an email to an email address or domain that you have registered here, you will receive an alert in advance..
+        ///If you send an email to an email address or domain that you have registered here, you will receive an alert in advance.
+        ///
+        ///If the alerting text is blank, the confirmation screen will show the default alerting text..
         /// </summary>
         public static string SettingExampleAlertMailAddress {
             get {
                 return ResourceManager.GetString("SettingExampleAlertMailAddress", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Address: info@noraneko.co.jp
+        ///Or
+        ///Domain: @noraneko.co.jp
+        ///
+        ///Register an e-mail address or domain and its warning text.
+        ///
+        ///Once registered, a warning will be displayed when sending e-mail with attachments to that destination.
+        ///
+        ///If the warning text is left blank, the default warning text will be displayed..
+        /// </summary>
+        public static string SettingExampleAttachmentAlertRecipients {
+            get {
+                return ResourceManager.GetString("SettingExampleAttachmentAlertRecipients", resourceCulture);
             }
         }
         
@@ -1487,6 +1668,15 @@ namespace OutlookOkan.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to You can automatically add the specified wording to the beginning or end of an e-mail..
+        /// </summary>
+        public static string SettingExampleAutoAddMessage {
+            get {
+                return ResourceManager.GetString("SettingExampleAutoAddMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Email address: info@noraneko.co.jp
         ///or
         ///Domain: @noraneko.co.jp
@@ -1506,7 +1696,9 @@ namespace OutlookOkan.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Set the number of external domains to be used as a basis for warnings and automatic change to Bcc, and turn each one on or off.
         ///
-        ///If the To does not exist after automatic change to Bcc, the sender&apos;s address will be automatically added to the To..
+        ///If the To does not exist after automatic change to Bcc, the sender&apos;s address will be automatically added to the To.
+        ///
+        ///It is also possible to force all recipients to be converted to Bcc..
         /// </summary>
         public static string SettingExampleExternalDomainsWarningAndAutoChangeToBcc {
             get {
@@ -1533,7 +1725,9 @@ namespace OutlookOkan.Properties {
         ///
         ///Register the name (ex. Company name) and domain.
         ///
-        ///Displays a warning if the name in the email body and the recipients domain do not match..
+        ///Displays a warning if the name in the email body and the recipients domain do not match.
+        ///
+        ///*Subjects can also be included in the check..
         /// </summary>
         public static string SettingExampleNameAndDomain {
             get {
@@ -1654,6 +1848,15 @@ namespace OutlookOkan.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Mail address to be set as To *If not set, the sender address is automatically set as To..
+        /// </summary>
+        public static string ToRecipient {
+            get {
+                return ResourceManager.GetString("ToRecipient", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Unknown.
         /// </summary>
         public static string Unknown {
@@ -1663,7 +1866,7 @@ namespace OutlookOkan.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Version 2.6.1.1.
+        ///   Looks up a localized string similar to Version 2.7.0.0.
         /// </summary>
         public static string Version {
             get {

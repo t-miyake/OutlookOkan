@@ -120,6 +120,12 @@
   <data name="About" xml:space="preserve">
     <value>О программе</value>
   </data>
+  <data name="AddedTextAtTheBeginning" xml:space="preserve">
+    <value>Добавлен текст в начале письма.</value>
+  </data>
+  <data name="AddedTextAtTheEnd" xml:space="preserve">
+    <value>Добавлен текст в конце письма.</value>
+  </data>
   <data name="AddressBook" xml:space="preserve">
     <value>Контакты</value>
   </data>
@@ -144,6 +150,9 @@
   <data name="AlwaysAddTheSendersAddressToBcc" xml:space="preserve">
     <value>Всегда автоматически добавляйте адрес отправителя в Bcc.</value>
   </data>
+  <data name="AlwaysAddTheSendersAddressToCc" xml:space="preserve">
+    <value>Всегда автоматически добавляйте адрес отправителя в Cc.</value>
+  </data>
   <data name="ApplicableDestination" xml:space="preserve">
     <value>Применимые получатели</value>
   </data>
@@ -158,6 +167,12 @@
   </data>
   <data name="AttachedIsAnEncryptedZipFile" xml:space="preserve">
     <value>Прилагается зашифрованный ZIP-файл.</value>
+  </data>
+  <data name="AttachmentAlertRecipients" xml:space="preserve">
+    <value>Адрес оповещения о вложениях</value>
+  </data>
+  <data name="AttachmentAlertRecipientsMessage" xml:space="preserve">
+    <value>Получатель для предупреждения об отправке вложения.</value>
   </data>
   <data name="AttachmentProhibitedRecipients" xml:space="preserve">
     <value>Вложение запрещенный адрес</value>
@@ -201,8 +216,14 @@
   <data name="AutoAddMailAddress" xml:space="preserve">
     <value>Автоматическое добавление получателей.</value>
   </data>
+  <data name="AutoAddMessage" xml:space="preserve">
+    <value>Автоматическое добавление основного текста</value>
+  </data>
   <data name="AutoAddSendersAddressToAlert" xml:space="preserve">
     <value>Адрес электронной почты отправителя был автоматически добавлен в To. (поскольку адреса "Кому" больше не существует из-за автоматического изменения на "Bcc").</value>
+  </data>
+  <data name="AutoAddToRecipientByForceAutoChangeRecipientsToBccAddressToAlert" xml:space="preserve">
+    <value>Указанный адрес электронной почты был автоматически добавлен к Кому. (поскольку адреса To больше не существует из-за автоматического изменения на Bcc).</value>
   </data>
   <data name="AutoCheckConfig" xml:space="preserve">
     <value>Настройка автопроверки</value>
@@ -237,6 +258,9 @@
   </data>
   <data name="CanNotFindTheLinkedName" xml:space="preserve">
     <value>Невозможно найти связанное имя в теле письма.</value>
+  </data>
+  <data name="CanNotFindTheLinkedNameInSubject" xml:space="preserve">
+    <value>Не удается найти связанное имя в теме письма.</value>
   </data>
   <data name="Cc" xml:space="preserve">
     <value>Cc</value>
@@ -332,6 +356,15 @@
   <data name="FailedToGetInformation" xml:space="preserve">
     <value>Не удалось получить информацию.</value>
   </data>
+  <data name="ForceAutoChangeRecipientsToBcc" xml:space="preserve">
+    <value>Принудительное автоматическое изменение на Bcc</value>
+  </data>
+  <data name="ForceAutoChangeRecipientsToBccAlert" xml:space="preserve">
+    <value>Получатели были автоматически преобразованы в Bcc.</value>
+  </data>
+  <data name="ForceAutoChangeRecipientsToBccNotes" xml:space="preserve">
+    <value>Следующие настройки имеют приоритет над вышеуказанными.</value>
+  </data>
   <data name="ForgottenToAttachAlert" xml:space="preserve">
     <value>В тексте есть слово "вложенный файл", но вложения нет.</value>
   </data>
@@ -393,6 +426,12 @@
   <data name="InternalDomain" xml:space="preserve">
     <value>Внутренний домен</value>
   </data>
+  <data name="IsAddMessageToEnd" xml:space="preserve">
+    <value>Следующий текст автоматически добавляется в конец тела.</value>
+  </data>
+  <data name="IsAddMessageToStart" xml:space="preserve">
+    <value>Следующий текст автоматически добавляется в начало тела.</value>
+  </data>
   <data name="IsAlertAddressBccAlert" xml:space="preserve">
     <value>Получатели (Bcc) содержат адрес или домен, который был зарегистрирован как оповещение.</value>
   </data>
@@ -432,6 +471,12 @@
   <data name="IsCheckNameAndDomainsFromRecipients" xml:space="preserve">
     <value>Предупреждение также отображается, если в теле письма отсутствует имя получателя.</value>
   </data>
+  <data name="IsCheckNameAndDomainsFromSubject" xml:space="preserve">
+    <value>Предупреждение также отображается, если в теме сообщения отсутствует имя получателя.</value>
+  </data>
+  <data name="IsCheckNameAndDomainsIncludeSubject" xml:space="preserve">
+    <value>Включите тему в цель. *Объект, а также тело будут включены в цель.</value>
+  </data>
   <data name="IsDoNotUseXIfAllRecipientsAreInternalDomain" xml:space="preserve">
     <value>Отключите эту функцию, если все домены получателя являются внутренними доменами.</value>
   </data>
@@ -440,6 +485,12 @@
   </data>
   <data name="IsEnableRecipientsAreSortedByDomain" xml:space="preserve">
     <value>На экране подтверждения получатели сортируются по доменам.</value>
+  </data>
+  <data name="IsForceAutoChangeRecipientsToBcc" xml:space="preserve">
+    <value>Заставить всех внешних получателей отправлять Bcc.</value>
+  </data>
+  <data name="IsIncludeInternalDomain" xml:space="preserve">
+    <value>Включите внутренние домены в область действия. *Все получатели будут изменены на Bcc.</value>
   </data>
   <data name="IsNotTreatedAsAttachmentsAtHtmlEmbeddedFiles" xml:space="preserve">
     <value>Файл, встроенный в HTML-почту, не рассматривается как вложение.</value>
@@ -504,6 +555,9 @@
   </data>
   <data name="NoAlert" xml:space="preserve">
     <value>Нет никаких важных предупреждений.</value>
+  </data>
+  <data name="NotApplicableToMeetingRequests" xml:space="preserve">
+    <value>*Не применимо к запросам на проведение совещаний.</value>
   </data>
   <data name="NoticeOfIsEnableAllAttachedFilesAreDetectEncryptedZip" xml:space="preserve">
     <value>* Обработка писем с вложениями может занять больше времени.</value>
@@ -591,9 +645,22 @@
 или
 Домен: @noraneko.co.jp
 
-Зарегистрируйте адрес электронной почты или домен.
+Зарегистрируйте адрес электронной почты или домен и текст оповещения.
 
-Если вы отправляете письмо на адрес электронной почты или домен, который вы зарегистрировали здесь, вы получите предварительное уведомление.</value>
+Если вы отправляете письмо на адрес электронной почты или домен, который вы зарегистрировали здесь, вы получите предварительное уведомление.
+
+Если текст предупреждения пуст, на экране подтверждения будет показан текст предупреждения по умолчанию.</value>
+  </data>
+  <data name="SettingExampleAttachmentAlertRecipients" xml:space="preserve">
+    <value>Адрес: info@noraneko.co.jp
+Или.
+Домен: @noraneko.co.jp
+
+Зарегистрируйте адрес электронной почты или домен и его предупреждающий текст.
+
+Если он зарегистрирован, то при отправке писем с вложениями на этот адрес будет отображаться предупреждение.
+
+Если текст предупреждения оставлен пустым, отображается текст предупреждения по умолчанию.</value>
   </data>
   <data name="SettingExampleAttachmentProhibitedRecipients" xml:space="preserve">
     <value>Адрес электронной почты: info@noraneko.co.jp
@@ -629,6 +696,9 @@
 
 При отправке почты зарегистрированным получателям и доменам, указанный адрес автоматически добавляется в Cc или Bcc.</value>
   </data>
+  <data name="SettingExampleAutoAddMessage" xml:space="preserve">
+    <value>Вы можете автоматически добавить указанную формулировку в начало или конец электронного письма.</value>
+  </data>
   <data name="SettingExampleDeferredDelivery" xml:space="preserve">
     <value>Адрес электронной почты: info@noraneko.co.jp
 или
@@ -643,7 +713,9 @@
   <data name="SettingExampleExternalDomainsWarningAndAutoChangeToBcc" xml:space="preserve">
     <value>Задайте количество внешних доменов, которые будут использоваться в качестве основы для предупреждений и автоматического изменения на Bcc, и включите или выключите каждый из них.
 
-Если после автоматического изменения Bcc адрес "To" не существует, адрес отправителя будет автоматически добавлен в "To".</value>
+Если после автоматического изменения Bcc адрес "To" не существует, адрес отправителя будет автоматически добавлен в "To".
+
+Также можно заставить всех получателей конвертировать в Bcc.</value>
   </data>
   <data name="SettingExampleInternalDomainList" xml:space="preserve">
     <value>Домен: @noraneko.co.jp
@@ -658,7 +730,9 @@
 
 Зарегистрируйте имя (например, название компании) и домен.
 
-Отображает предупреждение, если имя в теле сообщения электронной почты и домен получателя не совпадают.</value>
+Отображает предупреждение, если имя в теле сообщения электронной почты и домен получателя не совпадают.
+
+*Субъекты также могут быть включены в чек.</value>
   </data>
   <data name="SettingExampleRecipientsAndAttachmentsName" xml:space="preserve">
     <value>Адрес электронной почты: info@noraneko.co.jp
@@ -707,11 +781,14 @@
   <data name="To" xml:space="preserve">
     <value>To</value>
   </data>
+  <data name="ToRecipient" xml:space="preserve">
+    <value>Почтовый адрес, который должен быть установлен как Кому *Если не установлен, адрес отправителя автоматически устанавливается как Кому.</value>
+  </data>
   <data name="Unknown" xml:space="preserve">
     <value>Неизвестно</value>
   </data>
   <data name="Version" xml:space="preserve">
-    <value>Version 2.6.1.1</value>
+    <value>Version 2.7.0.0</value>
   </data>
   <data name="VersionInfo" xml:space="preserve">
     <value>О программе.</value>

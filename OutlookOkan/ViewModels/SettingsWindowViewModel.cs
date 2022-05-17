@@ -53,6 +53,9 @@ namespace OutlookOkan.ViewModels
             ImportAttachmentProhibitedRecipients = new RelayCommand(ImportAttachmentProhibitedRecipientsFromCsv);
             ExportAttachmentProhibitedRecipients = new RelayCommand(ExportAttachmentProhibitedRecipientsToCsv);
 
+            ImportAttachmentAlertRecipients = new RelayCommand(ImportAttachmentAlertRecipientsFromCsv);
+            ExportAttachmentAlertRecipients = new RelayCommand(ExportAttachmentAlertRecipientsToCsv);
+
             //Load language code and name.
             var languages = new Languages();
             Languages = languages.Language;
@@ -73,6 +76,9 @@ namespace OutlookOkan.ViewModels
             LoadAttachmentsSettingData();
             LoadRecipientsAndAttachmentsNameData();
             LoadAttachmentProhibitedRecipientsData();
+            LoadAttachmentAlertRecipientsData();
+            LoadForceAutoChangeRecipientsToBccData();
+            LoadAutoAddMessageData();
         }
 
         internal async Task SaveSettings()
@@ -93,7 +99,10 @@ namespace OutlookOkan.ViewModels
                     SaveExternalDomainsWarningAndAutoChangeToBccToCsv(),
                     SaveAttachmentsSettingToCsv(),
                     SaveRecipientsAndAttachmentsNameToCsv(),
-                    SaveAttachmentProhibitedRecipientsToCsv()
+                    SaveAttachmentProhibitedRecipientsToCsv(),
+                    SaveAttachmentAlertRecipientsToCsv(),
+                    SaveForceAutoChangeRecipientsToBccToCsv(),
+                    SaveAutoAddMessageToCsv()
                 };
 
             await Task.WhenAll(saveTasks);
@@ -845,9 +854,13 @@ namespace OutlookOkan.ViewModels
             }
         }
 
-        public bool IsWarningWhenLargeNumberOfExternalDomainsCheckBoxIsEnabled => !IsProhibitedWhenLargeNumberOfExternalDomains;
+        public bool IsWarningWhenLargeNumberOfExternalDomainsCheckBoxIsEnabled => !IsProhibitedWhenLargeNumberOfExternalDomains && !IsForceAutoChangeRecipientsToBcc;
 
-        public bool IsAutoChangeToBccWhenLargeNumberOfExternalDomainsCheckBoxIsEnabled => !IsProhibitedWhenLargeNumberOfExternalDomains;
+        public bool IsAutoChangeToBccWhenLargeNumberOfExternalDomainsCheckBoxIsEnabled => !IsProhibitedWhenLargeNumberOfExternalDomains && !IsForceAutoChangeRecipientsToBcc;
+
+        public bool TargetToAndCcExternalDomainsNumEnabledIsEnabled => !IsForceAutoChangeRecipientsToBcc;
+
+        public bool IsProhibitedWhenLargeNumberOfExternalDomainsIsEnabled => !IsForceAutoChangeRecipientsToBcc;
 
         #endregion
 
@@ -1092,6 +1105,235 @@ namespace OutlookOkan.ViewModels
 
         #endregion
 
+        #region AttachmentAlertRecipients
+
+        public ICommand ImportAttachmentAlertRecipients { get; }
+        public ICommand ExportAttachmentAlertRecipients { get; }
+
+        private void LoadAttachmentAlertRecipientsData()
+        {
+            var readCsv = new ReadAndWriteCsv("AttachmentAlertRecipients.csv");
+            var attachmentAlertRecipients = readCsv.GetCsvRecords<AttachmentAlertRecipients>(readCsv.LoadCsv<AttachmentAlertRecipientsMap>());
+
+            foreach (var data in attachmentAlertRecipients.Where(x => !string.IsNullOrEmpty(x.Recipient)))
+            {
+                AttachmentAlertRecipients.Add(data);
+            }
+        }
+
+        private async Task SaveAttachmentAlertRecipientsToCsv()
+        {
+            var list = AttachmentAlertRecipients.Where(x => !string.IsNullOrEmpty(x.Recipient)).Cast<object>().ToList();
+            var writeCsv = new ReadAndWriteCsv("AttachmentAlertRecipients.csv");
+            await Task.Run(() => writeCsv.WriteRecordsToCsv<AttachmentAlertRecipientsMap>(list));
+        }
+
+        private void ImportAttachmentAlertRecipientsFromCsv()
+        {
+            var importAction = new CsvImportAndExport();
+            var filePath = importAction.ImportCsv();
+
+            if (filePath is null) return;
+
+            try
+            {
+                var importData = new List<AttachmentAlertRecipients>(importAction.GetCsvRecords<AttachmentAlertRecipients>(importAction.LoadCsv<AttachmentAlertRecipientsMap>(filePath)));
+                foreach (var data in importData.Where(x => !string.IsNullOrEmpty(x.Recipient)))
+                {
+                    AttachmentAlertRecipients.Add(data);
+                }
+
+                _ = MessageBox.Show(Properties.Resources.SuccessfulImport, Properties.Resources.AppName, MessageBoxButton.OK);
+            }
+            catch (Exception)
+            {
+                _ = MessageBox.Show(Properties.Resources.ImportFailed, Properties.Resources.AppName, MessageBoxButton.OK);
+            }
+        }
+
+        private void ExportAttachmentAlertRecipientsToCsv()
+        {
+            var list = AttachmentAlertRecipients.Where(x => !string.IsNullOrEmpty(x.Recipient)).Cast<object>().ToList();
+            var exportAction = new CsvImportAndExport();
+            exportAction.CsvExport<AttachmentAlertRecipientsMap>(list, "AttachmentAlertRecipients.csv");
+        }
+
+        private ObservableCollection<AttachmentAlertRecipients> _attachmentAlertRecipients = new ObservableCollection<AttachmentAlertRecipients>();
+        public ObservableCollection<AttachmentAlertRecipients> AttachmentAlertRecipients
+        {
+            get => _attachmentAlertRecipients;
+            set
+            {
+                _attachmentAlertRecipients = value;
+                OnPropertyChanged(nameof(AttachmentAlertRecipients));
+            }
+        }
+
+        #endregion
+
+        #region ForceAutoChangeRecipientsToBcc
+
+        private void LoadForceAutoChangeRecipientsToBccData()
+        {
+            var readCsv = new ReadAndWriteCsv("ForceAutoChangeRecipientsToBcc.csv");
+            //1行しかないはずだが、2行以上あるとロード時にエラーとなる恐れがあるため、全行ロードする。
+            foreach (var data in readCsv.GetCsvRecords<ForceAutoChangeRecipientsToBcc>(readCsv.LoadCsv<ForceAutoChangeRecipientsToBccMap>()))
+            {
+                _forceAutoChangeRecipientsToBcc.Add(data);
+            }
+
+            if (_forceAutoChangeRecipientsToBcc.Count == 0) return;
+
+            //実際に使用するのは1行目の設定のみ
+            IsForceAutoChangeRecipientsToBcc = _forceAutoChangeRecipientsToBcc[0].IsForceAutoChangeRecipientsToBcc;
+            ToRecipient = _forceAutoChangeRecipientsToBcc[0].ToRecipient;
+            IsIncludeInternalDomain = _forceAutoChangeRecipientsToBcc[0].IsIncludeInternalDomain;
+        }
+
+        private async Task SaveForceAutoChangeRecipientsToBccToCsv()
+        {
+            var tempForceAutoChangeRecipientsToBcc = new List<ForceAutoChangeRecipientsToBcc>
+            {
+                new ForceAutoChangeRecipientsToBcc
+                {
+                    IsForceAutoChangeRecipientsToBcc = IsForceAutoChangeRecipientsToBcc,
+                    ToRecipient = ToRecipient,
+                    IsIncludeInternalDomain = IsIncludeInternalDomain
+                }
+            };
+
+            var list = tempForceAutoChangeRecipientsToBcc.Cast<object>().ToList();
+            var writeCsv = new ReadAndWriteCsv("ForceAutoChangeRecipientsToBcc.csv");
+            await Task.Run(() => writeCsv.WriteRecordsToCsv<ForceAutoChangeRecipientsToBccMap>(list));
+        }
+
+        private readonly List<ForceAutoChangeRecipientsToBcc> _forceAutoChangeRecipientsToBcc = new List<ForceAutoChangeRecipientsToBcc>();
+
+        private bool _isForceAutoChangeRecipientsToBcc;
+        public bool IsForceAutoChangeRecipientsToBcc
+        {
+            get => _isForceAutoChangeRecipientsToBcc;
+            set
+            {
+                _isForceAutoChangeRecipientsToBcc = value;
+                OnPropertyChanged(nameof(IsForceAutoChangeRecipientsToBcc));
+                OnPropertyChanged(nameof(IsWarningWhenLargeNumberOfExternalDomainsCheckBoxIsEnabled));
+                OnPropertyChanged(nameof(IsAutoChangeToBccWhenLargeNumberOfExternalDomainsCheckBoxIsEnabled));
+                OnPropertyChanged(nameof(TargetToAndCcExternalDomainsNumEnabledIsEnabled));
+                OnPropertyChanged(nameof(IsProhibitedWhenLargeNumberOfExternalDomainsIsEnabled));
+            }
+        }
+
+        private string _toRecipient;
+        public string ToRecipient
+        {
+            get => _toRecipient;
+            set
+            {
+                _toRecipient = value;
+                OnPropertyChanged(nameof(ToRecipient));
+            }
+        }
+
+        private bool _isIncludeInternalDomain;
+        public bool IsIncludeInternalDomain
+        {
+            get => _isIncludeInternalDomain;
+            set
+            {
+                _isIncludeInternalDomain = value;
+                OnPropertyChanged(nameof(IsIncludeInternalDomain));
+            }
+        }
+
+        #endregion
+
+        #region AutoAddMessage
+
+        private void LoadAutoAddMessageData()
+        {
+            var readCsv = new ReadAndWriteCsv("AutoAddMessage.csv");
+            //1行しかないはずだが、2行以上あるとロード時にエラーとなる恐れがあるため、全行ロードする。
+            foreach (var data in readCsv.GetCsvRecords<AutoAddMessage>(readCsv.LoadCsv<AutoAddMessageMap>()))
+            {
+                _autoAddMessage.Add(data);
+            }
+
+            if (_autoAddMessage.Count == 0) return;
+
+            //実際に使用するのは1行目の設定のみ
+            IsAddToStart = _autoAddMessage[0].IsAddToStart;
+            IsAddToEnd = _autoAddMessage[0].IsAddToEnd;
+            MessageOfAddToStart = _autoAddMessage[0].MessageOfAddToStart;
+            MessageOfAddToEnd = _autoAddMessage[0].MessageOfAddToEnd;
+        }
+
+        private async Task SaveAutoAddMessageToCsv()
+        {
+            var tempAutoAddMessage = new List<AutoAddMessage>
+            {
+                new AutoAddMessage
+                {
+                    IsAddToStart = IsAddToStart,
+                    IsAddToEnd = IsAddToEnd,
+                    MessageOfAddToStart = MessageOfAddToStart,
+                    MessageOfAddToEnd = MessageOfAddToEnd
+                }
+            };
+
+            var list = tempAutoAddMessage.Cast<object>().ToList();
+            var writeCsv = new ReadAndWriteCsv("AutoAddMessage.csv");
+            await Task.Run(() => writeCsv.WriteRecordsToCsv<AutoAddMessageMap>(list));
+        }
+
+        private readonly List<AutoAddMessage> _autoAddMessage = new List<AutoAddMessage>();
+
+        private bool _isAddToStart;
+        public bool IsAddToStart
+        {
+            get => _isAddToStart;
+            set
+            {
+                _isAddToStart = value;
+                OnPropertyChanged(nameof(IsAddToStart));
+            }
+        }
+
+        private bool _isAddToEnd;
+        public bool IsAddToEnd
+        {
+            get => _isAddToEnd;
+            set
+            {
+                _isAddToEnd = value;
+                OnPropertyChanged(nameof(IsAddToEnd));
+            }
+        }
+
+        private string _messageOfAddToStart;
+        public string MessageOfAddToStart
+        {
+            get => _messageOfAddToStart;
+            set
+            {
+                _messageOfAddToStart = value;
+                OnPropertyChanged(nameof(MessageOfAddToStart));
+            }
+        }
+
+        private string _messageOfAddToEnd;
+        public string MessageOfAddToEnd
+        {
+            get => _messageOfAddToEnd;
+            set
+            {
+                _messageOfAddToEnd = value;
+                OnPropertyChanged(nameof(MessageOfAddToEnd));
+            }
+        }
+
+        #endregion
+
         #region GeneralSetting
 
         private void LoadGeneralSettingData()
@@ -1127,6 +1369,9 @@ namespace OutlookOkan.ViewModels
             IsWarningIfRecipientsIsNotRegistered = _generalSetting[0].IsWarningIfRecipientsIsNotRegistered;
             IsProhibitsSendingMailIfRecipientsIsNotRegistered = _generalSetting[0].IsProhibitsSendingMailIfRecipientsIsNotRegistered;
             IsShowConfirmationAtSendMeetingRequest = _generalSetting[0].IsShowConfirmationAtSendMeetingRequest;
+            IsAutoAddSenderToCc = _generalSetting[0].IsAutoAddSenderToCc;
+            IsCheckNameAndDomainsIncludeSubject = _generalSetting[0].IsCheckNameAndDomainsIncludeSubject;
+            IsCheckNameAndDomainsFromSubject = _generalSetting[0].IsCheckNameAndDomainsFromSubject;
 
             if (_generalSetting[0].LanguageCode is null) return;
 
@@ -1171,7 +1416,10 @@ namespace OutlookOkan.ViewModels
                     IsCheckNameAndDomainsFromRecipients = IsCheckNameAndDomainsFromRecipients,
                     IsWarningIfRecipientsIsNotRegistered = IsWarningIfRecipientsIsNotRegistered,
                     IsProhibitsSendingMailIfRecipientsIsNotRegistered = IsProhibitsSendingMailIfRecipientsIsNotRegistered,
-                    IsShowConfirmationAtSendMeetingRequest = IsShowConfirmationAtSendMeetingRequest
+                    IsShowConfirmationAtSendMeetingRequest = IsShowConfirmationAtSendMeetingRequest,
+                    IsAutoAddSenderToCc = IsAutoAddSenderToCc,
+                    IsCheckNameAndDomainsIncludeSubject = IsCheckNameAndDomainsIncludeSubject,
+                    IsCheckNameAndDomainsFromSubject =IsCheckNameAndDomainsFromSubject
                 }
             };
 
@@ -1411,6 +1659,39 @@ namespace OutlookOkan.ViewModels
             {
                 _isShowConfirmationAtSendMeetingRequest = value;
                 OnPropertyChanged(nameof(IsShowConfirmationAtSendMeetingRequest));
+            }
+        }
+
+        private bool _isAutoAddSenderToCc;
+        public bool IsAutoAddSenderToCc
+        {
+            get => _isAutoAddSenderToCc;
+            set
+            {
+                _isAutoAddSenderToCc = value;
+                OnPropertyChanged(nameof(IsAutoAddSenderToCc));
+            }
+        }
+
+        private bool _isCheckNameAndDomainsIncludeSubject;
+        public bool IsCheckNameAndDomainsIncludeSubject
+        {
+            get => _isCheckNameAndDomainsIncludeSubject;
+            set
+            {
+                _isCheckNameAndDomainsIncludeSubject = value;
+                OnPropertyChanged(nameof(IsCheckNameAndDomainsIncludeSubject));
+            }
+        }
+
+        private bool _isCheckNameAndDomainsFromSubject;
+        public bool IsCheckNameAndDomainsFromSubject
+        {
+            get => _isCheckNameAndDomainsFromSubject;
+            set
+            {
+                _isCheckNameAndDomainsFromSubject = value;
+                OnPropertyChanged(nameof(IsCheckNameAndDomainsFromSubject));
             }
         }
 

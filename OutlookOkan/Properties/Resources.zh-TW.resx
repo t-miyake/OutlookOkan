@@ -120,6 +120,12 @@
   <data name="About" xml:space="preserve">
     <value>軟件信息</value>
   </data>
+  <data name="AddedTextAtTheBeginning" xml:space="preserve">
+    <value>在郵件的開頭添加了文字。</value>
+  </data>
+  <data name="AddedTextAtTheEnd" xml:space="preserve">
+    <value>在郵件的結尾處添加了文字。</value>
+  </data>
   <data name="AddressBook" xml:space="preserve">
     <value>聯繫人</value>
   </data>
@@ -144,6 +150,9 @@
   <data name="AlwaysAddTheSendersAddressToBcc" xml:space="preserve">
     <value>始終將發件人的地址自動添加到Bcc中。</value>
   </data>
+  <data name="AlwaysAddTheSendersAddressToCc" xml:space="preserve">
+    <value>始終將發件人的地址自動添加到Cc中。</value>
+  </data>
   <data name="ApplicableDestination" xml:space="preserve">
     <value>適用對象</value>
   </data>
@@ -158,6 +167,12 @@
   </data>
   <data name="AttachedIsAnEncryptedZipFile" xml:space="preserve">
     <value>附件中是一個加密的ZIP文件。</value>
+  </data>
+  <data name="AttachmentAlertRecipients" xml:space="preserve">
+    <value>附件提醒地址</value>
+  </data>
+  <data name="AttachmentAlertRecipientsMessage" xml:space="preserve">
+    <value>發送附件警告的收件人。</value>
   </data>
   <data name="AttachmentProhibitedRecipients" xml:space="preserve">
     <value>附件禁止的地址</value>
@@ -198,8 +213,14 @@
   <data name="AutoAddMailAddress" xml:space="preserve">
     <value>自動添加收件人。</value>
   </data>
+  <data name="AutoAddMessage" xml:space="preserve">
+    <value>自動添加正文</value>
+  </data>
   <data name="AutoAddSendersAddressToAlert" xml:space="preserve">
     <value>發件人的電子郵件地址被自動添加到收件人中。 (因為收件人已經不存在了，因為自動改為Bcc。)</value>
+  </data>
+  <data name="AutoAddToRecipientByForceAutoChangeRecipientsToBccAddressToAlert" xml:space="preserve">
+    <value>指定的電子郵件地址被自動添加到收件人中。 (因為收件人已經不存在了，因為自動改為密件)。</value>
   </data>
   <data name="AutoCheckConfig" xml:space="preserve">
     <value>自動檢查設置</value>
@@ -235,6 +256,9 @@
   </data>
   <data name="CanNotFindTheLinkedName" xml:space="preserve">
     <value>無法在郵件正文中找到鏈接的名稱。</value>
+  </data>
+  <data name="CanNotFindTheLinkedNameInSubject" xml:space="preserve">
+    <value>無法在郵件主題中找到鏈接的名稱。</value>
   </data>
   <data name="Cc" xml:space="preserve">
     <value>Cc</value>
@@ -329,6 +353,15 @@
   <data name="FailedToGetInformation" xml:space="preserve">
     <value>沒能獲得信息。</value>
   </data>
+  <data name="ForceAutoChangeRecipientsToBcc" xml:space="preserve">
+    <value>強制自動變更為密件</value>
+  </data>
+  <data name="ForceAutoChangeRecipientsToBccAlert" xml:space="preserve">
+    <value>收件人被自動轉換為Bcc。</value>
+  </data>
+  <data name="ForceAutoChangeRecipientsToBccNotes" xml:space="preserve">
+    <value>以下設置優先於上述設置。</value>
+  </data>
   <data name="ForgottenToAttachAlert" xml:space="preserve">
     <value>文中有 "附件 "一詞，但沒有附件。</value>
   </data>
@@ -390,6 +423,12 @@
   <data name="InternalDomain" xml:space="preserve">
     <value>內部領域</value>
   </data>
+  <data name="IsAddMessageToEnd" xml:space="preserve">
+    <value>下面的文字會自動添加到正文的末尾。</value>
+  </data>
+  <data name="IsAddMessageToStart" xml:space="preserve">
+    <value>以下文字會自動添加到正文的開頭。</value>
+  </data>
   <data name="IsAlertAddressBccAlert" xml:space="preserve">
     <value>收件人（Bcc）包含一個已經註冊為警報的地址或域名。</value>
   </data>
@@ -427,6 +466,12 @@
   <data name="IsCheckNameAndDomainsFromRecipients" xml:space="preserve">
     <value>當郵件正文中沒有的名字時，還會顯示一個警告。</value>
   </data>
+  <data name="IsCheckNameAndDomainsFromSubject" xml:space="preserve">
+    <value>當主題中沒有收件人姓名時，也會顯示該警告。</value>
+  </data>
+  <data name="IsCheckNameAndDomainsIncludeSubject" xml:space="preserve">
+    <value>在目標中包括主題。 *主題以及正文都將包括在目標中。</value>
+  </data>
   <data name="IsDoNotUseXIfAllRecipientsAreInternalDomain" xml:space="preserve">
     <value>如果收件人的網域都是內部網域，則禁用此功能。</value>
   </data>
@@ -435,6 +480,12 @@
   </data>
   <data name="IsEnableRecipientsAreSortedByDomain" xml:space="preserve">
     <value>收件人在確認屏幕上按域名排序。</value>
+  </data>
+  <data name="IsForceAutoChangeRecipientsToBcc" xml:space="preserve">
+    <value>強制所有外部收件人轉為密件。</value>
+  </data>
+  <data name="IsIncludeInternalDomain" xml:space="preserve">
+    <value>在範圍內包括內部域。 *所有收件人將被改為密件。</value>
   </data>
   <data name="IsNotTreatedAsAttachmentsAtHtmlEmbeddedFiles" xml:space="preserve">
     <value>嵌入HTML郵件中的文件不被視為附件。</value>
@@ -499,6 +550,9 @@
   </data>
   <data name="NoAlert" xml:space="preserve">
     <value>沒有重要的警報。</value>
+  </data>
+  <data name="NotApplicableToMeetingRequests" xml:space="preserve">
+    <value>*不適用於會議要求。</value>
   </data>
   <data name="NoticeOfIsEnableAllAttachedFilesAreDetectEncryptedZip" xml:space="preserve">
     <value>* 有附件的電子郵件的處理可能需要更長的時間。</value>
@@ -585,9 +639,22 @@
 或
 域名。 @noraneko.co.jp
 
-註冊一個電子郵件地址或域名。
+註冊一個電子郵件地址或域名以及他們的提醒文本。
 
-如果你向你在這裡註冊的電子郵件地址或域名發送電子郵件，你會提前收到提醒。</value>
+如果你向你在這裡註冊的電子郵件地址或域名發送電子郵件，你會提前收到提醒。
+
+如果警報文本為空白，確認屏幕將顯示默認的警報文本。</value>
+  </data>
+  <data name="SettingExampleAttachmentAlertRecipients" xml:space="preserve">
+    <value>地址: info@noraneko.co.jp
+或者。
+域名: @noraneko.co.jp
+
+註冊一個電子郵件地址或域名以及其警告文字。
+
+如果註冊了，在向該地址發送帶有附件的電子郵件時，將顯示警告。
+
+如果警告文本留空，就會顯示默認的警告文本。</value>
   </data>
   <data name="SettingExampleAttachmentProhibitedRecipients" xml:space="preserve">
     <value>電子郵件地址：info@noraneko.co.jp
@@ -623,6 +690,9 @@
 
 當發送郵件給註冊的收件人和域名時，指定的地址會自動添加到抄送或密件中。</value>
   </data>
+  <data name="SettingExampleAutoAddMessage" xml:space="preserve">
+    <value>你可以自動將指定的措辭添加到電子郵件的開頭或結尾。</value>
+  </data>
   <data name="SettingExampleDeferredDelivery" xml:space="preserve">
     <value>電子郵件地址：info@noraneko.co.jp
 或
@@ -637,7 +707,9 @@
   <data name="SettingExampleExternalDomainsWarningAndAutoChangeToBcc" xml:space="preserve">
     <value>設置外部域名的數量，作為警告和自動變更為Bcc的依據，並將每個域名打開或關閉。
 
-如果自動變更為Bcc後，收件人不存在，發件人的地址將被自動添加到收件人中。</value>
+如果自動變更為Bcc後，收件人不存在，發件人的地址將被自動添加到收件人中。
+
+也可以強制將所有收件人轉換為密件。</value>
   </data>
   <data name="SettingExampleInternalDomainList" xml:space="preserve">
     <value>域名。 @noraneko.co.jp
@@ -652,7 +724,9 @@
 
 註冊名稱（例如：公司名稱）和域名。
 
-如果電子郵件正文中的名稱和收件人的域名不匹配，則顯示警告。</value>
+如果電子郵件正文中的名稱和收件人的域名不匹配，則顯示警告。
+
+*主題也可以包括在檢查中。</value>
   </data>
   <data name="SettingExampleRecipientsAndAttachmentsName" xml:space="preserve">
     <value>電子郵件地址：info@noraneko.co.jp
@@ -701,11 +775,14 @@
   <data name="To" xml:space="preserve">
     <value>To</value>
   </data>
+  <data name="ToRecipient" xml:space="preserve">
+    <value>要設置為收件人的郵件地址 *如果不設置，發件人地址會自動設置為收件人。</value>
+  </data>
   <data name="Unknown" xml:space="preserve">
     <value>不詳</value>
   </data>
   <data name="Version" xml:space="preserve">
-    <value>Version 2.6.1.1</value>
+    <value>Version 2.7.0.0</value>
   </data>
   <data name="VersionInfo" xml:space="preserve">
     <value>軟件信息</value>

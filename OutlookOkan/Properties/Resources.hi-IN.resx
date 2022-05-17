@@ -120,6 +120,12 @@
   <data name="About" xml:space="preserve">
     <value>कार्यक्रम के बारे में</value>
   </data>
+  <data name="AddedTextAtTheBeginning" xml:space="preserve">
+    <value>मेल की शुरुआत में टेक्स्ट जोड़ा गया।</value>
+  </data>
+  <data name="AddedTextAtTheEnd" xml:space="preserve">
+    <value>मेल के अंत में टेक्स्ट जोड़ा गया।</value>
+  </data>
   <data name="AddressBook" xml:space="preserve">
     <value>संपर्क</value>
   </data>
@@ -144,6 +150,9 @@
   <data name="AlwaysAddTheSendersAddressToBcc" xml:space="preserve">
     <value>प्रेषक का पता हमेशा गुप्त प्रतिलिपि में स्वचालित रूप से जोड़ें।</value>
   </data>
+  <data name="AlwaysAddTheSendersAddressToCc" xml:space="preserve">
+    <value>प्रेषक का पता हमेशा सीसी में स्वचालित रूप से जोड़ें।</value>
+  </data>
   <data name="ApplicableDestination" xml:space="preserve">
     <value>लागू प्राप्तकर्ता</value>
   </data>
@@ -158,6 +167,12 @@
   </data>
   <data name="AttachedIsAnEncryptedZipFile" xml:space="preserve">
     <value>संलग्न एक एन्क्रिप्टेड ज़िप फ़ाइल है।</value>
+  </data>
+  <data name="AttachmentAlertRecipients" xml:space="preserve">
+    <value>अटैचमेंट अलर्ट करने वाला पता</value>
+  </data>
+  <data name="AttachmentAlertRecipientsMessage" xml:space="preserve">
+    <value>अनुलग्नक भेजने की चेतावनी के लिए प्राप्तकर्ता।</value>
   </data>
   <data name="AttachmentProhibitedRecipients" xml:space="preserve">
     <value>संलग्नक निषिद्ध पता</value>
@@ -199,8 +214,14 @@
   <data name="AutoAddMailAddress" xml:space="preserve">
     <value>प्राप्तकर्ताओं को स्वचालित रूप से जोड़ें।</value>
   </data>
+  <data name="AutoAddMessage" xml:space="preserve">
+    <value>स्वचालित बॉडी टेक्स्ट जोड़</value>
+  </data>
   <data name="AutoAddSendersAddressToAlert" xml:space="preserve">
     <value>प्रेषक का ईमेल पता स्वचालित रूप से प्रति में जोड़ दिया गया था। (क्योंकि बीसीसी में स्वतः परिवर्तन के कारण To अब मौजूद नहीं है।)</value>
+  </data>
+  <data name="AutoAddToRecipientByForceAutoChangeRecipientsToBccAddressToAlert" xml:space="preserve">
+    <value>निर्दिष्ट ईमेल पता स्वचालित रूप से प्रति में जोड़ा गया था। (क्योंकि बीसीसी में स्वतः परिवर्तन के कारण To अब मौजूद नहीं है।)</value>
   </data>
   <data name="AutoCheckConfig" xml:space="preserve">
     <value>ऑटो-चेक सेटिंग</value>
@@ -236,6 +257,9 @@
   </data>
   <data name="CanNotFindTheLinkedName" xml:space="preserve">
     <value>मेल बॉडी में लिंक किया गया नाम नहीं मिल रहा है।</value>
+  </data>
+  <data name="CanNotFindTheLinkedNameInSubject" xml:space="preserve">
+    <value>मेल विषय में लिंक किया गया नाम नहीं मिल रहा है।</value>
   </data>
   <data name="Cc" xml:space="preserve">
     <value>Cc</value>
@@ -331,6 +355,15 @@
   <data name="FailedToGetInformation" xml:space="preserve">
     <value>जानकारी प्राप्त करने में विफल।</value>
   </data>
+  <data name="ForceAutoChangeRecipientsToBcc" xml:space="preserve">
+    <value>बलपूर्वक स्वतः परिवर्तन को Bcc . में बदलें</value>
+  </data>
+  <data name="ForceAutoChangeRecipientsToBccAlert" xml:space="preserve">
+    <value>प्राप्तकर्ताओं को स्वचालित रूप से गुप्त प्रतिलिपि में परिवर्तित कर दिया गया था।</value>
+  </data>
+  <data name="ForceAutoChangeRecipientsToBccNotes" xml:space="preserve">
+    <value>उपरोक्त सेटिंग्स पर निम्नलिखित सेटिंग्स को प्राथमिकता दी जाती है।</value>
+  </data>
   <data name="ForgottenToAttachAlert" xml:space="preserve">
     <value>शब्द "संलग्न फ़ाइल" पाठ में है, लेकिन कोई अनुलग्नक नहीं है।</value>
   </data>
@@ -392,6 +425,12 @@
   <data name="InternalDomain" xml:space="preserve">
     <value>आंतरिक डोमेन</value>
   </data>
+  <data name="IsAddMessageToEnd" xml:space="preserve">
+    <value>निम्नलिखित पाठ स्वचालित रूप से मुख्य भाग के अंत में जुड़ जाता है।</value>
+  </data>
+  <data name="IsAddMessageToStart" xml:space="preserve">
+    <value>निम्नलिखित पाठ स्वचालित रूप से मुख्य भाग की शुरुआत में जुड़ जाता है।</value>
+  </data>
   <data name="IsAlertAddressBccAlert" xml:space="preserve">
     <value>प्राप्तकर्ताओं (बीसीसी) में एक पता या डोमेन होता है जिसे अलर्ट के रूप में पंजीकृत किया गया है।</value>
   </data>
@@ -430,6 +469,12 @@
   <data name="IsCheckNameAndDomainsFromRecipients" xml:space="preserve">
     <value>मेल बॉडी में प्राप्तकर्ता का नाम नहीं होने पर एक चेतावनी भी प्रदर्शित होती है।</value>
   </data>
+  <data name="IsCheckNameAndDomainsFromSubject" xml:space="preserve">
+    <value>चेतावनी तब भी प्रदर्शित होती है जब विषय में प्राप्तकर्ता का नाम नहीं होता है।</value>
+  </data>
+  <data name="IsCheckNameAndDomainsIncludeSubject" xml:space="preserve">
+    <value>विषय को लक्ष्य में शामिल करें। * विषय के साथ-साथ शरीर को भी लक्ष्य में शामिल किया जाएगा।</value>
+  </data>
   <data name="IsDoNotUseXIfAllRecipientsAreInternalDomain" xml:space="preserve">
     <value>यदि प्राप्तकर्ता के डोमेन सभी आंतरिक डोमेन हैं, तो इस सुविधा को अक्षम करें।</value>
   </data>
@@ -438,6 +483,12 @@
   </data>
   <data name="IsEnableRecipientsAreSortedByDomain" xml:space="preserve">
     <value>पुष्टिकरण स्क्रीन पर प्राप्तकर्ताओं को डोमेन द्वारा क्रमबद्ध किया जाता है।</value>
+  </data>
+  <data name="IsForceAutoChangeRecipientsToBcc" xml:space="preserve">
+    <value>सभी बाहरी प्राप्तकर्ताओं को गुप्त प्रतिलिपि के लिए बाध्य करें।</value>
+  </data>
+  <data name="IsIncludeInternalDomain" xml:space="preserve">
+    <value>आंतरिक डोमेन शामिल करें। *सभी प्राप्तकर्ताओं को गुप्त प्रतिलिपि में बदल दिया जाएगा।</value>
   </data>
   <data name="IsNotTreatedAsAttachmentsAtHtmlEmbeddedFiles" xml:space="preserve">
     <value>HTML मेल में एम्बेड की गई फ़ाइल को अनुलग्नक के रूप में नहीं माना जाता है।</value>
@@ -502,6 +553,9 @@
   </data>
   <data name="NoAlert" xml:space="preserve">
     <value>कोई महत्वपूर्ण अलर्ट नहीं हैं।</value>
+  </data>
+  <data name="NotApplicableToMeetingRequests" xml:space="preserve">
+    <value>*बैठक अनुरोधों पर लागू नहीं।</value>
   </data>
   <data name="NoticeOfIsEnableAllAttachedFilesAreDetectEncryptedZip" xml:space="preserve">
     <value>* अटैचमेंट वाले ईमेल के संसाधन में अधिक समय लग सकता है।</value>
@@ -588,9 +642,22 @@
 या
 डोमेन: @noraneko.co.jp
 
-एक ईमेल पता या डोमेन पंजीकृत करें।
+एक ईमेल पता या डोमेन और उनके चेतावनी पाठ को पंजीकृत करें।
 
-यदि आप किसी ईमेल पते या डोमेन पर ईमेल भेजते हैं जिसे आपने यहां पंजीकृत किया है, तो आपको पहले से एक अलर्ट प्राप्त होगा।</value>
+यदि आप किसी ईमेल पते या डोमेन पर ईमेल भेजते हैं जिसे आपने यहां पंजीकृत किया है, तो आपको पहले से एक अलर्ट प्राप्त होगा।
+
+अगर अलर्ट करने वाला टेक्स्ट खाली है, तो कन्फर्मेशन स्क्रीन डिफॉल्ट अलर्टिंग टेक्स्ट दिखाएगी।</value>
+  </data>
+  <data name="SettingExampleAttachmentAlertRecipients" xml:space="preserve">
+    <value>पता: info@noraneko.co.jp
+      या।
+      डोमेन नाम: @noraneko.co.jp
+      
+      एक ईमेल पता या डोमेन नाम और उसका चेतावनी पाठ पंजीकृत करें।
+      
+      यदि पंजीकृत है, तो इस पते पर अटैचमेंट वाले ईमेल भेजे जाने पर एक चेतावनी प्रदर्शित होगी।
+      
+      यदि चेतावनी पाठ खाली छोड़ दिया जाता है, तो डिफ़ॉल्ट चेतावनी पाठ प्रदर्शित होता है।</value>
   </data>
   <data name="SettingExampleAttachmentProhibitedRecipients" xml:space="preserve">
     <value>ईमेल पता: info@noraneko.co.jp
@@ -626,6 +693,9 @@
 
 पंजीकृत प्राप्तकर्ताओं और डोमेन को मेल भेजते समय, निर्दिष्ट पता स्वचालित रूप से प्रतिलिपि या गुप्त प्रतिलिपि में जोड़ दिया जाता है।</value>
   </data>
+  <data name="SettingExampleAutoAddMessage" xml:space="preserve">
+    <value>आप किसी ई-मेल के आरंभ या अंत में निर्दिष्ट शब्दों को स्वचालित रूप से जोड़ सकते हैं।</value>
+  </data>
   <data name="SettingExampleDeferredDelivery" xml:space="preserve">
     <value>ईमेल पता: info@noraneko.co.jp
 या
@@ -639,7 +709,9 @@
   </data>
   <data name="SettingExampleExternalDomainsWarningAndAutoChangeToBcc" xml:space="preserve">
     <value>चेतावनियों और स्वचालित परिवर्तन के लिए आधार के रूप में उपयोग किए जाने वाले बाहरी डोमेन की संख्या को गुप्त प्रतिलिपि में सेट करें, और प्रत्येक को चालू या बंद करें।
-यदि गुप्त प्रतिलिपि में स्वत: परिवर्तन के बाद To मौजूद नहीं है, तो प्रेषक का पता स्वतः प्रति में जोड़ दिया जाएगा।</value>
+यदि गुप्त प्रतिलिपि में स्वत: परिवर्तन के बाद To मौजूद नहीं है, तो प्रेषक का पता स्वतः प्रति में जोड़ दिया जाएगा।
+
+सभी प्राप्तकर्ताओं को गुप्त प्रतिलिपि में परिवर्तित करने के लिए बाध्य करना भी संभव है।</value>
   </data>
   <data name="SettingExampleInternalDomainList" xml:space="preserve">
     <value>डोमेन: @noraneko.co.jp
@@ -654,7 +726,9 @@
 
 नाम (उदा. कंपनी का नाम) और डोमेन पंजीकृत करें।
 
-यदि ईमेल के मुख्य भाग और प्राप्तकर्ता डोमेन में नाम मेल नहीं खाता है तो एक चेतावनी प्रदर्शित करता है।</value>
+यदि ईमेल के मुख्य भाग और प्राप्तकर्ता डोमेन में नाम मेल नहीं खाता है तो एक चेतावनी प्रदर्शित करता है।
+
+* विषयों को भी चेक में शामिल किया जा सकता है।</value>
   </data>
   <data name="SettingExampleRecipientsAndAttachmentsName" xml:space="preserve">
     <value>ईमेल पता: info@noraneko.co.jp
@@ -703,11 +777,14 @@
   <data name="To" xml:space="preserve">
     <value>To</value>
   </data>
+  <data name="ToRecipient" xml:space="preserve">
+    <value>मेल पता To के रूप में सेट किया जाना है *यदि सेट नहीं है, तो प्रेषक का पता स्वचालित रूप से To के रूप में सेट हो जाता है।</value>
+  </data>
   <data name="Unknown" xml:space="preserve">
     <value>अनजान</value>
   </data>
   <data name="Version" xml:space="preserve">
-    <value>Version 2.6.1.1</value>
+    <value>Version 2.7.0.0</value>
   </data>
   <data name="VersionInfo" xml:space="preserve">
     <value>कार्यक्रम के बारे में</value>

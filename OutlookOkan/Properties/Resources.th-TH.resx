@@ -120,6 +120,12 @@
   <data name="About" xml:space="preserve">
     <value>เกี่ยวกับโปรแกรมนี้</value>
   </data>
+  <data name="AddedTextAtTheBeginning" xml:space="preserve">
+    <value>เพิ่มข้อความที่จุดเริ่มต้นของจดหมาย</value>
+  </data>
+  <data name="AddedTextAtTheEnd" xml:space="preserve">
+    <value>เพิ่มข้อความที่ส่วนท้ายของจดหมาย</value>
+  </data>
   <data name="AddressBook" xml:space="preserve">
     <value>ผู้ติดต่อ</value>
   </data>
@@ -144,6 +150,9 @@
   <data name="AlwaysAddTheSendersAddressToBcc" xml:space="preserve">
     <value>เพิ่มที่อยู่ของผู้ส่งไปยัง Bcc โดยอัตโนมัติเสมอ</value>
   </data>
+  <data name="AlwaysAddTheSendersAddressToCc" xml:space="preserve">
+    <value>เพิ่มที่อยู่ของผู้ส่งไปยัง Cc โดยอัตโนมัติเสมอ</value>
+  </data>
   <data name="ApplicableDestination" xml:space="preserve">
     <value>ผู้รับที่เกี่ยวข้อง</value>
   </data>
@@ -158,6 +167,12 @@
   </data>
   <data name="AttachedIsAnEncryptedZipFile" xml:space="preserve">
     <value>ไฟล์แนบเป็นไฟล์ ZIP ที่เข้ารหัส</value>
+  </data>
+  <data name="AttachmentAlertRecipients" xml:space="preserve">
+    <value>ที่อยู่แจ้งเตือนไฟล์แนบ</value>
+  </data>
+  <data name="AttachmentAlertRecipientsMessage" xml:space="preserve">
+    <value>ผู้รับคำเตือนการส่งไฟล์แนบ</value>
   </data>
   <data name="AttachmentProhibitedRecipients" xml:space="preserve">
     <value>ผู้รับสิ่งที่แนบมาห้าม</value>
@@ -198,8 +213,14 @@
   <data name="AutoAddMailAddress" xml:space="preserve">
     <value>เพิ่มผู้รับโดยอัตโนมัติ</value>
   </data>
+  <data name="AutoAddMessage" xml:space="preserve">
+    <value>การเพิ่มข้อความเนื้อหาอัตโนมัติ</value>
+  </data>
   <data name="AutoAddSendersAddressToAlert" xml:space="preserve">
     <value>ที่อยู่อีเมลของผู้ส่งถูกเพิ่มลงใน To โดยอัตโนมัติ (เนื่องจากไม่มีถึงอีกต่อไปเนื่องจากเปลี่ยนเป็นสำเนาลับอัตโนมัติ)</value>
+  </data>
+  <data name="AutoAddToRecipientByForceAutoChangeRecipientsToBccAddressToAlert" xml:space="preserve">
+    <value>ที่อยู่อีเมลที่ระบุถูกเพิ่มลงใน To โดยอัตโนมัติ (เนื่องจากไม่มีถึงอีกต่อไปเนื่องจากเปลี่ยนเป็นสำเนาลับอัตโนมัติ)</value>
   </data>
   <data name="AutoCheckConfig" xml:space="preserve">
     <value>ตรวจสอบการตั้งค่าอัตโนมัติ</value>
@@ -235,6 +256,9 @@
   </data>
   <data name="CanNotFindTheLinkedName" xml:space="preserve">
     <value>ไม่พบชื่อที่เชื่อมโยงในเนื้อหาของเมล</value>
+  </data>
+  <data name="CanNotFindTheLinkedNameInSubject" xml:space="preserve">
+    <value>ไม่พบชื่อที่เชื่อมโยงในหัวเรื่องอีเมล</value>
   </data>
   <data name="Cc" xml:space="preserve">
     <value>Cc</value>
@@ -330,6 +354,15 @@ bcc โดยอัตโนมัติ</value>
   <data name="FailedToGetInformation" xml:space="preserve">
     <value>ไม่สามารถรับข้อมูลได้</value>
   </data>
+  <data name="ForceAutoChangeRecipientsToBcc" xml:space="preserve">
+    <value>บังคับให้เปลี่ยนเป็น Bcc . โดยอัตโนมัติ</value>
+  </data>
+  <data name="ForceAutoChangeRecipientsToBccAlert" xml:space="preserve">
+    <value>ผู้รับจะถูกแปลงเป็นสำเนาลับโดยอัตโนมัติ</value>
+  </data>
+  <data name="ForceAutoChangeRecipientsToBccNotes" xml:space="preserve">
+    <value>การตั้งค่าต่อไปนี้มีความสำคัญเหนือการตั้งค่าข้างต้น</value>
+  </data>
   <data name="ForgottenToAttachAlert" xml:space="preserve">
     <value>คำว่า "ไฟล์ที่แนบมา" อยู่ในข้อความ แต่ไม่มีไฟล์แนบ</value>
   </data>
@@ -391,6 +424,12 @@ bcc โดยอัตโนมัติ</value>
   <data name="InternalDomain" xml:space="preserve">
     <value>โดเมนภายใน</value>
   </data>
+  <data name="IsAddMessageToEnd" xml:space="preserve">
+    <value>ข้อความต่อไปนี้จะเพิ่มไปที่ส่วนท้ายของเนื้อหาโดยอัตโนมัติ</value>
+  </data>
+  <data name="IsAddMessageToStart" xml:space="preserve">
+    <value>ข้อความต่อไปนี้จะถูกเพิ่มโดยอัตโนมัติที่จุดเริ่มต้นของเนื้อหา</value>
+  </data>
   <data name="IsAlertAddressBccAlert" xml:space="preserve">
     <value>ผู้รับ (Bcc) มีที่อยู่หรือโดเมนที่ได้รับการจดทะเบียนเป็นการแจ้งเตือน</value>
   </data>
@@ -429,6 +468,12 @@ bcc โดยอัตโนมัติ</value>
   <data name="IsCheckNameAndDomainsFromRecipients" xml:space="preserve">
     <value>คำเตือนจะปรากฏขึ้นเมื่อไม่มีชื่อผู้รับในเนื้อหาของเมล</value>
   </data>
+  <data name="IsCheckNameAndDomainsFromSubject" xml:space="preserve">
+    <value>คำเตือนจะปรากฏขึ้นเมื่อไม่มีชื่อผู้รับในเรื่อง</value>
+  </data>
+  <data name="IsCheckNameAndDomainsIncludeSubject" xml:space="preserve">
+    <value>รวมหัวเรื่องไว้ในเป้าหมาย *วัตถุและร่างกายจะรวมอยู่ในเป้าหมาย</value>
+  </data>
   <data name="IsDoNotUseXIfAllRecipientsAreInternalDomain" xml:space="preserve">
     <value>ปิดใช้งานคุณลักษณะนี้หากโดเมนของผู้รับเป็นโดเมนภายในทั้งหมด</value>
   </data>
@@ -437,6 +482,12 @@ bcc โดยอัตโนมัติ</value>
   </data>
   <data name="IsEnableRecipientsAreSortedByDomain" xml:space="preserve">
     <value>ผู้รับจะถูกจัดเรียงตามโดเมนบนหน้าจอยืนยัน</value>
+  </data>
+  <data name="IsForceAutoChangeRecipientsToBcc" xml:space="preserve">
+    <value>บังคับผู้รับภายนอกทั้งหมดเป็นสำเนาลับ</value>
+  </data>
+  <data name="IsIncludeInternalDomain" xml:space="preserve">
+    <value>รวมโดเมนภายใน *ผู้รับทั้งหมดจะเปลี่ยนเป็นสำเนาลับ</value>
   </data>
   <data name="IsNotTreatedAsAttachmentsAtHtmlEmbeddedFiles" xml:space="preserve">
     <value>ไฟล์ที่ฝังอยู่ในเมล HTML จะไม่ถือว่าเป็นไฟล์แนบ</value>
@@ -501,6 +552,9 @@ bcc โดยอัตโนมัติ</value>
   </data>
   <data name="NoAlert" xml:space="preserve">
     <value>ไม่มีการแจ้งเตือนที่สำคัญ</value>
+  </data>
+  <data name="NotApplicableToMeetingRequests" xml:space="preserve">
+    <value>*ใช้ไม่ได้กับการเรียกประชุม</value>
   </data>
   <data name="NoticeOfIsEnableAllAttachedFilesAreDetectEncryptedZip" xml:space="preserve">
     <value>* การประมวลผลอีเมลพร้อมไฟล์แนบอาจใช้เวลานานขึ้น</value>
@@ -587,9 +641,22 @@ bcc โดยอัตโนมัติ</value>
 หรือ
 โดเมน: @noraneko.co.jp
 
-ลงทะเบียนที่อยู่อีเมลหรือโดเมน
+ลงทะเบียนที่อยู่อีเมลหรือโดเมนและข้อความแจ้งเตือน
 
-หากคุณส่งอีเมลไปยังที่อยู่อีเมลหรือโดเมนที่คุณได้ลงทะเบียนไว้ที่นี่ คุณจะได้รับการแจ้งเตือนล่วงหน้า</value>
+หากคุณส่งอีเมลไปยังที่อยู่อีเมลหรือโดเมนที่คุณได้ลงทะเบียนไว้ที่นี่ คุณจะได้รับการแจ้งเตือนล่วงหน้า
+
+หากข้อความแจ้งเตือนว่างเปล่า หน้าจอยืนยันจะแสดงข้อความแจ้งเตือนเริ่มต้น</value>
+  </data>
+  <data name="SettingExampleAttachmentAlertRecipients" xml:space="preserve">
+    <value>ที่อยู่: info@noraneko.co.jp
+      หรือ.
+      ชื่อโดเมน: @noraneko.co.jp
+      
+      ลงทะเบียนที่อยู่อีเมลหรือชื่อโดเมนและข้อความเตือน
+      
+      หากลงทะเบียนแล้ว คำเตือนจะปรากฏขึ้นเมื่อมีการส่งอีเมลพร้อมไฟล์แนบไปยังที่อยู่นี้
+      
+      หากปล่อยข้อความเตือนว่างไว้ ข้อความเตือนเริ่มต้นจะปรากฏขึ้น</value>
   </data>
   <data name="SettingExampleAttachmentProhibitedRecipients" xml:space="preserve">
     <value>ที่อยู่อีเมล: info@noraneko.co.jp
@@ -625,6 +692,9 @@ bcc โดยอัตโนมัติ</value>
 
 เมื่อส่งอีเมลไปยังผู้รับและโดเมนที่ลงทะเบียน ที่อยู่ที่ระบุจะถูกเพิ่มลงในสำเนาหรือสำเนาลับโดยอัตโนมัติ</value>
   </data>
+  <data name="SettingExampleAutoAddMessage" xml:space="preserve">
+    <value>คุณสามารถเพิ่มข้อความที่ระบุในตอนต้นหรือตอนท้ายของอีเมลได้โดยอัตโนมัติ</value>
+  </data>
   <data name="SettingExampleDeferredDelivery" xml:space="preserve">
     <value>ที่อยู่อีเมล: info@noraneko.co.jp
 หรือ
@@ -638,7 +708,9 @@ bcc โดยอัตโนมัติ</value>
   </data>
   <data name="SettingExampleExternalDomainsWarningAndAutoChangeToBcc" xml:space="preserve">
     <value>กำหนดจำนวนโดเมนภายนอกที่จะใช้เป็นพื้นฐานสำหรับคำเตือนและเปลี่ยนเป็นสำเนาลับโดยอัตโนมัติ และเปิดหรือปิดแต่ละโดเมน
-หากไม่มี ถึง หลังจากเปลี่ยนเป็น Bcc โดยอัตโนมัติ ที่อยู่ของผู้ส่งจะถูกเพิ่มลงใน ถึง โดยอัตโนมัติ</value>
+หากไม่มี ถึง หลังจากเปลี่ยนเป็น Bcc โดยอัตโนมัติ ที่อยู่ของผู้ส่งจะถูกเพิ่มลงใน ถึง โดยอัตโนมัติ
+
+นอกจากนี้ยังสามารถบังคับให้ผู้รับทั้งหมดถูกแปลงเป็นสำเนาลับถึง</value>
   </data>
   <data name="SettingExampleInternalDomainList" xml:space="preserve">
     <value>โดเมน: @noraneko.co.jp
@@ -653,7 +725,9 @@ bcc โดยอัตโนมัติ</value>
 
 จดทะเบียนชื่อ (เช่น ชื่อบริษัท) และโดเมน
 
-แสดงคำเตือนหากชื่อในเนื้อหาอีเมลและโดเมนของผู้รับไม่ตรงกัน</value>
+แสดงคำเตือนหากชื่อในเนื้อหาอีเมลและโดเมนของผู้รับไม่ตรงกัน
+
+* วิชาสามารถรวมไว้ในเช็คได้</value>
   </data>
   <data name="SettingExampleRecipientsAndAttachmentsName" xml:space="preserve">
     <value>ที่อยู่อีเมล: info@noraneko.co.jp
@@ -702,11 +776,14 @@ bcc โดยอัตโนมัติ</value>
   <data name="To" xml:space="preserve">
     <value>To</value>
   </data>
+  <data name="ToRecipient" xml:space="preserve">
+    <value>ที่อยู่อีเมลที่จะตั้งค่าเป็น ถึง *หากไม่ได้ตั้งค่า ที่อยู่ผู้ส่งจะถูกตั้งค่าเป็น ถึง โดยอัตโนมัติ</value>
+  </data>
   <data name="Unknown" xml:space="preserve">
     <value>ไม่รู้จัก</value>
   </data>
   <data name="Version" xml:space="preserve">
-    <value>Version 2.6.1.1</value>
+    <value>Version 2.7.0.0</value>
   </data>
   <data name="VersionInfo" xml:space="preserve">
     <value>เกี่ยวกับโปรแกรมนี้</value>

@@ -362,7 +362,7 @@
     <value>Copyright (C) 2022 Noraneko Inc.</value>
   </data>
   <data name="Version" xml:space="preserve">
-    <value>Version 2.6.1.1</value>
+    <value>Version 2.7.0.0</value>
   </data>
   <data name="VersionInfo" xml:space="preserve">
     <value>About</value>
@@ -385,9 +385,11 @@ If the alerting text is blank, the confirmation screen will show the default ale
 or
 Domain: @noraneko.co.jp
 
-Register an email address or domain.
+Register an email address or domain and their alerting text.
 
-If you send an email to an email address or domain that you have registered here, you will receive an alert in advance.</value>
+If you send an email to an email address or domain that you have registered here, you will receive an alert in advance.
+
+If the alerting text is blank, the confirmation screen will show the default alerting text.</value>
   </data>
   <data name="SettingExampleAutoAddCCorBCCByKeyword" xml:space="preserve">
     <value>Type: Cc or Bcc
@@ -409,7 +411,9 @@ Domain: @noraneko.co.jp
 
 Register the name (ex. Company name) and domain.
 
-Displays a warning if the name in the email body and the recipients domain do not match.</value>
+Displays a warning if the name in the email body and the recipients domain do not match.
+
+*Subjects can also be included in the check.</value>
   </data>
   <data name="SettingExampleWhiteList" xml:space="preserve">
     <value>Email address: info@noraneko.co.jp
@@ -557,7 +561,9 @@ when the recipients (To/Cc) has a large number of external domains.</value>
   <data name="SettingExampleExternalDomainsWarningAndAutoChangeToBcc" xml:space="preserve">
     <value>Set the number of external domains to be used as a basis for warnings and automatic change to Bcc, and turn each one on or off.
 
-If the To does not exist after automatic change to Bcc, the sender's address will be automatically added to the To.</value>
+If the To does not exist after automatic change to Bcc, the sender's address will be automatically added to the To.
+
+It is also possible to force all recipients to be converted to Bcc.</value>
   </data>
   <data name="TargetToAndCcExternalDomainsNum" xml:space="preserve">
     <value>The number of external domains of the recipients (To/Cc) to be covered by this feature.</value>
@@ -648,7 +654,7 @@ If the alerting text is blank, the confirmation screen will show the default ale
     <value>If a file is attached, it is recommended to attach it as a link on the confirmation window.</value>
   </data>
   <data name="AttachmentProhibitedRecipients" xml:space="preserve">
-    <value>Attachment prohibited address</value>
+    <value>Attachment prohibited recipients</value>
   </data>
   <data name="AttachmentsName" xml:space="preserve">
     <value>Attachments name/Keyword</value>
@@ -725,5 +731,76 @@ If the recipients and the attached file name do not match, a warning will be dis
   </data>
   <data name="ShowConfirmationAtSendMeetingRequest" xml:space="preserve">
     <value>The confirmation screen is also displayed for meeting request.</value>
+  </data>
+  <data name="AlwaysAddTheSendersAddressToCc" xml:space="preserve">
+    <value>Always add the sender's address to Cc automatically.</value>
+  </data>
+  <data name="AttachmentAlertRecipients" xml:space="preserve">
+    <value>Attachment alerting recipients</value>
+  </data>
+  <data name="AutoAddMessage" xml:space="preserve">
+    <value>Automatic body text addition</value>
+  </data>
+  <data name="ForceAutoChangeRecipientsToBcc" xml:space="preserve">
+    <value>Force auto change to Bcc</value>
+  </data>
+  <data name="ForceAutoChangeRecipientsToBccNotes" xml:space="preserve">
+    <value>The following settings take precedence over the above settings.</value>
+  </data>
+  <data name="IsAddMessageToEnd" xml:space="preserve">
+    <value>The following text is automatically added to the end of the body.</value>
+  </data>
+  <data name="IsAddMessageToStart" xml:space="preserve">
+    <value>The following text is automatically added to the beginning of the body.</value>
+  </data>
+  <data name="IsCheckNameAndDomainsFromSubject" xml:space="preserve">
+    <value>The warning is also displayed when there is no recipient's name in the subject.</value>
+  </data>
+  <data name="IsCheckNameAndDomainsIncludeSubject" xml:space="preserve">
+    <value>Include the subject in the target. *The subject as well as the body will be included in the target.</value>
+  </data>
+  <data name="IsForceAutoChangeRecipientsToBcc" xml:space="preserve">
+    <value>Force all external recipients to Bcc.</value>
+  </data>
+  <data name="IsIncludeInternalDomain" xml:space="preserve">
+    <value>Include internal domains. *All recipients will be changed to Bcc.</value>
+  </data>
+  <data name="SettingExampleAttachmentAlertRecipients" xml:space="preserve">
+    <value>Address: info@noraneko.co.jp
+Or
+Domain: @noraneko.co.jp
+
+Register an e-mail address or domain and its warning text.
+
+Once registered, a warning will be displayed when sending e-mail with attachments to that destination.
+
+If the warning text is left blank, the default warning text will be displayed.</value>
+  </data>
+  <data name="SettingExampleAutoAddMessage" xml:space="preserve">
+    <value>You can automatically add the specified wording to the beginning or end of an e-mail.</value>
+  </data>
+  <data name="ToRecipient" xml:space="preserve">
+    <value>Mail address to be set as To *If not set, the sender address is automatically set as To.</value>
+  </data>
+  <data name="AddedTextAtTheBeginning" xml:space="preserve">
+    <value>Added text at the beginning of the mail.</value>
+  </data>
+  <data name="AddedTextAtTheEnd" xml:space="preserve">
+    <value>Added text at the end of the mail.</value>
+  </data>
+  <data name="CanNotFindTheLinkedNameInSubject" xml:space="preserve">
+    <value>Cannot find the linked name in the mail subject.</value>
+  </data>
+  <data name="AttachmentAlertRecipientsMessage" xml:space="preserve">
+    <value>Recipient for warning of attachment sending.</value>
+  </data>
+  <data name="AutoAddToRecipientByForceAutoChangeRecipientsToBccAddressToAlert" xml:space="preserve">
+    <value>The specified Email address was automatically added to the To. (because the To no longer exists due to auto change to Bcc.)</value>
+  </data>
+  <data name="ForceAutoChangeRecipientsToBccAlert" xml:space="preserve">
+    <value>The recipients were automatically converted to Bcc.</value>
+  </data>
+  <data name="NotApplicableToMeetingRequests" xml:space="preserve">
+    <value>*Not applicable to meeting requests.</value>
   </data>
 </root>

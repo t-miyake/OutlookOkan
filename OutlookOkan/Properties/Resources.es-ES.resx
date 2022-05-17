@@ -120,6 +120,12 @@
   <data name="About" xml:space="preserve">
     <value>Sobre el programa</value>
   </data>
+  <data name="AddedTextAtTheBeginning" xml:space="preserve">
+    <value>Se ha añadido un texto al principio del correo.</value>
+  </data>
+  <data name="AddedTextAtTheEnd" xml:space="preserve">
+    <value>Texto añadido al final del correo.</value>
+  </data>
   <data name="AddressBook" xml:space="preserve">
     <value>Contactos</value>
   </data>
@@ -144,6 +150,9 @@
   <data name="AlwaysAddTheSendersAddressToBcc" xml:space="preserve">
     <value>Añade siempre la dirección del remitente a Bcc automáticamente.</value>
   </data>
+  <data name="AlwaysAddTheSendersAddressToCc" xml:space="preserve">
+    <value>Añade siempre la dirección del remitente a Cc automáticamente.</value>
+  </data>
   <data name="ApplicableDestination" xml:space="preserve">
     <value>Destinatarios aplicables</value>
   </data>
@@ -158,6 +167,12 @@
   </data>
   <data name="AttachedIsAnEncryptedZipFile" xml:space="preserve">
     <value>Se adjunta un archivo ZIP cifrado.</value>
+  </data>
+  <data name="AttachmentAlertRecipients" xml:space="preserve">
+    <value>Dirección de alerta de los archivos adjuntos</value>
+  </data>
+  <data name="AttachmentAlertRecipientsMessage" xml:space="preserve">
+    <value>Destinatario para el aviso de envío de archivos adjuntos.</value>
   </data>
   <data name="AttachmentProhibitedRecipients" xml:space="preserve">
     <value>Dirección prohibida del anexo</value>
@@ -201,8 +216,14 @@
   <data name="AutoAddMailAddress" xml:space="preserve">
     <value>Añadir automáticamente los destinatarios.</value>
   </data>
+  <data name="AutoAddMessage" xml:space="preserve">
+    <value>Adición automática del cuerpo del texto</value>
+  </data>
   <data name="AutoAddSendersAddressToAlert" xml:space="preserve">
     <value>La dirección de correo electrónico del remitente se ha añadido automáticamente a To. (porque el To ya no existe debido al cambio automático a Bcc.)</value>
+  </data>
+  <data name="AutoAddToRecipientByForceAutoChangeRecipientsToBccAddressToAlert" xml:space="preserve">
+    <value>La dirección de correo electrónico especificada se ha añadido automáticamente a Para. (porque el Para ya no existe debido al cambio automático a Bcc).</value>
   </data>
   <data name="AutoCheckConfig" xml:space="preserve">
     <value>Ajuste de la autocomprobación</value>
@@ -237,6 +258,9 @@ Al cerrar la pantalla de edición no se enviará este correo electrónico.</valu
   </data>
   <data name="CanNotFindTheLinkedName" xml:space="preserve">
     <value>No se puede encontrar el nombre vinculado en el cuerpo del correo.</value>
+  </data>
+  <data name="CanNotFindTheLinkedNameInSubject" xml:space="preserve">
+    <value>No se puede encontrar el nombre vinculado en el asunto del correo.</value>
   </data>
   <data name="Cc" xml:space="preserve">
     <value>Cc</value>
@@ -332,6 +356,15 @@ cambio automático a Bcc</value>
   <data name="FailedToGetInformation" xml:space="preserve">
     <value>No se ha conseguido la información.</value>
   </data>
+  <data name="ForceAutoChangeRecipientsToBcc" xml:space="preserve">
+    <value>Forzar el cambio automático a Bcc</value>
+  </data>
+  <data name="ForceAutoChangeRecipientsToBccAlert" xml:space="preserve">
+    <value>Los destinatarios se convirtieron automáticamente en Bcc.</value>
+  </data>
+  <data name="ForceAutoChangeRecipientsToBccNotes" xml:space="preserve">
+    <value>Los siguientes ajustes tienen prioridad sobre los anteriores.</value>
+  </data>
   <data name="ForgottenToAttachAlert" xml:space="preserve">
     <value>La palabra "archivo adjunto" está en el texto, pero no hay ningún archivo adjunto.</value>
   </data>
@@ -393,6 +426,12 @@ cambio automático a Bcc</value>
   <data name="InternalDomain" xml:space="preserve">
     <value>Dominio interno</value>
   </data>
+  <data name="IsAddMessageToEnd" xml:space="preserve">
+    <value>El siguiente texto se añade automáticamente al final del cuerpo.</value>
+  </data>
+  <data name="IsAddMessageToStart" xml:space="preserve">
+    <value>El siguiente texto se añade automáticamente al principio del cuerpo.</value>
+  </data>
   <data name="IsAlertAddressBccAlert" xml:space="preserve">
     <value>Los destinatarios (Bcc) contienen una dirección o dominio que se ha registrado como alerta.</value>
   </data>
@@ -431,6 +470,12 @@ cuando los destinatarios (To/Cc) tienen un gran número de dominios externos.</v
   <data name="IsCheckNameAndDomainsFromRecipients" xml:space="preserve">
     <value>También se muestra una advertencia cuando no hay un nombre de destinatario en el cuerpo del correo.</value>
   </data>
+  <data name="IsCheckNameAndDomainsFromSubject" xml:space="preserve">
+    <value>La advertencia también se muestra cuando no hay un nombre de destinatario en el asunto.</value>
+  </data>
+  <data name="IsCheckNameAndDomainsIncludeSubject" xml:space="preserve">
+    <value>Incluir el asunto en el objetivo. *El sujeto, así como el cuerpo, se incluirá en el objetivo.</value>
+  </data>
   <data name="IsDoNotUseXIfAllRecipientsAreInternalDomain" xml:space="preserve">
     <value>Desactive esta función si los dominios del destinatario son todos dominios internos.</value>
   </data>
@@ -439,6 +484,12 @@ cuando los destinatarios (To/Cc) tienen un gran número de dominios externos.</v
   </data>
   <data name="IsEnableRecipientsAreSortedByDomain" xml:space="preserve">
     <value>Los destinatarios se clasifican por dominio en la pantalla de confirmación.</value>
+  </data>
+  <data name="IsForceAutoChangeRecipientsToBcc" xml:space="preserve">
+    <value>Forzar a todos los destinatarios externos a Bcc.</value>
+  </data>
+  <data name="IsIncludeInternalDomain" xml:space="preserve">
+    <value>Incluir dominios internos en el ámbito. *Todos los destinatarios se cambiarán a Bcc.</value>
   </data>
   <data name="IsNotTreatedAsAttachmentsAtHtmlEmbeddedFiles" xml:space="preserve">
     <value>Un archivo incrustado en un correo HTML no se trata como un adjunto.</value>
@@ -504,6 +555,9 @@ el dominio del destinatario</value>
   </data>
   <data name="NoAlert" xml:space="preserve">
     <value>No hay alertas importantes.</value>
+  </data>
+  <data name="NotApplicableToMeetingRequests" xml:space="preserve">
+    <value>*No aplicable a las solicitudes de reunión.</value>
   </data>
   <data name="NoticeOfIsEnableAllAttachedFilesAreDetectEncryptedZip" xml:space="preserve">
     <value>* El procesamiento de los correos electrónicos con archivos adjuntos puede tardar más.</value>
@@ -591,9 +645,22 @@ Si el texto de alerta está en blanco, la pantalla de confirmación mostrará el
 o
 Dominio: @noraneko.co.jp
 
-Registre una dirección de correo electrónico o un dominio.
+Registre una dirección de correo electrónico o un dominio y su texto de alerta.
 
-Si envía un correo electrónico a una dirección de correo electrónico o dominio que haya registrado aquí, recibirá una alerta por adelantado.</value>
+Si envía un correo electrónico a una dirección de correo electrónico o dominio que haya registrado aquí, recibirá una alerta por adelantado.
+
+Si el texto de alerta está en blanco, la pantalla de confirmación mostrará el texto de alerta por defecto.</value>
+  </data>
+  <data name="SettingExampleAttachmentAlertRecipients" xml:space="preserve">
+    <value>Dirección: info@noraneko.co.jp
+O
+Dominio: @noraneko.co.jp
+
+Registre una dirección de correo electrónico o un dominio y su texto de advertencia.
+
+Una vez registrado, se mostrará una advertencia cuando se envíe un correo electrónico con archivos adjuntos a ese destino.
+
+Si el texto de advertencia se deja en blanco, se mostrará el texto de advertencia por defecto.</value>
   </data>
   <data name="SettingExampleAttachmentProhibitedRecipients" xml:space="preserve">
     <value>Dirección de correo electrónico: info@noraneko.co.jp
@@ -629,6 +696,9 @@ Dirección de correo electrónico: boss@noraneko.co.jp
 
 Cuando se envía un correo a destinatarios y dominios registrados, la dirección especificada se añade automáticamente al Cc o Bcc.</value>
   </data>
+  <data name="SettingExampleAutoAddMessage" xml:space="preserve">
+    <value>Puede añadir automáticamente el texto especificado al principio o al final de un correo electrónico.</value>
+  </data>
   <data name="SettingExampleDeferredDelivery" xml:space="preserve">
     <value>Dirección de correo electrónico: info@noraneko.co.jp
 o
@@ -643,7 +713,9 @@ Registre su dirección de correo electrónico o dominio y registre el tiempo dif
   <data name="SettingExampleExternalDomainsWarningAndAutoChangeToBcc" xml:space="preserve">
     <value>Establezca el número de dominios externos que se utilizarán como base para los avisos y el cambio automático a Bcc, y active o desactive cada uno de ellos.
 
-Si el To no existe después del cambio automático a Bcc, la dirección del remitente se añadirá automáticamente al To.</value>
+Si el To no existe después del cambio automático a Bcc, la dirección del remitente se añadirá automáticamente al To.
+
+También es posible forzar que todos los destinatarios se conviertan en Bcc.</value>
   </data>
   <data name="SettingExampleInternalDomainList" xml:space="preserve">
     <value>Dominio: @noraneko.co.jp
@@ -658,7 +730,9 @@ Dominio: @noraneko.co.jp
 
 Registra el nombre (por ejemplo, el nombre de la empresa) y el dominio.
 
-Muestra una advertencia si el nombre en el cuerpo del correo electrónico y el dominio del destinatario no coinciden.</value>
+Muestra una advertencia si el nombre en el cuerpo del correo electrónico y el dominio del destinatario no coinciden.
+
+*También puede incluirse en el cheque.</value>
   </data>
   <data name="SettingExampleRecipientsAndAttachmentsName" xml:space="preserve">
     <value>Dirección de correo electrónico: info@noraneko.co.jp
@@ -707,11 +781,14 @@ se aplicará esta función.</value>
   <data name="To" xml:space="preserve">
     <value>To</value>
   </data>
+  <data name="ToRecipient" xml:space="preserve">
+    <value>Dirección de correo que debe establecerse como Para *Si no se establece, la dirección del remitente se establece automáticamente como Para.</value>
+  </data>
   <data name="Unknown" xml:space="preserve">
     <value>Desconocido</value>
   </data>
   <data name="Version" xml:space="preserve">
-    <value>Version 2.6.1.1</value>
+    <value>Version 2.7.0.0</value>
   </data>
   <data name="VersionInfo" xml:space="preserve">
     <value>Sobre el programa</value>

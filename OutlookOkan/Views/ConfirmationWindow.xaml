@@ -339,7 +339,7 @@
                     </StackPanel>
                 </GroupBox>
                 <GroupBox Header="{Binding Source={x:Static services:ResourceService.Instance}, Path=Resources.MailBody, Mode=OneWay}" FontSize="11" Padding="3,3,3,3" Margin="0,1.5,0,0">
-                    <TextBox Height="79" VerticalScrollBarVisibility="Visible" IsReadOnly="True" Text="{Binding MailBody, Mode=OneWay}" />
+                    <TextBox Height="79" VerticalScrollBarVisibility="Visible" HorizontalScrollBarVisibility="Auto" IsReadOnly="True" Text="{Binding MailBody, Mode=OneWay}" />
                 </GroupBox>
             </StackPanel>
         </Grid>

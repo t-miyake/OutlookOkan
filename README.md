@@ -21,10 +21,10 @@ English readme is [here](https://github.com/t-miyake/OutlookOkan/blob/master/REA
 ![Screenshot 1](https://github.com/t-miyake/OutlookOkan/blob/master/Screenshots/Screenshot_v2.5.0_01.png)  
 
 設定ウィンドウ(一般設定)  
-![Screenshot 2](https://github.com/t-miyake/OutlookOkan/blob/master/Screenshots/Screenshot_v2.6.1_04.png)
+![Screenshot 2](https://github.com/t-miyake/OutlookOkan/blob/master/Screenshots/Screenshot_v2.7.0_04.png)
 
 設定ウィンドウ(遅延送信)  
-![Screenshot 3](https://github.com/t-miyake/OutlookOkan/blob/master/Screenshots/Screenshot_v2.6.0_05.png)
+![Screenshot 3](https://github.com/t-miyake/OutlookOkan/blob/master/Screenshots/Screenshot_v2.7.0_05.png)
 
 送信禁止通知  
 ![Screenshot 4](https://github.com/t-miyake/OutlookOkan/blob/master/Screenshots/Screenshot_v2.5.0_03.png)
@@ -48,7 +48,7 @@ English readme is [here](https://github.com/t-miyake/OutlookOkan/blob/master/REA
   - 添付ファイルの添付漏れや大容量の添付ファイルを警告
   - 配布リストや連絡先グループを展開して、各宛先を表示 (オン/オフ可)
   - 宛先をドメイン別に並べ替えて表示 (オン/オフ可)
-  - 送信元アドレスを常に自動でBccに追加  (オン/オフ可)
+  - 送信元アドレスを常に自動でCcやBccに追加  (オン/オフ可)
 
 - 送信禁止機能
   - 指定した宛先やドメインへのメール送信を禁止
@@ -71,11 +71,13 @@ English readme is [here](https://github.com/t-miyake/OutlookOkan/blob/master/REA
   - 常に登録した警告メッセージを表示することも可能
 
 - 警告アドレスの登録と警告
-  - 登録したアドレスやドメインへメールを送信する際に、警告文を表示
+  - 登録したアドレスやドメインへメールを送信する際に、警告文を表示  
+  - 警告文を宛先別に設定することも可能
 
 - 宛先(To/Cc)の外部ドメイン数警告とBccへの自動変換
   - 宛先(To/Cc)外部ドメイン数が多い場合の、警告表示
   - 宛先(To/Cc)外部ドメイン数が多い場合の、宛先(To/Cc)外部アドレスのBccへの自動変換
+  - 強制的に全ての宛先をBccに変換
 
 - 自動Cc/Bcc追加(キーワード)
   - 指定したキーワードがメール本文に含まれる場合、指定したアドレスを自動でCcやBccに追加
@@ -92,6 +94,12 @@ English readme is [here](https://github.com/t-miyake/OutlookOkan/blob/master/REA
 
 - 添付ファイル名と宛先の紐づけ
   - 添付ファイル名と宛先メールアドレスやドメインを紐づけ、該当しない場合、警告を表示
+
+- 添付ファイルがある場合の宛先ごとの警告
+  - 宛先(アドレスやドメイン)ごとに、添付ファイルがある場合の警告文の設定が可能
+
+- メール本文への文言の自動追加
+  - メール本文の文頭や末尾に、指定した文言を自動追加可能。
 
 - その他
   - 暗号化ZIPファイルが添付されている場合に警告を表示  (オン/オフ可)

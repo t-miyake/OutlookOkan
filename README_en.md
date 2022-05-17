@@ -21,10 +21,10 @@ Confirmation window before sending.
 ![Screenshot 1](https://github.com/t-miyake/OutlookOkan/blob/master/Screenshots/en/Screenshot_v2.5.0_01_en.png)  
 
 Settings window (general settings)  
-![Screenshot 2](https://github.com/t-miyake/OutlookOkan/blob/master/Screenshots/en/Screenshot_v2.6.1_04_en.png)  
+![Screenshot 2](https://github.com/t-miyake/OutlookOkan/blob/master/Screenshots/en/Screenshot_v2.7.0_04_en.png)  
 
 Settings window (deferred delivery)  
-![Screenshot 3](https://github.com/t-miyake/OutlookOkan/blob/master/Screenshots/en/Screenshot_v2.6.0_05_en.png)  
+![Screenshot 3](https://github.com/t-miyake/OutlookOkan/blob/master/Screenshots/en/Screenshot_v2.7.0_05_en.png)  
 
 Alert window  
 ![Screenshot 4](https://github.com/t-miyake/OutlookOkan/blob/master/Screenshots/en/Screenshot_v2.5.0_03_en.png)  
@@ -48,7 +48,7 @@ About window
   - Warn of missing attachments or large attachments.
   - Expand distribution lists and contact groups to show each recipient. (can be turned on or off)  
   - Sort and display the recipients by domain. (can be turned on or off)  
-  - Always add the source address to Bcc automatically. (can be turned on or off)  
+  - Always add the source address to Cc/Bcc automatically. (can be turned on or off)  
 
 - Prohibit the sending of mails that match the conditions.
   - Prohibit the sending of emails to the specified destination or domain.
@@ -71,10 +71,12 @@ About window
 
 - Registering alerting recipients and alerting messages.
   - A alerting message is displayed when sending an email to the registered address or domain.
+  - Warning messages can also be set by recipient
 
 - Warning on the number of external domains of the destination (To/Cc) and auto change to Bcc.
   - Warning message when the number of destination (To/Cc) external domains is large.
   - When the number of destination (To/Cc) external domains is large, the destination (To/Cc) external domains is automatically changed to Bcc.
+  - Force all recipients to be converted to Bcc
 
 - Automatic Cc/Bcc addition(by keywords)
   - If the specified keyword is included in the body of an email, the specified address is automatically added to Cc and Bcc.
@@ -91,6 +93,12 @@ About window
 
 - Linking attachment names to recipients
   - Link attachment names to recipient email addresses or domains, and display warnings if they do not match.
+
+- Warning for each recipients when there are attachments
+  - Allows configuration of warning text for each recipients (address or domain) when attached files are present.
+
+- Automatic addition of text to the body of an e-mail
+  - A specified phrase can be automatically added to the beginning or end of the body of an e-mail.
 
 - Others
   - Displays a warning if an encrypted ZIP file is attached. (can be turned on or off)

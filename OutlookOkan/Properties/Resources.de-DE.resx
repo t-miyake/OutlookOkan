@@ -120,6 +120,12 @@
   <data name="About" xml:space="preserve">
     <value>Über das Programm</value>
   </data>
+  <data name="AddedTextAtTheBeginning" xml:space="preserve">
+    <value>Text am Anfang der Mail hinzugefügt.</value>
+  </data>
+  <data name="AddedTextAtTheEnd" xml:space="preserve">
+    <value>Text am Ende der E-Mail hinzugefügt.</value>
+  </data>
   <data name="AddressBook" xml:space="preserve">
     <value>Kontakte</value>
   </data>
@@ -144,6 +150,9 @@
   <data name="AlwaysAddTheSendersAddressToBcc" xml:space="preserve">
     <value>Fügen Sie die Adresse des Absenders immer automatisch zu Bcc hinzu.</value>
   </data>
+  <data name="AlwaysAddTheSendersAddressToCc" xml:space="preserve">
+    <value>Fügen Sie die Adresse des Absenders immer automatisch zu Cc hinzu.</value>
+  </data>
   <data name="ApplicableDestination" xml:space="preserve">
     <value>Förderfähige Begünstigte</value>
   </data>
@@ -158,6 +167,12 @@
   </data>
   <data name="AttachedIsAnEncryptedZipFile" xml:space="preserve">
     <value>Im Anhang finden Sie eine verschlüsselte ZIP-Datei.</value>
+  </data>
+  <data name="AttachmentAlertRecipients" xml:space="preserve">
+    <value>Anlage Alarmierungsadresse</value>
+  </data>
+  <data name="AttachmentAlertRecipientsMessage" xml:space="preserve">
+    <value>Empfänger für die Warnung vor dem Versand von Anhängen.</value>
   </data>
   <data name="AttachmentProhibitedRecipients" xml:space="preserve">
     <value>Pfändung verbotene Adresse</value>
@@ -201,8 +216,14 @@
   <data name="AutoAddMailAddress" xml:space="preserve">
     <value>Automatisches Hinzufügen von Empfängern.</value>
   </data>
+  <data name="AutoAddMessage" xml:space="preserve">
+    <value>Automatisches Hinzufügen von Fließtext</value>
+  </data>
   <data name="AutoAddSendersAddressToAlert" xml:space="preserve">
     <value>Die E-Mail-Adresse des Absenders wurde automatisch der Adresse "An" hinzugefügt. (weil die Adresse "An" aufgrund der automatischen Änderung in "Bcc" nicht mehr existiert).</value>
+  </data>
+  <data name="AutoAddToRecipientByForceAutoChangeRecipientsToBccAddressToAlert" xml:space="preserve">
+    <value>Die angegebene E-Mail-Adresse wurde automatisch zu "An" hinzugefügt. (weil die Adresse "An" durch die automatische Änderung in "Bcc" nicht mehr existiert).</value>
   </data>
   <data name="AutoCheckConfig" xml:space="preserve">
     <value>Auto-Check-Einstellung</value>
@@ -238,6 +259,9 @@ Möchten Sie es herunterladen?</value>
   </data>
   <data name="CanNotFindTheLinkedName" xml:space="preserve">
     <value>Der verknüpfte Name kann im Mailtext nicht gefunden werden.</value>
+  </data>
+  <data name="CanNotFindTheLinkedNameInSubject" xml:space="preserve">
+    <value>Der verlinkte Name kann im Betreff der E-Mail nicht gefunden werden.</value>
   </data>
   <data name="Cc" xml:space="preserve">
     <value>Cc</value>
@@ -333,6 +357,15 @@ automatischer Wechsel zu Bcc</value>
   <data name="FailedToGetInformation" xml:space="preserve">
     <value>Die Informationen konnten nicht abgerufen werden.</value>
   </data>
+  <data name="ForceAutoChangeRecipientsToBcc" xml:space="preserve">
+    <value>Automatischen Wechsel zu Bcc erzwingen</value>
+  </data>
+  <data name="ForceAutoChangeRecipientsToBccAlert" xml:space="preserve">
+    <value>Die Empfänger wurden automatisch in Bcc umgewandelt.</value>
+  </data>
+  <data name="ForceAutoChangeRecipientsToBccNotes" xml:space="preserve">
+    <value>Die folgenden Einstellungen haben Vorrang vor den obigen Einstellungen.</value>
+  </data>
   <data name="ForgottenToAttachAlert" xml:space="preserve">
     <value>Das Wort "angehängte Datei" steht im Text, aber es gibt keinen Anhang.</value>
   </data>
@@ -394,6 +427,12 @@ automatischer Wechsel zu Bcc</value>
   <data name="InternalDomain" xml:space="preserve">
     <value>Interner Domäne</value>
   </data>
+  <data name="IsAddMessageToEnd" xml:space="preserve">
+    <value>Der folgende Text wird automatisch an das Ende des Textkörpers angefügt.</value>
+  </data>
+  <data name="IsAddMessageToStart" xml:space="preserve">
+    <value>Der folgende Text wird automatisch am Anfang des Textes eingefügt.</value>
+  </data>
   <data name="IsAlertAddressBccAlert" xml:space="preserve">
     <value>Der Empfänger (Bcc) enthält eine Adresse oder Domäne, die als Warnmeldung registriert wurde.</value>
   </data>
@@ -432,6 +471,12 @@ konvertiert, wenn die Empfänger (To/Cc) eine große Anzahl von externen Domäne
   <data name="IsCheckNameAndDomainsFromRecipients" xml:space="preserve">
     <value>Eine Warnung wird auch angezeigt, wenn der Name des Empfängers nicht im Text der E-Mail enthalten ist.</value>
   </data>
+  <data name="IsCheckNameAndDomainsFromSubject" xml:space="preserve">
+    <value>Die Warnung wird auch angezeigt, wenn der Name des Empfängers nicht in der Betreffzeile steht.</value>
+  </data>
+  <data name="IsCheckNameAndDomainsIncludeSubject" xml:space="preserve">
+    <value>Den Betreff in das Ziel einbeziehen. *Sowohl der Betreff als auch der Textkörper werden in das Ziel aufgenommen.</value>
+  </data>
   <data name="IsDoNotUseXIfAllRecipientsAreInternalDomain" xml:space="preserve">
     <value>Deaktivieren Sie diese Funktion, wenn es sich bei den Domänen des Empfängers ausschließlich um interne Domänen handelt.</value>
   </data>
@@ -440,6 +485,12 @@ konvertiert, wenn die Empfänger (To/Cc) eine große Anzahl von externen Domäne
   </data>
   <data name="IsEnableRecipientsAreSortedByDomain" xml:space="preserve">
     <value>Die Empfänger werden auf dem Bestätigungsbildschirm nach Domäne sortiert.</value>
+  </data>
+  <data name="IsForceAutoChangeRecipientsToBcc" xml:space="preserve">
+    <value>Alle externen Empfänger auf Bcc setzen.</value>
+  </data>
+  <data name="IsIncludeInternalDomain" xml:space="preserve">
+    <value>Interne Domänen in den Geltungsbereich einbeziehen. *Alle Empfänger werden in Bcc geändert.</value>
   </data>
   <data name="IsNotTreatedAsAttachmentsAtHtmlEmbeddedFiles" xml:space="preserve">
     <value>Eine in eine HTML-Mail eingebettete Datei wird nicht als Anhang behandelt.</value>
@@ -506,6 +557,9 @@ Zusammenhang</value>
   </data>
   <data name="NoAlert" xml:space="preserve">
     <value>Es gibt keine wichtigen Warnmeldungen.</value>
+  </data>
+  <data name="NotApplicableToMeetingRequests" xml:space="preserve">
+    <value>*Gilt nicht für Besprechungsanfragen.</value>
   </data>
   <data name="NoticeOfIsEnableAllAttachedFilesAreDetectEncryptedZip" xml:space="preserve">
     <value>* Die Bearbeitung von E-Mails mit Anhängen kann länger dauern.</value>
@@ -593,9 +647,22 @@ Wenn der Warntext leer ist, wird auf dem Bestätigungsbildschirm der Standard-Wa
 oder
 Domäne: @noraneko.co.jp
 
-Registrieren Sie eine E-Mail-Adresse oder eine Domäne.
+Registrieren Sie eine E-Mail-Adresse oder Domäne und ihren Benachrichtigungstext.
 
-Wenn Sie eine E-Mail an eine E-Mail-Adresse oder Domäne senden, die Sie hier registriert haben, erhalten Sie eine Benachrichtigung im Voraus.</value>
+Wenn Sie eine E-Mail an eine E-Mail-Adresse oder Domäne senden, die Sie hier registriert haben, erhalten Sie eine Benachrichtigung im Voraus.
+
+Wenn der Warntext leer ist, wird auf dem Bestätigungsbildschirm der Standard-Warntext angezeigt.</value>
+  </data>
+  <data name="SettingExampleAttachmentAlertRecipients" xml:space="preserve">
+    <value>E-Mail Adresse: info@noraneko.co.jp
+Oder
+Domain: @noraneko.co.jp
+
+Registrieren Sie eine E-Mail-Adresse oder Domäne und deren Warntext.
+
+Nach der Registrierung wird eine Warnung angezeigt, wenn E-Mails mit Anhängen an dieses Ziel gesendet werden.
+
+Wenn der Warntext leer gelassen wird, wird der Standard-Warntext angezeigt.</value>
   </data>
   <data name="SettingExampleAttachmentProhibitedRecipients" xml:space="preserve">
     <value>E-Mail Adresse: info@noraneko.co.jp
@@ -631,6 +698,9 @@ E-Mail Adresse: boss@noraneko.co.jp
 
 Beim Senden von E-Mails an registrierte Empfänger und Domänen wird die angegebene Adresse automatisch zu Cc oder Bcc hinzugefügt.</value>
   </data>
+  <data name="SettingExampleAutoAddMessage" xml:space="preserve">
+    <value>Sie können den angegebenen Wortlaut automatisch an den Anfang oder das Ende einer E-Mail anfügen.</value>
+  </data>
   <data name="SettingExampleDeferredDelivery" xml:space="preserve">
     <value>E-Mail Adresse: info@noraneko.co.jp
 oder
@@ -645,7 +715,9 @@ Registrieren Sie Ihre E-Mail-Adresse oder Domäne und registrieren Sie die minut
   <data name="SettingExampleExternalDomainsWarningAndAutoChangeToBcc" xml:space="preserve">
     <value>Legen Sie die Anzahl der externen Domänen fest, die als Grundlage für Warnungen und den automatischen Wechsel zu Bcc verwendet werden sollen, und schalten Sie jede einzelne ein oder aus.
 
-Wenn die Adresse "To" nach der automatischen Umstellung auf "Bcc" nicht vorhanden ist, wird die Adresse des Absenders automatisch der Adresse "To" hinzugefügt.</value>
+Wenn die Adresse "To" nach der automatischen Umstellung auf "Bcc" nicht vorhanden ist, wird die Adresse des Absenders automatisch der Adresse "To" hinzugefügt.
+
+Es ist auch möglich, die Umwandlung aller Empfänger in Bcc zu erzwingen.</value>
   </data>
   <data name="SettingExampleInternalDomainList" xml:space="preserve">
     <value>Domäne: @noraneko.co.jp
@@ -660,7 +732,9 @@ Domain: @noraneko.co.jp
 
 Registrieren Sie den Namen (z. B. Firmenname) und die Domäne.
 
-Zeigt eine Warnung an, wenn der Name im E-Mail-Text und die Domäne des Empfängers nicht übereinstimmen.</value>
+Zeigt eine Warnung an, wenn der Name im E-Mail-Text und die Domäne des Empfängers nicht übereinstimmen.
+
+*Betreffs können ebenfalls in die Prüfung einbezogen werden.</value>
   </data>
   <data name="SettingExampleRecipientsAndAttachmentsName" xml:space="preserve">
     <value>E-Mail Adresse: info@noraneko.co.jp
@@ -709,11 +783,14 @@ wird diese Funktion angewendet.</value>
   <data name="To" xml:space="preserve">
     <value>To</value>
   </data>
+  <data name="ToRecipient" xml:space="preserve">
+    <value>Mailadresse, die als To gesetzt werden soll *Wenn nicht gesetzt, wird die Absenderadresse automatisch als To gesetzt.</value>
+  </data>
   <data name="Unknown" xml:space="preserve">
     <value>Unbekannt</value>
   </data>
   <data name="Version" xml:space="preserve">
-    <value>Version 2.6.1.1</value>
+    <value>Version 2.7.0.0</value>
   </data>
   <data name="VersionInfo" xml:space="preserve">
     <value>Über das Programm</value>

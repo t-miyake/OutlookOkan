@@ -506,7 +506,7 @@ namespace OutlookOkanTest
 
             var alertAddressList = new List<AlertAddress>
             {
-                new AlertAddress {TargetAddress = "@sample.com", IsCanNotSend = true}
+                new AlertAddress {TargetAddress = "@sample.com", Message = "", IsCanNotSend = true}
             };
 
             var generateCheckList = new GenerateCheckList();
@@ -518,7 +518,6 @@ namespace OutlookOkanTest
             Assert.AreEqual(result.ToAddresses[1].MailAddress, to2);
             Assert.AreEqual(result.CcAddresses[0].MailAddress, cc1);
 
-            Assert.AreEqual(result.Alerts[0].AlertMessage, Resources.IsAlertAddressToAlert + $"[{to2}]");
             Assert.IsTrue(result.IsCanNotSendMail);
             Assert.AreEqual(result.CanNotSendMailMessage, Resources.SendingForbidAddress + $"[{to2}]");
         }
@@ -580,7 +579,7 @@ namespace OutlookOkanTest
 
             var generateCheckList = new GenerateCheckList();
             var privateObject = new PrivateObject(generateCheckList);
-            var args = new object[] { testCheckList, displayNameAndRecipient, nameAndDomainsList, false };
+            var args = new object[] { testCheckList, displayNameAndRecipient, nameAndDomainsList, false, false, false };
             var result = (CheckList)privateObject.Invoke("CheckMailBodyAndRecipient", args);
 
             Assert.AreEqual(result.Alerts[0].AlertMessage, "たろう (taro@sample.com)" + " : " + Resources.IsAlertAddressMaybeIrrelevant);
@@ -601,7 +600,7 @@ namespace OutlookOkanTest
 
             var generateCheckList = new GenerateCheckList();
             var privateObject = new PrivateObject(generateCheckList);
-            var args = new object[] { testCheckList, displayNameAndRecipient, nameAndDomainsList, false };
+            var args = new object[] { testCheckList, displayNameAndRecipient, nameAndDomainsList, false, false, false };
             var result = (CheckList)privateObject.Invoke("CheckMailBodyAndRecipient", args);
 
             Assert.AreEqual(result.Alerts.Count, 0);
@@ -622,7 +621,7 @@ namespace OutlookOkanTest
 
             var generateCheckList = new GenerateCheckList();
             var privateObject = new PrivateObject(generateCheckList);
-            var args = new object[] { testCheckList, displayNameAndRecipient, nameAndDomainsList, true };
+            var args = new object[] { testCheckList, displayNameAndRecipient, nameAndDomainsList, true, false, false };
             var result = (CheckList)privateObject.Invoke("CheckMailBodyAndRecipient", args);
 
             Assert.AreEqual(result.Alerts[0].AlertMessage, $"たろう (taro@sample.hogehoge) : {Resources.CanNotFindTheLinkedName} (ほげほげ株式会社)");
@@ -643,7 +642,7 @@ namespace OutlookOkanTest
 
             var generateCheckList = new GenerateCheckList();
             var privateObject = new PrivateObject(generateCheckList);
-            var args = new object[] { testCheckList, displayNameAndRecipient, nameAndDomainsList, true };
+            var args = new object[] { testCheckList, displayNameAndRecipient, nameAndDomainsList, true, false, false };
             var result = (CheckList)privateObject.Invoke("CheckMailBodyAndRecipient", args);
 
             Assert.AreEqual(result.Alerts.Count, 0);
@@ -854,7 +853,7 @@ namespace OutlookOkanTest
 
             var generateCheckList = new GenerateCheckList();
             var privateObject = new PrivateObject(generateCheckList);
-            var args = new object[] { checkList, externalDomainsWarningAndAutoChangeToBccSettings, externalDomainNumToAndCc };
+            var args = new object[] { checkList, externalDomainsWarningAndAutoChangeToBccSettings, externalDomainNumToAndCc, false };
             var result = (CheckList)privateObject.Invoke("ExternalDomainsWarningIfNeeded", args);
 
             Assert.AreEqual(result.Alerts.Count, 0);
@@ -875,7 +874,7 @@ namespace OutlookOkanTest
 
             var generateCheckList = new GenerateCheckList();
             var privateObject = new PrivateObject(generateCheckList);
-            var args = new object[] { checkList, externalDomainsWarningAndAutoChangeToBccSettings, externalDomainNumToAndCc };
+            var args = new object[] { checkList, externalDomainsWarningAndAutoChangeToBccSettings, externalDomainNumToAndCc, false };
             var result = (CheckList)privateObject.Invoke("ExternalDomainsWarningIfNeeded", args);
 
             Assert.AreEqual(result.Alerts[0].AlertMessage, Resources.LargeNumberOfExternalDomainAlert + "[10]");
@@ -896,7 +895,7 @@ namespace OutlookOkanTest
 
             var generateCheckList = new GenerateCheckList();
             var privateObject = new PrivateObject(generateCheckList);
-            var args = new object[] { checkList, externalDomainsWarningAndAutoChangeToBccSettings, externalDomainNumToAndCc };
+            var args = new object[] { checkList, externalDomainsWarningAndAutoChangeToBccSettings, externalDomainNumToAndCc, false };
             var result = (CheckList)privateObject.Invoke("ExternalDomainsWarningIfNeeded", args);
 
             Assert.AreEqual(result.Alerts.Count, 0);
@@ -935,11 +934,12 @@ namespace OutlookOkanTest
             const int externalDomainNumToAndCc = 4;
             const string senderDomain = "@noraneko.co.jp";
             const string senderMailAddress = "miyake@noraneko.co.jp";
+            var forceAutoChangeRecipientsToBccSetting = new ForceAutoChangeRecipientsToBcc();
 
             var generateCheckList = new GenerateCheckList();
             var privateObject = new PrivateObject(generateCheckList);
-            var args = new object[] { null, displayNameAndRecipient, externalDomainsWarningAndAutoChangeToBccSettings, internalDomains, externalDomainNumToAndCc, senderDomain, senderMailAddress };
-            var result = (DisplayNameAndRecipient)privateObject.Invoke("ExternalDomainsChangeToBccIfNeeded", new[] { typeof(Outlook._MailItem), typeof(DisplayNameAndRecipient), typeof(ExternalDomainsWarningAndAutoChangeToBcc), typeof(List<InternalDomain>), typeof(int), typeof(string), typeof(string) }, args, new[] { typeof(Outlook._MailItem) });
+            var args = new object[] { null, displayNameAndRecipient, externalDomainsWarningAndAutoChangeToBccSettings, internalDomains, externalDomainNumToAndCc, senderDomain, senderMailAddress, forceAutoChangeRecipientsToBccSetting };
+            var result = (DisplayNameAndRecipient)privateObject.Invoke("ExternalDomainsChangeToBccIfNeeded", new[] { typeof(Outlook._MailItem), typeof(DisplayNameAndRecipient), typeof(ExternalDomainsWarningAndAutoChangeToBcc), typeof(List<InternalDomain>), typeof(int), typeof(string), typeof(string), typeof(ForceAutoChangeRecipientsToBcc) }, args, new[] { typeof(Outlook._MailItem) });
 
             Assert.AreEqual(result.To.Count, 1);
             Assert.AreEqual(result.Cc.Count, 2);
@@ -972,11 +972,12 @@ namespace OutlookOkanTest
             const int externalDomainNumToAndCc = 4;
             const string senderDomain = "@noraneko.co.jp";
             const string senderMailAddress = "miyake@noraneko.co.jp";
+            var forceAutoChangeRecipientsToBccSetting = new ForceAutoChangeRecipientsToBcc();
 
             var generateCheckList = new GenerateCheckList();
             var privateObject = new PrivateObject(generateCheckList);
-            var args = new object[] { null, displayNameAndRecipient, externalDomainsWarningAndAutoChangeToBccSettings, internalDomains, externalDomainNumToAndCc, senderDomain, senderMailAddress };
-            var result = (DisplayNameAndRecipient)privateObject.Invoke("ExternalDomainsChangeToBccIfNeeded", new[] { typeof(Outlook._MailItem), typeof(DisplayNameAndRecipient), typeof(ExternalDomainsWarningAndAutoChangeToBcc), typeof(List<InternalDomain>), typeof(int), typeof(string), typeof(string) }, args, new[] { typeof(Outlook._MailItem) });
+            var args = new object[] { null, displayNameAndRecipient, externalDomainsWarningAndAutoChangeToBccSettings, internalDomains, externalDomainNumToAndCc, senderDomain, senderMailAddress, forceAutoChangeRecipientsToBccSetting };
+            var result = (DisplayNameAndRecipient)privateObject.Invoke("ExternalDomainsChangeToBccIfNeeded", new[] { typeof(Outlook._MailItem), typeof(DisplayNameAndRecipient), typeof(ExternalDomainsWarningAndAutoChangeToBcc), typeof(List<InternalDomain>), typeof(int), typeof(string), typeof(string), typeof(ForceAutoChangeRecipientsToBcc) }, args, new[] { typeof(Outlook._MailItem) });
 
             Assert.AreEqual(result.To.Count, 1);
             Assert.AreEqual(result.To[senderMailAddress], senderMailAddress);

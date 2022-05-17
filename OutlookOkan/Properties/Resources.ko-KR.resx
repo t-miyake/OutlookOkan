@@ -120,6 +120,12 @@
   <data name="About" xml:space="preserve">
     <value>이 프로그램에 대해</value>
   </data>
+  <data name="AddedTextAtTheBeginning" xml:space="preserve">
+    <value>메일 시작 부분에 텍스트를 추가했습니다.</value>
+  </data>
+  <data name="AddedTextAtTheEnd" xml:space="preserve">
+    <value>메일 끝에 텍스트를 추가했습니다.</value>
+  </data>
   <data name="AddressBook" xml:space="preserve">
     <value>연락처</value>
   </data>
@@ -144,6 +150,9 @@
   <data name="AlwaysAddTheSendersAddressToBcc" xml:space="preserve">
     <value>발신자의 주소를 항상 숨은 참조에 자동으로 추가하십시오.</value>
   </data>
+  <data name="AlwaysAddTheSendersAddressToCc" xml:space="preserve">
+    <value>항상 보낸 사람의 주소를 참조에 자동으로 추가합니다.</value>
+  </data>
   <data name="ApplicableDestination" xml:space="preserve">
     <value>적용 대상</value>
   </data>
@@ -158,6 +167,12 @@
   </data>
   <data name="AttachedIsAnEncryptedZipFile" xml:space="preserve">
     <value>첨부 파일은 암호화된 ZIP 파일입니다.</value>
+  </data>
+  <data name="AttachmentAlertRecipients" xml:space="preserve">
+    <value>첨부 파일 알림 주소</value>
+  </data>
+  <data name="AttachmentAlertRecipientsMessage" xml:space="preserve">
+    <value>첨부 파일 전송 경고를 받는 사람입니다.</value>
   </data>
   <data name="AttachmentProhibitedRecipients" xml:space="preserve">
     <value>첨부 금지 주소</value>
@@ -198,8 +213,14 @@
   <data name="AutoAddMailAddress" xml:space="preserve">
     <value>받는 사람을 자동으로 추가합니다.</value>
   </data>
+  <data name="AutoAddMessage" xml:space="preserve">
+    <value>자동 본문 추가</value>
+  </data>
   <data name="AutoAddSendersAddressToAlert" xml:space="preserve">
     <value>보낸 사람의 이메일 주소가 받는 사람에 자동으로 추가되었습니다. (숨은 참조로 자동 변경되어 To가 더 이상 존재하지 않기 때문입니다.)</value>
+  </data>
+  <data name="AutoAddToRecipientByForceAutoChangeRecipientsToBccAddressToAlert" xml:space="preserve">
+    <value>지정한 이메일 주소가 받는 사람에 자동으로 추가되었습니다. (숨은 참조로 자동 변경되어 To가 더 이상 존재하지 않기 때문입니다.)</value>
   </data>
   <data name="AutoCheckConfig" xml:space="preserve">
     <value>자동 확인 설정</value>
@@ -235,6 +256,9 @@
   </data>
   <data name="CanNotFindTheLinkedName" xml:space="preserve">
     <value>메일 본문에서 연결된 이름을 찾을 수 없습니다.</value>
+  </data>
+  <data name="CanNotFindTheLinkedNameInSubject" xml:space="preserve">
+    <value>메일 제목에서 연결된 이름을 찾을 수 없습니다.</value>
   </data>
   <data name="Cc" xml:space="preserve">
     <value>Cc</value>
@@ -330,6 +354,15 @@
   <data name="FailedToGetInformation" xml:space="preserve">
     <value>정보를 가져오지 못했습니다.</value>
   </data>
+  <data name="ForceAutoChangeRecipientsToBcc" xml:space="preserve">
+    <value>숨은 참조로 강제 자동 변경</value>
+  </data>
+  <data name="ForceAutoChangeRecipientsToBccAlert" xml:space="preserve">
+    <value>받는 사람은 자동으로 숨은 참조로 변환되었습니다.</value>
+  </data>
+  <data name="ForceAutoChangeRecipientsToBccNotes" xml:space="preserve">
+    <value>다음 설정이 위의 설정보다 우선합니다.</value>
+  </data>
   <data name="ForgottenToAttachAlert" xml:space="preserve">
     <value>본문에 "첨부파일"이라는 단어가 있는데 첨부파일이 없습니다.</value>
   </data>
@@ -391,6 +424,12 @@
   <data name="InternalDomain" xml:space="preserve">
     <value>내부 도메인</value>
   </data>
+  <data name="IsAddMessageToEnd" xml:space="preserve">
+    <value>다음 텍스트는 본문 끝에 자동으로 추가됩니다.</value>
+  </data>
+  <data name="IsAddMessageToStart" xml:space="preserve">
+    <value>다음 텍스트는 본문 시작 부분에 자동으로 추가됩니다.</value>
+  </data>
   <data name="IsAlertAddressBccAlert" xml:space="preserve">
     <value>받는 사람(숨은 참조)에 경고로 등록된 주소 또는 도메인이 포함되어 있습니다.</value>
   </data>
@@ -429,6 +468,12 @@
   <data name="IsCheckNameAndDomainsFromRecipients" xml:space="preserve">
     <value>메일 본문에 받는 사람 이름이 없는 경우에도 경고가 표시됩니다.</value>
   </data>
+  <data name="IsCheckNameAndDomainsFromSubject" xml:space="preserve">
+    <value>제목에 받는 사람 이름이 없는 경우에도 경고가 표시됩니다.</value>
+  </data>
+  <data name="IsCheckNameAndDomainsIncludeSubject" xml:space="preserve">
+    <value>대상에 주제를 포함합니다. *대상은 본체와 함께 대상에 포함됩니다.</value>
+  </data>
   <data name="IsDoNotUseXIfAllRecipientsAreInternalDomain" xml:space="preserve">
     <value>받는 사람의 도메인이 모두 내부 도메인인 경우 이 기능을 비활성화합니다.</value>
   </data>
@@ -437,6 +482,12 @@
   </data>
   <data name="IsEnableRecipientsAreSortedByDomain" xml:space="preserve">
     <value>수신인은 확인 화면에서 도메인별로 정렬됩니다.</value>
+  </data>
+  <data name="IsForceAutoChangeRecipientsToBcc" xml:space="preserve">
+    <value>모든 외부 수신자를 숨은 참조로 설정합니다.</value>
+  </data>
+  <data name="IsIncludeInternalDomain" xml:space="preserve">
+    <value>내부 도메인을 포함합니다. *모든 수신자는 숨은 참조로 변경됩니다.</value>
   </data>
   <data name="IsNotTreatedAsAttachmentsAtHtmlEmbeddedFiles" xml:space="preserve">
     <value>HTML 메일에 포함된 파일은 첨부 파일로 처리되지 않습니다.</value>
@@ -501,6 +552,9 @@
   </data>
   <data name="NoAlert" xml:space="preserve">
     <value>중요한 알림이 없습니다.</value>
+  </data>
+  <data name="NotApplicableToMeetingRequests" xml:space="preserve">
+    <value>*회의 요청에는 적용되지 않습니다.</value>
   </data>
   <data name="NoticeOfIsEnableAllAttachedFilesAreDetectEncryptedZip" xml:space="preserve">
     <value>* 첨부파일이 있는 이메일은 처리 시간이 더 오래 걸릴 수 있습니다.</value>
@@ -587,9 +641,22 @@
 또는
 도메인: @noraneko.co.jp
 
-이메일 주소 또는 도메인을 등록합니다.
+이메일 주소 또는 도메인 및 해당 알림 텍스트를 등록합니다.
 
-여기에 등록한 이메일 주소나 도메인으로 이메일을 보내면 미리 알림을 받게 됩니다.</value>
+여기에 등록한 이메일 주소나 도메인으로 이메일을 보내면 미리 알림을 받게 됩니다.
+
+경고 텍스트가 비어 있으면 확인 화면에 기본 경고 텍스트가 표시됩니다.</value>
+  </data>
+  <data name="SettingExampleAttachmentAlertRecipients" xml:space="preserve">
+    <value>주소: info@noraneko.co.jp
+또는.
+도메인 이름: @noraneko.co.jp
+
+이메일 주소 또는 도메인 이름 및 해당 경고 텍스트를 등록합니다.
+
+등록된 경우 첨부 파일이 있는 이메일이 이 주소로 전송될 때 경고가 표시됩니다.
+
+경고 텍스트가 비어 있으면 기본 경고 텍스트가 표시됩니다.</value>
   </data>
   <data name="SettingExampleAttachmentProhibitedRecipients" xml:space="preserve">
     <value>이메일 주소: info@noraneko.co.jp
@@ -625,6 +692,9 @@
 
 등록된 수신자 및 도메인으로 메일을 보낼 때 Cc 또는 Bcc에 지정된 주소가 자동으로 추가됩니다.</value>
   </data>
+  <data name="SettingExampleAutoAddMessage" xml:space="preserve">
+    <value>이메일의 시작이나 끝에 지정된 문구를 자동으로 추가할 수 있습니다.</value>
+  </data>
   <data name="SettingExampleDeferredDelivery" xml:space="preserve">
     <value>이메일 주소: info@noraneko.co.jp
 또는
@@ -638,7 +708,9 @@
   </data>
   <data name="SettingExampleExternalDomainsWarningAndAutoChangeToBcc" xml:space="preserve">
     <value>경고 및 숨은 참조 자동 변경의 기준으로 사용할 외부 도메인의 수를 설정하고 각각을 켜거나 끕니다.
-숨은 참조로 자동 변경 후 받는 사람이 없으면 받는 사람에 보낸 사람의 주소가 자동으로 추가됩니다.</value>
+숨은 참조로 자동 변경 후 받는 사람이 없으면 받는 사람에 보낸 사람의 주소가 자동으로 추가됩니다.
+
+또한 모든 받는 사람이 숨은 참조로 변환되도록 강제할 수도 있습니다.</value>
   </data>
   <data name="SettingExampleInternalDomainList" xml:space="preserve">
     <value>도메인: @noraneko.co.jp
@@ -652,7 +724,9 @@
 
 이름(예: 회사명)과 도메인을 등록합니다.
 
-이메일 본문과 수신자 도메인의 이름이 일치하지 않으면 경고를 표시합니다.</value>
+이메일 본문과 수신자 도메인의 이름이 일치하지 않으면 경고를 표시합니다.
+
+*수표에 과목도 포함될 수 있습니다.</value>
   </data>
   <data name="SettingExampleRecipientsAndAttachmentsName" xml:space="preserve">
     <value>이메일 주소: info@noraneko.co.jp
@@ -701,11 +775,14 @@
   <data name="To" xml:space="preserve">
     <value>To</value>
   </data>
+  <data name="ToRecipient" xml:space="preserve">
+    <value>받는 사람으로 설정할 메일 주소 *설정하지 않으면 보내는 사람 주소가 받는 사람으로 자동 설정됩니다.</value>
+  </data>
   <data name="Unknown" xml:space="preserve">
     <value>알려지지 않은</value>
   </data>
   <data name="Version" xml:space="preserve">
-    <value>Version 2.6.1.1</value>
+    <value>Version 2.7.0.0</value>
   </data>
   <data name="VersionInfo" xml:space="preserve">
     <value>이 프로그램에 대해</value>
