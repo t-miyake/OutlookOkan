@@ -1,5 +1,4 @@
 using System.Reflection;
-using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 
 [assembly: AssemblyTitle("OutlookOkanTest")]
@@ -15,6 +14,5 @@ using System.Runtime.InteropServices;
 
 [assembly: Guid("828251eb-7a92-4559-93f8-bb5f5d8b16a7")]
 
-// [assembly: AssemblyVersion("1.0.*")]
 [assembly: AssemblyVersion("1.0.0.0")]
 [assembly: AssemblyFileVersion("1.0.0.0")]
