@@ -726,4 +726,25 @@ If the recipients and the attached file name do not match, a warning will be dis
   <data name="ShowConfirmationAtSendMeetingRequest" xml:space="preserve">
     <value>The confirmation screen is also displayed for meeting request.</value>
   </data>
+  <data name="AutoAddMessage" xml:space="preserve">
+    <value>Automatic body text addition</value>
+  </data>
+  <data name="IsAddMessageToEnd" xml:space="preserve">
+    <value>The following text is automatically added to the end of the body.</value>
+  </data>
+  <data name="IsAddMessageToStart" xml:space="preserve">
+    <value>The following text is automatically added to the beginning of the body.</value>
+  </data>
+  <data name="SettingExampleAutoAddMessage" xml:space="preserve">
+    <value>You can automatically add the specified wording to the beginning or end of an e-mail.</value>
+  </data>
+  <data name="AddedTextAtTheBeginning" xml:space="preserve">
+    <value>Added text at the beginning of the mail.</value>
+  </data>
+  <data name="AddedTextAtTheEnd" xml:space="preserve">
+    <value>Added text at the end of the mail.</value>
+  </data>
+  <data name="NotApplicableToMeetingRequests" xml:space="preserve">
+    <value>*Not applicable to meeting requests.</value>
+  </data>
 </root>

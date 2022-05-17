@@ -722,5 +722,25 @@
   </data>
   <data name="ShowConfirmationAtSendMeetingRequest" xml:space="preserve">
     <value>会議招待にも確認画面を表示する。</value>
+  <data name="AutoAddMessage" xml:space="preserve">
+    <value>メール本文への文言の自動追加</value>
+  </data>
+  <data name="IsAddMessageToEnd" xml:space="preserve">
+    <value>メールの末尾に、以下の文言を自動追加する。</value>
+  </data>
+  <data name="IsAddMessageToStart" xml:space="preserve">
+    <value>メールの冒頭に、以下の文言を自動追加する。</value>
+  </data>
+  <data name="SettingExampleAutoAddMessage" xml:space="preserve">
+    <value>メールの冒頭や末尾に、指定した文言を自動で追加できます。</value>
+  </data>
+  <data name="AddedTextAtTheBeginning" xml:space="preserve">
+    <value>メールの冒頭に文言を自動追加しました。</value>
+  </data>
+  <data name="AddedTextAtTheEnd" xml:space="preserve">
+    <value>メールの末尾に文言を自動追加しました。</value>
+  </data>
+  <data name="NotApplicableToMeetingRequests" xml:space="preserve">
+    <value>※会議出席依頼には反映されません。</value>
   </data>
 </root>

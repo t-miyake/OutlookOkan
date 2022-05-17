@@ -120,6 +120,12 @@
   <data name="About" xml:space="preserve">
     <value>О программе</value>
   </data>
+  <data name="AddedTextAtTheBeginning" xml:space="preserve">
+    <value>Добавлен текст в начале письма.</value>
+  </data>
+  <data name="AddedTextAtTheEnd" xml:space="preserve">
+    <value>Добавлен текст в конце письма.</value>
+  </data>
   <data name="AddressBook" xml:space="preserve">
     <value>Контакты</value>
   </data>
@@ -200,6 +206,9 @@
   </data>
   <data name="AutoAddMailAddress" xml:space="preserve">
     <value>Автоматическое добавление получателей.</value>
+  </data>
+  <data name="AutoAddMessage" xml:space="preserve">
+    <value>Автоматическое добавление основного текста</value>
   </data>
   <data name="AutoAddSendersAddressToAlert" xml:space="preserve">
     <value>Адрес электронной почты отправителя был автоматически добавлен в To. (поскольку адреса "Кому" больше не существует из-за автоматического изменения на "Bcc").</value>
@@ -393,6 +402,12 @@
   <data name="InternalDomain" xml:space="preserve">
     <value>Внутренний домен</value>
   </data>
+  <data name="IsAddMessageToEnd" xml:space="preserve">
+    <value>Следующий текст автоматически добавляется в конец тела.</value>
+  </data>
+  <data name="IsAddMessageToStart" xml:space="preserve">
+    <value>Следующий текст автоматически добавляется в начало тела.</value>
+  </data>
   <data name="IsAlertAddressBccAlert" xml:space="preserve">
     <value>Получатели (Bcc) содержат адрес или домен, который был зарегистрирован как оповещение.</value>
   </data>
@@ -504,6 +519,9 @@
   </data>
   <data name="NoAlert" xml:space="preserve">
     <value>Нет никаких важных предупреждений.</value>
+  </data>
+  <data name="NotApplicableToMeetingRequests" xml:space="preserve">
+    <value>*Не применимо к запросам на проведение совещаний.</value>
   </data>
   <data name="NoticeOfIsEnableAllAttachedFilesAreDetectEncryptedZip" xml:space="preserve">
     <value>* Обработка писем с вложениями может занять больше времени.</value>
@@ -628,6 +646,9 @@
 Адрес электронной почты: boss@noraneko.co.jp
 
 При отправке почты зарегистрированным получателям и доменам, указанный адрес автоматически добавляется в Cc или Bcc.</value>
+  </data>
+  <data name="SettingExampleAutoAddMessage" xml:space="preserve">
+    <value>Вы можете автоматически добавить указанную формулировку в начало или конец электронного письма.</value>
   </data>
   <data name="SettingExampleDeferredDelivery" xml:space="preserve">
     <value>Адрес электронной почты: info@noraneko.co.jp

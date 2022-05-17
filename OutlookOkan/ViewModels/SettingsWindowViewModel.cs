@@ -73,6 +73,7 @@ namespace OutlookOkan.ViewModels
             LoadAttachmentsSettingData();
             LoadRecipientsAndAttachmentsNameData();
             LoadAttachmentProhibitedRecipientsData();
+            LoadAutoAddMessageData();
         }
 
         internal async Task SaveSettings()
@@ -94,6 +95,7 @@ namespace OutlookOkan.ViewModels
                     SaveAttachmentsSettingToCsv(),
                     SaveRecipientsAndAttachmentsNameToCsv(),
                     SaveAttachmentProhibitedRecipientsToCsv()
+                    SaveAutoAddMessageToCsv()
                 };
 
             await Task.WhenAll(saveTasks);
@@ -1087,6 +1089,92 @@ namespace OutlookOkan.ViewModels
             {
                 _attachmentProhibitedRecipients = value;
                 OnPropertyChanged(nameof(AttachmentProhibitedRecipients));
+            }
+        }
+
+        #endregion
+
+        #region AutoAddMessage
+
+        private void LoadAutoAddMessageData()
+        {
+            var readCsv = new ReadAndWriteCsv("AutoAddMessage.csv");
+            //1行しかないはずだが、2行以上あるとロード時にエラーとなる恐れがあるため、全行ロードする。
+            foreach (var data in readCsv.GetCsvRecords<AutoAddMessage>(readCsv.LoadCsv<AutoAddMessageMap>()))
+            {
+                _autoAddMessage.Add(data);
+            }
+
+            if (_autoAddMessage.Count == 0) return;
+
+            //実際に使用するのは1行目の設定のみ
+            IsAddToStart = _autoAddMessage[0].IsAddToStart;
+            IsAddToEnd = _autoAddMessage[0].IsAddToEnd;
+            MessageOfAddToStart = _autoAddMessage[0].MessageOfAddToStart;
+            MessageOfAddToEnd = _autoAddMessage[0].MessageOfAddToEnd;
+        }
+
+        private async Task SaveAutoAddMessageToCsv()
+        {
+            var tempAutoAddMessage = new List<AutoAddMessage>
+            {
+                new AutoAddMessage
+                {
+                    IsAddToStart = IsAddToStart,
+                    IsAddToEnd = IsAddToEnd,
+                    MessageOfAddToStart = MessageOfAddToStart,
+                    MessageOfAddToEnd = MessageOfAddToEnd
+                }
+            };
+
+            var list = tempAutoAddMessage.Cast<object>().ToList();
+            var writeCsv = new ReadAndWriteCsv("AutoAddMessage.csv");
+            await Task.Run(() => writeCsv.WriteRecordsToCsv<AutoAddMessageMap>(list));
+        }
+
+        private readonly List<AutoAddMessage> _autoAddMessage = new List<AutoAddMessage>();
+
+        private bool _isAddToStart;
+        public bool IsAddToStart
+        {
+            get => _isAddToStart;
+            set
+            {
+                _isAddToStart = value;
+                OnPropertyChanged(nameof(IsAddToStart));
+            }
+        }
+
+        private bool _isAddToEnd;
+        public bool IsAddToEnd
+        {
+            get => _isAddToEnd;
+            set
+            {
+                _isAddToEnd = value;
+                OnPropertyChanged(nameof(IsAddToEnd));
+            }
+        }
+
+        private string _messageOfAddToStart;
+        public string MessageOfAddToStart
+        {
+            get => _messageOfAddToStart;
+            set
+            {
+                _messageOfAddToStart = value;
+                OnPropertyChanged(nameof(MessageOfAddToStart));
+            }
+        }
+
+        private string _messageOfAddToEnd;
+        public string MessageOfAddToEnd
+        {
+            get => _messageOfAddToEnd;
+            set
+            {
+                _messageOfAddToEnd = value;
+                OnPropertyChanged(nameof(MessageOfAddToEnd));
             }
         }
 

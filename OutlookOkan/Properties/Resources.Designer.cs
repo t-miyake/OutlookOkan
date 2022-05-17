@@ -70,6 +70,24 @@ namespace OutlookOkan.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Added text at the beginning of the mail..
+        /// </summary>
+        public static string AddedTextAtTheBeginning {
+            get {
+                return ResourceManager.GetString("AddedTextAtTheBeginning", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Added text at the end of the mail..
+        /// </summary>
+        public static string AddedTextAtTheEnd {
+            get {
+                return ResourceManager.GetString("AddedTextAtTheEnd", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Contacts.
         /// </summary>
         public static string AddressBook {
@@ -300,6 +318,15 @@ namespace OutlookOkan.Properties {
         public static string AutoAddMailAddress {
             get {
                 return ResourceManager.GetString("AutoAddMailAddress", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Automatic body text addition.
+        /// </summary>
+        public static string AutoAddMessage {
+            get {
+                return ResourceManager.GetString("AutoAddMessage", resourceCulture);
             }
         }
         
@@ -869,6 +896,24 @@ namespace OutlookOkan.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to The following text is automatically added to the end of the body..
+        /// </summary>
+        public static string IsAddMessageToEnd {
+            get {
+                return ResourceManager.GetString("IsAddMessageToEnd", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The following text is automatically added to the beginning of the body..
+        /// </summary>
+        public static string IsAddMessageToStart {
+            get {
+                return ResourceManager.GetString("IsAddMessageToStart", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to The recipients (Bcc) contains an address or domain that has been registered as an alert..
         /// </summary>
         public static string IsAlertAddressBccAlert {
@@ -1192,6 +1237,15 @@ namespace OutlookOkan.Properties {
         public static string NoAlert {
             get {
                 return ResourceManager.GetString("NoAlert", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to *Not applicable to meeting requests..
+        /// </summary>
+        public static string NotApplicableToMeetingRequests {
+            get {
+                return ResourceManager.GetString("NotApplicableToMeetingRequests", resourceCulture);
             }
         }
         
@@ -1554,6 +1608,15 @@ namespace OutlookOkan.Properties {
         public static string SettingExampleRecipientsAndAttachmentsName {
             get {
                 return ResourceManager.GetString("SettingExampleRecipientsAndAttachmentsName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to You can automatically add the specified wording to the beginning or end of an e-mail..
+        /// </summary>
+        public static string SettingExampleAutoAddMessage {
+            get {
+                return ResourceManager.GetString("SettingExampleAutoAddMessage", resourceCulture);
             }
         }
         

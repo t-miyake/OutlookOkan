@@ -850,6 +850,48 @@
                     </StackPanel>
                 </Grid>
             </TabItem>
+            <TabItem Header="{Binding Source={x:Static services:ResourceService.Instance}, Path=Resources.AutoAddMessage, Mode=OneWay}" MinHeight="28" VerticalAlignment="Top" Width="250">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="3*" />
+                        <ColumnDefinition Width="Auto" />
+                        <ColumnDefinition Width="1*" />
+                    </Grid.ColumnDefinitions>
+                    <StackPanel Grid.Column="0" Margin="8,2,8,8">
+                        <GroupBox Header="{Binding Source={x:Static services:ResourceService.Instance}, Path=Resources.Settings, Mode=OneWay}" FontSize="11" Padding="3,3,3,3">
+                            <StackPanel Orientation="Vertical">
+                                <TextBlock Text="{Binding Source={x:Static services:ResourceService.Instance}, Path=Resources.NotApplicableToMeetingRequests, Mode=OneWay}" Margin="0,3,0,0"/>
+                                <StackPanel Orientation="Horizontal" Margin="0,8,0,0">
+                                    <CheckBox Margin="0,0,8,0" IsChecked="{Binding IsAddToStart, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Center" />
+                                    <TextBlock Text="{Binding Source={x:Static services:ResourceService.Instance}, Path=Resources.IsAddMessageToStart, Mode=OneWay}" VerticalAlignment="Center" />
+                                </StackPanel>
+                                <StackPanel Orientation="Vertical" Margin="6,3,0,0">
+                                    <StackPanel Orientation="Horizontal">
+                                        <TextBlock Text="┗━━ " />
+                                        <TextBox Width="360" Height="150"  HorizontalAlignment="Left" Margin="0,3,0,0" Text="{Binding MessageOfAddToStart, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" IsEnabled="{Binding IsAddToStart, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}" InputMethod.IsInputMethodEnabled="True" AcceptsReturn="True" VerticalContentAlignment="Top" VerticalScrollBarVisibility="Visible" HorizontalScrollBarVisibility="Visible" />
+                                    </StackPanel>
+                                </StackPanel>
+                                <StackPanel Orientation="Horizontal" Margin="0,12,0,0">
+                                    <CheckBox Margin="0,0,8,0" IsChecked="{Binding IsAddToEnd, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Center" />
+                                    <TextBlock Text="{Binding Source={x:Static services:ResourceService.Instance}, Path=Resources.IsAddMessageToEnd, Mode=OneWay}" VerticalAlignment="Center" />
+                                </StackPanel>
+                                <StackPanel Orientation="Vertical" Margin="6,3,0,0">
+                                    <StackPanel Orientation="Horizontal">
+                                        <TextBlock Text="┗━━ " />
+                                        <TextBox Width="360" Height="150"  HorizontalAlignment="Left" Margin="0,3,0,0" Text="{Binding MessageOfAddToEnd, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" IsEnabled="{Binding IsAddToEnd, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}" InputMethod.IsInputMethodEnabled="True" AcceptsReturn="True" VerticalContentAlignment="Top" VerticalScrollBarVisibility="Visible" HorizontalScrollBarVisibility="Visible"  />
+                                    </StackPanel>
+                                </StackPanel>
+                            </StackPanel>
+                        </GroupBox>
+                    </StackPanel>
+                    <GridSplitter Grid.Column="1" />
+                    <StackPanel Grid.Column="2" Margin="1,2,8,8">
+                        <GroupBox Header="{Binding Source={x:Static services:ResourceService.Instance}, Path=Resources.SettingExample, Mode=OneWay}" FontSize="11" Padding="3,3,3,3">
+                            <TextBox Height="588" BorderBrush="White" FontSize="11" TextWrapping="Wrap" Text="{Binding Source={x:Static services:ResourceService.Instance}, Path=Resources.SettingExampleAutoAddMessage, Mode=OneWay}" Padding="0,12,0,0" IsReadOnly="True" />
+                        </GroupBox>
+                    </StackPanel>
+                </Grid>
+            </TabItem>
         </TabControl>
         <StackPanel Margin="0,1,0,0">
             <Label Content="{Binding Source={x:Static services:ResourceService.Instance}, Path=Resources.HowToDeleteRow, Mode=OneWay}" Padding="0" Foreground="LightSlateGray" />

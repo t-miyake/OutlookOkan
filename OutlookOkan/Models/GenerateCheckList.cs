@@ -29,7 +29,8 @@ namespace OutlookOkan.Models
         /// <param name="item">送信するアイテム</param>
         /// <param name="generalSetting">一般設定</param>
         /// <param name="contacts">連絡先(アドレス帳)</param>
-        internal CheckList GenerateCheckListFromMail<T>(T item, GeneralSetting generalSetting, Outlook.MAPIFolder contacts)
+        /// <param name="autoAddMessageSetting">autoAddMessageSetting</param>
+        internal CheckList GenerateCheckListFromMail<T>(T item, GeneralSetting generalSetting, Outlook.MAPIFolder contacts, AutoAddMessage autoAddMessageSetting)
         {
             #region LoadSettings
 
@@ -98,6 +99,8 @@ namespace OutlookOkan.Models
             {
                 _checkList.MailType = GetMailBodyFormat(((Outlook._MailItem)item).BodyFormat) ?? Resources.FailedToGetInformation;
                 _checkList.MailBody = GetMailBody(((Outlook._MailItem)item).BodyFormat, ((Outlook._MailItem)item).Body ?? Resources.FailedToGetInformation);
+                _checkList.MailBody = AddMessageToBodyPreview(_checkList.MailBody, autoAddMessageSetting);
+
                 _checkList.MailHtmlBody = ((Outlook._MailItem)item).HTMLBody ?? Resources.FailedToGetInformation;
             }
             else
@@ -1864,6 +1867,31 @@ namespace OutlookOkan.Models
             }
 
             return checkList;
+        }
+
+        /// <summary>
+        /// 本文のプレビューに文言を追加する。(この時点で、実際のメール文面には追加しない。※送信をキャンセルする可能性があるため)
+        /// </summary>
+        /// <param name="mailBody">メール本文(テキスト形式)</param>
+        /// <param name="autoAddMessageSetting">autoAddMessageSetting</param>
+        /// <returns>メール本文(テキスト形式)</returns>
+        private string AddMessageToBodyPreview(string mailBody, AutoAddMessage autoAddMessageSetting)
+        {
+            if (mailBody == Resources.FailedToGetInformation) return mailBody;
+
+            if (autoAddMessageSetting.IsAddToStart)
+            {
+                mailBody = autoAddMessageSetting.MessageOfAddToStart + Environment.NewLine + Environment.NewLine + mailBody;
+                AddAlerts(Resources.AddedTextAtTheBeginning, false, false, true);
+            }
+
+            if (autoAddMessageSetting.IsAddToEnd)
+            {
+                mailBody = mailBody + Environment.NewLine + autoAddMessageSetting.MessageOfAddToEnd;
+                AddAlerts(Resources.AddedTextAtTheEnd, false, false, true);
+            }
+
+            return mailBody;
         }
 
         /// <summary>

@@ -120,6 +120,12 @@
   <data name="About" xml:space="preserve">
     <value>Über das Programm</value>
   </data>
+  <data name="AddedTextAtTheBeginning" xml:space="preserve">
+    <value>Text am Anfang der Mail hinzugefügt.</value>
+  </data>
+  <data name="AddedTextAtTheEnd" xml:space="preserve">
+    <value>Text am Ende der E-Mail hinzugefügt.</value>
+  </data>
   <data name="AddressBook" xml:space="preserve">
     <value>Kontakte</value>
   </data>
@@ -200,6 +206,9 @@
   </data>
   <data name="AutoAddMailAddress" xml:space="preserve">
     <value>Automatisches Hinzufügen von Empfängern.</value>
+  </data>
+  <data name="AutoAddMessage" xml:space="preserve">
+    <value>Automatisches Hinzufügen von Fließtext</value>
   </data>
   <data name="AutoAddSendersAddressToAlert" xml:space="preserve">
     <value>Die E-Mail-Adresse des Absenders wurde automatisch der Adresse "An" hinzugefügt. (weil die Adresse "An" aufgrund der automatischen Änderung in "Bcc" nicht mehr existiert).</value>
@@ -394,6 +403,12 @@ automatischer Wechsel zu Bcc</value>
   <data name="InternalDomain" xml:space="preserve">
     <value>Interner Domäne</value>
   </data>
+  <data name="IsAddMessageToEnd" xml:space="preserve">
+    <value>Der folgende Text wird automatisch an das Ende des Textkörpers angefügt.</value>
+  </data>
+  <data name="IsAddMessageToStart" xml:space="preserve">
+    <value>Der folgende Text wird automatisch am Anfang des Textes eingefügt.</value>
+  </data>
   <data name="IsAlertAddressBccAlert" xml:space="preserve">
     <value>Der Empfänger (Bcc) enthält eine Adresse oder Domäne, die als Warnmeldung registriert wurde.</value>
   </data>
@@ -506,6 +521,9 @@ Zusammenhang</value>
   </data>
   <data name="NoAlert" xml:space="preserve">
     <value>Es gibt keine wichtigen Warnmeldungen.</value>
+  </data>
+  <data name="NotApplicableToMeetingRequests" xml:space="preserve">
+    <value>*Gilt nicht für Besprechungsanfragen.</value>
   </data>
   <data name="NoticeOfIsEnableAllAttachedFilesAreDetectEncryptedZip" xml:space="preserve">
     <value>* Die Bearbeitung von E-Mails mit Anhängen kann länger dauern.</value>
@@ -630,6 +648,9 @@ To: warning@xxxxxxx.com
 E-Mail Adresse: boss@noraneko.co.jp
 
 Beim Senden von E-Mails an registrierte Empfänger und Domänen wird die angegebene Adresse automatisch zu Cc oder Bcc hinzugefügt.</value>
+  </data>
+  <data name="SettingExampleAutoAddMessage" xml:space="preserve">
+    <value>Sie können den angegebenen Wortlaut automatisch an den Anfang oder das Ende einer E-Mail anfügen.</value>
   </data>
   <data name="SettingExampleDeferredDelivery" xml:space="preserve">
     <value>E-Mail Adresse: info@noraneko.co.jp

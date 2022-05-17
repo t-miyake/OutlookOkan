@@ -120,6 +120,12 @@
   <data name="About" xml:space="preserve">
     <value>软件信息</value>
   </data>
+  <data name="AddedTextAtTheBeginning" xml:space="preserve">
+    <value>在邮件的开头添加了文字。</value>
+  </data>
+  <data name="AddedTextAtTheEnd" xml:space="preserve">
+    <value>在邮件的结尾处添加了文字。</value>
+  </data>
   <data name="AddressBook" xml:space="preserve">
     <value>联系人</value>
   </data>
@@ -197,6 +203,9 @@
   </data>
   <data name="AutoAddMailAddress" xml:space="preserve">
     <value>自动添加收件人。</value>
+  </data>
+  <data name="AutoAddMessage" xml:space="preserve">
+    <value>自动添加正文</value>
   </data>
   <data name="AutoAddSendersAddressToAlert" xml:space="preserve">
     <value>发件人的电子邮件地址被自动添加到收件人中。(因为收件人已经不存在了，因为自动改为Bcc。)</value>
@@ -390,6 +399,12 @@
   <data name="InternalDomain" xml:space="preserve">
     <value>内部领域</value>
   </data>
+  <data name="IsAddMessageToEnd" xml:space="preserve">
+    <value>下面的文字会自动添加到正文的末尾。</value>
+  </data>
+  <data name="IsAddMessageToStart" xml:space="preserve">
+    <value>以下文字会自动添加到正文的开头。</value>
+  </data>
   <data name="IsAlertAddressBccAlert" xml:space="preserve">
     <value>收件人（Bcc）包含一个已经注册为警报的地址或域名。</value>
   </data>
@@ -499,6 +514,9 @@
   </data>
   <data name="NoAlert" xml:space="preserve">
     <value>没有重要的警报。</value>
+  </data>
+  <data name="NotApplicableToMeetingRequests" xml:space="preserve">
+    <value>*不适用于会议要求。</value>
   </data>
   <data name="NoticeOfIsEnableAllAttachedFilesAreDetectEncryptedZip" xml:space="preserve">
     <value>* 有附件的电子邮件的处理可能需要更长的时间。</value>
@@ -622,6 +640,9 @@
 电子邮件地址: boss@noraneko.co.jp
 
 当发送邮件给注册的收件人和域名时，指定的地址会自动添加到抄送或密件中。</value>
+  </data>
+  <data name="SettingExampleAutoAddMessage" xml:space="preserve">
+    <value>你可以自动将指定的措辞添加到电子邮件的开头或结尾。</value>
   </data>
   <data name="SettingExampleDeferredDelivery" xml:space="preserve">
     <value>电子邮件地址：info@noraneko.co.jp

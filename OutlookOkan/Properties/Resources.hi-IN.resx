@@ -120,6 +120,12 @@
   <data name="About" xml:space="preserve">
     <value>कार्यक्रम के बारे में</value>
   </data>
+  <data name="AddedTextAtTheBeginning" xml:space="preserve">
+    <value>मेल की शुरुआत में टेक्स्ट जोड़ा गया।</value>
+  </data>
+  <data name="AddedTextAtTheEnd" xml:space="preserve">
+    <value>मेल के अंत में टेक्स्ट जोड़ा गया।</value>
+  </data>
   <data name="AddressBook" xml:space="preserve">
     <value>संपर्क</value>
   </data>
@@ -198,6 +204,9 @@
   </data>
   <data name="AutoAddMailAddress" xml:space="preserve">
     <value>प्राप्तकर्ताओं को स्वचालित रूप से जोड़ें।</value>
+  </data>
+  <data name="AutoAddMessage" xml:space="preserve">
+    <value>स्वचालित बॉडी टेक्स्ट जोड़</value>
   </data>
   <data name="AutoAddSendersAddressToAlert" xml:space="preserve">
     <value>प्रेषक का ईमेल पता स्वचालित रूप से प्रति में जोड़ दिया गया था। (क्योंकि बीसीसी में स्वतः परिवर्तन के कारण To अब मौजूद नहीं है।)</value>
@@ -392,6 +401,12 @@
   <data name="InternalDomain" xml:space="preserve">
     <value>आंतरिक डोमेन</value>
   </data>
+  <data name="IsAddMessageToEnd" xml:space="preserve">
+    <value>निम्नलिखित पाठ स्वचालित रूप से मुख्य भाग के अंत में जुड़ जाता है।</value>
+  </data>
+  <data name="IsAddMessageToStart" xml:space="preserve">
+    <value>निम्नलिखित पाठ स्वचालित रूप से मुख्य भाग की शुरुआत में जुड़ जाता है।</value>
+  </data>
   <data name="IsAlertAddressBccAlert" xml:space="preserve">
     <value>प्राप्तकर्ताओं (बीसीसी) में एक पता या डोमेन होता है जिसे अलर्ट के रूप में पंजीकृत किया गया है।</value>
   </data>
@@ -502,6 +517,9 @@
   </data>
   <data name="NoAlert" xml:space="preserve">
     <value>कोई महत्वपूर्ण अलर्ट नहीं हैं।</value>
+  </data>
+  <data name="NotApplicableToMeetingRequests" xml:space="preserve">
+    <value>*बैठक अनुरोधों पर लागू नहीं।</value>
   </data>
   <data name="NoticeOfIsEnableAllAttachedFilesAreDetectEncryptedZip" xml:space="preserve">
     <value>* अटैचमेंट वाले ईमेल के संसाधन में अधिक समय लग सकता है।</value>
@@ -625,6 +643,9 @@
 ईमेल पता: Boss@noraneko.co.jp
 
 पंजीकृत प्राप्तकर्ताओं और डोमेन को मेल भेजते समय, निर्दिष्ट पता स्वचालित रूप से प्रतिलिपि या गुप्त प्रतिलिपि में जोड़ दिया जाता है।</value>
+  </data>
+  <data name="SettingExampleAutoAddMessage" xml:space="preserve">
+    <value>आप किसी ई-मेल के आरंभ या अंत में निर्दिष्ट शब्दों को स्वचालित रूप से जोड़ सकते हैं।</value>
   </data>
   <data name="SettingExampleDeferredDelivery" xml:space="preserve">
     <value>ईमेल पता: info@noraneko.co.jp

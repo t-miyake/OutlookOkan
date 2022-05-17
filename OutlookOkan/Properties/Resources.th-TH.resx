@@ -120,6 +120,12 @@
   <data name="About" xml:space="preserve">
     <value>เกี่ยวกับโปรแกรมนี้</value>
   </data>
+  <data name="AddedTextAtTheBeginning" xml:space="preserve">
+    <value>เพิ่มข้อความที่จุดเริ่มต้นของจดหมาย</value>
+  </data>
+  <data name="AddedTextAtTheEnd" xml:space="preserve">
+    <value>เพิ่มข้อความที่ส่วนท้ายของจดหมาย</value>
+  </data>
   <data name="AddressBook" xml:space="preserve">
     <value>ผู้ติดต่อ</value>
   </data>
@@ -197,6 +203,9 @@
   </data>
   <data name="AutoAddMailAddress" xml:space="preserve">
     <value>เพิ่มผู้รับโดยอัตโนมัติ</value>
+  </data>
+  <data name="AutoAddMessage" xml:space="preserve">
+    <value>การเพิ่มข้อความเนื้อหาอัตโนมัติ</value>
   </data>
   <data name="AutoAddSendersAddressToAlert" xml:space="preserve">
     <value>ที่อยู่อีเมลของผู้ส่งถูกเพิ่มลงใน To โดยอัตโนมัติ (เนื่องจากไม่มีถึงอีกต่อไปเนื่องจากเปลี่ยนเป็นสำเนาลับอัตโนมัติ)</value>
@@ -391,6 +400,12 @@ bcc โดยอัตโนมัติ</value>
   <data name="InternalDomain" xml:space="preserve">
     <value>โดเมนภายใน</value>
   </data>
+  <data name="IsAddMessageToEnd" xml:space="preserve">
+    <value>ข้อความต่อไปนี้จะเพิ่มไปที่ส่วนท้ายของเนื้อหาโดยอัตโนมัติ</value>
+  </data>
+  <data name="IsAddMessageToStart" xml:space="preserve">
+    <value>ข้อความต่อไปนี้จะถูกเพิ่มโดยอัตโนมัติที่จุดเริ่มต้นของเนื้อหา</value>
+  </data>
   <data name="IsAlertAddressBccAlert" xml:space="preserve">
     <value>ผู้รับ (Bcc) มีที่อยู่หรือโดเมนที่ได้รับการจดทะเบียนเป็นการแจ้งเตือน</value>
   </data>
@@ -501,6 +516,9 @@ bcc โดยอัตโนมัติ</value>
   </data>
   <data name="NoAlert" xml:space="preserve">
     <value>ไม่มีการแจ้งเตือนที่สำคัญ</value>
+  </data>
+  <data name="NotApplicableToMeetingRequests" xml:space="preserve">
+    <value>*ใช้ไม่ได้กับการเรียกประชุม</value>
   </data>
   <data name="NoticeOfIsEnableAllAttachedFilesAreDetectEncryptedZip" xml:space="preserve">
     <value>* การประมวลผลอีเมลพร้อมไฟล์แนบอาจใช้เวลานานขึ้น</value>
@@ -624,6 +642,9 @@ bcc โดยอัตโนมัติ</value>
 ที่อยู่อีเมล: boss@noraneko.co.jp
 
 เมื่อส่งอีเมลไปยังผู้รับและโดเมนที่ลงทะเบียน ที่อยู่ที่ระบุจะถูกเพิ่มลงในสำเนาหรือสำเนาลับโดยอัตโนมัติ</value>
+  </data>
+  <data name="SettingExampleAutoAddMessage" xml:space="preserve">
+    <value>คุณสามารถเพิ่มข้อความที่ระบุในตอนต้นหรือตอนท้ายของอีเมลได้โดยอัตโนมัติ</value>
   </data>
   <data name="SettingExampleDeferredDelivery" xml:space="preserve">
     <value>ที่อยู่อีเมล: info@noraneko.co.jp

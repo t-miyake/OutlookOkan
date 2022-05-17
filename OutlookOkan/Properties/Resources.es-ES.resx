@@ -120,6 +120,12 @@
   <data name="About" xml:space="preserve">
     <value>Sobre el programa</value>
   </data>
+  <data name="AddedTextAtTheBeginning" xml:space="preserve">
+    <value>Se ha añadido un texto al principio del correo.</value>
+  </data>
+  <data name="AddedTextAtTheEnd" xml:space="preserve">
+    <value>Texto añadido al final del correo.</value>
+  </data>
   <data name="AddressBook" xml:space="preserve">
     <value>Contactos</value>
   </data>
@@ -200,6 +206,9 @@
   </data>
   <data name="AutoAddMailAddress" xml:space="preserve">
     <value>Añadir automáticamente los destinatarios.</value>
+  </data>
+  <data name="AutoAddMessage" xml:space="preserve">
+    <value>Adición automática del cuerpo del texto</value>
   </data>
   <data name="AutoAddSendersAddressToAlert" xml:space="preserve">
     <value>La dirección de correo electrónico del remitente se ha añadido automáticamente a To. (porque el To ya no existe debido al cambio automático a Bcc.)</value>
@@ -393,6 +402,12 @@ cambio automático a Bcc</value>
   <data name="InternalDomain" xml:space="preserve">
     <value>Dominio interno</value>
   </data>
+  <data name="IsAddMessageToEnd" xml:space="preserve">
+    <value>El siguiente texto se añade automáticamente al final del cuerpo.</value>
+  </data>
+  <data name="IsAddMessageToStart" xml:space="preserve">
+    <value>El siguiente texto se añade automáticamente al principio del cuerpo.</value>
+  </data>
   <data name="IsAlertAddressBccAlert" xml:space="preserve">
     <value>Los destinatarios (Bcc) contienen una dirección o dominio que se ha registrado como alerta.</value>
   </data>
@@ -504,6 +519,9 @@ el dominio del destinatario</value>
   </data>
   <data name="NoAlert" xml:space="preserve">
     <value>No hay alertas importantes.</value>
+  </data>
+  <data name="NotApplicableToMeetingRequests" xml:space="preserve">
+    <value>*No aplicable a las solicitudes de reunión.</value>
   </data>
   <data name="NoticeOfIsEnableAllAttachedFilesAreDetectEncryptedZip" xml:space="preserve">
     <value>* El procesamiento de los correos electrónicos con archivos adjuntos puede tardar más.</value>
@@ -628,6 +646,9 @@ Para: warning@xxxxxxx.com
 Dirección de correo electrónico: boss@noraneko.co.jp
 
 Cuando se envía un correo a destinatarios y dominios registrados, la dirección especificada se añade automáticamente al Cc o Bcc.</value>
+  </data>
+  <data name="SettingExampleAutoAddMessage" xml:space="preserve">
+    <value>Puede añadir automáticamente el texto especificado al principio o al final de un correo electrónico.</value>
   </data>
   <data name="SettingExampleDeferredDelivery" xml:space="preserve">
     <value>Dirección de correo electrónico: info@noraneko.co.jp
