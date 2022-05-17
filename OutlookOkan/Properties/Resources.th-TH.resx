@@ -257,6 +257,9 @@
   <data name="CanNotFindTheLinkedName" xml:space="preserve">
     <value>ไม่พบชื่อที่เชื่อมโยงในเนื้อหาของเมล</value>
   </data>
+  <data name="CanNotFindTheLinkedNameInSubject" xml:space="preserve">
+    <value>ไม่พบชื่อที่เชื่อมโยงในหัวเรื่องอีเมล</value>
+  </data>
   <data name="Cc" xml:space="preserve">
     <value>Cc</value>
   </data>
@@ -464,6 +467,12 @@ bcc โดยอัตโนมัติ</value>
   </data>
   <data name="IsCheckNameAndDomainsFromRecipients" xml:space="preserve">
     <value>คำเตือนจะปรากฏขึ้นเมื่อไม่มีชื่อผู้รับในเนื้อหาของเมล</value>
+  </data>
+  <data name="IsCheckNameAndDomainsFromSubject" xml:space="preserve">
+    <value>คำเตือนจะปรากฏขึ้นเมื่อไม่มีชื่อผู้รับในเรื่อง</value>
+  </data>
+  <data name="IsCheckNameAndDomainsIncludeSubject" xml:space="preserve">
+    <value>รวมหัวเรื่องไว้ในเป้าหมาย *วัตถุและร่างกายจะรวมอยู่ในเป้าหมาย</value>
   </data>
   <data name="IsDoNotUseXIfAllRecipientsAreInternalDomain" xml:space="preserve">
     <value>ปิดใช้งานคุณลักษณะนี้หากโดเมนของผู้รับเป็นโดเมนภายในทั้งหมด</value>
@@ -716,7 +725,9 @@ bcc โดยอัตโนมัติ</value>
 
 จดทะเบียนชื่อ (เช่น ชื่อบริษัท) และโดเมน
 
-แสดงคำเตือนหากชื่อในเนื้อหาอีเมลและโดเมนของผู้รับไม่ตรงกัน</value>
+แสดงคำเตือนหากชื่อในเนื้อหาอีเมลและโดเมนของผู้รับไม่ตรงกัน
+
+* วิชาสามารถรวมไว้ในเช็คได้</value>
   </data>
   <data name="SettingExampleRecipientsAndAttachmentsName" xml:space="preserve">
     <value>ที่อยู่อีเมล: info@noraneko.co.jp

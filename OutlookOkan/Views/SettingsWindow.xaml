@@ -222,6 +222,15 @@
                                     <CheckBox Margin="0,0,8,0" IsChecked="{Binding IsCheckNameAndDomainsFromRecipients, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
                                     <TextBlock Text="{Binding Source={x:Static services:ResourceService.Instance}, Path=Resources.IsCheckNameAndDomainsFromRecipients, Mode=OneWay}" />
                                 </StackPanel>
+                                <StackPanel Orientation="Horizontal" Margin="0,5,0,0">
+                                    <CheckBox Margin="0,0,8,0" IsChecked="{Binding IsCheckNameAndDomainsIncludeSubject, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+                                    <TextBlock Text="{Binding Source={x:Static services:ResourceService.Instance}, Path=Resources.IsCheckNameAndDomainsIncludeSubject, Mode=OneWay}" />
+                                </StackPanel>
+                                <StackPanel Orientation="Horizontal" Margin="6,3,0,0">
+                                    <TextBlock Text="┗━━ " />
+                                    <CheckBox Margin="0,0,8,0" IsChecked="{Binding IsCheckNameAndDomainsFromSubject, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" IsEnabled="{Binding IsCheckNameAndDomainsIncludeSubject, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}" />
+                                    <TextBlock Text="{Binding Source={x:Static services:ResourceService.Instance}, Path=Resources.IsCheckNameAndDomainsFromSubject, Mode=OneWay}" />
+                                </StackPanel>
                             </StackPanel>
                         </GroupBox>
                         <GroupBox Header="{Binding Source={x:Static services:ResourceService.Instance}, Path=Resources.Settings, Mode=OneWay}" FontSize="11" Padding="3,3,3,3">

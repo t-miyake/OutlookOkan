@@ -260,6 +260,9 @@ Möchten Sie es herunterladen?</value>
   <data name="CanNotFindTheLinkedName" xml:space="preserve">
     <value>Der verknüpfte Name kann im Mailtext nicht gefunden werden.</value>
   </data>
+  <data name="CanNotFindTheLinkedNameInSubject" xml:space="preserve">
+    <value>Der verlinkte Name kann im Betreff der E-Mail nicht gefunden werden.</value>
+  </data>
   <data name="Cc" xml:space="preserve">
     <value>Cc</value>
   </data>
@@ -467,6 +470,12 @@ konvertiert, wenn die Empfänger (To/Cc) eine große Anzahl von externen Domäne
   </data>
   <data name="IsCheckNameAndDomainsFromRecipients" xml:space="preserve">
     <value>Eine Warnung wird auch angezeigt, wenn der Name des Empfängers nicht im Text der E-Mail enthalten ist.</value>
+  </data>
+  <data name="IsCheckNameAndDomainsFromSubject" xml:space="preserve">
+    <value>Die Warnung wird auch angezeigt, wenn der Name des Empfängers nicht in der Betreffzeile steht.</value>
+  </data>
+  <data name="IsCheckNameAndDomainsIncludeSubject" xml:space="preserve">
+    <value>Den Betreff in das Ziel einbeziehen. *Sowohl der Betreff als auch der Textkörper werden in das Ziel aufgenommen.</value>
   </data>
   <data name="IsDoNotUseXIfAllRecipientsAreInternalDomain" xml:space="preserve">
     <value>Deaktivieren Sie diese Funktion, wenn es sich bei den Domänen des Empfängers ausschließlich um interne Domänen handelt.</value>
@@ -723,7 +732,9 @@ Domain: @noraneko.co.jp
 
 Registrieren Sie den Namen (z. B. Firmenname) und die Domäne.
 
-Zeigt eine Warnung an, wenn der Name im E-Mail-Text und die Domäne des Empfängers nicht übereinstimmen.</value>
+Zeigt eine Warnung an, wenn der Name im E-Mail-Text und die Domäne des Empfängers nicht übereinstimmen.
+
+*Betreffs können ebenfalls in die Prüfung einbezogen werden.</value>
   </data>
   <data name="SettingExampleRecipientsAndAttachmentsName" xml:space="preserve">
     <value>E-Mail Adresse: info@noraneko.co.jp

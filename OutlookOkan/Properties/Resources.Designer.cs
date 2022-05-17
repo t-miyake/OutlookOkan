@@ -471,6 +471,15 @@ namespace OutlookOkan.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Cannot find the linked name in the mail subject..
+        /// </summary>
+        public static string CanNotFindTheLinkedNameInSubject {
+            get {
+                return ResourceManager.GetString("CanNotFindTheLinkedNameInSubject", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Cc.
         /// </summary>
         public static string Cc {
@@ -1087,6 +1096,24 @@ namespace OutlookOkan.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to The warning is also displayed when there is no recipient&apos;s name in the subject..
+        /// </summary>
+        public static string IsCheckNameAndDomainsFromSubject {
+            get {
+                return ResourceManager.GetString("IsCheckNameAndDomainsFromSubject", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Include the subject in the target. *The subject as well as the body will be included in the target..
+        /// </summary>
+        public static string IsCheckNameAndDomainsIncludeSubject {
+            get {
+                return ResourceManager.GetString("IsCheckNameAndDomainsIncludeSubject", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Disable this feature if the recipient&apos;s domains are all internal domains..
         /// </summary>
         public static string IsDoNotUseXIfAllRecipientsAreInternalDomain {
@@ -1689,7 +1716,9 @@ namespace OutlookOkan.Properties {
         ///
         ///Register the name (ex. Company name) and domain.
         ///
-        ///Displays a warning if the name in the email body and the recipients domain do not match..
+        ///Displays a warning if the name in the email body and the recipients domain do not match.
+        ///
+        ///*Subjects can also be included in the check..
         /// </summary>
         public static string SettingExampleNameAndDomain {
             get {

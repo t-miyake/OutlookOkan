@@ -150,8 +150,8 @@ namespace OutlookOkan.Models
             displayNameAndRecipient = ExternalDomainsChangeToBccIfNeeded(item, displayNameAndRecipient, externalDomainsWarningAndAutoChangeToBccSetting, internalDomainList, CountRecipientExternalDomains(displayNameAndRecipient, _checkList.SenderDomain, internalDomainList, true), _checkList.SenderDomain, _checkList.Sender, forceAutoChangeRecipientsToBccSetting);
 
             _checkList = GetRecipient(_checkList, displayNameAndRecipient, alertAddressList, internalDomainList);
-            _checkList = CheckMailBodyAndRecipient(_checkList, displayNameAndRecipient, nameAndDomainsList, generalSetting.IsCheckNameAndDomainsFromRecipients);
             _checkList = CheckRecipientsAndAttachments(_checkList, attachmentsSetting.IsAttachmentsProhibited, attachmentsSetting.IsWarningWhenAttachedRealFile, attachmentProhibitedRecipientsList, recipientsAndAttachmentsNameList, attachmentAlertRecipientsList);
+            _checkList = CheckMailBodyAndRecipient(_checkList, displayNameAndRecipient, nameAndDomainsList, generalSetting.IsCheckNameAndDomainsFromRecipients, generalSetting.IsCheckNameAndDomainsIncludeSubject, generalSetting.IsCheckNameAndDomainsFromSubject);
             _checkList.RecipientExternalDomainNumAll = CountRecipientExternalDomains(displayNameAndRecipient, _checkList.SenderDomain, internalDomainList, false);
             _checkList = ExternalDomainsWarningIfNeeded(_checkList, externalDomainsWarningAndAutoChangeToBccSetting, CountRecipientExternalDomains(displayNameAndRecipient, _checkList.SenderDomain, internalDomainList, true), forceAutoChangeRecipientsToBccSetting.IsForceAutoChangeRecipientsToBcc);
             _checkList.DeferredMinutes = CalcDeferredMinutes(displayNameAndRecipient, deferredDeliveryMinutes, generalSetting.IsDoNotUseDeferredDeliveryIfAllRecipientsAreInternalDomain, _checkList.RecipientExternalDomainNumAll);
@@ -1282,19 +1282,20 @@ namespace OutlookOkan.Models
         /// <param name="checkList">CheckList</param>
         /// <param name="displayNameAndRecipient">宛先アドレスと名称</param>
         /// <param name="nameAndDomainsList">宛先と名称のリスト</param>
-        /// /// <param name="isCheckNameAndDomainsFromRecipients">本文内に宛先名称が無い場合にも警告を表示するか否か</param>
+        /// <param name="isCheckNameAndDomainsFromRecipients">本文内に宛先名称が無い場合にも警告を表示するか否か</param>
+        /// <param name="isCheckNameAndDomainsIncludeSubject">対象に件名を含めるか否か</param>
+        /// <param name="isCheckNameAndDomainsFromSubject">件名内に宛先名称が無い場合にも警告を表示するか否か</param>
         /// <returns>CheckList</returns>
-        private CheckList CheckMailBodyAndRecipient(CheckList checkList, DisplayNameAndRecipient displayNameAndRecipient, IEnumerable<NameAndDomains> nameAndDomainsList, bool isCheckNameAndDomainsFromRecipients)
+        private CheckList CheckMailBodyAndRecipient(CheckList checkList, DisplayNameAndRecipient displayNameAndRecipient, IEnumerable<NameAndDomains> nameAndDomainsList, bool isCheckNameAndDomainsFromRecipients, bool isCheckNameAndDomainsIncludeSubject, bool isCheckNameAndDomainsFromSubject)
         {
             if (displayNameAndRecipient is null) return checkList;
 
             //空の設定値があると誤検知するため、空を省く。
             var cleanedNameAndDomains = nameAndDomainsList.Where(nameAndDomain => !string.IsNullOrEmpty(nameAndDomain.Domain) && !string.IsNullOrEmpty(nameAndDomain.Name)).ToList();
 
-            if (isCheckNameAndDomainsFromRecipients)
+            if (isCheckNameAndDomainsFromRecipients || (isCheckNameAndDomainsIncludeSubject && isCheckNameAndDomainsFromSubject))
             {
                 var domainCandidateRecipients = new List<string[]>();
-
                 foreach (var nameAndDomain in cleanedNameAndDomains)
                 {
                     foreach (var recipient in displayNameAndRecipient.All)
@@ -1306,19 +1307,39 @@ namespace OutlookOkan.Models
                     }
                 }
 
-                foreach (var domainAndName in domainCandidateRecipients)
+                if (isCheckNameAndDomainsFromRecipients)
                 {
-                    if (checkList.MailBody.Contains(domainAndName[1])) continue;
-
-                    //送信者ドメインは警告対象外。
-                    if (!domainAndName[0].Contains(checkList.SenderDomain))
+                    foreach (var domainAndName in domainCandidateRecipients.Where(domainAndName => !checkList.MailBody.Contains(domainAndName[1])).Where(domainAndName => !domainAndName[0].Contains(checkList.SenderDomain)))
                     {
-                        checkList.Alerts.Add(new Alert { AlertMessage = $"{domainAndName[0]} : {Resources.CanNotFindTheLinkedName} ({domainAndName[1]})", IsImportant = true, IsWhite = false, IsChecked = false });
+                        checkList.Alerts.Add(new Alert
+                        {
+                            AlertMessage = $"{domainAndName[0]} : {Resources.CanNotFindTheLinkedName} ({domainAndName[1]})",
+                            IsImportant = true,
+                            IsWhite = false,
+                            IsChecked = false
+                        });
+                    }
+                }
+
+                if (isCheckNameAndDomainsIncludeSubject && isCheckNameAndDomainsFromSubject)
+                {
+                    foreach (var domainAndName in domainCandidateRecipients.Where(domainAndName => !checkList.Subject.Contains(domainAndName[1])).Where(domainAndName => !domainAndName[0].Contains(checkList.SenderDomain)))
+                    {
+                        checkList.Alerts.Add(new Alert
+                        {
+                            AlertMessage = $"{domainAndName[0]} : {Resources.CanNotFindTheLinkedNameInSubject} ({domainAndName[1]})",
+                            IsImportant = true,
+                            IsWhite = false,
+                            IsChecked = false
+                        });
                     }
                 }
             }
 
-            var recipientCandidateDomains = (from nameAndDomain in cleanedNameAndDomains where checkList.MailBody.Contains(nameAndDomain.Name) select nameAndDomain.Domain).ToList();
+            var targetText = checkList.MailBody;
+            if (isCheckNameAndDomainsIncludeSubject) { targetText += checkList.Subject; }
+
+            var recipientCandidateDomains = (from nameAndDomain in cleanedNameAndDomains where targetText.Contains(nameAndDomain.Name) select nameAndDomain.Domain).ToList();
             //送信先の候補が見つからない場合、これ以上何もしない。(見つからない場合の方が多いため、警告ばかりになってしまう。)
             if (recipientCandidateDomains.Count == 0) return checkList;
 
@@ -1329,7 +1350,13 @@ namespace OutlookOkan.Models
                 //送信者ドメインは警告対象外。
                 if (!recipient.Key.Contains(checkList.SenderDomain))
                 {
-                    checkList.Alerts.Add(new Alert { AlertMessage = recipient.Value + " : " + Resources.IsAlertAddressMaybeIrrelevant, IsImportant = true, IsWhite = false, IsChecked = false });
+                    checkList.Alerts.Add(new Alert
+                    {
+                        AlertMessage = recipient.Value + " : " + Resources.IsAlertAddressMaybeIrrelevant,
+                        IsImportant = true,
+                        IsWhite = false,
+                        IsChecked = false
+                    });
                 }
             }
 

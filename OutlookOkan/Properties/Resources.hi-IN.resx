@@ -258,6 +258,9 @@
   <data name="CanNotFindTheLinkedName" xml:space="preserve">
     <value>मेल बॉडी में लिंक किया गया नाम नहीं मिल रहा है।</value>
   </data>
+  <data name="CanNotFindTheLinkedNameInSubject" xml:space="preserve">
+    <value>मेल विषय में लिंक किया गया नाम नहीं मिल रहा है।</value>
+  </data>
   <data name="Cc" xml:space="preserve">
     <value>Cc</value>
   </data>
@@ -465,6 +468,12 @@
   </data>
   <data name="IsCheckNameAndDomainsFromRecipients" xml:space="preserve">
     <value>मेल बॉडी में प्राप्तकर्ता का नाम नहीं होने पर एक चेतावनी भी प्रदर्शित होती है।</value>
+  </data>
+  <data name="IsCheckNameAndDomainsFromSubject" xml:space="preserve">
+    <value>चेतावनी तब भी प्रदर्शित होती है जब विषय में प्राप्तकर्ता का नाम नहीं होता है।</value>
+  </data>
+  <data name="IsCheckNameAndDomainsIncludeSubject" xml:space="preserve">
+    <value>विषय को लक्ष्य में शामिल करें। * विषय के साथ-साथ शरीर को भी लक्ष्य में शामिल किया जाएगा।</value>
   </data>
   <data name="IsDoNotUseXIfAllRecipientsAreInternalDomain" xml:space="preserve">
     <value>यदि प्राप्तकर्ता के डोमेन सभी आंतरिक डोमेन हैं, तो इस सुविधा को अक्षम करें।</value>
@@ -717,7 +726,9 @@
 
 नाम (उदा. कंपनी का नाम) और डोमेन पंजीकृत करें।
 
-यदि ईमेल के मुख्य भाग और प्राप्तकर्ता डोमेन में नाम मेल नहीं खाता है तो एक चेतावनी प्रदर्शित करता है।</value>
+यदि ईमेल के मुख्य भाग और प्राप्तकर्ता डोमेन में नाम मेल नहीं खाता है तो एक चेतावनी प्रदर्शित करता है।
+
+* विषयों को भी चेक में शामिल किया जा सकता है।</value>
   </data>
   <data name="SettingExampleRecipientsAndAttachmentsName" xml:space="preserve">
     <value>ईमेल पता: info@noraneko.co.jp

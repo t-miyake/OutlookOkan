@@ -259,6 +259,9 @@
   <data name="CanNotFindTheLinkedName" xml:space="preserve">
     <value>Невозможно найти связанное имя в теле письма.</value>
   </data>
+  <data name="CanNotFindTheLinkedNameInSubject" xml:space="preserve">
+    <value>Не удается найти связанное имя в теме письма.</value>
+  </data>
   <data name="Cc" xml:space="preserve">
     <value>Cc</value>
   </data>
@@ -467,6 +470,12 @@
   </data>
   <data name="IsCheckNameAndDomainsFromRecipients" xml:space="preserve">
     <value>Предупреждение также отображается, если в теле письма отсутствует имя получателя.</value>
+  </data>
+  <data name="IsCheckNameAndDomainsFromSubject" xml:space="preserve">
+    <value>Предупреждение также отображается, если в теме сообщения отсутствует имя получателя.</value>
+  </data>
+  <data name="IsCheckNameAndDomainsIncludeSubject" xml:space="preserve">
+    <value>Включите тему в цель. *Объект, а также тело будут включены в цель.</value>
   </data>
   <data name="IsDoNotUseXIfAllRecipientsAreInternalDomain" xml:space="preserve">
     <value>Отключите эту функцию, если все домены получателя являются внутренними доменами.</value>
@@ -721,7 +730,9 @@
 
 Зарегистрируйте имя (например, название компании) и домен.
 
-Отображает предупреждение, если имя в теле сообщения электронной почты и домен получателя не совпадают.</value>
+Отображает предупреждение, если имя в теле сообщения электронной почты и домен получателя не совпадают.
+
+*Субъекты также могут быть включены в чек.</value>
   </data>
   <data name="SettingExampleRecipientsAndAttachmentsName" xml:space="preserve">
     <value>Адрес электронной почты: info@noraneko.co.jp

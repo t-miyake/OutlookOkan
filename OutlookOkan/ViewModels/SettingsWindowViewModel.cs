@@ -1370,6 +1370,8 @@ namespace OutlookOkan.ViewModels
             IsProhibitsSendingMailIfRecipientsIsNotRegistered = _generalSetting[0].IsProhibitsSendingMailIfRecipientsIsNotRegistered;
             IsShowConfirmationAtSendMeetingRequest = _generalSetting[0].IsShowConfirmationAtSendMeetingRequest;
             IsAutoAddSenderToCc = _generalSetting[0].IsAutoAddSenderToCc;
+            IsCheckNameAndDomainsIncludeSubject = _generalSetting[0].IsCheckNameAndDomainsIncludeSubject;
+            IsCheckNameAndDomainsFromSubject = _generalSetting[0].IsCheckNameAndDomainsFromSubject;
 
             if (_generalSetting[0].LanguageCode is null) return;
 
@@ -1416,6 +1418,8 @@ namespace OutlookOkan.ViewModels
                     IsProhibitsSendingMailIfRecipientsIsNotRegistered = IsProhibitsSendingMailIfRecipientsIsNotRegistered,
                     IsShowConfirmationAtSendMeetingRequest = IsShowConfirmationAtSendMeetingRequest,
                     IsAutoAddSenderToCc = IsAutoAddSenderToCc,
+                    IsCheckNameAndDomainsIncludeSubject = IsCheckNameAndDomainsIncludeSubject,
+                    IsCheckNameAndDomainsFromSubject =IsCheckNameAndDomainsFromSubject
                 }
             };
 
@@ -1666,6 +1670,28 @@ namespace OutlookOkan.ViewModels
             {
                 _isAutoAddSenderToCc = value;
                 OnPropertyChanged(nameof(IsAutoAddSenderToCc));
+            }
+        }
+
+        private bool _isCheckNameAndDomainsIncludeSubject;
+        public bool IsCheckNameAndDomainsIncludeSubject
+        {
+            get => _isCheckNameAndDomainsIncludeSubject;
+            set
+            {
+                _isCheckNameAndDomainsIncludeSubject = value;
+                OnPropertyChanged(nameof(IsCheckNameAndDomainsIncludeSubject));
+            }
+        }
+
+        private bool _isCheckNameAndDomainsFromSubject;
+        public bool IsCheckNameAndDomainsFromSubject
+        {
+            get => _isCheckNameAndDomainsFromSubject;
+            set
+            {
+                _isCheckNameAndDomainsFromSubject = value;
+                OnPropertyChanged(nameof(IsCheckNameAndDomainsFromSubject));
             }
         }
 

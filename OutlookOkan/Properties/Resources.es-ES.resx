@@ -259,6 +259,9 @@ Al cerrar la pantalla de edición no se enviará este correo electrónico.</valu
   <data name="CanNotFindTheLinkedName" xml:space="preserve">
     <value>No se puede encontrar el nombre vinculado en el cuerpo del correo.</value>
   </data>
+  <data name="CanNotFindTheLinkedNameInSubject" xml:space="preserve">
+    <value>No se puede encontrar el nombre vinculado en el asunto del correo.</value>
+  </data>
   <data name="Cc" xml:space="preserve">
     <value>Cc</value>
   </data>
@@ -466,6 +469,12 @@ cuando los destinatarios (To/Cc) tienen un gran número de dominios externos.</v
   </data>
   <data name="IsCheckNameAndDomainsFromRecipients" xml:space="preserve">
     <value>También se muestra una advertencia cuando no hay un nombre de destinatario en el cuerpo del correo.</value>
+  </data>
+  <data name="IsCheckNameAndDomainsFromSubject" xml:space="preserve">
+    <value>La advertencia también se muestra cuando no hay un nombre de destinatario en el asunto.</value>
+  </data>
+  <data name="IsCheckNameAndDomainsIncludeSubject" xml:space="preserve">
+    <value>Incluir el asunto en el objetivo. *El sujeto, así como el cuerpo, se incluirá en el objetivo.</value>
   </data>
   <data name="IsDoNotUseXIfAllRecipientsAreInternalDomain" xml:space="preserve">
     <value>Desactive esta función si los dominios del destinatario son todos dominios internos.</value>
@@ -721,7 +730,9 @@ Dominio: @noraneko.co.jp
 
 Registra el nombre (por ejemplo, el nombre de la empresa) y el dominio.
 
-Muestra una advertencia si el nombre en el cuerpo del correo electrónico y el dominio del destinatario no coinciden.</value>
+Muestra una advertencia si el nombre en el cuerpo del correo electrónico y el dominio del destinatario no coinciden.
+
+*También puede incluirse en el cheque.</value>
   </data>
   <data name="SettingExampleRecipientsAndAttachmentsName" xml:space="preserve">
     <value>Dirección de correo electrónico: info@noraneko.co.jp

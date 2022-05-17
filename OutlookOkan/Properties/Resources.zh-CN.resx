@@ -257,6 +257,9 @@
   <data name="CanNotFindTheLinkedName" xml:space="preserve">
     <value>无法在邮件正文中找到链接的名称。</value>
   </data>
+  <data name="CanNotFindTheLinkedNameInSubject" xml:space="preserve">
+    <value>无法在邮件主题中找到链接的名称。</value>
+  </data>
   <data name="Cc" xml:space="preserve">
     <value>Cc</value>
   </data>
@@ -462,6 +465,12 @@
   </data>
   <data name="IsCheckNameAndDomainsFromRecipients" xml:space="preserve">
     <value>当邮件正文中没有收件人的名字时，也会显示一个警告。</value>
+  </data>
+  <data name="IsCheckNameAndDomainsFromSubject" xml:space="preserve">
+    <value>当主题中没有收件人姓名时，也会显示该警告。</value>
+  </data>
+  <data name="IsCheckNameAndDomainsIncludeSubject" xml:space="preserve">
+    <value>在目标中包括主题。*主题以及正文都将包括在目标中。</value>
   </data>
   <data name="IsDoNotUseXIfAllRecipientsAreInternalDomain" xml:space="preserve">
     <value>如果收件人的网域都是内部网域，则禁用此功能。</value>
@@ -715,7 +724,9 @@
 
 注册名称（例如：公司名称）和域名。
 
-如果电子邮件正文中的名称和收件人的域名不匹配，则显示警告。</value>
+如果电子邮件正文中的名称和收件人的域名不匹配，则显示警告。
+
+*主题也可以包括在检查中。</value>
   </data>
   <data name="SettingExampleRecipientsAndAttachmentsName" xml:space="preserve">
     <value>电子邮件地址：info@noraneko.co.jp

@@ -411,7 +411,9 @@ Domain: @noraneko.co.jp
 
 Register the name (ex. Company name) and domain.
 
-Displays a warning if the name in the email body and the recipients domain do not match.</value>
+Displays a warning if the name in the email body and the recipients domain do not match.
+
+*Subjects can also be included in the check.</value>
   </data>
   <data name="SettingExampleWhiteList" xml:space="preserve">
     <value>Email address: info@noraneko.co.jp
@@ -751,6 +753,12 @@ If the recipients and the attached file name do not match, a warning will be dis
   <data name="IsAddMessageToStart" xml:space="preserve">
     <value>The following text is automatically added to the beginning of the body.</value>
   </data>
+  <data name="IsCheckNameAndDomainsFromSubject" xml:space="preserve">
+    <value>The warning is also displayed when there is no recipient's name in the subject.</value>
+  </data>
+  <data name="IsCheckNameAndDomainsIncludeSubject" xml:space="preserve">
+    <value>Include the subject in the target. *The subject as well as the body will be included in the target.</value>
+  </data>
   <data name="IsForceAutoChangeRecipientsToBcc" xml:space="preserve">
     <value>Force all external recipients to Bcc.</value>
   </data>
@@ -779,6 +787,9 @@ If the warning text is left blank, the default warning text will be displayed.</
   </data>
   <data name="AddedTextAtTheEnd" xml:space="preserve">
     <value>Added text at the end of the mail.</value>
+  </data>
+  <data name="CanNotFindTheLinkedNameInSubject" xml:space="preserve">
+    <value>Cannot find the linked name in the mail subject.</value>
   </data>
   <data name="AttachmentAlertRecipientsMessage" xml:space="preserve">
     <value>Recipient for warning of attachment sending.</value>

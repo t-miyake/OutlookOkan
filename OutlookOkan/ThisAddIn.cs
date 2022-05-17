@@ -268,6 +268,8 @@ namespace OutlookOkan
             _generalSetting.IsProhibitsSendingMailIfRecipientsIsNotRegistered = generalSetting[0].IsProhibitsSendingMailIfRecipientsIsNotRegistered;
             _generalSetting.IsShowConfirmationAtSendMeetingRequest = generalSetting[0].IsShowConfirmationAtSendMeetingRequest;
             _generalSetting.IsAutoAddSenderToCc = generalSetting[0].IsAutoAddSenderToCc;
+            _generalSetting.IsCheckNameAndDomainsIncludeSubject = generalSetting[0].IsCheckNameAndDomainsIncludeSubject;
+            _generalSetting.IsCheckNameAndDomainsFromSubject = generalSetting[0].IsCheckNameAndDomainsFromSubject;
         }
 
         /// <summary>

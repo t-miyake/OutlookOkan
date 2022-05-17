@@ -411,7 +411,9 @@
 
 名称(社名等)とドメインを登録します。
 
-メール本文に記載された名称と宛先ドメインが一致しない場合、警告を表示します。</value>
+メール本文に記載された名称と宛先ドメインが一致しない場合、警告を表示します。
+
+※本文だけでなく、件名もチェック対象に含めることができます。</value>
   </data>
   <data name="SettingExampleWhiteList" xml:space="preserve">
     <value>アドレス：info@noraneko.co.jp
@@ -747,6 +749,12 @@
   <data name="IsAddMessageToStart" xml:space="preserve">
     <value>メールの冒頭に、以下の文言を自動追加する。</value>
   </data>
+  <data name="IsCheckNameAndDomainsFromSubject" xml:space="preserve">
+    <value>件名内に宛先名称が無い場合にも警告を表示する。</value>
+  </data>
+  <data name="IsCheckNameAndDomainsIncludeSubject" xml:space="preserve">
+    <value>対象に件名を含める。※本文だけでなく件名も対象となります。</value>
+  </data>
   <data name="IsForceAutoChangeRecipientsToBcc" xml:space="preserve">
     <value>全ての外部宛先を強制的にBccに変換する。</value>
   </data>
@@ -775,6 +783,9 @@
   </data>
   <data name="AddedTextAtTheEnd" xml:space="preserve">
     <value>メールの末尾に文言を自動追加しました。</value>
+  </data>
+  <data name="CanNotFindTheLinkedNameInSubject" xml:space="preserve">
+    <value>件名内に紐づけられた名称が見つかりません。</value>
   </data>
   <data name="AttachmentAlertRecipientsMessage" xml:space="preserve">
     <value>添付ファイル送信の警告対象の宛先です。</value>
