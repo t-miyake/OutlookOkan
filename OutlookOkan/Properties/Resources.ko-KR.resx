@@ -272,6 +272,9 @@
   <data name="ChangeRibbonLanguageInfo" xml:space="preserve">
     <value>Outlook을 다시 시작하면 리본(메뉴)의 표시 언어가 업데이트됩니다.</value>
   </data>
+  <data name="ChangesInTheFileWillNotBeSaved" xml:space="preserve">
+    <value>*파일의 변경 사항은 저장되지 않습니다.</value>
+  </data>
   <data name="CheckNewVersion" xml:space="preserve">
     <value>새 버전을 확인하십시오.</value>
   </data>
@@ -480,6 +483,9 @@
   <data name="IsEnableAllAttachedFilesAreDetectEncryptedZip" xml:space="preserve">
     <value>확장자가 ".zip"이 아닌 첨부 파일도 ZIP 암호화 여부를 감지합니다.</value>
   </data>
+  <data name="IsEnableOpenAttachedFiles" xml:space="preserve">
+    <value>확인 화면에서 첨부 파일 열기를 활성화합니다.</value>
+  </data>
   <data name="IsEnableRecipientsAreSortedByDomain" xml:space="preserve">
     <value>수신인은 확인 화면에서 도메인별로 정렬됩니다.</value>
   </data>
@@ -488,6 +494,9 @@
   </data>
   <data name="IsIncludeInternalDomain" xml:space="preserve">
     <value>내부 도메인을 포함합니다. *모든 수신자는 숨은 참조로 변경됩니다.</value>
+  </data>
+  <data name="IsMustOpenBeforeCheckTheAttachedFiles" xml:space="preserve">
+    <value>확인 화면에서는 대상 첨부파일을 반드시 열어야 합니다.</value>
   </data>
   <data name="IsNotTreatedAsAttachmentsAtHtmlEmbeddedFiles" xml:space="preserve">
     <value>HTML 메일에 포함된 파일은 첨부 파일로 처리되지 않습니다.</value>
@@ -561,6 +570,15 @@
   </data>
   <data name="OK" xml:space="preserve">
     <value>승인</value>
+  </data>
+  <data name="Open" xml:space="preserve">
+    <value>열려 있는</value>
+  </data>
+  <data name="OpenTheAttachedFile" xml:space="preserve">
+    <value>첨부파일을 열어보시겠습니까?</value>
+  </data>
+  <data name="OpenTheAttachedFileOnTheConfirmationScreen" xml:space="preserve">
+    <value>확인 화면에서 첨부 파일을 엽니다.</value>
   </data>
   <data name="ProhibitedWhenLargeNumberOfExternalDomainsAlert" xml:space="preserve">
     <value>To 및 Cc의 외부 도메인 수가 임계값을 초과합니다.</value>
@@ -758,6 +776,9 @@
   </data>
   <data name="SuccessfulImport" xml:space="preserve">
     <value>이제 가져오기가 완료되었습니다.</value>
+  </data>
+  <data name="TargetAttachmentFileExtensionOfOpen" xml:space="preserve">
+    <value>대상 첨부 파일 확장자:</value>
   </data>
   <data name="TargetToAndCcExternalDomainsNum" xml:space="preserve">
     <value>이 기능이 적용되는 수신자(To/Cc)의 외부 도메인 수입니다.</value>

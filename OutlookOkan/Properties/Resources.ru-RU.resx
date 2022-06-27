@@ -274,6 +274,9 @@
   <data name="ChangeRibbonLanguageInfo" xml:space="preserve">
     <value>Язык отображения ленты (меню) обновляется при перезапуске Outlook.</value>
   </data>
+  <data name="ChangesInTheFileWillNotBeSaved" xml:space="preserve">
+    <value>* Изменения в файле не будут сохранены.</value>
+  </data>
   <data name="CheckNewVersion" xml:space="preserve">
     <value>Проверьте новую версию.</value>
   </data>
@@ -483,6 +486,9 @@
   <data name="IsEnableAllAttachedFilesAreDetectEncryptedZip" xml:space="preserve">
     <value>Прикрепленные файлы с расширением, отличным от ".zip", также определяют, являются ли они зашифрованным ZIP или нет.</value>
   </data>
+  <data name="IsEnableOpenAttachedFiles" xml:space="preserve">
+    <value>Включите открытие вложений на экране подтверждения.</value>
+  </data>
   <data name="IsEnableRecipientsAreSortedByDomain" xml:space="preserve">
     <value>На экране подтверждения получатели сортируются по доменам.</value>
   </data>
@@ -491,6 +497,9 @@
   </data>
   <data name="IsIncludeInternalDomain" xml:space="preserve">
     <value>Включите внутренние домены в область действия. *Все получатели будут изменены на Bcc.</value>
+  </data>
+  <data name="IsMustOpenBeforeCheckTheAttachedFiles" xml:space="preserve">
+    <value>На экране подтверждения необходимо открыть целевое вложение.</value>
   </data>
   <data name="IsNotTreatedAsAttachmentsAtHtmlEmbeddedFiles" xml:space="preserve">
     <value>Файл, встроенный в HTML-почту, не рассматривается как вложение.</value>
@@ -564,6 +573,15 @@
   </data>
   <data name="OK" xml:space="preserve">
     <value>OK</value>
+  </data>
+  <data name="Open" xml:space="preserve">
+    <value>Открыть</value>
+  </data>
+  <data name="OpenTheAttachedFile" xml:space="preserve">
+    <value>Хотите ли вы открыть прикрепленный файл?</value>
+  </data>
+  <data name="OpenTheAttachedFileOnTheConfirmationScreen" xml:space="preserve">
+    <value>На экране подтверждения необходимо открыть целевое вложение.</value>
   </data>
   <data name="ProhibitedWhenLargeNumberOfExternalDomainsAlert" xml:space="preserve">
     <value>Количество внешних доменов в To и Cc выше порогового значения.</value>
@@ -767,6 +785,9 @@
   </data>
   <data name="SuccessfulImport" xml:space="preserve">
     <value>Теперь импорт завершен.</value>
+  </data>
+  <data name="TargetAttachmentFileExtensionOfOpen" xml:space="preserve">
+    <value>Расширение целевого вложения:</value>
   </data>
   <data name="TargetToAndCcExternalDomainsNum" xml:space="preserve">
     <value>Количество внешних доменов получателей (To/Cc), которые будут охвачены этой функцией.</value>

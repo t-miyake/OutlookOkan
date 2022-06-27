@@ -516,6 +516,15 @@ namespace OutlookOkan.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to *The changes in the file will not be saved..
+        /// </summary>
+        public static string ChangesInTheFileWillNotBeSaved {
+            get {
+                return ResourceManager.GetString("ChangesInTheFileWillNotBeSaved", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Check the new version..
         /// </summary>
         public static string CheckNewVersion {
@@ -1132,6 +1141,15 @@ namespace OutlookOkan.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Enable the opening of attachments on the confirmation screen..
+        /// </summary>
+        public static string IsEnableOpenAttachedFiles {
+            get {
+                return ResourceManager.GetString("IsEnableOpenAttachedFiles", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Recipients are sorted by domain on the confirmation screen..
         /// </summary>
         public static string IsEnableRecipientsAreSortedByDomain {
@@ -1155,6 +1173,15 @@ namespace OutlookOkan.Properties {
         public static string IsIncludeInternalDomain {
             get {
                 return ResourceManager.GetString("IsIncludeInternalDomain", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to On the confirmation screen, it is mandatory to open the target attachment..
+        /// </summary>
+        public static string IsMustOpenBeforeCheckTheAttachedFiles {
+            get {
+                return ResourceManager.GetString("IsMustOpenBeforeCheckTheAttachedFiles", resourceCulture);
             }
         }
         
@@ -1372,6 +1399,33 @@ namespace OutlookOkan.Properties {
         public static string OK {
             get {
                 return ResourceManager.GetString("OK", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Open.
+        /// </summary>
+        public static string Open {
+            get {
+                return ResourceManager.GetString("Open", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Do you want to open the attached file?.
+        /// </summary>
+        public static string OpenTheAttachedFile {
+            get {
+                return ResourceManager.GetString("OpenTheAttachedFile", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Open the attached file on the confirmation screen..
+        /// </summary>
+        public static string OpenTheAttachedFileOnTheConfirmationScreen {
+            get {
+                return ResourceManager.GetString("OpenTheAttachedFileOnTheConfirmationScreen", resourceCulture);
             }
         }
         
@@ -1808,6 +1862,15 @@ namespace OutlookOkan.Properties {
         public static string SuccessfulImport {
             get {
                 return ResourceManager.GetString("SuccessfulImport", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Target attachment extension:.
+        /// </summary>
+        public static string TargetAttachmentFileExtensionOfOpen {
+            get {
+                return ResourceManager.GetString("TargetAttachmentFileExtensionOfOpen", resourceCulture);
             }
         }
         

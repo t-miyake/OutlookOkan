@@ -19,6 +19,7 @@ namespace OutlookOkan.Types
         public bool IsCanNotSendMail { get; set; }
         public string CanNotSendMailMessage { get; set; }
         public int DeferredMinutes { get; set; }
+        public string TempFilePath { get; set; }
     }
 
     public sealed class Alert
@@ -34,9 +35,13 @@ namespace OutlookOkan.Types
         public string FileName { get; set; }
         public string FileType { get; set; }
         public string FileSize { get; set; }
+        public string FilePath { get; set; }
+        public string Open { get; set; }
         public bool IsTooBig { get; set; }
         public bool IsDangerous { get; set; }
         public bool IsEncrypted { get; set; }
+        public bool IsCanOpen { get; set; }
+        public bool IsNotMustOpenBeforeCheck { get; set; }
         public bool IsChecked { get; set; }
     }
 

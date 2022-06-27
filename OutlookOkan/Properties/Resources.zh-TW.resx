@@ -272,6 +272,9 @@
   <data name="ChangeRibbonLanguageInfo" xml:space="preserve">
     <value>當Outlook重新啟動時，功能區（菜單）的顯示語言會被更新。</value>
   </data>
+  <data name="ChangesInTheFileWillNotBeSaved" xml:space="preserve">
+    <value>*文件中的變化將不會被保存。</value>
+  </data>
   <data name="CheckNewVersion" xml:space="preserve">
     <value>檢查新的版本。</value>
   </data>
@@ -478,6 +481,9 @@
   <data name="IsEnableAllAttachedFilesAreDetectEncryptedZip" xml:space="preserve">
     <value>".zip "以外的擴展名附加的文件也會檢測它們是否是加密的ZIP。</value>
   </data>
+  <data name="IsEnableOpenAttachedFiles" xml:space="preserve">
+    <value>啟用在確認屏幕上打開附件的功能。</value>
+  </data>
   <data name="IsEnableRecipientsAreSortedByDomain" xml:space="preserve">
     <value>收件人在確認屏幕上按域名排序。</value>
   </data>
@@ -486,6 +492,9 @@
   </data>
   <data name="IsIncludeInternalDomain" xml:space="preserve">
     <value>在範圍內包括內部域。 *所有收件人將被改為密件。</value>
+  </data>
+  <data name="IsMustOpenBeforeCheckTheAttachedFiles" xml:space="preserve">
+    <value>在確認屏幕上，必須要打開目標附件。</value>
   </data>
   <data name="IsNotTreatedAsAttachmentsAtHtmlEmbeddedFiles" xml:space="preserve">
     <value>嵌入HTML郵件中的文件不被視為附件。</value>
@@ -559,6 +568,15 @@
   </data>
   <data name="OK" xml:space="preserve">
     <value>認可</value>
+  </data>
+  <data name="Open" xml:space="preserve">
+    <value>打開</value>
+  </data>
+  <data name="OpenTheAttachedFile" xml:space="preserve">
+    <value>你想打開附件中的文件嗎？</value>
+  </data>
+  <data name="OpenTheAttachedFileOnTheConfirmationScreen" xml:space="preserve">
+    <value>在確認屏幕上打開所附文件。</value>
   </data>
   <data name="ProhibitedWhenLargeNumberOfExternalDomainsAlert" xml:space="preserve">
     <value>收件人和抄送人中的外部域的數量高於閾值。</value>
@@ -761,6 +779,9 @@
   </data>
   <data name="SuccessfulImport" xml:space="preserve">
     <value>現在導入已經完成。</value>
+  </data>
+  <data name="TargetAttachmentFileExtensionOfOpen" xml:space="preserve">
+    <value>目標附件擴展。</value>
   </data>
   <data name="TargetToAndCcExternalDomainsNum" xml:space="preserve">
     <value>該功能要覆蓋的收件人（To/Cc）的外部域的數量。</value>

@@ -272,6 +272,9 @@
   <data name="ChangeRibbonLanguageInfo" xml:space="preserve">
     <value>当Outlook重新启动时，功能区（菜单）的显示语言会被更新。</value>
   </data>
+  <data name="ChangesInTheFileWillNotBeSaved" xml:space="preserve">
+    <value>*文件中的变化将不会被保存。</value>
+  </data>
   <data name="CheckNewVersion" xml:space="preserve">
     <value>检查新的版本。</value>
   </data>
@@ -478,6 +481,9 @@
   <data name="IsEnableAllAttachedFilesAreDetectEncryptedZip" xml:space="preserve">
     <value>".zip "以外的扩展名附加的文件也会检测它们是否是加密的ZIP。</value>
   </data>
+  <data name="IsEnableOpenAttachedFiles" xml:space="preserve">
+    <value>启用在确认屏幕上打开附件的功能。</value>
+  </data>
   <data name="IsEnableRecipientsAreSortedByDomain" xml:space="preserve">
     <value>收件人在确认屏幕上按域名排序。</value>
   </data>
@@ -486,6 +492,9 @@
   </data>
   <data name="IsIncludeInternalDomain" xml:space="preserve">
     <value>在范围内包括内部域。*所有收件人将被改为密件。</value>
+  </data>
+  <data name="IsMustOpenBeforeCheckTheAttachedFiles" xml:space="preserve">
+    <value>在确认屏幕上，必须要打开目标附件。</value>
   </data>
   <data name="IsNotTreatedAsAttachmentsAtHtmlEmbeddedFiles" xml:space="preserve">
     <value>嵌入HTML邮件中的文件不被视为附件。</value>
@@ -559,6 +568,15 @@
   </data>
   <data name="OK" xml:space="preserve">
     <value>认可</value>
+  </data>
+  <data name="Open" xml:space="preserve">
+    <value>打开</value>
+  </data>
+  <data name="OpenTheAttachedFile" xml:space="preserve">
+    <value>你想打开附件中的文件吗？</value>
+  </data>
+  <data name="OpenTheAttachedFileOnTheConfirmationScreen" xml:space="preserve">
+    <value>在确认屏幕上打开所附文件。</value>
   </data>
   <data name="ProhibitedWhenLargeNumberOfExternalDomainsAlert" xml:space="preserve">
     <value>收件人和抄送人中的外部域的数量高于阈值。</value>
@@ -761,6 +779,9 @@
   </data>
   <data name="SuccessfulImport" xml:space="preserve">
     <value>现在导入已经完成。</value>
+  </data>
+  <data name="TargetAttachmentFileExtensionOfOpen" xml:space="preserve">
+    <value>目标附件扩展。</value>
   </data>
   <data name="TargetToAndCcExternalDomainsNum" xml:space="preserve">
     <value>该功能要覆盖的收件人（To/Cc）的外部域的数量。</value>

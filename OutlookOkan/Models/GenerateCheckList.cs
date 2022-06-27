@@ -1158,6 +1158,7 @@ namespace OutlookOkan.Models
 
             var tempDirectoryPath = Path.Combine(Path.GetTempPath(), Guid.NewGuid().ToString("N"));
             _ = Directory.CreateDirectory(tempDirectoryPath);
+            checkList.TempFilePath = tempDirectoryPath;
 
             for (var i = 0; i < ((dynamic)item).Attachments.Count; i++)
             {
@@ -1207,14 +1208,16 @@ namespace OutlookOkan.Models
                 if (fileType == ".p7s" || fileType == "p7s") continue;
 
                 var isEncrypted = false;
-
+                var tempFilePath = "";
+                var isCanOpen = false;
                 try
                 {
+
                     if ((attachmentsSetting.IsWarningWhenEncryptedZipIsAttached || attachmentsSetting.IsProhibitedWhenEncryptedZipIsAttached) && fileName != Resources.Unknown)
                     {
                         if (attachmentsSetting.IsEnableAllAttachedFilesAreDetectEncryptedZip || fileType == ".zip" || fileType == "zip")
                         {
-                            var tempFilePath = Path.Combine(tempDirectoryPath, fileName);
+                            tempFilePath = Path.Combine(tempDirectoryPath, fileName);
                             ((dynamic)item).Attachments[i + 1].SaveAsFile(tempFilePath);
 
                             var zipTools = new ZipTools();
@@ -1235,6 +1238,14 @@ namespace OutlookOkan.Models
                             File.Delete(tempFilePath);
                         }
                     }
+
+                    if (attachmentsSetting.IsEnableOpenAttachedFiles && attachmentsSetting.TargetAttachmentFileExtensionOfOpen.ToLower().Contains(fileType.ToLower()))
+                    {
+                        //ファイルを開くためにテンポラリディレクトリにコピーして、そのパスを記録
+                        tempFilePath = Path.Combine(tempDirectoryPath, fileName);
+                        ((dynamic)item).Attachments[i + 1].SaveAsFile(tempFilePath);
+                        isCanOpen = true;
+                    }
                 }
                 catch (Exception)
                 {
@@ -1251,7 +1262,11 @@ namespace OutlookOkan.Models
                         IsTooBig = ((dynamic)item).Attachments[i + 1].Size >= 10485760,
                         IsEncrypted = isEncrypted,
                         IsChecked = false,
-                        IsDangerous = isDangerous
+                        IsDangerous = isDangerous,
+                        IsCanOpen = isCanOpen,
+                        IsNotMustOpenBeforeCheck = !(attachmentsSetting.IsEnableOpenAttachedFiles && attachmentsSetting.IsMustOpenBeforeCheckTheAttachedFiles && isCanOpen),
+                        Open = isCanOpen ? Resources.Open : "---",
+                        FilePath = tempFilePath
                     });
 
                     continue;
@@ -1268,7 +1283,11 @@ namespace OutlookOkan.Models
                         IsTooBig = ((dynamic)item).Attachments[i + 1].Size >= 10485760,
                         IsEncrypted = isEncrypted,
                         IsChecked = false,
-                        IsDangerous = isDangerous
+                        IsDangerous = isDangerous,
+                        IsCanOpen = isCanOpen,
+                        IsNotMustOpenBeforeCheck = !(attachmentsSetting.IsEnableOpenAttachedFiles && attachmentsSetting.IsMustOpenBeforeCheckTheAttachedFiles && isCanOpen),
+                        Open = isCanOpen ? Resources.Open : "---",
+                        FilePath = tempFilePath
                     });
                 }
             }

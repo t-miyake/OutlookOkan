@@ -273,6 +273,9 @@
   <data name="ChangeRibbonLanguageInfo" xml:space="preserve">
     <value>आउटलुक के पुनरारंभ होने पर रिबन (मेनू) की प्रदर्शन भाषा अपडेट की जाती है।</value>
   </data>
+  <data name="ChangesInTheFileWillNotBeSaved" xml:space="preserve">
+    <value>*फ़ाइल में परिवर्तन सहेजे नहीं जाएंगे।</value>
+  </data>
   <data name="CheckNewVersion" xml:space="preserve">
     <value>नए संस्करण की जाँच करें।</value>
   </data>
@@ -481,6 +484,9 @@
   <data name="IsEnableAllAttachedFilesAreDetectEncryptedZip" xml:space="preserve">
     <value>".zip" के अलावा किसी अन्य एक्सटेंशन के साथ संलग्न फ़ाइलें यह भी पता लगाती हैं कि वे एन्क्रिप्टेड ज़िप हैं या नहीं।</value>
   </data>
+  <data name="IsEnableOpenAttachedFiles" xml:space="preserve">
+    <value>पुष्टिकरण स्क्रीन पर अनुलग्नकों को खोलना सक्षम करें.</value>
+  </data>
   <data name="IsEnableRecipientsAreSortedByDomain" xml:space="preserve">
     <value>पुष्टिकरण स्क्रीन पर प्राप्तकर्ताओं को डोमेन द्वारा क्रमबद्ध किया जाता है।</value>
   </data>
@@ -489,6 +495,9 @@
   </data>
   <data name="IsIncludeInternalDomain" xml:space="preserve">
     <value>आंतरिक डोमेन शामिल करें। *सभी प्राप्तकर्ताओं को गुप्त प्रतिलिपि में बदल दिया जाएगा।</value>
+  </data>
+  <data name="IsMustOpenBeforeCheckTheAttachedFiles" xml:space="preserve">
+    <value>कन्फर्मेशन स्क्रीन पर टारगेट अटैचमेंट को खोलना अनिवार्य है।</value>
   </data>
   <data name="IsNotTreatedAsAttachmentsAtHtmlEmbeddedFiles" xml:space="preserve">
     <value>HTML मेल में एम्बेड की गई फ़ाइल को अनुलग्नक के रूप में नहीं माना जाता है।</value>
@@ -562,6 +571,15 @@
   </data>
   <data name="OK" xml:space="preserve">
     <value>ठीक है</value>
+  </data>
+  <data name="Open" xml:space="preserve">
+    <value>खुला हुआ</value>
+  </data>
+  <data name="OpenTheAttachedFile" xml:space="preserve">
+    <value>क्या आप संलग्न फाइल को खोलना चाहते हैं?</value>
+  </data>
+  <data name="OpenTheAttachedFileOnTheConfirmationScreen" xml:space="preserve">
+    <value>पुष्टिकरण स्क्रीन पर संलग्न फ़ाइल खोलें।</value>
   </data>
   <data name="ProhibitedWhenLargeNumberOfExternalDomainsAlert" xml:space="preserve">
     <value>To और Cc में बाहरी डोमेन की संख्या सीमा से ऊपर है।</value>
@@ -763,6 +781,9 @@
   </data>
   <data name="SuccessfulImport" xml:space="preserve">
     <value>आयात अब पूरा हो गया है।</value>
+  </data>
+  <data name="TargetAttachmentFileExtensionOfOpen" xml:space="preserve">
+    <value>लक्ष्य अनुलग्नक एक्सटेंशन:</value>
   </data>
   <data name="TargetToAndCcExternalDomainsNum" xml:space="preserve">
     <value>इस सुविधा द्वारा कवर किए जाने वाले प्राप्तकर्ताओं (To/Cc) के बाहरी डोमेन की संख्या।</value>

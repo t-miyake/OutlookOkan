@@ -275,6 +275,9 @@ Möchten Sie es herunterladen?</value>
   <data name="ChangeRibbonLanguageInfo" xml:space="preserve">
     <value>Die Anzeigesprache der Multifunktionsleiste (Menü) wird aktualisiert, wenn Outlook neu gestartet wird.</value>
   </data>
+  <data name="ChangesInTheFileWillNotBeSaved" xml:space="preserve">
+    <value>*Die Änderungen in der Datei werden nicht gespeichert.</value>
+  </data>
   <data name="CheckNewVersion" xml:space="preserve">
     <value>Prüfen Sie die neue Version.</value>
   </data>
@@ -483,6 +486,9 @@ konvertiert, wenn die Empfänger (To/Cc) eine große Anzahl von externen Domäne
   <data name="IsEnableAllAttachedFilesAreDetectEncryptedZip" xml:space="preserve">
     <value>Bei angehängten Dateien mit einer anderen Erweiterung als ".zip" wird auch erkannt, ob es sich um verschlüsselte ZIP-Dateien handelt oder nicht.</value>
   </data>
+  <data name="IsEnableOpenAttachedFiles" xml:space="preserve">
+    <value>Aktivieren Sie das Öffnen von Anhängen auf dem Bestätigungsbildschirm.</value>
+  </data>
   <data name="IsEnableRecipientsAreSortedByDomain" xml:space="preserve">
     <value>Die Empfänger werden auf dem Bestätigungsbildschirm nach Domäne sortiert.</value>
   </data>
@@ -491,6 +497,9 @@ konvertiert, wenn die Empfänger (To/Cc) eine große Anzahl von externen Domäne
   </data>
   <data name="IsIncludeInternalDomain" xml:space="preserve">
     <value>Interne Domänen in den Geltungsbereich einbeziehen. *Alle Empfänger werden in Bcc geändert.</value>
+  </data>
+  <data name="IsMustOpenBeforeCheckTheAttachedFiles" xml:space="preserve">
+    <value>Auf dem Bestätigungsbildschirm ist es obligatorisch, den Zielanhang zu öffnen.</value>
   </data>
   <data name="IsNotTreatedAsAttachmentsAtHtmlEmbeddedFiles" xml:space="preserve">
     <value>Eine in eine HTML-Mail eingebettete Datei wird nicht als Anhang behandelt.</value>
@@ -566,6 +575,15 @@ Zusammenhang</value>
   </data>
   <data name="OK" xml:space="preserve">
     <value>OK</value>
+  </data>
+  <data name="Open" xml:space="preserve">
+    <value>Öffnen Sie</value>
+  </data>
+  <data name="OpenTheAttachedFile" xml:space="preserve">
+    <value>Möchten Sie die angehängte Datei öffnen?</value>
+  </data>
+  <data name="OpenTheAttachedFileOnTheConfirmationScreen" xml:space="preserve">
+    <value>Öffnen Sie die angehängte Datei auf dem Bestätigungsbildschirm.</value>
   </data>
   <data name="ProhibitedWhenLargeNumberOfExternalDomainsAlert" xml:space="preserve">
     <value>Die Anzahl der externen Domänen in To und Cc liegt über dem Schwellenwert.</value>
@@ -769,6 +787,9 @@ Die entsprechenden Empfänger werden auf dem Bestätigungsbildschirm angekreuzt.
   </data>
   <data name="SuccessfulImport" xml:space="preserve">
     <value>Der Import ist nun abgeschlossen.</value>
+  </data>
+  <data name="TargetAttachmentFileExtensionOfOpen" xml:space="preserve">
+    <value>Erweiterung des Zielanhangs:</value>
   </data>
   <data name="TargetToAndCcExternalDomainsNum" xml:space="preserve">
     <value>Die Anzahl der externen Domänen der Empfänger (To/Cc), die von dieser Funktion abgedeckt werden sollen.</value>
