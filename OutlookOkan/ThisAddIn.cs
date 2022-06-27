@@ -45,14 +45,14 @@ namespace OutlookOkan
         }
 
         /// <summary>
-        /// 送信トレイのアイテムを開く際の警告。
+        /// 送信トレイのメールアイテムを開く際の警告。
         /// </summary>
         /// <param name="inspector">Inspector</param>
         private void OpenOutboxItemInspector(Outlook.Inspector inspector)
         {
             if (!(inspector.CurrentItem is Outlook._MailItem currentItem)) return;
 
-            //送信保留中のメールのみ対象とする。
+            //送信保留中のメールのみ警告対象とする。
             if (currentItem.Submitted)
             {
                 _ = MessageBox.Show(Properties.Resources.CanceledSendingMailMessage, Properties.Resources.CanceledSendingMail, MessageBoxButton.OK, MessageBoxImage.Warning);
@@ -64,8 +64,16 @@ namespace OutlookOkan
 
             ((Outlook.InspectorEvents_Event)inspector).Close += () =>
             {
-                _ = Marshal.ReleaseComObject(currentItem);
-                currentItem = null;
+                if (currentItem != null)
+                {
+                    _ = Marshal.ReleaseComObject(currentItem);
+                    currentItem = null;
+                    GC.Collect();
+                    GC.WaitForPendingFinalizers();
+                    GC.Collect();
+                }
+
+                _ = Marshal.ReleaseComObject(inspector);
                 GC.Collect();
                 GC.WaitForPendingFinalizers();
                 GC.Collect();
