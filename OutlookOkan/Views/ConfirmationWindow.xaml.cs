@@ -1,20 +1,27 @@
 ﻿using OutlookOkan.Types;
 using OutlookOkan.ViewModels;
 using System;
+using System.ComponentModel;
+using System.IO;
 using System.Text.RegularExpressions;
 using System.Windows;
+using System.Windows.Controls;
 using System.Windows.Input;
+using System.Windows.Media;
 
 namespace OutlookOkan.Views
 {
     public partial class ConfirmationWindow : Window
     {
         private readonly dynamic _item;
+        private readonly string _tempFilePath;
 
         public ConfirmationWindow(CheckList checkList, dynamic item)
         {
             DataContext = new ConfirmationWindowViewModel(checkList);
+
             _item = item;
+            _tempFilePath = checkList.TempFilePath;
 
             InitializeComponent();
 
@@ -164,14 +171,78 @@ namespace OutlookOkan.Views
             if (e.ChangedButton != MouseButton.Left) return;
 
             var currentItem = (Attachment)AttachmentGrid.CurrentItem;
-            currentItem.IsChecked = !currentItem.IsChecked;
-            AttachmentGrid.Items.Refresh();
+            var cell = GetDataGridObject<DataGridCell>(AttachmentGrid, e.GetPosition(AttachmentGrid));
+            if (cell is null) return;
+            var columnIndex = cell.Column.DisplayIndex;
 
-            var viewModel = DataContext as ConfirmationWindowViewModel;
-            viewModel?.ToggleSendButton();
+            if (columnIndex == 1 && currentItem.IsCanOpen)
+            {
+                var result = MessageBox.Show(Properties.Resources.OpenTheAttachedFile + " (" + currentItem.FileName + ")" + Environment.NewLine + Properties.Resources.ChangesInTheFileWillNotBeSaved, Properties.Resources.OpenTheAttachedFile, MessageBoxButton.YesNo, MessageBoxImage.Question, MessageBoxResult.Yes, MessageBoxOptions.ServiceNotification);
+                if (result == MessageBoxResult.Yes)
+                {
+                    try
+                    {
+                        var process = System.Diagnostics.Process.Start(currentItem.FilePath);
+                        process?.Start();
+                    }
+                    catch (Exception)
+                    {
+                        //Do Nothing.
+                    }
+                    finally
+                    {
+                        currentItem.IsChecked = true;
+                        AttachmentGrid.Items.Refresh();
+                        var viewModel = DataContext as ConfirmationWindowViewModel;
+                        viewModel?.ToggleSendButton();
+                    }
+                }
+
+            }
+            else
+            {
+                if (!currentItem.IsNotMustOpenBeforeCheck) return;
+
+                currentItem.IsChecked = !currentItem.IsChecked;
+                AttachmentGrid.Items.Refresh();
+
+                var viewModel = DataContext as ConfirmationWindowViewModel;
+                viewModel?.ToggleSendButton();
+            }
+        }
+
+        private T GetDataGridObject<T>(Visual dataGrid, Point point)
+        {
+            var result = default(T);
+            var hitResultTest = VisualTreeHelper.HitTest(dataGrid, point);
+            if (hitResultTest == null) return result;
+            var visualHit = hitResultTest.VisualHit;
+            while (visualHit != null)
+            {
+                if (visualHit is T)
+                {
+                    result = (T)(object)visualHit;
+                    break;
+                }
+                visualHit = VisualTreeHelper.GetParent(visualHit);
+            }
+            return result;
         }
 
         #endregion
 
+        private void ConfirmationWindow_OnClosing(object sender, CancelEventArgs e)
+        {
+            if (string.IsNullOrEmpty(_tempFilePath)) return;
+
+            try
+            {
+                File.Delete(_tempFilePath);
+            }
+            catch (Exception)
+            {
+                // Do Nothing.
+            }
+        }
     }
 }

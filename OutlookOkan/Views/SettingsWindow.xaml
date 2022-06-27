@@ -775,6 +775,26 @@
                                 </StackPanel>
                             </StackPanel>
                         </GroupBox>
+                        <GroupBox Header="{Binding Source={x:Static services:ResourceService.Instance}, Path=Resources.OpenTheAttachedFileOnTheConfirmationScreen, Mode=OneWay}" FontSize="11" Padding="3,3,3,3" Margin="0,5,0,0">
+                            <StackPanel Orientation="Vertical">
+                                <StackPanel Orientation="Horizontal">
+                                    <CheckBox Margin="0,0,8,0" IsChecked="{Binding IsEnableOpenAttachedFiles, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Center" />
+                                    <TextBlock Text="{Binding Source={x:Static services:ResourceService.Instance}, Path=Resources.IsEnableOpenAttachedFiles, Mode=OneWay}" VerticalAlignment="Center" />
+                                </StackPanel>
+                                <StackPanel Orientation="Vertical" Margin="6,3,0,0">
+                                    <StackPanel Orientation="Horizontal">
+                                        <TextBlock Text="┗━━ " />
+                                        <TextBlock Text="{Binding Source={x:Static services:ResourceService.Instance}, Path=Resources.TargetAttachmentFileExtensionOfOpen, Mode=OneWay}" VerticalAlignment="Center" TextWrapping="Wrap" />
+                                    </StackPanel>
+                                    <TextBox Width="360"  HorizontalAlignment="Left" Margin="20,3,0,0" Text="{Binding TargetAttachmentFileExtensionOfOpen, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" IsEnabled="{Binding IsEnableOpenAttachedFiles, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}" InputMethod.IsInputMethodEnabled="False" />
+                                </StackPanel>
+                                <StackPanel Orientation="Horizontal" Margin="6,3,0,0">
+                                    <TextBlock Text="┗━━ " />
+                                    <CheckBox Margin="0,0,8,0" IsChecked="{Binding IsMustOpenBeforeCheckTheAttachedFiles, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" IsEnabled="{Binding IsEnableOpenAttachedFiles, UpdateSourceTrigger=PropertyChanged}" />
+                                    <TextBlock Text="{Binding Source={x:Static services:ResourceService.Instance}, Path=Resources.IsMustOpenBeforeCheckTheAttachedFiles, Mode=OneWay}" />
+                                </StackPanel>
+                            </StackPanel>
+                        </GroupBox>
                         <GroupBox Header="{Binding Source={x:Static services:ResourceService.Instance}, Path=Resources.EncryptedZipBeta, Mode=OneWay}" FontSize="11" Padding="3,3,3,3" Margin="0,5,0,0">
                             <StackPanel Orientation="Vertical">
                                 <StackPanel Orientation="Horizontal">

@@ -362,7 +362,7 @@
     <value>Copyright (C) 2022 Noraneko Inc.</value>
   </data>
   <data name="Version" xml:space="preserve">
-    <value>Version 2.7.0.0</value>
+    <value>Version 2.7.1.0</value>
   </data>
   <data name="VersionInfo" xml:space="preserve">
     <value>About</value>
@@ -802,5 +802,26 @@ If the warning text is left blank, the default warning text will be displayed.</
   </data>
   <data name="NotApplicableToMeetingRequests" xml:space="preserve">
     <value>*Not applicable to meeting requests.</value>
+  </data>
+  <data name="Open" xml:space="preserve">
+    <value>Open</value>
+  </data>
+  <data name="ChangesInTheFileWillNotBeSaved" xml:space="preserve">
+    <value>*The changes in the file will not be saved.</value>
+  </data>
+  <data name="OpenTheAttachedFile" xml:space="preserve">
+    <value>Do you want to open the attached file?</value>
+  </data>
+  <data name="IsEnableOpenAttachedFiles" xml:space="preserve">
+    <value>Enable the opening of attachments on the confirmation screen.</value>
+  </data>
+  <data name="IsMustOpenBeforeCheckTheAttachedFiles" xml:space="preserve">
+    <value>On the confirmation screen, it is mandatory to open the target attachment.</value>
+  </data>
+  <data name="OpenTheAttachedFileOnTheConfirmationScreen" xml:space="preserve">
+    <value>Open the attached file on the confirmation screen.</value>
+  </data>
+  <data name="TargetAttachmentFileExtensionOfOpen" xml:space="preserve">
+    <value>Target attachment extension:</value>
   </data>
 </root>

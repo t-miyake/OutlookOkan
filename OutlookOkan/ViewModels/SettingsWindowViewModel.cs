@@ -883,6 +883,11 @@ namespace OutlookOkan.ViewModels
             IsEnableAllAttachedFilesAreDetectEncryptedZip = _attachmentsSetting[0].IsEnableAllAttachedFilesAreDetectEncryptedZip;
             IsAttachmentsProhibited = _attachmentsSetting[0].IsAttachmentsProhibited;
             IsWarningWhenAttachedRealFile = _attachmentsSetting[0].IsWarningWhenAttachedRealFile;
+            IsEnableOpenAttachedFiles = _attachmentsSetting[0].IsEnableOpenAttachedFiles;
+            TargetAttachmentFileExtensionOfOpen = _attachmentsSetting[0].TargetAttachmentFileExtensionOfOpen;
+            IsMustOpenBeforeCheckTheAttachedFiles = _attachmentsSetting[0].IsMustOpenBeforeCheckTheAttachedFiles;
+
+            if (string.IsNullOrEmpty(TargetAttachmentFileExtensionOfOpen)) TargetAttachmentFileExtensionOfOpen = ".pdf,.txt,.csv,.rtf,.htm,.html,.doc,.docx,.xls,.xlm,.xlsm,.xlsx,.ppt,.pptx,.bmp,.gif,.jpg,.jpeg,.png,.fif,.pub,.vsd,.vsdx";
         }
 
         private async Task SaveAttachmentsSettingToCsv()
@@ -895,7 +900,11 @@ namespace OutlookOkan.ViewModels
                     IsProhibitedWhenEncryptedZipIsAttached = IsProhibitedWhenEncryptedZipIsAttached,
                     IsEnableAllAttachedFilesAreDetectEncryptedZip = IsEnableAllAttachedFilesAreDetectEncryptedZip,
                     IsAttachmentsProhibited = IsAttachmentsProhibited,
-                    IsWarningWhenAttachedRealFile = IsWarningWhenAttachedRealFile
+                    IsWarningWhenAttachedRealFile = IsWarningWhenAttachedRealFile,
+                    IsEnableOpenAttachedFiles = IsEnableOpenAttachedFiles,
+                    TargetAttachmentFileExtensionOfOpen = TargetAttachmentFileExtensionOfOpen,
+                    IsMustOpenBeforeCheckTheAttachedFiles = IsMustOpenBeforeCheckTheAttachedFiles
+
                 }
             };
 
@@ -962,6 +971,39 @@ namespace OutlookOkan.ViewModels
             {
                 _isWarningWhenAttachedRealFile = value;
                 OnPropertyChanged(nameof(IsWarningWhenAttachedRealFile));
+            }
+        }
+
+        private bool _isEnableOpenAttachedFiles;
+        public bool IsEnableOpenAttachedFiles
+        {
+            get => _isEnableOpenAttachedFiles;
+            set
+            {
+                _isEnableOpenAttachedFiles = value;
+                OnPropertyChanged(nameof(IsEnableOpenAttachedFiles));
+            }
+        }
+
+        private string _targetAttachmentFileExtensionOfOpen = ".pdf,.txt,.csv,.rtf,.htm,.html,.doc,.docx,.xls,.xlm,.xlsm,.xlsx,.ppt,.pptx,.bmp,.gif,.jpg,.jpeg,.png,.fif,.pub,.vsd,.vsdx";
+        public string TargetAttachmentFileExtensionOfOpen
+        {
+            get => _targetAttachmentFileExtensionOfOpen;
+            set
+            {
+                _targetAttachmentFileExtensionOfOpen = value;
+                OnPropertyChanged(nameof(TargetAttachmentFileExtensionOfOpen));
+            }
+        }
+
+        private bool _isMustOpenBeforeCheckTheAttachedFiles;
+        public bool IsMustOpenBeforeCheckTheAttachedFiles
+        {
+            get => _isMustOpenBeforeCheckTheAttachedFiles;
+            set
+            {
+                _isMustOpenBeforeCheckTheAttachedFiles = value;
+                OnPropertyChanged(nameof(IsMustOpenBeforeCheckTheAttachedFiles));
             }
         }
 

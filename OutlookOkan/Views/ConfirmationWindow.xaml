@@ -7,6 +7,7 @@
              xmlns:types="clr-namespace:OutlookOkan.Types"
              xmlns:viewmodels="clr-namespace:OutlookOkan.ViewModels" d:DataContext="{d:DesignInstance Type=viewmodels:ConfirmationWindowViewModel}"
              mc:Ignorable="d"
+             Closing="ConfirmationWindow_OnClosing"
         Title="{Binding Source={x:Static services:ResourceService.Instance}, Path=Resources.Confirmation, Mode=OneWay}"
         ResizeMode="NoResize" ShowInTaskbar="False" WindowStartupLocation="CenterOwner" Height="590" Width="780">
     <StackPanel Margin="5,8">
@@ -263,7 +264,7 @@
                             <DataGridTemplateColumn IsReadOnly="True">
                                 <DataGridTemplateColumn.CellTemplate>
                                     <DataTemplate DataType="types:Attachment">
-                                        <CheckBox IsChecked="{Binding IsChecked, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Center" VerticalAlignment="Center" Checked="ToggleButton_OnChecked" Unchecked="ToggleButton_OnUnchecked" />
+                                        <CheckBox IsChecked="{Binding IsChecked, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Center" VerticalAlignment="Center" Checked="ToggleButton_OnChecked" Unchecked="ToggleButton_OnUnchecked" IsEnabled="{Binding IsNotMustOpenBeforeCheck}"/>
                                     </DataTemplate>
                                 </DataGridTemplateColumn.CellTemplate>
                                 <DataGridTemplateColumn.CellStyle>
@@ -272,6 +273,21 @@
                                     </Style>
                                 </DataGridTemplateColumn.CellStyle>
                             </DataGridTemplateColumn>
+                            <DataGridTextColumn Binding="{Binding Open, Mode=OneWay}" Width="Auto" IsReadOnly="True" >
+                                <DataGridTextColumn.CellStyle>
+                                    <Style TargetType="DataGridCell">
+                                        <Style.Triggers>
+                                            <DataTrigger Binding="{Binding IsCanOpen}" Value="True">
+                                                <Setter Property="Foreground" Value="Blue" />
+                                            </DataTrigger>
+                                            <DataTrigger Binding="{Binding IsCanOpen}" Value="False">
+                                                <Setter Property="Foreground" Value="Gray" />
+                                            </DataTrigger>
+                                        </Style.Triggers>
+                                        <Setter Property="IsTabStop" Value="False" />
+                                    </Style>
+                                </DataGridTextColumn.CellStyle>
+                            </DataGridTextColumn>
                             <DataGridTextColumn Binding="{Binding FileName, Mode=OneWay}" Width="Auto" IsReadOnly="True" Foreground="Black" >
                                 <DataGridTextColumn.CellStyle>
                                     <Style TargetType="DataGridCell">

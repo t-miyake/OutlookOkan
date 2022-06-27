@@ -362,7 +362,7 @@
     <value>Copyright (C) 2022 Noraneko Inc.</value>
   </data>
   <data name="Version" xml:space="preserve">
-    <value>バージョン 2.7.0.0</value>
+    <value>バージョン 2.7.1.0</value>
   </data>
   <data name="VersionInfo" xml:space="preserve">
     <value>バージョン情報</value>
@@ -799,5 +799,26 @@
   </data>
   <data name="NotApplicableToMeetingRequests" xml:space="preserve">
     <value>※会議出席依頼には反映されません。</value>
+  </data>
+  <data name="Open" xml:space="preserve">
+    <value>開く</value>
+  </data>
+  <data name="ChangesInTheFileWillNotBeSaved" xml:space="preserve">
+    <value>※ファイルの変更は反映されません。</value>
+  </data>
+  <data name="OpenTheAttachedFile" xml:space="preserve">
+    <value>添付ファイルを開きますか？</value>
+  </data>
+  <data name="IsEnableOpenAttachedFiles" xml:space="preserve">
+    <value>確認画面で添付ファイルを開けるようにする。</value>
+  </data>
+  <data name="IsMustOpenBeforeCheckTheAttachedFiles" xml:space="preserve">
+    <value>確認画面で、対象とする添付ファイルを開くことを必須にする。</value>
+  </data>
+  <data name="OpenTheAttachedFileOnTheConfirmationScreen" xml:space="preserve">
+    <value>確認画面で添付ファイルを開く</value>
+  </data>
+  <data name="TargetAttachmentFileExtensionOfOpen" xml:space="preserve">
+    <value>対象とする添付ファイルの拡張子：</value>
   </data>
 </root>

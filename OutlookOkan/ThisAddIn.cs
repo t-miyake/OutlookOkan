@@ -45,14 +45,14 @@ namespace OutlookOkan
         }
 
         /// <summary>
-        /// 送信トレイのアイテムを開く際の警告。
+        /// 送信トレイのメールアイテムを開く際の警告。
         /// </summary>
         /// <param name="inspector">Inspector</param>
         private void OpenOutboxItemInspector(Outlook.Inspector inspector)
         {
-            if (!(inspector.CurrentItem is Outlook._MailItem currentItem)) return;
+            if (!(inspector.CurrentItem is Outlook.MailItem currentItem)) return;
 
-            //送信保留中のメールのみ対象とする。
+            //送信保留中のメールのみ警告対象とする。
             if (currentItem.Submitted)
             {
                 _ = MessageBox.Show(Properties.Resources.CanceledSendingMailMessage, Properties.Resources.CanceledSendingMail, MessageBoxButton.OK, MessageBoxImage.Warning);
@@ -64,8 +64,16 @@ namespace OutlookOkan
 
             ((Outlook.InspectorEvents_Event)inspector).Close += () =>
             {
-                _ = Marshal.ReleaseComObject(currentItem);
-                currentItem = null;
+                if (currentItem != null)
+                {
+                    _ = Marshal.ReleaseComObject(currentItem);
+                    currentItem = null;
+                    GC.Collect();
+                    GC.WaitForPendingFinalizers();
+                    GC.Collect();
+                }
+
+                _ = Marshal.ReleaseComObject(inspector);
                 GC.Collect();
                 GC.WaitForPendingFinalizers();
                 GC.Collect();
@@ -95,13 +103,13 @@ namespace OutlookOkan
             switch (item)
             {
                 //MailItem(通常のメール)とMeetingItem(会議招待)の場合にのみ動作させる。
-                case Outlook._MailItem _:
-                    type = typeof(Outlook._MailItem);
+                case Outlook.MailItem _:
+                    type = typeof(Outlook.MailItem);
                     break;
-                case Outlook._MeetingItem _ when _generalSetting.IsShowConfirmationAtSendMeetingRequest:
-                    type = typeof(Outlook._MeetingItem);
+                case Outlook.MeetingItem _ when _generalSetting.IsShowConfirmationAtSendMeetingRequest:
+                    type = typeof(Outlook.MeetingItem);
                     break;
-                case Outlook._MeetingItem _:
+                case Outlook.MeetingItem _:
                     return;
                 default:
                     return;
@@ -138,7 +146,7 @@ namespace OutlookOkan
                 }
 
                 var generateCheckList = new GenerateCheckList();
-                var checklist = type == typeof(Outlook._MailItem) ? generateCheckList.GenerateCheckListFromMail((Outlook._MailItem)item, _generalSetting, contacts, autoAddMessageSetting) : generateCheckList.GenerateCheckListFromMail((Outlook._MeetingItem)item, _generalSetting, contacts, autoAddMessageSetting);
+                var checklist = type == typeof(Outlook.MailItem) ? generateCheckList.GenerateCheckListFromMail((Outlook.MailItem)item, _generalSetting, contacts, autoAddMessageSetting) : generateCheckList.GenerateCheckListFromMail((Outlook.MeetingItem)item, _generalSetting, contacts, autoAddMessageSetting);
 
                 if (_generalSetting.IsAutoCheckIfAllRecipientsAreSameDomain)
                 {
@@ -197,7 +205,7 @@ namespace OutlookOkan
                     if (dialogResult)
                     {
                         //メール本文への文言の自動追加はメール送信時に実行する。
-                        AutoAddMessageToBody(autoAddMessageSetting, item, type == typeof(Outlook._MailItem));
+                        AutoAddMessageToBody(autoAddMessageSetting, item, type == typeof(Outlook.MailItem));
 
                         //Send Mail.
                     }
@@ -209,7 +217,7 @@ namespace OutlookOkan
                 else
                 {
                     //メール本文への文言の自動追加はメール送信時に実行する。
-                    AutoAddMessageToBody(autoAddMessageSetting, item, type == typeof(Outlook._MailItem));
+                    AutoAddMessageToBody(autoAddMessageSetting, item, type == typeof(Outlook.MailItem));
 
                     //Send Mail.
                 }
@@ -220,7 +228,7 @@ namespace OutlookOkan
                 if (dialogResult == MessageBoxResult.Yes)
                 {
                     //メール本文への文言の自動追加はメール送信時に実行する。
-                    AutoAddMessageToBody(autoAddMessageSetting, item, type == typeof(Outlook._MailItem));
+                    AutoAddMessageToBody(autoAddMessageSetting, item, type == typeof(Outlook.MailItem));
 
                     //Send Mail.
                 }

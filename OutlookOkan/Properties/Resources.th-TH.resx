@@ -272,6 +272,9 @@
   <data name="ChangeRibbonLanguageInfo" xml:space="preserve">
     <value>ภาษาที่แสดงของ Ribbon (เมนู) ได้รับการอัปเดตเมื่อเริ่ม Outlook ใหม่</value>
   </data>
+  <data name="ChangesInTheFileWillNotBeSaved" xml:space="preserve">
+    <value>*การเปลี่ยนแปลงในไฟล์จะไม่ถูกบันทึก</value>
+  </data>
   <data name="CheckNewVersion" xml:space="preserve">
     <value>ตรวจสอบเวอร์ชันใหม่</value>
   </data>
@@ -480,6 +483,9 @@ bcc โดยอัตโนมัติ</value>
   <data name="IsEnableAllAttachedFilesAreDetectEncryptedZip" xml:space="preserve">
     <value>ไฟล์แนบที่มีนามสกุลอื่นที่ไม่ใช่ ".zip" จะตรวจจับด้วยว่าไฟล์เหล่านี้เป็นไฟล์ ZIP ที่เข้ารหัสหรือไม่</value>
   </data>
+  <data name="IsEnableOpenAttachedFiles" xml:space="preserve">
+    <value>เปิดใช้งานการเปิดสิ่งที่แนบมาบนหน้าจอการยืนยัน</value>
+  </data>
   <data name="IsEnableRecipientsAreSortedByDomain" xml:space="preserve">
     <value>ผู้รับจะถูกจัดเรียงตามโดเมนบนหน้าจอยืนยัน</value>
   </data>
@@ -488,6 +494,9 @@ bcc โดยอัตโนมัติ</value>
   </data>
   <data name="IsIncludeInternalDomain" xml:space="preserve">
     <value>รวมโดเมนภายใน *ผู้รับทั้งหมดจะเปลี่ยนเป็นสำเนาลับ</value>
+  </data>
+  <data name="IsMustOpenBeforeCheckTheAttachedFiles" xml:space="preserve">
+    <value>บนหน้าจอยืนยัน จำเป็นต้องเปิดเอกสารแนบเป้าหมาย</value>
   </data>
   <data name="IsNotTreatedAsAttachmentsAtHtmlEmbeddedFiles" xml:space="preserve">
     <value>ไฟล์ที่ฝังอยู่ในเมล HTML จะไม่ถือว่าเป็นไฟล์แนบ</value>
@@ -561,6 +570,15 @@ bcc โดยอัตโนมัติ</value>
   </data>
   <data name="OK" xml:space="preserve">
     <value>ตกลง</value>
+  </data>
+  <data name="Open" xml:space="preserve">
+    <value>เปิด</value>
+  </data>
+  <data name="OpenTheAttachedFile" xml:space="preserve">
+    <value>คุณต้องการเปิดไฟล์ที่แนบมาหรือไม่?</value>
+  </data>
+  <data name="OpenTheAttachedFileOnTheConfirmationScreen" xml:space="preserve">
+    <value>เปิดไฟล์ที่แนบมาบนหน้าจอยืนยัน</value>
   </data>
   <data name="ProhibitedWhenLargeNumberOfExternalDomainsAlert" xml:space="preserve">
     <value>จำนวนโดเมนภายนอกใน To และ Cc สูงกว่าขีดจำกัด</value>
@@ -763,6 +781,9 @@ bcc โดยอัตโนมัติ</value>
   <data name="SuccessfulImport" xml:space="preserve">
     <value>การนำเข้าเสร็จสมบูรณ์แล้ว</value>
   </data>
+  <data name="TargetAttachmentFileExtensionOfOpen" xml:space="preserve">
+    <value>ส่วนขยายไฟล์แนบเป้าหมาย:</value>
+  </data>
   <data name="TargetToAndCcExternalDomainsNum" xml:space="preserve">
     <value>จำนวนโดเมนภายนอกของผู้รับ (ถึง/สำเนาถึง) ที่จะครอบคลุมในคุณลักษณะนี้</value>
   </data>
@@ -783,7 +804,7 @@ bcc โดยอัตโนมัติ</value>
     <value>ไม่รู้จัก</value>
   </data>
   <data name="Version" xml:space="preserve">
-    <value>Version 2.7.0.0</value>
+    <value>Version 2.7.1.0</value>
   </data>
   <data name="VersionInfo" xml:space="preserve">
     <value>เกี่ยวกับโปรแกรมนี้</value>

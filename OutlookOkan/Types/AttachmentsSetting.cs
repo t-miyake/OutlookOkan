@@ -9,6 +9,9 @@ namespace OutlookOkan.Types
         public bool IsEnableAllAttachedFilesAreDetectEncryptedZip { get; set; }
         public bool IsAttachmentsProhibited { get; set; }
         public bool IsWarningWhenAttachedRealFile { get; set; }
+        public bool IsEnableOpenAttachedFiles { get; set; }
+        public string TargetAttachmentFileExtensionOfOpen { get; set; } = ".pdf,.txt,.csv,.rtf,.htm,.html,.doc,.docx,.xls,.xlm,.xlsm,.xlsx,.ppt,.pptx,.bmp,.gif,.jpg,.jpeg,.png,.fif,.pub,.vsd,.vsdx";
+        public bool IsMustOpenBeforeCheckTheAttachedFiles { get; set; }
     }
 
     public sealed class AttachmentsSettingMap : ClassMap<AttachmentsSetting>
@@ -28,6 +31,14 @@ namespace OutlookOkan.Types
                 .BooleanValues(true, true, "Yes", "Y").TypeConverterOption.BooleanValues(false, true, "No", "N").Default(false);
 
             _ = Map(m => m.IsWarningWhenAttachedRealFile).Index(4).TypeConverterOption
+                .BooleanValues(true, true, "Yes", "Y").TypeConverterOption.BooleanValues(false, true, "No", "N").Default(false);
+
+            _ = Map(m => m.IsEnableOpenAttachedFiles).Index(5).TypeConverterOption
+                .BooleanValues(true, true, "Yes", "Y").TypeConverterOption.BooleanValues(false, true, "No", "N").Default(false);
+
+            _ = Map(m => m.TargetAttachmentFileExtensionOfOpen).Index(6).Default(".pdf,.txt,.csv,.rtf,.htm,.html,.doc,.docx,.xls,.xlm,.xlsm,.xlsx,.ppt,.pptx,.bmp,.gif,.jpg,.jpeg,.png,.fif,.pub,.vsd,.vsdx");
+
+            _ = Map(m => m.IsMustOpenBeforeCheckTheAttachedFiles).Index(7).TypeConverterOption
                 .BooleanValues(true, true, "Yes", "Y").TypeConverterOption.BooleanValues(false, true, "No", "N").Default(false);
         }
     }

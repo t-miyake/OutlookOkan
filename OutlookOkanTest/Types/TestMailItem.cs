@@ -1,15 +1,11 @@
-﻿using System;
+﻿using Microsoft.Office.Interop.Outlook;
+using System;
 using Outlook = Microsoft.Office.Interop.Outlook;
 
 namespace OutlookOkanTest.Types
 {
-    public class TestMailItem : Outlook.MailItem
+    public class TestMailItem : MailItem
     {
-        void Outlook._MailItem.Close(Outlook.OlInspectorClose SaveMode)
-        {
-            throw new NotImplementedException();
-        }
-
         public object Copy()
         {
             throw new NotImplementedException();
@@ -46,26 +42,6 @@ namespace OutlookOkanTest.Types
         }
 
         public void ClearConversationIndex()
-        {
-            throw new NotImplementedException();
-        }
-
-        Outlook.MailItem Outlook._MailItem.Forward()
-        {
-            throw new NotImplementedException();
-        }
-
-        Outlook.MailItem Outlook._MailItem.Reply()
-        {
-            throw new NotImplementedException();
-        }
-
-        Outlook.MailItem Outlook._MailItem.ReplyAll()
-        {
-            throw new NotImplementedException();
-        }
-
-        void Outlook._MailItem.Send()
         {
             throw new NotImplementedException();
         }
@@ -219,5 +195,30 @@ namespace OutlookOkanTest.Types
         public event Outlook.ItemEvents_10_BeforeReadEventHandler BeforeRead;
         public event Outlook.ItemEvents_10_AfterWriteEventHandler AfterWrite;
         public event Outlook.ItemEvents_10_ReadCompleteEventHandler ReadComplete;
+
+        void _MailItem.Close(OlInspectorClose SaveMode)
+        {
+            throw new NotImplementedException();
+        }
+
+        MailItem _MailItem.Forward()
+        {
+            throw new NotImplementedException();
+        }
+
+        MailItem _MailItem.Reply()
+        {
+            throw new NotImplementedException();
+        }
+
+        MailItem _MailItem.ReplyAll()
+        {
+            throw new NotImplementedException();
+        }
+
+        void _MailItem.Send()
+        {
+            throw new NotImplementedException();
+        }
     }
 }
