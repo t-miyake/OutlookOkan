@@ -102,22 +102,22 @@ namespace OutlookOkan.Models
 
             #endregion
 
-            var isMailItem = (typeof(T) == typeof(Outlook._MailItem));
+            var isMailItem = (typeof(T) == typeof(Outlook.MailItem));
 
             if (isMailItem)
             {
-                _checkList.MailType = GetMailBodyFormat(((Outlook._MailItem)item).BodyFormat) ?? Resources.FailedToGetInformation;
-                _checkList.MailBody = GetMailBody(((Outlook._MailItem)item).BodyFormat, ((Outlook._MailItem)item).Body ?? Resources.FailedToGetInformation);
+                _checkList.MailType = GetMailBodyFormat(((Outlook.MailItem)item).BodyFormat) ?? Resources.FailedToGetInformation;
+                _checkList.MailBody = GetMailBody(((Outlook.MailItem)item).BodyFormat, ((Outlook.MailItem)item).Body ?? Resources.FailedToGetInformation);
                 _checkList.MailBody = AddMessageToBodyPreview(_checkList.MailBody, autoAddMessageSetting);
 
-                _checkList.MailHtmlBody = ((Outlook._MailItem)item).HTMLBody ?? Resources.FailedToGetInformation;
+                _checkList.MailHtmlBody = ((Outlook.MailItem)item).HTMLBody ?? Resources.FailedToGetInformation;
             }
             else
             {
                 _checkList.MailType = Resources.MeetingRequest;
-                _checkList.MailBody = string.IsNullOrEmpty(((Outlook._MeetingItem)item).Body) ? Resources.FailedToGetInformation : ((Outlook._MeetingItem)item).Body.Replace("\r\n\r\n", "\r\n");
+                _checkList.MailBody = string.IsNullOrEmpty(((Outlook.MeetingItem)item).Body) ? Resources.FailedToGetInformation : ((Outlook.MeetingItem)item).Body.Replace("\r\n\r\n", "\r\n");
 
-                if (((Outlook._MeetingItem)item).RTFBody is byte[] byteArray)
+                if (((Outlook.MeetingItem)item).RTFBody is byte[] byteArray)
                 {
                     var encoding = new System.Text.ASCIIEncoding();
                     _checkList.MailHtmlBody = encoding.GetString(byteArray);
@@ -176,27 +176,27 @@ namespace OutlookOkan.Models
         {
             try
             {
-                if (typeof(T) == typeof(Outlook._MailItem) && !string.IsNullOrEmpty(((Outlook._MailItem)item).SentOnBehalfOfName))
+                if (typeof(T) == typeof(Outlook.MailItem) && !string.IsNullOrEmpty(((Outlook.MailItem)item).SentOnBehalfOfName))
                 {
                     //代理送信の場合。
-                    checkList.Sender = ((Outlook._MailItem)item).Sender?.Address ?? Resources.FailedToGetInformation;
+                    checkList.Sender = ((Outlook.MailItem)item).Sender?.Address ?? Resources.FailedToGetInformation;
 
                     if (IsValidEmailAddress(checkList.Sender))
                     {
                         //メールアドレスが取得できる場合はそのまま使う。
                         checkList.SenderDomain = checkList.Sender.Substring(checkList.Sender.IndexOf("@", StringComparison.Ordinal));
-                        checkList.Sender = $@"{checkList.Sender} ([{((Outlook._MailItem)item).SentOnBehalfOfName}] {Resources.SentOnBehalf})";
+                        checkList.Sender = $@"{checkList.Sender} ([{((Outlook.MailItem)item).SentOnBehalfOfName}] {Resources.SentOnBehalf})";
                     }
                     else
                     {
                         //代理送信の場合かつExchangeのCN。
-                        checkList.Sender = $@"[{((Outlook._MailItem)item).SentOnBehalfOfName}] {Resources.SentOnBehalf}";
+                        checkList.Sender = $@"[{((Outlook.MailItem)item).SentOnBehalfOfName}] {Resources.SentOnBehalf}";
                         checkList.SenderDomain = @"------------------";
 
                         Outlook.ExchangeDistributionList exchangeDistributionList = null;
                         Outlook.ExchangeUser exchangeUser = null;
 
-                        var sender = ((Outlook._MailItem)item).Sender;
+                        var sender = ((Outlook.MailItem)item).Sender;
 
                         var isDone = false;
                         var errorCount = 0;
@@ -227,14 +227,14 @@ namespace OutlookOkan.Models
                         if (!(exchangeUser is null))
                         {
                             //ユーザの代理送信。
-                            checkList.Sender = $@"{exchangeUser.PrimarySmtpAddress} ([{((Outlook._MailItem)item).SentOnBehalfOfName}] {Resources.SentOnBehalf})";
+                            checkList.Sender = $@"{exchangeUser.PrimarySmtpAddress} ([{((Outlook.MailItem)item).SentOnBehalfOfName}] {Resources.SentOnBehalf})";
                             checkList.SenderDomain = exchangeUser.PrimarySmtpAddress.Substring(exchangeUser.PrimarySmtpAddress.IndexOf("@", StringComparison.Ordinal));
                         }
 
                         if (!(exchangeDistributionList is null))
                         {
                             //配布リストの代理送信。
-                            checkList.Sender = $@"{exchangeDistributionList.PrimarySmtpAddress} ([{((Outlook._MailItem)item).SentOnBehalfOfName}] {Resources.SentOnBehalf})";
+                            checkList.Sender = $@"{exchangeDistributionList.PrimarySmtpAddress} ([{((Outlook.MailItem)item).SentOnBehalfOfName}] {Resources.SentOnBehalf})";
                             checkList.SenderDomain = exchangeDistributionList.PrimarySmtpAddress.Substring(exchangeDistributionList.PrimarySmtpAddress.IndexOf("@", StringComparison.Ordinal));
                         }
                     }
@@ -1017,11 +1017,11 @@ namespace OutlookOkan.Models
 
                 var mailItemSender = ((dynamic)item).SenderEmailAddress;
 
-                if (typeof(T) == typeof(Outlook._MailItem))
+                if (typeof(T) == typeof(Outlook.MailItem))
                 {
-                    if (!string.IsNullOrEmpty(((Outlook._MailItem)item).SentOnBehalfOfName) && !string.IsNullOrEmpty(((Outlook._MailItem)item).Sender.Address))
+                    if (!string.IsNullOrEmpty(((Outlook.MailItem)item).SentOnBehalfOfName) && !string.IsNullOrEmpty(((Outlook.MailItem)item).Sender.Address))
                     {
-                        mailItemSender = ((Outlook._MailItem)item).Sender.Address;
+                        mailItemSender = ((Outlook.MailItem)item).Sender.Address;
                     }
                 }
 
@@ -1118,10 +1118,10 @@ namespace OutlookOkan.Models
         /// <returns>埋め込みファイル名のList</returns>
         private List<string> MakeEmbeddedAttachmentsList<T>(T item, string mailHtmlBody)
         {
-            if (typeof(T) == typeof(Outlook._MailItem))
+            if (typeof(T) == typeof(Outlook.MailItem))
             {
                 //HTML形式の場合のみ、処理対象とする。
-                if (((Outlook._MailItem)item).BodyFormat != Outlook.OlBodyFormat.olFormatHTML) return null;
+                if (((Outlook.MailItem)item).BodyFormat != Outlook.OlBodyFormat.olFormatHTML) return null;
             }
 
             var matches = Regex.Matches(mailHtmlBody, @"cid:.*?@");

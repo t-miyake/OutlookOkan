@@ -30,7 +30,7 @@ namespace OutlookOkanTest
             var generateCheckList = new GenerateCheckList();
             var privateObject = new PrivateObject(generateCheckList);
             var args = new object[] { testMailItem, checkList };
-            var result = (CheckList)privateObject.Invoke("GetSenderAndSenderDomain", new[] { typeof(Outlook._MailItem), typeof(CheckList) }, args, new[] { typeof(Outlook._MailItem) });
+            var result = (CheckList)privateObject.Invoke("GetSenderAndSenderDomain", new[] { typeof(Outlook.MailItem), typeof(CheckList) }, args, new[] { typeof(Outlook.MailItem) });
 
             Console.WriteLine(@"Sender email address：" + result.Sender);
             Console.WriteLine(@"Sender domain：" + result.SenderDomain);
@@ -52,7 +52,7 @@ namespace OutlookOkanTest
             var generateCheckList = new GenerateCheckList();
             var privateObject = new PrivateObject(generateCheckList);
             var args = new object[] { testMailItem, checkList };
-            var result = (CheckList)privateObject.Invoke("GetSenderAndSenderDomain", new[] { typeof(Outlook._MailItem), typeof(CheckList) }, args, new[] { typeof(Outlook._MailItem) });
+            var result = (CheckList)privateObject.Invoke("GetSenderAndSenderDomain", new[] { typeof(Outlook.MailItem), typeof(CheckList) }, args, new[] { typeof(Outlook.MailItem) });
 
             Console.WriteLine(@"Sender email address：" + result.Sender);
             Console.WriteLine(@"Sender domain：" + result.SenderDomain);
@@ -72,7 +72,7 @@ namespace OutlookOkanTest
             var generateCheckList = new GenerateCheckList();
             var privateObject = new PrivateObject(generateCheckList);
             var args = new object[] { testMailItem, checkList };
-            var result = (CheckList)privateObject.Invoke("GetSenderAndSenderDomain", new[] { typeof(Outlook._MailItem), typeof(CheckList) }, args, new[] { typeof(Outlook._MailItem) });
+            var result = (CheckList)privateObject.Invoke("GetSenderAndSenderDomain", new[] { typeof(Outlook.MailItem), typeof(CheckList) }, args, new[] { typeof(Outlook.MailItem) });
 
             Console.WriteLine(@"Sender email address：" + result.Sender);
             Console.WriteLine(@"Sender domain：" + result.SenderDomain);
@@ -99,7 +99,7 @@ namespace OutlookOkanTest
             var generateCheckList = new GenerateCheckList();
             var privateObject = new PrivateObject(generateCheckList);
             var args = new object[] { testMailItem, "メール本文" };
-            var result = (List<string>)privateObject.Invoke("MakeEmbeddedAttachmentsList", new[] { typeof(Outlook._MailItem), typeof(string) }, args, new[] { typeof(Outlook._MailItem) });
+            var result = (List<string>)privateObject.Invoke("MakeEmbeddedAttachmentsList", new[] { typeof(Outlook.MailItem), typeof(string) }, args, new[] { typeof(Outlook.MailItem) });
 
             Assert.IsNull(result);
         }
@@ -112,7 +112,7 @@ namespace OutlookOkanTest
             var generateCheckList = new GenerateCheckList();
             var privateObject = new PrivateObject(generateCheckList);
             var args = new object[] { testMailItem, "メール本文" };
-            var result = (List<string>)privateObject.Invoke("MakeEmbeddedAttachmentsList", new[] { typeof(Outlook._MailItem), typeof(string) }, args, new[] { typeof(Outlook._MailItem) });
+            var result = (List<string>)privateObject.Invoke("MakeEmbeddedAttachmentsList", new[] { typeof(Outlook.MailItem), typeof(string) }, args, new[] { typeof(Outlook.MailItem) });
 
             Assert.IsNull(result);
         }
@@ -126,7 +126,7 @@ namespace OutlookOkanTest
             var generateCheckList = new GenerateCheckList();
             var privateObject = new PrivateObject(generateCheckList);
             var args = new object[] { testMailItem, mailHtmlBody };
-            var result = (List<string>)privateObject.Invoke("MakeEmbeddedAttachmentsList", new[] { typeof(Outlook._MailItem), typeof(string) }, args, new[] { typeof(Outlook._MailItem) });
+            var result = (List<string>)privateObject.Invoke("MakeEmbeddedAttachmentsList", new[] { typeof(Outlook.MailItem), typeof(string) }, args, new[] { typeof(Outlook.MailItem) });
 
             Console.WriteLine(@"Embedded attachments: " + result.Count);
             foreach (var attachmentName in result)
@@ -147,7 +147,7 @@ namespace OutlookOkanTest
             var generateCheckList = new GenerateCheckList();
             var privateObject = new PrivateObject(generateCheckList);
             var args = new object[] { testMailItem, mailHtmlBody };
-            var result = (List<string>)privateObject.Invoke("MakeEmbeddedAttachmentsList", new[] { typeof(Outlook._MailItem), typeof(string) }, args, new[] { typeof(Outlook._MailItem) });
+            var result = (List<string>)privateObject.Invoke("MakeEmbeddedAttachmentsList", new[] { typeof(Outlook.MailItem), typeof(string) }, args, new[] { typeof(Outlook.MailItem) });
 
             Assert.IsNull(result);
         }
@@ -939,7 +939,7 @@ namespace OutlookOkanTest
             var generateCheckList = new GenerateCheckList();
             var privateObject = new PrivateObject(generateCheckList);
             var args = new object[] { null, displayNameAndRecipient, externalDomainsWarningAndAutoChangeToBccSettings, internalDomains, externalDomainNumToAndCc, senderDomain, senderMailAddress, forceAutoChangeRecipientsToBccSetting };
-            var result = (DisplayNameAndRecipient)privateObject.Invoke("ExternalDomainsChangeToBccIfNeeded", new[] { typeof(Outlook._MailItem), typeof(DisplayNameAndRecipient), typeof(ExternalDomainsWarningAndAutoChangeToBcc), typeof(List<InternalDomain>), typeof(int), typeof(string), typeof(string), typeof(ForceAutoChangeRecipientsToBcc) }, args, new[] { typeof(Outlook._MailItem) });
+            var result = (DisplayNameAndRecipient)privateObject.Invoke("ExternalDomainsChangeToBccIfNeeded", new[] { typeof(Outlook.MailItem), typeof(DisplayNameAndRecipient), typeof(ExternalDomainsWarningAndAutoChangeToBcc), typeof(List<InternalDomain>), typeof(int), typeof(string), typeof(string), typeof(ForceAutoChangeRecipientsToBcc) }, args, new[] { typeof(Outlook.MailItem) });
 
             Assert.AreEqual(result.To.Count, 1);
             Assert.AreEqual(result.Cc.Count, 2);
@@ -977,7 +977,7 @@ namespace OutlookOkanTest
             var generateCheckList = new GenerateCheckList();
             var privateObject = new PrivateObject(generateCheckList);
             var args = new object[] { null, displayNameAndRecipient, externalDomainsWarningAndAutoChangeToBccSettings, internalDomains, externalDomainNumToAndCc, senderDomain, senderMailAddress, forceAutoChangeRecipientsToBccSetting };
-            var result = (DisplayNameAndRecipient)privateObject.Invoke("ExternalDomainsChangeToBccIfNeeded", new[] { typeof(Outlook._MailItem), typeof(DisplayNameAndRecipient), typeof(ExternalDomainsWarningAndAutoChangeToBcc), typeof(List<InternalDomain>), typeof(int), typeof(string), typeof(string), typeof(ForceAutoChangeRecipientsToBcc) }, args, new[] { typeof(Outlook._MailItem) });
+            var result = (DisplayNameAndRecipient)privateObject.Invoke("ExternalDomainsChangeToBccIfNeeded", new[] { typeof(Outlook.MailItem), typeof(DisplayNameAndRecipient), typeof(ExternalDomainsWarningAndAutoChangeToBcc), typeof(List<InternalDomain>), typeof(int), typeof(string), typeof(string), typeof(ForceAutoChangeRecipientsToBcc) }, args, new[] { typeof(Outlook.MailItem) });
 
             Assert.AreEqual(result.To.Count, 1);
             Assert.AreEqual(result.To[senderMailAddress], senderMailAddress);
