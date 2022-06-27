@@ -36,7 +36,7 @@ namespace OutlookOkan.Types
             _ = Map(m => m.IsEnableOpenAttachedFiles).Index(5).TypeConverterOption
                 .BooleanValues(true, true, "Yes", "Y").TypeConverterOption.BooleanValues(false, true, "No", "N").Default(false);
 
-            _ = Map(m => m.TargetAttachmentFileExtensionOfOpen).Index(6);
+            _ = Map(m => m.TargetAttachmentFileExtensionOfOpen).Index(6).Default(".pdf,.txt,.csv,.rtf,.htm,.html,.doc,.docx,.xls,.xlm,.xlsm,.xlsx,.ppt,.pptx,.bmp,.gif,.jpg,.jpeg,.png,.fif,.pub,.vsd,.vsdx");
 
             _ = Map(m => m.IsMustOpenBeforeCheckTheAttachedFiles).Index(7).TypeConverterOption
                 .BooleanValues(true, true, "Yes", "Y").TypeConverterOption.BooleanValues(false, true, "No", "N").Default(false);

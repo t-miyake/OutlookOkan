@@ -82,6 +82,7 @@ namespace OutlookOkan.Models
             var attachmentsSettingCsv = new ReadAndWriteCsv("AttachmentsSetting.csv");
             var attachmentsSettingList = attachmentsSettingCsv.GetCsvRecords<AttachmentsSetting>(attachmentsSettingCsv.LoadCsv<AttachmentsSettingMap>());
             if (attachmentsSettingList.Count > 0) attachmentsSetting = attachmentsSettingList[0];
+            if (string.IsNullOrEmpty(attachmentsSetting.TargetAttachmentFileExtensionOfOpen)) attachmentsSetting.TargetAttachmentFileExtensionOfOpen = ".pdf,.txt,.csv,.rtf,.htm,.html,.doc,.docx,.xls,.xlm,.xlsm,.xlsx,.ppt,.pptx,.bmp,.gif,.jpg,.jpeg,.png,.fif,.pub,.vsd,.vsdx";
 
             var recipientsAndAttachmentsNameCsv = new ReadAndWriteCsv("RecipientsAndAttachmentsName.csv");
             var recipientsAndAttachmentsNameList = recipientsAndAttachmentsNameCsv.GetCsvRecords<RecipientsAndAttachmentsName>(recipientsAndAttachmentsNameCsv.LoadCsv<RecipientsAndAttachmentsNameMap>())

@@ -886,6 +886,8 @@ namespace OutlookOkan.ViewModels
             IsEnableOpenAttachedFiles = _attachmentsSetting[0].IsEnableOpenAttachedFiles;
             TargetAttachmentFileExtensionOfOpen = _attachmentsSetting[0].TargetAttachmentFileExtensionOfOpen;
             IsMustOpenBeforeCheckTheAttachedFiles = _attachmentsSetting[0].IsMustOpenBeforeCheckTheAttachedFiles;
+
+            if (string.IsNullOrEmpty(TargetAttachmentFileExtensionOfOpen)) TargetAttachmentFileExtensionOfOpen = ".pdf,.txt,.csv,.rtf,.htm,.html,.doc,.docx,.xls,.xlm,.xlsm,.xlsx,.ppt,.pptx,.bmp,.gif,.jpg,.jpeg,.png,.fif,.pub,.vsd,.vsdx";
         }
 
         private async Task SaveAttachmentsSettingToCsv()
