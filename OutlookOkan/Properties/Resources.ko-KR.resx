@@ -768,6 +768,9 @@
   <data name="Settings" xml:space="preserve">
     <value>설정</value>
   </data>
+  <data name="ShowConfirmationAtSendTaskRequest" xml:space="preserve">
+    <value>작업 할당에 대한 확인 화면도 표시됩니다.</value>
+  </data>
   <data name="Subject" xml:space="preserve">
     <value>주제</value>
   </data>
@@ -786,6 +789,9 @@
   <data name="TargetToAndCcExternalDomainsNumInfo" xml:space="preserve">
     <value>* 이메일의 받는 사람과 참조에 포함된 외부 도메인이 이 설정보다 크거나 같을 경우,
 이 기능이 적용됩니다.</value>
+  </data>
+  <data name="TaskRequest" xml:space="preserve">
+    <value>작업 할당</value>
   </data>
   <data name="Text" xml:space="preserve">
     <value>일반 텍스트</value>

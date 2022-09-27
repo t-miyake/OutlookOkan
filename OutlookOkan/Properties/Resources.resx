@@ -824,4 +824,10 @@ If the warning text is left blank, the default warning text will be displayed.</
   <data name="TargetAttachmentFileExtensionOfOpen" xml:space="preserve">
     <value>Target attachment extension:</value>
   </data>
+  <data name="TaskRequest" xml:space="preserve">
+    <value>Assign Task</value>
+  </data>
+  <data name="ShowConfirmationAtSendTaskRequest" xml:space="preserve">
+    <value>The confirmation screen is also displayed for assign task.</value>
+  </data>
 </root>

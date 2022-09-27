@@ -1839,6 +1839,15 @@ namespace OutlookOkan.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to The confirmation screen is also displayed for assign task..
+        /// </summary>
+        public static string ShowConfirmationAtSendTaskRequest {
+            get {
+                return ResourceManager.GetString("ShowConfirmationAtSendTaskRequest", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Subject.
         /// </summary>
         public static string Subject {
@@ -1889,6 +1898,15 @@ namespace OutlookOkan.Properties {
         public static string TargetToAndCcExternalDomainsNumInfo {
             get {
                 return ResourceManager.GetString("TargetToAndCcExternalDomainsNumInfo", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Assign Task.
+        /// </summary>
+        public static string TaskRequest {
+            get {
+                return ResourceManager.GetString("TaskRequest", resourceCulture);
             }
         }
         

@@ -779,6 +779,9 @@ Die entsprechenden Empfänger werden auf dem Bestätigungsbildschirm angekreuzt.
   <data name="ShowConfirmationAtSendMeetingRequest" xml:space="preserve">
     <value>Außerdem wird ein Bestätigungsbildschirm für die Besprechungsanfrage angezeigt.</value>
   </data>
+  <data name="ShowConfirmationAtSendTaskRequest" xml:space="preserve">
+    <value>Das Bestätigungsbild wird auch für die Aufgabenzuweisung angezeigt.</value>
+  </data>
   <data name="Subject" xml:space="preserve">
     <value>Betreff</value>
   </data>
@@ -797,6 +800,9 @@ Die entsprechenden Empfänger werden auf dem Bestätigungsbildschirm angekreuzt.
   <data name="TargetToAndCcExternalDomainsNumInfo" xml:space="preserve">
     <value>* Wenn die externe Domäne, die in To und Cc der E-Mail enthalten ist, größer als oder gleich dieser Einstellung ist, 
 wird diese Funktion angewendet.</value>
+  </data>
+  <data name="TaskRequest" xml:space="preserve">
+    <value>Aufgabe zuweisen</value>
   </data>
   <data name="Text" xml:space="preserve">
     <value>Klartext</value>

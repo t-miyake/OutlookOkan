@@ -772,6 +772,9 @@ bcc โดยอัตโนมัติ</value>
   <data name="ShowConfirmationAtSendMeetingRequest" xml:space="preserve">
     <value>หน้าจอยืนยันจะปรากฏขึ้นสำหรับการเรียกประชุมด้วย</value>
   </data>
+  <data name="ShowConfirmationAtSendTaskRequest" xml:space="preserve">
+    <value>หน้าจอยืนยันจะปรากฏขึ้นเพื่อมอบหมายงานด้วย</value>
+  </data>
   <data name="Subject" xml:space="preserve">
     <value>เรื่อง</value>
   </data>
@@ -790,6 +793,9 @@ bcc โดยอัตโนมัติ</value>
   <data name="TargetToAndCcExternalDomainsNumInfo" xml:space="preserve">
     <value>* หากโดเมนภายนอกที่รวมอยู่ใน To และ Cc ของอีเมลมีค่ามากกว่าหรือเท่ากับการตั้งค่านี้
 คุณลักษณะนี้จะถูกนำไปใช้</value>
+  </data>
+  <data name="TaskRequest" xml:space="preserve">
+    <value>มอบหมายงาน</value>
   </data>
   <data name="Text" xml:space="preserve">
     <value>ข้อความธรรมดา</value>

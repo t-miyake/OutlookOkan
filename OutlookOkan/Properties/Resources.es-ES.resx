@@ -777,6 +777,9 @@ Los destinatarios correspondientes se marcarán previamente en la pantalla de co
   <data name="ShowConfirmationAtSendMeetingRequest" xml:space="preserve">
     <value>También se muestra una pantalla de confirmación para la solicitud de reunión.</value>
   </data>
+  <data name="ShowConfirmationAtSendTaskRequest" xml:space="preserve">
+    <value>También se muestra la pantalla de confirmación para asignar la tarea.</value>
+  </data>
   <data name="Subject" xml:space="preserve">
     <value>Asunto</value>
   </data>
@@ -795,6 +798,9 @@ Los destinatarios correspondientes se marcarán previamente en la pantalla de co
   <data name="TargetToAndCcExternalDomainsNumInfo" xml:space="preserve">
     <value>* Si el dominio externo incluido en el To y Cc del correo electrónico es mayor o igual a esta configuración, 
 se aplicará esta función.</value>
+  </data>
+  <data name="TaskRequest" xml:space="preserve">
+    <value>Asignar tarea</value>
   </data>
   <data name="Text" xml:space="preserve">
     <value>Texto plano</value>

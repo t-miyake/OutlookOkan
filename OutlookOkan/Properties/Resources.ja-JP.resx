@@ -821,4 +821,10 @@
   <data name="TargetAttachmentFileExtensionOfOpen" xml:space="preserve">
     <value>対象とする添付ファイルの拡張子：</value>
   </data>
+  <data name="TaskRequest" xml:space="preserve">
+    <value>タスク依頼</value>
+  </data>
+  <data name="ShowConfirmationAtSendTaskRequest" xml:space="preserve">
+    <value>タスク依頼にも確認画面を表示する。</value>
+  </data>
 </root>

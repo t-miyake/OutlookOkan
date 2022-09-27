@@ -102,31 +102,50 @@ namespace OutlookOkan.Models
             if (forceAutoChangeRecipientsToBccSettingList.Count > 0) forceAutoChangeRecipientsToBccSetting = forceAutoChangeRecipientsToBccSettingList[0];
 
             #endregion
-
-            var isMailItem = (typeof(T) == typeof(Outlook.MailItem));
-
-            if (isMailItem)
+            var isMeetingItem = false;
+            var isTaskRequestItem = false;
+            switch (item)
             {
-                _checkList.MailType = GetMailBodyFormat(((Outlook.MailItem)item).BodyFormat) ?? Resources.FailedToGetInformation;
-                _checkList.MailBody = GetMailBody(((Outlook.MailItem)item).BodyFormat, ((Outlook.MailItem)item).Body ?? Resources.FailedToGetInformation);
-                _checkList.MailBody = AddMessageToBodyPreview(_checkList.MailBody, autoAddMessageSetting);
+                case Outlook.MailItem mailItem:
+                    _checkList.MailType = GetMailBodyFormat(mailItem.BodyFormat) ?? Resources.FailedToGetInformation;
+                    _checkList.MailBody = GetMailBody(mailItem.BodyFormat, mailItem.Body ?? Resources.FailedToGetInformation);
+                    _checkList.MailBody = AddMessageToBodyPreview(_checkList.MailBody, autoAddMessageSetting);
 
-                _checkList.MailHtmlBody = ((Outlook.MailItem)item).HTMLBody ?? Resources.FailedToGetInformation;
-            }
-            else
-            {
-                _checkList.MailType = Resources.MeetingRequest;
-                _checkList.MailBody = string.IsNullOrEmpty(((Outlook.MeetingItem)item).Body) ? Resources.FailedToGetInformation : ((Outlook.MeetingItem)item).Body.Replace("\r\n\r\n", "\r\n");
+                    _checkList.MailHtmlBody = mailItem.HTMLBody ?? Resources.FailedToGetInformation;
+                    break;
+                case Outlook.MeetingItem meetingItem:
+                    isMeetingItem = true;
+                    _checkList.MailType = Resources.MeetingRequest;
+                    _checkList.MailBody = string.IsNullOrEmpty(meetingItem.Body) ? Resources.FailedToGetInformation : meetingItem.Body.Replace("\r\n\r\n", "\r\n");
 
-                if (((Outlook.MeetingItem)item).RTFBody is byte[] byteArray)
-                {
-                    var encoding = new System.Text.ASCIIEncoding();
-                    _checkList.MailHtmlBody = encoding.GetString(byteArray);
-                }
-                else
-                {
-                    _checkList.MailHtmlBody = _checkList.MailBody;
-                }
+                    if (meetingItem.RTFBody is byte[] byteArray)
+                    {
+                        var encoding = new System.Text.ASCIIEncoding();
+                        _checkList.MailHtmlBody = encoding.GetString(byteArray);
+                    }
+                    else
+                    {
+                        _checkList.MailHtmlBody = _checkList.MailBody;
+                    }
+                    break;
+                case Outlook.TaskRequestItem taskRequestItem:
+                    isTaskRequestItem = true;
+                    _checkList.MailType = Resources.TaskRequest;
+
+                    var associatedTask = taskRequestItem.GetAssociatedTask(false);
+                    Thread.Sleep(10);
+                    _checkList.MailBody = string.IsNullOrEmpty(associatedTask.Body) ? Resources.FailedToGetInformation : associatedTask.Body.Replace("\r\n\r\n", "\r\n");
+
+                    if (associatedTask.RTFBody is byte[] bodyByteArray)
+                    {
+                        var encoding = new System.Text.ASCIIEncoding();
+                        _checkList.MailHtmlBody = encoding.GetString(bodyByteArray);
+                    }
+                    else
+                    {
+                        _checkList.MailHtmlBody = _checkList.MailBody;
+                    }
+                    break;
             }
 
             _checkList.Subject = ((dynamic)item).Subject ?? Resources.FailedToGetInformation;
@@ -139,12 +158,12 @@ namespace OutlookOkan.Models
             _checkList = CheckKeyword(_checkList, alertKeywordAndMessageList);
             _checkList = CheckKeywordForSubject(_checkList, alertKeywordAndMessageForSubjectList);
 
-            var displayNameAndRecipient = MakeDisplayNameAndRecipient(((dynamic)item).Recipients, new DisplayNameAndRecipient(), generalSetting, isMailItem);
+            var displayNameAndRecipient = isTaskRequestItem ? MakeDisplayNameAndRecipient(((Outlook.TaskRequestItem)item).GetAssociatedTask(false).Recipients, new DisplayNameAndRecipient(), generalSetting, false) : (DisplayNameAndRecipient)MakeDisplayNameAndRecipient(((dynamic)item).Recipients, new DisplayNameAndRecipient(), generalSetting, isMeetingItem);
 
             var autoAddRecipients = AutoAddCcAndBcc(item, generalSetting, displayNameAndRecipient, autoCcBccKeywordList, autoCcBccAttachedFilesList, autoCcBccRecipientList, CountRecipientExternalDomains(displayNameAndRecipient, _checkList.SenderDomain, internalDomainList, false), _checkList.Sender, generalSetting.IsAutoAddSenderToBcc, generalSetting.IsAutoAddSenderToCc);
             if (autoAddRecipients?.Count > 0)
             {
-                displayNameAndRecipient = MakeDisplayNameAndRecipient(autoAddRecipients, displayNameAndRecipient, generalSetting, isMailItem);
+                displayNameAndRecipient = MakeDisplayNameAndRecipient(autoAddRecipients, displayNameAndRecipient, generalSetting, isMeetingItem);
                 _ = ((dynamic)item).Recipients.ResolveAll();
             }
 
@@ -681,16 +700,16 @@ namespace OutlookOkan.Models
         /// <param name="recipients">メールの宛先</param>
         /// <param name="displayNameAndRecipient">宛先アドレスと名称</param>
         /// <param name="generalSetting">一般設定</param>
-        /// <param name="isMailItem">メールアイテムか否か</param>
+        /// <param name="isMeetingItem">メールアイテムか否か</param>
         /// <returns>宛先アドレスと名称</returns>
-        private DisplayNameAndRecipient MakeDisplayNameAndRecipient(IEnumerable recipients, DisplayNameAndRecipient displayNameAndRecipient, GeneralSetting generalSetting, bool isMailItem)
+        private DisplayNameAndRecipient MakeDisplayNameAndRecipient(IEnumerable recipients, DisplayNameAndRecipient displayNameAndRecipient, GeneralSetting generalSetting, bool isMeetingItem)
         {
             foreach (Outlook.Recipient recipient in recipients)
             {
                 var recipientAddressEntryUserType = Outlook.OlAddressEntryUserType.olOtherAddressEntry;
                 try
                 {
-                    if (!isMailItem)
+                    if (isMeetingItem)
                     {
                         if (!recipient.Sendable) continue;
                     }

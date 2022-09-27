@@ -99,25 +99,10 @@ namespace OutlookOkan
             var autoAddMessageSettingList = autoAddMessageCsv.GetCsvRecords<AutoAddMessage>(autoAddMessageCsv.LoadCsv<AutoAddMessageMap>());
             if (autoAddMessageSettingList.Count > 0) autoAddMessageSetting = autoAddMessageSettingList[0];
 
-            Type type;
-            switch (item)
-            {
-                //MailItem(通常のメール)とMeetingItem(会議招待)の場合にのみ動作させる。
-                case Outlook.MailItem _:
-                    type = typeof(Outlook.MailItem);
-                    break;
-                case Outlook.MeetingItem _ when _generalSetting.IsShowConfirmationAtSendMeetingRequest:
-                    type = typeof(Outlook.MeetingItem);
-                    break;
-                case Outlook.MeetingItem _:
-                    return;
-                default:
-                    return;
-            }
-
             //Moderationでの返信には何もしない。(キャンセルすると、承認や非承認ができなくなる場合があるため)
             if (((dynamic)item).MessageClass == "IPM.Note.Microsoft.Approval.Reply.Approve" || ((dynamic)item).MessageClass == "IPM.Note.Microsoft.Approval.Reply.Reject") return;
 
+            var type = typeof(Outlook.MailItem);
             //何らかの問題で確認画面が表示されないと、意図せずメールが送られてしまう恐れがあるため、念のための処理。
             try
             {
@@ -146,7 +131,29 @@ namespace OutlookOkan
                 }
 
                 var generateCheckList = new GenerateCheckList();
-                var checklist = type == typeof(Outlook.MailItem) ? generateCheckList.GenerateCheckListFromMail((Outlook.MailItem)item, _generalSetting, contacts, autoAddMessageSetting) : generateCheckList.GenerateCheckListFromMail((Outlook.MeetingItem)item, _generalSetting, contacts, autoAddMessageSetting);
+                CheckList checklist;
+                switch (item)
+                {
+                    //MailItem(通常のメール)とMeetingItem(会議招待)の場合にのみ動作させる。
+                    case Outlook.MailItem mailItem:
+                        type = typeof(Outlook.MailItem);
+                        checklist = generateCheckList.GenerateCheckListFromMail(mailItem, _generalSetting, contacts, autoAddMessageSetting);
+                        break;
+                    case Outlook.MeetingItem meetingItem when _generalSetting.IsShowConfirmationAtSendMeetingRequest:
+                        type = typeof(Outlook.MeetingItem);
+                        checklist = generateCheckList.GenerateCheckListFromMail(meetingItem, _generalSetting, contacts, autoAddMessageSetting);
+                        break;
+                    case Outlook.MeetingItem _:
+                        return;
+                    case Outlook.TaskRequestItem taskRequestItem when _generalSetting.IsShowConfirmationAtSendTaskRequest:
+                        type = typeof(Outlook.TaskRequestItem);
+                        checklist = generateCheckList.GenerateCheckListFromMail(taskRequestItem, _generalSetting, contacts, autoAddMessageSetting);
+                        break;
+                    case Outlook.TaskRequestItem _:
+                        return;
+                    default:
+                        return;
+                }
 
                 if (_generalSetting.IsAutoCheckIfAllRecipientsAreSameDomain)
                 {
@@ -278,6 +285,7 @@ namespace OutlookOkan
             _generalSetting.IsAutoAddSenderToCc = generalSetting[0].IsAutoAddSenderToCc;
             _generalSetting.IsCheckNameAndDomainsIncludeSubject = generalSetting[0].IsCheckNameAndDomainsIncludeSubject;
             _generalSetting.IsCheckNameAndDomainsFromSubject = generalSetting[0].IsCheckNameAndDomainsFromSubject;
+            _generalSetting.IsShowConfirmationAtSendTaskRequest = generalSetting[0].IsShowConfirmationAtSendTaskRequest;
         }
 
         /// <summary>

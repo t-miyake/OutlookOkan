@@ -773,6 +773,9 @@
   <data name="ShowConfirmationAtSendMeetingRequest" xml:space="preserve">
     <value>अनुरोध को पूरा करने के लिए पुष्टिकरण स्क्रीन भी प्रदर्शित की जाती है।</value>
   </data>
+  <data name="ShowConfirmationAtSendTaskRequest" xml:space="preserve">
+    <value>असाइन किए गए कार्य के लिए पुष्टिकरण स्क्रीन भी प्रदर्शित होती है।</value>
+  </data>
   <data name="Subject" xml:space="preserve">
     <value>विषय</value>
   </data>
@@ -791,6 +794,9 @@
   <data name="TargetToAndCcExternalDomainsNumInfo" xml:space="preserve">
     <value>* यदि ईमेल के प्रति और प्रतिलिपि में शामिल बाहरी डोमेन इस सेटिंग से बड़ा या उसके बराबर है,
 यह सुविधा लागू होगी।</value>
+  </data>
+  <data name="TaskRequest" xml:space="preserve">
+    <value>टास्क असाइन करें</value>
   </data>
   <data name="Text" xml:space="preserve">
     <value>सादे पाठ</value>

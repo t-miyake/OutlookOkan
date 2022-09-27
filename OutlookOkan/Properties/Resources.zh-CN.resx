@@ -771,6 +771,9 @@
   <data name="ShowConfirmationAtSendMeetingRequest" xml:space="preserve">
     <value>会议请求也会显示一个确认屏幕。</value>
   </data>
+  <data name="ShowConfirmationAtSendTaskRequest" xml:space="preserve">
+    <value>分配任务时也会显示确认屏幕。</value>
+  </data>
   <data name="Subject" xml:space="preserve">
     <value>主题</value>
   </data>
@@ -789,6 +792,9 @@
   <data name="TargetToAndCcExternalDomainsNumInfo" xml:space="preserve">
     <value>* 如果电子邮件的收件人和抄送人中包含的外部域大于或等于此设置。
 这个功能将被应用。</value>
+  </data>
+  <data name="TaskRequest" xml:space="preserve">
+    <value>指派任务</value>
   </data>
   <data name="Text" xml:space="preserve">
     <value>Plain-text</value>

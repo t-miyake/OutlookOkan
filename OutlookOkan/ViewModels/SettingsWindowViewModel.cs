@@ -1414,6 +1414,7 @@ namespace OutlookOkan.ViewModels
             IsAutoAddSenderToCc = _generalSetting[0].IsAutoAddSenderToCc;
             IsCheckNameAndDomainsIncludeSubject = _generalSetting[0].IsCheckNameAndDomainsIncludeSubject;
             IsCheckNameAndDomainsFromSubject = _generalSetting[0].IsCheckNameAndDomainsFromSubject;
+            IsShowConfirmationAtSendTaskRequest = _generalSetting[0].IsShowConfirmationAtSendTaskRequest;
 
             if (_generalSetting[0].LanguageCode is null) return;
 
@@ -1461,7 +1462,8 @@ namespace OutlookOkan.ViewModels
                     IsShowConfirmationAtSendMeetingRequest = IsShowConfirmationAtSendMeetingRequest,
                     IsAutoAddSenderToCc = IsAutoAddSenderToCc,
                     IsCheckNameAndDomainsIncludeSubject = IsCheckNameAndDomainsIncludeSubject,
-                    IsCheckNameAndDomainsFromSubject =IsCheckNameAndDomainsFromSubject
+                    IsCheckNameAndDomainsFromSubject =IsCheckNameAndDomainsFromSubject,
+                    IsShowConfirmationAtSendTaskRequest = IsShowConfirmationAtSendTaskRequest,
                 }
             };
 
@@ -1737,6 +1739,16 @@ namespace OutlookOkan.ViewModels
             }
         }
 
+        private bool _isShowConfirmationAtSendTaskRequest;
+        public bool IsShowConfirmationAtSendTaskRequest
+        {
+            get => _isShowConfirmationAtSendTaskRequest;
+            set
+            {
+                _isShowConfirmationAtSendTaskRequest = value;
+                OnPropertyChanged(nameof(IsShowConfirmationAtSendTaskRequest));
+            }
+        }
         public bool IsWarningIfRecipientsIsNotRegisteredCheckBoxIsEnabled => !IsProhibitsSendingMailIfRecipientsIsNotRegistered;
 
         private LanguageCodeAndName _language = new LanguageCodeAndName();
