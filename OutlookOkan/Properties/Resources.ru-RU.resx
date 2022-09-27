@@ -225,6 +225,9 @@
   <data name="AutoAddToRecipientByForceAutoChangeRecipientsToBccAddressToAlert" xml:space="preserve">
     <value>Указанный адрес электронной почты был автоматически добавлен к Кому. (поскольку адреса To больше не существует из-за автоматического изменения на Bcc).</value>
   </data>
+  <data name="AutoCheckAttachments" xml:space="preserve">
+    <value>Вложения будут автоматически проверены.</value>
+  </data>
   <data name="AutoCheckConfig" xml:space="preserve">
     <value>Настройка автопроверки</value>
   </data>
@@ -538,6 +541,18 @@
   <data name="Keyword" xml:space="preserve">
     <value>Ключевые слова</value>
   </data>
+  <data name="KeywordAndRecipients" xml:space="preserve">
+    <value>Соотношение ключевых слов и адресатов</value>
+  </data>
+  <data name="KeywordAndRecipientsAlert1" xml:space="preserve">
+    <value>Ключевое слово "</value>
+  </data>
+  <data name="KeywordAndRecipientsAlert2" xml:space="preserve">
+    <value>", связанное с "</value>
+  </data>
+  <data name="KeywordAndRecipientsAlert3" xml:space="preserve">
+    <value>", не существует.</value>
+  </data>
   <data name="LargeNumberOfExternalDomainAlert" xml:space="preserve">
     <value>Количество внешних доменов в To и Cc превышает пороговое значение. Пожалуйста, подтвердите плюсы и минусы отправки.</value>
   </data>
@@ -742,6 +757,16 @@
 
 Домен адреса электронной почты отправителя всегда рассматривается как внутренний домен.</value>
   </data>
+  <data name="SettingExampleKeywordAndRecipients" xml:space="preserve">
+    <value>Название: Noraneko Inc
+Домен: @noraneko.co.jp
+
+Зарегистрируйте ключевые слова (например, название компании) и назначение (например, домен).
+
+Если в теле письма нет получателя, соответствующего ключевым словам, отображается предупреждение.
+
+*Субъекты также могут быть включены в чек.</value>
+  </data>
   <data name="SettingExampleNameAndDomain" xml:space="preserve">
     <value>Название: Noraneko Inc
 Домен: @noraneko.co.jp
@@ -777,6 +802,9 @@
   <data name="ShowConfirmationAtSendMeetingRequest" xml:space="preserve">
     <value>Также отображается экран подтверждения запроса на проведение встречи.</value>
   </data>
+  <data name="ShowConfirmationAtSendTaskRequest" xml:space="preserve">
+    <value>Для назначения задания также отображается экран подтверждения.</value>
+  </data>
   <data name="Subject" xml:space="preserve">
     <value>Тема</value>
   </data>
@@ -796,6 +824,9 @@
     <value>* Если внешний домен, включенный в поля To и Cc электронного письма, больше или равен этому параметру, 
 эта функция будет применена.</value>
   </data>
+  <data name="TaskRequest" xml:space="preserve">
+    <value>Назначить задание</value>
+  </data>
   <data name="Text" xml:space="preserve">
     <value>Обычный текст</value>
   </data>
@@ -809,7 +840,7 @@
     <value>Неизвестно</value>
   </data>
   <data name="Version" xml:space="preserve">
-    <value>Version 2.7.1.0</value>
+    <value>Version 2.7.2.0</value>
   </data>
   <data name="VersionInfo" xml:space="preserve">
     <value>О программе.</value>

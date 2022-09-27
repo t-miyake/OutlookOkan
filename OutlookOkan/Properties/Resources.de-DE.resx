@@ -225,6 +225,9 @@
   <data name="AutoAddToRecipientByForceAutoChangeRecipientsToBccAddressToAlert" xml:space="preserve">
     <value>Die angegebene E-Mail-Adresse wurde automatisch zu "An" hinzugefügt. (weil die Adresse "An" durch die automatische Änderung in "Bcc" nicht mehr existiert).</value>
   </data>
+  <data name="AutoCheckAttachments" xml:space="preserve">
+    <value>Die Anhänge werden automatisch geprüft.</value>
+  </data>
   <data name="AutoCheckConfig" xml:space="preserve">
     <value>Auto-Check-Einstellung</value>
   </data>
@@ -539,6 +542,19 @@ wird auf dem Bestätigungsbildschirm eine Warnung angezeigt.</value>
   <data name="Keyword" xml:space="preserve">
     <value>Schlüsselwörter</value>
   </data>
+  <data name="KeywordAndRecipients" xml:space="preserve">
+    <value>Verknüpfung von Schlüsselwörtern 
+und Empfängern</value>
+  </data>
+  <data name="KeywordAndRecipientsAlert1" xml:space="preserve">
+    <value>Das Schlüsselwort "</value>
+  </data>
+  <data name="KeywordAndRecipientsAlert2" xml:space="preserve">
+    <value>", das mit "</value>
+  </data>
+  <data name="KeywordAndRecipientsAlert3" xml:space="preserve">
+    <value>" verbunden ist, existiert nicht.</value>
+  </data>
   <data name="LargeNumberOfExternalDomainAlert" xml:space="preserve">
     <value>Die Anzahl der externen Domains in To und Cc ist höher als der Schwellenwert. Bitte bestätigen Sie noch einmal die Vor- und Nachteile des Versands.</value>
   </data>
@@ -744,6 +760,16 @@ Registrieren Sie eine Domäne, die als interne (Unternehmens-)Domäne behandelt 
 
 Die Domäne der E-Mail-Adresse des Absenders wird immer als interne Domäne behandelt.</value>
   </data>
+  <data name="SettingExampleKeywordAndRecipients" xml:space="preserve">
+    <value>Name: Noraneko Inc
+Domain: @noraneko.co.jp
+
+Registrieren Sie Schlüsselwörter (z. B. den Firmennamen) und das Ziel (z. B. die Domain).
+
+Wenn es keinen Empfänger gibt, der den Schlüsselwörtern im E-Mail-Text entspricht, wird eine Warnung angezeigt.
+
+*Betreffs können ebenfalls in die Prüfung einbezogen werden.</value>
+  </data>
   <data name="SettingExampleNameAndDomain" xml:space="preserve">
     <value>Name: Noraneko Inc
 Domain: @noraneko.co.jp
@@ -779,6 +805,9 @@ Die entsprechenden Empfänger werden auf dem Bestätigungsbildschirm angekreuzt.
   <data name="ShowConfirmationAtSendMeetingRequest" xml:space="preserve">
     <value>Außerdem wird ein Bestätigungsbildschirm für die Besprechungsanfrage angezeigt.</value>
   </data>
+  <data name="ShowConfirmationAtSendTaskRequest" xml:space="preserve">
+    <value>Das Bestätigungsbild wird auch für die Aufgabenzuweisung angezeigt.</value>
+  </data>
   <data name="Subject" xml:space="preserve">
     <value>Betreff</value>
   </data>
@@ -798,6 +827,9 @@ Die entsprechenden Empfänger werden auf dem Bestätigungsbildschirm angekreuzt.
     <value>* Wenn die externe Domäne, die in To und Cc der E-Mail enthalten ist, größer als oder gleich dieser Einstellung ist, 
 wird diese Funktion angewendet.</value>
   </data>
+  <data name="TaskRequest" xml:space="preserve">
+    <value>Aufgabe zuweisen</value>
+  </data>
   <data name="Text" xml:space="preserve">
     <value>Klartext</value>
   </data>
@@ -811,7 +843,7 @@ wird diese Funktion angewendet.</value>
     <value>Unbekannt</value>
   </data>
   <data name="Version" xml:space="preserve">
-    <value>Version 2.7.1.0</value>
+    <value>Version 2.7.2.0</value>
   </data>
   <data name="VersionInfo" xml:space="preserve">
     <value>Über das Programm</value>

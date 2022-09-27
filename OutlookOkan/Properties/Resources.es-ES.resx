@@ -225,6 +225,9 @@
   <data name="AutoAddToRecipientByForceAutoChangeRecipientsToBccAddressToAlert" xml:space="preserve">
     <value>La dirección de correo electrónico especificada se ha añadido automáticamente a Para. (porque el Para ya no existe debido al cambio automático a Bcc).</value>
   </data>
+  <data name="AutoCheckAttachments" xml:space="preserve">
+    <value>Los archivos adjuntos se comprobarán automáticamente.</value>
+  </data>
   <data name="AutoCheckConfig" xml:space="preserve">
     <value>Ajuste de la autocomprobación</value>
   </data>
@@ -537,6 +540,19 @@ cuando los destinatarios (To/Cc) tienen un gran número de dominios externos.</v
   <data name="Keyword" xml:space="preserve">
     <value>Palabras clave</value>
   </data>
+  <data name="KeywordAndRecipients" xml:space="preserve">
+    <value>Relacionar palabras clave
+ y destinatarios</value>
+  </data>
+  <data name="KeywordAndRecipientsAlert1" xml:space="preserve">
+    <value>La palabra clave "</value>
+  </data>
+  <data name="KeywordAndRecipientsAlert2" xml:space="preserve">
+    <value>" relacionada con "</value>
+  </data>
+  <data name="KeywordAndRecipientsAlert3" xml:space="preserve">
+    <value>" no existe.</value>
+  </data>
   <data name="LargeNumberOfExternalDomainAlert" xml:space="preserve">
     <value>El número de dominios externos en To y Cc es superior al umbral. Por favor, reconfirme los pros y los contras del envío.</value>
   </data>
@@ -742,6 +758,16 @@ Registre un dominio para que sea tratado como un dominio interno (de la empresa)
 
 El dominio de la dirección de correo electrónico del remitente siempre se trata como un dominio interno.</value>
   </data>
+  <data name="SettingExampleKeywordAndRecipients" xml:space="preserve">
+    <value>Nombre: Noraneko Inc.
+Dominio: @noraneko.co.jp
+
+Registre las palabras clave (por ejemplo, el nombre de la empresa) y el destino (por ejemplo, el dominio).
+
+Si no hay ningún destinatario que corresponda a las palabras clave en el cuerpo del correo electrónico, se muestra una advertencia..
+
+*También puede incluirse en el cheque.</value>
+  </data>
   <data name="SettingExampleNameAndDomain" xml:space="preserve">
     <value>Nombre: Noraneko Inc.
 Dominio: @noraneko.co.jp
@@ -777,6 +803,9 @@ Los destinatarios correspondientes se marcarán previamente en la pantalla de co
   <data name="ShowConfirmationAtSendMeetingRequest" xml:space="preserve">
     <value>También se muestra una pantalla de confirmación para la solicitud de reunión.</value>
   </data>
+  <data name="ShowConfirmationAtSendTaskRequest" xml:space="preserve">
+    <value>También se muestra la pantalla de confirmación para asignar la tarea.</value>
+  </data>
   <data name="Subject" xml:space="preserve">
     <value>Asunto</value>
   </data>
@@ -796,6 +825,9 @@ Los destinatarios correspondientes se marcarán previamente en la pantalla de co
     <value>* Si el dominio externo incluido en el To y Cc del correo electrónico es mayor o igual a esta configuración, 
 se aplicará esta función.</value>
   </data>
+  <data name="TaskRequest" xml:space="preserve">
+    <value>Asignar tarea</value>
+  </data>
   <data name="Text" xml:space="preserve">
     <value>Texto plano</value>
   </data>
@@ -809,7 +841,7 @@ se aplicará esta función.</value>
     <value>Desconocido</value>
   </data>
   <data name="Version" xml:space="preserve">
-    <value>Version 2.7.1.0</value>
+    <value>Version 2.7.2.0</value>
   </data>
   <data name="VersionInfo" xml:space="preserve">
     <value>Sobre el programa</value>

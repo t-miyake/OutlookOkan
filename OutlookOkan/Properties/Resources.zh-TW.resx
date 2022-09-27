@@ -222,6 +222,9 @@
   <data name="AutoAddToRecipientByForceAutoChangeRecipientsToBccAddressToAlert" xml:space="preserve">
     <value>指定的電子郵件地址被自動添加到收件人中。 (因為收件人已經不存在了，因為自動改為密件)。</value>
   </data>
+  <data name="AutoCheckAttachments" xml:space="preserve">
+    <value>附件將被自動檢查。</value>
+  </data>
   <data name="AutoCheckConfig" xml:space="preserve">
     <value>自動檢查設置</value>
   </data>
@@ -533,6 +536,18 @@
   <data name="Keyword" xml:space="preserve">
     <value>關鍵詞</value>
   </data>
+  <data name="KeywordAndRecipients" xml:space="preserve">
+    <value>將關鍵詞和收件人聯繫起來</value>
+  </data>
+  <data name="KeywordAndRecipientsAlert1" xml:space="preserve">
+    <value>關鍵詞"</value>
+  </data>
+  <data name="KeywordAndRecipientsAlert2" xml:space="preserve">
+    <value>"中的"</value>
+  </data>
+  <data name="KeywordAndRecipientsAlert3" xml:space="preserve">
+    <value>"不存在。</value>
+  </data>
   <data name="LargeNumberOfExternalDomainAlert" xml:space="preserve">
     <value>收件人和抄送人中的外部域的數量高於閾值。請再次確認發送的優點和缺點。</value>
   </data>
@@ -736,6 +751,16 @@
 
 發件人的電子郵件地址的域總是被當作內部域。</value>
   </data>
+  <data name="SettingExampleKeywordAndRecipients" xml:space="preserve">
+    <value>名稱。 Noraneko Inc
+域名。 @noraneko.co.jp
+
+註冊關鍵詞（如公司名稱）和目的地（如域名）。
+
+如果沒有與郵件正文中的關鍵詞相對應的收件人，將顯示警告。
+
+*主題也可以包括在檢查中。</value>
+  </data>
   <data name="SettingExampleNameAndDomain" xml:space="preserve">
     <value>名稱。 Noraneko Inc
 域名。 @noraneko.co.jp
@@ -771,6 +796,9 @@
   <data name="ShowConfirmationAtSendMeetingRequest" xml:space="preserve">
     <value>會議請求也顯示一個確認屏幕。</value>
   </data>
+  <data name="ShowConfirmationAtSendTaskRequest" xml:space="preserve">
+    <value>分配任務時也會顯示確認屏幕。</value>
+  </data>
   <data name="Subject" xml:space="preserve">
     <value>主題</value>
   </data>
@@ -790,6 +818,9 @@
     <value>* 如果電子郵件的收件人和抄送人中包含的外部域大於或等於此設置。
 這個功能將被應用。</value>
   </data>
+  <data name="TaskRequest" xml:space="preserve">
+    <value>指派任務</value>
+  </data>
   <data name="Text" xml:space="preserve">
     <value>Plain-text</value>
   </data>
@@ -803,7 +834,7 @@
     <value>不詳</value>
   </data>
   <data name="Version" xml:space="preserve">
-    <value>Version 2.7.1.0</value>
+    <value>Version 2.7.2.0</value>
   </data>
   <data name="VersionInfo" xml:space="preserve">
     <value>軟件信息</value>

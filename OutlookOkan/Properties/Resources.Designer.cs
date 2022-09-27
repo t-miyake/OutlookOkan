@@ -376,6 +376,15 @@ namespace OutlookOkan.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to The attachments will be auto-checked..
+        /// </summary>
+        public static string AutoCheckAttachments {
+            get {
+                return ResourceManager.GetString("AutoCheckAttachments", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Auto-check setting.
         /// </summary>
         public static string AutoCheckConfig {
@@ -1295,6 +1304,42 @@ namespace OutlookOkan.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Relating keywords and recipients.
+        /// </summary>
+        public static string KeywordAndRecipients {
+            get {
+                return ResourceManager.GetString("KeywordAndRecipients", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Keyword &quot;.
+        /// </summary>
+        public static string KeywordAndRecipientsAlert1 {
+            get {
+                return ResourceManager.GetString("KeywordAndRecipientsAlert1", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to &quot; the related of &quot;.
+        /// </summary>
+        public static string KeywordAndRecipientsAlert2 {
+            get {
+                return ResourceManager.GetString("KeywordAndRecipientsAlert2", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to &quot; does not exist..
+        /// </summary>
+        public static string KeywordAndRecipientsAlert3 {
+            get {
+                return ResourceManager.GetString("KeywordAndRecipientsAlert3", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to The number of external domains in To and Cc is higher than the threshold. Please reconfirm the pros and cons of the sending..
         /// </summary>
         public static string LargeNumberOfExternalDomainAlert {
@@ -1777,6 +1822,22 @@ namespace OutlookOkan.Properties {
         ///   Looks up a localized string similar to Name: Noraneko Inc
         ///Domain: @noraneko.co.jp
         ///
+        ///Register keywords (company name, etc.) and recipients (domain, etc.).
+        ///
+        ///If there is no recipient corresponding to the keywords in the body of the e-mail, a warning will be displayed.
+        ///
+        ///*Subjects can also be included in the check..
+        /// </summary>
+        public static string SettingExampleKeywordAndRecipients {
+            get {
+                return ResourceManager.GetString("SettingExampleKeywordAndRecipients", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Name: Noraneko Inc
+        ///Domain: @noraneko.co.jp
+        ///
         ///Register the name (ex. Company name) and domain.
         ///
         ///Displays a warning if the name in the email body and the recipients domain do not match.
@@ -1839,6 +1900,15 @@ namespace OutlookOkan.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to The confirmation screen is also displayed for assign task..
+        /// </summary>
+        public static string ShowConfirmationAtSendTaskRequest {
+            get {
+                return ResourceManager.GetString("ShowConfirmationAtSendTaskRequest", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Subject.
         /// </summary>
         public static string Subject {
@@ -1893,6 +1963,15 @@ namespace OutlookOkan.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Assign Task.
+        /// </summary>
+        public static string TaskRequest {
+            get {
+                return ResourceManager.GetString("TaskRequest", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Plain-text.
         /// </summary>
         public static string Text {
@@ -1929,7 +2008,7 @@ namespace OutlookOkan.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Version 2.7.1.0.
+        ///   Looks up a localized string similar to Version 2.7.2.0.
         /// </summary>
         public static string Version {
             get {

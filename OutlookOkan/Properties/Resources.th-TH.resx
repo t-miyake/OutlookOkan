@@ -222,6 +222,9 @@
   <data name="AutoAddToRecipientByForceAutoChangeRecipientsToBccAddressToAlert" xml:space="preserve">
     <value>ที่อยู่อีเมลที่ระบุถูกเพิ่มลงใน To โดยอัตโนมัติ (เนื่องจากไม่มีถึงอีกต่อไปเนื่องจากเปลี่ยนเป็นสำเนาลับอัตโนมัติ)</value>
   </data>
+  <data name="AutoCheckAttachments" xml:space="preserve">
+    <value>ไฟล์แนบจะถูกตรวจสอบโดยอัตโนมัติ</value>
+  </data>
   <data name="AutoCheckConfig" xml:space="preserve">
     <value>ตรวจสอบการตั้งค่าอัตโนมัติ</value>
   </data>
@@ -535,6 +538,18 @@ bcc โดยอัตโนมัติ</value>
   <data name="Keyword" xml:space="preserve">
     <value>คีย์เวิร์ด</value>
   </data>
+  <data name="KeywordAndRecipients" xml:space="preserve">
+    <value>คีย์เวิร์ดและผู้รับที่เกี่ยวข้อง</value>
+  </data>
+  <data name="KeywordAndRecipientsAlert1" xml:space="preserve">
+    <value>ไม่มีคำหลัก "</value>
+  </data>
+  <data name="KeywordAndRecipientsAlert2" xml:space="preserve">
+    <value>" ที่เกี่ยวข้องกับ "</value>
+  </data>
+  <data name="KeywordAndRecipientsAlert3" xml:space="preserve">
+    <value>"</value>
+  </data>
   <data name="LargeNumberOfExternalDomainAlert" xml:space="preserve">
     <value>จำนวนโดเมนภายนอกใน To และ Cc สูงกว่าขีดจำกัด โปรดยืนยันข้อดีข้อเสียของการส่ง</value>
   </data>
@@ -737,6 +752,16 @@ bcc โดยอัตโนมัติ</value>
 
 โดเมนของที่อยู่อีเมลของผู้ส่งจะถือเป็นโดเมนภายในเสมอ</value>
   </data>
+  <data name="SettingExampleKeywordAndRecipients" xml:space="preserve">
+    <value>ชื่อ: Noraneko Inc
+โดเมน: @noraneko.co.jp
+
+ลงทะเบียนคำสำคัญ (ชื่อบริษัท ฯลฯ) และผู้รับ (โดเมน ฯลฯ)
+
+หากไม่มีผู้รับที่ตรงกับคำสำคัญในเนื้อหาของอีเมล คำเตือนจะปรากฏขึ้น
+
+* วิชาสามารถรวมไว้ในเช็คได้</value>
+  </data>
   <data name="SettingExampleNameAndDomain" xml:space="preserve">
     <value>ชื่อ: Noraneko Inc
 โดเมน: @noraneko.co.jp
@@ -772,6 +797,9 @@ bcc โดยอัตโนมัติ</value>
   <data name="ShowConfirmationAtSendMeetingRequest" xml:space="preserve">
     <value>หน้าจอยืนยันจะปรากฏขึ้นสำหรับการเรียกประชุมด้วย</value>
   </data>
+  <data name="ShowConfirmationAtSendTaskRequest" xml:space="preserve">
+    <value>หน้าจอยืนยันจะปรากฏขึ้นเพื่อมอบหมายงานด้วย</value>
+  </data>
   <data name="Subject" xml:space="preserve">
     <value>เรื่อง</value>
   </data>
@@ -791,6 +819,9 @@ bcc โดยอัตโนมัติ</value>
     <value>* หากโดเมนภายนอกที่รวมอยู่ใน To และ Cc ของอีเมลมีค่ามากกว่าหรือเท่ากับการตั้งค่านี้
 คุณลักษณะนี้จะถูกนำไปใช้</value>
   </data>
+  <data name="TaskRequest" xml:space="preserve">
+    <value>มอบหมายงาน</value>
+  </data>
   <data name="Text" xml:space="preserve">
     <value>ข้อความธรรมดา</value>
   </data>
@@ -804,7 +835,7 @@ bcc โดยอัตโนมัติ</value>
     <value>ไม่รู้จัก</value>
   </data>
   <data name="Version" xml:space="preserve">
-    <value>Version 2.7.1.0</value>
+    <value>Version 2.7.2.0</value>
   </data>
   <data name="VersionInfo" xml:space="preserve">
     <value>เกี่ยวกับโปรแกรมนี้</value>

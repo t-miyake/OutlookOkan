@@ -29,6 +29,9 @@ namespace OutlookOkan.Types
         public bool IsAutoAddSenderToCc { get; set; }
         public bool IsCheckNameAndDomainsIncludeSubject { get; set; }
         public bool IsCheckNameAndDomainsFromSubject { get; set; }
+        public bool IsShowConfirmationAtSendTaskRequest { get; set; }
+        public bool IsAutoCheckAttachments { get; set; }
+        public bool IsCheckKeywordAndRecipientsIncludeSubject { get; set; }
     }
 
     public sealed class GeneralSettingMap : ClassMap<GeneralSetting>
@@ -107,6 +110,15 @@ namespace OutlookOkan.Types
                 .BooleanValues(true, true, "Yes", "Y").TypeConverterOption.BooleanValues(false, true, "No", "N").Default(false);
 
             _ = Map(m => m.IsCheckNameAndDomainsFromSubject).Index(24).TypeConverterOption
+                .BooleanValues(true, true, "Yes", "Y").TypeConverterOption.BooleanValues(false, true, "No", "N").Default(false);
+
+            _ = Map(m => m.IsShowConfirmationAtSendTaskRequest).Index(25).TypeConverterOption
+                .BooleanValues(true, true, "Yes", "Y").TypeConverterOption.BooleanValues(false, true, "No", "N").Default(false);
+
+            _ = Map(m => m.IsAutoCheckAttachments).Index(26).TypeConverterOption
+                .BooleanValues(true, true, "Yes", "Y").TypeConverterOption.BooleanValues(false, true, "No", "N").Default(false);
+
+            _ = Map(m => m.IsCheckKeywordAndRecipientsIncludeSubject).Index(27).TypeConverterOption
                 .BooleanValues(true, true, "Yes", "Y").TypeConverterOption.BooleanValues(false, true, "No", "N").Default(false);
         }
     }

@@ -293,7 +293,7 @@
     <value>名称</value>
   </data>
   <data name="NameAndDomain" xml:space="preserve">
-    <value>宛先名称とドメインの紐づけ</value>
+    <value>宛先名称とドメインの紐付け</value>
   </data>
   <data name="NoAlert" xml:space="preserve">
     <value>重要な警告はありません。</value>
@@ -362,7 +362,7 @@
     <value>Copyright (C) 2022 Noraneko Inc.</value>
   </data>
   <data name="Version" xml:space="preserve">
-    <value>バージョン 2.7.1.0</value>
+    <value>バージョン 2.7.2.0</value>
   </data>
   <data name="VersionInfo" xml:space="preserve">
     <value>バージョン情報</value>
@@ -820,5 +820,36 @@
   </data>
   <data name="TargetAttachmentFileExtensionOfOpen" xml:space="preserve">
     <value>対象とする添付ファイルの拡張子：</value>
+  </data>
+  <data name="TaskRequest" xml:space="preserve">
+    <value>タスク依頼</value>
+  </data>
+  <data name="ShowConfirmationAtSendTaskRequest" xml:space="preserve">
+    <value>タスク依頼にも確認画面を表示する。</value>
+  </data>
+  <data name="AutoCheckAttachments" xml:space="preserve">
+    <value>添付ファイルは、あらかじめチェックを自動付与する。</value>
+  </data>
+  <data name="KeywordAndRecipients" xml:space="preserve">
+    <value>キーワードと宛先の紐付け</value>
+  </data>
+  <data name="SettingExampleKeywordAndRecipients" xml:space="preserve">
+    <value>名称：のらねこ
+ドメイン：@noraneko.co.jp
+
+キーワード(社名等)と宛先(ドメイン等)を登録します。
+
+メール本文に記載されたキーワードに対応する宛先が無い場合、警告を表示します。
+
+※本文だけでなく、件名もチェック対象に含めることができます。</value>
+  </data>
+  <data name="KeywordAndRecipientsAlert1" xml:space="preserve">
+    <value>キーワード 「</value>
+  </data>
+  <data name="KeywordAndRecipientsAlert2" xml:space="preserve">
+    <value>」 に紐付く 宛先 「</value>
+  </data>
+  <data name="KeywordAndRecipientsAlert3" xml:space="preserve">
+    <value>」 が存在しません。</value>
   </data>
 </root>

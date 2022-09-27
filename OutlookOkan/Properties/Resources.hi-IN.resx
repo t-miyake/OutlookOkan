@@ -223,6 +223,9 @@
   <data name="AutoAddToRecipientByForceAutoChangeRecipientsToBccAddressToAlert" xml:space="preserve">
     <value>निर्दिष्ट ईमेल पता स्वचालित रूप से प्रति में जोड़ा गया था। (क्योंकि बीसीसी में स्वतः परिवर्तन के कारण To अब मौजूद नहीं है।)</value>
   </data>
+  <data name="AutoCheckAttachments" xml:space="preserve">
+    <value>अटैचमेंट की ऑटो-चेकिंग की जाएगी।</value>
+  </data>
   <data name="AutoCheckConfig" xml:space="preserve">
     <value>ऑटो-चेक सेटिंग</value>
   </data>
@@ -536,6 +539,18 @@
   <data name="Keyword" xml:space="preserve">
     <value>कीवर्ड</value>
   </data>
+  <data name="KeywordAndRecipients" xml:space="preserve">
+    <value>संबंधित कीवर्ड और प्राप्तकर्ता</value>
+  </data>
+  <data name="KeywordAndRecipientsAlert1" xml:space="preserve">
+    <value>"</value>
+  </data>
+  <data name="KeywordAndRecipientsAlert2" xml:space="preserve">
+    <value>" कीवर्ड से संबद्ध गंतव्य "</value>
+  </data>
+  <data name="KeywordAndRecipientsAlert3" xml:space="preserve">
+    <value>" मौजूद नहीं है</value>
+  </data>
   <data name="LargeNumberOfExternalDomainAlert" xml:space="preserve">
     <value>To और Cc में बाहरी डोमेन की संख्या सीमा से अधिक है। कृपया भेजने के पेशेवरों और विपक्षों की पुन: पुष्टि करें।</value>
   </data>
@@ -738,6 +753,16 @@
 
 प्रेषक के ईमेल पते के डोमेन को हमेशा आंतरिक डोमेन माना जाता है।</value>
   </data>
+  <data name="SettingExampleKeywordAndRecipients" xml:space="preserve">
+    <value>नाम: नोरानेको इंक
+डोमेन: @noraneko.co.jp
+
+कीवर्ड (कंपनी का नाम, आदि) और प्राप्तकर्ता (डोमेन, आदि) पंजीकृत करें।
+
+यदि ई-मेल के मुख्य भाग में खोजशब्दों के अनुरूप कोई प्राप्तकर्ता नहीं है, तो एक चेतावनी प्रदर्शित की जाएगी।
+
+* विषयों को भी चेक में शामिल किया जा सकता है।</value>
+  </data>
   <data name="SettingExampleNameAndDomain" xml:space="preserve">
     <value>नाम: नोरानेको इंक
 डोमेन: @noraneko.co.jp
@@ -773,6 +798,9 @@
   <data name="ShowConfirmationAtSendMeetingRequest" xml:space="preserve">
     <value>अनुरोध को पूरा करने के लिए पुष्टिकरण स्क्रीन भी प्रदर्शित की जाती है।</value>
   </data>
+  <data name="ShowConfirmationAtSendTaskRequest" xml:space="preserve">
+    <value>असाइन किए गए कार्य के लिए पुष्टिकरण स्क्रीन भी प्रदर्शित होती है।</value>
+  </data>
   <data name="Subject" xml:space="preserve">
     <value>विषय</value>
   </data>
@@ -792,6 +820,9 @@
     <value>* यदि ईमेल के प्रति और प्रतिलिपि में शामिल बाहरी डोमेन इस सेटिंग से बड़ा या उसके बराबर है,
 यह सुविधा लागू होगी।</value>
   </data>
+  <data name="TaskRequest" xml:space="preserve">
+    <value>टास्क असाइन करें</value>
+  </data>
   <data name="Text" xml:space="preserve">
     <value>सादे पाठ</value>
   </data>
@@ -805,7 +836,7 @@
     <value>अनजान</value>
   </data>
   <data name="Version" xml:space="preserve">
-    <value>Version 2.7.1.0</value>
+    <value>Version 2.7.2.0</value>
   </data>
   <data name="VersionInfo" xml:space="preserve">
     <value>कार्यक्रम के बारे में</value>
