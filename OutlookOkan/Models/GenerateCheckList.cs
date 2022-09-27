@@ -1434,7 +1434,7 @@ namespace OutlookOkan.Models
                     isExternal = false;
                 }
 
-                var isWhite = _whitelist.Count != 0 && _whitelist.Any(x => to.Key.Contains(x.WhiteName));
+                var isWhite = _whitelist.Count != 0 && _whitelist.Any(x => to.Key.EndsWith(x.WhiteName) || to.Key == x.WhiteName);
                 var isSkip = false;
 
                 if (isWhite)
@@ -1483,7 +1483,7 @@ namespace OutlookOkan.Models
                     isExternal = false;
                 }
 
-                var isWhite = _whitelist.Count != 0 && _whitelist.Any(x => cc.Key.Contains(x.WhiteName));
+                var isWhite = _whitelist.Count != 0 && _whitelist.Any(x => cc.Key.EndsWith(x.WhiteName) || cc.Key == x.WhiteName);
                 var isSkip = false;
 
                 if (isWhite)
@@ -1532,7 +1532,7 @@ namespace OutlookOkan.Models
                     isExternal = false;
                 }
 
-                var isWhite = _whitelist.Count != 0 && _whitelist.Any(x => bcc.Key.Contains(x.WhiteName));
+                var isWhite = _whitelist.Count != 0 && _whitelist.Any(x => bcc.Key.EndsWith(x.WhiteName) || bcc.Key == x.WhiteName);
                 var isSkip = false;
 
                 if (isWhite)
