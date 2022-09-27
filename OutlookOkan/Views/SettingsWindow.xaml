@@ -831,7 +831,7 @@
                     </StackPanel>
                 </Grid>
             </TabItem>
-            <TabItem Header="{Binding Source={x:Static services:ResourceService.Instance}, Path=Resources.RecipientsAndAttachmentsName, Mode=OneWay}" MinHeight="28" VerticalAlignment="Top" Width="250">
+            <TabItem Header="{Binding Source={x:Static services:ResourceService.Instance}, Path=Resources.RecipientsAndAttachmentsName, Mode=OneWay}" MinHeight="28" VerticalAlignment="Bottom" Width="250" Margin="-2,0,0,2">
                 <Grid>
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="3*" />
