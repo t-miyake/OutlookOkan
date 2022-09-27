@@ -1338,6 +1338,7 @@ namespace OutlookOkan.Models
 
             //空の設定値があると誤検知するため、空を省く。
             var cleanedNameAndDomains = nameAndDomainsList.Where(nameAndDomain => !string.IsNullOrEmpty(nameAndDomain.Domain) && !string.IsNullOrEmpty(nameAndDomain.Name)).ToList();
+            if (!cleanedNameAndDomains.Any()) return checkList;
 
             if (isCheckNameAndDomainsFromRecipients || (isCheckNameAndDomainsIncludeSubject && isCheckNameAndDomainsFromSubject))
             {
