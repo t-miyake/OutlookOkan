@@ -538,6 +538,18 @@
   <data name="Keyword" xml:space="preserve">
     <value>키워드</value>
   </data>
+  <data name="KeywordAndRecipients" xml:space="preserve">
+    <value>키워드 및 수신자 관련성</value>
+  </data>
+  <data name="KeywordAndRecipientsAlert1" xml:space="preserve">
+    <value>키워드 "</value>
+  </data>
+  <data name="KeywordAndRecipientsAlert2" xml:space="preserve">
+    <value>"와 관련된 "</value>
+  </data>
+  <data name="KeywordAndRecipientsAlert3" xml:space="preserve">
+    <value>" मौजूद नहीं है</value>
+  </data>
   <data name="LargeNumberOfExternalDomainAlert" xml:space="preserve">
     <value>To 및 Cc의 외부 도메인 수가 임계값보다 높습니다. 발송의 장단점을 재확인하시기 바랍니다.</value>
   </data>
@@ -738,6 +750,16 @@
 내부(회사) 도메인으로 취급할 도메인을 등록합니다.
 
 보낸 사람의 이메일 주소 도메인은 항상 내부 도메인으로 취급됩니다.</value>
+  </data>
+  <data name="SettingExampleKeywordAndRecipients" xml:space="preserve">
+    <value>이름: 주식회사 노라네코
+도메인: @noraneko.co.jp
+
+키워드(회사명 등)와 수신자(도메인 등)를 등록합니다.
+
+이메일 본문에 키워드에 해당하는 수신자가 없으면 경고가 표시됩니다.
+
+*수표에 과목도 포함될 수 있습니다.</value>
   </data>
   <data name="SettingExampleNameAndDomain" xml:space="preserve">
     <value>이름: 주식회사 노라네코

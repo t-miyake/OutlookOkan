@@ -23,6 +23,9 @@ namespace OutlookOkan.ViewModels
             ImportNameAndDomainsList = new RelayCommand(ImportNameAndDomainsFromCsv);
             ExportNameAndDomainsList = new RelayCommand(ExportNameAndDomainsToCsv);
 
+            ImportKeywordAndRecipientsList = new RelayCommand(ImportKeywordAndRecipientsFromCsv);
+            ExportKeywordAndRecipientsList = new RelayCommand(ExportKeywordAndRecipientsToCsv);
+
             ImportAlertKeywordAndMessagesList = new RelayCommand(ImportAlertKeywordAndMessagesFromCsv);
             ExportAlertKeywordAndMessagesList = new RelayCommand(ExportAlertKeywordAndMessagesToCsv);
 
@@ -64,6 +67,7 @@ namespace OutlookOkan.ViewModels
             LoadGeneralSettingData();
             LoadWhitelistData();
             LoadNameAndDomainsData();
+            LoadKeywordAndRecipientsData();
             LoadAlertKeywordAndMessagesData();
             LoadAlertKeywordAndMessagesForSubjectData();
             LoadAlertAddressesData();
@@ -88,6 +92,7 @@ namespace OutlookOkan.ViewModels
                     SaveGeneralSettingToCsv(),
                     SaveWhiteListToCsv(),
                     SaveNameAndDomainsToCsv(),
+                    SaveKeywordAndRecipientsToCsv(),
                     SaveAlertKeywordAndMessageToCsv(),
                     SaveAlertKeywordAndMessageForSubjectToCsv(),
                     SaveAutoCcBccKeywordsToCsv(),
@@ -235,6 +240,72 @@ namespace OutlookOkan.ViewModels
             {
                 _nameAndDomains = value;
                 OnPropertyChanged(nameof(NameAndDomains));
+            }
+        }
+
+        #endregion
+
+        #region KeywordAndRecipients
+
+        public ICommand ImportKeywordAndRecipientsList { get; }
+        public ICommand ExportKeywordAndRecipientsList { get; }
+
+        private void LoadKeywordAndRecipientsData()
+        {
+            var readCsv = new ReadAndWriteCsv("KeywordAndRecipientsList.csv");
+            var keywordAndRecipients = readCsv.GetCsvRecords<KeywordAndRecipients>(readCsv.LoadCsv<KeywordAndRecipientsMap>());
+
+            foreach (var data in keywordAndRecipients.Where(x => !string.IsNullOrEmpty(x.Keyword) && !string.IsNullOrEmpty(x.Recipient)))
+            {
+                KeywordAndRecipients.Add(data);
+            }
+        }
+
+        private async Task SaveKeywordAndRecipientsToCsv()
+        {
+            var list = KeywordAndRecipients.Where(x => !string.IsNullOrEmpty(x.Keyword) && !string.IsNullOrEmpty(x.Recipient)).Cast<object>().ToList();
+            var writeCsv = new ReadAndWriteCsv("KeywordAndRecipientsList.csv");
+            await Task.Run(() => writeCsv.WriteRecordsToCsv<KeywordAndRecipientsMap>(list));
+        }
+
+        private void ImportKeywordAndRecipientsFromCsv()
+        {
+            var importAction = new CsvImportAndExport();
+            var filePath = importAction.ImportCsv();
+
+            if (filePath is null) return;
+
+            try
+            {
+                var importData = new List<KeywordAndRecipients>(importAction.GetCsvRecords<KeywordAndRecipients>(importAction.LoadCsv<KeywordAndRecipientsMap>(filePath)));
+                foreach (var data in importData.Where(x => !string.IsNullOrEmpty(x.Keyword) && !string.IsNullOrEmpty(x.Recipient)))
+                {
+                    KeywordAndRecipients.Add(data);
+                }
+
+                _ = MessageBox.Show(Properties.Resources.SuccessfulImport, Properties.Resources.AppName, MessageBoxButton.OK);
+            }
+            catch (Exception)
+            {
+                _ = MessageBox.Show(Properties.Resources.ImportFailed, Properties.Resources.AppName, MessageBoxButton.OK);
+            }
+        }
+
+        private void ExportKeywordAndRecipientsToCsv()
+        {
+            var list = KeywordAndRecipients.Where(x => !string.IsNullOrEmpty(x.Keyword) && !string.IsNullOrEmpty(x.Recipient)).Cast<object>().ToList();
+            var exportAction = new CsvImportAndExport();
+            exportAction.CsvExport<KeywordAndRecipientsMap>(list, "KeywordAndRecipientsList.csv");
+        }
+
+        private ObservableCollection<KeywordAndRecipients> _keywordAndRecipients = new ObservableCollection<KeywordAndRecipients>();
+        public ObservableCollection<KeywordAndRecipients> KeywordAndRecipients
+        {
+            get => _keywordAndRecipients;
+            set
+            {
+                _keywordAndRecipients = value;
+                OnPropertyChanged(nameof(KeywordAndRecipients));
             }
         }
 
@@ -1416,6 +1487,7 @@ namespace OutlookOkan.ViewModels
             IsCheckNameAndDomainsFromSubject = _generalSetting[0].IsCheckNameAndDomainsFromSubject;
             IsShowConfirmationAtSendTaskRequest = _generalSetting[0].IsShowConfirmationAtSendTaskRequest;
             IsAutoCheckAttachments = _generalSetting[0].IsAutoCheckAttachments;
+            IsCheckKeywordAndRecipientsIncludeSubject = _generalSetting[0].IsCheckKeywordAndRecipientsIncludeSubject;
 
             if (_generalSetting[0].LanguageCode is null) return;
 
@@ -1466,6 +1538,7 @@ namespace OutlookOkan.ViewModels
                     IsCheckNameAndDomainsFromSubject =IsCheckNameAndDomainsFromSubject,
                     IsShowConfirmationAtSendTaskRequest = IsShowConfirmationAtSendTaskRequest,
                     IsAutoCheckAttachments = IsAutoCheckAttachments,
+                    IsCheckKeywordAndRecipientsIncludeSubject = IsCheckKeywordAndRecipientsIncludeSubject
                 }
             };
 
@@ -1762,6 +1835,18 @@ namespace OutlookOkan.ViewModels
                 OnPropertyChanged(nameof(IsAutoCheckAttachments));
             }
         }
+
+        private bool _isCheckKeywordAndRecipientsIncludeSubject;
+        public bool IsCheckKeywordAndRecipientsIncludeSubject
+        {
+            get => _isCheckKeywordAndRecipientsIncludeSubject;
+            set
+            {
+                _isCheckKeywordAndRecipientsIncludeSubject = value;
+                OnPropertyChanged(nameof(IsCheckKeywordAndRecipientsIncludeSubject));
+            }
+        }
+
         public bool IsWarningIfRecipientsIsNotRegisteredCheckBoxIsEnabled => !IsProhibitsSendingMailIfRecipientsIsNotRegistered;
 
         private LanguageCodeAndName _language = new LanguageCodeAndName();

@@ -538,6 +538,18 @@ bcc โดยอัตโนมัติ</value>
   <data name="Keyword" xml:space="preserve">
     <value>คีย์เวิร์ด</value>
   </data>
+  <data name="KeywordAndRecipients" xml:space="preserve">
+    <value>คีย์เวิร์ดและผู้รับที่เกี่ยวข้อง</value>
+  </data>
+  <data name="KeywordAndRecipientsAlert1" xml:space="preserve">
+    <value>ไม่มีคำหลัก "</value>
+  </data>
+  <data name="KeywordAndRecipientsAlert2" xml:space="preserve">
+    <value>" ที่เกี่ยวข้องกับ "</value>
+  </data>
+  <data name="KeywordAndRecipientsAlert3" xml:space="preserve">
+    <value>"</value>
+  </data>
   <data name="LargeNumberOfExternalDomainAlert" xml:space="preserve">
     <value>จำนวนโดเมนภายนอกใน To และ Cc สูงกว่าขีดจำกัด โปรดยืนยันข้อดีข้อเสียของการส่ง</value>
   </data>
@@ -739,6 +751,16 @@ bcc โดยอัตโนมัติ</value>
 ลงทะเบียนโดเมนที่จะจัดการเป็นโดเมนภายใน (บริษัท)
 
 โดเมนของที่อยู่อีเมลของผู้ส่งจะถือเป็นโดเมนภายในเสมอ</value>
+  </data>
+  <data name="SettingExampleKeywordAndRecipients" xml:space="preserve">
+    <value>ชื่อ: Noraneko Inc
+โดเมน: @noraneko.co.jp
+
+ลงทะเบียนคำสำคัญ (ชื่อบริษัท ฯลฯ) และผู้รับ (โดเมน ฯลฯ)
+
+หากไม่มีผู้รับที่ตรงกับคำสำคัญในเนื้อหาของอีเมล คำเตือนจะปรากฏขึ้น
+
+* วิชาสามารถรวมไว้ในเช็คได้</value>
   </data>
   <data name="SettingExampleNameAndDomain" xml:space="preserve">
     <value>ชื่อ: Noraneko Inc

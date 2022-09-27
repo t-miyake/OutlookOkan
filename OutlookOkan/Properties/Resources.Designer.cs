@@ -1304,6 +1304,42 @@ namespace OutlookOkan.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Relating keywords and recipients.
+        /// </summary>
+        public static string KeywordAndRecipients {
+            get {
+                return ResourceManager.GetString("KeywordAndRecipients", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Keyword &quot;.
+        /// </summary>
+        public static string KeywordAndRecipientsAlert1 {
+            get {
+                return ResourceManager.GetString("KeywordAndRecipientsAlert1", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to &quot; the related of &quot;.
+        /// </summary>
+        public static string KeywordAndRecipientsAlert2 {
+            get {
+                return ResourceManager.GetString("KeywordAndRecipientsAlert2", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to &quot; does not exist..
+        /// </summary>
+        public static string KeywordAndRecipientsAlert3 {
+            get {
+                return ResourceManager.GetString("KeywordAndRecipientsAlert3", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to The number of external domains in To and Cc is higher than the threshold. Please reconfirm the pros and cons of the sending..
         /// </summary>
         public static string LargeNumberOfExternalDomainAlert {
@@ -1779,6 +1815,22 @@ namespace OutlookOkan.Properties {
         public static string SettingExampleInternalDomainList {
             get {
                 return ResourceManager.GetString("SettingExampleInternalDomainList", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Name: Noraneko Inc
+        ///Domain: @noraneko.co.jp
+        ///
+        ///Register keywords (company name, etc.) and recipients (domain, etc.).
+        ///
+        ///If there is no recipient corresponding to the keywords in the body of the e-mail, a warning will be displayed.
+        ///
+        ///*Subjects can also be included in the check..
+        /// </summary>
+        public static string SettingExampleKeywordAndRecipients {
+            get {
+                return ResourceManager.GetString("SettingExampleKeywordAndRecipients", resourceCulture);
             }
         }
         

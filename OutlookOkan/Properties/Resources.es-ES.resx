@@ -540,6 +540,19 @@ cuando los destinatarios (To/Cc) tienen un gran número de dominios externos.</v
   <data name="Keyword" xml:space="preserve">
     <value>Palabras clave</value>
   </data>
+  <data name="KeywordAndRecipients" xml:space="preserve">
+    <value>Relacionar palabras clave
+ y destinatarios</value>
+  </data>
+  <data name="KeywordAndRecipientsAlert1" xml:space="preserve">
+    <value>La palabra clave "</value>
+  </data>
+  <data name="KeywordAndRecipientsAlert2" xml:space="preserve">
+    <value>" relacionada con "</value>
+  </data>
+  <data name="KeywordAndRecipientsAlert3" xml:space="preserve">
+    <value>" no existe.</value>
+  </data>
   <data name="LargeNumberOfExternalDomainAlert" xml:space="preserve">
     <value>El número de dominios externos en To y Cc es superior al umbral. Por favor, reconfirme los pros y los contras del envío.</value>
   </data>
@@ -744,6 +757,16 @@ También es posible forzar que todos los destinatarios se conviertan en Bcc.</va
 Registre un dominio para que sea tratado como un dominio interno (de la empresa).
 
 El dominio de la dirección de correo electrónico del remitente siempre se trata como un dominio interno.</value>
+  </data>
+  <data name="SettingExampleKeywordAndRecipients" xml:space="preserve">
+    <value>Nombre: Noraneko Inc.
+Dominio: @noraneko.co.jp
+
+Registre las palabras clave (por ejemplo, el nombre de la empresa) y el destino (por ejemplo, el dominio).
+
+Si no hay ningún destinatario que corresponda a las palabras clave en el cuerpo del correo electrónico, se muestra una advertencia..
+
+*También puede incluirse en el cheque.</value>
   </data>
   <data name="SettingExampleNameAndDomain" xml:space="preserve">
     <value>Nombre: Noraneko Inc.

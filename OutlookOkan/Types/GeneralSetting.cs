@@ -117,6 +117,9 @@ namespace OutlookOkan.Types
 
             _ = Map(m => m.IsAutoCheckAttachments).Index(26).TypeConverterOption
                 .BooleanValues(true, true, "Yes", "Y").TypeConverterOption.BooleanValues(false, true, "No", "N").Default(false);
+
+            _ = Map(m => m.IsCheckKeywordAndRecipientsIncludeSubject).Index(27).TypeConverterOption
+                .BooleanValues(true, true, "Yes", "Y").TypeConverterOption.BooleanValues(false, true, "No", "N").Default(false);
         }
     }
 }

@@ -65,6 +65,10 @@ namespace OutlookOkan.Models
             var nameAndDomainsList = nameAndDomainsCsv.GetCsvRecords<NameAndDomains>(nameAndDomainsCsv.LoadCsv<NameAndDomainsMap>())
                 .Where(x => !string.IsNullOrEmpty(x.Domain) && !string.IsNullOrEmpty(x.Name)).ToList();
 
+            var keywordAndRecipientsCsv = new ReadAndWriteCsv("keywordAndRecipientsList.csv");
+            var keywordAndRecipientsList = keywordAndRecipientsCsv.GetCsvRecords<KeywordAndRecipients>(keywordAndRecipientsCsv.LoadCsv<KeywordAndRecipientsMap>()).
+                Where(x => !string.IsNullOrEmpty(x.Keyword) && !string.IsNullOrEmpty(x.Recipient)).ToList();
+
             var deferredDeliveryMinutesCsv = new ReadAndWriteCsv("DeferredDeliveryMinutes.csv");
             var deferredDeliveryMinutes = deferredDeliveryMinutesCsv.GetCsvRecords<DeferredDeliveryMinutes>(deferredDeliveryMinutesCsv.LoadCsv<DeferredDeliveryMinutesMap>())
                 .Where(x => !string.IsNullOrEmpty(x.TargetAddress)).ToList();
@@ -172,6 +176,7 @@ namespace OutlookOkan.Models
             _checkList = GetRecipient(_checkList, displayNameAndRecipient, alertAddressList, internalDomainList);
             _checkList = CheckRecipientsAndAttachments(_checkList, attachmentsSetting.IsAttachmentsProhibited, attachmentsSetting.IsWarningWhenAttachedRealFile, attachmentProhibitedRecipientsList, recipientsAndAttachmentsNameList, attachmentAlertRecipientsList);
             _checkList = CheckMailBodyAndRecipient(_checkList, displayNameAndRecipient, nameAndDomainsList, generalSetting.IsCheckNameAndDomainsFromRecipients, generalSetting.IsCheckNameAndDomainsIncludeSubject, generalSetting.IsCheckNameAndDomainsFromSubject);
+            _checkList = CheckKeywordAndRecipient(_checkList, displayNameAndRecipient, keywordAndRecipientsList, generalSetting.IsCheckKeywordAndRecipientsIncludeSubject);
             _checkList.RecipientExternalDomainNumAll = CountRecipientExternalDomains(displayNameAndRecipient, _checkList.SenderDomain, internalDomainList, false);
             _checkList = ExternalDomainsWarningIfNeeded(_checkList, externalDomainsWarningAndAutoChangeToBccSetting, CountRecipientExternalDomains(displayNameAndRecipient, _checkList.SenderDomain, internalDomainList, true), forceAutoChangeRecipientsToBccSetting.IsForceAutoChangeRecipientsToBcc);
             _checkList.DeferredMinutes = CalcDeferredMinutes(displayNameAndRecipient, deferredDeliveryMinutes, generalSetting.IsDoNotUseDeferredDeliveryIfAllRecipientsAreInternalDomain, _checkList.RecipientExternalDomainNumAll);
@@ -1408,6 +1413,54 @@ namespace OutlookOkan.Models
                     checkList.Alerts.Add(new Alert
                     {
                         AlertMessage = recipient.Value + " : " + Resources.IsAlertAddressMaybeIrrelevant,
+                        IsImportant = true,
+                        IsWhite = false,
+                        IsChecked = false
+                    });
+                }
+            }
+
+            return checkList;
+        }
+
+        /// <summary>
+        /// 登録されたキーワードに対応する宛先がない場合、警告する。
+        /// </summary>
+        /// <param name="checkList">CheckList</param>
+        /// <param name="displayNameAndRecipient">宛先アドレスと名称</param>
+        /// <param name="keywordAndRecipients">キーワードと宛先のリスト</param>
+        /// <param name="isCheckKeywordAndRecipientsIncludeSubject">件名も対象に含むか否か</param>
+        /// <returns></returns>
+        private CheckList CheckKeywordAndRecipient(CheckList checkList, DisplayNameAndRecipient displayNameAndRecipient, IEnumerable<KeywordAndRecipients> keywordAndRecipients, bool isCheckKeywordAndRecipientsIncludeSubject)
+        {
+            if (displayNameAndRecipient is null) return checkList;
+
+            //空の設定値があると誤検知するため、空を省く。
+            var cleanedKeywordAndRecipients = keywordAndRecipients.Where(keywordAndRecipient => !string.IsNullOrEmpty(keywordAndRecipient.Keyword) && !string.IsNullOrEmpty(keywordAndRecipient.Recipient)).ToList();
+            if (!cleanedKeywordAndRecipients.Any()) return checkList;
+
+            var targetText = checkList.MailBody;
+            if (isCheckKeywordAndRecipientsIncludeSubject) { targetText += checkList.Subject; }
+
+            var candidateRecipients = cleanedKeywordAndRecipients.Where(cleanedKeywordAndRecipient => targetText.Contains(cleanedKeywordAndRecipient.Keyword)).ToList();
+
+            foreach (var candidateRecipient in candidateRecipients)
+            {
+                var isNeedAlert = true;
+                foreach (var recipient in displayNameAndRecipient.All)
+                {
+                    if (recipient.Key.EndsWith(candidateRecipient.Recipient) || recipient.Key.Equals(candidateRecipient.Recipient))
+                    {
+                        isNeedAlert = false;
+                        break;
+                    }
+                }
+
+                if (isNeedAlert)
+                {
+                    checkList.Alerts.Add(new Alert
+                    {
+                        AlertMessage = Resources.KeywordAndRecipientsAlert1 + candidateRecipient.Keyword + Resources.KeywordAndRecipientsAlert2 + candidateRecipient.Recipient + Resources.KeywordAndRecipientsAlert3,
                         IsImportant = true,
                         IsWhite = false,
                         IsChecked = false

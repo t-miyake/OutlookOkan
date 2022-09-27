@@ -650,6 +650,186 @@ namespace OutlookOkanTest
 
         #endregion
 
+        #region CheckKeywordAndRecipient
+        [TestMethod, TestCategory("_GenerateCheckList"), TestCategory("CheckKeywordAndRecipient")]
+        public void キーワードと宛先の紐づけ確認_警告なし()
+        {
+            var testCheckList = new CheckList { SenderDomain = "@noraneko.co.jp", MailBody = "ほげほげ株式会社" };
+            var displayNameAndRecipient = new DisplayNameAndRecipient
+            {
+                All = { ["taro@sample.hogehoge"] = "たろう (taro@sample.hogehoge)", ["info@noraneko.co.jp"] = "(株)のらねこ (info@noraneko.co.jp)" }
+            };
+            var keywordAndRecipientList = new List<KeywordAndRecipients>
+            {
+                new KeywordAndRecipients {Keyword = "ほげほげ株式会社", Recipient = "@sample.hogehoge"}
+            };
+
+            var generateCheckList = new GenerateCheckList();
+            var privateObject = new PrivateObject(generateCheckList);
+            var args = new object[] { testCheckList, displayNameAndRecipient, keywordAndRecipientList, false };
+            var result = (CheckList)privateObject.Invoke("CheckKeywordAndRecipient", args);
+
+            Assert.AreEqual(result.Alerts.Count, 0);
+        }
+
+        [TestMethod, TestCategory("_GenerateCheckList"), TestCategory("CheckKeywordAndRecipient")]
+        public void キーワードと宛先の紐づけ確認_警告あり()
+        {
+            var testCheckList = new CheckList { SenderDomain = "@noraneko.co.jp", MailBody = "ほげほげ株式会社" };
+            var displayNameAndRecipient = new DisplayNameAndRecipient
+            {
+                All = { ["taro@sample.hoge"] = "たろう (taro@sample.hoge)", ["info@noraneko.co.jp"] = "(株)のらねこ (info@noraneko.co.jp)" }
+            };
+            var keywordAndRecipientList = new List<KeywordAndRecipients>
+            {
+                new KeywordAndRecipients {Keyword = "ほげほげ株式会社", Recipient = "@sample.hogehoge"}
+            };
+
+            var generateCheckList = new GenerateCheckList();
+            var privateObject = new PrivateObject(generateCheckList);
+            var args = new object[] { testCheckList, displayNameAndRecipient, keywordAndRecipientList, false };
+            var result = (CheckList)privateObject.Invoke("CheckKeywordAndRecipient", args);
+
+            Assert.AreEqual(result.Alerts[0].AlertMessage, Resources.KeywordAndRecipientsAlert1 + "ほげほげ株式会社" + Resources.KeywordAndRecipientsAlert2 + "@sample.hogehoge" + Resources.KeywordAndRecipientsAlert3);
+        }
+
+        [TestMethod, TestCategory("_GenerateCheckList"), TestCategory("CheckKeywordAndRecipient")]
+        public void キーワードと宛先の紐づけ確認_警告あり_N対1()
+        {
+            var testCheckList = new CheckList { SenderDomain = "@noraneko.co.jp", MailBody = "ほげほげ株式会社" };
+            var displayNameAndRecipient = new DisplayNameAndRecipient
+            {
+                All = { ["taro@sample.hoge"] = "たろう (taro@sample.hoge)", ["info@noraneko.co.jp"] = "(株)のらねこ (info@noraneko.co.jp)" }
+            };
+            var keywordAndRecipientList = new List<KeywordAndRecipients>
+            {
+                new KeywordAndRecipients {Keyword = "ほげほげ株式会社", Recipient = "@sample.hogehoge"},
+                new KeywordAndRecipients {Keyword = "ほーげ株式会社", Recipient = "@sample.hogehoge"}
+            };
+
+            var generateCheckList = new GenerateCheckList();
+            var privateObject = new PrivateObject(generateCheckList);
+            var args = new object[] { testCheckList, displayNameAndRecipient, keywordAndRecipientList, false };
+            var result = (CheckList)privateObject.Invoke("CheckKeywordAndRecipient", args);
+
+            Assert.AreEqual(result.Alerts[0].AlertMessage, Resources.KeywordAndRecipientsAlert1 + "ほげほげ株式会社" + Resources.KeywordAndRecipientsAlert2 + "@sample.hogehoge" + Resources.KeywordAndRecipientsAlert3);
+        }
+
+        [TestMethod, TestCategory("_GenerateCheckList"), TestCategory("CheckKeywordAndRecipient")]
+        public void キーワードと宛先の紐づけ確認_警告あり_1対N()
+        {
+            var testCheckList = new CheckList { SenderDomain = "@noraneko.co.jp", MailBody = "ほげほげ株式会社" };
+            var displayNameAndRecipient = new DisplayNameAndRecipient
+            {
+                All = { ["taro@sample.hogehoge"] = "たろう (taro@sample.hogehoge)", ["info@noraneko.co.jp"] = "(株)のらねこ (info@noraneko.co.jp)" }
+            };
+            var keywordAndRecipientList = new List<KeywordAndRecipients>
+            {
+                new KeywordAndRecipients {Keyword = "ほげほげ株式会社", Recipient = "@sample.hogehoge"},
+                new KeywordAndRecipients {Keyword = "ほげほげ株式会社", Recipient = "@sample2.hogehoge"}
+            };
+
+            var generateCheckList = new GenerateCheckList();
+            var privateObject = new PrivateObject(generateCheckList);
+            var args = new object[] { testCheckList, displayNameAndRecipient, keywordAndRecipientList, false };
+            var result = (CheckList)privateObject.Invoke("CheckKeywordAndRecipient", args);
+
+            Assert.AreEqual(result.Alerts[0].AlertMessage, Resources.KeywordAndRecipientsAlert1 + "ほげほげ株式会社" + Resources.KeywordAndRecipientsAlert2 + "@sample2.hogehoge" + Resources.KeywordAndRecipientsAlert3);
+        }
+
+        [TestMethod, TestCategory("_GenerateCheckList"), TestCategory("CheckKeywordAndRecipient")]
+        public void キーワードと宛先の紐づけ確認_警告なし_1対N()
+        {
+            var testCheckList = new CheckList { SenderDomain = "@noraneko.co.jp", MailBody = "ほげほげ株式会社" };
+            var displayNameAndRecipient = new DisplayNameAndRecipient
+            {
+                All = { ["taro@sample.hogehoge"] = "たろう (taro@sample.hogehoge)", ["info@noraneko.co.jp"] = "(株)のらねこ (info@noraneko.co.jp)", ["jiro@sample2.hogehoge"] = "次郎 (taro@sample2.hogehoge)" }
+            };
+            var keywordAndRecipientList = new List<KeywordAndRecipients>
+            {
+                new KeywordAndRecipients {Keyword = "ほげほげ株式会社", Recipient = "@sample.hogehoge"},
+                new KeywordAndRecipients {Keyword = "ほげほげ株式会社", Recipient = "@sample2.hogehoge"}
+            };
+
+            var generateCheckList = new GenerateCheckList();
+            var privateObject = new PrivateObject(generateCheckList);
+            var args = new object[] { testCheckList, displayNameAndRecipient, keywordAndRecipientList, false };
+            var result = (CheckList)privateObject.Invoke("CheckKeywordAndRecipient", args);
+
+            Assert.AreEqual(result.Alerts.Count, 0);
+        }
+
+        [TestMethod, TestCategory("_GenerateCheckList"), TestCategory("CheckKeywordAndRecipient")]
+        public void キーワードと宛先の紐づけ確認_警告なし_N対N_A()
+        {
+            var testCheckList = new CheckList { SenderDomain = "@noraneko.co.jp", MailBody = "ほげほげ株式会社、ほーげ株式会社" };
+            var displayNameAndRecipient = new DisplayNameAndRecipient
+            {
+                All = { ["taro@sample.hogehoge"] = "たろう (taro@sample.hogehoge)", ["info@noraneko.co.jp"] = "(株)のらねこ (info@noraneko.co.jp)", ["jiro@sample2.hogehoge"] = "次郎 (taro@sample2.hogehoge)" }
+            };
+            var keywordAndRecipientList = new List<KeywordAndRecipients>
+            {
+                new KeywordAndRecipients {Keyword = "ほげほげ株式会社", Recipient = "@sample.hogehoge"},
+                new KeywordAndRecipients {Keyword = "ほ-げ株式会社", Recipient = "@sample.hogehoge"},
+                new KeywordAndRecipients {Keyword = "ほげほげ株式会社", Recipient = "@sample2.hogehoge"}
+            };
+
+            var generateCheckList = new GenerateCheckList();
+            var privateObject = new PrivateObject(generateCheckList);
+            var args = new object[] { testCheckList, displayNameAndRecipient, keywordAndRecipientList, false };
+            var result = (CheckList)privateObject.Invoke("CheckKeywordAndRecipient", args);
+
+            Assert.AreEqual(result.Alerts.Count, 0);
+        }
+
+        [TestMethod, TestCategory("_GenerateCheckList"), TestCategory("CheckKeywordAndRecipient")]
+        public void キーワードと宛先の紐づけ確認_警告なし_N対N_B()
+        {
+            var testCheckList = new CheckList { SenderDomain = "@noraneko.co.jp", MailBody = "ほげほげ株式会社" };
+            var displayNameAndRecipient = new DisplayNameAndRecipient
+            {
+                All = { ["taro@sample.hogehoge"] = "たろう (taro@sample.hogehoge)", ["info@noraneko.co.jp"] = "(株)のらねこ (info@noraneko.co.jp)", ["jiro@sample2.hogehoge"] = "次郎 (taro@sample2.hogehoge)" }
+            };
+            var keywordAndRecipientList = new List<KeywordAndRecipients>
+            {
+                new KeywordAndRecipients {Keyword = "ほげほげ株式会社", Recipient = "@sample.hogehoge"},
+                new KeywordAndRecipients {Keyword = "ほ-げ株式会社", Recipient = "@sample.hogehoge"},
+                new KeywordAndRecipients {Keyword = "ほげほげ株式会社", Recipient = "@sample2.hogehoge"}
+            };
+
+            var generateCheckList = new GenerateCheckList();
+            var privateObject = new PrivateObject(generateCheckList);
+            var args = new object[] { testCheckList, displayNameAndRecipient, keywordAndRecipientList, false };
+            var result = (CheckList)privateObject.Invoke("CheckKeywordAndRecipient", args);
+
+            Assert.AreEqual(result.Alerts.Count, 0);
+        }
+
+        [TestMethod, TestCategory("_GenerateCheckList"), TestCategory("CheckKeywordAndRecipient")]
+        public void キーワードと宛先の紐づけ確認_警告あり_N対N()
+        {
+            var testCheckList = new CheckList { SenderDomain = "@noraneko.co.jp", MailBody = "ほげほげ株式会社" };
+            var displayNameAndRecipient = new DisplayNameAndRecipient
+            {
+                All = { ["taro@sample.hogehoge"] = "たろう (taro@sample.hogehoge)", ["info@noraneko.co.jp"] = "(株)のらねこ (info@noraneko.co.jp)" }
+            };
+            var keywordAndRecipientList = new List<KeywordAndRecipients>
+            {
+                new KeywordAndRecipients {Keyword = "ほげほげ株式会社", Recipient = "@sample.hogehoge"},
+                new KeywordAndRecipients {Keyword = "ほ-げ株式会社", Recipient = "@sample.hogehoge"},
+                new KeywordAndRecipients {Keyword = "ほげほげ株式会社", Recipient = "@sample2.hogehoge"}
+            };
+
+            var generateCheckList = new GenerateCheckList();
+            var privateObject = new PrivateObject(generateCheckList);
+            var args = new object[] { testCheckList, displayNameAndRecipient, keywordAndRecipientList, false };
+            var result = (CheckList)privateObject.Invoke("CheckKeywordAndRecipient", args);
+
+            Assert.AreEqual(result.Alerts[0].AlertMessage, Resources.KeywordAndRecipientsAlert1 + "ほげほげ株式会社" + Resources.KeywordAndRecipientsAlert2 + "@sample2.hogehoge" + Resources.KeywordAndRecipientsAlert3);
+        }
+
+        #endregion
+
         #region CountRecipientExternalDomains
 
         [TestMethod, TestCategory("_GenerateCheckList"), TestCategory("CountRecipientExternalDomains")]

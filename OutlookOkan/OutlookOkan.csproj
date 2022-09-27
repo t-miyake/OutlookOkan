@@ -248,6 +248,7 @@
     <Compile Include="Types\ForceAutoChangeRecipientsToBcc.cs" />
     <Compile Include="Types\GeneralSetting.cs" />
     <Compile Include="Types\InternalDomain.cs" />
+    <Compile Include="Types\KeywordAndRecipients.cs" />
     <Compile Include="Types\Languages.cs" />
     <Compile Include="Types\MailItemsRecipientAndMailAddress.cs" />
     <Compile Include="Types\NameAndDomains.cs" />

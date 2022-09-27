@@ -539,6 +539,18 @@
   <data name="Keyword" xml:space="preserve">
     <value>कीवर्ड</value>
   </data>
+  <data name="KeywordAndRecipients" xml:space="preserve">
+    <value>संबंधित कीवर्ड और प्राप्तकर्ता</value>
+  </data>
+  <data name="KeywordAndRecipientsAlert1" xml:space="preserve">
+    <value>"</value>
+  </data>
+  <data name="KeywordAndRecipientsAlert2" xml:space="preserve">
+    <value>" कीवर्ड से संबद्ध गंतव्य "</value>
+  </data>
+  <data name="KeywordAndRecipientsAlert3" xml:space="preserve">
+    <value>" मौजूद नहीं है</value>
+  </data>
   <data name="LargeNumberOfExternalDomainAlert" xml:space="preserve">
     <value>To और Cc में बाहरी डोमेन की संख्या सीमा से अधिक है। कृपया भेजने के पेशेवरों और विपक्षों की पुन: पुष्टि करें।</value>
   </data>
@@ -740,6 +752,16 @@
 एक आंतरिक (कंपनी) डोमेन के रूप में नियंत्रित किए जाने वाले डोमेन को पंजीकृत करें।
 
 प्रेषक के ईमेल पते के डोमेन को हमेशा आंतरिक डोमेन माना जाता है।</value>
+  </data>
+  <data name="SettingExampleKeywordAndRecipients" xml:space="preserve">
+    <value>नाम: नोरानेको इंक
+डोमेन: @noraneko.co.jp
+
+कीवर्ड (कंपनी का नाम, आदि) और प्राप्तकर्ता (डोमेन, आदि) पंजीकृत करें।
+
+यदि ई-मेल के मुख्य भाग में खोजशब्दों के अनुरूप कोई प्राप्तकर्ता नहीं है, तो एक चेतावनी प्रदर्शित की जाएगी।
+
+* विषयों को भी चेक में शामिल किया जा सकता है।</value>
   </data>
   <data name="SettingExampleNameAndDomain" xml:space="preserve">
     <value>नाम: नोरानेको इंक
