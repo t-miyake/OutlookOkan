@@ -222,6 +222,9 @@
   <data name="AutoAddToRecipientByForceAutoChangeRecipientsToBccAddressToAlert" xml:space="preserve">
     <value>지정한 이메일 주소가 받는 사람에 자동으로 추가되었습니다. (숨은 참조로 자동 변경되어 To가 더 이상 존재하지 않기 때문입니다.)</value>
   </data>
+  <data name="AutoCheckAttachments" xml:space="preserve">
+    <value>첨부 파일이 자동으로 확인됩니다.</value>
+  </data>
   <data name="AutoCheckConfig" xml:space="preserve">
     <value>자동 확인 설정</value>
   </data>

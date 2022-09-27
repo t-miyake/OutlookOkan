@@ -222,6 +222,9 @@
   <data name="AutoAddToRecipientByForceAutoChangeRecipientsToBccAddressToAlert" xml:space="preserve">
     <value>ที่อยู่อีเมลที่ระบุถูกเพิ่มลงใน To โดยอัตโนมัติ (เนื่องจากไม่มีถึงอีกต่อไปเนื่องจากเปลี่ยนเป็นสำเนาลับอัตโนมัติ)</value>
   </data>
+  <data name="AutoCheckAttachments" xml:space="preserve">
+    <value>ไฟล์แนบจะถูกตรวจสอบโดยอัตโนมัติ</value>
+  </data>
   <data name="AutoCheckConfig" xml:space="preserve">
     <value>ตรวจสอบการตั้งค่าอัตโนมัติ</value>
   </data>

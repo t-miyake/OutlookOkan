@@ -1415,6 +1415,7 @@ namespace OutlookOkan.ViewModels
             IsCheckNameAndDomainsIncludeSubject = _generalSetting[0].IsCheckNameAndDomainsIncludeSubject;
             IsCheckNameAndDomainsFromSubject = _generalSetting[0].IsCheckNameAndDomainsFromSubject;
             IsShowConfirmationAtSendTaskRequest = _generalSetting[0].IsShowConfirmationAtSendTaskRequest;
+            IsAutoCheckAttachments = _generalSetting[0].IsAutoCheckAttachments;
 
             if (_generalSetting[0].LanguageCode is null) return;
 
@@ -1464,6 +1465,7 @@ namespace OutlookOkan.ViewModels
                     IsCheckNameAndDomainsIncludeSubject = IsCheckNameAndDomainsIncludeSubject,
                     IsCheckNameAndDomainsFromSubject =IsCheckNameAndDomainsFromSubject,
                     IsShowConfirmationAtSendTaskRequest = IsShowConfirmationAtSendTaskRequest,
+                    IsAutoCheckAttachments = IsAutoCheckAttachments,
                 }
             };
 
@@ -1747,6 +1749,17 @@ namespace OutlookOkan.ViewModels
             {
                 _isShowConfirmationAtSendTaskRequest = value;
                 OnPropertyChanged(nameof(IsShowConfirmationAtSendTaskRequest));
+            }
+        }
+
+        private bool _isAutoCheckAttachments;
+        public bool IsAutoCheckAttachments
+        {
+            get => _isAutoCheckAttachments;
+            set
+            {
+                _isAutoCheckAttachments = value;
+                OnPropertyChanged(nameof(IsAutoCheckAttachments));
             }
         }
         public bool IsWarningIfRecipientsIsNotRegisteredCheckBoxIsEnabled => !IsProhibitsSendingMailIfRecipientsIsNotRegistered;

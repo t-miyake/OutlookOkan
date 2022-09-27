@@ -225,6 +225,9 @@
   <data name="AutoAddToRecipientByForceAutoChangeRecipientsToBccAddressToAlert" xml:space="preserve">
     <value>Die angegebene E-Mail-Adresse wurde automatisch zu "An" hinzugefügt. (weil die Adresse "An" durch die automatische Änderung in "Bcc" nicht mehr existiert).</value>
   </data>
+  <data name="AutoCheckAttachments" xml:space="preserve">
+    <value>Die Anhänge werden automatisch geprüft.</value>
+  </data>
   <data name="AutoCheckConfig" xml:space="preserve">
     <value>Auto-Check-Einstellung</value>
   </data>

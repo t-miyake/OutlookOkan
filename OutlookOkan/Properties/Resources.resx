@@ -830,4 +830,7 @@ If the warning text is left blank, the default warning text will be displayed.</
   <data name="ShowConfirmationAtSendTaskRequest" xml:space="preserve">
     <value>The confirmation screen is also displayed for assign task.</value>
   </data>
+  <data name="AutoCheckAttachments" xml:space="preserve">
+    <value>The attachments will be auto-checked.</value>
+  </data>
 </root>

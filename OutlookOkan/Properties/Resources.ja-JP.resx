@@ -827,4 +827,7 @@
   <data name="ShowConfirmationAtSendTaskRequest" xml:space="preserve">
     <value>タスク依頼にも確認画面を表示する。</value>
   </data>
+  <data name="AutoCheckAttachments" xml:space="preserve">
+    <value>添付ファイルは、あらかじめチェックを自動付与する。</value>
+  </data>
 </root>

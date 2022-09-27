@@ -153,7 +153,7 @@ namespace OutlookOkan.Models
             _checkList = GetSenderAndSenderDomain(in item, _checkList);
             internalDomainList.Add(new InternalDomain { Domain = _checkList.SenderDomain });
 
-            _checkList = GetAttachmentsInformation(in item, _checkList, generalSetting.IsNotTreatedAsAttachmentsAtHtmlEmbeddedFiles, attachmentsSetting, _checkList.MailHtmlBody);
+            _checkList = GetAttachmentsInformation(in item, _checkList, generalSetting.IsNotTreatedAsAttachmentsAtHtmlEmbeddedFiles, attachmentsSetting, _checkList.MailHtmlBody, generalSetting.IsAutoCheckAttachments);
             _checkList = CheckForgotAttach(_checkList, generalSetting);
             _checkList = CheckKeyword(_checkList, alertKeywordAndMessageList);
             _checkList = CheckKeywordForSubject(_checkList, alertKeywordAndMessageForSubjectList);
@@ -1165,8 +1165,9 @@ namespace OutlookOkan.Models
         /// <param name="isNotTreatedAsAttachmentsAtHtmlEmbeddedFiles">HTML埋め込みの添付ファイル無視設定</param>
         /// <param name="attachmentsSetting">添付ファイルに関する設定</param>
         /// <param name="mailHtmlBody">メール本文(HTML形式)</param>
+        /// <param name="isAutoCheckAttachments">既定のチェック有無</param>
         /// <returns>CheckList</returns>
-        private CheckList GetAttachmentsInformation<T>(in T item, CheckList checkList, bool isNotTreatedAsAttachmentsAtHtmlEmbeddedFiles, AttachmentsSetting attachmentsSetting, string mailHtmlBody)
+        private CheckList GetAttachmentsInformation<T>(in T item, CheckList checkList, bool isNotTreatedAsAttachmentsAtHtmlEmbeddedFiles, AttachmentsSetting attachmentsSetting, string mailHtmlBody, bool isAutoCheckAttachments)
         {
             if (((dynamic)item).Attachments.Count == 0) return checkList;
 
@@ -1272,6 +1273,12 @@ namespace OutlookOkan.Models
                     //Do Nothing.
                 }
 
+                var isChecked = false;
+                if (!attachmentsSetting.IsMustOpenBeforeCheckTheAttachedFiles)
+                {
+                    isChecked = isAutoCheckAttachments;
+                }
+
                 if (embeddedAttachmentsName is null)
                 {
                     checkList.Attachments.Add(new Attachment
@@ -1281,7 +1288,7 @@ namespace OutlookOkan.Models
                         FileType = fileType,
                         IsTooBig = ((dynamic)item).Attachments[i + 1].Size >= 10485760,
                         IsEncrypted = isEncrypted,
-                        IsChecked = false,
+                        IsChecked = isChecked,
                         IsDangerous = isDangerous,
                         IsCanOpen = isCanOpen,
                         IsNotMustOpenBeforeCheck = !(attachmentsSetting.IsEnableOpenAttachedFiles && attachmentsSetting.IsMustOpenBeforeCheckTheAttachedFiles && isCanOpen),
@@ -1302,7 +1309,7 @@ namespace OutlookOkan.Models
                         FileType = fileType,
                         IsTooBig = ((dynamic)item).Attachments[i + 1].Size >= 10485760,
                         IsEncrypted = isEncrypted,
-                        IsChecked = false,
+                        IsChecked = isChecked,
                         IsDangerous = isDangerous,
                         IsCanOpen = isCanOpen,
                         IsNotMustOpenBeforeCheck = !(attachmentsSetting.IsEnableOpenAttachedFiles && attachmentsSetting.IsMustOpenBeforeCheckTheAttachedFiles && isCanOpen),

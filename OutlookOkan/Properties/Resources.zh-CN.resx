@@ -222,6 +222,9 @@
   <data name="AutoAddToRecipientByForceAutoChangeRecipientsToBccAddressToAlert" xml:space="preserve">
     <value>指定的电子邮件地址被自动添加到收件人中。(因为收件人已经不存在了，因为自动改为密件)。</value>
   </data>
+  <data name="AutoCheckAttachments" xml:space="preserve">
+    <value>附件将被自动检查。</value>
+  </data>
   <data name="AutoCheckConfig" xml:space="preserve">
     <value>自动检查设置</value>
   </data>

@@ -223,6 +223,9 @@
   <data name="AutoAddToRecipientByForceAutoChangeRecipientsToBccAddressToAlert" xml:space="preserve">
     <value>निर्दिष्ट ईमेल पता स्वचालित रूप से प्रति में जोड़ा गया था। (क्योंकि बीसीसी में स्वतः परिवर्तन के कारण To अब मौजूद नहीं है।)</value>
   </data>
+  <data name="AutoCheckAttachments" xml:space="preserve">
+    <value>अटैचमेंट की ऑटो-चेकिंग की जाएगी।</value>
+  </data>
   <data name="AutoCheckConfig" xml:space="preserve">
     <value>ऑटो-चेक सेटिंग</value>
   </data>

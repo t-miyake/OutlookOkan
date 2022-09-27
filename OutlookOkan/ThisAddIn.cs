@@ -286,6 +286,7 @@ namespace OutlookOkan
             _generalSetting.IsCheckNameAndDomainsIncludeSubject = generalSetting[0].IsCheckNameAndDomainsIncludeSubject;
             _generalSetting.IsCheckNameAndDomainsFromSubject = generalSetting[0].IsCheckNameAndDomainsFromSubject;
             _generalSetting.IsShowConfirmationAtSendTaskRequest = generalSetting[0].IsShowConfirmationAtSendTaskRequest;
+            _generalSetting.IsAutoCheckAttachments = generalSetting[0].IsAutoCheckAttachments;
         }
 
         /// <summary>

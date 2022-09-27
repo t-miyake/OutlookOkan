@@ -376,6 +376,15 @@ namespace OutlookOkan.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to The attachments will be auto-checked..
+        /// </summary>
+        public static string AutoCheckAttachments {
+            get {
+                return ResourceManager.GetString("AutoCheckAttachments", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Auto-check setting.
         /// </summary>
         public static string AutoCheckConfig {
