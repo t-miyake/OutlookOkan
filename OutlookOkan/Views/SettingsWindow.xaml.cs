@@ -58,14 +58,6 @@ namespace OutlookOkan.Views
                         _ = MessageBox.Show(Properties.Resources.InputMailaddressOrDomain, Properties.Resources.AppName, MessageBoxButton.OK);
                         e.Cancel = true;
                     }
-                    //else
-                    //{
-                    //    //@のみで登録すると全てのメールアドレスが対象になるため、それを禁止。
-                    //    if (!inputText.Equals("@")) return;
-
-                    //    _ = MessageBox.Show(Properties.Resources.InputMailaddressOrDomain, Properties.Resources.AppName, MessageBoxButton.OK);
-                    //    e.Cancel = true;
-                    //}
                     return;
 
                 case 1:
