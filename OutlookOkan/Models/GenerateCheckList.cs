@@ -1346,7 +1346,7 @@ namespace OutlookOkan.Models
                 {
                     foreach (var recipient in displayNameAndRecipient.All)
                     {
-                        if (recipient.Value.Contains(nameAndDomain.Domain))
+                        if (recipient.Key.EndsWith(nameAndDomain.Domain) || recipient.Key == nameAndDomain.Domain)
                         {
                             domainCandidateRecipients.Add(new[] { recipient.Value, nameAndDomain.Name });
                         }
@@ -1355,29 +1355,37 @@ namespace OutlookOkan.Models
 
                 if (isCheckNameAndDomainsFromRecipients)
                 {
-                    foreach (var domainAndName in domainCandidateRecipients.Where(domainAndName => !checkList.MailBody.Contains(domainAndName[1])).Where(domainAndName => !domainAndName[0].Contains(checkList.SenderDomain)))
+                    var domainCandidateRecipientsHitCount = domainCandidateRecipients.Where(domainAndName => !checkList.MailBody.Contains(domainAndName[1])).Count(domainAndName => !domainAndName[0].Contains(checkList.SenderDomain));
+                    if (domainCandidateRecipientsHitCount >= domainCandidateRecipients.Count)
                     {
-                        checkList.Alerts.Add(new Alert
+                        foreach (var domainAndName in domainCandidateRecipients.Where(domainAndName => !checkList.MailBody.Contains(domainAndName[1])).Where(domainAndName => !domainAndName[0].Contains(checkList.SenderDomain)))
                         {
-                            AlertMessage = $"{domainAndName[0]} : {Resources.CanNotFindTheLinkedName} ({domainAndName[1]})",
-                            IsImportant = true,
-                            IsWhite = false,
-                            IsChecked = false
-                        });
+                            checkList.Alerts.Add(new Alert
+                            {
+                                AlertMessage = $"{domainAndName[0]} : {Resources.CanNotFindTheLinkedName} ({domainAndName[1]})",
+                                IsImportant = true,
+                                IsWhite = false,
+                                IsChecked = false
+                            });
+                        }
                     }
                 }
 
                 if (isCheckNameAndDomainsIncludeSubject && isCheckNameAndDomainsFromSubject)
                 {
-                    foreach (var domainAndName in domainCandidateRecipients.Where(domainAndName => !checkList.Subject.Contains(domainAndName[1])).Where(domainAndName => !domainAndName[0].Contains(checkList.SenderDomain)))
+                    var domainCandidateRecipientsHitCount = domainCandidateRecipients.Where(domainAndName => !checkList.Subject.Contains(domainAndName[1])).Count(domainAndName => !domainAndName[0].Contains(checkList.SenderDomain));
+                    if (domainCandidateRecipientsHitCount >= domainCandidateRecipients.Count)
                     {
-                        checkList.Alerts.Add(new Alert
+                        foreach (var domainAndName in domainCandidateRecipients.Where(domainAndName => !checkList.Subject.Contains(domainAndName[1])).Where(domainAndName => !domainAndName[0].Contains(checkList.SenderDomain)))
                         {
-                            AlertMessage = $"{domainAndName[0]} : {Resources.CanNotFindTheLinkedNameInSubject} ({domainAndName[1]})",
-                            IsImportant = true,
-                            IsWhite = false,
-                            IsChecked = false
-                        });
+                            checkList.Alerts.Add(new Alert
+                            {
+                                AlertMessage = $"{domainAndName[0]} : {Resources.CanNotFindTheLinkedNameInSubject} ({domainAndName[1]})",
+                                IsImportant = true,
+                                IsWhite = false,
+                                IsChecked = false
+                            });
+                        }
                     }
                 }
             }
@@ -1391,7 +1399,7 @@ namespace OutlookOkan.Models
 
             foreach (var recipient in displayNameAndRecipient.All)
             {
-                if (recipientCandidateDomains.Any(domains => domains.Equals(recipient.Key.Substring(recipient.Key.IndexOf("@", StringComparison.Ordinal))))) continue;
+                if (recipientCandidateDomains.Any(domains => recipient.Key.EndsWith(domains) || domains.Equals(recipient.Key))) continue;
 
                 //送信者ドメインは警告対象外。
                 if (!recipient.Key.Contains(checkList.SenderDomain))
