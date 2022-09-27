@@ -1460,7 +1460,7 @@ namespace OutlookOkan.Models
 
                 foreach (var alertAddress in alertAddressList)
                 {
-                    if (!to.Key.Contains(alertAddress.TargetAddress)) continue;
+                    if (!to.Key.EndsWith(alertAddress.TargetAddress)) continue;
 
                     if (alertAddress.IsCanNotSend)
                     {
@@ -1509,7 +1509,7 @@ namespace OutlookOkan.Models
 
                 foreach (var alertAddress in alertAddressList)
                 {
-                    if (!cc.Key.Contains(alertAddress.TargetAddress)) continue;
+                    if (!cc.Key.EndsWith(alertAddress.TargetAddress)) continue;
 
                     if (alertAddress.IsCanNotSend)
                     {
@@ -1558,7 +1558,7 @@ namespace OutlookOkan.Models
 
                 foreach (var alertAddress in alertAddressList)
                 {
-                    if (!bcc.Key.Contains(alertAddress.TargetAddress)) continue;
+                    if (!bcc.Key.EndsWith(alertAddress.TargetAddress)) continue;
 
                     if (alertAddress.IsCanNotSend)
                     {

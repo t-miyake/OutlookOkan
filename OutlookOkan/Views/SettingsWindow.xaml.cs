@@ -53,7 +53,7 @@ namespace OutlookOkan.Views
             {
                 case 0:
                     var inputText = ((TextBox)e.EditingElement).Text;
-                    if (string.IsNullOrEmpty(inputText) || !inputText.Contains("@"))
+                    if (string.IsNullOrEmpty(inputText))
                     {
                         _ = MessageBox.Show(Properties.Resources.InputMailaddressOrDomain, Properties.Resources.AppName, MessageBoxButton.OK);
                         e.Cancel = true;
