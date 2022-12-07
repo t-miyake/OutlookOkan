@@ -2,6 +2,7 @@
 using OutlookOkan.ViewModels;
 using System;
 using System.ComponentModel;
+using System.Diagnostics;
 using System.IO;
 using System.Text.RegularExpressions;
 using System.Windows;
@@ -182,8 +183,12 @@ namespace OutlookOkan.Views
                 {
                     try
                     {
-                        var process = System.Diagnostics.Process.Start(currentItem.FilePath);
-                        process?.Start();
+                        var process = new ProcessStartInfo
+                        {
+                            UseShellExecute = true,
+                            FileName = currentItem.FilePath,
+                        };
+                        Process.Start(process);
                     }
                     catch (Exception)
                     {
