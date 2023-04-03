@@ -299,7 +299,7 @@
     <value>Контактная группа</value>
   </data>
   <data name="Copyright" xml:space="preserve">
-    <value>Copyright (C) 2022 Noraneko Inc.</value>
+    <value>Copyright (C) 2023 Noraneko Inc.</value>
   </data>
   <data name="CSVExport" xml:space="preserve">
     <value>Экспорт CSV</value>
@@ -840,7 +840,7 @@
     <value>Неизвестно</value>
   </data>
   <data name="Version" xml:space="preserve">
-    <value>Version 2.7.2.1</value>
+    <value>Version 2.8.0.0 β</value>
   </data>
   <data name="VersionInfo" xml:space="preserve">
     <value>О программе.</value>
@@ -859,5 +859,107 @@
   </data>
   <data name="YouHaveLatest" xml:space="preserve">
     <value>Это дополнение является последней версией.</value>
+  </data>
+  <data name="General2" xml:space="preserve">
+    <value>Общий 2</value>
+  </data>
+  <data name="IsIgnoreMustOpenBeforeCheckTheAttachedFilesIfInternalDomain" xml:space="preserve">
+    <value>Не требуется, если все получатели являются внутренними доменами.</value>
+  </data>
+  <data name="AlertKeywordOfSubjectWhenOpeningMails" xml:space="preserve">
+    <value> [β] Оповещение при открытии электронной почты (тема)</value>
+  </data>
+  <data name="IsEnableAlertKeywordOfSubjectWhenOpeningMailsData" xml:space="preserve">
+    <value>Используйте функцию предупреждения, если строка темы содержит указанные ключевые слова.</value>
+  </data>
+  <data name="IsEnableMailHeaderAnalysis" xml:space="preserve">
+    <value>Используйте функции анализа заголовков и предупреждений.</value>
+  </data>
+  <data name="IsEnableSecurityForReceivedMail" xml:space="preserve">
+    <value>Используйте функцию предупреждения при открытии писем и вложений. (бета)</value>
+  </data>
+  <data name="IsShowWarningWhenDkimFails" xml:space="preserve">
+    <value>Отображение предупреждения при сбое проверки записи DKIM.</value>
+  </data>
+  <data name="IsShowWarningWhenSpfFails" xml:space="preserve">
+    <value>Отображение предупреждения при сбое проверки записи SPF.</value>
+  </data>
+  <data name="SecurityForReceivedMail" xml:space="preserve">
+    <value> [β] Безопасность полученной почты</value>
+  </data>
+  <data name="SettingExampleAlertKeywordOfSubjectWhenOpeningMails" xml:space="preserve">
+    <value>Зарегистрируйте целевые ключевые слова и текст предупреждения.
+
+*Настройки будут отражены после перезапуска Outlook.</value>
+  </data>
+  <data name="SettingExampleSecurityForReceivedMail" xml:space="preserve">
+    <value>Вся эта функциональность находится в бета-версии.
+
+*Включение этой функции может вызвать проблемы.
+
+*Настройки будут отражены после перезапуска Outlook.</value>
+  </data>
+  <data name="IsEnableWarningFeatureWhenOpeningAttachments" xml:space="preserve">
+    <value>Используйте функцию предупреждения при открытии вложений.</value>
+  </data>
+  <data name="IsWarnBeforeOpeningAttachments" xml:space="preserve">
+    <value>Предупредите перед открытием вложений.</value>
+  </data>
+  <data name="IsWarnBeforeOpeningEncryptedZip" xml:space="preserve">
+    <value>Предупреждайте при открытии зашифрованных ZIP-файлов.</value>
+  </data>
+  <data name="IsWarnLinkFileInTheZip" xml:space="preserve">
+    <value>Предупредите, если в ZIP-файле есть файл .link.</value>
+  </data>
+  <data name="IsWarnOneFileInTheZip" xml:space="preserve">
+    <value>Предупредите, если в ZIP-файле есть файл .one.</value>
+  </data>
+  <data name="IsWarnOfficeFileWithMacroInTheZip" xml:space="preserve">
+    <value>Предупреждаем, если в ZIP-файле есть файлы .docm, .xlsm или .pptm.</value>
+  </data>
+  <data name="IsWarnBeforeOpeningAttachmentsThatContainMacros" xml:space="preserve">
+    <value>Предупреждайте при открытии вложений, содержащих макросы.</value>
+  </data>
+  <data name="Warning" xml:space="preserve">
+    <value>Предупреждение</value>
+  </data>
+  <data name="AlertOfReceivedMailSubject" xml:space="preserve">
+    <value>Строка темы содержит ключевое слово, на которое распространяется предупреждение.</value>
+  </data>
+  <data name="SpfWarning1" xml:space="preserve">
+    <value>Не удалось выполнить проверку SPF. Отправитель может быть подделан.</value>
+  </data>
+  <data name="DkimWarning1" xml:space="preserve">
+    <value>Не удалось выполнить проверку DKIM. Отправитель может быть подделан.</value>
+  </data>
+  <data name="SpfDkimWaring2" xml:space="preserve">
+    <value>Пожалуйста, будьте осторожны с содержимым и вложениями в этом письме.</value>
+  </data>
+  <data name="OpenAttachmentWarning1" xml:space="preserve">
+    <value>Вы действительно хотите открыть вложение?</value>
+  </data>
+  <data name="OpenAttachmentWarning2" xml:space="preserve">
+    <value>Будьте очень осторожны с подозрительными файлами.</value>
+  </data>
+  <data name="AttatchmentIsEncryptedZip" xml:space="preserve">
+    <value>Этот файл представляет собой зашифрованный ZIP-файл.</value>
+  </data>
+  <data name="SuspiciousAttachmentZip_link" xml:space="preserve">
+    <value>Подозрительное вложение.
+Файл .lnk включен в ZIP-файл,
+риск заражения вирусом.</value>
+  </data>
+  <data name="SuspiciousAttachmentZip_one" xml:space="preserve">
+    <value>Подозрительное вложение.
+Файл .one включен в ZIP-файл,
+риск заражения вирусом.</value>
+  </data>
+  <data name="SuspiciousAttachmentZip_macro" xml:space="preserve">
+    <value>Подозрительное вложение.
+ZIP-файл содержит файл Office, содержащий макросы и
+риск заражения вирусом.</value>
+  </data>
+  <data name="SuspiciousAttachment_macro" xml:space="preserve">
+    <value>Это вложения, содержащие макросы, риск заражения вирусом.</value>
   </data>
 </root>

@@ -297,7 +297,7 @@
     <value>聯繫小組</value>
   </data>
   <data name="Copyright" xml:space="preserve">
-    <value>Copyright (C) 2022 Noraneko Inc.</value>
+    <value>Copyright (C) 2023 Noraneko Inc.</value>
   </data>
   <data name="CSVExport" xml:space="preserve">
     <value>導出CSV</value>
@@ -834,7 +834,7 @@
     <value>不詳</value>
   </data>
   <data name="Version" xml:space="preserve">
-    <value>Version 2.7.2.1</value>
+    <value>Version 2.8.0.0 β</value>
   </data>
   <data name="VersionInfo" xml:space="preserve">
     <value>軟件信息</value>
@@ -853,5 +853,107 @@
   </data>
   <data name="YouHaveLatest" xml:space="preserve">
     <value>這個插件是最新版本。</value>
+  </data>
+  <data name="General2" xml:space="preserve">
+    <value>一般 2</value>
+  </data>
+  <data name="IsIgnoreMustOpenBeforeCheckTheAttachedFilesIfInternalDomain" xml:space="preserve">
+    <value>如果所有收件者都是內部域，則不需要。</value>
+  </data>
+  <data name="AlertKeywordOfSubjectWhenOpeningMails" xml:space="preserve">
+    <value> [β] 打開電子郵件時發出警報（主題）</value>
+  </data>
+  <data name="IsEnableAlertKeywordOfSubjectWhenOpeningMailsData" xml:space="preserve">
+    <value>當主題行包含指定的關鍵字時，使用警告功能。</value>
+  </data>
+  <data name="IsEnableMailHeaderAnalysis" xml:space="preserve">
+    <value>使用郵件頭分析和警告功能。</value>
+  </data>
+  <data name="IsEnableSecurityForReceivedMail" xml:space="preserve">
+    <value>打開郵件和附件時使用警告功能。（測試版）</value>
+  </data>
+  <data name="IsShowWarningWhenDkimFails" xml:space="preserve">
+    <value>當 DKIM 記錄驗證失敗時顯示警告。</value>
+  </data>
+  <data name="IsShowWarningWhenSpfFails" xml:space="preserve">
+    <value>當 SPF 記錄驗證失敗時顯示警告。</value>
+  </data>
+  <data name="SecurityForReceivedMail" xml:space="preserve">
+    <value> [β] 接收郵件安全</value>
+  </data>
+  <data name="SettingExampleAlertKeywordOfSubjectWhenOpeningMails" xml:space="preserve">
+    <value>註冊目標關鍵字和警告文本。
+
+*設置將在重新啟動 Outlook 后反映出來。</value>
+  </data>
+  <data name="SettingExampleSecurityForReceivedMail" xml:space="preserve">
+    <value>所有這些功能都處於測試階段。
+
+*啟用此功能可能會導致問題。
+
+*設置將在重新啟動 Outlook 后反映出來。</value>
+  </data>
+  <data name="IsEnableWarningFeatureWhenOpeningAttachments" xml:space="preserve">
+    <value>打開附件時使用警告功能。</value>
+  </data>
+  <data name="IsWarnBeforeOpeningAttachments" xml:space="preserve">
+    <value>打開附件前發出警告。</value>
+  </data>
+  <data name="IsWarnBeforeOpeningEncryptedZip" xml:space="preserve">
+    <value>打開加密的 ZIP 檔時發出警告。</value>
+  </data>
+  <data name="IsWarnLinkFileInTheZip" xml:space="preserve">
+    <value>如果 ZIP 中存在 .link 檔，則發出警告。</value>
+  </data>
+  <data name="IsWarnOneFileInTheZip" xml:space="preserve">
+    <value>如果 ZIP 中存在 .one 檔，則發出警告。</value>
+  </data>
+  <data name="IsWarnOfficeFileWithMacroInTheZip" xml:space="preserve">
+    <value>如果 ZIP 中有 .docm、.xlsm 或 .pptm 檔，則發出警告。</value>
+  </data>
+  <data name="IsWarnBeforeOpeningAttachmentsThatContainMacros" xml:space="preserve">
+    <value>打開包含宏的附件時發出警告。</value>
+  </data>
+  <data name="Warning" xml:space="preserve">
+    <value>警告</value>
+  </data>
+  <data name="AlertOfReceivedMailSubject" xml:space="preserve">
+    <value>主題行包含受警告影響的關鍵字。</value>
+  </data>
+  <data name="SpfWarning1" xml:space="preserve">
+    <value>SPF 驗證失敗。寄件者可能被欺騙。</value>
+  </data>
+  <data name="DkimWarning1" xml:space="preserve">
+    <value>DKIM 驗證失敗。寄件者可能被欺騙。</value>
+  </data>
+  <data name="SpfDkimWaring2" xml:space="preserve">
+    <value>請注意此電子郵件中的內容和附件。</value>
+  </data>
+  <data name="OpenAttachmentWarning1" xml:space="preserve">
+    <value>是否確實要打開附件？</value>
+  </data>
+  <data name="OpenAttachmentWarning2" xml:space="preserve">
+    <value>要非常小心可疑檔。</value>
+  </data>
+  <data name="AttatchmentIsEncryptedZip" xml:space="preserve">
+    <value>此檔案是加密的 ZIP 檔。</value>
+  </data>
+  <data name="SuspiciousAttachmentZip_link" xml:space="preserve">
+    <value>可疑附件。
+.lnk檔包含在 ZIP 檔中，
+感染病毒的風險。</value>
+  </data>
+  <data name="SuspiciousAttachmentZip_one" xml:space="preserve">
+    <value>可疑附件。
+.one 檔包含在 ZIP 檔中，
+感染病毒的風險。</value>
+  </data>
+  <data name="SuspiciousAttachmentZip_macro" xml:space="preserve">
+    <value>可疑附件。
+zip 檔包含一個包含宏和
+感染病毒的風險。</value>
+  </data>
+  <data name="SuspiciousAttachment_macro" xml:space="preserve">
+    <value>這是包含宏的附件，感染病毒的風險。</value>
   </data>
 </root>

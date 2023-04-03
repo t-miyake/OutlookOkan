@@ -1,4 +1,4 @@
-﻿using OutlookOkan.CsvTools;
+﻿using OutlookOkan.Handlers;
 using OutlookOkan.Services;
 using OutlookOkan.Types;
 using System;
@@ -59,6 +59,9 @@ namespace OutlookOkan.ViewModels
             ImportAttachmentAlertRecipients = new RelayCommand(ImportAttachmentAlertRecipientsFromCsv);
             ExportAttachmentAlertRecipients = new RelayCommand(ExportAttachmentAlertRecipientsToCsv);
 
+            ImportAlertKeywordOfSubjectWhenOpeningMailsList = new RelayCommand(ImportAlertKeywordOfSubjectWhenOpeningMailsFromCsv);
+            ExportAlertKeywordOfSubjectWhenOpeningMailsList = new RelayCommand(ExportAlertKeywordOfSubjectWhenOpeningMailsToCsv);
+
             //Load language code and name.
             var languages = new Languages();
             Languages = languages.Language;
@@ -82,7 +85,9 @@ namespace OutlookOkan.ViewModels
             LoadAttachmentProhibitedRecipientsData();
             LoadAttachmentAlertRecipientsData();
             LoadForceAutoChangeRecipientsToBccData();
+            LoadAlertKeywordOfSubjectWhenOpeningMailsData();
             LoadAutoAddMessageData();
+            LoadSecurityForReceivedMailData();
         }
 
         internal async Task SaveSettings()
@@ -107,7 +112,9 @@ namespace OutlookOkan.ViewModels
                     SaveAttachmentProhibitedRecipientsToCsv(),
                     SaveAttachmentAlertRecipientsToCsv(),
                     SaveForceAutoChangeRecipientsToBccToCsv(),
-                    SaveAutoAddMessageToCsv()
+                    SaveAlertKeywordOfSubjectWhenOpeningMailToCsv(),
+                    SaveAutoAddMessageToCsv(),
+                    SecurityForReceivedMailToCsv()
                 };
 
             await Task.WhenAll(saveTasks);
@@ -120,10 +127,8 @@ namespace OutlookOkan.ViewModels
 
         private void LoadWhitelistData()
         {
-            var readCsv = new ReadAndWriteCsv("Whitelist.csv");
-            var whitelist = readCsv.GetCsvRecords<Whitelist>(readCsv.LoadCsv<WhitelistMap>());
-
-            foreach (var data in whitelist.Where(x => !string.IsNullOrEmpty(x.WhiteName)))
+            var whiteList = CsvFileHandler.ReadCsv<Whitelist>(typeof(WhitelistMap), "Whitelist.csv");
+            foreach (var data in whiteList.Where(x => !string.IsNullOrEmpty(x.WhiteName)))
             {
                 Whitelist.Add(data);
             }
@@ -132,20 +137,14 @@ namespace OutlookOkan.ViewModels
         private async Task SaveWhiteListToCsv()
         {
             var list = Whitelist.Where(x => !string.IsNullOrEmpty(x.WhiteName)).Cast<object>().ToList();
-            var writeCsv = new ReadAndWriteCsv("Whitelist.csv");
-            await Task.Run(() => writeCsv.WriteRecordsToCsv<WhitelistMap>(list));
+            await Task.Run(() => CsvFileHandler.CreateOrReplaceCsv(typeof(WhitelistMap), "Whitelist.csv", list));
         }
 
         private void ImportWhiteListFromCsv()
         {
-            var importAction = new CsvImportAndExport();
-            var filePath = importAction.ImportCsv();
-
-            if (filePath is null) return;
-
             try
             {
-                var importData = new List<Whitelist>(importAction.GetCsvRecords<Whitelist>(importAction.LoadCsv<WhitelistMap>(filePath)));
+                var importData = CsvFileHandler.ImportCsv<Whitelist>(typeof(WhitelistMap));
                 foreach (var data in importData.Where(x => !string.IsNullOrEmpty(x.WhiteName)))
                 {
                     Whitelist.Add(data);
@@ -162,8 +161,7 @@ namespace OutlookOkan.ViewModels
         private void ExportWhiteListToCsv()
         {
             var list = Whitelist.Where(x => !string.IsNullOrEmpty(x.WhiteName)).Cast<object>().ToList();
-            var exportAction = new CsvImportAndExport();
-            exportAction.CsvExport<WhitelistMap>(list, "Whitelist.csv");
+            CsvFileHandler.ExportCsv(typeof(WhitelistMap), list, "Whitelist.csv");
         }
 
         private ObservableCollection<Whitelist> _whitelist = new ObservableCollection<Whitelist>();
@@ -186,9 +184,7 @@ namespace OutlookOkan.ViewModels
 
         private void LoadNameAndDomainsData()
         {
-            var readCsv = new ReadAndWriteCsv("NameAndDomains.csv");
-            var nameAndDomains = readCsv.GetCsvRecords<NameAndDomains>(readCsv.LoadCsv<NameAndDomainsMap>());
-
+            var nameAndDomains = CsvFileHandler.ReadCsv<NameAndDomains>(typeof(NameAndDomainsMap), "NameAndDomains.csv");
             foreach (var data in nameAndDomains.Where(x => !string.IsNullOrEmpty(x.Domain) && !string.IsNullOrEmpty(x.Name)))
             {
                 NameAndDomains.Add(data);
@@ -198,20 +194,14 @@ namespace OutlookOkan.ViewModels
         private async Task SaveNameAndDomainsToCsv()
         {
             var list = NameAndDomains.Where(x => !string.IsNullOrEmpty(x.Domain) && !string.IsNullOrEmpty(x.Name)).Cast<object>().ToList();
-            var writeCsv = new ReadAndWriteCsv("NameAndDomains.csv");
-            await Task.Run(() => writeCsv.WriteRecordsToCsv<NameAndDomainsMap>(list));
+            await Task.Run(() => CsvFileHandler.CreateOrReplaceCsv(typeof(NameAndDomainsMap), "NameAndDomains.csv", list));
         }
 
         private void ImportNameAndDomainsFromCsv()
         {
-            var importAction = new CsvImportAndExport();
-            var filePath = importAction.ImportCsv();
-
-            if (filePath is null) return;
-
             try
             {
-                var importData = new List<NameAndDomains>(importAction.GetCsvRecords<NameAndDomains>(importAction.LoadCsv<NameAndDomainsMap>(filePath)));
+                var importData = CsvFileHandler.ImportCsv<NameAndDomains>(typeof(NameAndDomainsMap));
                 foreach (var data in importData.Where(x => !string.IsNullOrEmpty(x.Domain) && !string.IsNullOrEmpty(x.Name)))
                 {
                     NameAndDomains.Add(data);
@@ -228,8 +218,7 @@ namespace OutlookOkan.ViewModels
         private void ExportNameAndDomainsToCsv()
         {
             var list = NameAndDomains.Where(x => !string.IsNullOrEmpty(x.Domain) && !string.IsNullOrEmpty(x.Name)).Cast<object>().ToList();
-            var exportAction = new CsvImportAndExport();
-            exportAction.CsvExport<NameAndDomainsMap>(list, "NameAndDomains.csv");
+            CsvFileHandler.ExportCsv(typeof(NameAndDomainsMap), list, "NameAndDomains.csv");
         }
 
         private ObservableCollection<NameAndDomains> _nameAndDomains = new ObservableCollection<NameAndDomains>();
@@ -252,9 +241,7 @@ namespace OutlookOkan.ViewModels
 
         private void LoadKeywordAndRecipientsData()
         {
-            var readCsv = new ReadAndWriteCsv("KeywordAndRecipientsList.csv");
-            var keywordAndRecipients = readCsv.GetCsvRecords<KeywordAndRecipients>(readCsv.LoadCsv<KeywordAndRecipientsMap>());
-
+            var keywordAndRecipients = CsvFileHandler.ReadCsv<KeywordAndRecipients>(typeof(KeywordAndRecipientsMap), "KeywordAndRecipientsList.csv");
             foreach (var data in keywordAndRecipients.Where(x => !string.IsNullOrEmpty(x.Keyword) && !string.IsNullOrEmpty(x.Recipient)))
             {
                 KeywordAndRecipients.Add(data);
@@ -264,20 +251,14 @@ namespace OutlookOkan.ViewModels
         private async Task SaveKeywordAndRecipientsToCsv()
         {
             var list = KeywordAndRecipients.Where(x => !string.IsNullOrEmpty(x.Keyword) && !string.IsNullOrEmpty(x.Recipient)).Cast<object>().ToList();
-            var writeCsv = new ReadAndWriteCsv("KeywordAndRecipientsList.csv");
-            await Task.Run(() => writeCsv.WriteRecordsToCsv<KeywordAndRecipientsMap>(list));
+            await Task.Run(() => CsvFileHandler.CreateOrReplaceCsv(typeof(KeywordAndRecipientsMap), "KeywordAndRecipientsList.csv", list));
         }
 
         private void ImportKeywordAndRecipientsFromCsv()
         {
-            var importAction = new CsvImportAndExport();
-            var filePath = importAction.ImportCsv();
-
-            if (filePath is null) return;
-
             try
             {
-                var importData = new List<KeywordAndRecipients>(importAction.GetCsvRecords<KeywordAndRecipients>(importAction.LoadCsv<KeywordAndRecipientsMap>(filePath)));
+                var importData = CsvFileHandler.ImportCsv<KeywordAndRecipients>(typeof(KeywordAndRecipientsMap));
                 foreach (var data in importData.Where(x => !string.IsNullOrEmpty(x.Keyword) && !string.IsNullOrEmpty(x.Recipient)))
                 {
                     KeywordAndRecipients.Add(data);
@@ -294,8 +275,7 @@ namespace OutlookOkan.ViewModels
         private void ExportKeywordAndRecipientsToCsv()
         {
             var list = KeywordAndRecipients.Where(x => !string.IsNullOrEmpty(x.Keyword) && !string.IsNullOrEmpty(x.Recipient)).Cast<object>().ToList();
-            var exportAction = new CsvImportAndExport();
-            exportAction.CsvExport<KeywordAndRecipientsMap>(list, "KeywordAndRecipientsList.csv");
+            CsvFileHandler.ExportCsv(typeof(KeywordAndRecipientsMap), list, "KeywordAndRecipientsList.csv");
         }
 
         private ObservableCollection<KeywordAndRecipients> _keywordAndRecipients = new ObservableCollection<KeywordAndRecipients>();
@@ -318,9 +298,7 @@ namespace OutlookOkan.ViewModels
 
         private void LoadAlertKeywordAndMessagesForSubjectData()
         {
-            var readCsv = new ReadAndWriteCsv("AlertKeywordAndMessageListForSubject.csv");
-            var alertKeywordAndMessagesForSubject = readCsv.GetCsvRecords<AlertKeywordAndMessageForSubject>(readCsv.LoadCsv<AlertKeywordAndMessageForSubjectMap>());
-
+            var alertKeywordAndMessagesForSubject = CsvFileHandler.ReadCsv<AlertKeywordAndMessageForSubject>(typeof(AlertKeywordAndMessageForSubjectMap), "AlertKeywordAndMessageListForSubject.csv");
             foreach (var data in alertKeywordAndMessagesForSubject.Where(x => !string.IsNullOrEmpty(x.AlertKeyword)))
             {
                 AlertKeywordAndMessagesForSubject.Add(data);
@@ -330,20 +308,14 @@ namespace OutlookOkan.ViewModels
         private async Task SaveAlertKeywordAndMessageForSubjectToCsv()
         {
             var list = AlertKeywordAndMessagesForSubject.Where(x => !string.IsNullOrEmpty(x.AlertKeyword)).Cast<object>().ToList();
-            var writeCsv = new ReadAndWriteCsv("AlertKeywordAndMessageListForSubject.csv");
-            await Task.Run(() => writeCsv.WriteRecordsToCsv<AlertKeywordAndMessageForSubjectMap>(list));
+            await Task.Run(() => CsvFileHandler.CreateOrReplaceCsv(typeof(AlertKeywordAndMessageForSubjectMap), "AlertKeywordAndMessageListForSubject.csv", list));
         }
 
         private void ImportAlertKeywordAndMessagesForSubjectFromCsv()
         {
-            var importAction = new CsvImportAndExport();
-            var filePath = importAction.ImportCsv();
-
-            if (filePath is null) return;
-
             try
             {
-                var importData = new List<AlertKeywordAndMessageForSubject>(importAction.GetCsvRecords<AlertKeywordAndMessageForSubject>(importAction.LoadCsv<AlertKeywordAndMessageForSubjectMap>(filePath)));
+                var importData = CsvFileHandler.ImportCsv<AlertKeywordAndMessageForSubject>(typeof(AlertKeywordAndMessageForSubjectMap));
                 foreach (var data in importData.Where(x => !string.IsNullOrEmpty(x.AlertKeyword)))
                 {
                     AlertKeywordAndMessagesForSubject.Add(data);
@@ -360,8 +332,7 @@ namespace OutlookOkan.ViewModels
         private void ExportAlertKeywordAndMessagesForSubjectToCsv()
         {
             var list = AlertKeywordAndMessagesForSubject.Where(x => !string.IsNullOrEmpty(x.AlertKeyword)).Cast<object>().ToList();
-            var exportAction = new CsvImportAndExport();
-            exportAction.CsvExport<AlertKeywordAndMessageForSubjectMap>(list, "AlertKeywordAndMessageListForSubject.csv");
+            CsvFileHandler.ExportCsv(typeof(AlertKeywordAndMessageForSubjectMap), list, "AlertKeywordAndMessageListForSubject.csv");
         }
 
         private ObservableCollection<AlertKeywordAndMessageForSubject> _alertKeywordAndMessagesForSubject = new ObservableCollection<AlertKeywordAndMessageForSubject>();
@@ -384,9 +355,7 @@ namespace OutlookOkan.ViewModels
 
         private void LoadAlertKeywordAndMessagesData()
         {
-            var readCsv = new ReadAndWriteCsv("AlertKeywordAndMessageList.csv");
-            var alertKeywordAndMessages = readCsv.GetCsvRecords<AlertKeywordAndMessage>(readCsv.LoadCsv<AlertKeywordAndMessageMap>());
-
+            var alertKeywordAndMessages = CsvFileHandler.ReadCsv<AlertKeywordAndMessage>(typeof(AlertKeywordAndMessageMap), "AlertKeywordAndMessageList.csv");
             foreach (var data in alertKeywordAndMessages.Where(x => !string.IsNullOrEmpty(x.AlertKeyword)))
             {
                 AlertKeywordAndMessages.Add(data);
@@ -396,20 +365,14 @@ namespace OutlookOkan.ViewModels
         private async Task SaveAlertKeywordAndMessageToCsv()
         {
             var list = AlertKeywordAndMessages.Where(x => !string.IsNullOrEmpty(x.AlertKeyword)).Cast<object>().ToList();
-            var writeCsv = new ReadAndWriteCsv("AlertKeywordAndMessageList.csv");
-            await Task.Run(() => writeCsv.WriteRecordsToCsv<AlertKeywordAndMessageMap>(list));
+            await Task.Run(() => CsvFileHandler.CreateOrReplaceCsv(typeof(AlertKeywordAndMessageMap), "AlertKeywordAndMessageList.csv", list));
         }
 
         private void ImportAlertKeywordAndMessagesFromCsv()
         {
-            var importAction = new CsvImportAndExport();
-            var filePath = importAction.ImportCsv();
-
-            if (filePath is null) return;
-
             try
             {
-                var importData = new List<AlertKeywordAndMessage>(importAction.GetCsvRecords<AlertKeywordAndMessage>(importAction.LoadCsv<AlertKeywordAndMessageMap>(filePath)));
+                var importData = CsvFileHandler.ImportCsv<AlertKeywordAndMessage>(typeof(AlertKeywordAndMessageMap));
                 foreach (var data in importData.Where(x => !string.IsNullOrEmpty(x.AlertKeyword)))
                 {
                     AlertKeywordAndMessages.Add(data);
@@ -426,8 +389,7 @@ namespace OutlookOkan.ViewModels
         private void ExportAlertKeywordAndMessagesToCsv()
         {
             var list = AlertKeywordAndMessages.Where(x => !string.IsNullOrEmpty(x.AlertKeyword)).Cast<object>().ToList();
-            var exportAction = new CsvImportAndExport();
-            exportAction.CsvExport<AlertKeywordAndMessageMap>(list, "AlertKeywordAndMessageList.csv");
+            CsvFileHandler.ExportCsv(typeof(AlertKeywordAndMessageMap), list, "AlertKeywordAndMessageList.csv");
         }
 
         private ObservableCollection<AlertKeywordAndMessage> _alertKeywordAndMessages = new ObservableCollection<AlertKeywordAndMessage>();
@@ -450,9 +412,7 @@ namespace OutlookOkan.ViewModels
 
         private void LoadAlertAddressesData()
         {
-            var readCsv = new ReadAndWriteCsv("AlertAddressList.csv");
-            var alertAddresses = readCsv.GetCsvRecords<AlertAddress>(readCsv.LoadCsv<AlertAddressMap>());
-
+            var alertAddresses = CsvFileHandler.ReadCsv<AlertAddress>(typeof(AlertAddressMap), "AlertAddressList.csv");
             foreach (var data in alertAddresses.Where(x => !string.IsNullOrEmpty(x.TargetAddress)))
             {
                 AlertAddresses.Add(data);
@@ -462,20 +422,14 @@ namespace OutlookOkan.ViewModels
         private async Task SaveAlertAddressesToCsv()
         {
             var list = AlertAddresses.Where(x => !string.IsNullOrEmpty(x.TargetAddress)).Cast<object>().ToList();
-            var writeCsv = new ReadAndWriteCsv("AlertAddressList.csv");
-            await Task.Run(() => writeCsv.WriteRecordsToCsv<AlertAddressMap>(list));
+            await Task.Run(() => CsvFileHandler.CreateOrReplaceCsv(typeof(AlertAddressMap), "AlertAddressList.csv", list));
         }
 
         private void ImportAlertAddressesFromCsv()
         {
-            var importAction = new CsvImportAndExport();
-            var filePath = importAction.ImportCsv();
-
-            if (filePath is null) return;
-
             try
             {
-                var importData = new List<AlertAddress>(importAction.GetCsvRecords<AlertAddress>(importAction.LoadCsv<AlertAddressMap>(filePath)));
+                var importData = CsvFileHandler.ImportCsv<AlertAddress>(typeof(AlertAddressMap));
                 foreach (var data in importData.Where(x => !string.IsNullOrEmpty(x.TargetAddress)))
                 {
                     AlertAddresses.Add(data);
@@ -492,8 +446,7 @@ namespace OutlookOkan.ViewModels
         private void ExportAlertAddressesToCsv()
         {
             var list = AlertAddresses.Where(x => !string.IsNullOrEmpty(x.TargetAddress)).Cast<object>().ToList();
-            var exportAction = new CsvImportAndExport();
-            exportAction.CsvExport<AlertAddressMap>(list, "AlertAddressList.csv");
+            CsvFileHandler.ExportCsv(typeof(AlertAddressMap), list, "AlertAddressList.csv");
         }
 
         private ObservableCollection<AlertAddress> _alertAddresses = new ObservableCollection<AlertAddress>();
@@ -516,9 +469,7 @@ namespace OutlookOkan.ViewModels
 
         private void LoadAutoCcBccKeywordsData()
         {
-            var readCsv = new ReadAndWriteCsv("AutoCcBccKeywordList.csv");
-            var autoCcBccKeywords = readCsv.GetCsvRecords<AutoCcBccKeyword>(readCsv.LoadCsv<AutoCcBccKeywordMap>());
-
+            var autoCcBccKeywords = CsvFileHandler.ReadCsv<AutoCcBccKeyword>(typeof(AutoCcBccKeywordMap), "AutoCcBccKeywordList.csv");
             foreach (var data in autoCcBccKeywords.Where(x => !string.IsNullOrEmpty(x.Keyword) && !string.IsNullOrEmpty(x.AutoAddAddress)))
             {
                 AutoCcBccKeywords.Add(data);
@@ -528,20 +479,14 @@ namespace OutlookOkan.ViewModels
         private async Task SaveAutoCcBccKeywordsToCsv()
         {
             var list = AutoCcBccKeywords.Where(x => !string.IsNullOrEmpty(x.Keyword) && !string.IsNullOrEmpty(x.AutoAddAddress)).Cast<object>().ToList();
-            var writeCsv = new ReadAndWriteCsv("AutoCcBccKeywordList.csv");
-            await Task.Run(() => writeCsv.WriteRecordsToCsv<AutoCcBccKeywordMap>(list));
+            await Task.Run(() => CsvFileHandler.CreateOrReplaceCsv(typeof(AutoCcBccKeywordMap), "AutoCcBccKeywordList.csv", list));
         }
 
         private void ImportAutoCcBccKeywordsFromCsv()
         {
-            var importAction = new CsvImportAndExport();
-            var filePath = importAction.ImportCsv();
-
-            if (filePath is null) return;
-
             try
             {
-                var importData = new List<AutoCcBccKeyword>(importAction.GetCsvRecords<AutoCcBccKeyword>(importAction.LoadCsv<AutoCcBccKeywordMap>(filePath)));
+                var importData = CsvFileHandler.ImportCsv<AutoCcBccKeyword>(typeof(AutoCcBccKeywordMap));
                 foreach (var data in importData.Where(x => !string.IsNullOrEmpty(x.Keyword) && !string.IsNullOrEmpty(x.AutoAddAddress)))
                 {
                     AutoCcBccKeywords.Add(data);
@@ -558,8 +503,7 @@ namespace OutlookOkan.ViewModels
         private void ExportAutoCcBccKeywordsToCsv()
         {
             var list = AutoCcBccKeywords.Where(x => !string.IsNullOrEmpty(x.Keyword) && !string.IsNullOrEmpty(x.AutoAddAddress)).Cast<object>().ToList();
-            var exportAction = new CsvImportAndExport();
-            exportAction.CsvExport<AutoCcBccKeywordMap>(list, "AutoCcBccKeywordList.csv");
+            CsvFileHandler.ExportCsv(typeof(AutoCcBccKeywordMap), list, "AutoCcBccKeywordList.csv");
         }
 
         private ObservableCollection<AutoCcBccKeyword> _autoCcBccKeywords = new ObservableCollection<AutoCcBccKeyword>();
@@ -582,9 +526,7 @@ namespace OutlookOkan.ViewModels
 
         private void LoadAutoCcBccRecipientsData()
         {
-            var readCsv = new ReadAndWriteCsv("AutoCcBccRecipientList.csv");
-            var autoCcBccRecipient = readCsv.GetCsvRecords<AutoCcBccRecipient>(readCsv.LoadCsv<AutoCcBccRecipientMap>());
-
+            var autoCcBccRecipient = CsvFileHandler.ReadCsv<AutoCcBccRecipient>(typeof(AutoCcBccRecipientMap), "AutoCcBccRecipientList.csv");
             foreach (var data in autoCcBccRecipient.Where(x => !string.IsNullOrEmpty(x.TargetRecipient) && !string.IsNullOrEmpty(x.AutoAddAddress)))
             {
                 AutoCcBccRecipients.Add(data);
@@ -594,20 +536,15 @@ namespace OutlookOkan.ViewModels
         private async Task SaveAutoCcBccRecipientsToCsv()
         {
             var list = AutoCcBccRecipients.Where(x => !string.IsNullOrEmpty(x.TargetRecipient) && !string.IsNullOrEmpty(x.AutoAddAddress)).Cast<object>().ToList();
-            var writeCsv = new ReadAndWriteCsv("AutoCcBccRecipientList.csv");
-            await Task.Run(() => writeCsv.WriteRecordsToCsv<AutoCcBccRecipientMap>(list));
+            await Task.Run(() => CsvFileHandler.CreateOrReplaceCsv(typeof(AutoCcBccRecipientMap), "AutoCcBccRecipientList.csv", list));
         }
 
         private void ImportAutoCcBccRecipientsFromCsv()
         {
-            var importAction = new CsvImportAndExport();
-            var filePath = importAction.ImportCsv();
-
-            if (filePath is null) return;
-
             try
             {
-                var importData = new List<AutoCcBccRecipient>(importAction.GetCsvRecords<AutoCcBccRecipient>(importAction.LoadCsv<AutoCcBccRecipientMap>(filePath)));
+                var importData = CsvFileHandler.ImportCsv<AutoCcBccRecipient>(typeof(AutoCcBccRecipientMap));
+
                 foreach (var data in importData.Where(x => !string.IsNullOrEmpty(x.TargetRecipient) && !string.IsNullOrEmpty(x.AutoAddAddress)))
                 {
                     AutoCcBccRecipients.Add(data);
@@ -624,8 +561,7 @@ namespace OutlookOkan.ViewModels
         private void ExportAutoCcBccRecipientsToCsv()
         {
             var list = AutoCcBccRecipients.Where(x => !string.IsNullOrEmpty(x.TargetRecipient) && !string.IsNullOrEmpty(x.AutoAddAddress)).Cast<object>().ToList();
-            var exportAction = new CsvImportAndExport();
-            exportAction.CsvExport<AutoCcBccRecipientMap>(list, "AutoCcBccRecipientList.csv");
+            CsvFileHandler.ExportCsv(typeof(AutoCcBccRecipientMap), list, "AutoCcBccRecipientList.csv");
         }
 
         private ObservableCollection<AutoCcBccRecipient> _autoCcBccRecipients = new ObservableCollection<AutoCcBccRecipient>();
@@ -648,9 +584,7 @@ namespace OutlookOkan.ViewModels
 
         private void LoadAutoCcBccAttachedFilesData()
         {
-            var readCsv = new ReadAndWriteCsv("AutoCcBccAttachedFileList.csv");
-            var autoCcBccAttachedFile = readCsv.GetCsvRecords<AutoCcBccAttachedFile>(readCsv.LoadCsv<AutoCcBccAttachedFileMap>());
-
+            var autoCcBccAttachedFile = CsvFileHandler.ReadCsv<AutoCcBccAttachedFile>(typeof(AutoCcBccAttachedFileMap), "AutoCcBccAttachedFileList.csv");
             foreach (var data in autoCcBccAttachedFile.Where(x => !string.IsNullOrEmpty(x.AutoAddAddress)))
             {
                 AutoCcBccAttachedFiles.Add(data);
@@ -660,20 +594,14 @@ namespace OutlookOkan.ViewModels
         private async Task SaveAutoCcBccAttachedFilesToCsv()
         {
             var list = AutoCcBccAttachedFiles.Where(x => !string.IsNullOrEmpty(x.AutoAddAddress)).Cast<object>().ToList();
-            var writeCsv = new ReadAndWriteCsv("AutoCcBccAttachedFileList.csv");
-            await Task.Run(() => writeCsv.WriteRecordsToCsv<AutoCcBccAttachedFileMap>(list));
+            await Task.Run(() => CsvFileHandler.CreateOrReplaceCsv(typeof(AutoCcBccAttachedFileMap), "AutoCcBccAttachedFileList.csv", list));
         }
 
         private void ImportAutoCcBccAttachedFilesFromCsv()
         {
-            var importAction = new CsvImportAndExport();
-            var filePath = importAction.ImportCsv();
-
-            if (filePath is null) return;
-
             try
             {
-                var importData = new List<AutoCcBccAttachedFile>(importAction.GetCsvRecords<AutoCcBccAttachedFile>(importAction.LoadCsv<AutoCcBccAttachedFileMap>(filePath)));
+                var importData = CsvFileHandler.ImportCsv<AutoCcBccAttachedFile>(typeof(AutoCcBccAttachedFileMap));
                 foreach (var data in importData.Where(x => !string.IsNullOrEmpty(x.AutoAddAddress)))
                 {
                     AutoCcBccAttachedFiles.Add(data);
@@ -690,8 +618,7 @@ namespace OutlookOkan.ViewModels
         private void ExportAutoCcBccAttachedFilesToCsv()
         {
             var list = AutoCcBccAttachedFiles.Where(x => !string.IsNullOrEmpty(x.AutoAddAddress)).Cast<object>().ToList();
-            var exportAction = new CsvImportAndExport();
-            exportAction.CsvExport<AutoCcBccAttachedFileMap>(list, "AutoCcBccAttachedFileList.csv");
+            CsvFileHandler.ExportCsv(typeof(AutoCcBccAttachedFileMap), list, "AutoCcBccAttachedFileList.csv");
         }
 
         private ObservableCollection<AutoCcBccAttachedFile> _autoCcBccAttachedFiles = new ObservableCollection<AutoCcBccAttachedFile>();
@@ -714,9 +641,7 @@ namespace OutlookOkan.ViewModels
 
         private void LoadDeferredDeliveryMinutesData()
         {
-            var readCsv = new ReadAndWriteCsv("DeferredDeliveryMinutes.csv");
-            var deferredDeliveryMinutes = readCsv.GetCsvRecords<DeferredDeliveryMinutes>(readCsv.LoadCsv<DeferredDeliveryMinutesMap>());
-
+            var deferredDeliveryMinutes = CsvFileHandler.ReadCsv<DeferredDeliveryMinutes>(typeof(DeferredDeliveryMinutesMap), "DeferredDeliveryMinutes.csv");
             foreach (var data in deferredDeliveryMinutes.Where(x => !string.IsNullOrEmpty(x.TargetAddress)))
             {
                 DeferredDeliveryMinutes.Add(data);
@@ -726,20 +651,14 @@ namespace OutlookOkan.ViewModels
         private async Task SaveDeferredDeliveryMinutesToCsv()
         {
             var list = DeferredDeliveryMinutes.Where(x => !string.IsNullOrEmpty(x.TargetAddress)).Cast<object>().ToList();
-            var writeCsv = new ReadAndWriteCsv("DeferredDeliveryMinutes.csv");
-            await Task.Run(() => writeCsv.WriteRecordsToCsv<DeferredDeliveryMinutesMap>(list));
+            await Task.Run(() => CsvFileHandler.CreateOrReplaceCsv(typeof(DeferredDeliveryMinutesMap), "DeferredDeliveryMinutes.csv", list));
         }
 
         private void ImportDeferredDeliveryMinutesFromCsv()
         {
-            var importAction = new CsvImportAndExport();
-            var filePath = importAction.ImportCsv();
-
-            if (filePath is null) return;
-
             try
             {
-                var importData = new List<DeferredDeliveryMinutes>(importAction.GetCsvRecords<DeferredDeliveryMinutes>(importAction.LoadCsv<DeferredDeliveryMinutesMap>(filePath)));
+                var importData = CsvFileHandler.ImportCsv<DeferredDeliveryMinutes>(typeof(DeferredDeliveryMinutesMap));
                 foreach (var data in importData.Where(x => !string.IsNullOrEmpty(x.TargetAddress)))
                 {
                     DeferredDeliveryMinutes.Add(data);
@@ -756,8 +675,7 @@ namespace OutlookOkan.ViewModels
         private void ExportDeferredDeliveryMinutesToCsv()
         {
             var list = DeferredDeliveryMinutes.Where(x => !string.IsNullOrEmpty(x.TargetAddress)).Cast<object>().ToList();
-            var exportAction = new CsvImportAndExport();
-            exportAction.CsvExport<DeferredDeliveryMinutesMap>(list, "DeferredDeliveryMinutes.csv");
+            CsvFileHandler.ExportCsv(typeof(DeferredDeliveryMinutesMap), list, "DeferredDeliveryMinutes.csv");
         }
 
         private ObservableCollection<DeferredDeliveryMinutes> _deferredDeliveryMinutes = new ObservableCollection<DeferredDeliveryMinutes>();
@@ -780,9 +698,7 @@ namespace OutlookOkan.ViewModels
 
         private void LoadInternalDomainListData()
         {
-            var readCsv = new ReadAndWriteCsv("InternalDomainList.csv");
-            var internalDomainList = readCsv.GetCsvRecords<InternalDomain>(readCsv.LoadCsv<InternalDomainMap>());
-
+            var internalDomainList = CsvFileHandler.ReadCsv<InternalDomain>(typeof(InternalDomainMap), "InternalDomainList.csv");
             foreach (var data in internalDomainList.Where(x => !string.IsNullOrEmpty(x.Domain)))
             {
                 InternalDomainList.Add(data);
@@ -792,20 +708,14 @@ namespace OutlookOkan.ViewModels
         private async Task SaveInternalDomainListToCsv()
         {
             var list = InternalDomainList.Where(x => !string.IsNullOrEmpty(x.Domain)).Cast<object>().ToList();
-            var writeCsv = new ReadAndWriteCsv("InternalDomainList.csv");
-            await Task.Run(() => writeCsv.WriteRecordsToCsv<InternalDomainMap>(list));
+            await Task.Run(() => CsvFileHandler.CreateOrReplaceCsv(typeof(InternalDomainMap), "InternalDomainList.csv", list));
         }
 
         private void ImportInternalDomainListFromCsv()
         {
-            var importAction = new CsvImportAndExport();
-            var filePath = importAction.ImportCsv();
-
-            if (filePath is null) return;
-
             try
             {
-                var importData = new List<InternalDomain>(importAction.GetCsvRecords<InternalDomain>(importAction.LoadCsv<InternalDomainMap>(filePath)));
+                var importData = CsvFileHandler.ImportCsv<InternalDomain>(typeof(InternalDomainMap));
                 foreach (var data in importData.Where(x => !string.IsNullOrEmpty(x.Domain)))
                 {
                     InternalDomainList.Add(data);
@@ -822,8 +732,7 @@ namespace OutlookOkan.ViewModels
         private void ExportInternalDomainListToCsv()
         {
             var list = InternalDomainList.Where(x => !string.IsNullOrEmpty(x.Domain)).Cast<object>().ToList();
-            var exportAction = new CsvImportAndExport();
-            exportAction.CsvExport<InternalDomainMap>(list, "InternalDomainList.csv");
+            CsvFileHandler.ExportCsv(typeof(InternalDomainMap), list, "InternalDomainList.csv");
         }
 
         private ObservableCollection<InternalDomain> _internalDomainList = new ObservableCollection<InternalDomain>();
@@ -843,14 +752,11 @@ namespace OutlookOkan.ViewModels
 
         private void LoadExternalDomainsWarningAndAutoChangeToBccData()
         {
-            var readCsv = new ReadAndWriteCsv("ExternalDomainsWarningAndAutoChangeToBccSetting.csv");
-            //1行しかないはずだが、2行以上あるとロード時にエラーとなる恐れがあるため、全行ロードする。
-            foreach (var data in readCsv.GetCsvRecords<ExternalDomainsWarningAndAutoChangeToBcc>(readCsv.LoadCsv<ExternalDomainsWarningAndAutoChangeToBccMap>()))
-            {
-                _externalDomainsWarningAndAutoChangeToBcc.Add(data);
-            }
+            var list = CsvFileHandler.ReadCsv<ExternalDomainsWarningAndAutoChangeToBcc>(typeof(ExternalDomainsWarningAndAutoChangeToBccMap), "ExternalDomainsWarningAndAutoChangeToBccSetting.csv");
+            if (list.Count == 0) return;
 
-            if (_externalDomainsWarningAndAutoChangeToBcc.Count == 0) return;
+            //1行しかないはずだが、2行以上あるとロード時にエラーとなる恐れがあるため、全行ロードする。
+            _externalDomainsWarningAndAutoChangeToBcc.AddRange(list);
 
             //実際に使用するのは1行目の設定のみ
             TargetToAndCcExternalDomainsNum = _externalDomainsWarningAndAutoChangeToBcc[0].TargetToAndCcExternalDomainsNum;
@@ -873,8 +779,7 @@ namespace OutlookOkan.ViewModels
             };
 
             var list = tempExternalDomainsWarningAndAutoChangeToBcc.Cast<object>().ToList();
-            var writeCsv = new ReadAndWriteCsv("ExternalDomainsWarningAndAutoChangeToBccSetting.csv");
-            await Task.Run(() => writeCsv.WriteRecordsToCsv<ExternalDomainsWarningAndAutoChangeToBccMap>(list));
+            await Task.Run(() => CsvFileHandler.CreateOrReplaceCsv(typeof(ExternalDomainsWarningAndAutoChangeToBccMap), "ExternalDomainsWarningAndAutoChangeToBccSetting.csv", list));
         }
 
         private readonly List<ExternalDomainsWarningAndAutoChangeToBcc> _externalDomainsWarningAndAutoChangeToBcc = new List<ExternalDomainsWarningAndAutoChangeToBcc>();
@@ -939,14 +844,11 @@ namespace OutlookOkan.ViewModels
 
         private void LoadAttachmentsSettingData()
         {
-            var readCsv = new ReadAndWriteCsv("AttachmentsSetting.csv");
-            //1行しかないはずだが、2行以上あるとロード時にエラーとなる恐れがあるため、全行ロードする。
-            foreach (var data in readCsv.GetCsvRecords<AttachmentsSetting>(readCsv.LoadCsv<AttachmentsSettingMap>()))
-            {
-                _attachmentsSetting.Add(data);
-            }
+            var list = CsvFileHandler.ReadCsv<AttachmentsSetting>(typeof(AttachmentsSettingMap), "AttachmentsSetting.csv");
+            if (list.Count == 0) return;
 
-            if (_attachmentsSetting.Count == 0) return;
+            //1行しかないはずだが、2行以上あるとロード時にエラーとなる恐れがあるため、全行ロードする。
+            _attachmentsSetting.AddRange(list);
 
             //実際に使用するのは1行目の設定のみ
             IsWarningWhenEncryptedZipIsAttached = _attachmentsSetting[0].IsWarningWhenEncryptedZipIsAttached;
@@ -957,8 +859,9 @@ namespace OutlookOkan.ViewModels
             IsEnableOpenAttachedFiles = _attachmentsSetting[0].IsEnableOpenAttachedFiles;
             TargetAttachmentFileExtensionOfOpen = _attachmentsSetting[0].TargetAttachmentFileExtensionOfOpen;
             IsMustOpenBeforeCheckTheAttachedFiles = _attachmentsSetting[0].IsMustOpenBeforeCheckTheAttachedFiles;
+            IsIgnoreMustOpenBeforeCheckTheAttachedFilesIfInternalDomain = _attachmentsSetting[0].IsIgnoreMustOpenBeforeCheckTheAttachedFilesIfInternalDomain;
 
-            if (string.IsNullOrEmpty(TargetAttachmentFileExtensionOfOpen)) TargetAttachmentFileExtensionOfOpen = ".pdf,.txt,.csv,.rtf,.htm,.html,.doc,.docx,.xls,.xlm,.xlsm,.xlsx,.ppt,.pptx,.bmp,.gif,.jpg,.jpeg,.png,.fif,.pub,.vsd,.vsdx";
+            if (string.IsNullOrEmpty(TargetAttachmentFileExtensionOfOpen)) TargetAttachmentFileExtensionOfOpen = ".pdf,.txt,.csv,.rtf,.htm,.html,.doc,.docx,.xls,.xlm,.xlsm,.xlsx,.ppt,.pptx,.bmp,.gif,.jpg,.jpeg,.png,.tif,.pub,.vsd,.vsdx";
         }
 
         private async Task SaveAttachmentsSettingToCsv()
@@ -974,14 +877,13 @@ namespace OutlookOkan.ViewModels
                     IsWarningWhenAttachedRealFile = IsWarningWhenAttachedRealFile,
                     IsEnableOpenAttachedFiles = IsEnableOpenAttachedFiles,
                     TargetAttachmentFileExtensionOfOpen = TargetAttachmentFileExtensionOfOpen,
-                    IsMustOpenBeforeCheckTheAttachedFiles = IsMustOpenBeforeCheckTheAttachedFiles
-
+                    IsMustOpenBeforeCheckTheAttachedFiles = IsMustOpenBeforeCheckTheAttachedFiles,
+                    IsIgnoreMustOpenBeforeCheckTheAttachedFilesIfInternalDomain = IsIgnoreMustOpenBeforeCheckTheAttachedFilesIfInternalDomain
                 }
             };
 
             var list = tempAttachmentsSetting.Cast<object>().ToList();
-            var writeCsv = new ReadAndWriteCsv("AttachmentsSetting.csv");
-            await Task.Run(() => writeCsv.WriteRecordsToCsv<AttachmentsSettingMap>(list));
+            await Task.Run(() => CsvFileHandler.CreateOrReplaceCsv(typeof(AttachmentsSettingMap), "AttachmentsSetting.csv", list));
         }
 
         private readonly List<AttachmentsSetting> _attachmentsSetting = new List<AttachmentsSetting>();
@@ -1056,7 +958,7 @@ namespace OutlookOkan.ViewModels
             }
         }
 
-        private string _targetAttachmentFileExtensionOfOpen = ".pdf,.txt,.csv,.rtf,.htm,.html,.doc,.docx,.xls,.xlm,.xlsm,.xlsx,.ppt,.pptx,.bmp,.gif,.jpg,.jpeg,.png,.fif,.pub,.vsd,.vsdx";
+        private string _targetAttachmentFileExtensionOfOpen = ".pdf,.txt,.csv,.rtf,.htm,.html,.doc,.docx,.xls,.xlm,.xlsm,.xlsx,.ppt,.pptx,.bmp,.gif,.jpg,.jpeg,.png,.tif,.pub,.vsd,.vsdx";
         public string TargetAttachmentFileExtensionOfOpen
         {
             get => _targetAttachmentFileExtensionOfOpen;
@@ -1075,8 +977,21 @@ namespace OutlookOkan.ViewModels
             {
                 _isMustOpenBeforeCheckTheAttachedFiles = value;
                 OnPropertyChanged(nameof(IsMustOpenBeforeCheckTheAttachedFiles));
+                OnPropertyChanged(nameof(IsIgnoreMustOpenBeforeCheckTheAttachedFilesIfInternalDomain));
             }
         }
+
+        private bool _isIgnoreMustOpenBeforeCheckTheAttachedFilesIfInternalDomain;
+        public bool IsIgnoreMustOpenBeforeCheckTheAttachedFilesIfInternalDomain
+        {
+            get => _isIgnoreMustOpenBeforeCheckTheAttachedFilesIfInternalDomain;
+            set
+            {
+                _isIgnoreMustOpenBeforeCheckTheAttachedFilesIfInternalDomain = value;
+                OnPropertyChanged(nameof(IsIgnoreMustOpenBeforeCheckTheAttachedFilesIfInternalDomain));
+            }
+        }
+
 
         public bool IsWarningWhenEncryptedZipIsAttachedCheckBoxIsEnabled => !IsProhibitedWhenEncryptedZipIsAttached;
 
@@ -1093,9 +1008,7 @@ namespace OutlookOkan.ViewModels
 
         private void LoadRecipientsAndAttachmentsNameData()
         {
-            var readCsv = new ReadAndWriteCsv("RecipientsAndAttachmentsName.csv");
-            var recipientsAndAttachmentsName = readCsv.GetCsvRecords<RecipientsAndAttachmentsName>(readCsv.LoadCsv<RecipientsAndAttachmentsNameMap>());
-
+            var recipientsAndAttachmentsName = CsvFileHandler.ReadCsv<RecipientsAndAttachmentsName>(typeof(RecipientsAndAttachmentsNameMap), "RecipientsAndAttachmentsName.csv");
             foreach (var data in recipientsAndAttachmentsName.Where(x => !string.IsNullOrEmpty(x.AttachmentsName) && !string.IsNullOrEmpty(x.Recipient)))
             {
                 RecipientsAndAttachmentsName.Add(data);
@@ -1105,20 +1018,14 @@ namespace OutlookOkan.ViewModels
         private async Task SaveRecipientsAndAttachmentsNameToCsv()
         {
             var list = RecipientsAndAttachmentsName.Where(x => !string.IsNullOrEmpty(x.AttachmentsName) && !string.IsNullOrEmpty(x.Recipient)).Cast<object>().ToList();
-            var writeCsv = new ReadAndWriteCsv("RecipientsAndAttachmentsName.csv");
-            await Task.Run(() => writeCsv.WriteRecordsToCsv<RecipientsAndAttachmentsNameMap>(list));
+            await Task.Run(() => CsvFileHandler.CreateOrReplaceCsv(typeof(RecipientsAndAttachmentsNameMap), "RecipientsAndAttachmentsName.csv", list));
         }
 
         private void ImportRecipientsAndAttachmentsNameFromCsv()
         {
-            var importAction = new CsvImportAndExport();
-            var filePath = importAction.ImportCsv();
-
-            if (filePath is null) return;
-
             try
             {
-                var importData = new List<RecipientsAndAttachmentsName>(importAction.GetCsvRecords<RecipientsAndAttachmentsName>(importAction.LoadCsv<RecipientsAndAttachmentsNameMap>(filePath)));
+                var importData = CsvFileHandler.ImportCsv<RecipientsAndAttachmentsName>(typeof(RecipientsAndAttachmentsNameMap));
                 foreach (var data in importData.Where(x => !string.IsNullOrEmpty(x.AttachmentsName) && !string.IsNullOrEmpty(x.Recipient)))
                 {
                     RecipientsAndAttachmentsName.Add(data);
@@ -1135,8 +1042,7 @@ namespace OutlookOkan.ViewModels
         private void ExportRecipientsAndAttachmentsNameToCsv()
         {
             var list = RecipientsAndAttachmentsName.Where(x => !string.IsNullOrEmpty(x.AttachmentsName) && !string.IsNullOrEmpty(x.Recipient)).Cast<object>().ToList();
-            var exportAction = new CsvImportAndExport();
-            exportAction.CsvExport<RecipientsAndAttachmentsNameMap>(list, "RecipientsAndAttachmentsName.csv");
+            CsvFileHandler.ExportCsv(typeof(RecipientsAndAttachmentsNameMap), list, "RecipientsAndAttachmentsName.csv");
         }
 
         private ObservableCollection<RecipientsAndAttachmentsName> _recipientsAndAttachmentsName = new ObservableCollection<RecipientsAndAttachmentsName>();
@@ -1159,9 +1065,7 @@ namespace OutlookOkan.ViewModels
 
         private void LoadAttachmentProhibitedRecipientsData()
         {
-            var readCsv = new ReadAndWriteCsv("AttachmentProhibitedRecipients.csv");
-            var attachmentProhibitedRecipients = readCsv.GetCsvRecords<AttachmentProhibitedRecipients>(readCsv.LoadCsv<AttachmentProhibitedRecipientsMap>());
-
+            var attachmentProhibitedRecipients = CsvFileHandler.ReadCsv<AttachmentProhibitedRecipients>(typeof(AttachmentProhibitedRecipientsMap), "AttachmentProhibitedRecipients.csv");
             foreach (var data in attachmentProhibitedRecipients.Where(x => !string.IsNullOrEmpty(x.Recipient)))
             {
                 AttachmentProhibitedRecipients.Add(data);
@@ -1171,20 +1075,14 @@ namespace OutlookOkan.ViewModels
         private async Task SaveAttachmentProhibitedRecipientsToCsv()
         {
             var list = AttachmentProhibitedRecipients.Where(x => !string.IsNullOrEmpty(x.Recipient)).Cast<object>().ToList();
-            var writeCsv = new ReadAndWriteCsv("AttachmentProhibitedRecipients.csv");
-            await Task.Run(() => writeCsv.WriteRecordsToCsv<AttachmentProhibitedRecipientsMap>(list));
+            await Task.Run(() => CsvFileHandler.CreateOrReplaceCsv(typeof(AttachmentProhibitedRecipientsMap), "AttachmentProhibitedRecipients.csv", list));
         }
 
         private void ImportAttachmentProhibitedRecipientsFromCsv()
         {
-            var importAction = new CsvImportAndExport();
-            var filePath = importAction.ImportCsv();
-
-            if (filePath is null) return;
-
             try
             {
-                var importData = new List<AttachmentProhibitedRecipients>(importAction.GetCsvRecords<AttachmentProhibitedRecipients>(importAction.LoadCsv<AttachmentProhibitedRecipientsMap>(filePath)));
+                var importData = CsvFileHandler.ImportCsv<AttachmentProhibitedRecipients>(typeof(AttachmentProhibitedRecipientsMap));
                 foreach (var data in importData.Where(x => !string.IsNullOrEmpty(x.Recipient)))
                 {
                     AttachmentProhibitedRecipients.Add(data);
@@ -1201,8 +1099,7 @@ namespace OutlookOkan.ViewModels
         private void ExportAttachmentProhibitedRecipientsToCsv()
         {
             var list = AttachmentProhibitedRecipients.Where(x => !string.IsNullOrEmpty(x.Recipient)).Cast<object>().ToList();
-            var exportAction = new CsvImportAndExport();
-            exportAction.CsvExport<AttachmentProhibitedRecipientsMap>(list, "AttachmentProhibitedRecipients.csv");
+            CsvFileHandler.ExportCsv(typeof(AttachmentProhibitedRecipientsMap), list, "AttachmentProhibitedRecipients.csv");
         }
 
         private ObservableCollection<AttachmentProhibitedRecipients> _attachmentProhibitedRecipients = new ObservableCollection<AttachmentProhibitedRecipients>();
@@ -1225,9 +1122,7 @@ namespace OutlookOkan.ViewModels
 
         private void LoadAttachmentAlertRecipientsData()
         {
-            var readCsv = new ReadAndWriteCsv("AttachmentAlertRecipients.csv");
-            var attachmentAlertRecipients = readCsv.GetCsvRecords<AttachmentAlertRecipients>(readCsv.LoadCsv<AttachmentAlertRecipientsMap>());
-
+            var attachmentAlertRecipients = CsvFileHandler.ReadCsv<AttachmentAlertRecipients>(typeof(AttachmentAlertRecipientsMap), "AttachmentAlertRecipients.csv");
             foreach (var data in attachmentAlertRecipients.Where(x => !string.IsNullOrEmpty(x.Recipient)))
             {
                 AttachmentAlertRecipients.Add(data);
@@ -1237,20 +1132,14 @@ namespace OutlookOkan.ViewModels
         private async Task SaveAttachmentAlertRecipientsToCsv()
         {
             var list = AttachmentAlertRecipients.Where(x => !string.IsNullOrEmpty(x.Recipient)).Cast<object>().ToList();
-            var writeCsv = new ReadAndWriteCsv("AttachmentAlertRecipients.csv");
-            await Task.Run(() => writeCsv.WriteRecordsToCsv<AttachmentAlertRecipientsMap>(list));
+            await Task.Run(() => CsvFileHandler.CreateOrReplaceCsv(typeof(AttachmentAlertRecipientsMap), "AttachmentAlertRecipients.csv", list));
         }
 
         private void ImportAttachmentAlertRecipientsFromCsv()
         {
-            var importAction = new CsvImportAndExport();
-            var filePath = importAction.ImportCsv();
-
-            if (filePath is null) return;
-
             try
             {
-                var importData = new List<AttachmentAlertRecipients>(importAction.GetCsvRecords<AttachmentAlertRecipients>(importAction.LoadCsv<AttachmentAlertRecipientsMap>(filePath)));
+                var importData = CsvFileHandler.ImportCsv<AttachmentAlertRecipients>(typeof(AttachmentAlertRecipientsMap));
                 foreach (var data in importData.Where(x => !string.IsNullOrEmpty(x.Recipient)))
                 {
                     AttachmentAlertRecipients.Add(data);
@@ -1267,8 +1156,7 @@ namespace OutlookOkan.ViewModels
         private void ExportAttachmentAlertRecipientsToCsv()
         {
             var list = AttachmentAlertRecipients.Where(x => !string.IsNullOrEmpty(x.Recipient)).Cast<object>().ToList();
-            var exportAction = new CsvImportAndExport();
-            exportAction.CsvExport<AttachmentAlertRecipientsMap>(list, "AttachmentAlertRecipients.csv");
+            CsvFileHandler.ExportCsv(typeof(AttachmentAlertRecipientsMap), list, "AttachmentAlertRecipients.csv");
         }
 
         private ObservableCollection<AttachmentAlertRecipients> _attachmentAlertRecipients = new ObservableCollection<AttachmentAlertRecipients>();
@@ -1288,14 +1176,11 @@ namespace OutlookOkan.ViewModels
 
         private void LoadForceAutoChangeRecipientsToBccData()
         {
-            var readCsv = new ReadAndWriteCsv("ForceAutoChangeRecipientsToBcc.csv");
-            //1行しかないはずだが、2行以上あるとロード時にエラーとなる恐れがあるため、全行ロードする。
-            foreach (var data in readCsv.GetCsvRecords<ForceAutoChangeRecipientsToBcc>(readCsv.LoadCsv<ForceAutoChangeRecipientsToBccMap>()))
-            {
-                _forceAutoChangeRecipientsToBcc.Add(data);
-            }
+            var list = CsvFileHandler.ReadCsv<ForceAutoChangeRecipientsToBcc>(typeof(ForceAutoChangeRecipientsToBccMap), "ForceAutoChangeRecipientsToBcc.csv");
+            if (list.Count == 0) return;
 
-            if (_forceAutoChangeRecipientsToBcc.Count == 0) return;
+            //1行しかないはずだが、2行以上あるとロード時にエラーとなる恐れがあるため、全行ロードする。
+            _forceAutoChangeRecipientsToBcc.AddRange(list);
 
             //実際に使用するのは1行目の設定のみ
             IsForceAutoChangeRecipientsToBcc = _forceAutoChangeRecipientsToBcc[0].IsForceAutoChangeRecipientsToBcc;
@@ -1316,8 +1201,7 @@ namespace OutlookOkan.ViewModels
             };
 
             var list = tempForceAutoChangeRecipientsToBcc.Cast<object>().ToList();
-            var writeCsv = new ReadAndWriteCsv("ForceAutoChangeRecipientsToBcc.csv");
-            await Task.Run(() => writeCsv.WriteRecordsToCsv<ForceAutoChangeRecipientsToBccMap>(list));
+            await Task.Run(() => CsvFileHandler.CreateOrReplaceCsv(typeof(ForceAutoChangeRecipientsToBccMap), "ForceAutoChangeRecipientsToBcc.csv", list));
         }
 
         private readonly List<ForceAutoChangeRecipientsToBcc> _forceAutoChangeRecipientsToBcc = new List<ForceAutoChangeRecipientsToBcc>();
@@ -1365,14 +1249,11 @@ namespace OutlookOkan.ViewModels
 
         private void LoadAutoAddMessageData()
         {
-            var readCsv = new ReadAndWriteCsv("AutoAddMessage.csv");
-            //1行しかないはずだが、2行以上あるとロード時にエラーとなる恐れがあるため、全行ロードする。
-            foreach (var data in readCsv.GetCsvRecords<AutoAddMessage>(readCsv.LoadCsv<AutoAddMessageMap>()))
-            {
-                _autoAddMessage.Add(data);
-            }
+            var list = CsvFileHandler.ReadCsv<AutoAddMessage>(typeof(AutoAddMessageMap), "AutoAddMessage.csv");
+            if (list.Count == 0) return;
 
-            if (_autoAddMessage.Count == 0) return;
+            //1行しかないはずだが、2行以上あるとロード時にエラーとなる恐れがあるため、全行ロードする。
+            _autoAddMessage.AddRange(list);
 
             //実際に使用するのは1行目の設定のみ
             IsAddToStart = _autoAddMessage[0].IsAddToStart;
@@ -1395,8 +1276,7 @@ namespace OutlookOkan.ViewModels
             };
 
             var list = tempAutoAddMessage.Cast<object>().ToList();
-            var writeCsv = new ReadAndWriteCsv("AutoAddMessage.csv");
-            await Task.Run(() => writeCsv.WriteRecordsToCsv<AutoAddMessageMap>(list));
+            await Task.Run(() => CsvFileHandler.CreateOrReplaceCsv(typeof(AutoAddMessageMap), "AutoAddMessage.csv", list));
         }
 
         private readonly List<AutoAddMessage> _autoAddMessage = new List<AutoAddMessage>();
@@ -1447,18 +1327,257 @@ namespace OutlookOkan.ViewModels
 
         #endregion
 
+        #region AlertKeywordOfSubjectWhenOpeningMail
+
+        public ICommand ImportAlertKeywordOfSubjectWhenOpeningMailsList { get; }
+        public ICommand ExportAlertKeywordOfSubjectWhenOpeningMailsList { get; }
+
+        private void LoadAlertKeywordOfSubjectWhenOpeningMailsData()
+        {
+            var alertKeywordOfSubjectWhenOpeningMails = CsvFileHandler.ReadCsv<AlertKeywordOfSubjectWhenOpeningMail>(typeof(AlertKeywordOfSubjectWhenOpeningMailMap), "AlertKeywordOfSubjectWhenOpeningMailList.csv");
+            foreach (var data in alertKeywordOfSubjectWhenOpeningMails.Where(x => !string.IsNullOrEmpty(x.AlertKeyword)))
+            {
+                AlertKeywordOfSubjectWhenOpeningMails.Add(data);
+            }
+        }
+
+        private async Task SaveAlertKeywordOfSubjectWhenOpeningMailToCsv()
+        {
+            var list = AlertKeywordOfSubjectWhenOpeningMails.Where(x => !string.IsNullOrEmpty(x.AlertKeyword)).Cast<object>().ToList();
+            await Task.Run(() => CsvFileHandler.CreateOrReplaceCsv(typeof(AlertKeywordOfSubjectWhenOpeningMailMap), "AlertKeywordOfSubjectWhenOpeningMailList.csv", list));
+        }
+
+        private void ImportAlertKeywordOfSubjectWhenOpeningMailsFromCsv()
+        {
+            try
+            {
+                var importData = CsvFileHandler.ImportCsv<AlertKeywordOfSubjectWhenOpeningMail>(typeof(AlertKeywordOfSubjectWhenOpeningMailMap));
+                foreach (var data in importData.Where(x => !string.IsNullOrEmpty(x.AlertKeyword)))
+                {
+                    AlertKeywordOfSubjectWhenOpeningMails.Add(data);
+                }
+
+                _ = MessageBox.Show(Properties.Resources.SuccessfulImport, Properties.Resources.AppName, MessageBoxButton.OK);
+            }
+            catch (Exception)
+            {
+                _ = MessageBox.Show(Properties.Resources.ImportFailed, Properties.Resources.AppName, MessageBoxButton.OK);
+            }
+        }
+
+        private void ExportAlertKeywordOfSubjectWhenOpeningMailsToCsv()
+        {
+            var list = AlertKeywordOfSubjectWhenOpeningMails.Where(x => !string.IsNullOrEmpty(x.AlertKeyword)).Cast<object>().ToList();
+            CsvFileHandler.ExportCsv(typeof(AlertKeywordOfSubjectWhenOpeningMailMap), list, "AlertKeywordOfSubjectWhenOpeningMailList.csv");
+        }
+
+        private ObservableCollection<AlertKeywordOfSubjectWhenOpeningMail> _alertKeywordOfSubjectWhenOpeningMails = new ObservableCollection<AlertKeywordOfSubjectWhenOpeningMail>();
+        public ObservableCollection<AlertKeywordOfSubjectWhenOpeningMail> AlertKeywordOfSubjectWhenOpeningMails
+        {
+            get => _alertKeywordOfSubjectWhenOpeningMails;
+            set
+            {
+                _alertKeywordOfSubjectWhenOpeningMails = value;
+                OnPropertyChanged(nameof(AlertKeywordOfSubjectWhenOpeningMails));
+            }
+        }
+
+        #endregion
+
+        #region SecurityForReceivedMail
+
+        private void LoadSecurityForReceivedMailData()
+        {
+            var list = CsvFileHandler.ReadCsv<SecurityForReceivedMail>(typeof(SecurityForReceivedMailMap), "SecurityForReceivedMail.csv");
+            if (list.Count == 0) return;
+
+            _securityForReceivedMail.AddRange(list);
+
+            //実際に使用するのは1行目の設定のみ
+            IsEnableSecurityForReceivedMail = _securityForReceivedMail[0].IsEnableSecurityForReceivedMail;
+            IsEnableAlertKeywordOfSubjectWhenOpeningMailsData = _securityForReceivedMail[0].IsEnableAlertKeywordOfSubjectWhenOpeningMailsData;
+            IsEnableMailHeaderAnalysis = _securityForReceivedMail[0].IsEnableMailHeaderAnalysis;
+            IsShowWarningWhenSpfFails = _securityForReceivedMail[0].IsShowWarningWhenSpfFails;
+            IsShowWarningWhenDkimFails = _securityForReceivedMail[0].IsShowWarningWhenDkimFails;
+            IsEnableWarningFeatureWhenOpeningAttachments = _securityForReceivedMail[0].IsEnableWarningFeatureWhenOpeningAttachments;
+            IsWarnBeforeOpeningAttachments = _securityForReceivedMail[0].IsWarnBeforeOpeningAttachments;
+            IsWarnBeforeOpeningEncryptedZip = _securityForReceivedMail[0].IsWarnBeforeOpeningEncryptedZip;
+            IsWarnLinkFileInTheZip = _securityForReceivedMail[0].IsWarnLinkFileInTheZip;
+            IsWarnOneFileInTheZip = _securityForReceivedMail[0].IsWarnOneFileInTheZip;
+            IsWarnOfficeFileWithMacroInTheZip = _securityForReceivedMail[0].IsWarnOfficeFileWithMacroInTheZip;
+            IsWarnBeforeOpeningAttachmentsThatContainMacros = _securityForReceivedMail[0].IsWarnBeforeOpeningAttachmentsThatContainMacros;
+        }
+
+        private async Task SecurityForReceivedMailToCsv()
+        {
+            var tempSecurityForReceivedMail = new List<SecurityForReceivedMail>
+            {
+                new SecurityForReceivedMail
+                {
+                    IsEnableSecurityForReceivedMail = IsEnableSecurityForReceivedMail,
+                    IsEnableAlertKeywordOfSubjectWhenOpeningMailsData = IsEnableAlertKeywordOfSubjectWhenOpeningMailsData,
+                    IsEnableMailHeaderAnalysis = IsEnableMailHeaderAnalysis,
+                    IsShowWarningWhenSpfFails = IsShowWarningWhenSpfFails,
+                    IsShowWarningWhenDkimFails = IsShowWarningWhenDkimFails,
+                    IsEnableWarningFeatureWhenOpeningAttachments = IsEnableWarningFeatureWhenOpeningAttachments,
+                    IsWarnBeforeOpeningAttachments = IsWarnBeforeOpeningAttachments,
+                    IsWarnBeforeOpeningEncryptedZip = IsWarnBeforeOpeningEncryptedZip,
+                    IsWarnLinkFileInTheZip = IsWarnLinkFileInTheZip,
+                    IsWarnOneFileInTheZip = IsWarnOneFileInTheZip,
+                    IsWarnOfficeFileWithMacroInTheZip = IsWarnOfficeFileWithMacroInTheZip,
+                    IsWarnBeforeOpeningAttachmentsThatContainMacros = IsWarnBeforeOpeningAttachmentsThatContainMacros
+        }
+            };
+
+            var list = tempSecurityForReceivedMail.Cast<object>().ToList();
+            await Task.Run(() => CsvFileHandler.CreateOrReplaceCsv(typeof(SecurityForReceivedMailMap), "SecurityForReceivedMail.csv", list));
+        }
+
+        private readonly List<SecurityForReceivedMail> _securityForReceivedMail = new List<SecurityForReceivedMail>();
+
+        private bool _isEnableSecurityForReceivedMail;
+        public bool IsEnableSecurityForReceivedMail
+        {
+            get => _isEnableSecurityForReceivedMail;
+            set
+            {
+                _isEnableSecurityForReceivedMail = value;
+                OnPropertyChanged(nameof(IsEnableSecurityForReceivedMail));
+            }
+        }
+
+        private bool _isEnableAlertKeywordOfSubjectWhenOpeningMailsData;
+        public bool IsEnableAlertKeywordOfSubjectWhenOpeningMailsData
+        {
+            get => _isEnableAlertKeywordOfSubjectWhenOpeningMailsData;
+            set
+            {
+                _isEnableAlertKeywordOfSubjectWhenOpeningMailsData = value;
+                OnPropertyChanged(nameof(IsEnableAlertKeywordOfSubjectWhenOpeningMailsData));
+            }
+        }
+
+        private bool _isEnableMailHeaderAnalysis;
+        public bool IsEnableMailHeaderAnalysis
+        {
+            get => _isEnableMailHeaderAnalysis;
+            set
+            {
+                _isEnableMailHeaderAnalysis = value;
+                OnPropertyChanged(nameof(IsEnableMailHeaderAnalysis));
+            }
+        }
+
+        private bool _isShowWarningWhenSpfFails;
+        public bool IsShowWarningWhenSpfFails
+        {
+            get => _isShowWarningWhenSpfFails;
+            set
+            {
+                _isShowWarningWhenSpfFails = value;
+                OnPropertyChanged(nameof(IsShowWarningWhenSpfFails));
+            }
+        }
+
+        private bool _isShowWarningWhenDkimFails;
+        public bool IsShowWarningWhenDkimFails
+        {
+            get => _isShowWarningWhenDkimFails;
+            set
+            {
+                _isShowWarningWhenDkimFails = value;
+                OnPropertyChanged(nameof(IsShowWarningWhenDkimFails));
+            }
+        }
+
+        private bool _isEnableWarningFeatureWhenOpeningAttachments;
+        public bool IsEnableWarningFeatureWhenOpeningAttachments
+        {
+            get => _isEnableWarningFeatureWhenOpeningAttachments;
+            set
+            {
+                _isEnableWarningFeatureWhenOpeningAttachments = value;
+                OnPropertyChanged(nameof(IsEnableWarningFeatureWhenOpeningAttachments));
+            }
+        }
+
+        private bool _isWarnBeforeOpeningAttachments;
+        public bool IsWarnBeforeOpeningAttachments
+        {
+            get => _isWarnBeforeOpeningAttachments;
+            set
+            {
+                _isWarnBeforeOpeningAttachments = value;
+                OnPropertyChanged(nameof(IsWarnBeforeOpeningAttachments));
+            }
+        }
+
+        private bool _isWarnBeforeOpeningEncryptedZip;
+        public bool IsWarnBeforeOpeningEncryptedZip
+        {
+            get => _isWarnBeforeOpeningEncryptedZip;
+            set
+            {
+                _isWarnBeforeOpeningEncryptedZip = value;
+                OnPropertyChanged(nameof(IsWarnBeforeOpeningEncryptedZip));
+            }
+        }
+
+        private bool _isWarnLinkFileInTheZip;
+        public bool IsWarnLinkFileInTheZip
+        {
+            get => _isWarnLinkFileInTheZip;
+            set
+            {
+                _isWarnLinkFileInTheZip = value;
+                OnPropertyChanged(nameof(IsWarnLinkFileInTheZip));
+            }
+        }
+
+        private bool _isWarnOneFileInTheZip;
+        public bool IsWarnOneFileInTheZip
+        {
+            get => _isWarnOneFileInTheZip;
+            set
+            {
+                _isWarnOneFileInTheZip = value;
+                OnPropertyChanged(nameof(IsWarnOneFileInTheZip));
+            }
+        }
+
+        private bool _isWarnOfficeFileWithMacroInTheZip;
+        public bool IsWarnOfficeFileWithMacroInTheZip
+        {
+            get => _isWarnOfficeFileWithMacroInTheZip;
+            set
+            {
+                _isWarnOfficeFileWithMacroInTheZip = value;
+                OnPropertyChanged(nameof(IsWarnOfficeFileWithMacroInTheZip));
+            }
+        }
+
+        private bool _isWarnBeforeOpeningAttachmentsThatContainMacros;
+        public bool IsWarnBeforeOpeningAttachmentsThatContainMacros
+        {
+            get => _isWarnBeforeOpeningAttachmentsThatContainMacros;
+            set
+            {
+                _isWarnBeforeOpeningAttachmentsThatContainMacros = value;
+                OnPropertyChanged(nameof(IsWarnBeforeOpeningAttachmentsThatContainMacros));
+            }
+        }
+
+        #endregion  
+
         #region GeneralSetting
 
         private void LoadGeneralSettingData()
         {
-            var readCsv = new ReadAndWriteCsv("GeneralSetting.csv");
-            //1行しかないはずだが、2行以上あるとロード時にエラーとなる恐れがあるため、全行ロードする。
-            foreach (var data in readCsv.GetCsvRecords<GeneralSetting>(readCsv.LoadCsv<GeneralSettingMap>()))
-            {
-                _generalSetting.Add(data);
-            }
+            var list = CsvFileHandler.ReadCsv<GeneralSetting>(typeof(GeneralSettingMap), "GeneralSetting.csv");
+            if (list.Count == 0) return;
 
-            if (_generalSetting.Count == 0) return;
+            //1行しかないはずだが、2行以上あるとロード時にエラーとなる恐れがあるため、全行ロードする。
+            _generalSetting.AddRange(list);
 
             //実際に使用するのは1行目の設定のみ
             IsDoNotConfirmationIfAllRecipientsAreSameDomain = _generalSetting[0].IsDoNotConfirmationIfAllRecipientsAreSameDomain;
@@ -1543,8 +1662,7 @@ namespace OutlookOkan.ViewModels
             };
 
             var list = tempGeneralSetting.Cast<object>().ToList();
-            var writeCsv = new ReadAndWriteCsv("GeneralSetting.csv");
-            await Task.Run(() => writeCsv.WriteRecordsToCsv<GeneralSettingMap>(list));
+            await Task.Run(() => CsvFileHandler.CreateOrReplaceCsv(typeof(GeneralSettingMap), "GeneralSetting.csv", list));
         }
 
         private readonly List<GeneralSetting> _generalSetting = new List<GeneralSetting>();

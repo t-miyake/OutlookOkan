@@ -299,7 +299,7 @@ Al cerrar la pantalla de edición no se enviará este correo electrónico.</valu
     <value>Grupo de contacto</value>
   </data>
   <data name="Copyright" xml:space="preserve">
-    <value>Copyright (C) 2022 Noraneko Inc.</value>
+    <value>Copyright (C) 2023 Noraneko Inc.</value>
   </data>
   <data name="CSVExport" xml:space="preserve">
     <value>Exportación de CSV</value>
@@ -841,7 +841,7 @@ se aplicará esta función.</value>
     <value>Desconocido</value>
   </data>
   <data name="Version" xml:space="preserve">
-    <value>Version 2.7.2.1</value>
+    <value>Version 2.8.0.0 β</value>
   </data>
   <data name="VersionInfo" xml:space="preserve">
     <value>Sobre el programa</value>
@@ -860,5 +860,107 @@ se aplicará esta función.</value>
   </data>
   <data name="YouHaveLatest" xml:space="preserve">
     <value>Este complemento es la última versión.</value>
+  </data>
+  <data name="General2" xml:space="preserve">
+    <value>General 2</value>
+  </data>
+  <data name="IsIgnoreMustOpenBeforeCheckTheAttachedFilesIfInternalDomain" xml:space="preserve">
+    <value>No es necesario si todos los destinatarios son dominios internos.</value>
+  </data>
+  <data name="AlertKeywordOfSubjectWhenOpeningMails" xml:space="preserve">
+    <value> [β] Alerta al abrir un correo electrónico (asunto)</value>
+  </data>
+  <data name="IsEnableAlertKeywordOfSubjectWhenOpeningMailsData" xml:space="preserve">
+    <value>Utilice la función de advertencia cuando la línea de asunto contenga las palabras clave especificadas.</value>
+  </data>
+  <data name="IsEnableMailHeaderAnalysis" xml:space="preserve">
+    <value>Utilice las funciones de análisis y advertencia de encabezado de correo.</value>
+  </data>
+  <data name="IsEnableSecurityForReceivedMail" xml:space="preserve">
+    <value>Utilice la función de advertencia al abrir correos y archivos adjuntos. (beta)</value>
+  </data>
+  <data name="IsShowWarningWhenDkimFails" xml:space="preserve">
+    <value>Mostrar una advertencia cuando falle la verificación del registro DKIM.</value>
+  </data>
+  <data name="IsShowWarningWhenSpfFails" xml:space="preserve">
+    <value>Mostrar una advertencia cuando falle la validación del registro SPF.</value>
+  </data>
+  <data name="SecurityForReceivedMail" xml:space="preserve">
+    <value> [β] Seguridad del correo recibido</value>
+  </data>
+  <data name="SettingExampleAlertKeywordOfSubjectWhenOpeningMails" xml:space="preserve">
+    <value>Registre las palabras clave de destino y el texto de advertencia.
+
+* La configuración se reflejará después de reiniciar Outlook.</value>
+  </data>
+  <data name="SettingExampleSecurityForReceivedMail" xml:space="preserve">
+    <value>Toda esta funcionalidad está en versión beta.
+
+*Habilitar esta función puede causar problemas.
+
+* La configuración se reflejará después de reiniciar Outlook.</value>
+  </data>
+  <data name="IsEnableWarningFeatureWhenOpeningAttachments" xml:space="preserve">
+    <value>Utilice la función de advertencia al abrir archivos adjuntos.</value>
+  </data>
+  <data name="IsWarnBeforeOpeningAttachments" xml:space="preserve">
+    <value>Avisar antes de abrir archivos adjuntos.</value>
+  </data>
+  <data name="IsWarnBeforeOpeningEncryptedZip" xml:space="preserve">
+    <value>Avisar al abrir archivos ZIP cifrados.</value>
+  </data>
+  <data name="IsWarnLinkFileInTheZip" xml:space="preserve">
+    <value>Avise si hay un archivo .link en el archivo ZIP.</value>
+  </data>
+  <data name="IsWarnOneFileInTheZip" xml:space="preserve">
+    <value>Avise si hay un archivo .one en el archivo ZIP.</value>
+  </data>
+  <data name="IsWarnOfficeFileWithMacroInTheZip" xml:space="preserve">
+    <value>Avise si hay archivos .docm, .xlsm o .pptm en el archivo ZIP.</value>
+  </data>
+  <data name="IsWarnBeforeOpeningAttachmentsThatContainMacros" xml:space="preserve">
+    <value>Avise al abrir datos adjuntos que contengan macros.</value>
+  </data>
+  <data name="Warning" xml:space="preserve">
+    <value>Advertencia</value>
+  </data>
+  <data name="AlertOfReceivedMailSubject" xml:space="preserve">
+    <value>La línea de asunto contiene la palabra clave sujeta a la advertencia.</value>
+  </data>
+  <data name="SpfWarning1" xml:space="preserve">
+    <value>Error en la verificación de SPF. El remitente puede ser falsificado.</value>
+  </data>
+  <data name="DkimWarning1" xml:space="preserve">
+    <value>Error en la verificación DKIM. El remitente puede ser falsificado.</value>
+  </data>
+  <data name="SpfDkimWaring2" xml:space="preserve">
+    <value>Tenga cuidado con el contenido y los archivos adjuntos de este correo electrónico.</value>
+  </data>
+  <data name="OpenAttachmentWarning1" xml:space="preserve">
+    <value>¿Realmente quieres abrir el archivo adjunto?</value>
+  </data>
+  <data name="OpenAttachmentWarning2" xml:space="preserve">
+    <value>Tenga mucho cuidado con los archivos sospechosos.</value>
+  </data>
+  <data name="AttatchmentIsEncryptedZip" xml:space="preserve">
+    <value>Este archivo es un archivo ZIP cifrado.</value>
+  </data>
+  <data name="SuspiciousAttachmentZip_link" xml:space="preserve">
+    <value>Apego sospechoso.
+El archivo .lnk se incluye en el archivo ZIP,
+riesgo de infección con un virus.</value>
+  </data>
+  <data name="SuspiciousAttachmentZip_one" xml:space="preserve">
+    <value>Apego sospechoso.
+El archivo .one se incluye en el archivo ZIP,
+riesgo de infección con un virus.</value>
+  </data>
+  <data name="SuspiciousAttachmentZip_macro" xml:space="preserve">
+    <value>Apego sospechoso.
+El archivo zip contiene un archivo de Office que contiene macros y
+riesgo de infección con un virus.</value>
+  </data>
+  <data name="SuspiciousAttachment_macro" xml:space="preserve">
+    <value>Se trata de archivos adjuntos que contienen macros, riesgo de infección con un virus.</value>
   </data>
 </root>

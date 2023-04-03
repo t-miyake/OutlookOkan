@@ -133,6 +133,15 @@ namespace OutlookOkan.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to  [β] Alert when opening email (subject).
+        /// </summary>
+        public static string AlertKeywordOfSubjectWhenOpeningMails {
+            get {
+                return ResourceManager.GetString("AlertKeywordOfSubjectWhenOpeningMails", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Alert recipients.
         /// </summary>
         public static string AlertMailAddress {
@@ -147,6 +156,15 @@ namespace OutlookOkan.Properties {
         public static string AlertMailAddressAndDomain {
             get {
                 return ResourceManager.GetString("AlertMailAddressAndDomain", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The subject line contains the keyword subject to the warning..
+        /// </summary>
+        public static string AlertOfReceivedMailSubject {
+            get {
+                return ResourceManager.GetString("AlertOfReceivedMailSubject", resourceCulture);
             }
         }
         
@@ -282,6 +300,15 @@ namespace OutlookOkan.Properties {
         public static string AttachmentsProhibitedMessage {
             get {
                 return ResourceManager.GetString("AttachmentsProhibitedMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to This file is an encrypted ZIP file..
+        /// </summary>
+        public static string AttatchmentIsEncryptedZip {
+            get {
+                return ResourceManager.GetString("AttatchmentIsEncryptedZip", resourceCulture);
             }
         }
         
@@ -588,7 +615,7 @@ namespace OutlookOkan.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Copyright (C) 2022 Noraneko Inc..
+        ///   Looks up a localized string similar to Copyright (C) 2023 Noraneko Inc..
         /// </summary>
         public static string Copyright {
             get {
@@ -683,6 +710,15 @@ namespace OutlookOkan.Properties {
         public static string DistributionList {
             get {
                 return ResourceManager.GetString("DistributionList", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to DKIM verification failed. The sender may be spoofed..
+        /// </summary>
+        public static string DkimWarning1 {
+            get {
+                return ResourceManager.GetString("DkimWarning1", resourceCulture);
             }
         }
         
@@ -819,6 +855,15 @@ namespace OutlookOkan.Properties {
         public static string General {
             get {
                 return ResourceManager.GetString("General", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to General 2.
+        /// </summary>
+        public static string General2 {
+            get {
+                return ResourceManager.GetString("General2", resourceCulture);
             }
         }
         
@@ -1141,11 +1186,29 @@ namespace OutlookOkan.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Use the warning function when the subject line contains the specified keywords..
+        /// </summary>
+        public static string IsEnableAlertKeywordOfSubjectWhenOpeningMailsData {
+            get {
+                return ResourceManager.GetString("IsEnableAlertKeywordOfSubjectWhenOpeningMailsData", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Attached files with an extension other than &quot;.zip&quot; also detect whether they are encrypted ZIP or not..
         /// </summary>
         public static string IsEnableAllAttachedFilesAreDetectEncryptedZip {
             get {
                 return ResourceManager.GetString("IsEnableAllAttachedFilesAreDetectEncryptedZip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Use the mail header analysis and warning functions..
+        /// </summary>
+        public static string IsEnableMailHeaderAnalysis {
+            get {
+                return ResourceManager.GetString("IsEnableMailHeaderAnalysis", resourceCulture);
             }
         }
         
@@ -1168,11 +1231,38 @@ namespace OutlookOkan.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Use the warning feature when opening mails and attachments. (beta).
+        /// </summary>
+        public static string IsEnableSecurityForReceivedMail {
+            get {
+                return ResourceManager.GetString("IsEnableSecurityForReceivedMail", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Use the warning feature when opening attachments..
+        /// </summary>
+        public static string IsEnableWarningFeatureWhenOpeningAttachments {
+            get {
+                return ResourceManager.GetString("IsEnableWarningFeatureWhenOpeningAttachments", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Force all external recipients to Bcc..
         /// </summary>
         public static string IsForceAutoChangeRecipientsToBcc {
             get {
                 return ResourceManager.GetString("IsForceAutoChangeRecipientsToBcc", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Not required if all recipients are internal domains..
+        /// </summary>
+        public static string IsIgnoreMustOpenBeforeCheckTheAttachedFilesIfInternalDomain {
+            get {
+                return ResourceManager.GetString("IsIgnoreMustOpenBeforeCheckTheAttachedFilesIfInternalDomain", resourceCulture);
             }
         }
         
@@ -1241,6 +1331,24 @@ namespace OutlookOkan.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Display a warning when  DKIM record verification fails..
+        /// </summary>
+        public static string IsShowWarningWhenDkimFails {
+            get {
+                return ResourceManager.GetString("IsShowWarningWhenDkimFails", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Display a warning when SPF record validation fails..
+        /// </summary>
+        public static string IsShowWarningWhenSpfFails {
+            get {
+                return ResourceManager.GetString("IsShowWarningWhenSpfFails", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Skip confirmation window..
         /// </summary>
         public static string IsSkipConfirmation {
@@ -1255,6 +1363,33 @@ namespace OutlookOkan.Properties {
         public static string IsSkipConfirmationInfo {
             get {
                 return ResourceManager.GetString("IsSkipConfirmationInfo", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Warn before opening attachments..
+        /// </summary>
+        public static string IsWarnBeforeOpeningAttachments {
+            get {
+                return ResourceManager.GetString("IsWarnBeforeOpeningAttachments", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Warn when opening attachments that contain macros..
+        /// </summary>
+        public static string IsWarnBeforeOpeningAttachmentsThatContainMacros {
+            get {
+                return ResourceManager.GetString("IsWarnBeforeOpeningAttachmentsThatContainMacros", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Warn when opening encrypted ZIP files..
+        /// </summary>
+        public static string IsWarnBeforeOpeningEncryptedZip {
+            get {
+                return ResourceManager.GetString("IsWarnBeforeOpeningEncryptedZip", resourceCulture);
             }
         }
         
@@ -1291,6 +1426,33 @@ namespace OutlookOkan.Properties {
         public static string IsWarningWhenLargeNumberOfExternalDomains {
             get {
                 return ResourceManager.GetString("IsWarningWhenLargeNumberOfExternalDomains", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Warn if there is a .link file in the ZIP..
+        /// </summary>
+        public static string IsWarnLinkFileInTheZip {
+            get {
+                return ResourceManager.GetString("IsWarnLinkFileInTheZip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Warn if there are .docm, .xlsm or .pptm files in the ZIP..
+        /// </summary>
+        public static string IsWarnOfficeFileWithMacroInTheZip {
+            get {
+                return ResourceManager.GetString("IsWarnOfficeFileWithMacroInTheZip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Warn if there is a .one file in the ZIP..
+        /// </summary>
+        public static string IsWarnOneFileInTheZip {
+            get {
+                return ResourceManager.GetString("IsWarnOneFileInTheZip", resourceCulture);
             }
         }
         
@@ -1457,6 +1619,24 @@ namespace OutlookOkan.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Do you really want to open the attachment?.
+        /// </summary>
+        public static string OpenAttachmentWarning1 {
+            get {
+                return ResourceManager.GetString("OpenAttachmentWarning1", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Be very careful with suspicious files..
+        /// </summary>
+        public static string OpenAttachmentWarning2 {
+            get {
+                return ResourceManager.GetString("OpenAttachmentWarning2", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Do you want to open the attached file?.
         /// </summary>
         public static string OpenTheAttachedFile {
@@ -1534,6 +1714,15 @@ namespace OutlookOkan.Properties {
         public static string SaveSettings {
             get {
                 return ResourceManager.GetString("SaveSettings", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to  [β] Received Mail Security.
+        /// </summary>
+        public static string SecurityForReceivedMail {
+            get {
+                return ResourceManager.GetString("SecurityForReceivedMail", resourceCulture);
             }
         }
         
@@ -1665,6 +1854,17 @@ namespace OutlookOkan.Properties {
         public static string SettingExampleAlertKeywordForSubject {
             get {
                 return ResourceManager.GetString("SettingExampleAlertKeywordForSubject", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Register the target keywords and warning text.
+        ///
+        ///*Settings will be reflected after restarting Outlook..
+        /// </summary>
+        public static string SettingExampleAlertKeywordOfSubjectWhenOpeningMails {
+            get {
+                return ResourceManager.GetString("SettingExampleAlertKeywordOfSubjectWhenOpeningMails", resourceCulture);
             }
         }
         
@@ -1867,6 +2067,19 @@ namespace OutlookOkan.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to All of this functionality is in beta.
+        ///
+        ///*Enabling this feature may cause problems.
+        ///
+        ///*Settings will be reflected after restarting Outlook..
+        /// </summary>
+        public static string SettingExampleSecurityForReceivedMail {
+            get {
+                return ResourceManager.GetString("SettingExampleSecurityForReceivedMail", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Email address: info@noraneko.co.jp
         ///or
         ///Domain: @noraneko.co.jp
@@ -1909,6 +2122,24 @@ namespace OutlookOkan.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Please be careful with the content and attachments in this email..
+        /// </summary>
+        public static string SpfDkimWaring2 {
+            get {
+                return ResourceManager.GetString("SpfDkimWaring2", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to SPF verification failed. The sender may be spoofed..
+        /// </summary>
+        public static string SpfWarning1 {
+            get {
+                return ResourceManager.GetString("SpfWarning1", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Subject.
         /// </summary>
         public static string Subject {
@@ -1932,6 +2163,48 @@ namespace OutlookOkan.Properties {
         public static string SuccessfulImport {
             get {
                 return ResourceManager.GetString("SuccessfulImport", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to This is attachments containing macros, risk of infection with a virus..
+        /// </summary>
+        public static string SuspiciousAttachment_macro {
+            get {
+                return ResourceManager.GetString("SuspiciousAttachment_macro", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Suspicious attachment.
+        ///The .lnk file is included in the ZIP file,
+        ///risk of infection with a virus..
+        /// </summary>
+        public static string SuspiciousAttachmentZip_link {
+            get {
+                return ResourceManager.GetString("SuspiciousAttachmentZip_link", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Suspicious attachment.
+        ///The zip file contains an Office file that contains macros and
+        ///risk of infection with a virus..
+        /// </summary>
+        public static string SuspiciousAttachmentZip_macro {
+            get {
+                return ResourceManager.GetString("SuspiciousAttachmentZip_macro", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Suspicious attachment.
+        ///The .one file is included in the ZIP file,
+        ///risk of infection with a virus..
+        /// </summary>
+        public static string SuspiciousAttachmentZip_one {
+            get {
+                return ResourceManager.GetString("SuspiciousAttachmentZip_one", resourceCulture);
             }
         }
         
@@ -2008,7 +2281,7 @@ namespace OutlookOkan.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Version 2.7.2.1.
+        ///   Looks up a localized string similar to Version 2.8.0.0 β.
         /// </summary>
         public static string Version {
             get {
@@ -2022,6 +2295,15 @@ namespace OutlookOkan.Properties {
         public static string VersionInfo {
             get {
                 return ResourceManager.GetString("VersionInfo", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Warning.
+        /// </summary>
+        public static string Warning {
+            get {
+                return ResourceManager.GetString("Warning", resourceCulture);
             }
         }
         

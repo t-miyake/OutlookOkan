@@ -297,7 +297,7 @@
     <value>연락처 그룹</value>
   </data>
   <data name="Copyright" xml:space="preserve">
-    <value>Copyright (C) 2022 Noraneko Inc.</value>
+    <value>Copyright (C) 2023 Noraneko Inc.</value>
   </data>
   <data name="CSVExport" xml:space="preserve">
     <value>CSV 내보내기</value>
@@ -821,9 +821,6 @@
   <data name="Text" xml:space="preserve">
     <value>일반 텍스트</value>
   </data>
-  <data name="The confirmation screen is also displayed for meeting request." xml:space="preserve">
-    <value>회의 요청에 대한 확인 화면도 표시됩니다.</value>
-  </data>
   <data name="To" xml:space="preserve">
     <value>To</value>
   </data>
@@ -834,7 +831,7 @@
     <value>알려지지 않은</value>
   </data>
   <data name="Version" xml:space="preserve">
-    <value>Version 2.7.2.1</value>
+    <value>Version 2.8.0.0 β</value>
   </data>
   <data name="VersionInfo" xml:space="preserve">
     <value>이 프로그램에 대해</value>
@@ -853,5 +850,110 @@
   </data>
   <data name="YouHaveLatest" xml:space="preserve">
     <value>이 추가 기능은 최신 버전입니다.</value>
+  </data>
+  <data name="General2" xml:space="preserve">
+    <value>일반적인 2</value>
+  </data>
+  <data name="ShowConfirmationAtSendMeetingRequest" xml:space="preserve">
+    <value>모임 요청에 대한 확인 화면도 표시됩니다.</value>
+  </data>
+  <data name="IsIgnoreMustOpenBeforeCheckTheAttachedFilesIfInternalDomain" xml:space="preserve">
+    <value>모든 받는 사람이 내부 도메인인 경우에는 필요하지 않습니다.</value>
+  </data>
+  <data name="AlertKeywordOfSubjectWhenOpeningMails" xml:space="preserve">
+    <value> [β] 이메일을 열 때 경고 (제목)</value>
+  </data>
+  <data name="IsEnableAlertKeywordOfSubjectWhenOpeningMailsData" xml:space="preserve">
+    <value>제목 줄에 지정된 키워드가 포함된 경우 경고 함수를 사용합니다.</value>
+  </data>
+  <data name="IsEnableMailHeaderAnalysis" xml:space="preserve">
+    <value>메일 헤더 분석 및 경고 기능을 사용합니다.</value>
+  </data>
+  <data name="IsEnableSecurityForReceivedMail" xml:space="preserve">
+    <value>메일 및 첨부 파일을 열 때 경고 기능을 사용합니다. (베타)</value>
+  </data>
+  <data name="IsShowWarningWhenDkimFails" xml:space="preserve">
+    <value>DKIM 레코드 확인이 실패하면 경고를 표시합니다.</value>
+  </data>
+  <data name="IsShowWarningWhenSpfFails" xml:space="preserve">
+    <value>SPF 레코드 유효성 검사가 실패하면 경고를 표시합니다.</value>
+  </data>
+  <data name="SecurityForReceivedMail" xml:space="preserve">
+    <value> [β] 수신된 메일 보안</value>
+  </data>
+  <data name="SettingExampleAlertKeywordOfSubjectWhenOpeningMails" xml:space="preserve">
+    <value>대상 키워드와 경고 텍스트를 등록합니다.
+
+*Outlook을 다시 시작하면 설정이 반영됩니다.</value>
+  </data>
+  <data name="SettingExampleSecurityForReceivedMail" xml:space="preserve">
+    <value>이 모든 기능은 베타 버전입니다.
+
+*이 기능을 활성화하면 문제가 발생할 수 있습니다.
+
+*Outlook을 다시 시작하면 설정이 반영됩니다.</value>
+  </data>
+  <data name="IsEnableWarningFeatureWhenOpeningAttachments" xml:space="preserve">
+    <value>첨부 파일을 열 때 경고 기능을 사용하십시오.</value>
+  </data>
+  <data name="IsWarnBeforeOpeningAttachments" xml:space="preserve">
+    <value>첨부 파일을 열기 전에 경고하십시오.</value>
+  </data>
+  <data name="IsWarnBeforeOpeningEncryptedZip" xml:space="preserve">
+    <value>암호화된 ZIP 파일을 열 때 경고합니다.</value>
+  </data>
+  <data name="IsWarnLinkFileInTheZip" xml:space="preserve">
+    <value>ZIP에 .link 파일이 있으면 경고합니다.</value>
+  </data>
+  <data name="IsWarnOneFileInTheZip" xml:space="preserve">
+    <value>ZIP에 .one 파일이 있으면 경고합니다.</value>
+  </data>
+  <data name="IsWarnOfficeFileWithMacroInTheZip" xml:space="preserve">
+    <value>ZIP에 .docm, .xlsm 또는 .pptm 파일이 있는 경우 경고합니다.</value>
+  </data>
+  <data name="IsWarnBeforeOpeningAttachmentsThatContainMacros" xml:space="preserve">
+    <value>매크로가 포함된 첨부 파일을 열 때 경고합니다.</value>
+  </data>
+  <data name="Warning" xml:space="preserve">
+    <value>경고</value>
+  </data>
+  <data name="AlertOfReceivedMailSubject" xml:space="preserve">
+    <value>제목 줄에는 경고 대상 키워드가 포함되어 있습니다.</value>
+  </data>
+  <data name="SpfWarning1" xml:space="preserve">
+    <value>SPF 확인에 실패했습니다. 보낸 사람이 스푸핑되었을 수 있습니다.</value>
+  </data>
+  <data name="DkimWarning1" xml:space="preserve">
+    <value>DKIM 확인에 실패했습니다. 보낸 사람이 스푸핑되었을 수 있습니다.</value>
+  </data>
+  <data name="SpfDkimWaring2" xml:space="preserve">
+    <value>이 이메일의 내용과 첨부 파일에주의하십시오.</value>
+  </data>
+  <data name="OpenAttachmentWarning1" xml:space="preserve">
+    <value>첨부 파일을 정말로 열겠습니까?</value>
+  </data>
+  <data name="OpenAttachmentWarning2" xml:space="preserve">
+    <value>의심스러운 파일에 매우주의하십시오.</value>
+  </data>
+  <data name="AttatchmentIsEncryptedZip" xml:space="preserve">
+    <value>이 파일은 암호화된 ZIP 파일입니다.</value>
+  </data>
+  <data name="SuspiciousAttachmentZip_link" xml:space="preserve">
+    <value>의심스러운 첨부 파일.
+.lnk 파일은 ZIP 파일에 포함되어 있습니다.
+바이러스 감염 위험.</value>
+  </data>
+  <data name="SuspiciousAttachmentZip_one" xml:space="preserve">
+    <value>의심스러운 첨부 파일.
+.one 파일은 ZIP 파일에 포함되어 있습니다.
+바이러스 감염 위험.</value>
+  </data>
+  <data name="SuspiciousAttachmentZip_macro" xml:space="preserve">
+    <value>의심스러운 첨부 파일.
+zip 파일에는 매크로가 포함 된 Office 파일이 포함되어 있습니다.
+바이러스 감염 위험.</value>
+  </data>
+  <data name="SuspiciousAttachment_macro" xml:space="preserve">
+    <value>이것은 매크로, 바이러스 감염 위험이 포함 된 첨부 파일입니다.</value>
   </data>
 </root>

@@ -1,12 +1,15 @@
-﻿using OutlookOkan.CsvTools;
+﻿using OutlookOkan.Handlers;
 using OutlookOkan.Helpers;
 using OutlookOkan.Models;
 using OutlookOkan.Services;
 using OutlookOkan.Types;
 using OutlookOkan.Views;
 using System;
+using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices;
+using System.Threading;
 using System.Windows;
 using System.Windows.Interop;
 using Outlook = Microsoft.Office.Interop.Outlook;
@@ -17,7 +20,12 @@ namespace OutlookOkan
     public partial class ThisAddIn
     {
         private readonly GeneralSetting _generalSetting = new GeneralSetting();
+        private readonly SecurityForReceivedMail _securityForReceivedMail = new SecurityForReceivedMail();
+        private readonly List<AlertKeywordOfSubjectWhenOpeningMail> _alertKeywordOfSubjectWhenOpeningMail = new List<AlertKeywordOfSubjectWhenOpeningMail>();
+
         private Outlook.Inspectors _inspectors;
+        private Outlook.Explorer _currentExplorer;
+        private Outlook.MailItem _currentMailItem;
 
         protected override Microsoft.Office.Core.IRibbonExtensibility CreateRibbonExtensibilityObject()
         {
@@ -38,10 +46,290 @@ namespace OutlookOkan
                 ResourceService.Instance.ChangeCulture(_generalSetting.LanguageCode);
             }
 
+            LoadSecurityForReceivedMail();
+            if (_securityForReceivedMail.IsEnableSecurityForReceivedMail)
+            {
+                LoadAlertKeywordOfSubjectWhenOpeningMailsData();
+                _currentExplorer = Application.ActiveExplorer();
+                _currentExplorer.SelectionChange += CurrentExplorer_SelectionChange;
+            }
+
             _inspectors = Application.Inspectors;
             _inspectors.NewInspector += OpenOutboxItemInspector;
 
             Application.ItemSend += Application_ItemSend;
+        }
+
+        private string _currentMailItemEntryId = "";
+        private void CurrentExplorer_SelectionChange()
+        {
+            var currentExplorer = Application.ActiveExplorer();
+            if (currentExplorer.CurrentFolder.Name == Application.GetNamespace("MAPI").GetDefaultFolder(Outlook.OlDefaultFolders.olFolderCalendar).Name
+                || currentExplorer.CurrentFolder.Name == Application.GetNamespace("MAPI").GetDefaultFolder(Outlook.OlDefaultFolders.olFolderContacts).Name
+                || currentExplorer.CurrentFolder.Name == Application.GetNamespace("MAPI").GetDefaultFolder(Outlook.OlDefaultFolders.olFolderDrafts).Name
+                || currentExplorer.CurrentFolder.Name == Application.GetNamespace("MAPI").GetDefaultFolder(Outlook.OlDefaultFolders.olFolderJournal).Name
+                || currentExplorer.CurrentFolder.Name == Application.GetNamespace("MAPI").GetDefaultFolder(Outlook.OlDefaultFolders.olFolderNotes).Name
+                || currentExplorer.CurrentFolder.Name == Application.GetNamespace("MAPI").GetDefaultFolder(Outlook.OlDefaultFolders.olFolderOutbox).Name
+                || currentExplorer.CurrentFolder.Name == Application.GetNamespace("MAPI").GetDefaultFolder(Outlook.OlDefaultFolders.olFolderRssFeeds).Name
+                || currentExplorer.CurrentFolder.Name == Application.GetNamespace("MAPI").GetDefaultFolder(Outlook.OlDefaultFolders.olFolderSentMail).Name
+                || currentExplorer.CurrentFolder.Name == Application.GetNamespace("MAPI").GetDefaultFolder(Outlook.OlDefaultFolders.olFolderServerFailures).Name
+                || currentExplorer.CurrentFolder.Name == Application.GetNamespace("MAPI").GetDefaultFolder(Outlook.OlDefaultFolders.olFolderLocalFailures).Name
+                || currentExplorer.CurrentFolder.Name == Application.GetNamespace("MAPI").GetDefaultFolder(Outlook.OlDefaultFolders.olFolderSyncIssues).Name
+                || currentExplorer.CurrentFolder.Name == Application.GetNamespace("MAPI").GetDefaultFolder(Outlook.OlDefaultFolders.olFolderTasks).Name
+                || currentExplorer.CurrentFolder.Name == Application.GetNamespace("MAPI").GetDefaultFolder(Outlook.OlDefaultFolders.olFolderToDo).Name
+               )
+            {
+                return;
+            }
+
+            var selection = currentExplorer.Selection;
+            if (selection is null || selection.Count != 1) return;
+            if (!(selection[1] is Outlook.MailItem selectedMail)) return;
+
+            _currentMailItem = selectedMail;
+            if (_currentMailItemEntryId == _currentMailItem.EntryID) return;
+
+            _currentMailItemEntryId = _currentMailItem.EntryID;
+
+            //件名にキーワードが含まれている場合の警告機能
+            if (_securityForReceivedMail.IsEnableAlertKeywordOfSubjectWhenOpeningMailsData)
+            {
+                var subject = selectedMail.Subject;
+                var settings = _alertKeywordOfSubjectWhenOpeningMail.FirstOrDefault(x => subject.Contains(x.AlertKeyword));
+
+                if (!(settings is null))
+                {
+                    var message = Properties.Resources.AlertOfReceivedMailSubject + Environment.NewLine + "[" + settings.AlertKeyword + "]";
+                    if (!string.IsNullOrEmpty(settings.Message))
+                    {
+                        message = settings.Message;
+                    }
+                    MessageBox.Show(message, Properties.Resources.Warning, MessageBoxButton.OK, MessageBoxImage.Exclamation);
+                }
+            }
+
+            //メールヘッダの解析と警告機能
+            if (_securityForReceivedMail.IsEnableMailHeaderAnalysis)
+            {
+                var header = selectedMail.PropertyAccessor.GetProperty("http://schemas.microsoft.com/mapi/proptag/0x007D001E");
+                var analysisResults = MailHeaderHandler.ValidateEmailHeader(header.ToString());
+                if (!(analysisResults is null))
+                {
+                    var message = "";
+                    foreach (KeyValuePair<string, string> entry in analysisResults)
+                    {
+                        message += ($"{entry.Key}: {entry.Value}") + Environment.NewLine;
+                    }
+
+                    //SPFレコードの検証に失敗した場合に警告を表示する。
+                    if (_securityForReceivedMail.IsShowWarningWhenSpfFails)
+                    {
+                        if (analysisResults["SPF"] == "FAIL" || analysisResults["SPF"] == "NONE")
+                        {
+
+                            _ = MessageBox.Show(Properties.Resources.SpfWarning1 + Environment.NewLine + Properties.Resources.SpfDkimWaring2 + Environment.NewLine + Environment.NewLine + message, Properties.Resources.Warning, MessageBoxButton.OK, MessageBoxImage.Error);
+                        }
+                    }
+
+                    //DKIMレコードの検証に失敗した場合に警告を表示する。
+                    if (_securityForReceivedMail.IsShowWarningWhenDkimFails)
+                    {
+                        if (analysisResults["DKIM"] == "FAIL")
+                        {
+                            _ = MessageBox.Show(Properties.Resources.DkimWarning1 + Environment.NewLine + Properties.Resources.SpfDkimWaring2 + Environment.NewLine + Environment.NewLine + message, Properties.Resources.Warning, MessageBoxButton.OK, MessageBoxImage.Error);
+                        }
+                    }
+                }
+            }
+
+            //添付ファイルを開くときの警告機能
+            if (_securityForReceivedMail.IsEnableWarningFeatureWhenOpeningAttachments && selectedMail.Attachments.Count != 0)
+            {
+                GC.Collect();
+                GC.WaitForPendingFinalizers();
+                GC.Collect();
+                Thread.Sleep(10);
+
+                _currentMailItem.BeforeAttachmentRead -= BeforeAttachmentRead;
+                _currentMailItem.BeforeAttachmentRead += BeforeAttachmentRead;
+            }
+        }
+
+        /// <summary>
+        /// 添付ファイルを開く時の分析と警告
+        /// </summary>
+        /// <param name="attachment"></param>
+        /// <param name="cancel"></param>
+        private void BeforeAttachmentRead(Outlook.Attachment attachment, ref bool cancel)
+        {
+            //添付ファイルを開く前の警告機能
+            if (_securityForReceivedMail.IsWarnBeforeOpeningAttachments)
+            {
+                var dialogResult = MessageBox.Show(Properties.Resources.OpenAttachmentWarning1 + Environment.NewLine + Properties.Resources.OpenAttachmentWarning2 + Environment.NewLine + Environment.NewLine + attachment.FileName, Properties.Resources.OpenAttachmentWarning1, MessageBoxButton.YesNo, MessageBoxImage.Warning);
+                if (dialogResult == MessageBoxResult.Yes)
+                {
+                    //Open file.
+                }
+                else
+                {
+                    cancel = true;
+                    return;
+                }
+            }
+
+            if (_securityForReceivedMail.IsWarnBeforeOpeningEncryptedZip || _securityForReceivedMail.IsWarnLinkFileInTheZip || _securityForReceivedMail.IsWarnOneFileInTheZip || _securityForReceivedMail.IsWarnOfficeFileWithMacroInTheZip || _securityForReceivedMail.IsWarnBeforeOpeningAttachmentsThatContainMacros)
+            {
+                var tempDirectoryPath = Path.Combine(Path.GetTempPath(), Guid.NewGuid().ToString("N"));
+                _ = Directory.CreateDirectory(tempDirectoryPath);
+                var tempFilePath = Path.Combine(tempDirectoryPath, Guid.NewGuid().ToString("N"));
+                attachment.SaveAsFile(tempFilePath);
+
+                if (_securityForReceivedMail.IsWarnBeforeOpeningEncryptedZip || _securityForReceivedMail.IsWarnLinkFileInTheZip || _securityForReceivedMail.IsWarnOneFileInTheZip || _securityForReceivedMail.IsWarnOfficeFileWithMacroInTheZip)
+                {
+                    var zipTools = new ZipFileHandler();
+                    var izEncryptedZip = zipTools.CheckZipIsEncryptedAndGetIncludeExtensions(tempFilePath);
+
+                    //暗号化ZIPファイルの場合の警告
+                    if (_securityForReceivedMail.IsWarnBeforeOpeningEncryptedZip && izEncryptedZip)
+                    {
+                        var dialogResult = MessageBox.Show(Properties.Resources.AttatchmentIsEncryptedZip + Environment.NewLine + Properties.Resources.OpenAttachmentWarning1 + Environment.NewLine + Environment.NewLine + attachment.FileName, Properties.Resources.OpenAttachmentWarning1, MessageBoxButton.YesNo, MessageBoxImage.Warning);
+                        if (dialogResult == MessageBoxResult.Yes)
+                        {
+                            //Open file.
+                        }
+                        else
+                        {
+                            cancel = true;
+                            try
+                            {
+                                File.Delete(tempFilePath);
+                            }
+                            catch (Exception)
+                            {
+                                //Do Nothing.
+                            }
+                            return;
+                        }
+                    }
+
+                    //Zip内にlinkファイルがある場合の警告
+                    if (_securityForReceivedMail.IsWarnLinkFileInTheZip)
+                    {
+                        if (zipTools.IncludeExtensions.Contains(".link"))
+                        {
+                            var dialogResult = MessageBox.Show(Properties.Resources.SuspiciousAttachmentZip_link + Environment.NewLine + Environment.NewLine + Properties.Resources.OpenAttachmentWarning1 + Environment.NewLine + Environment.NewLine + Environment.NewLine + attachment.FileName, Properties.Resources.OpenAttachmentWarning1, MessageBoxButton.YesNo, MessageBoxImage.Error);
+                            if (dialogResult == MessageBoxResult.Yes)
+                            {
+                                //Open file.
+                            }
+                            else
+                            {
+                                cancel = true;
+                                try
+                                {
+                                    File.Delete(tempFilePath);
+                                }
+                                catch (Exception)
+                                {
+                                    //Do Nothing.
+                                }
+                                return;
+                            }
+                        }
+                    }
+
+                    //Zip内にOneNoteファイルがある場合の警告
+                    if (_securityForReceivedMail.IsWarnOneFileInTheZip)
+                    {
+                        if (zipTools.IncludeExtensions.Contains(".one"))
+                        {
+                            var dialogResult = MessageBox.Show(Properties.Resources.SuspiciousAttachmentZip_one + Environment.NewLine + Environment.NewLine + Properties.Resources.OpenAttachmentWarning1 + Environment.NewLine + Environment.NewLine + Environment.NewLine + attachment.FileName, Properties.Resources.OpenAttachmentWarning1, MessageBoxButton.YesNo, MessageBoxImage.Error);
+                            if (dialogResult == MessageBoxResult.Yes)
+                            {
+                                //Open file.
+                            }
+                            else
+                            {
+                                cancel = true;
+                                try
+                                {
+                                    File.Delete(tempFilePath);
+                                }
+                                catch (Exception)
+                                {
+                                    //Do Nothing.
+                                }
+                                return;
+                            }
+                        }
+                    }
+
+                    //Zip内にマクロ付きOfficeファイルがある場合の警告
+                    if (_securityForReceivedMail.IsWarnOfficeFileWithMacroInTheZip)
+                    {
+                        if (zipTools.IncludeExtensions.Contains(".docm") | zipTools.IncludeExtensions.Contains(".xlsm") | zipTools.IncludeExtensions.Contains(".pptm"))
+                        {
+                            var dialogResult = MessageBox.Show(Properties.Resources.SuspiciousAttachmentZip_macro + Environment.NewLine + Environment.NewLine + Properties.Resources.OpenAttachmentWarning1 + Environment.NewLine + Environment.NewLine + Environment.NewLine + attachment.FileName, Properties.Resources.OpenAttachmentWarning1, MessageBoxButton.YesNo, MessageBoxImage.Error);
+                            if (dialogResult == MessageBoxResult.Yes)
+                            {
+                                //Open file.
+                            }
+                            else
+                            {
+                                cancel = true;
+                                try
+                                {
+                                    File.Delete(tempFilePath);
+                                }
+                                catch (Exception)
+                                {
+                                    //Do Nothing.
+                                }
+                                return;
+                            }
+                        }
+                    }
+                }
+
+                //Officeファイル内にマクロが含まれている場合の警告
+                if (_securityForReceivedMail.IsWarnBeforeOpeningAttachmentsThatContainMacros)
+                {
+                    if (OfficeFileHandler.CheckOfficeFileHasVbProject(tempFilePath, Path.GetExtension(attachment.FileName).ToLower()))
+                    {
+                        var dialogResult = MessageBox.Show(Properties.Resources.SuspiciousAttachment_macro + Environment.NewLine + Properties.Resources.OpenAttachmentWarning1 + Environment.NewLine + Environment.NewLine + attachment.FileName, Properties.Resources.OpenAttachmentWarning1, MessageBoxButton.YesNo, MessageBoxImage.Exclamation);
+                        if (dialogResult == MessageBoxResult.Yes)
+                        {
+                            //Open file.
+                        }
+                        else
+                        {
+                            cancel = true;
+                            try
+                            {
+                                File.Delete(tempFilePath);
+                            }
+                            catch (Exception)
+                            {
+                                //Do Nothing.
+                            }
+                            return;
+                        }
+                    }
+                }
+
+                if (true)
+                {
+
+                }
+                try
+                {
+                    File.Delete(tempFilePath);
+                }
+                catch (Exception)
+                {
+                    //Do Nothing.
+                }
+            }
         }
 
         /// <summary>
@@ -95,8 +383,7 @@ namespace OutlookOkan
             }
 
             var autoAddMessageSetting = new AutoAddMessage();
-            var autoAddMessageCsv = new ReadAndWriteCsv("AutoAddMessage.csv");
-            var autoAddMessageSettingList = autoAddMessageCsv.GetCsvRecords<AutoAddMessage>(autoAddMessageCsv.LoadCsv<AutoAddMessageMap>());
+            var autoAddMessageSettingList = CsvFileHandler.ReadCsv<AutoAddMessage>(typeof(AutoAddMessageMap), "AutoAddMessage.csv");
             if (autoAddMessageSettingList.Count > 0) autoAddMessageSetting = autoAddMessageSettingList[0];
 
             //Moderationでの返信には何もしない。(キャンセルすると、承認や非承認ができなくなる場合があるため)
@@ -247,14 +534,43 @@ namespace OutlookOkan
         }
 
         /// <summary>
+        /// 受信メールの関するセキュリティ機能の設定を読み込む
+        /// </summary>
+        private void LoadSecurityForReceivedMail()
+        {
+            var securityForReceivedMail = CsvFileHandler.ReadCsv<SecurityForReceivedMail>(typeof(SecurityForReceivedMailMap), "SecurityForReceivedMail.csv").ToList();
+            if (securityForReceivedMail.Count == 0) return;
+
+            _securityForReceivedMail.IsEnableSecurityForReceivedMail = securityForReceivedMail[0].IsEnableSecurityForReceivedMail;
+            _securityForReceivedMail.IsEnableAlertKeywordOfSubjectWhenOpeningMailsData = securityForReceivedMail[0].IsEnableAlertKeywordOfSubjectWhenOpeningMailsData;
+            _securityForReceivedMail.IsEnableMailHeaderAnalysis = securityForReceivedMail[0].IsEnableMailHeaderAnalysis;
+            _securityForReceivedMail.IsShowWarningWhenSpfFails = securityForReceivedMail[0].IsShowWarningWhenSpfFails;
+            _securityForReceivedMail.IsShowWarningWhenDkimFails = securityForReceivedMail[0].IsShowWarningWhenDkimFails;
+            _securityForReceivedMail.IsEnableWarningFeatureWhenOpeningAttachments = securityForReceivedMail[0].IsEnableWarningFeatureWhenOpeningAttachments;
+            _securityForReceivedMail.IsWarnBeforeOpeningAttachments = securityForReceivedMail[0].IsWarnBeforeOpeningAttachments;
+            _securityForReceivedMail.IsWarnBeforeOpeningEncryptedZip = securityForReceivedMail[0].IsWarnBeforeOpeningEncryptedZip;
+            _securityForReceivedMail.IsWarnLinkFileInTheZip = securityForReceivedMail[0].IsWarnLinkFileInTheZip;
+            _securityForReceivedMail.IsWarnOneFileInTheZip = securityForReceivedMail[0].IsWarnOneFileInTheZip;
+            _securityForReceivedMail.IsWarnOfficeFileWithMacroInTheZip = securityForReceivedMail[0].IsWarnOfficeFileWithMacroInTheZip;
+            _securityForReceivedMail.IsWarnBeforeOpeningAttachmentsThatContainMacros = securityForReceivedMail[0].IsWarnBeforeOpeningAttachmentsThatContainMacros;
+        }
+
+        /// <summary>
+        /// 受信したメールの件名の警告対象となる設定を読み込む。
+        /// </summary>
+        private void LoadAlertKeywordOfSubjectWhenOpeningMailsData()
+        {
+            var alertKeywordOfSubjectWhenOpeningMails = CsvFileHandler.ReadCsv<AlertKeywordOfSubjectWhenOpeningMail>(typeof(AlertKeywordOfSubjectWhenOpeningMailMap), "AlertKeywordOfSubjectWhenOpeningMailList.csv").Where(x => !string.IsNullOrEmpty(x.AlertKeyword));
+            _alertKeywordOfSubjectWhenOpeningMail.AddRange(alertKeywordOfSubjectWhenOpeningMails);
+        }
+
+        /// <summary>
         /// 一般設定を設定ファイルから読み込む。
         /// </summary>
         /// <param name="isLaunch">Outlookの起動時か否か</param>
         private void LoadGeneralSetting(bool isLaunch)
         {
-            var readCsv = new ReadAndWriteCsv("GeneralSetting.csv");
-            var generalSetting = readCsv.GetCsvRecords<GeneralSetting>(readCsv.LoadCsv<GeneralSettingMap>()).ToList();
-
+            var generalSetting = CsvFileHandler.ReadCsv<GeneralSetting>(typeof(GeneralSettingMap), "GeneralSetting.csv").ToList();
             if (generalSetting.Count == 0) return;
 
             _generalSetting.LanguageCode = generalSetting[0].LanguageCode;

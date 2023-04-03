@@ -1,17 +1,20 @@
 ﻿using ICSharpCode.SharpZipLib.Zip;
 using System;
+using System.Collections.Generic;
 using System.IO;
 
-namespace OutlookOkan.Models
+namespace OutlookOkan.Handlers
 {
-    public sealed class ZipTools
+    public sealed class ZipFileHandler
     {
+        internal readonly List<string> IncludeExtensions = new List<string>();
+
         /// <summary>
         /// 暗号化ZIPファイル(パスワード付きZIP)か否かを判定する。
         /// </summary>
         /// <param name="filePath">確認したいファイルのフルパス</param>
         /// <returns>暗号化ZIPか否か</returns>
-        internal bool CheckZipIsEncrypted(string filePath)
+        internal bool CheckZipIsEncryptedAndGetIncludeExtensions(string filePath)
         {
             //リンクとして添付の場合、実ファイルが存在しない場合がある。
             if (!File.Exists(filePath)) return false;
@@ -27,6 +30,18 @@ namespace OutlookOkan.Models
                 try
                 {
                     zip = zipInputStream.GetNextEntry();
+                    try
+                    {
+                        if (zip != null)
+                        {
+                            IncludeExtensions.Add(Path.GetExtension(zip.Name.ToLower()));
+                        }
+                    }
+                    catch (Exception)
+                    {
+                        //Do Nothing.
+                    }
+
                 }
                 catch (ZipException)
                 {

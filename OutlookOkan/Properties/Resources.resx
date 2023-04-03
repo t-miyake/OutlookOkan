@@ -359,10 +359,10 @@
     <value>Noraneko Inc.</value>
   </data>
   <data name="Copyright" xml:space="preserve">
-    <value>Copyright (C) 2022 Noraneko Inc.</value>
+    <value>Copyright (C) 2023 Noraneko Inc.</value>
   </data>
   <data name="Version" xml:space="preserve">
-    <value>Version 2.7.2.1</value>
+    <value>Version 2.8.0.0 β</value>
   </data>
   <data name="VersionInfo" xml:space="preserve">
     <value>About</value>
@@ -854,5 +854,107 @@ If there is no recipient corresponding to the keywords in the body of the e-mail
   </data>
   <data name="KeywordAndRecipientsAlert3" xml:space="preserve">
     <value>" does not exist.</value>
+  </data>
+  <data name="IsIgnoreMustOpenBeforeCheckTheAttachedFilesIfInternalDomain" xml:space="preserve">
+    <value>Not required if all recipients are internal domains.</value>
+  </data>
+  <data name="AlertKeywordOfSubjectWhenOpeningMails" xml:space="preserve">
+    <value> [β] Alert when opening email (subject)</value>
+  </data>
+  <data name="AlertOfReceivedMailSubject" xml:space="preserve">
+    <value>The subject line contains the keyword subject to the warning.</value>
+  </data>
+  <data name="AttatchmentIsEncryptedZip" xml:space="preserve">
+    <value>This file is an encrypted ZIP file.</value>
+  </data>
+  <data name="DkimWarning1" xml:space="preserve">
+    <value>DKIM verification failed. The sender may be spoofed.</value>
+  </data>
+  <data name="IsEnableAlertKeywordOfSubjectWhenOpeningMailsData" xml:space="preserve">
+    <value>Use the warning function when the subject line contains the specified keywords.</value>
+  </data>
+  <data name="IsEnableMailHeaderAnalysis" xml:space="preserve">
+    <value>Use the mail header analysis and warning functions.</value>
+  </data>
+  <data name="IsEnableSecurityForReceivedMail" xml:space="preserve">
+    <value>Use the warning feature when opening mails and attachments. (beta)</value>
+  </data>
+  <data name="IsEnableWarningFeatureWhenOpeningAttachments" xml:space="preserve">
+    <value>Use the warning feature when opening attachments.</value>
+  </data>
+  <data name="IsShowWarningWhenDkimFails" xml:space="preserve">
+    <value>Display a warning when  DKIM record verification fails.</value>
+  </data>
+  <data name="IsShowWarningWhenSpfFails" xml:space="preserve">
+    <value>Display a warning when SPF record validation fails.</value>
+  </data>
+  <data name="IsWarnBeforeOpeningAttachments" xml:space="preserve">
+    <value>Warn before opening attachments.</value>
+  </data>
+  <data name="IsWarnBeforeOpeningAttachmentsThatContainMacros" xml:space="preserve">
+    <value>Warn when opening attachments that contain macros.</value>
+  </data>
+  <data name="IsWarnBeforeOpeningEncryptedZip" xml:space="preserve">
+    <value>Warn when opening encrypted ZIP files.</value>
+  </data>
+  <data name="IsWarnLinkFileInTheZip" xml:space="preserve">
+    <value>Warn if there is a .link file in the ZIP.</value>
+  </data>
+  <data name="IsWarnOfficeFileWithMacroInTheZip" xml:space="preserve">
+    <value>Warn if there are .docm, .xlsm or .pptm files in the ZIP.</value>
+  </data>
+  <data name="IsWarnOneFileInTheZip" xml:space="preserve">
+    <value>Warn if there is a .one file in the ZIP.</value>
+  </data>
+  <data name="OpenAttachmentWarning1" xml:space="preserve">
+    <value>Do you really want to open the attachment?</value>
+  </data>
+  <data name="OpenAttachmentWarning2" xml:space="preserve">
+    <value>Be very careful with suspicious files.</value>
+  </data>
+  <data name="SecurityForReceivedMail" xml:space="preserve">
+    <value> [β] Received Mail Security</value>
+  </data>
+  <data name="SettingExampleAlertKeywordOfSubjectWhenOpeningMails" xml:space="preserve">
+    <value>Register the target keywords and warning text.
+
+*Settings will be reflected after restarting Outlook.</value>
+  </data>
+  <data name="SettingExampleSecurityForReceivedMail" xml:space="preserve">
+    <value>All of this functionality is in beta.
+
+*Enabling this feature may cause problems.
+
+*Settings will be reflected after restarting Outlook.</value>
+  </data>
+  <data name="SpfDkimWaring2" xml:space="preserve">
+    <value>Please be careful with the content and attachments in this email.</value>
+  </data>
+  <data name="SpfWarning1" xml:space="preserve">
+    <value>SPF verification failed. The sender may be spoofed.</value>
+  </data>
+  <data name="SuspiciousAttachmentZip_link" xml:space="preserve">
+    <value>Suspicious attachment.
+The .lnk file is included in the ZIP file,
+risk of infection with a virus.</value>
+  </data>
+  <data name="SuspiciousAttachmentZip_macro" xml:space="preserve">
+    <value>Suspicious attachment.
+The zip file contains an Office file that contains macros and
+risk of infection with a virus.</value>
+  </data>
+  <data name="SuspiciousAttachmentZip_one" xml:space="preserve">
+    <value>Suspicious attachment.
+The .one file is included in the ZIP file,
+risk of infection with a virus.</value>
+  </data>
+  <data name="SuspiciousAttachment_macro" xml:space="preserve">
+    <value>This is attachments containing macros, risk of infection with a virus.</value>
+  </data>
+  <data name="Warning" xml:space="preserve">
+    <value>Warning</value>
+  </data>
+  <data name="General2" xml:space="preserve">
+    <value>General 2</value>
   </data>
 </root>

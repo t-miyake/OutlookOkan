@@ -16,6 +16,47 @@ namespace OutlookOkan.ViewModels
 
             UpDateItemsCount();
 
+            //画面サイズを自動で変更させるための処置
+            if (ToAddresses.Count >= 5)
+            {
+                var tempCount = ToAddresses.Count;
+                tempCount -= 4;
+                for (var i = 1; i < tempCount; i++)
+                {
+                    if (i == 7) break;
+
+                    ToGridHeight += AddTextHeight;
+                    MailBodyTextBoxHeight += AddTextHeight;
+                    WindowHeight += AddTextHeight;
+                }
+            }
+            if (CcAddresses.Count >= 5)
+            {
+                var tempCount = CcAddresses.Count;
+                tempCount -= 4;
+                for (var i = 1; i < tempCount; i++)
+                {
+                    if (i == 7) break;
+
+                    CcGridHeight += AddTextHeight;
+                    MailBodyTextBoxHeight += AddTextHeight;
+                    WindowHeight += AddTextHeight;
+                }
+            }
+            if (BccAddresses.Count >= 5)
+            {
+                var tempCount = BccAddresses.Count;
+                tempCount -= 4;
+                for (var i = 1; i < tempCount; i++)
+                {
+                    if (i == 7) break;
+
+                    BccGridHeight += AddTextHeight;
+                    MailBodyTextBoxHeight += AddTextHeight;
+                    WindowHeight += AddTextHeight;
+                }
+            }
+
             ToggleSendButton();
         }
 
@@ -239,5 +280,63 @@ namespace OutlookOkan.ViewModels
         public string Subject => _checkList.Subject;
         public string MailType => _checkList.MailType;
         public string MailBody => _checkList.MailBody;
+
+
+        private int _windowHeight = 590;
+        public int WindowHeight
+        {
+            get => _windowHeight;
+            set
+            {
+                _windowHeight = value;
+                OnPropertyChanged(nameof(WindowHeight));
+            }
+        }
+
+        private int _toGridHeight = 82;
+        public int ToGridHeight
+        {
+            get => _toGridHeight;
+            set
+            {
+                _toGridHeight = value;
+                OnPropertyChanged(nameof(ToGridHeight));
+            }
+        }
+
+        private int _ccGridHeight = 82;
+        public int CcGridHeight
+        {
+            get => _ccGridHeight;
+            set
+            {
+                _ccGridHeight = value;
+                OnPropertyChanged(nameof(CcGridHeight));
+            }
+        }
+
+        private int _bccGridHeight = 82;
+        public int BccGridHeight
+        {
+            get => _bccGridHeight;
+            set
+            {
+                _bccGridHeight = value;
+                OnPropertyChanged(nameof(BccGridHeight));
+            }
+        }
+
+        private int _mailBodyTextBoxHeight = 79;
+        public int MailBodyTextBoxHeight
+        {
+            get => _mailBodyTextBoxHeight;
+            set
+            {
+                _mailBodyTextBoxHeight = value;
+                OnPropertyChanged(nameof(MailBodyTextBoxHeight));
+            }
+        }
+
+        private const int AddTextHeight = 18;
     }
 }

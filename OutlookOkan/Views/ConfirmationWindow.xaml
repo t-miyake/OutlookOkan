@@ -9,7 +9,7 @@
              mc:Ignorable="d"
              Closing="ConfirmationWindow_OnClosing"
         Title="{Binding Source={x:Static services:ResourceService.Instance}, Path=Resources.Confirmation, Mode=OneWay}"
-        ResizeMode="NoResize" ShowInTaskbar="False" WindowStartupLocation="CenterOwner" Height="590" Width="780">
+        ResizeMode="NoResize" ShowInTaskbar="False" WindowStartupLocation="CenterOwner" Height="{Binding WindowHeight}" Width="810">
     <StackPanel Margin="5,8">
         <StackPanel Margin="5,0,0,0">
             <Label Content="{Binding Source={x:Static services:ResourceService.Instance}, Path=Resources.ConfirmationMessage1, Mode=OneWay}" FontSize="12" Padding="0" />
@@ -74,7 +74,7 @@
                             <Label Content="{Binding ToAddressCount}" Margin="0" Padding="0" VerticalAlignment="Bottom" FontSize="11" />
                             <Label Content=")" Margin="0" Padding="0" VerticalAlignment="Bottom" FontSize="11" />
                         </StackPanel>
-                        <DataGrid Name="ToGrid" Height="82" VerticalScrollBarVisibility="Visible" HorizontalScrollBarVisibility="Auto" BorderBrush="#FFD5DFE5" HeadersVisibility="None" ItemsSource="{Binding ToAddresses,Mode=TwoWay}" AutoGenerateColumns="False" CanUserAddRows="false" CanUserDeleteRows="false" CanUserResizeColumns="false" CanUserResizeRows="false" CanUserSortColumns="false" HorizontalGridLinesBrush="#FFD5DFE5" VerticalGridLinesBrush="#FFD5DFE5">
+                        <DataGrid Name="ToGrid" Height="{Binding ToGridHeight}" VerticalScrollBarVisibility="Visible" HorizontalScrollBarVisibility="Auto" BorderBrush="#FFD5DFE5" HeadersVisibility="None" ItemsSource="{Binding ToAddresses,Mode=TwoWay}" AutoGenerateColumns="False" CanUserAddRows="false" CanUserDeleteRows="false" CanUserResizeColumns="false" CanUserResizeRows="false" CanUserSortColumns="false" HorizontalGridLinesBrush="#FFD5DFE5" VerticalGridLinesBrush="#FFD5DFE5">
                             <DataGrid.ItemContainerStyle>
                                 <Style TargetType="DataGridRow">
                                     <EventSetter Event="MouseUp" Handler="ToGridMouseUpEvent_OnHandler" />
@@ -134,7 +134,7 @@
                             <Label Content="{Binding CcAddressCount}" Margin="0" Padding="0" VerticalAlignment="Bottom" FontSize="11" />
                             <Label Content=")" Margin="0" Padding="0" VerticalAlignment="Bottom" FontSize="11" />
                         </StackPanel>
-                        <DataGrid Name="CcGrid" Height="82" VerticalScrollBarVisibility="Visible" HorizontalScrollBarVisibility="Auto" BorderBrush="#FFD5DFE5" HeadersVisibility="None" ItemsSource="{Binding CcAddresses,Mode=TwoWay}" AutoGenerateColumns="False" CanUserAddRows="false" CanUserDeleteRows="false" CanUserResizeColumns="false" CanUserResizeRows="false" CanUserSortColumns="false" HorizontalGridLinesBrush="#FFD5DFE5" VerticalGridLinesBrush="#FFD5DFE5">
+                        <DataGrid Name="CcGrid" Height="{Binding CcGridHeight}" VerticalScrollBarVisibility="Visible" HorizontalScrollBarVisibility="Auto" BorderBrush="#FFD5DFE5" HeadersVisibility="None" ItemsSource="{Binding CcAddresses,Mode=TwoWay}" AutoGenerateColumns="False" CanUserAddRows="false" CanUserDeleteRows="false" CanUserResizeColumns="false" CanUserResizeRows="false" CanUserSortColumns="false" HorizontalGridLinesBrush="#FFD5DFE5" VerticalGridLinesBrush="#FFD5DFE5">
                             <DataGrid.ItemContainerStyle>
                                 <Style TargetType="DataGridRow">
                                     <EventSetter Event="MouseUp" Handler="CcGridMouseUpEvent_OnHandler" />
@@ -194,7 +194,7 @@
                             <Label Content="{Binding BccAddressCount}" Margin="0" Padding="0" VerticalAlignment="Bottom" FontSize="11" />
                             <Label Content=")" Margin="0" Padding="0" VerticalAlignment="Bottom" FontSize="11" />
                         </StackPanel>
-                        <DataGrid Name="BccGrid" Height="82" VerticalScrollBarVisibility="Visible" HorizontalScrollBarVisibility="Auto" BorderBrush="#FFD5DFE5" HeadersVisibility="None" ItemsSource="{Binding BccAddresses,Mode=TwoWay}" AutoGenerateColumns="False" CanUserAddRows="false" CanUserDeleteRows="false" CanUserResizeColumns="false" CanUserResizeRows="false" CanUserSortColumns="false" HorizontalGridLinesBrush="#FFD5DFE5" VerticalGridLinesBrush="#FFD5DFE5">
+                        <DataGrid Name="BccGrid" Height="{Binding BccGridHeight}" VerticalScrollBarVisibility="Visible" HorizontalScrollBarVisibility="Auto" BorderBrush="#FFD5DFE5" HeadersVisibility="None" ItemsSource="{Binding BccAddresses,Mode=TwoWay}" AutoGenerateColumns="False" CanUserAddRows="false" CanUserDeleteRows="false" CanUserResizeColumns="false" CanUserResizeRows="false" CanUserSortColumns="false" HorizontalGridLinesBrush="#FFD5DFE5" VerticalGridLinesBrush="#FFD5DFE5">
                             <DataGrid.ItemContainerStyle>
                                 <Style TargetType="DataGridRow">
                                     <EventSetter Event="MouseUp" Handler="BccGridMouseUpEvent_OnHandler" />
@@ -355,7 +355,7 @@
                     </StackPanel>
                 </GroupBox>
                 <GroupBox Header="{Binding Source={x:Static services:ResourceService.Instance}, Path=Resources.MailBody, Mode=OneWay}" FontSize="11" Padding="3,3,3,3" Margin="0,1.5,0,0">
-                    <TextBox Height="79" VerticalScrollBarVisibility="Visible" HorizontalScrollBarVisibility="Auto" IsReadOnly="True" Text="{Binding MailBody, Mode=OneWay}" />
+                    <TextBox Height="{Binding MailBodyTextBoxHeight}" VerticalScrollBarVisibility="Visible" HorizontalScrollBarVisibility="Auto" IsReadOnly="True" Text="{Binding MailBody, Mode=OneWay}" />
                 </GroupBox>
             </StackPanel>
         </Grid>
@@ -364,4 +364,4 @@
             <Button Content="{Binding Source={x:Static services:ResourceService.Instance}, Path=Resources.Cancel, Mode=OneWay}" Width="100" Margin="3,0,0,0" IsDefault="True" IsCancel="True" Click="CancelButton_OnClick" />
         </StackPanel>
     </StackPanel>
-</Window>
+</Window>   
