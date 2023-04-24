@@ -957,4 +957,19 @@ bcc โดยอัตโนมัติ</value>
   <data name="SuspiciousAttachment_macro" xml:space="preserve">
     <value>นี่คือไฟล์แนบที่มีมาโครความเสี่ยงของการติดเชื้อไวรัส</value>
   </data>
+  <data name="ExportAllSettings" xml:space="preserve">
+    <value>ส่งออกการกําหนดค่าทั้งหมด</value>
+  </data>
+  <data name="ImportAllSettings" xml:space="preserve">
+    <value>นําเข้าการกําหนดค่า</value>
+  </data>
+  <data name="CompletedExport" xml:space="preserve">
+    <value>การส่งออกไฟล์การกําหนดค่าเสร็จสมบูรณ์</value>
+  </data>
+  <data name="CompletedImport" xml:space="preserve">
+    <value>การนําเข้าเสร็จสมบูรณ์ ปิดหน้าต่างการตั้งค่า</value>
+  </data>
+  <data name="ImportErrorOfAllSettings" xml:space="preserve">
+    <value>โปรดเลือกไฟล์ที่ถูกต้อง ความผิดพลาด:</value>
+  </data>
 </root>

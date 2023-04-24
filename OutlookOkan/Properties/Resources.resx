@@ -957,4 +957,19 @@ risk of infection with a virus.</value>
   <data name="General2" xml:space="preserve">
     <value>General 2</value>
   </data>
+  <data name="CompletedExport" xml:space="preserve">
+    <value>Export of the configuration file is complete.</value>
+  </data>
+  <data name="CompletedImport" xml:space="preserve">
+    <value>Import is complete. Close the settings window.</value>
+  </data>
+  <data name="ExportAllSettings" xml:space="preserve">
+    <value>Export all configuration.</value>
+  </data>
+  <data name="ImportAllSettings" xml:space="preserve">
+    <value>Import the configuration.</value>
+  </data>
+  <data name="ImportErrorOfAllSettings" xml:space="preserve">
+    <value>Please select the correct file. Error:</value>
+  </data>
 </root>

@@ -8,7 +8,7 @@
              mc:Ignorable="d" 
              Title="{Binding Source={x:Static services:ResourceService.Instance}, Path=Resources.Settings, Mode=OneWay}"
              ResizeMode="NoResize" ShowInTaskbar="False" WindowStartupLocation="CenterOwner"
-             Height="700" Width="960">
+             Height="710" Width="960">
     <StackPanel Margin="8,8">
         <TabControl Height="600" TabStripPlacement="Left" HorizontalContentAlignment="Left">
             <TabItem Header="{Binding Source={x:Static services:ResourceService.Instance}, Path=Resources.General, Mode=OneWay}" MinHeight="26" VerticalAlignment="Top" Width="250">
@@ -1206,6 +1206,10 @@
             <Label Content="{Binding Source={x:Static services:ResourceService.Instance}, Path=Resources.HowToDeleteRow, Mode=OneWay}" Padding="0" Foreground="LightSlateGray" />
         </StackPanel>
         <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Margin="0,0,1,0">
+            <StackPanel Orientation=" Horizontal" HorizontalAlignment="Right" Margin="0,0,605,0">
+                <Button Content="[⬆]" Width="40" Click="ExportButton_OnClick"/>
+                <Button Content="[⬇]" Width="40" Click="ImportButton_OnClick" Margin="10,0,0,0"/>
+            </StackPanel>
             <Button Content="{Binding Source={x:Static services:ResourceService.Instance}, Path=Resources.OK, Mode=OneWay}" Width="70" Click="OkButton_OnClick" />
             <Button Content="{Binding Source={x:Static services:ResourceService.Instance}, Path=Resources.Cancel, Mode=OneWay}" Width="70" Margin="10,0,0,0" IsCancel="True" Click="CancelButton_OnClick" />
             <Button Content="{Binding Source={x:Static services:ResourceService.Instance}, Path=Resources.Apply, Mode=OneWay}" MinWidth="70" Margin="10,0,0,0" Click="ApplyButton_OnClick" />

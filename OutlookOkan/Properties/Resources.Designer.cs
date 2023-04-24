@@ -579,6 +579,24 @@ namespace OutlookOkan.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Export of the configuration file is complete..
+        /// </summary>
+        public static string CompletedExport {
+            get {
+                return ResourceManager.GetString("CompletedExport", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Import is complete. Close the settings window..
+        /// </summary>
+        public static string CompletedImport {
+            get {
+                return ResourceManager.GetString("CompletedImport", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Confirmation before sending an email..
         /// </summary>
         public static string Confirmation {
@@ -768,6 +786,15 @@ namespace OutlookOkan.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Export all configuration..
+        /// </summary>
+        public static string ExportAllSettings {
+            get {
+                return ResourceManager.GetString("ExportAllSettings", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Failed to export..
         /// </summary>
         public static string ExportFailed {
@@ -941,6 +968,15 @@ namespace OutlookOkan.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Import the configuration..
+        /// </summary>
+        public static string ImportAllSettings {
+            get {
+                return ResourceManager.GetString("ImportAllSettings", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Import/Export.
         /// </summary>
         public static string ImportAndExport {
@@ -955,6 +991,15 @@ namespace OutlookOkan.Properties {
         public static string ImportantAlert {
             get {
                 return ResourceManager.GetString("ImportantAlert", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Please select the correct file. Error:.
+        /// </summary>
+        public static string ImportErrorOfAllSettings {
+            get {
+                return ResourceManager.GetString("ImportErrorOfAllSettings", resourceCulture);
             }
         }
         

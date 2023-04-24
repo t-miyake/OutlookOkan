@@ -956,4 +956,19 @@ zip 文件包含一个包含宏和
   <data name="SuspiciousAttachment_macro" xml:space="preserve">
     <value>这是包含宏的附件，感染病毒的风险。</value>
   </data>
+  <data name="ExportAllSettings" xml:space="preserve">
+    <value>导出所有配置。</value>
+  </data>
+  <data name="ImportAllSettings" xml:space="preserve">
+    <value>导入配置。</value>
+  </data>
+  <data name="CompletedExport" xml:space="preserve">
+    <value>配置文件的导出已完成。</value>
+  </data>
+  <data name="CompletedImport" xml:space="preserve">
+    <value>导入完成。关闭设置窗口。</value>
+  </data>
+  <data name="ImportErrorOfAllSettings" xml:space="preserve">
+    <value>请选择正确的文件。错误：</value>
+  </data>
 </root>

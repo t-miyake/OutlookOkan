@@ -963,4 +963,19 @@ riesgo de infección con un virus.</value>
   <data name="SuspiciousAttachment_macro" xml:space="preserve">
     <value>Se trata de archivos adjuntos que contienen macros, riesgo de infección con un virus.</value>
   </data>
+  <data name="ExportAllSettings" xml:space="preserve">
+    <value>Exportar toda la configuración.</value>
+  </data>
+  <data name="ImportAllSettings" xml:space="preserve">
+    <value>Importe la configuración.</value>
+  </data>
+  <data name="CompletedExport" xml:space="preserve">
+    <value>Se ha completado la exportación del archivo de configuración.</value>
+  </data>
+  <data name="CompletedImport" xml:space="preserve">
+    <value>La importación se ha completado. Cierre la ventana de configuración.</value>
+  </data>
+  <data name="ImportErrorOfAllSettings" xml:space="preserve">
+    <value>Seleccione el archivo correcto. Error:</value>
+  </data>
 </root>

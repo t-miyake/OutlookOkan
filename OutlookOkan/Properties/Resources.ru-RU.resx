@@ -962,4 +962,19 @@ ZIP-файл содержит файл Office, содержащий макрос
   <data name="SuspiciousAttachment_macro" xml:space="preserve">
     <value>Это вложения, содержащие макросы, риск заражения вирусом.</value>
   </data>
+  <data name="ExportAllSettings" xml:space="preserve">
+    <value>Экспортируйте всю конфигурацию.</value>
+  </data>
+  <data name="ImportAllSettings" xml:space="preserve">
+    <value>Импортируйте конфигурацию.</value>
+  </data>
+  <data name="CompletedExport" xml:space="preserve">
+    <value>Экспорт конфигурационного файла завершен.</value>
+  </data>
+  <data name="CompletedImport" xml:space="preserve">
+    <value>Импорт завершен. Закройте окно настроек.</value>
+  </data>
+  <data name="ImportErrorOfAllSettings" xml:space="preserve">
+    <value>Пожалуйста, выберите правильный файл. Ошибка:</value>
+  </data>
 </root>

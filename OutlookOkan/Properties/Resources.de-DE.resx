@@ -965,4 +965,19 @@ Risiko einer Infektion mit einem Virus.</value>
   <data name="SuspiciousAttachment_macro" xml:space="preserve">
     <value>Dies sind Anhänge, die Makros enthalten, Risiko einer Infektion mit einem Virus.</value>
   </data>
+  <data name="ExportAllSettings" xml:space="preserve">
+    <value>Exportieren Sie alle Konfigurationen.</value>
+  </data>
+  <data name="ImportAllSettings" xml:space="preserve">
+    <value>Importieren Sie die Konfiguration.</value>
+  </data>
+  <data name="CompletedExport" xml:space="preserve">
+    <value>Der Export der Konfigurationsdatei ist abgeschlossen.</value>
+  </data>
+  <data name="CompletedImport" xml:space="preserve">
+    <value>Der Import ist abgeschlossen. Schließen Sie das Einstellungsfenster.</value>
+  </data>
+  <data name="ImportErrorOfAllSettings" xml:space="preserve">
+    <value>Bitte wählen Sie die richtige Datei aus. Fehler:</value>
+  </data>
 </root>

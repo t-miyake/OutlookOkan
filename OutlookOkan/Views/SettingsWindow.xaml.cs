@@ -1,4 +1,8 @@
-﻿using OutlookOkan.ViewModels;
+﻿using ICSharpCode.SharpZipLib.Zip;
+using Microsoft.Win32;
+using OutlookOkan.ViewModels;
+using System;
+using System.IO;
 using System.Text.RegularExpressions;
 using System.Windows;
 using System.Windows.Controls;
@@ -217,6 +221,115 @@ namespace OutlookOkan.Views
         #endregion
 
         #region Buttons
+
+        //エクスポート
+        private void ExportButton_OnClick(object sender, RoutedEventArgs e)
+        {
+            var saveFileDialog = new SaveFileDialog
+            {
+                Filter = "Config files (*.ocfg)|*.ocfg",
+                Title = Properties.Resources.ExportAllSettings,
+                FileName = "OutlookAddinConfig.ocfg"
+            };
+
+            if (saveFileDialog.ShowDialog() == true)
+            {
+                var sourceDirectory = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "Noraneko\\OutlookOkan\\");
+                var targetZipFilePath = saveFileDialog.FileName;
+                const string password = "cWepiJ3kkc2k";
+
+                using (var zipOutputStream = new ZipOutputStream(File.Create(targetZipFilePath)))
+                {
+                    zipOutputStream.SetLevel(1);
+                    zipOutputStream.Password = password;
+
+                    var buffer = new byte[4096];
+
+                    foreach (var filePath in Directory.GetFiles(sourceDirectory))
+                    {
+                        var entry = new ZipEntry(Path.GetFileName(filePath))
+                        {
+                            DateTime = DateTime.Now
+                        };
+                        zipOutputStream.PutNextEntry(entry);
+
+                        using (var fs = File.OpenRead(filePath))
+                        {
+                            int sourceBytes;
+                            do
+                            {
+                                sourceBytes = fs.Read(buffer, 0, buffer.Length);
+                                zipOutputStream.Write(buffer, 0, sourceBytes);
+                            } while (sourceBytes > 0);
+                        }
+                    }
+
+                    zipOutputStream.Finish();
+                    zipOutputStream.Close();
+                }
+                _ = MessageBox.Show(Properties.Resources.CompletedExport);
+            }
+        }
+
+        //インポート
+        private void ImportButton_OnClick(object sender, RoutedEventArgs e)
+        {
+            var openFileDialog = new OpenFileDialog
+            {
+                Filter = "Config files (*.ocfg)|*.ocfg",
+                Title = Properties.Resources.ImportAllSettings
+            };
+
+            if (openFileDialog.ShowDialog() == true)
+            {
+                try
+                {
+                    // 暗号化ZIPファイルを展開し、特定のディレクトリ内のファイルを置き換える
+                    var sourceZipFilePath = openFileDialog.FileName;
+                    var targetDirectory = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "Noraneko\\OutlookOkan\\");
+                    const string password = "cWepiJ3kkc2k";
+
+                    using (var zipInputStream = new ZipInputStream(File.OpenRead(sourceZipFilePath)))
+                    {
+                        zipInputStream.Password = password; // パスワード設定  
+                        ZipEntry entry;
+
+                        while ((entry = zipInputStream.GetNextEntry()) != null)
+                        {
+                            var targetFilePath = Path.Combine(targetDirectory, entry.Name);
+
+                            using (var fileStream = File.Create(targetFilePath))
+                            {
+                                var buffer = new byte[2048];
+
+                                while (true)
+                                {
+                                    var size = zipInputStream.Read(buffer, 0, buffer.Length);
+                                    if (size > 0)
+                                    {
+                                        fileStream.Write(buffer, 0, size);
+                                    }
+                                    else
+                                    {
+                                        break;
+                                    }
+                                }
+                            }
+                        }
+
+                        zipInputStream.Close();
+                    }
+
+                    _ = MessageBox.Show(Properties.Resources.CompletedImport);
+                    Close();
+
+                }
+                catch (Exception ex)
+                {
+                    _ = MessageBox.Show(Properties.Resources.ImportErrorOfAllSettings + ex.Message, Properties.Resources.Warning, MessageBoxButton.OK, MessageBoxImage.Error);
+                }
+            }
+        }
 
         private void OkButton_OnClick(object sender, RoutedEventArgs e)
         {

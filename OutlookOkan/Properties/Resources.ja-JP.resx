@@ -957,4 +957,19 @@ ZIPファイル内に.oneファイルが含まれており、
   <data name="General2" xml:space="preserve">
     <value>一般 2</value>
   </data>
+  <data name="CompletedExport" xml:space="preserve">
+    <value>設定ファイルのエクスポートが完了しました。</value>
+  </data>
+  <data name="CompletedImport" xml:space="preserve">
+    <value>インポートが完了しました。設定画面を閉じます。</value>
+  </data>
+  <data name="ExportAllSettings" xml:space="preserve">
+    <value>設定ファイルをまとめてエクスポートします。</value>
+  </data>
+  <data name="ImportAllSettings" xml:space="preserve">
+    <value>設定ファイルをインポートします。</value>
+  </data>
+  <data name="ImportErrorOfAllSettings" xml:space="preserve">
+    <value>適切なファイルを選択してください。エラー:</value>
+  </data>
 </root>

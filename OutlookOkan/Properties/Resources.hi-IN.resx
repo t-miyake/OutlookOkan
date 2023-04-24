@@ -958,4 +958,19 @@
   <data name="SuspiciousAttachment_macro" xml:space="preserve">
     <value>यह मैक्रोज़ युक्त संलग्नक है, वायरस के साथ संक्रमण का खतरा।</value>
   </data>
+  <data name="ExportAllSettings" xml:space="preserve">
+    <value>सभी कॉन्फ़िगरेशन निर्यात करें।</value>
+  </data>
+  <data name="ImportAllSettings" xml:space="preserve">
+    <value>कॉन्फ़िगरेशन आयात करें.</value>
+  </data>
+  <data name="CompletedExport" xml:space="preserve">
+    <value>कॉन्फ़िगरेशन फ़ाइल का निर्यात पूरा हो गया है।</value>
+  </data>
+  <data name="CompletedImport" xml:space="preserve">
+    <value>आयात पूरा हो गया है. सेटिंग्स विंडो बंद करें।</value>
+  </data>
+  <data name="ImportErrorOfAllSettings" xml:space="preserve">
+    <value>कृपया सही फ़ाइल का चयन करें. भूल:</value>
+  </data>
 </root>

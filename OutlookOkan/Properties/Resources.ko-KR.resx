@@ -956,4 +956,19 @@ zip 파일에는 매크로가 포함 된 Office 파일이 포함되어 있습니
   <data name="SuspiciousAttachment_macro" xml:space="preserve">
     <value>이것은 매크로, 바이러스 감염 위험이 포함 된 첨부 파일입니다.</value>
   </data>
+  <data name="ExportAllSettings" xml:space="preserve">
+    <value>모든 구성을 내보냅니다.</value>
+  </data>
+  <data name="ImportAllSettings" xml:space="preserve">
+    <value>구성을 가져옵니다.</value>
+  </data>
+  <data name="CompletedExport" xml:space="preserve">
+    <value>구성 파일 내보내기가 완료되었습니다.</value>
+  </data>
+  <data name="CompletedImport" xml:space="preserve">
+    <value>가져오기가 완료되었습니다. 설정 창을 닫습니다.</value>
+  </data>
+  <data name="ImportErrorOfAllSettings" xml:space="preserve">
+    <value>올바른 파일을 선택하십시오. 오류:</value>
+  </data>
 </root>
