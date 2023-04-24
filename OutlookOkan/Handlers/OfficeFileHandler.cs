@@ -133,6 +133,9 @@ namespace OutlookOkan.Handlers
 
         internal static bool CheckOfficeFileHasVbProject(string filePath, string fileType)
         {
+            //パスワード付きの場合は開けないので何もしない。
+            if (CheckOfficeFileIsEncrypted(filePath, fileType)) return false;
+
             var isHasVbProject = false;
             var thisFileType = fileType.ToLower().Replace(".", "");
 
