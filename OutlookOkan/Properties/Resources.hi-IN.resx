@@ -863,7 +863,7 @@
     <value>यदि सभी प्राप्तकर्ता आंतरिक डोमेन हैं तो आवश्यक नहीं है.</value>
   </data>
   <data name="AlertKeywordOfSubjectWhenOpeningMails" xml:space="preserve">
-    <value> [β] ईमेल खोलते समय अलर्ट (विषय)</value>
+    <value>ईमेल खोलते समय अलर्ट (विषय)</value>
   </data>
   <data name="IsEnableAlertKeywordOfSubjectWhenOpeningMailsData" xml:space="preserve">
     <value>जब विषय पंक्ति में निर्दिष्ट कीवर्ड हों तो चेतावनी फ़ंक्शन का उपयोग करें.</value>
@@ -872,7 +872,7 @@
     <value>मेल हेडर विश्लेषण और चेतावनी फ़ंक्शन का उपयोग करें।</value>
   </data>
   <data name="IsEnableSecurityForReceivedMail" xml:space="preserve">
-    <value>मेल और अनुलग्नक खोलते समय चेतावनी सुविधा का उपयोग करें. (बीटा)</value>
+    <value>मेल और अनुलग्नक खोलते समय चेतावनी सुविधा का उपयोग करें. </value>
   </data>
   <data name="IsShowWarningWhenDkimFails" xml:space="preserve">
     <value>DKIM रिकॉर्ड सत्यापन विफल होने पर चेतावनी प्रदर्शित करें.</value>
@@ -881,7 +881,7 @@
     <value>SPF रिकॉर्ड सत्यापन विफल होने पर चेतावनी प्रदर्शित करें.</value>
   </data>
   <data name="SecurityForReceivedMail" xml:space="preserve">
-    <value> [β] मेल सुरक्षा प्राप्त की</value>
+    <value>मेल सुरक्षा प्राप्त की</value>
   </data>
   <data name="SettingExampleAlertKeywordOfSubjectWhenOpeningMails" xml:space="preserve">
     <value>लक्ष्य कीवर्ड और चेतावनी पाठ पंजीकृत करें।
@@ -889,9 +889,7 @@
 * Outlook को पुनरारंभ करने के बाद सेटिंग्स दिखाई देंगी.</value>
   </data>
   <data name="SettingExampleSecurityForReceivedMail" xml:space="preserve">
-    <value>यह सभी कार्यक्षमता बीटा में है।
-
-* इस सुविधा को सक्षम करने से समस्या हो सकती है।
+    <value>इस सुविधा को सक्षम करने से समस्या हो सकती है।
 
 * Outlook को पुनरारंभ करने के बाद सेटिंग्स दिखाई देंगी.</value>
   </data>

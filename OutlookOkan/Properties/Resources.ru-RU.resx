@@ -867,7 +867,7 @@
     <value>Не требуется, если все получатели являются внутренними доменами.</value>
   </data>
   <data name="AlertKeywordOfSubjectWhenOpeningMails" xml:space="preserve">
-    <value> [β] Оповещение при открытии электронной почты (тема)</value>
+    <value>Оповещение при открытии электронной почты (тема)</value>
   </data>
   <data name="IsEnableAlertKeywordOfSubjectWhenOpeningMailsData" xml:space="preserve">
     <value>Используйте функцию предупреждения, если строка темы содержит указанные ключевые слова.</value>
@@ -876,7 +876,7 @@
     <value>Используйте функции анализа заголовков и предупреждений.</value>
   </data>
   <data name="IsEnableSecurityForReceivedMail" xml:space="preserve">
-    <value>Используйте функцию предупреждения при открытии писем и вложений. (бета)</value>
+    <value>Используйте функцию предупреждения при открытии писем и вложений. </value>
   </data>
   <data name="IsShowWarningWhenDkimFails" xml:space="preserve">
     <value>Отображение предупреждения при сбое проверки записи DKIM.</value>
@@ -885,7 +885,7 @@
     <value>Отображение предупреждения при сбое проверки записи SPF.</value>
   </data>
   <data name="SecurityForReceivedMail" xml:space="preserve">
-    <value> [β] Безопасность полученной почты</value>
+    <value>Безопасность полученной почты</value>
   </data>
   <data name="SettingExampleAlertKeywordOfSubjectWhenOpeningMails" xml:space="preserve">
     <value>Зарегистрируйте целевые ключевые слова и текст предупреждения.
@@ -893,9 +893,7 @@
 *Настройки будут отражены после перезапуска Outlook.</value>
   </data>
   <data name="SettingExampleSecurityForReceivedMail" xml:space="preserve">
-    <value>Вся эта функциональность находится в бета-версии.
-
-*Включение этой функции может вызвать проблемы.
+    <value>Включение этой функции может вызвать проблемы.
 
 *Настройки будут отражены после перезапуска Outlook.</value>
   </data>

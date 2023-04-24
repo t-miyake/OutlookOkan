@@ -862,7 +862,7 @@ bcc โดยอัตโนมัติ</value>
     <value>ไม่จําเป็นหากผู้รับทั้งหมดเป็นโดเมนภายใน</value>
   </data>
   <data name="AlertKeywordOfSubjectWhenOpeningMails" xml:space="preserve">
-    <value> [β] แจ้งเตือนเมื่อเปิดอีเมล (หัวเรื่อง)</value>
+    <value>แจ้งเตือนเมื่อเปิดอีเมล (หัวเรื่อง)</value>
   </data>
   <data name="IsEnableAlertKeywordOfSubjectWhenOpeningMailsData" xml:space="preserve">
     <value>ใช้ฟังก์ชันคําเตือนเมื่อบรรทัดหัวเรื่องมีคําหลักที่ระบุ</value>
@@ -871,7 +871,7 @@ bcc โดยอัตโนมัติ</value>
     <value>ใช้ฟังก์ชันการวิเคราะห์ส่วนหัวของอีเมลและฟังก์ชันคําเตือน</value>
   </data>
   <data name="IsEnableSecurityForReceivedMail" xml:space="preserve">
-    <value>ใช้คุณสมบัติคําเตือนเมื่อเปิดอีเมลและไฟล์แนบ (เบต้า)</value>
+    <value>ใช้คุณสมบัติคําเตือนเมื่อเปิดอีเมลและไฟล์แนบ</value>
   </data>
   <data name="IsShowWarningWhenDkimFails" xml:space="preserve">
     <value>แสดงคําเตือนเมื่อการยืนยันระเบียน DKIM ล้มเหลว</value>
@@ -880,7 +880,7 @@ bcc โดยอัตโนมัติ</value>
     <value>แสดงคําเตือนเมื่อการตรวจสอบระเบียน SPF ล้มเหลว</value>
   </data>
   <data name="SecurityForReceivedMail" xml:space="preserve">
-    <value> [β] การรักษาความปลอดภัยอีเมลที่ได้รับ</value>
+    <value>การรักษาความปลอดภัยอีเมลที่ได้รับ</value>
   </data>
   <data name="SettingExampleAlertKeywordOfSubjectWhenOpeningMails" xml:space="preserve">
     <value>ลงทะเบียนคําหลักเป้าหมายและข้อความเตือน
@@ -888,9 +888,7 @@ bcc โดยอัตโนมัติ</value>
 *การตั้งค่าจะปรากฏขึ้นหลังจากรีสตาร์ท Outlook</value>
   </data>
   <data name="SettingExampleSecurityForReceivedMail" xml:space="preserve">
-    <value>ฟังก์ชันทั้งหมดนี้อยู่ในรุ่นเบต้า
-
-*การเปิดใช้งานคุณสมบัตินี้อาจทําให้เกิดปัญหาได้
+    <value>การเปิดใช้งานคุณสมบัตินี้อาจทําให้เกิดปัญหาได้
 
 *การตั้งค่าจะปรากฏขึ้นหลังจากรีสตาร์ท Outlook</value>
   </data>

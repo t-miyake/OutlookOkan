@@ -856,7 +856,7 @@
     <value>宛先が全て内部ドメインの場合、必須とはしない。</value>
   </data>
   <data name="AlertKeywordOfSubjectWhenOpeningMails" xml:space="preserve">
-    <value> [β] メールを開く際の警告(件名)</value>
+    <value>メールを開く際の警告(件名)</value>
   </data>
   <data name="AlertOfReceivedMailSubject" xml:space="preserve">
     <value>件名に警告対象のキーワードが含まれています。</value>
@@ -875,7 +875,7 @@
     <value>メールヘッダの解析と警告機能を使用する。</value>
   </data>
   <data name="IsEnableSecurityForReceivedMail" xml:space="preserve">
-    <value>メールや添付ファイルを開く際の警告機能を使用する。(β)</value>
+    <value>メールや添付ファイルを開く際の警告機能を使用する。</value>
   </data>
   <data name="IsEnableWarningFeatureWhenOpeningAttachments" xml:space="preserve">
     <value>添付ファイルを開く際の警告機能を使用する。</value>
@@ -911,7 +911,7 @@
     <value>不審なファイルには十分注意してください。</value>
   </data>
   <data name="SecurityForReceivedMail" xml:space="preserve">
-    <value> [β] 受信メールセキュリティ</value>
+    <value>受信メールセキュリティ</value>
   </data>
   <data name="SettingExampleAlertKeywordOfSubjectWhenOpeningMails" xml:space="preserve">
     <value>対象となるキーワードと警告文を登録します。
@@ -919,9 +919,7 @@
 ※設定はOutlookを再起動すると反映されます。</value>
   </data>
   <data name="SettingExampleSecurityForReceivedMail" xml:space="preserve">
-    <value>本機能は全てβ版です。
-
-※有効にすると問題が発生する恐れがあります。
+    <value>有効にすると問題が発生する恐れがあります。
 
 ※設定はOutlookを再起動すると反映されます。</value>
   </data>

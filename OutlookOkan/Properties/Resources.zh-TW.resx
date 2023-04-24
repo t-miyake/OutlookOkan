@@ -861,7 +861,7 @@
     <value>如果所有收件者都是內部域，則不需要。</value>
   </data>
   <data name="AlertKeywordOfSubjectWhenOpeningMails" xml:space="preserve">
-    <value> [β] 打開電子郵件時發出警報（主題）</value>
+    <value>打開電子郵件時發出警報（主題）</value>
   </data>
   <data name="IsEnableAlertKeywordOfSubjectWhenOpeningMailsData" xml:space="preserve">
     <value>當主題行包含指定的關鍵字時，使用警告功能。</value>
@@ -870,7 +870,7 @@
     <value>使用郵件頭分析和警告功能。</value>
   </data>
   <data name="IsEnableSecurityForReceivedMail" xml:space="preserve">
-    <value>打開郵件和附件時使用警告功能。（測試版）</value>
+    <value>打開郵件和附件時使用警告功能。</value>
   </data>
   <data name="IsShowWarningWhenDkimFails" xml:space="preserve">
     <value>當 DKIM 記錄驗證失敗時顯示警告。</value>
@@ -879,7 +879,7 @@
     <value>當 SPF 記錄驗證失敗時顯示警告。</value>
   </data>
   <data name="SecurityForReceivedMail" xml:space="preserve">
-    <value> [β] 接收郵件安全</value>
+    <value>接收郵件安全</value>
   </data>
   <data name="SettingExampleAlertKeywordOfSubjectWhenOpeningMails" xml:space="preserve">
     <value>註冊目標關鍵字和警告文本。
@@ -887,9 +887,7 @@
 *設置將在重新啟動 Outlook 后反映出來。</value>
   </data>
   <data name="SettingExampleSecurityForReceivedMail" xml:space="preserve">
-    <value>所有這些功能都處於測試階段。
-
-*啟用此功能可能會導致問題。
+    <value>啟用此功能可能會導致問題。
 
 *設置將在重新啟動 Outlook 后反映出來。</value>
   </data>

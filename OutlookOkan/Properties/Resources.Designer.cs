@@ -133,7 +133,7 @@ namespace OutlookOkan.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to  [β] Alert when opening email (subject).
+        ///   Looks up a localized string similar to Alert when opening email (subject).
         /// </summary>
         public static string AlertKeywordOfSubjectWhenOpeningMails {
             get {
@@ -1276,7 +1276,7 @@ namespace OutlookOkan.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Use the warning feature when opening mails and attachments. (beta).
+        ///   Looks up a localized string similar to Use the warning feature when opening mails and attachments..
         /// </summary>
         public static string IsEnableSecurityForReceivedMail {
             get {
@@ -1763,7 +1763,7 @@ namespace OutlookOkan.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to  [β] Received Mail Security.
+        ///   Looks up a localized string similar to Received Mail Security.
         /// </summary>
         public static string SecurityForReceivedMail {
             get {
@@ -2112,9 +2112,7 @@ namespace OutlookOkan.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to All of this functionality is in beta.
-        ///
-        ///*Enabling this feature may cause problems.
+        ///   Looks up a localized string similar to Enabling this feature may cause problems.
         ///
         ///*Settings will be reflected after restarting Outlook..
         /// </summary>

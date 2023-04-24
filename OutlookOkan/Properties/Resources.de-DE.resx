@@ -870,7 +870,7 @@ wird diese Funktion angewendet.</value>
     <value>Nicht erforderlich, wenn es sich bei allen Empfängern um interne Domänen handelt.</value>
   </data>
   <data name="AlertKeywordOfSubjectWhenOpeningMails" xml:space="preserve">
-    <value> [β] Warnung beim Öffnen einer E-Mail (Betreff)</value>
+    <value>Warnung beim Öffnen einer E-Mail (Betreff)</value>
   </data>
   <data name="IsEnableAlertKeywordOfSubjectWhenOpeningMailsData" xml:space="preserve">
     <value>Verwenden Sie die Warnfunktion, wenn die Betreffzeile die angegebenen Schlüsselwörter enthält.</value>
@@ -879,7 +879,7 @@ wird diese Funktion angewendet.</value>
     <value>Nutzen Sie die Mail-Header-Analyse- und Warnfunktionen.</value>
   </data>
   <data name="IsEnableSecurityForReceivedMail" xml:space="preserve">
-    <value>Verwenden Sie die Warnfunktion beim Öffnen von E-Mails und Anhängen. (Beta)</value>
+    <value>Verwenden Sie die Warnfunktion beim Öffnen von E-Mails und Anhängen. </value>
   </data>
   <data name="IsShowWarningWhenDkimFails" xml:space="preserve">
     <value>Zeigt eine Warnung an, wenn die Überprüfung des DKIM-Eintrags fehlschlägt.</value>
@@ -888,7 +888,7 @@ wird diese Funktion angewendet.</value>
     <value>Zeigt eine Warnung an, wenn die Überprüfung des SPF-Datensatzes fehlschlägt.</value>
   </data>
   <data name="SecurityForReceivedMail" xml:space="preserve">
-    <value> [β] Sicherheit für empfangene E-Mails</value>
+    <value>Sicherheit für empfangene E-Mails</value>
   </data>
   <data name="SettingExampleAlertKeywordOfSubjectWhenOpeningMails" xml:space="preserve">
     <value>Registrieren Sie die Zielschlüsselwörter und den Warntext.
@@ -896,9 +896,7 @@ wird diese Funktion angewendet.</value>
 *Die Einstellungen werden nach dem Neustart von Outlook übernommen.</value>
   </data>
   <data name="SettingExampleSecurityForReceivedMail" xml:space="preserve">
-    <value>Alle diese Funktionen befinden sich in der Beta-Phase.
-
-*Die Aktivierung dieser Funktion kann zu Problemen führen.
+    <value>Die Aktivierung dieser Funktion kann zu Problemen führen.
 
 *Die Einstellungen werden nach dem Neustart von Outlook übernommen.</value>
   </data>

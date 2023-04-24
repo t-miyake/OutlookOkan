@@ -861,7 +861,7 @@
     <value>모든 받는 사람이 내부 도메인인 경우에는 필요하지 않습니다.</value>
   </data>
   <data name="AlertKeywordOfSubjectWhenOpeningMails" xml:space="preserve">
-    <value> [β] 이메일을 열 때 경고 (제목)</value>
+    <value>이메일을 열 때 경고 (제목)</value>
   </data>
   <data name="IsEnableAlertKeywordOfSubjectWhenOpeningMailsData" xml:space="preserve">
     <value>제목 줄에 지정된 키워드가 포함된 경우 경고 함수를 사용합니다.</value>
@@ -870,7 +870,7 @@
     <value>메일 헤더 분석 및 경고 기능을 사용합니다.</value>
   </data>
   <data name="IsEnableSecurityForReceivedMail" xml:space="preserve">
-    <value>메일 및 첨부 파일을 열 때 경고 기능을 사용합니다. (베타)</value>
+    <value>메일 및 첨부 파일을 열 때 경고 기능을 사용합니다.</value>
   </data>
   <data name="IsShowWarningWhenDkimFails" xml:space="preserve">
     <value>DKIM 레코드 확인이 실패하면 경고를 표시합니다.</value>
@@ -879,7 +879,7 @@
     <value>SPF 레코드 유효성 검사가 실패하면 경고를 표시합니다.</value>
   </data>
   <data name="SecurityForReceivedMail" xml:space="preserve">
-    <value> [β] 수신된 메일 보안</value>
+    <value>수신된 메일 보안</value>
   </data>
   <data name="SettingExampleAlertKeywordOfSubjectWhenOpeningMails" xml:space="preserve">
     <value>대상 키워드와 경고 텍스트를 등록합니다.
@@ -887,9 +887,7 @@
 *Outlook을 다시 시작하면 설정이 반영됩니다.</value>
   </data>
   <data name="SettingExampleSecurityForReceivedMail" xml:space="preserve">
-    <value>이 모든 기능은 베타 버전입니다.
-
-*이 기능을 활성화하면 문제가 발생할 수 있습니다.
+    <value>이 기능을 활성화하면 문제가 발생할 수 있습니다.
 
 *Outlook을 다시 시작하면 설정이 반영됩니다.</value>
   </data>
