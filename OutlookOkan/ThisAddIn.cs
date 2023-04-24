@@ -26,6 +26,8 @@ namespace OutlookOkan
         private Outlook.Inspectors _inspectors;
         private Outlook.Explorer _currentExplorer;
         private Outlook.MailItem _currentMailItem;
+        private Outlook.NameSpace _mapiNamespace;
+        private HashSet<string> _excludedFolderNames;
 
         protected override Microsoft.Office.Core.IRibbonExtensibility CreateRibbonExtensibilityObject()
         {
@@ -49,6 +51,23 @@ namespace OutlookOkan
             LoadSecurityForReceivedMail();
             if (_securityForReceivedMail.IsEnableSecurityForReceivedMail)
             {
+                _mapiNamespace = Application.GetNamespace("MAPI");
+                _excludedFolderNames = new HashSet<string>{
+                    _mapiNamespace.GetDefaultFolder(Outlook.OlDefaultFolders.olFolderCalendar).Name,
+                    _mapiNamespace.GetDefaultFolder(Outlook.OlDefaultFolders.olFolderContacts).Name,
+                    _mapiNamespace.GetDefaultFolder(Outlook.OlDefaultFolders.olFolderDrafts).Name,
+                    _mapiNamespace.GetDefaultFolder(Outlook.OlDefaultFolders.olFolderJournal).Name,
+                    _mapiNamespace.GetDefaultFolder(Outlook.OlDefaultFolders.olFolderNotes).Name,
+                    _mapiNamespace.GetDefaultFolder(Outlook.OlDefaultFolders.olFolderOutbox).Name,
+                    _mapiNamespace.GetDefaultFolder(Outlook.OlDefaultFolders.olFolderRssFeeds).Name,
+                    _mapiNamespace.GetDefaultFolder(Outlook.OlDefaultFolders.olFolderSentMail).Name,
+                    _mapiNamespace.GetDefaultFolder(Outlook.OlDefaultFolders.olFolderServerFailures).Name,
+                    _mapiNamespace.GetDefaultFolder(Outlook.OlDefaultFolders.olFolderLocalFailures).Name,
+                    _mapiNamespace.GetDefaultFolder(Outlook.OlDefaultFolders.olFolderSyncIssues).Name,
+                    _mapiNamespace.GetDefaultFolder(Outlook.OlDefaultFolders.olFolderTasks).Name,
+                    _mapiNamespace.GetDefaultFolder(Outlook.OlDefaultFolders.olFolderToDo).Name
+                };
+
                 LoadAlertKeywordOfSubjectWhenOpeningMailsData();
                 _currentExplorer = Application.ActiveExplorer();
                 _currentExplorer.SelectionChange += CurrentExplorer_SelectionChange;
@@ -64,23 +83,8 @@ namespace OutlookOkan
         private void CurrentExplorer_SelectionChange()
         {
             var currentExplorer = Application.ActiveExplorer();
-            if (currentExplorer.CurrentFolder.Name == Application.GetNamespace("MAPI").GetDefaultFolder(Outlook.OlDefaultFolders.olFolderCalendar).Name
-                || currentExplorer.CurrentFolder.Name == Application.GetNamespace("MAPI").GetDefaultFolder(Outlook.OlDefaultFolders.olFolderContacts).Name
-                || currentExplorer.CurrentFolder.Name == Application.GetNamespace("MAPI").GetDefaultFolder(Outlook.OlDefaultFolders.olFolderDrafts).Name
-                || currentExplorer.CurrentFolder.Name == Application.GetNamespace("MAPI").GetDefaultFolder(Outlook.OlDefaultFolders.olFolderJournal).Name
-                || currentExplorer.CurrentFolder.Name == Application.GetNamespace("MAPI").GetDefaultFolder(Outlook.OlDefaultFolders.olFolderNotes).Name
-                || currentExplorer.CurrentFolder.Name == Application.GetNamespace("MAPI").GetDefaultFolder(Outlook.OlDefaultFolders.olFolderOutbox).Name
-                || currentExplorer.CurrentFolder.Name == Application.GetNamespace("MAPI").GetDefaultFolder(Outlook.OlDefaultFolders.olFolderRssFeeds).Name
-                || currentExplorer.CurrentFolder.Name == Application.GetNamespace("MAPI").GetDefaultFolder(Outlook.OlDefaultFolders.olFolderSentMail).Name
-                || currentExplorer.CurrentFolder.Name == Application.GetNamespace("MAPI").GetDefaultFolder(Outlook.OlDefaultFolders.olFolderServerFailures).Name
-                || currentExplorer.CurrentFolder.Name == Application.GetNamespace("MAPI").GetDefaultFolder(Outlook.OlDefaultFolders.olFolderLocalFailures).Name
-                || currentExplorer.CurrentFolder.Name == Application.GetNamespace("MAPI").GetDefaultFolder(Outlook.OlDefaultFolders.olFolderSyncIssues).Name
-                || currentExplorer.CurrentFolder.Name == Application.GetNamespace("MAPI").GetDefaultFolder(Outlook.OlDefaultFolders.olFolderTasks).Name
-                || currentExplorer.CurrentFolder.Name == Application.GetNamespace("MAPI").GetDefaultFolder(Outlook.OlDefaultFolders.olFolderToDo).Name
-               )
-            {
-                return;
-            }
+            var currentFolderName = currentExplorer.CurrentFolder.Name;
+            if (_excludedFolderNames.Contains(currentFolderName)) return;
 
             var selection = currentExplorer.Selection;
             if (selection is null || selection.Count != 1) return;
