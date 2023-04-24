@@ -297,7 +297,7 @@
     <value>ติดต่อกลุ่ม</value>
   </data>
   <data name="Copyright" xml:space="preserve">
-    <value>Copyright (C) 2022 Noraneko Inc.</value>
+    <value>Copyright (C) 2023 Noraneko Inc.</value>
   </data>
   <data name="CSVExport" xml:space="preserve">
     <value>ส่งออก CSV</value>
@@ -835,7 +835,7 @@ bcc โดยอัตโนมัติ</value>
     <value>ไม่รู้จัก</value>
   </data>
   <data name="Version" xml:space="preserve">
-    <value>Version 2.7.2.1</value>
+    <value>Version 2.8.0.1</value>
   </data>
   <data name="VersionInfo" xml:space="preserve">
     <value>เกี่ยวกับโปรแกรมนี้</value>
@@ -854,5 +854,120 @@ bcc โดยอัตโนมัติ</value>
   </data>
   <data name="YouHaveLatest" xml:space="preserve">
     <value>ส่วนเสริมนี้เป็นเวอร์ชันล่าสุด</value>
+  </data>
+  <data name="General2" xml:space="preserve">
+    <value>ทั่วไป 2</value>
+  </data>
+  <data name="IsIgnoreMustOpenBeforeCheckTheAttachedFilesIfInternalDomain" xml:space="preserve">
+    <value>ไม่จําเป็นหากผู้รับทั้งหมดเป็นโดเมนภายใน</value>
+  </data>
+  <data name="AlertKeywordOfSubjectWhenOpeningMails" xml:space="preserve">
+    <value>แจ้งเตือนเมื่อเปิดอีเมล (หัวเรื่อง)</value>
+  </data>
+  <data name="IsEnableAlertKeywordOfSubjectWhenOpeningMailsData" xml:space="preserve">
+    <value>ใช้ฟังก์ชันคําเตือนเมื่อบรรทัดหัวเรื่องมีคําหลักที่ระบุ</value>
+  </data>
+  <data name="IsEnableMailHeaderAnalysis" xml:space="preserve">
+    <value>ใช้ฟังก์ชันการวิเคราะห์ส่วนหัวของอีเมลและฟังก์ชันคําเตือน</value>
+  </data>
+  <data name="IsEnableSecurityForReceivedMail" xml:space="preserve">
+    <value>ใช้คุณสมบัติคําเตือนเมื่อเปิดอีเมลและไฟล์แนบ</value>
+  </data>
+  <data name="IsShowWarningWhenDkimFails" xml:space="preserve">
+    <value>แสดงคําเตือนเมื่อการยืนยันระเบียน DKIM ล้มเหลว</value>
+  </data>
+  <data name="IsShowWarningWhenSpfFails" xml:space="preserve">
+    <value>แสดงคําเตือนเมื่อการตรวจสอบระเบียน SPF ล้มเหลว</value>
+  </data>
+  <data name="SecurityForReceivedMail" xml:space="preserve">
+    <value>การรักษาความปลอดภัยอีเมลที่ได้รับ</value>
+  </data>
+  <data name="SettingExampleAlertKeywordOfSubjectWhenOpeningMails" xml:space="preserve">
+    <value>ลงทะเบียนคําหลักเป้าหมายและข้อความเตือน
+
+*การตั้งค่าจะปรากฏขึ้นหลังจากรีสตาร์ท Outlook</value>
+  </data>
+  <data name="SettingExampleSecurityForReceivedMail" xml:space="preserve">
+    <value>การเปิดใช้งานคุณสมบัตินี้อาจทําให้เกิดปัญหาได้
+
+*การตั้งค่าจะปรากฏขึ้นหลังจากรีสตาร์ท Outlook</value>
+  </data>
+  <data name="IsEnableWarningFeatureWhenOpeningAttachments" xml:space="preserve">
+    <value>ใช้คุณสมบัติคําเตือนเมื่อเปิดไฟล์แนบ</value>
+  </data>
+  <data name="IsWarnBeforeOpeningAttachments" xml:space="preserve">
+    <value>เตือนก่อนเปิดไฟล์แนบ</value>
+  </data>
+  <data name="IsWarnBeforeOpeningEncryptedZip" xml:space="preserve">
+    <value>เตือนเมื่อเปิดไฟล์ ZIP ที่เข้ารหัส</value>
+  </data>
+  <data name="IsWarnLinkFileInTheZip" xml:space="preserve">
+    <value>เตือนหากมีไฟล์. link ใน ZIP</value>
+  </data>
+  <data name="IsWarnOneFileInTheZip" xml:space="preserve">
+    <value>เตือนหากมีไฟล์. one ใน ZIP</value>
+  </data>
+  <data name="IsWarnOfficeFileWithMacroInTheZip" xml:space="preserve">
+    <value>เตือนหากมีไฟล์ .docm, .xlsm หรือ .pptm ใน ZIP</value>
+  </data>
+  <data name="IsWarnBeforeOpeningAttachmentsThatContainMacros" xml:space="preserve">
+    <value>เตือนเมื่อเปิดสิ่งที่แนบมาที่มีแมโคร</value>
+  </data>
+  <data name="Warning" xml:space="preserve">
+    <value>คำเตือน</value>
+  </data>
+  <data name="AlertOfReceivedMailSubject" xml:space="preserve">
+    <value>บรรทัดหัวเรื่องประกอบด้วยคําหลักที่อยู่ภายใต้คําเตือน</value>
+  </data>
+  <data name="SpfWarning1" xml:space="preserve">
+    <value>การยืนยัน SPF ล้มเหลว ผู้ส่งอาจถูกปลอมแปลง</value>
+  </data>
+  <data name="DkimWarning1" xml:space="preserve">
+    <value>การยืนยัน DKIM ล้มเหลว ผู้ส่งอาจถูกปลอมแปลง</value>
+  </data>
+  <data name="SpfDkimWaring2" xml:space="preserve">
+    <value>โปรดใช้ความระมัดระวังกับเนื้อหาและไฟล์แนบในอีเมลนี้</value>
+  </data>
+  <data name="OpenAttachmentWarning1" xml:space="preserve">
+    <value>คุณต้องการเปิดไฟล์แนบหรือไม่?</value>
+  </data>
+  <data name="OpenAttachmentWarning2" xml:space="preserve">
+    <value>ระวังไฟล์ที่น่าสงสัยให้มาก</value>
+  </data>
+  <data name="AttatchmentIsEncryptedZip" xml:space="preserve">
+    <value>ไฟล์นี้เป็นไฟล์ ZIP ที่เข้ารหัส</value>
+  </data>
+  <data name="SuspiciousAttachmentZip_link" xml:space="preserve">
+    <value>สิ่งที่แนบมาที่น่าสงสัย
+ไฟล์ .lnk รวมอยู่ในไฟล์ ZIP
+ความเสี่ยงของการติดเชื้อไวรัส</value>
+  </data>
+  <data name="SuspiciousAttachmentZip_one" xml:space="preserve">
+    <value>สิ่งที่แนบมาที่น่าสงสัย
+ไฟล์. one รวมอยู่ในไฟล์ ZIP
+ความเสี่ยงของการติดเชื้อไวรัส</value>
+  </data>
+  <data name="SuspiciousAttachmentZip_macro" xml:space="preserve">
+    <value>สิ่งที่แนบมาที่น่าสงสัย
+แฟ้ม zip ประกอบด้วยแฟ้ม Office ที่ประกอบด้วยแมโคร และ
+ความเสี่ยงของการติดเชื้อไวรัส</value>
+  </data>
+  <data name="SuspiciousAttachment_macro" xml:space="preserve">
+    <value>นี่คือไฟล์แนบที่มีมาโครความเสี่ยงของการติดเชื้อไวรัส</value>
+  </data>
+  <data name="ExportAllSettings" xml:space="preserve">
+    <value>ส่งออกการกําหนดค่าทั้งหมด</value>
+  </data>
+  <data name="ImportAllSettings" xml:space="preserve">
+    <value>นําเข้าการกําหนดค่า</value>
+  </data>
+  <data name="CompletedExport" xml:space="preserve">
+    <value>การส่งออกไฟล์การกําหนดค่าเสร็จสมบูรณ์</value>
+  </data>
+  <data name="CompletedImport" xml:space="preserve">
+    <value>การนําเข้าเสร็จสมบูรณ์ ปิดหน้าต่างการตั้งค่า</value>
+  </data>
+  <data name="ImportErrorOfAllSettings" xml:space="preserve">
+    <value>โปรดเลือกไฟล์ที่ถูกต้อง ความผิดพลาด:</value>
   </data>
 </root>

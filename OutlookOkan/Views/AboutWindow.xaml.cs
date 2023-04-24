@@ -1,5 +1,5 @@
-﻿using System.Windows;
-using OutlookOkan.ViewModels;
+﻿using OutlookOkan.ViewModels;
+using System.Windows;
 
 namespace OutlookOkan.Views
 {

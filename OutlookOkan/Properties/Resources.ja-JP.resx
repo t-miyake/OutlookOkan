@@ -359,10 +359,10 @@
     <value>株式会社のらねこ</value>
   </data>
   <data name="Copyright" xml:space="preserve">
-    <value>Copyright (C) 2022 Noraneko Inc.</value>
+    <value>Copyright (C) 2023 Noraneko Inc.</value>
   </data>
   <data name="Version" xml:space="preserve">
-    <value>バージョン 2.7.2.1</value>
+    <value>バージョン 2.8.0.1</value>
   </data>
   <data name="VersionInfo" xml:space="preserve">
     <value>バージョン情報</value>
@@ -649,7 +649,7 @@
     <value>ファイルが添付されている場合に、メールの送信を禁止する。※他の設定より優先されます。</value>
   </data>
   <data name="IsWarningWhenAttachedRealFile" xml:space="preserve">
-    <value>実ファイルが添付されている場合、リンクとして添付を推奨する旨の警告を表示する。</value>
+    <value>ファイルが添付されている場合、リンクとして添付を推奨する旨の警告を表示する。</value>
   </data>
   <data name="AttachmentProhibitedRecipients" xml:space="preserve">
     <value>添付ファイル禁止宛先</value>
@@ -851,5 +851,123 @@
   </data>
   <data name="KeywordAndRecipientsAlert3" xml:space="preserve">
     <value>」 が存在しません。</value>
+  </data>
+  <data name="IsIgnoreMustOpenBeforeCheckTheAttachedFilesIfInternalDomain" xml:space="preserve">
+    <value>宛先が全て内部ドメインの場合、必須とはしない。</value>
+  </data>
+  <data name="AlertKeywordOfSubjectWhenOpeningMails" xml:space="preserve">
+    <value>メールを開く際の警告(件名)</value>
+  </data>
+  <data name="AlertOfReceivedMailSubject" xml:space="preserve">
+    <value>件名に警告対象のキーワードが含まれています。</value>
+  </data>
+  <data name="AttatchmentIsEncryptedZip" xml:space="preserve">
+    <value>このファイルは暗号化ZIPファイルです。</value>
+  </data>
+  <data name="DkimWarning1" xml:space="preserve">
+    <value>DKIMの検証に失敗しました。
+送信元が偽装されている恐れがあります。</value>
+  </data>
+  <data name="IsEnableAlertKeywordOfSubjectWhenOpeningMailsData" xml:space="preserve">
+    <value>件名に指定したキーワードが含まれている場合の警告機能を使用する。</value>
+  </data>
+  <data name="IsEnableMailHeaderAnalysis" xml:space="preserve">
+    <value>メールヘッダの解析と警告機能を使用する。</value>
+  </data>
+  <data name="IsEnableSecurityForReceivedMail" xml:space="preserve">
+    <value>メールや添付ファイルを開く際の警告機能を使用する。</value>
+  </data>
+  <data name="IsEnableWarningFeatureWhenOpeningAttachments" xml:space="preserve">
+    <value>添付ファイルを開く際の警告機能を使用する。</value>
+  </data>
+  <data name="IsShowWarningWhenDkimFails" xml:space="preserve">
+    <value>DKIMレコードの検証に失敗した場合に警告を表示する。</value>
+  </data>
+  <data name="IsShowWarningWhenSpfFails" xml:space="preserve">
+    <value>SPFレコードの検証に失敗した場合に警告を表示する。</value>
+  </data>
+  <data name="IsWarnBeforeOpeningAttachments" xml:space="preserve">
+    <value>添付ファイルを開く前に警告する。</value>
+  </data>
+  <data name="IsWarnBeforeOpeningAttachmentsThatContainMacros" xml:space="preserve">
+    <value>マクロが含まれた添付ファイルを開く際に警告する。</value>
+  </data>
+  <data name="IsWarnBeforeOpeningEncryptedZip" xml:space="preserve">
+    <value>暗号化ZIPファイルを開く際に警告する。</value>
+  </data>
+  <data name="IsWarnLinkFileInTheZip" xml:space="preserve">
+    <value>ZIP内に.linkファイルがある場合に警告する。</value>
+  </data>
+  <data name="IsWarnOfficeFileWithMacroInTheZip" xml:space="preserve">
+    <value>ZIP内に、.docm、.xlsm、.pptmファイルがある場合に警告する。</value>
+  </data>
+  <data name="IsWarnOneFileInTheZip" xml:space="preserve">
+    <value>ZIP内に.oneファイルがある場合に警告する。</value>
+  </data>
+  <data name="OpenAttachmentWarning1" xml:space="preserve">
+    <value>本当に添付ファイルを開きますか？</value>
+  </data>
+  <data name="OpenAttachmentWarning2" xml:space="preserve">
+    <value>不審なファイルには十分注意してください。</value>
+  </data>
+  <data name="SecurityForReceivedMail" xml:space="preserve">
+    <value>受信メールセキュリティ</value>
+  </data>
+  <data name="SettingExampleAlertKeywordOfSubjectWhenOpeningMails" xml:space="preserve">
+    <value>対象となるキーワードと警告文を登録します。
+
+※設定はOutlookを再起動すると反映されます。</value>
+  </data>
+  <data name="SettingExampleSecurityForReceivedMail" xml:space="preserve">
+    <value>有効にすると問題が発生する恐れがあります。
+
+※設定はOutlookを再起動すると反映されます。</value>
+  </data>
+  <data name="SpfDkimWaring2" xml:space="preserve">
+    <value>このメールの内容や添付ファイルには十分注意してください。</value>
+  </data>
+  <data name="SpfWarning1" xml:space="preserve">
+    <value>SPFの検証に失敗しました。
+送信元が偽装されている恐れがあります。</value>
+  </data>
+  <data name="SuspiciousAttachmentZip_link" xml:space="preserve">
+    <value>不審な添付ファイルです。
+ZIPファイル内に.lnkファイルが含まれており、
+ウイルスに感染するリスクがあります。</value>
+  </data>
+  <data name="SuspiciousAttachmentZip_macro" xml:space="preserve">
+    <value>不審な添付ファイルです。
+ZIPファイル内にマクロを含んだOfficeファイルが含まれており
+ウイルスに感染するリスクがあります。</value>
+  </data>
+  <data name="SuspiciousAttachmentZip_one" xml:space="preserve">
+    <value>不審な添付ファイルです。
+ZIPファイル内に.oneファイルが含まれており、
+ウイルスに感染するリスクがあります。</value>
+  </data>
+  <data name="SuspiciousAttachment_macro" xml:space="preserve">
+    <value>マクロが含まれた添付ファイルのため、
+ウイルスに感染するリスクがあります。</value>
+  </data>
+  <data name="Warning" xml:space="preserve">
+    <value>警告</value>
+  </data>
+  <data name="General2" xml:space="preserve">
+    <value>一般 2</value>
+  </data>
+  <data name="CompletedExport" xml:space="preserve">
+    <value>設定ファイルのエクスポートが完了しました。</value>
+  </data>
+  <data name="CompletedImport" xml:space="preserve">
+    <value>インポートが完了しました。設定画面を閉じます。</value>
+  </data>
+  <data name="ExportAllSettings" xml:space="preserve">
+    <value>設定ファイルをまとめてエクスポートします。</value>
+  </data>
+  <data name="ImportAllSettings" xml:space="preserve">
+    <value>設定ファイルをインポートします。</value>
+  </data>
+  <data name="ImportErrorOfAllSettings" xml:space="preserve">
+    <value>適切なファイルを選択してください。エラー:</value>
   </data>
 </root>

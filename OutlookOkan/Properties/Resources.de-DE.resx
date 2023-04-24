@@ -300,7 +300,7 @@ Möchten Sie es herunterladen?</value>
     <value>Kontakt Gruppe</value>
   </data>
   <data name="Copyright" xml:space="preserve">
-    <value>Copyright (C) 2022 Noraneko Inc.</value>
+    <value>Copyright (C) 2023 Noraneko Inc.</value>
   </data>
   <data name="CSVExport" xml:space="preserve">
     <value>CSV exportieren</value>
@@ -843,7 +843,7 @@ wird diese Funktion angewendet.</value>
     <value>Unbekannt</value>
   </data>
   <data name="Version" xml:space="preserve">
-    <value>Version 2.7.2.1</value>
+    <value>Version 2.8.0.1</value>
   </data>
   <data name="VersionInfo" xml:space="preserve">
     <value>Über das Programm</value>
@@ -862,5 +862,120 @@ wird diese Funktion angewendet.</value>
   </data>
   <data name="YouHaveLatest" xml:space="preserve">
     <value>Dieses Add-In ist die neueste Version.</value>
+  </data>
+  <data name="General2" xml:space="preserve">
+    <value>Allgemein 2</value>
+  </data>
+  <data name="IsIgnoreMustOpenBeforeCheckTheAttachedFilesIfInternalDomain" xml:space="preserve">
+    <value>Nicht erforderlich, wenn es sich bei allen Empfängern um interne Domänen handelt.</value>
+  </data>
+  <data name="AlertKeywordOfSubjectWhenOpeningMails" xml:space="preserve">
+    <value>Warnung beim Öffnen einer E-Mail (Betreff)</value>
+  </data>
+  <data name="IsEnableAlertKeywordOfSubjectWhenOpeningMailsData" xml:space="preserve">
+    <value>Verwenden Sie die Warnfunktion, wenn die Betreffzeile die angegebenen Schlüsselwörter enthält.</value>
+  </data>
+  <data name="IsEnableMailHeaderAnalysis" xml:space="preserve">
+    <value>Nutzen Sie die Mail-Header-Analyse- und Warnfunktionen.</value>
+  </data>
+  <data name="IsEnableSecurityForReceivedMail" xml:space="preserve">
+    <value>Verwenden Sie die Warnfunktion beim Öffnen von E-Mails und Anhängen. </value>
+  </data>
+  <data name="IsShowWarningWhenDkimFails" xml:space="preserve">
+    <value>Zeigt eine Warnung an, wenn die Überprüfung des DKIM-Eintrags fehlschlägt.</value>
+  </data>
+  <data name="IsShowWarningWhenSpfFails" xml:space="preserve">
+    <value>Zeigt eine Warnung an, wenn die Überprüfung des SPF-Datensatzes fehlschlägt.</value>
+  </data>
+  <data name="SecurityForReceivedMail" xml:space="preserve">
+    <value>Sicherheit für empfangene E-Mails</value>
+  </data>
+  <data name="SettingExampleAlertKeywordOfSubjectWhenOpeningMails" xml:space="preserve">
+    <value>Registrieren Sie die Zielschlüsselwörter und den Warntext.
+
+*Die Einstellungen werden nach dem Neustart von Outlook übernommen.</value>
+  </data>
+  <data name="SettingExampleSecurityForReceivedMail" xml:space="preserve">
+    <value>Die Aktivierung dieser Funktion kann zu Problemen führen.
+
+*Die Einstellungen werden nach dem Neustart von Outlook übernommen.</value>
+  </data>
+  <data name="IsEnableWarningFeatureWhenOpeningAttachments" xml:space="preserve">
+    <value>Verwenden Sie die Warnfunktion beim Öffnen von Anhängen.</value>
+  </data>
+  <data name="IsWarnBeforeOpeningAttachments" xml:space="preserve">
+    <value>Warnen Sie vor dem Öffnen von Anhängen.</value>
+  </data>
+  <data name="IsWarnBeforeOpeningEncryptedZip" xml:space="preserve">
+    <value>Warnen beim Öffnen von verschlüsselten ZIP-Dateien.</value>
+  </data>
+  <data name="IsWarnLinkFileInTheZip" xml:space="preserve">
+    <value>Warnen Sie, wenn sich eine LINK-Datei in der ZIP-Datei befindet.</value>
+  </data>
+  <data name="IsWarnOneFileInTheZip" xml:space="preserve">
+    <value>Warnen Sie, wenn sich eine .one-Datei in der ZIP-Datei befindet.</value>
+  </data>
+  <data name="IsWarnOfficeFileWithMacroInTheZip" xml:space="preserve">
+    <value>Warnen Sie, wenn die ZIP-Datei DOCM-, XLSM- oder PPTM-Dateien enthält.</value>
+  </data>
+  <data name="IsWarnBeforeOpeningAttachmentsThatContainMacros" xml:space="preserve">
+    <value>Warnen Sie beim Öffnen von Anlagen, die Makros enthalten.</value>
+  </data>
+  <data name="Warning" xml:space="preserve">
+    <value>Warnung</value>
+  </data>
+  <data name="AlertOfReceivedMailSubject" xml:space="preserve">
+    <value>Die Betreffzeile enthält das Schlüsselwort, das Gegenstand der Warnung ist.</value>
+  </data>
+  <data name="SpfWarning1" xml:space="preserve">
+    <value>Die SPF-Überprüfung ist fehlgeschlagen. Der Absender ist möglicherweise gefälscht.</value>
+  </data>
+  <data name="DkimWarning1" xml:space="preserve">
+    <value>DKIM-Verifizierung fehlgeschlagen. Der Absender ist möglicherweise gefälscht.</value>
+  </data>
+  <data name="SpfDkimWaring2" xml:space="preserve">
+    <value>Bitte seien Sie vorsichtig mit dem Inhalt und den Anhängen in dieser E-Mail.</value>
+  </data>
+  <data name="OpenAttachmentWarning1" xml:space="preserve">
+    <value>Möchten Sie den Anhang wirklich öffnen?</value>
+  </data>
+  <data name="OpenAttachmentWarning2" xml:space="preserve">
+    <value>Seien Sie sehr vorsichtig mit verdächtigen Dateien.</value>
+  </data>
+  <data name="AttatchmentIsEncryptedZip" xml:space="preserve">
+    <value>Bei dieser Datei handelt es sich um eine verschlüsselte ZIP-Datei.</value>
+  </data>
+  <data name="SuspiciousAttachmentZip_link" xml:space="preserve">
+    <value>Verdächtiger Anhang.
+Die .lnk-Datei ist in der ZIP-Datei enthalten.
+Risiko einer Infektion mit einem Virus.</value>
+  </data>
+  <data name="SuspiciousAttachmentZip_one" xml:space="preserve">
+    <value>Verdächtiger Anhang.
+Die .one-Datei ist in der ZIP-Datei enthalten.
+Risiko einer Infektion mit einem Virus.</value>
+  </data>
+  <data name="SuspiciousAttachmentZip_macro" xml:space="preserve">
+    <value>Verdächtiger Anhang.
+Die ZIP-Datei enthält eine Office-Datei, die Makros und
+Risiko einer Infektion mit einem Virus.</value>
+  </data>
+  <data name="SuspiciousAttachment_macro" xml:space="preserve">
+    <value>Dies sind Anhänge, die Makros enthalten, Risiko einer Infektion mit einem Virus.</value>
+  </data>
+  <data name="ExportAllSettings" xml:space="preserve">
+    <value>Exportieren Sie alle Konfigurationen.</value>
+  </data>
+  <data name="ImportAllSettings" xml:space="preserve">
+    <value>Importieren Sie die Konfiguration.</value>
+  </data>
+  <data name="CompletedExport" xml:space="preserve">
+    <value>Der Export der Konfigurationsdatei ist abgeschlossen.</value>
+  </data>
+  <data name="CompletedImport" xml:space="preserve">
+    <value>Der Import ist abgeschlossen. Schließen Sie das Einstellungsfenster.</value>
+  </data>
+  <data name="ImportErrorOfAllSettings" xml:space="preserve">
+    <value>Bitte wählen Sie die richtige Datei aus. Fehler:</value>
   </data>
 </root>

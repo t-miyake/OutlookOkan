@@ -2,11 +2,11 @@
 using System;
 using System.IO;
 
-namespace OutlookOkan.Models
+namespace OutlookOkan.Handlers
 {
-    public sealed class PdfTools
+    internal static class PdfFileHandler
     {
-        internal bool CheckPdfIsEncrypted(string filePath)
+        internal static bool CheckPdfIsEncrypted(string filePath)
         {
             //リンクとして添付の場合、実ファイルが存在しない場合がある。
             if (!File.Exists(filePath)) return false;

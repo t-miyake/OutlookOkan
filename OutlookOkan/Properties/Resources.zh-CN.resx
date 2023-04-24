@@ -297,7 +297,7 @@
     <value>联系小组</value>
   </data>
   <data name="Copyright" xml:space="preserve">
-    <value>Copyright (C) 2022 Noraneko Inc.</value>
+    <value>Copyright (C) 2023 Noraneko Inc.</value>
   </data>
   <data name="CSVExport" xml:space="preserve">
     <value>导出CSV</value>
@@ -834,7 +834,7 @@
     <value>不详</value>
   </data>
   <data name="Version" xml:space="preserve">
-    <value>Version 2.7.2.1</value>
+    <value>Version 2.8.0.1</value>
   </data>
   <data name="VersionInfo" xml:space="preserve">
     <value>软件信息</value>
@@ -853,5 +853,120 @@
   </data>
   <data name="YouHaveLatest" xml:space="preserve">
     <value>这个插件是最新版本。</value>
+  </data>
+  <data name="General2" xml:space="preserve">
+    <value>一般 2</value>
+  </data>
+  <data name="IsIgnoreMustOpenBeforeCheckTheAttachedFilesIfInternalDomain" xml:space="preserve">
+    <value>如果所有收件人都是内部域，则不需要。</value>
+  </data>
+  <data name="AlertKeywordOfSubjectWhenOpeningMails" xml:space="preserve">
+    <value>打开电子邮件时发出警报（主题）</value>
+  </data>
+  <data name="IsEnableAlertKeywordOfSubjectWhenOpeningMailsData" xml:space="preserve">
+    <value>当主题行包含指定的关键字时，使用警告功能。</value>
+  </data>
+  <data name="IsEnableMailHeaderAnalysis" xml:space="preserve">
+    <value>使用邮件头分析和警告功能。</value>
+  </data>
+  <data name="IsEnableSecurityForReceivedMail" xml:space="preserve">
+    <value>打开邮件和附件时使用警告功能。</value>
+  </data>
+  <data name="IsShowWarningWhenDkimFails" xml:space="preserve">
+    <value>当 DKIM 记录验证失败时显示警告。</value>
+  </data>
+  <data name="IsShowWarningWhenSpfFails" xml:space="preserve">
+    <value>当 SPF 记录验证失败时显示警告。</value>
+  </data>
+  <data name="SecurityForReceivedMail" xml:space="preserve">
+    <value>接收邮件安全</value>
+  </data>
+  <data name="SettingExampleAlertKeywordOfSubjectWhenOpeningMails" xml:space="preserve">
+    <value>注册目标关键字和警告文本。
+
+*设置将在重新启动 Outlook 后反映出来。</value>
+  </data>
+  <data name="SettingExampleSecurityForReceivedMail" xml:space="preserve">
+    <value>启用此功能可能会导致问题。
+
+*设置将在重新启动 Outlook 后反映出来。</value>
+  </data>
+  <data name="IsEnableWarningFeatureWhenOpeningAttachments" xml:space="preserve">
+    <value>打开附件时使用警告功能。</value>
+  </data>
+  <data name="IsWarnBeforeOpeningAttachments" xml:space="preserve">
+    <value>打开附件前发出警告。</value>
+  </data>
+  <data name="IsWarnBeforeOpeningEncryptedZip" xml:space="preserve">
+    <value>打开加密的 ZIP 文件时发出警告。</value>
+  </data>
+  <data name="IsWarnLinkFileInTheZip" xml:space="preserve">
+    <value>如果 ZIP 中存在 .link 文件，则发出警告。</value>
+  </data>
+  <data name="IsWarnOneFileInTheZip" xml:space="preserve">
+    <value>如果 ZIP 中存在 .one 文件，则发出警告。</value>
+  </data>
+  <data name="IsWarnOfficeFileWithMacroInTheZip" xml:space="preserve">
+    <value>如果 ZIP 中有 .docm、.xlsm 或 .pptm 文件，则发出警告。</value>
+  </data>
+  <data name="IsWarnBeforeOpeningAttachmentsThatContainMacros" xml:space="preserve">
+    <value>打开包含宏的附件时发出警告。</value>
+  </data>
+  <data name="Warning" xml:space="preserve">
+    <value>警告</value>
+  </data>
+  <data name="AlertOfReceivedMailSubject" xml:space="preserve">
+    <value>主题行包含受警告影响的关键字。</value>
+  </data>
+  <data name="SpfWarning1" xml:space="preserve">
+    <value>SPF 验证失败。发件人可能被欺骗。</value>
+  </data>
+  <data name="DkimWarning1" xml:space="preserve">
+    <value>DKIM 验证失败。发件人可能被欺骗。</value>
+  </data>
+  <data name="SpfDkimWaring2" xml:space="preserve">
+    <value>请注意此电子邮件中的内容和附件。</value>
+  </data>
+  <data name="OpenAttachmentWarning1" xml:space="preserve">
+    <value>是否确实要打开附件？</value>
+  </data>
+  <data name="OpenAttachmentWarning2" xml:space="preserve">
+    <value>要非常小心可疑文件。</value>
+  </data>
+  <data name="AttatchmentIsEncryptedZip" xml:space="preserve">
+    <value>此文件是加密的 ZIP 文件。</value>
+  </data>
+  <data name="SuspiciousAttachmentZip_link" xml:space="preserve">
+    <value>可疑附件。
+.lnk文件包含在 ZIP 文件中，
+感染病毒的风险。</value>
+  </data>
+  <data name="SuspiciousAttachmentZip_one" xml:space="preserve">
+    <value>可疑附件。
+.one 文件包含在 ZIP 文件中，
+感染病毒的风险。</value>
+  </data>
+  <data name="SuspiciousAttachmentZip_macro" xml:space="preserve">
+    <value>可疑附件。
+zip 文件包含一个包含宏和
+感染病毒的风险。</value>
+  </data>
+  <data name="SuspiciousAttachment_macro" xml:space="preserve">
+    <value>这是包含宏的附件，感染病毒的风险。</value>
+  </data>
+  <data name="ExportAllSettings" xml:space="preserve">
+    <value>导出所有配置。</value>
+  </data>
+  <data name="ImportAllSettings" xml:space="preserve">
+    <value>导入配置。</value>
+  </data>
+  <data name="CompletedExport" xml:space="preserve">
+    <value>配置文件的导出已完成。</value>
+  </data>
+  <data name="CompletedImport" xml:space="preserve">
+    <value>导入完成。关闭设置窗口。</value>
+  </data>
+  <data name="ImportErrorOfAllSettings" xml:space="preserve">
+    <value>请选择正确的文件。错误：</value>
   </data>
 </root>

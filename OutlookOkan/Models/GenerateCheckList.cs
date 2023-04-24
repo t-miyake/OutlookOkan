@@ -1,4 +1,4 @@
-﻿using OutlookOkan.CsvTools;
+﻿using OutlookOkan.Handlers;
 using OutlookOkan.Properties;
 using OutlookOkan.Types;
 using System;
@@ -34,78 +34,62 @@ namespace OutlookOkan.Models
         {
             #region LoadSettings
 
-            var whitelistCsv = new ReadAndWriteCsv("Whitelist.csv");
-            _whitelist.AddRange(whitelistCsv.GetCsvRecords<Whitelist>(whitelistCsv.LoadCsv<WhitelistMap>()).Where(x => !string.IsNullOrEmpty(x.WhiteName)));
+            _whitelist.AddRange(CsvFileHandler.ReadCsv<Whitelist>(typeof(WhitelistMap), "Whitelist.csv").Where(x => !string.IsNullOrEmpty(x.WhiteName)));
 
-            var alertKeywordAndMessageListCsv = new ReadAndWriteCsv("AlertKeywordAndMessageList.csv");
-            var alertKeywordAndMessageList = alertKeywordAndMessageListCsv.GetCsvRecords<AlertKeywordAndMessage>(alertKeywordAndMessageListCsv.LoadCsv<AlertKeywordAndMessageMap>())
+            var alertKeywordAndMessageList = CsvFileHandler.ReadCsv<AlertKeywordAndMessage>(typeof(AlertKeywordAndMessageMap), "AlertKeywordAndMessageList.csv")
                 .Where(x => !string.IsNullOrEmpty(x.AlertKeyword)).ToList();
 
-            var alertKeywordAndMessageForSubjectListCsv = new ReadAndWriteCsv("AlertKeywordAndMessageListForSubject.csv");
-            var alertKeywordAndMessageForSubjectList = alertKeywordAndMessageForSubjectListCsv.GetCsvRecords<AlertKeywordAndMessageForSubject>(alertKeywordAndMessageForSubjectListCsv.LoadCsv<AlertKeywordAndMessageForSubjectMap>())
+            var alertKeywordAndMessageForSubjectList = CsvFileHandler.ReadCsv<AlertKeywordAndMessageForSubject>(typeof(AlertKeywordAndMessageForSubjectMap), "AlertKeywordAndMessageListForSubject.csv")
                 .Where(x => !string.IsNullOrEmpty(x.AlertKeyword)).ToList();
 
-            var autoCcBccKeywordListCsv = new ReadAndWriteCsv("AutoCcBccKeywordList.csv");
-            var autoCcBccKeywordList = autoCcBccKeywordListCsv.GetCsvRecords<AutoCcBccKeyword>(autoCcBccKeywordListCsv.LoadCsv<AutoCcBccKeywordMap>())
+            var autoCcBccKeywordList = CsvFileHandler.ReadCsv<AutoCcBccKeyword>(typeof(AutoCcBccKeywordMap), "AutoCcBccKeywordList.csv")
                 .Where(x => !string.IsNullOrEmpty(x.AutoAddAddress) && !string.IsNullOrEmpty(x.Keyword)).ToList();
 
-            var autoCcBccAttachedFilesListCsv = new ReadAndWriteCsv("AutoCcBccAttachedFileList.csv");
-            var autoCcBccAttachedFilesList = autoCcBccAttachedFilesListCsv.GetCsvRecords<AutoCcBccAttachedFile>(autoCcBccAttachedFilesListCsv.LoadCsv<AutoCcBccAttachedFileMap>())
+            var autoCcBccAttachedFilesList = CsvFileHandler.ReadCsv<AutoCcBccAttachedFile>(typeof(AutoCcBccAttachedFileMap), "AutoCcBccAttachedFileList.csv")
                 .Where(x => !string.IsNullOrEmpty(x.AutoAddAddress)).ToList();
 
-            var autoCcBccRecipientListCsv = new ReadAndWriteCsv("AutoCcBccRecipientList.csv");
-            var autoCcBccRecipientList = autoCcBccRecipientListCsv.GetCsvRecords<AutoCcBccRecipient>(autoCcBccRecipientListCsv.LoadCsv<AutoCcBccRecipientMap>())
+            var autoCcBccRecipientList = CsvFileHandler.ReadCsv<AutoCcBccRecipient>(typeof(AutoCcBccRecipientMap), "AutoCcBccRecipientList.csv")
                 .Where(x => !string.IsNullOrEmpty(x.AutoAddAddress) && !string.IsNullOrEmpty(x.TargetRecipient)).ToList();
 
-            var alertAddressCsv = new ReadAndWriteCsv("AlertAddressList.csv");
-            var alertAddressList = alertAddressCsv.GetCsvRecords<AlertAddress>(alertAddressCsv.LoadCsv<AlertAddressMap>())
+            var alertAddressList = CsvFileHandler.ReadCsv<AlertAddress>(typeof(AlertAddressMap), "AlertAddressList.csv")
                 .Where(x => !string.IsNullOrEmpty(x.TargetAddress)).ToList();
 
-            var nameAndDomainsCsv = new ReadAndWriteCsv("NameAndDomains.csv");
-            var nameAndDomainsList = nameAndDomainsCsv.GetCsvRecords<NameAndDomains>(nameAndDomainsCsv.LoadCsv<NameAndDomainsMap>())
+            var nameAndDomainsList = CsvFileHandler.ReadCsv<NameAndDomains>(typeof(NameAndDomainsMap), "NameAndDomains.csv")
                 .Where(x => !string.IsNullOrEmpty(x.Domain) && !string.IsNullOrEmpty(x.Name)).ToList();
 
-            var keywordAndRecipientsCsv = new ReadAndWriteCsv("keywordAndRecipientsList.csv");
-            var keywordAndRecipientsList = keywordAndRecipientsCsv.GetCsvRecords<KeywordAndRecipients>(keywordAndRecipientsCsv.LoadCsv<KeywordAndRecipientsMap>()).
-                Where(x => !string.IsNullOrEmpty(x.Keyword) && !string.IsNullOrEmpty(x.Recipient)).ToList();
+            var keywordAndRecipientsList = CsvFileHandler.ReadCsv<KeywordAndRecipients>(typeof(KeywordAndRecipientsMap), "keywordAndRecipientsList.csv")
+                .Where(x => !string.IsNullOrEmpty(x.Keyword) && !string.IsNullOrEmpty(x.Recipient)).ToList();
 
-            var deferredDeliveryMinutesCsv = new ReadAndWriteCsv("DeferredDeliveryMinutes.csv");
-            var deferredDeliveryMinutes = deferredDeliveryMinutesCsv.GetCsvRecords<DeferredDeliveryMinutes>(deferredDeliveryMinutesCsv.LoadCsv<DeferredDeliveryMinutesMap>())
+            var deferredDeliveryMinutes = CsvFileHandler.ReadCsv<DeferredDeliveryMinutes>(typeof(DeferredDeliveryMinutesMap), "DeferredDeliveryMinutes.csv")
                 .Where(x => !string.IsNullOrEmpty(x.TargetAddress)).ToList();
 
-            var internalDomainListCsv = new ReadAndWriteCsv("InternalDomainList.csv");
-            var internalDomainList = internalDomainListCsv.GetCsvRecords<InternalDomain>(internalDomainListCsv.LoadCsv<InternalDomainMap>())
+            var internalDomainList = CsvFileHandler.ReadCsv<InternalDomain>(typeof(InternalDomainMap), "InternalDomainList.csv")
                 .Where(x => !string.IsNullOrEmpty(x.Domain)).ToList();
 
             var externalDomainsWarningAndAutoChangeToBccSetting = new ExternalDomainsWarningAndAutoChangeToBcc();
-            var externalDomainsWarningAndAutoChangeToBccCsv = new ReadAndWriteCsv("ExternalDomainsWarningAndAutoChangeToBccSetting.csv");
-            var externalDomainsWarningAndAutoChangeToBccSettingList = externalDomainsWarningAndAutoChangeToBccCsv.GetCsvRecords<ExternalDomainsWarningAndAutoChangeToBcc>(externalDomainsWarningAndAutoChangeToBccCsv.LoadCsv<ExternalDomainsWarningAndAutoChangeToBccMap>());
+            var externalDomainsWarningAndAutoChangeToBccSettingList = CsvFileHandler.ReadCsv<ExternalDomainsWarningAndAutoChangeToBcc>(typeof(ExternalDomainsWarningAndAutoChangeToBccMap), "ExternalDomainsWarningAndAutoChangeToBccSetting.csv");
             if (externalDomainsWarningAndAutoChangeToBccSettingList.Count > 0) externalDomainsWarningAndAutoChangeToBccSetting = externalDomainsWarningAndAutoChangeToBccSettingList[0];
 
             var attachmentsSetting = new AttachmentsSetting();
-            var attachmentsSettingCsv = new ReadAndWriteCsv("AttachmentsSetting.csv");
-            var attachmentsSettingList = attachmentsSettingCsv.GetCsvRecords<AttachmentsSetting>(attachmentsSettingCsv.LoadCsv<AttachmentsSettingMap>());
+            var attachmentsSettingList = CsvFileHandler.ReadCsv<AttachmentsSetting>(typeof(AttachmentsSettingMap), "AttachmentsSetting.csv");
             if (attachmentsSettingList.Count > 0) attachmentsSetting = attachmentsSettingList[0];
-            if (string.IsNullOrEmpty(attachmentsSetting.TargetAttachmentFileExtensionOfOpen)) attachmentsSetting.TargetAttachmentFileExtensionOfOpen = ".pdf,.txt,.csv,.rtf,.htm,.html,.doc,.docx,.xls,.xlm,.xlsm,.xlsx,.ppt,.pptx,.bmp,.gif,.jpg,.jpeg,.png,.fif,.pub,.vsd,.vsdx";
+            if (string.IsNullOrEmpty(attachmentsSetting.TargetAttachmentFileExtensionOfOpen)) attachmentsSetting.TargetAttachmentFileExtensionOfOpen = ".pdf,.txt,.csv,.rtf,.htm,.html,.doc,.docx,.xls,.xlm,.xlsm,.xlsx,.ppt,.pptx,.bmp,.gif,.jpg,.jpeg,.png,.tif,.pub,.vsd,.vsdx";
 
-            var recipientsAndAttachmentsNameCsv = new ReadAndWriteCsv("RecipientsAndAttachmentsName.csv");
-            var recipientsAndAttachmentsNameList = recipientsAndAttachmentsNameCsv.GetCsvRecords<RecipientsAndAttachmentsName>(recipientsAndAttachmentsNameCsv.LoadCsv<RecipientsAndAttachmentsNameMap>())
+            var recipientsAndAttachmentsNameList = CsvFileHandler.ReadCsv<RecipientsAndAttachmentsName>(typeof(RecipientsAndAttachmentsNameMap), "RecipientsAndAttachmentsName.csv")
                 .Where(x => !string.IsNullOrEmpty(x.Recipient) && !string.IsNullOrEmpty(x.AttachmentsName)).ToList();
 
-            var attachmentProhibitedRecipientsCsv = new ReadAndWriteCsv("AttachmentProhibitedRecipients.csv");
-            var attachmentProhibitedRecipientsList = attachmentProhibitedRecipientsCsv.GetCsvRecords<AttachmentProhibitedRecipients>(attachmentProhibitedRecipientsCsv.LoadCsv<AttachmentProhibitedRecipientsMap>())
+            var attachmentProhibitedRecipientsList = CsvFileHandler.ReadCsv<AttachmentProhibitedRecipients>(typeof(AttachmentProhibitedRecipientsMap), "AttachmentProhibitedRecipients.csv")
                 .Where(x => !string.IsNullOrEmpty(x.Recipient)).ToList();
 
-            var attachmentAlertRecipientsCsv = new ReadAndWriteCsv("AttachmentAlertRecipients.csv");
-            var attachmentAlertRecipientsList = attachmentAlertRecipientsCsv.GetCsvRecords<AttachmentAlertRecipients>(attachmentAlertRecipientsCsv.LoadCsv<AttachmentAlertRecipientsMap>())
+            var attachmentAlertRecipientsList = CsvFileHandler.ReadCsv<AttachmentAlertRecipients>(typeof(AttachmentAlertRecipientsMap), "AttachmentAlertRecipients.csv")
                 .Where(x => !string.IsNullOrEmpty(x.Recipient)).ToList();
 
             var forceAutoChangeRecipientsToBccSetting = new ForceAutoChangeRecipientsToBcc();
-            var forceAutoChangeRecipientsToBccCsv = new ReadAndWriteCsv("ForceAutoChangeRecipientsToBcc.csv");
-            var forceAutoChangeRecipientsToBccSettingList = forceAutoChangeRecipientsToBccCsv.GetCsvRecords<ForceAutoChangeRecipientsToBcc>(forceAutoChangeRecipientsToBccCsv.LoadCsv<ForceAutoChangeRecipientsToBccMap>());
+            var forceAutoChangeRecipientsToBccSettingList = CsvFileHandler.ReadCsv<ForceAutoChangeRecipientsToBcc>(typeof(ForceAutoChangeRecipientsToBccMap), "ForceAutoChangeRecipientsToBcc.csv");
             if (forceAutoChangeRecipientsToBccSettingList.Count > 0) forceAutoChangeRecipientsToBccSetting = forceAutoChangeRecipientsToBccSettingList[0];
 
             #endregion
+
             var isMeetingItem = false;
             var isTaskRequestItem = false;
             switch (item)
@@ -188,6 +172,14 @@ namespace OutlookOkan.Models
                 _checkList = AddAlertOrProhibitsSendingMailIfIfRecipientsIsNotRegistered(_checkList, displayNameAndRecipient, contactsList, internalDomainList, generalSetting.IsWarningIfRecipientsIsNotRegistered, generalSetting.IsProhibitsSendingMailIfRecipientsIsNotRegistered);
             }
 
+            if (attachmentsSetting.IsIgnoreMustOpenBeforeCheckTheAttachedFilesIfInternalDomain && _checkList.Attachments.Any() && _checkList.RecipientExternalDomainNumAll == 0)
+            {
+                foreach (var attachment in _checkList.Attachments)
+                {
+                    attachment.IsNotMustOpenBeforeCheck = true;
+                }
+            }
+
             return _checkList;
         }
 
@@ -221,18 +213,20 @@ namespace OutlookOkan.Models
                         Outlook.ExchangeDistributionList exchangeDistributionList = null;
                         Outlook.ExchangeUser exchangeUser = null;
 
-                        var sender = ((Outlook.MailItem)item).Sender;
-
-                        var isDone = false;
                         var errorCount = 0;
-                        while (!isDone && errorCount < 100)
+                        while (errorCount < 100)
                         {
                             try
                             {
-                                exchangeDistributionList = sender?.GetExchangeDistributionList();
-                                exchangeUser = sender?.GetExchangeUser();
+                                var sender = ((Outlook.MailItem)item).Sender;
+                                if (sender is null) continue;
 
-                                isDone = true;
+                                exchangeDistributionList = sender.GetExchangeDistributionList();
+                                if (exchangeDistributionList is null) continue;
+                                exchangeUser = sender.GetExchangeUser();
+                                if (exchangeUser is null) continue;
+
+                                break;
                             }
                             catch (COMException e)
                             {
@@ -244,7 +238,7 @@ namespace OutlookOkan.Models
                                 }
                                 else
                                 {
-                                    isDone = true;
+                                    break;
                                 }
                             }
                         }
@@ -275,19 +269,24 @@ namespace OutlookOkan.Models
 
                         try
                         {
-                            _ = tempRecipient.Resolve();
-                            var addressEntry = tempRecipient.AddressEntry;
-
-                            var isDone = false;
                             var errorCount = 0;
-                            while (!isDone && errorCount < 100)
+                            while (errorCount < 100)
                             {
                                 try
                                 {
-                                    var exchangeUser = addressEntry?.GetExchangeUser();
-                                    if (!(exchangeUser is null)) checkList.Sender = exchangeUser.PrimarySmtpAddress ?? Resources.FailedToGetInformation;
+                                    _ = tempRecipient.Resolve();
 
-                                    isDone = true;
+                                    Thread.Sleep(10);
+
+                                    var addressEntry = tempRecipient.AddressEntry;
+                                    if (addressEntry is null) continue;
+
+                                    var exchangeUser = addressEntry.GetExchangeUser();
+                                    if (exchangeUser is null) continue;
+
+                                    checkList.Sender = exchangeUser.PrimarySmtpAddress ?? Resources.FailedToGetInformation;
+
+                                    break;
                                 }
                                 catch (COMException e)
                                 {
@@ -299,13 +298,14 @@ namespace OutlookOkan.Models
                                     }
                                     else
                                     {
-                                        isDone = true;
+                                        break;
                                     }
                                 }
                             }
                         }
-                        catch (Exception)
+                        catch (Exception exception)
                         {
+                            Console.WriteLine(exception.Message);
                             //Do Nothing.
                         }
                     }
@@ -420,15 +420,13 @@ namespace OutlookOkan.Models
                     var propertyAccessor = recipient.PropertyAccessor;
                     Thread.Sleep(20);
 
-                    var isDone = false;
                     var errorCount = 0;
-                    while (!isDone && errorCount < 100)
+                    while (errorCount < 100)
                     {
                         try
                         {
                             mailAddress = propertyAccessor.GetProperty(@"http://schemas.microsoft.com/mapi/proptag/0x39FE001E").ToString() ?? Resources.FailedToGetInformation + "_" + _failedToGetInformationOfRecipientsMailAddressCounter;
-
-                            isDone = true;
+                            break;
                         }
                         catch (COMException e)
                         {
@@ -440,7 +438,7 @@ namespace OutlookOkan.Models
                             }
                             else
                             {
-                                isDone = true;
+                                break;
                             }
                         }
                     }
@@ -462,14 +460,13 @@ namespace OutlookOkan.Models
                     var propertyAccessor = tempRecipient.AddressEntry.PropertyAccessor;
                     Thread.Sleep(20);
 
-                    var isDone = false;
                     var errorCount = 0;
-                    while (!isDone && errorCount < 100)
+                    while (errorCount < 100)
                     {
                         try
                         {
                             mailAddress = propertyAccessor.GetProperty(@"http://schemas.microsoft.com/mapi/proptag/0x39FE001E").ToString() ?? Resources.FailedToGetInformation + "_" + _failedToGetInformationOfRecipientsMailAddressCounter;
-                            isDone = true;
+                            break;
                         }
                         catch (COMException e)
                         {
@@ -481,7 +478,7 @@ namespace OutlookOkan.Models
                             }
                             else
                             {
-                                isDone = true;
+                                break;
                             }
                         }
                     }
@@ -536,9 +533,8 @@ namespace OutlookOkan.Models
             {
                 var addressEntry = recipient.AddressEntry;
 
-                var isDone = false;
                 var errorCount = 0;
-                while (!isDone && errorCount < 100)
+                while (errorCount < 100)
                 {
                     try
                     {
@@ -549,7 +545,7 @@ namespace OutlookOkan.Models
                             addressEntries = distributionList?.GetExchangeDistributionListMembers();
                         }
 
-                        isDone = true;
+                        break;
                     }
                     catch (COMException e)
                     {
@@ -561,7 +557,7 @@ namespace OutlookOkan.Models
                         }
                         else
                         {
-                            isDone = true;
+                            break;
                         }
                     }
                 }
@@ -590,14 +586,13 @@ namespace OutlookOkan.Models
                         var propertyAccessor = tempRecipient.AddressEntry.PropertyAccessor;
                         Thread.Sleep(20);
 
-                        isDone = false;
                         errorCount = 0;
-                        while (!isDone && errorCount < 100)
+                        while (errorCount < 100)
                         {
                             try
                             {
                                 mailAddress = propertyAccessor.GetProperty(@"http://schemas.microsoft.com/mapi/proptag/0x39FE001E").ToString() ?? Resources.FailedToGetInformation + "_" + _failedToGetInformationOfRecipientsMailAddressCounter;
-                                isDone = true;
+                                break;
                             }
                             catch (COMException e)
                             {
@@ -611,10 +606,6 @@ namespace OutlookOkan.Models
                                     case -2147467259:
                                         mailAddress = Resources.ExternalRecipient + "_" + externalRecipientCounter;
                                         externalRecipientCounter++;
-                                        isDone = true;
-                                        break;
-                                    default:
-                                        isDone = true;
                                         break;
                                 }
                             }
@@ -737,11 +728,8 @@ namespace OutlookOkan.Models
                             nameAndRecipients.AddRange(GetNameAndRecipient(recipient));
                             break;
                         }
-                        else
-                        {
-                            nameAndRecipients.AddRange(exchangeMembers);
-                            break;
-                        }
+                        nameAndRecipients.AddRange(exchangeMembers);
+                        break;
                     case Outlook.OlAddressEntryUserType.olOutlookDistributionListAddressEntry:
                         var addressEntryMembers = GetContactGroupMembers(recipient, null, generalSetting.EnableGetContactGroupMembers, generalSetting.ContactGroupMembersAreWhite);
                         if (addressEntryMembers is null)
@@ -749,11 +737,8 @@ namespace OutlookOkan.Models
                             nameAndRecipients.AddRange(GetNameAndRecipient(recipient));
                             break;
                         }
-                        else
-                        {
-                            nameAndRecipients.AddRange(addressEntryMembers);
-                            break;
-                        }
+                        nameAndRecipients.AddRange(addressEntryMembers);
+                        break;
                     default:
                         nameAndRecipients.AddRange(GetNameAndRecipient(recipient));
                         break;
@@ -1077,6 +1062,18 @@ namespace OutlookOkan.Models
                     }
                 }
 
+                if (addSenderToCc || addSenderToCc)
+                {
+                    if (IsX500Address(mailItemSender))
+                    {
+                        var exchangePrimarySmtpAddress = GetExchangePrimarySmtpAddress(mailItemSender);
+                        if (exchangePrimarySmtpAddress != null)
+                        {
+                            mailItemSender = exchangePrimarySmtpAddress;
+                        }
+                    }
+                }
+
                 if (addSenderToCc)
                 {
                     counter = 0;
@@ -1246,8 +1243,8 @@ namespace OutlookOkan.Models
                             tempFilePath = Path.Combine(tempDirectoryPath, fileName);
                             ((dynamic)item).Attachments[i + 1].SaveAsFile(tempFilePath);
 
-                            var zipTools = new ZipTools();
-                            if (zipTools.CheckZipIsEncrypted(tempFilePath))
+                            var zipTools = new ZipFileHandler();
+                            if (zipTools.CheckZipIsEncryptedAndGetIncludeExtensions(tempFilePath))
                             {
                                 File.Delete(tempFilePath);
 
@@ -2263,27 +2260,52 @@ namespace OutlookOkan.Models
         /// <returns>一般的なメールアドレス</returns>
         private string GetExchangePrimarySmtpAddress(string x500)
         {
-            var tempOutlookApp = new Outlook.Application();
-            var tempRecipient = tempOutlookApp.Session.CreateRecipient(x500);
+            if (string.IsNullOrEmpty(x500)) return null;
+            if (!IsX500Address(x500)) return null;
 
             try
             {
-                _ = tempRecipient.Resolve();
-                var addressEntry = tempRecipient.AddressEntry;
+                var tempOutlookApp = new Outlook.Application();
 
-                var isDone = false;
                 var errorCount = 0;
-                while (!isDone && errorCount < 100)
+                while (errorCount < 100)
                 {
                     try
                     {
-                        var exchangeUser = addressEntry?.GetExchangeUser();
-                        if (exchangeUser?.PrimarySmtpAddress != null)
-                        {
-                            return exchangeUser.PrimarySmtpAddress;
-                        }
+                        var tempRecipient = tempOutlookApp.Session.CreateRecipient(x500);
+                        _ = tempRecipient.Resolve();
 
-                        isDone = true;
+                        Thread.Sleep(10);
+
+                        var addressEntry = tempRecipient.AddressEntry;
+                        if (addressEntry is null) continue;
+
+                        switch (addressEntry.AddressEntryUserType)
+                        {
+                            case Outlook.OlAddressEntryUserType.olExchangeUserAddressEntry:
+                                {
+                                    var exchangeUser = addressEntry.GetExchangeUser();
+                                    if (exchangeUser is null) continue;
+
+                                    return exchangeUser.PrimarySmtpAddress;
+                                }
+                            case Outlook.OlAddressEntryUserType.olExchangeDistributionListAddressEntry:
+                                {
+                                    var distributionList = addressEntry.GetExchangeDistributionList();
+                                    if (distributionList is null) continue;
+
+                                    return distributionList.PrimarySmtpAddress;
+                                }
+                            case Outlook.OlAddressEntryUserType.olExchangeRemoteUserAddressEntry:
+                                {
+                                    var exchangeUser = addressEntry.GetExchangeUser();
+                                    if (exchangeUser is null) continue;
+
+                                    return exchangeUser.PrimarySmtpAddress;
+                                }
+                            case Outlook.OlAddressEntryUserType.olSmtpAddressEntry:
+                                return addressEntry.Address;
+                        }
                     }
                     catch (COMException e)
                     {
@@ -2295,7 +2317,7 @@ namespace OutlookOkan.Models
                         }
                         else
                         {
-                            isDone = true;
+                            break;
                         }
                     }
                 }
@@ -2308,7 +2330,18 @@ namespace OutlookOkan.Models
             return null;
         }
 
-        #endregion
+        /// <summary>
+        /// メールアドレスがX500形式か否かを判定する
+        /// </summary>
+        /// <param name="emailAddress">メールアドレス</param>
+        /// <returns>X500形式か否か</returns>
+        private bool IsX500Address(string emailAddress)
+        {
+            const string x500Pattern = @"^/o=.*/ou=.*/cn=.*";
 
+            return Regex.IsMatch(emailAddress, x500Pattern, RegexOptions.IgnoreCase);
+        }
+
+        #endregion
     }
 }

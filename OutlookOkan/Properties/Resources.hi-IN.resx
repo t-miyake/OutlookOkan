@@ -298,7 +298,7 @@
     <value>संपर्क समूह</value>
   </data>
   <data name="Copyright" xml:space="preserve">
-    <value>Copyright (C) 2022 Noraneko Inc.</value>
+    <value>Copyright (C) 2023 Noraneko Inc.</value>
   </data>
   <data name="CSVExport" xml:space="preserve">
     <value>निर्यात सीएसवी</value>
@@ -836,7 +836,7 @@
     <value>अनजान</value>
   </data>
   <data name="Version" xml:space="preserve">
-    <value>Version 2.7.2.1</value>
+    <value>Version 2.8.0.1</value>
   </data>
   <data name="VersionInfo" xml:space="preserve">
     <value>कार्यक्रम के बारे में</value>
@@ -855,5 +855,120 @@
   </data>
   <data name="YouHaveLatest" xml:space="preserve">
     <value>यह ऐड-इन नवीनतम संस्करण है।</value>
+  </data>
+  <data name="General2" xml:space="preserve">
+    <value>सामान्य वस्तुएँ 2</value>
+  </data>
+  <data name="IsIgnoreMustOpenBeforeCheckTheAttachedFilesIfInternalDomain" xml:space="preserve">
+    <value>यदि सभी प्राप्तकर्ता आंतरिक डोमेन हैं तो आवश्यक नहीं है.</value>
+  </data>
+  <data name="AlertKeywordOfSubjectWhenOpeningMails" xml:space="preserve">
+    <value>ईमेल खोलते समय अलर्ट (विषय)</value>
+  </data>
+  <data name="IsEnableAlertKeywordOfSubjectWhenOpeningMailsData" xml:space="preserve">
+    <value>जब विषय पंक्ति में निर्दिष्ट कीवर्ड हों तो चेतावनी फ़ंक्शन का उपयोग करें.</value>
+  </data>
+  <data name="IsEnableMailHeaderAnalysis" xml:space="preserve">
+    <value>मेल हेडर विश्लेषण और चेतावनी फ़ंक्शन का उपयोग करें।</value>
+  </data>
+  <data name="IsEnableSecurityForReceivedMail" xml:space="preserve">
+    <value>मेल और अनुलग्नक खोलते समय चेतावनी सुविधा का उपयोग करें. </value>
+  </data>
+  <data name="IsShowWarningWhenDkimFails" xml:space="preserve">
+    <value>DKIM रिकॉर्ड सत्यापन विफल होने पर चेतावनी प्रदर्शित करें.</value>
+  </data>
+  <data name="IsShowWarningWhenSpfFails" xml:space="preserve">
+    <value>SPF रिकॉर्ड सत्यापन विफल होने पर चेतावनी प्रदर्शित करें.</value>
+  </data>
+  <data name="SecurityForReceivedMail" xml:space="preserve">
+    <value>मेल सुरक्षा प्राप्त की</value>
+  </data>
+  <data name="SettingExampleAlertKeywordOfSubjectWhenOpeningMails" xml:space="preserve">
+    <value>लक्ष्य कीवर्ड और चेतावनी पाठ पंजीकृत करें।
+
+* Outlook को पुनरारंभ करने के बाद सेटिंग्स दिखाई देंगी.</value>
+  </data>
+  <data name="SettingExampleSecurityForReceivedMail" xml:space="preserve">
+    <value>इस सुविधा को सक्षम करने से समस्या हो सकती है।
+
+* Outlook को पुनरारंभ करने के बाद सेटिंग्स दिखाई देंगी.</value>
+  </data>
+  <data name="IsEnableWarningFeatureWhenOpeningAttachments" xml:space="preserve">
+    <value>अनुलग्नक खोलते समय चेतावनी सुविधा का उपयोग करें.</value>
+  </data>
+  <data name="IsWarnBeforeOpeningAttachments" xml:space="preserve">
+    <value>संलग्नक खोलने से पहले चेतावनी दें.</value>
+  </data>
+  <data name="IsWarnBeforeOpeningEncryptedZip" xml:space="preserve">
+    <value>एन्क्रिप्टेड ज़िप फ़ाइलों को खोलते समय चेतावनी दें।</value>
+  </data>
+  <data name="IsWarnLinkFileInTheZip" xml:space="preserve">
+    <value>चेतावनी दें कि क्या ZIP में कोई .link फ़ाइल है.</value>
+  </data>
+  <data name="IsWarnOneFileInTheZip" xml:space="preserve">
+    <value>चेतावनी दें कि क्या ज़िप में .one फ़ाइल है।</value>
+  </data>
+  <data name="IsWarnOfficeFileWithMacroInTheZip" xml:space="preserve">
+    <value>चेतावनी दें कि क्या ZIP में .docm, .xlsm, या .pptm फ़ाइलें हैं।</value>
+  </data>
+  <data name="IsWarnBeforeOpeningAttachmentsThatContainMacros" xml:space="preserve">
+    <value>मैक्रोज़ वाले अनुलग्नक खोलते समय चेतावनी दें.</value>
+  </data>
+  <data name="Warning" xml:space="preserve">
+    <value>चेतावनी</value>
+  </data>
+  <data name="AlertOfReceivedMailSubject" xml:space="preserve">
+    <value>विषय पंक्ति में चेतावनी के अधीन कीवर्ड होता है.</value>
+  </data>
+  <data name="SpfWarning1" xml:space="preserve">
+    <value>एसपीएफ सत्यापन विफल रहा। प्रेषक को स्पूफ किया जा सकता है।</value>
+  </data>
+  <data name="DkimWarning1" xml:space="preserve">
+    <value>DKIM सत्यापन विफल रहा. प्रेषक को स्पूफ किया जा सकता है।</value>
+  </data>
+  <data name="SpfDkimWaring2" xml:space="preserve">
+    <value>कृपया इस ईमेल में सामग्री और अनुलग्नकों से सावधान रहें।</value>
+  </data>
+  <data name="OpenAttachmentWarning1" xml:space="preserve">
+    <value>क्या आप वास्तव में अनुलग्नक खोलना चाहते हैं?</value>
+  </data>
+  <data name="OpenAttachmentWarning2" xml:space="preserve">
+    <value>संदिग्ध फाइलों से बहुत सावधान रहें।</value>
+  </data>
+  <data name="AttatchmentIsEncryptedZip" xml:space="preserve">
+    <value>यह फ़ाइल एक एन्क्रिप्टेड ZIP फ़ाइल है।</value>
+  </data>
+  <data name="SuspiciousAttachmentZip_link" xml:space="preserve">
+    <value>संदिग्ध लगाव.
+.lnk फ़ाइल ज़िप फ़ाइल में शामिल है,
+वायरस के साथ संक्रमण का खतरा।</value>
+  </data>
+  <data name="SuspiciousAttachmentZip_one" xml:space="preserve">
+    <value>संदिग्ध लगाव.
+.one फ़ाइल ZIP फ़ाइल में शामिल है,
+वायरस के साथ संक्रमण का खतरा।</value>
+  </data>
+  <data name="SuspiciousAttachmentZip_macro" xml:space="preserve">
+    <value>संदिग्ध लगाव.
+ज़िप फ़ाइल में कोई Office फ़ाइल है जिसमें मैक्रोज़ और
+वायरस के साथ संक्रमण का खतरा।</value>
+  </data>
+  <data name="SuspiciousAttachment_macro" xml:space="preserve">
+    <value>यह मैक्रोज़ युक्त संलग्नक है, वायरस के साथ संक्रमण का खतरा।</value>
+  </data>
+  <data name="ExportAllSettings" xml:space="preserve">
+    <value>सभी कॉन्फ़िगरेशन निर्यात करें।</value>
+  </data>
+  <data name="ImportAllSettings" xml:space="preserve">
+    <value>कॉन्फ़िगरेशन आयात करें.</value>
+  </data>
+  <data name="CompletedExport" xml:space="preserve">
+    <value>कॉन्फ़िगरेशन फ़ाइल का निर्यात पूरा हो गया है।</value>
+  </data>
+  <data name="CompletedImport" xml:space="preserve">
+    <value>आयात पूरा हो गया है. सेटिंग्स विंडो बंद करें।</value>
+  </data>
+  <data name="ImportErrorOfAllSettings" xml:space="preserve">
+    <value>कृपया सही फ़ाइल का चयन करें. भूल:</value>
   </data>
 </root>
