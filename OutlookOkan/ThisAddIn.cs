@@ -221,7 +221,7 @@ namespace OutlookOkan
                     {
                         if (zipTools.IncludeExtensions.Contains(".lnk") || zipTools.IsContainsShortcut)
                         {
-                            var dialogResult = MessageBox.Show(Properties.Resources.SuspiciousAttachmentZip_link + Environment.NewLine + Environment.NewLine + Properties.Resources.OpenAttachmentWarning1 + Environment.NewLine + Environment.NewLine + Environment.NewLine + attachment.FileName, Properties.Resources.OpenAttachmentWarning1, MessageBoxButton.YesNo, MessageBoxImage.Error);
+                            var dialogResult = MessageBox.Show(Properties.Resources.SuspiciousAttachmentZip_link + Environment.NewLine + Environment.NewLine + Properties.Resources.OpenAttachmentWarning1 + Environment.NewLine + Environment.NewLine + attachment.FileName, Properties.Resources.OpenAttachmentWarning1, MessageBoxButton.YesNo, MessageBoxImage.Error);
                             if (dialogResult == MessageBoxResult.Yes)
                             {
                                 //Open file.
@@ -247,7 +247,7 @@ namespace OutlookOkan
                     {
                         if (zipTools.IncludeExtensions.Contains(".one"))
                         {
-                            var dialogResult = MessageBox.Show(Properties.Resources.SuspiciousAttachmentZip_one + Environment.NewLine + Environment.NewLine + Properties.Resources.OpenAttachmentWarning1 + Environment.NewLine + Environment.NewLine + Environment.NewLine + attachment.FileName, Properties.Resources.OpenAttachmentWarning1, MessageBoxButton.YesNo, MessageBoxImage.Error);
+                            var dialogResult = MessageBox.Show(Properties.Resources.SuspiciousAttachmentZip_one + Environment.NewLine + Environment.NewLine + Properties.Resources.OpenAttachmentWarning1 + Environment.NewLine + Environment.NewLine + attachment.FileName, Properties.Resources.OpenAttachmentWarning1, MessageBoxButton.YesNo, MessageBoxImage.Error);
                             if (dialogResult == MessageBoxResult.Yes)
                             {
                                 //Open file.
@@ -273,7 +273,7 @@ namespace OutlookOkan
                     {
                         if (zipTools.IncludeExtensions.Contains(".docm") | zipTools.IncludeExtensions.Contains(".xlsm") | zipTools.IncludeExtensions.Contains(".pptm"))
                         {
-                            var dialogResult = MessageBox.Show(Properties.Resources.SuspiciousAttachmentZip_macro + Environment.NewLine + Environment.NewLine + Properties.Resources.OpenAttachmentWarning1 + Environment.NewLine + Environment.NewLine + Environment.NewLine + attachment.FileName, Properties.Resources.OpenAttachmentWarning1, MessageBoxButton.YesNo, MessageBoxImage.Error);
+                            var dialogResult = MessageBox.Show(Properties.Resources.SuspiciousAttachmentZip_macro + Environment.NewLine + Environment.NewLine + Properties.Resources.OpenAttachmentWarning1 + Environment.NewLine + Environment.NewLine + attachment.FileName, Properties.Resources.OpenAttachmentWarning1, MessageBoxButton.YesNo, MessageBoxImage.Error);
                             if (dialogResult == MessageBoxResult.Yes)
                             {
                                 //Open file.
