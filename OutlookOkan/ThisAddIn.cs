@@ -321,10 +321,6 @@ namespace OutlookOkan
                     }
                 }
 
-                if (true)
-                {
-
-                }
                 try
                 {
                     File.Delete(tempFilePath);
