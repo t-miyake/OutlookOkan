@@ -64,7 +64,13 @@ namespace OutlookOkan.Handlers
 
         internal static void CreateOrReplaceCsv(Type classMapType, string fileName, IEnumerable<object> records, string directoryPath = null)
         {
-            var fullPath = Path.Combine(directoryPath ?? DirectoryPath, fileName);
+            var targetDirectory = directoryPath ?? DirectoryPath;
+            if (!Directory.Exists(targetDirectory))
+            {
+                Directory.CreateDirectory(targetDirectory);
+            }
+
+            var fullPath = Path.Combine(targetDirectory, fileName);
 
             using (var writer = new StreamWriter(fullPath, false, Encoding.UTF8))
             using (var csv = new CsvWriter(writer, Config))
