@@ -213,19 +213,15 @@ namespace OutlookOkan.Models
                         Outlook.ExchangeDistributionList exchangeDistributionList = null;
                         Outlook.ExchangeUser exchangeUser = null;
 
+                        var sender = ((Outlook.MailItem)item).Sender;
+                        
                         var errorCount = 0;
                         while (errorCount < 100)
                         {
                             try
                             {
-                                var sender = ((Outlook.MailItem)item).Sender;
-                                if (sender is null) continue;
-
-                                exchangeDistributionList = sender.GetExchangeDistributionList();
-                                if (exchangeDistributionList is null) continue;
-                                exchangeUser = sender.GetExchangeUser();
-                                if (exchangeUser is null) continue;
-
+                                exchangeDistributionList = sender?.GetExchangeDistributionList();
+                                exchangeUser = sender?.GetExchangeUser();
                                 break;
                             }
                             catch (COMException e)
@@ -267,46 +263,32 @@ namespace OutlookOkan.Models
                         var tempOutlookApp = new Outlook.Application();
                         var tempRecipient = tempOutlookApp.Session.CreateRecipient(((dynamic)item).SenderEmailAddress);
 
-                        try
+                        _ = tempRecipient.Resolve();
+                        Thread.Sleep(10);
+                        var addressEntry = tempRecipient.AddressEntry;
+
+                        var errorCount = 0;
+                        while (errorCount < 100)
                         {
-                            var errorCount = 0;
-                            while (errorCount < 100)
+                            try
                             {
-                                try
+                                var exchangeUser = addressEntry?.GetExchangeUser();
+                                checkList.Sender = exchangeUser?.PrimarySmtpAddress ?? Resources.FailedToGetInformation;
+                                break;
+                            }
+                            catch (COMException e)
+                            {
+                                if (e.ErrorCode == -2147467260)
                                 {
-                                    _ = tempRecipient.Resolve();
-
+                                    //HRESULT:0x80004004 対策
                                     Thread.Sleep(10);
-
-                                    var addressEntry = tempRecipient.AddressEntry;
-                                    if (addressEntry is null) continue;
-
-                                    var exchangeUser = addressEntry.GetExchangeUser();
-                                    if (exchangeUser is null) continue;
-
-                                    checkList.Sender = exchangeUser.PrimarySmtpAddress ?? Resources.FailedToGetInformation;
-
+                                    errorCount++;
+                                }
+                                else
+                                {
                                     break;
                                 }
-                                catch (COMException e)
-                                {
-                                    if (e.ErrorCode == -2147467260)
-                                    {
-                                        //HRESULT:0x80004004 対策
-                                        Thread.Sleep(10);
-                                        errorCount++;
-                                    }
-                                    else
-                                    {
-                                        break;
-                                    }
-                                }
                             }
-                        }
-                        catch (Exception exception)
-                        {
-                            Console.WriteLine(exception.Message);
-                            //Do Nothing.
                         }
                     }
                     else

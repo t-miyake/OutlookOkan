@@ -362,7 +362,7 @@
     <value>Copyright (C) 2023 Noraneko Inc.</value>
   </data>
   <data name="Version" xml:space="preserve">
-    <value>バージョン 2.8.0.1.1</value>
+    <value>バージョン 2.8.0.1.2</value>
   </data>
   <data name="VersionInfo" xml:space="preserve">
     <value>バージョン情報</value>
@@ -896,7 +896,7 @@
     <value>暗号化ZIPファイルを開く際に警告する。</value>
   </data>
   <data name="IsWarnLinkFileInTheZip" xml:space="preserve">
-    <value>ZIP内に.linkファイルがある場合に警告する。</value>
+    <value>ZIP内に.lnkファイルがある場合に警告する。</value>
   </data>
   <data name="IsWarnOfficeFileWithMacroInTheZip" xml:space="preserve">
     <value>ZIP内に、.docm、.xlsm、.pptmファイルがある場合に警告する。</value>

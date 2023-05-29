@@ -835,7 +835,7 @@ bcc โดยอัตโนมัติ</value>
     <value>ไม่รู้จัก</value>
   </data>
   <data name="Version" xml:space="preserve">
-    <value>Version 2.8.0.1.1</value>
+    <value>Version 2.8.0.1.2</value>
   </data>
   <data name="VersionInfo" xml:space="preserve">
     <value>เกี่ยวกับโปรแกรมนี้</value>
@@ -902,7 +902,7 @@ bcc โดยอัตโนมัติ</value>
     <value>เตือนเมื่อเปิดไฟล์ ZIP ที่เข้ารหัส</value>
   </data>
   <data name="IsWarnLinkFileInTheZip" xml:space="preserve">
-    <value>เตือนหากมีไฟล์. link ใน ZIP</value>
+    <value>เตือนหากมีไฟล์. lnk ใน ZIP</value>
   </data>
   <data name="IsWarnOneFileInTheZip" xml:space="preserve">
     <value>เตือนหากมีไฟล์. one ใน ZIP</value>
