@@ -898,7 +898,7 @@ If there is no recipient corresponding to the keywords in the body of the e-mail
     <value>Warn when opening encrypted ZIP files.</value>
   </data>
   <data name="IsWarnLinkFileInTheZip" xml:space="preserve">
-    <value>Warn if there is a .link file in the ZIP.</value>
+    <value>Warn if there is a .lnk file in the ZIP.</value>
   </data>
   <data name="IsWarnOfficeFileWithMacroInTheZip" xml:space="preserve">
     <value>Warn if there are .docm, .xlsm or .pptm files in the ZIP.</value>

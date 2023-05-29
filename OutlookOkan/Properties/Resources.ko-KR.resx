@@ -901,7 +901,7 @@
     <value>암호화된 ZIP 파일을 열 때 경고합니다.</value>
   </data>
   <data name="IsWarnLinkFileInTheZip" xml:space="preserve">
-    <value>ZIP에 .link 파일이 있으면 경고합니다.</value>
+    <value>ZIP에 .lnk 파일이 있으면 경고합니다.</value>
   </data>
   <data name="IsWarnOneFileInTheZip" xml:space="preserve">
     <value>ZIP에 .one 파일이 있으면 경고합니다.</value>

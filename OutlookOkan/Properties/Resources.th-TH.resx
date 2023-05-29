@@ -902,7 +902,7 @@ bcc โดยอัตโนมัติ</value>
     <value>เตือนเมื่อเปิดไฟล์ ZIP ที่เข้ารหัส</value>
   </data>
   <data name="IsWarnLinkFileInTheZip" xml:space="preserve">
-    <value>เตือนหากมีไฟล์. link ใน ZIP</value>
+    <value>เตือนหากมีไฟล์. lnk ใน ZIP</value>
   </data>
   <data name="IsWarnOneFileInTheZip" xml:space="preserve">
     <value>เตือนหากมีไฟล์. one ใน ZIP</value>

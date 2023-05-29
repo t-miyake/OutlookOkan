@@ -1475,7 +1475,7 @@ namespace OutlookOkan.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Warn if there is a .link file in the ZIP..
+        ///   Looks up a localized string similar to Warn if there is a .lnk file in the ZIP..
         /// </summary>
         public static string IsWarnLinkFileInTheZip {
             get {

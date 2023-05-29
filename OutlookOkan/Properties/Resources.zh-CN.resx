@@ -901,7 +901,7 @@
     <value>打开加密的 ZIP 文件时发出警告。</value>
   </data>
   <data name="IsWarnLinkFileInTheZip" xml:space="preserve">
-    <value>如果 ZIP 中存在 .link 文件，则发出警告。</value>
+    <value>如果 ZIP 中存在 .lnk 文件，则发出警告。</value>
   </data>
   <data name="IsWarnOneFileInTheZip" xml:space="preserve">
     <value>如果 ZIP 中存在 .one 文件，则发出警告。</value>

@@ -896,7 +896,7 @@
     <value>暗号化ZIPファイルを開く際に警告する。</value>
   </data>
   <data name="IsWarnLinkFileInTheZip" xml:space="preserve">
-    <value>ZIP内に.linkファイルがある場合に警告する。</value>
+    <value>ZIP内に.lnkファイルがある場合に警告する。</value>
   </data>
   <data name="IsWarnOfficeFileWithMacroInTheZip" xml:space="preserve">
     <value>ZIP内に、.docm、.xlsm、.pptmファイルがある場合に警告する。</value>

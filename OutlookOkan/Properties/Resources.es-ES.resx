@@ -908,7 +908,7 @@ se aplicará esta función.</value>
     <value>Avisar al abrir archivos ZIP cifrados.</value>
   </data>
   <data name="IsWarnLinkFileInTheZip" xml:space="preserve">
-    <value>Avise si hay un archivo .link en el archivo ZIP.</value>
+    <value>Avise si hay un archivo .lnk en el archivo ZIP.</value>
   </data>
   <data name="IsWarnOneFileInTheZip" xml:space="preserve">
     <value>Avise si hay un archivo .one en el archivo ZIP.</value>

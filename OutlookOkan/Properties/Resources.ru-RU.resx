@@ -907,7 +907,7 @@
     <value>Предупреждайте при открытии зашифрованных ZIP-файлов.</value>
   </data>
   <data name="IsWarnLinkFileInTheZip" xml:space="preserve">
-    <value>Предупредите, если в ZIP-файле есть файл .link.</value>
+    <value>Предупредите, если в ZIP-файле есть файл .lnk.</value>
   </data>
   <data name="IsWarnOneFileInTheZip" xml:space="preserve">
     <value>Предупредите, если в ZIP-файле есть файл .one.</value>

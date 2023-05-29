@@ -910,7 +910,7 @@ wird diese Funktion angewendet.</value>
     <value>Warnen beim Öffnen von verschlüsselten ZIP-Dateien.</value>
   </data>
   <data name="IsWarnLinkFileInTheZip" xml:space="preserve">
-    <value>Warnen Sie, wenn sich eine LINK-Datei in der ZIP-Datei befindet.</value>
+    <value>Warnen Sie, wenn sich eine LNK-Datei in der ZIP-Datei befindet.</value>
   </data>
   <data name="IsWarnOneFileInTheZip" xml:space="preserve">
     <value>Warnen Sie, wenn sich eine .one-Datei in der ZIP-Datei befindet.</value>

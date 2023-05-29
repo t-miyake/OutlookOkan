@@ -903,7 +903,7 @@
     <value>एन्क्रिप्टेड ज़िप फ़ाइलों को खोलते समय चेतावनी दें।</value>
   </data>
   <data name="IsWarnLinkFileInTheZip" xml:space="preserve">
-    <value>चेतावनी दें कि क्या ZIP में कोई .link फ़ाइल है.</value>
+    <value>चेतावनी दें कि क्या ZIP में कोई .lnk फ़ाइल है.</value>
   </data>
   <data name="IsWarnOneFileInTheZip" xml:space="preserve">
     <value>चेतावनी दें कि क्या ज़िप में .one फ़ाइल है।</value>
