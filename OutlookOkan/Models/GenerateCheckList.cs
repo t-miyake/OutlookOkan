@@ -310,8 +310,35 @@ namespace OutlookOkan.Models
             }
             catch (Exception)
             {
-                checkList.Sender = Resources.FailedToGetInformation;
-                checkList.SenderDomain = @"------------------";
+                try
+                {
+                    if (IsTaskRequestItem)
+                    {
+                        if (item is Outlook.TaskRequestItem taskRequest)
+                        {
+                            var associatedTask = taskRequest.GetAssociatedTask(false);
+
+                            if (associatedTask != null)
+                            {
+                                var senderAddress = associatedTask.SendUsingAccount?.SmtpAddress;
+                                checkList.Sender = senderAddress ?? Resources.FailedToGetInformation;
+
+                                Marshal.ReleaseComObject(associatedTask);
+                                checkList.SenderDomain = checkList.Sender == Resources.FailedToGetInformation ? "------------------" : checkList.Sender.Substring(checkList.Sender.IndexOf("@", StringComparison.Ordinal));
+                            }
+                        }
+                    }
+                    else
+                    {
+                        checkList.Sender = Resources.FailedToGetInformation;
+                        checkList.SenderDomain = @"------------------";
+                    }
+                }
+                catch (Exception)
+                {
+                    checkList.Sender = Resources.FailedToGetInformation;
+                    checkList.SenderDomain = @"------------------";
+                }
             }
 
             return checkList;
