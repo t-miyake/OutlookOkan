@@ -1198,7 +1198,18 @@ namespace OutlookOkan.Models
                 var fileSize = "?KB";
                 if (((dynamic)item).Attachments[i + 1].Size != 0)
                 {
-                    fileSize = Math.Round(((double)((dynamic)item).Attachments[i + 1].Size / 1024), 0, MidpointRounding.AwayFromZero).ToString("##,###") + "KB";
+                    var sizeInKb = (double)((dynamic)item).Attachments[i + 1].Size / 1024;
+                    string formattedSize;
+                    if (sizeInKb >= 1 || sizeInKb == 0)
+                    {
+                        formattedSize = Math.Round(sizeInKb).ToString("##,###");
+                    }
+                    else
+                    {
+                        formattedSize = sizeInKb.ToString("0.###");
+                    }
+
+                    fileSize = formattedSize + "KB";
                 }
 
                 if (((dynamic)item).Attachments[i + 1].Size >= 10485760)
