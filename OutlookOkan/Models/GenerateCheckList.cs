@@ -215,7 +215,7 @@ namespace OutlookOkan.Models
                         Outlook.ExchangeUser exchangeUser = null;
 
                         var sender = ((Outlook.MailItem)item).Sender;
-                        
+
                         var errorCount = 0;
                         while (errorCount < 100)
                         {

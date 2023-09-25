@@ -64,6 +64,7 @@ namespace OutlookOkan.Handlers
                     {
                         var excelFile = tempExcelApp.Workbooks.Open(filePath, Password: null);
                         isEncrypted = false;
+
                         Thread.Sleep(10);
                         excelFile.Close(false);
                         Thread.Sleep(10);
@@ -150,7 +151,6 @@ namespace OutlookOkan.Handlers
                         //Do Nothing.
                     }
                     break;
-
                 case "doc":
                 case "docx":
                 case "docm":
@@ -186,7 +186,6 @@ namespace OutlookOkan.Handlers
                         //Do Nothing.
                     }
                     break;
-
                 case "ppt":
                 case "pptx":
                 case "pptm":
@@ -215,7 +214,6 @@ namespace OutlookOkan.Handlers
                         //Do Nothing.
                     }
                     break;
-
                 default:
                     return false;
             }
