@@ -840,7 +840,7 @@
     <value>Неизвестно</value>
   </data>
   <data name="Version" xml:space="preserve">
-    <value>Version 2.8.0.1.2</value>
+    <value>Version 2.8.1</value>
   </data>
   <data name="VersionInfo" xml:space="preserve">
     <value>О программе.</value>
@@ -893,9 +893,7 @@
 *Настройки будут отражены после перезапуска Outlook.</value>
   </data>
   <data name="SettingExampleSecurityForReceivedMail" xml:space="preserve">
-    <value>Включение этой функции может вызвать проблемы.
-
-*Настройки будут отражены после перезапуска Outlook.</value>
+    <value>Настройки будут отражены после перезапуска Outlook.</value>
   </data>
   <data name="IsEnableWarningFeatureWhenOpeningAttachments" xml:space="preserve">
     <value>Используйте функцию предупреждения при открытии вложений.</value>
@@ -974,5 +972,8 @@ ZIP-файл содержит файл Office, содержащий макрос
   </data>
   <data name="ImportErrorOfAllSettings" xml:space="preserve">
     <value>Пожалуйста, выберите правильный файл. Ошибка:</value>
+  </data>
+  <data name="IsNoInternetCantUseSecurityForReceivedMail" xml:space="preserve">
+    <value>Поскольку подключение к Интернету отсутствует, функция проверки безопасности недоступна при открытии электронной почты.</value>
   </data>
 </root>

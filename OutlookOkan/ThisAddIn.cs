@@ -51,26 +51,33 @@ namespace OutlookOkan
             LoadSecurityForReceivedMail();
             if (_securityForReceivedMail.IsEnableSecurityForReceivedMail)
             {
-                _mapiNamespace = Application.GetNamespace("MAPI");
-                _excludedFolderNames = new HashSet<string>{
-                    _mapiNamespace.GetDefaultFolder(Outlook.OlDefaultFolders.olFolderCalendar).Name,
-                    _mapiNamespace.GetDefaultFolder(Outlook.OlDefaultFolders.olFolderContacts).Name,
-                    _mapiNamespace.GetDefaultFolder(Outlook.OlDefaultFolders.olFolderDrafts).Name,
-                    _mapiNamespace.GetDefaultFolder(Outlook.OlDefaultFolders.olFolderJournal).Name,
-                    _mapiNamespace.GetDefaultFolder(Outlook.OlDefaultFolders.olFolderNotes).Name,
-                    _mapiNamespace.GetDefaultFolder(Outlook.OlDefaultFolders.olFolderOutbox).Name,
-                    _mapiNamespace.GetDefaultFolder(Outlook.OlDefaultFolders.olFolderRssFeeds).Name,
-                    _mapiNamespace.GetDefaultFolder(Outlook.OlDefaultFolders.olFolderSentMail).Name,
-                    _mapiNamespace.GetDefaultFolder(Outlook.OlDefaultFolders.olFolderServerFailures).Name,
-                    _mapiNamespace.GetDefaultFolder(Outlook.OlDefaultFolders.olFolderLocalFailures).Name,
-                    _mapiNamespace.GetDefaultFolder(Outlook.OlDefaultFolders.olFolderSyncIssues).Name,
-                    _mapiNamespace.GetDefaultFolder(Outlook.OlDefaultFolders.olFolderTasks).Name,
-                    _mapiNamespace.GetDefaultFolder(Outlook.OlDefaultFolders.olFolderToDo).Name
-                };
+                try
+                {
+                    _mapiNamespace = Application.GetNamespace("MAPI");
+                    _excludedFolderNames = new HashSet<string>{
+                        _mapiNamespace.GetDefaultFolder(Outlook.OlDefaultFolders.olFolderCalendar).Name,
+                        _mapiNamespace.GetDefaultFolder(Outlook.OlDefaultFolders.olFolderContacts).Name,
+                        _mapiNamespace.GetDefaultFolder(Outlook.OlDefaultFolders.olFolderDrafts).Name,
+                        _mapiNamespace.GetDefaultFolder(Outlook.OlDefaultFolders.olFolderJournal).Name,
+                        _mapiNamespace.GetDefaultFolder(Outlook.OlDefaultFolders.olFolderNotes).Name,
+                        _mapiNamespace.GetDefaultFolder(Outlook.OlDefaultFolders.olFolderOutbox).Name,
+                        _mapiNamespace.GetDefaultFolder(Outlook.OlDefaultFolders.olFolderRssFeeds).Name,
+                        _mapiNamespace.GetDefaultFolder(Outlook.OlDefaultFolders.olFolderSentMail).Name,
+                        _mapiNamespace.GetDefaultFolder(Outlook.OlDefaultFolders.olFolderServerFailures).Name,
+                        _mapiNamespace.GetDefaultFolder(Outlook.OlDefaultFolders.olFolderLocalFailures).Name,
+                        _mapiNamespace.GetDefaultFolder(Outlook.OlDefaultFolders.olFolderSyncIssues).Name,
+                        _mapiNamespace.GetDefaultFolder(Outlook.OlDefaultFolders.olFolderTasks).Name,
+                        _mapiNamespace.GetDefaultFolder(Outlook.OlDefaultFolders.olFolderToDo).Name
+                    };
 
-                LoadAlertKeywordOfSubjectWhenOpeningMailsData();
-                _currentExplorer = Application.ActiveExplorer();
-                _currentExplorer.SelectionChange += CurrentExplorer_SelectionChange;
+                    LoadAlertKeywordOfSubjectWhenOpeningMailsData();
+                    _currentExplorer = Application.ActiveExplorer();
+                    _currentExplorer.SelectionChange += CurrentExplorer_SelectionChange;
+                }
+                catch (Exception)
+                {
+                    MessageBox.Show(Properties.Resources.IsNoInternetCantUseSecurityForReceivedMail, Properties.Resources.AppName, MessageBoxButton.OK, MessageBoxImage.Error);
+                }
             }
 
             _inspectors = Application.Inspectors;
@@ -89,9 +96,14 @@ namespace OutlookOkan
             var selection = currentExplorer.Selection;
             if (selection is null || selection.Count != 1) return;
             if (!(selection[1] is Outlook.MailItem selectedMail)) return;
+            if (_currentMailItemEntryId == selectedMail.EntryID) return;
+
+            if (_currentMailItem != null)
+            {
+                _currentMailItem.BeforeAttachmentRead -= BeforeAttachmentRead;
+            }
 
             _currentMailItem = selectedMail;
-            if (_currentMailItemEntryId == _currentMailItem.EntryID) return;
 
             _currentMailItemEntryId = _currentMailItem.EntryID;
 
@@ -149,11 +161,6 @@ namespace OutlookOkan
             //添付ファイルを開くときの警告機能
             if (_securityForReceivedMail.IsEnableWarningFeatureWhenOpeningAttachments && selectedMail.Attachments.Count != 0)
             {
-                GC.Collect();
-                GC.WaitForPendingFinalizers();
-                GC.Collect();
-                Thread.Sleep(10);
-
                 _currentMailItem.BeforeAttachmentRead -= BeforeAttachmentRead;
                 _currentMailItem.BeforeAttachmentRead += BeforeAttachmentRead;
             }
@@ -356,15 +363,13 @@ namespace OutlookOkan
                 {
                     _ = Marshal.ReleaseComObject(currentItem);
                     currentItem = null;
-                    GC.Collect();
-                    GC.WaitForPendingFinalizers();
-                    GC.Collect();
                 }
 
-                _ = Marshal.ReleaseComObject(inspector);
-                GC.Collect();
-                GC.WaitForPendingFinalizers();
-                GC.Collect();
+                if (inspector != null)
+                {
+                    _ = Marshal.ReleaseComObject(inspector);
+                    inspector = null;
+                }
             };
         }
 
@@ -375,6 +380,17 @@ namespace OutlookOkan
         /// <param name="cancel">Cancel</param>
         private void Application_ItemSend(object item, ref bool cancel)
         {
+            try
+            {
+                var activeWindow = Globals.ThisAddIn.Application.ActiveWindow();
+                _ = new NativeMethods(activeWindow).Handle;
+            }
+            catch (Exception)
+            {
+                //Send Mail.
+                return;
+            }
+
             //Outlook起動後にユーザが設定を変更する可能性があるため、毎回ユーザ設定をロード。
             LoadGeneralSetting(false);
             if (!(_generalSetting.LanguageCode is null))
@@ -388,6 +404,8 @@ namespace OutlookOkan
 
             //Moderationでの返信には何もしない。(キャンセルすると、承認や非承認ができなくなる場合があるため)
             if (((dynamic)item).MessageClass == "IPM.Note.Microsoft.Approval.Reply.Approve" || ((dynamic)item).MessageClass == "IPM.Note.Microsoft.Approval.Reply.Reject") return;
+            //会議の出欠の返信には何もしない。
+            if (((dynamic)item).MessageClass == "IPM.Schedule.Meeting.Resp.Pos" || ((dynamic)item).MessageClass == "IPM.Schedule.Meeting.Resp.Tent" || ((dynamic)item).MessageClass == "IPM.Schedule.Meeting.Resp.Neg") return;
 
             var type = typeof(Outlook.MailItem);
             //何らかの問題で確認画面が表示されないと、意図せずメールが送られてしまう恐れがあるため、念のための処理。

@@ -23,6 +23,9 @@ namespace OutlookOkan.Models
         private readonly List<Whitelist> _whitelist = new List<Whitelist>();
         private int _failedToGetInformationOfRecipientsMailAddressCounter;
 
+        public bool IsMeetingItem;
+        public bool IsTaskRequestItem;
+
         /// <summary>
         /// メール送信前の確認画面で使用するチェックリストの生成。
         /// </summary>
@@ -90,8 +93,6 @@ namespace OutlookOkan.Models
 
             #endregion
 
-            var isMeetingItem = false;
-            var isTaskRequestItem = false;
             switch (item)
             {
                 case Outlook.MailItem mailItem:
@@ -102,7 +103,7 @@ namespace OutlookOkan.Models
                     _checkList.MailHtmlBody = mailItem.HTMLBody ?? Resources.FailedToGetInformation;
                     break;
                 case Outlook.MeetingItem meetingItem:
-                    isMeetingItem = true;
+                    IsMeetingItem = true;
                     _checkList.MailType = Resources.MeetingRequest;
                     _checkList.MailBody = string.IsNullOrEmpty(meetingItem.Body) ? Resources.FailedToGetInformation : meetingItem.Body.Replace("\r\n\r\n", "\r\n");
 
@@ -117,7 +118,7 @@ namespace OutlookOkan.Models
                     }
                     break;
                 case Outlook.TaskRequestItem taskRequestItem:
-                    isTaskRequestItem = true;
+                    IsTaskRequestItem = true;
                     _checkList.MailType = Resources.TaskRequest;
 
                     var associatedTask = taskRequestItem.GetAssociatedTask(false);
@@ -146,12 +147,12 @@ namespace OutlookOkan.Models
             _checkList = CheckKeyword(_checkList, alertKeywordAndMessageList);
             _checkList = CheckKeywordForSubject(_checkList, alertKeywordAndMessageForSubjectList);
 
-            var displayNameAndRecipient = isTaskRequestItem ? MakeDisplayNameAndRecipient(((Outlook.TaskRequestItem)item).GetAssociatedTask(false).Recipients, new DisplayNameAndRecipient(), generalSetting, false) : (DisplayNameAndRecipient)MakeDisplayNameAndRecipient(((dynamic)item).Recipients, new DisplayNameAndRecipient(), generalSetting, isMeetingItem);
+            var displayNameAndRecipient = IsTaskRequestItem ? MakeDisplayNameAndRecipient(((Outlook.TaskRequestItem)item).GetAssociatedTask(false).Recipients, new DisplayNameAndRecipient(), generalSetting, false) : (DisplayNameAndRecipient)MakeDisplayNameAndRecipient(((dynamic)item).Recipients, new DisplayNameAndRecipient(), generalSetting, IsMeetingItem);
 
             var autoAddRecipients = AutoAddCcAndBcc(item, generalSetting, displayNameAndRecipient, autoCcBccKeywordList, autoCcBccAttachedFilesList, autoCcBccRecipientList, CountRecipientExternalDomains(displayNameAndRecipient, _checkList.SenderDomain, internalDomainList, false), _checkList.Sender, generalSetting.IsAutoAddSenderToBcc, generalSetting.IsAutoAddSenderToCc);
             if (autoAddRecipients?.Count > 0)
             {
-                displayNameAndRecipient = MakeDisplayNameAndRecipient(autoAddRecipients, displayNameAndRecipient, generalSetting, isMeetingItem);
+                displayNameAndRecipient = MakeDisplayNameAndRecipient(autoAddRecipients, displayNameAndRecipient, generalSetting, IsMeetingItem);
                 _ = ((dynamic)item).Recipients.ResolveAll();
             }
 
@@ -214,7 +215,7 @@ namespace OutlookOkan.Models
                         Outlook.ExchangeUser exchangeUser = null;
 
                         var sender = ((Outlook.MailItem)item).Sender;
-                        
+
                         var errorCount = 0;
                         while (errorCount < 100)
                         {
@@ -309,8 +310,35 @@ namespace OutlookOkan.Models
             }
             catch (Exception)
             {
-                checkList.Sender = Resources.FailedToGetInformation;
-                checkList.SenderDomain = @"------------------";
+                try
+                {
+                    if (IsTaskRequestItem)
+                    {
+                        if (item is Outlook.TaskRequestItem taskRequest)
+                        {
+                            var associatedTask = taskRequest.GetAssociatedTask(false);
+
+                            if (associatedTask != null)
+                            {
+                                var senderAddress = associatedTask.SendUsingAccount?.SmtpAddress;
+                                checkList.Sender = senderAddress ?? Resources.FailedToGetInformation;
+
+                                Marshal.ReleaseComObject(associatedTask);
+                                checkList.SenderDomain = checkList.Sender == Resources.FailedToGetInformation ? "------------------" : checkList.Sender.Substring(checkList.Sender.IndexOf("@", StringComparison.Ordinal));
+                            }
+                        }
+                    }
+                    else
+                    {
+                        checkList.Sender = Resources.FailedToGetInformation;
+                        checkList.SenderDomain = @"------------------";
+                    }
+                }
+                catch (Exception)
+                {
+                    checkList.Sender = Resources.FailedToGetInformation;
+                    checkList.SenderDomain = @"------------------";
+                }
             }
 
             return checkList;
@@ -1170,7 +1198,18 @@ namespace OutlookOkan.Models
                 var fileSize = "?KB";
                 if (((dynamic)item).Attachments[i + 1].Size != 0)
                 {
-                    fileSize = Math.Round(((double)((dynamic)item).Attachments[i + 1].Size / 1024), 0, MidpointRounding.AwayFromZero).ToString("##,###") + "KB";
+                    var sizeInKb = (double)((dynamic)item).Attachments[i + 1].Size / 1024;
+                    string formattedSize;
+                    if (sizeInKb >= 1 || sizeInKb == 0)
+                    {
+                        formattedSize = Math.Round(sizeInKb).ToString("##,###");
+                    }
+                    else
+                    {
+                        formattedSize = sizeInKb.ToString("0.###");
+                    }
+
+                    fileSize = formattedSize + "KB";
                 }
 
                 if (((dynamic)item).Attachments[i + 1].Size >= 10485760)
@@ -1300,6 +1339,15 @@ namespace OutlookOkan.Models
                         Open = isCanOpen ? Resources.Open : "---",
                         FilePath = tempFilePath
                     });
+                }
+            }
+
+            if (IsTaskRequestItem)
+            {
+                var targetAttachment = checkList.Attachments.FirstOrDefault(x => x.FileType == ".msg");
+                if (targetAttachment != null)
+                {
+                    checkList.Attachments.Remove(targetAttachment);
                 }
             }
 

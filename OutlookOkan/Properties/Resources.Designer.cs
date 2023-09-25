@@ -1330,6 +1330,15 @@ namespace OutlookOkan.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Since there is no Internet connection, the safety check feature is not available when opening e-mail..
+        /// </summary>
+        public static string IsNoInternetCantUseSecurityForReceivedMail {
+            get {
+                return ResourceManager.GetString("IsNoInternetCantUseSecurityForReceivedMail", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to A file embedded in an HTML mail is not treated as an attachment..
         /// </summary>
         public static string IsNotTreatedAsAttachmentsAtHtmlEmbeddedFiles {
@@ -2112,9 +2121,7 @@ namespace OutlookOkan.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Enabling this feature may cause problems.
-        ///
-        ///*Settings will be reflected after restarting Outlook..
+        ///   Looks up a localized string similar to Settings will be reflected after restarting Outlook..
         /// </summary>
         public static string SettingExampleSecurityForReceivedMail {
             get {
@@ -2324,7 +2331,7 @@ namespace OutlookOkan.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Version 2.8.0.1.2.
+        ///   Looks up a localized string similar to Version 2.8.1.
         /// </summary>
         public static string Version {
             get {

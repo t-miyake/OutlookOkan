@@ -836,7 +836,7 @@
     <value>अनजान</value>
   </data>
   <data name="Version" xml:space="preserve">
-    <value>Version 2.8.0.1.2</value>
+    <value>Version 2.8.1</value>
   </data>
   <data name="VersionInfo" xml:space="preserve">
     <value>कार्यक्रम के बारे में</value>
@@ -889,9 +889,7 @@
 * Outlook को पुनरारंभ करने के बाद सेटिंग्स दिखाई देंगी.</value>
   </data>
   <data name="SettingExampleSecurityForReceivedMail" xml:space="preserve">
-    <value>इस सुविधा को सक्षम करने से समस्या हो सकती है।
-
-* Outlook को पुनरारंभ करने के बाद सेटिंग्स दिखाई देंगी.</value>
+    <value>Outlook को पुनरारंभ करने के बाद सेटिंग्स दिखाई देंगी.</value>
   </data>
   <data name="IsEnableWarningFeatureWhenOpeningAttachments" xml:space="preserve">
     <value>अनुलग्नक खोलते समय चेतावनी सुविधा का उपयोग करें.</value>
@@ -970,5 +968,8 @@
   </data>
   <data name="ImportErrorOfAllSettings" xml:space="preserve">
     <value>कृपया सही फ़ाइल का चयन करें. भूल:</value>
+  </data>
+  <data name="IsNoInternetCantUseSecurityForReceivedMail" xml:space="preserve">
+    <value>चूंकि कोई इंटरनेट कनेक्शन नहीं है, इसलिए ई-मेल खोलते समय सुरक्षा जाँच सुविधा उपलब्ध नहीं है।</value>
   </data>
 </root>

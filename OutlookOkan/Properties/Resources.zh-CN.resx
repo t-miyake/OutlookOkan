@@ -834,7 +834,7 @@
     <value>不详</value>
   </data>
   <data name="Version" xml:space="preserve">
-    <value>Version 2.8.0.1.2</value>
+    <value>Version 2.8.1</value>
   </data>
   <data name="VersionInfo" xml:space="preserve">
     <value>软件信息</value>
@@ -887,9 +887,7 @@
 *设置将在重新启动 Outlook 后反映出来。</value>
   </data>
   <data name="SettingExampleSecurityForReceivedMail" xml:space="preserve">
-    <value>启用此功能可能会导致问题。
-
-*设置将在重新启动 Outlook 后反映出来。</value>
+    <value>设置将在重新启动 Outlook 后反映出来。</value>
   </data>
   <data name="IsEnableWarningFeatureWhenOpeningAttachments" xml:space="preserve">
     <value>打开附件时使用警告功能。</value>
@@ -968,5 +966,8 @@ zip 文件包含一个包含宏和
   </data>
   <data name="ImportErrorOfAllSettings" xml:space="preserve">
     <value>请选择正确的文件。错误：</value>
+  </data>
+  <data name="IsNoInternetCantUseSecurityForReceivedMail" xml:space="preserve">
+    <value>由于没有互联网连接，因此打开电子邮件时无法使用安全检查功能。</value>
   </data>
 </root>

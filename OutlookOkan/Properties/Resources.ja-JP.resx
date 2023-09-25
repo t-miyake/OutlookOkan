@@ -362,7 +362,7 @@
     <value>Copyright (C) 2023 Noraneko Inc.</value>
   </data>
   <data name="Version" xml:space="preserve">
-    <value>バージョン 2.8.0.1.2</value>
+    <value>バージョン 2.8.1</value>
   </data>
   <data name="VersionInfo" xml:space="preserve">
     <value>バージョン情報</value>
@@ -919,9 +919,7 @@
 ※設定はOutlookを再起動すると反映されます。</value>
   </data>
   <data name="SettingExampleSecurityForReceivedMail" xml:space="preserve">
-    <value>有効にすると問題が発生する恐れがあります。
-
-※設定はOutlookを再起動すると反映されます。</value>
+    <value>設定はOutlookを再起動すると反映されます。</value>
   </data>
   <data name="SpfDkimWaring2" xml:space="preserve">
     <value>このメールの内容や添付ファイルには十分注意してください。</value>
@@ -969,5 +967,9 @@ ZIPファイル内に.oneファイルが含まれており、
   </data>
   <data name="ImportErrorOfAllSettings" xml:space="preserve">
     <value>適切なファイルを選択してください。エラー:</value>
+  </data>
+  <data name="IsNoInternetCantUseSecurityForReceivedMail" xml:space="preserve">
+    <value>インターネットに接続されていないため、メールを開く際の安全確認機能は利用できません。
+※インターネットに接続した状態で、Outlookを再起動してください。</value>
   </data>
 </root>

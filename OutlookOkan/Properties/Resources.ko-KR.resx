@@ -831,7 +831,7 @@
     <value>알려지지 않은</value>
   </data>
   <data name="Version" xml:space="preserve">
-    <value>Version 2.8.0.1.2</value>
+    <value>Version 2.8.1</value>
   </data>
   <data name="VersionInfo" xml:space="preserve">
     <value>이 프로그램에 대해</value>
@@ -887,9 +887,7 @@
 *Outlook을 다시 시작하면 설정이 반영됩니다.</value>
   </data>
   <data name="SettingExampleSecurityForReceivedMail" xml:space="preserve">
-    <value>이 기능을 활성화하면 문제가 발생할 수 있습니다.
-
-*Outlook을 다시 시작하면 설정이 반영됩니다.</value>
+    <value>Outlook을 다시 시작하면 설정이 반영됩니다.</value>
   </data>
   <data name="IsEnableWarningFeatureWhenOpeningAttachments" xml:space="preserve">
     <value>첨부 파일을 열 때 경고 기능을 사용하십시오.</value>
@@ -968,5 +966,8 @@ zip 파일에는 매크로가 포함 된 Office 파일이 포함되어 있습니
   </data>
   <data name="ImportErrorOfAllSettings" xml:space="preserve">
     <value>올바른 파일을 선택하십시오. 오류:</value>
+  </data>
+  <data name="IsNoInternetCantUseSecurityForReceivedMail" xml:space="preserve">
+    <value>인터넷에 연결되어 있지 않기 때문에 이메일을 열 때 안전 확인 기능을 사용할 수 없습니다.</value>
   </data>
 </root>

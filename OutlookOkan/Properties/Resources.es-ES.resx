@@ -841,7 +841,7 @@ se aplicará esta función.</value>
     <value>Desconocido</value>
   </data>
   <data name="Version" xml:space="preserve">
-    <value>Version 2.8.0.1.2</value>
+    <value>Version 2.8.1</value>
   </data>
   <data name="VersionInfo" xml:space="preserve">
     <value>Sobre el programa</value>
@@ -894,9 +894,7 @@ se aplicará esta función.</value>
 * La configuración se reflejará después de reiniciar Outlook.</value>
   </data>
   <data name="SettingExampleSecurityForReceivedMail" xml:space="preserve">
-    <value>Habilitar esta función puede causar problemas.
-
-* La configuración se reflejará después de reiniciar Outlook.</value>
+    <value>La configuración se reflejará después de reiniciar Outlook.</value>
   </data>
   <data name="IsEnableWarningFeatureWhenOpeningAttachments" xml:space="preserve">
     <value>Utilice la función de advertencia al abrir archivos adjuntos.</value>
@@ -975,5 +973,8 @@ riesgo de infección con un virus.</value>
   </data>
   <data name="ImportErrorOfAllSettings" xml:space="preserve">
     <value>Seleccione el archivo correcto. Error:</value>
+  </data>
+  <data name="IsNoInternetCantUseSecurityForReceivedMail" xml:space="preserve">
+    <value>Dado que no hay conexión a Internet, la función de comprobación de seguridad no está disponible al abrir el correo electrónico.</value>
   </data>
 </root>
