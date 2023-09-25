@@ -969,4 +969,7 @@ zip 파일에는 매크로가 포함 된 Office 파일이 포함되어 있습니
   <data name="ImportErrorOfAllSettings" xml:space="preserve">
     <value>올바른 파일을 선택하십시오. 오류:</value>
   </data>
+  <data name="IsNoInternetCantUseSecurityForReceivedMail" xml:space="preserve">
+    <value>인터넷에 연결되어 있지 않기 때문에 이메일을 열 때 안전 확인 기능을 사용할 수 없습니다.</value>
+  </data>
 </root>

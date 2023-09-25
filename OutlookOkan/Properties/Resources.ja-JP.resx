@@ -970,4 +970,8 @@ ZIPファイル内に.oneファイルが含まれており、
   <data name="ImportErrorOfAllSettings" xml:space="preserve">
     <value>適切なファイルを選択してください。エラー:</value>
   </data>
+  <data name="IsNoInternetCantUseSecurityForReceivedMail" xml:space="preserve">
+    <value>インターネットに接続されていないため、メールを開く際の安全確認機能は利用できません。
+※インターネットに接続した状態で、Outlookを再起動してください。</value>
+  </data>
 </root>

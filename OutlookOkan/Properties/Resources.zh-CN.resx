@@ -969,4 +969,7 @@ zip 文件包含一个包含宏和
   <data name="ImportErrorOfAllSettings" xml:space="preserve">
     <value>请选择正确的文件。错误：</value>
   </data>
+  <data name="IsNoInternetCantUseSecurityForReceivedMail" xml:space="preserve">
+    <value>由于没有互联网连接，因此打开电子邮件时无法使用安全检查功能。</value>
+  </data>
 </root>

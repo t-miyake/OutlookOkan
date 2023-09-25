@@ -1330,6 +1330,15 @@ namespace OutlookOkan.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Since there is no Internet connection, the safety check feature is not available when opening e-mail..
+        /// </summary>
+        public static string IsNoInternetCantUseSecurityForReceivedMail {
+            get {
+                return ResourceManager.GetString("IsNoInternetCantUseSecurityForReceivedMail", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to A file embedded in an HTML mail is not treated as an attachment..
         /// </summary>
         public static string IsNotTreatedAsAttachmentsAtHtmlEmbeddedFiles {

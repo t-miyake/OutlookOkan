@@ -971,4 +971,7 @@
   <data name="ImportErrorOfAllSettings" xml:space="preserve">
     <value>कृपया सही फ़ाइल का चयन करें. भूल:</value>
   </data>
+  <data name="IsNoInternetCantUseSecurityForReceivedMail" xml:space="preserve">
+    <value>चूंकि कोई इंटरनेट कनेक्शन नहीं है, इसलिए ई-मेल खोलते समय सुरक्षा जाँच सुविधा उपलब्ध नहीं है।</value>
+  </data>
 </root>

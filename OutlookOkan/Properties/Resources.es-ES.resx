@@ -976,4 +976,7 @@ riesgo de infección con un virus.</value>
   <data name="ImportErrorOfAllSettings" xml:space="preserve">
     <value>Seleccione el archivo correcto. Error:</value>
   </data>
+  <data name="IsNoInternetCantUseSecurityForReceivedMail" xml:space="preserve">
+    <value>Dado que no hay conexión a Internet, la función de comprobación de seguridad no está disponible al abrir el correo electrónico.</value>
+  </data>
 </root>

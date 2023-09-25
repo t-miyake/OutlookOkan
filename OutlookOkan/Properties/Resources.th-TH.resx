@@ -970,4 +970,7 @@ bcc โดยอัตโนมัติ</value>
   <data name="ImportErrorOfAllSettings" xml:space="preserve">
     <value>โปรดเลือกไฟล์ที่ถูกต้อง ความผิดพลาด:</value>
   </data>
+  <data name="IsNoInternetCantUseSecurityForReceivedMail" xml:space="preserve">
+    <value>เนื่องจากไม่มีการเชื่อมต่ออินเทอร์เน็ตคุณสมบัติการตรวจสอบความปลอดภัยจึงไม่สามารถใช้งานได้เมื่อเปิดอีเมล</value>
+  </data>
 </root>

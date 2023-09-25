@@ -975,4 +975,7 @@ ZIP-файл содержит файл Office, содержащий макрос
   <data name="ImportErrorOfAllSettings" xml:space="preserve">
     <value>Пожалуйста, выберите правильный файл. Ошибка:</value>
   </data>
+  <data name="IsNoInternetCantUseSecurityForReceivedMail" xml:space="preserve">
+    <value>Поскольку подключение к Интернету отсутствует, функция проверки безопасности недоступна при открытии электронной почты.</value>
+  </data>
 </root>
