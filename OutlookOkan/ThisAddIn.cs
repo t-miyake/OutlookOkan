@@ -96,9 +96,14 @@ namespace OutlookOkan
             var selection = currentExplorer.Selection;
             if (selection is null || selection.Count != 1) return;
             if (!(selection[1] is Outlook.MailItem selectedMail)) return;
+            if (_currentMailItemEntryId == selectedMail.EntryID) return;
+
+            if (_currentMailItem != null)
+            {
+                _currentMailItem.BeforeAttachmentRead -= BeforeAttachmentRead;
+            }
 
             _currentMailItem = selectedMail;
-            if (_currentMailItemEntryId == _currentMailItem.EntryID) return;
 
             _currentMailItemEntryId = _currentMailItem.EntryID;
 
@@ -156,11 +161,6 @@ namespace OutlookOkan
             //添付ファイルを開くときの警告機能
             if (_securityForReceivedMail.IsEnableWarningFeatureWhenOpeningAttachments && selectedMail.Attachments.Count != 0)
             {
-                GC.Collect();
-                GC.WaitForPendingFinalizers();
-                GC.Collect();
-                Thread.Sleep(10);
-
                 _currentMailItem.BeforeAttachmentRead -= BeforeAttachmentRead;
                 _currentMailItem.BeforeAttachmentRead += BeforeAttachmentRead;
             }
@@ -363,15 +363,13 @@ namespace OutlookOkan
                 {
                     _ = Marshal.ReleaseComObject(currentItem);
                     currentItem = null;
-                    GC.Collect();
-                    GC.WaitForPendingFinalizers();
-                    GC.Collect();
                 }
 
-                _ = Marshal.ReleaseComObject(inspector);
-                GC.Collect();
-                GC.WaitForPendingFinalizers();
-                GC.Collect();
+                if (inspector != null)
+                {
+                    _ = Marshal.ReleaseComObject(inspector);
+                    inspector = null;
+                }
             };
         }
 

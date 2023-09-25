@@ -889,9 +889,7 @@
 * Outlook को पुनरारंभ करने के बाद सेटिंग्स दिखाई देंगी.</value>
   </data>
   <data name="SettingExampleSecurityForReceivedMail" xml:space="preserve">
-    <value>इस सुविधा को सक्षम करने से समस्या हो सकती है।
-
-* Outlook को पुनरारंभ करने के बाद सेटिंग्स दिखाई देंगी.</value>
+    <value>Outlook को पुनरारंभ करने के बाद सेटिंग्स दिखाई देंगी.</value>
   </data>
   <data name="IsEnableWarningFeatureWhenOpeningAttachments" xml:space="preserve">
     <value>अनुलग्नक खोलते समय चेतावनी सुविधा का उपयोग करें.</value>

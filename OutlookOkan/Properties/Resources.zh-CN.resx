@@ -887,9 +887,7 @@
 *设置将在重新启动 Outlook 后反映出来。</value>
   </data>
   <data name="SettingExampleSecurityForReceivedMail" xml:space="preserve">
-    <value>启用此功能可能会导致问题。
-
-*设置将在重新启动 Outlook 后反映出来。</value>
+    <value>设置将在重新启动 Outlook 后反映出来。</value>
   </data>
   <data name="IsEnableWarningFeatureWhenOpeningAttachments" xml:space="preserve">
     <value>打开附件时使用警告功能。</value>

@@ -47,15 +47,6 @@ namespace OutlookOkan.Handlers
                         //パスワード違いの例外となった場合、パスワード付きDOCXとして判定。
                         isEncrypted = e.HResult == -2146822880;
                     }
-
-                    Thread.Sleep(10);
-                    tempWordApp.Quit();
-                    Thread.Sleep(10);
-                    _ = Marshal.ReleaseComObject(tempWordApp);
-                    tempWordApp = null;
-                    GC.Collect();
-                    GC.WaitForPendingFinalizers();
-                    GC.Collect();
                     break;
                 case "xls":
                 case "xlsx":
@@ -84,15 +75,6 @@ namespace OutlookOkan.Handlers
                         //パスワード違いの例外となった場合、パスワード付きXLSXとして判定。
                         isEncrypted = e.HResult == -2146827284;
                     }
-
-                    Thread.Sleep(10);
-                    tempExcelApp.Quit();
-                    Thread.Sleep(10);
-                    _ = Marshal.ReleaseComObject(tempExcelApp);
-                    tempExcelApp = null;
-                    GC.Collect();
-                    GC.WaitForPendingFinalizers();
-                    GC.Collect();
                     break;
                 case "ppt":
                 case "pptx":
@@ -114,15 +96,6 @@ namespace OutlookOkan.Handlers
                         //パスワード違いの例外となった場合、パスワード付きPPTXとして判定。
                         isEncrypted = e.HResult == -2147467259;
                     }
-
-                    Thread.Sleep(10);
-                    tempPowerPointApp.Quit();
-                    Thread.Sleep(10);
-                    _ = Marshal.ReleaseComObject(tempPowerPointApp);
-                    tempPowerPointApp = null;
-                    GC.Collect();
-                    GC.WaitForPendingFinalizers();
-                    GC.Collect();
                     break;
                 default:
                     return false;
@@ -171,11 +144,6 @@ namespace OutlookOkan.Handlers
                             _ = Marshal.ReleaseComObject(excelFile);
                             excelFile = null;
                         }
-                        Thread.Sleep(10);
-                        tempExcelApp.Quit();
-                        Thread.Sleep(10);
-                        _ = Marshal.ReleaseComObject(tempExcelApp);
-                        tempExcelApp = null;
                     }
                     catch (Exception)
                     {
@@ -212,12 +180,6 @@ namespace OutlookOkan.Handlers
                             _ = Marshal.ReleaseComObject(wordFile);
                             wordFile = null;
                         }
-
-                        Thread.Sleep(10);
-                        tempWordApp.Quit();
-                        Thread.Sleep(10);
-                        _ = Marshal.ReleaseComObject(tempWordApp);
-                        tempWordApp = null;
                     }
                     catch (Exception)
                     {
@@ -247,12 +209,6 @@ namespace OutlookOkan.Handlers
                             _ = Marshal.ReleaseComObject(pptFile);
                             pptFile = null;
                         }
-
-                        Thread.Sleep(10);
-                        tempPptApp.Quit();
-                        Thread.Sleep(10);
-                        _ = Marshal.ReleaseComObject(tempPptApp);
-                        tempPptApp = null;
                     }
                     catch (Exception)
                     {
@@ -261,8 +217,7 @@ namespace OutlookOkan.Handlers
                     break;
 
                 default:
-                    isHasVbProject = false;
-                    break;
+                    return false;
             }
 
             return isHasVbProject;

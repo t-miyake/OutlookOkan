@@ -2121,9 +2121,7 @@ namespace OutlookOkan.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Enabling this feature may cause problems.
-        ///
-        ///*Settings will be reflected after restarting Outlook..
+        ///   Looks up a localized string similar to Settings will be reflected after restarting Outlook..
         /// </summary>
         public static string SettingExampleSecurityForReceivedMail {
             get {

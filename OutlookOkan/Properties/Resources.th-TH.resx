@@ -888,9 +888,7 @@ bcc โดยอัตโนมัติ</value>
 *การตั้งค่าจะปรากฏขึ้นหลังจากรีสตาร์ท Outlook</value>
   </data>
   <data name="SettingExampleSecurityForReceivedMail" xml:space="preserve">
-    <value>การเปิดใช้งานคุณสมบัตินี้อาจทําให้เกิดปัญหาได้
-
-*การตั้งค่าจะปรากฏขึ้นหลังจากรีสตาร์ท Outlook</value>
+    <value>การตั้งค่าจะปรากฏขึ้นหลังจากรีสตาร์ท Outlook</value>
   </data>
   <data name="IsEnableWarningFeatureWhenOpeningAttachments" xml:space="preserve">
     <value>ใช้คุณสมบัติคําเตือนเมื่อเปิดไฟล์แนบ</value>

@@ -919,9 +919,7 @@
 ※設定はOutlookを再起動すると反映されます。</value>
   </data>
   <data name="SettingExampleSecurityForReceivedMail" xml:space="preserve">
-    <value>有効にすると問題が発生する恐れがあります。
-
-※設定はOutlookを再起動すると反映されます。</value>
+    <value>設定はOutlookを再起動すると反映されます。</value>
   </data>
   <data name="SpfDkimWaring2" xml:space="preserve">
     <value>このメールの内容や添付ファイルには十分注意してください。</value>

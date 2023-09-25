@@ -896,9 +896,7 @@ wird diese Funktion angewendet.</value>
 *Die Einstellungen werden nach dem Neustart von Outlook übernommen.</value>
   </data>
   <data name="SettingExampleSecurityForReceivedMail" xml:space="preserve">
-    <value>Die Aktivierung dieser Funktion kann zu Problemen führen.
-
-*Die Einstellungen werden nach dem Neustart von Outlook übernommen.</value>
+    <value>Die Einstellungen werden nach dem Neustart von Outlook übernommen.</value>
   </data>
   <data name="IsEnableWarningFeatureWhenOpeningAttachments" xml:space="preserve">
     <value>Verwenden Sie die Warnfunktion beim Öffnen von Anhängen.</value>

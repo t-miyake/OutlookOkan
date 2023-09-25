@@ -921,9 +921,7 @@ If there is no recipient corresponding to the keywords in the body of the e-mail
 *Settings will be reflected after restarting Outlook.</value>
   </data>
   <data name="SettingExampleSecurityForReceivedMail" xml:space="preserve">
-    <value>Enabling this feature may cause problems.
-
-*Settings will be reflected after restarting Outlook.</value>
+    <value>Settings will be reflected after restarting Outlook.</value>
   </data>
   <data name="SpfDkimWaring2" xml:space="preserve">
     <value>Please be careful with the content and attachments in this email.</value>

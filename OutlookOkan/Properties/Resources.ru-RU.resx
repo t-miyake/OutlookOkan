@@ -893,9 +893,7 @@
 *Настройки будут отражены после перезапуска Outlook.</value>
   </data>
   <data name="SettingExampleSecurityForReceivedMail" xml:space="preserve">
-    <value>Включение этой функции может вызвать проблемы.
-
-*Настройки будут отражены после перезапуска Outlook.</value>
+    <value>Настройки будут отражены после перезапуска Outlook.</value>
   </data>
   <data name="IsEnableWarningFeatureWhenOpeningAttachments" xml:space="preserve">
     <value>Используйте функцию предупреждения при открытии вложений.</value>

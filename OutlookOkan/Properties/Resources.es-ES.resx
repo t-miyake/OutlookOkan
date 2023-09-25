@@ -894,9 +894,7 @@ se aplicará esta función.</value>
 * La configuración se reflejará después de reiniciar Outlook.</value>
   </data>
   <data name="SettingExampleSecurityForReceivedMail" xml:space="preserve">
-    <value>Habilitar esta función puede causar problemas.
-
-* La configuración se reflejará después de reiniciar Outlook.</value>
+    <value>La configuración se reflejará después de reiniciar Outlook.</value>
   </data>
   <data name="IsEnableWarningFeatureWhenOpeningAttachments" xml:space="preserve">
     <value>Utilice la función de advertencia al abrir archivos adjuntos.</value>
