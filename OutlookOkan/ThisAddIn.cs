@@ -375,6 +375,17 @@ namespace OutlookOkan
         /// <param name="cancel">Cancel</param>
         private void Application_ItemSend(object item, ref bool cancel)
         {
+            try
+            {
+                var activeWindow = Globals.ThisAddIn.Application.ActiveWindow();
+                _ = new NativeMethods(activeWindow).Handle;
+            }
+            catch (Exception)
+            {
+                //Send Mail.
+                return;
+            }
+
             //Outlook起動後にユーザが設定を変更する可能性があるため、毎回ユーザ設定をロード。
             LoadGeneralSetting(false);
             if (!(_generalSetting.LanguageCode is null))
