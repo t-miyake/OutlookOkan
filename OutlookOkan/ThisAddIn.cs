@@ -404,6 +404,8 @@ namespace OutlookOkan
 
             //Moderationでの返信には何もしない。(キャンセルすると、承認や非承認ができなくなる場合があるため)
             if (((dynamic)item).MessageClass == "IPM.Note.Microsoft.Approval.Reply.Approve" || ((dynamic)item).MessageClass == "IPM.Note.Microsoft.Approval.Reply.Reject") return;
+            //会議の出欠の返信には何もしない。
+            if (((dynamic)item).MessageClass == "IPM.Schedule.Meeting.Resp.Pos" || ((dynamic)item).MessageClass == "IPM.Schedule.Meeting.Resp.Tent" || ((dynamic)item).MessageClass == "IPM.Schedule.Meeting.Resp.Neg") return;
 
             var type = typeof(Outlook.MailItem);
             //何らかの問題で確認画面が表示されないと、意図せずメールが送られてしまう恐れがあるため、念のための処理。
