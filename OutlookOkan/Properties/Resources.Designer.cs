@@ -525,6 +525,15 @@ namespace OutlookOkan.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Due to some problem, the safety check feature is not available when opening e-mail..
+        /// </summary>
+        public static string CantUseSecurityForReceivedMail {
+            get {
+                return ResourceManager.GetString("CantUseSecurityForReceivedMail", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Cc.
         /// </summary>
         public static string Cc {

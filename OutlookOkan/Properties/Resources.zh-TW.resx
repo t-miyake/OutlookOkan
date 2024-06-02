@@ -970,6 +970,9 @@ zip 檔包含一個包含宏和
   <data name="IsNoInternetCantUseSecurityForReceivedMail" xml:space="preserve">
     <value>由於沒有互聯網連接，因此打開電子郵件時無法使用安全檢查功能。</value>
   </data>
+  <data name="CantUseSecurityForReceivedMail" xml:space="preserve">
+    <value>由於某些問題，打開電子郵件時安全檢查功能不可用。</value>
+  </data>
   <data name="AutoDeleteRecipients" xml:space="preserve">
     <value>自動刪除收件者</value>
   </data>

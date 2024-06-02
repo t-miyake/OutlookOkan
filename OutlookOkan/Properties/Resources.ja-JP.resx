@@ -972,6 +972,10 @@ ZIPファイル内に.oneファイルが含まれており、
     <value>インターネットに接続されていないため、メールを開く際の安全確認機能は利用できません。
 ※インターネットに接続した状態で、Outlookを再起動してください。</value>
   </data>
+  <data name="CantUseSecurityForReceivedMail" xml:space="preserve">
+    <value>何らかの問題が発生したため、メールを開く際の安全確認機能は利用できません。
+Outlookを再起動してください。</value>
+  </data>
   <data name="AutoDeleteRecipients" xml:space="preserve">
     <value>宛先の自動削除</value>
   </data>

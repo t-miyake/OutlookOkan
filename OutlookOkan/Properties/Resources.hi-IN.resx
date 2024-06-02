@@ -972,6 +972,9 @@
   <data name="IsNoInternetCantUseSecurityForReceivedMail" xml:space="preserve">
     <value>चूंकि कोई इंटरनेट कनेक्शन नहीं है, इसलिए ई-मेल खोलते समय सुरक्षा जाँच सुविधा उपलब्ध नहीं है।</value>
   </data>
+  <data name="CantUseSecurityForReceivedMail" xml:space="preserve">
+    <value>कुछ समस्या के कारण, ई-मेल खोलते समय सुरक्षा जाँच सुविधा उपलब्ध नहीं होती है.</value>
+  </data>
   <data name="AutoDeleteRecipients" xml:space="preserve">
     <value>स्वचालित प्राप्तकर्ता हटाना</value>
   </data>

@@ -971,6 +971,9 @@ risk of infection with a virus.</value>
   <data name="IsNoInternetCantUseSecurityForReceivedMail" xml:space="preserve">
     <value>Since there is no Internet connection, the safety check feature is not available when opening e-mail.</value>
   </data>
+  <data name="CantUseSecurityForReceivedMail" xml:space="preserve">
+    <value>Due to some problem, the safety check feature is not available when opening e-mail.</value>
+  </data>
   <data name="AutoDeleteRecipients" xml:space="preserve">
     <value>Automatic Recipient Removal</value>
   </data>

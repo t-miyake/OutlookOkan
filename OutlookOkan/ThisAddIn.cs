@@ -53,30 +53,49 @@ namespace OutlookOkan
             {
                 try
                 {
-                    _mapiNamespace = Application.GetNamespace("MAPI");
-                    _excludedFolderNames = new HashSet<string>{
-                        _mapiNamespace.GetDefaultFolder(Outlook.OlDefaultFolders.olFolderCalendar).Name,
-                        _mapiNamespace.GetDefaultFolder(Outlook.OlDefaultFolders.olFolderContacts).Name,
-                        _mapiNamespace.GetDefaultFolder(Outlook.OlDefaultFolders.olFolderDrafts).Name,
-                        _mapiNamespace.GetDefaultFolder(Outlook.OlDefaultFolders.olFolderJournal).Name,
-                        _mapiNamespace.GetDefaultFolder(Outlook.OlDefaultFolders.olFolderNotes).Name,
-                        _mapiNamespace.GetDefaultFolder(Outlook.OlDefaultFolders.olFolderOutbox).Name,
-                        _mapiNamespace.GetDefaultFolder(Outlook.OlDefaultFolders.olFolderRssFeeds).Name,
-                        _mapiNamespace.GetDefaultFolder(Outlook.OlDefaultFolders.olFolderSentMail).Name,
-                        _mapiNamespace.GetDefaultFolder(Outlook.OlDefaultFolders.olFolderServerFailures).Name,
-                        _mapiNamespace.GetDefaultFolder(Outlook.OlDefaultFolders.olFolderLocalFailures).Name,
-                        _mapiNamespace.GetDefaultFolder(Outlook.OlDefaultFolders.olFolderSyncIssues).Name,
-                        _mapiNamespace.GetDefaultFolder(Outlook.OlDefaultFolders.olFolderTasks).Name,
-                        _mapiNamespace.GetDefaultFolder(Outlook.OlDefaultFolders.olFolderToDo).Name
-                    };
-
-                    LoadAlertKeywordOfSubjectWhenOpeningMailsData();
                     _currentExplorer = Application.ActiveExplorer();
-                    _currentExplorer.SelectionChange += CurrentExplorer_SelectionChange;
+                    if (_currentExplorer is null)
+                    {
+                        //Do Nothing.
+                    }
+                    else
+                    {
+                        _mapiNamespace = Application.GetNamespace("MAPI");
+                        if (_mapiNamespace is null)
+                        {
+                            MessageBox.Show(Properties.Resources.IsNoInternetCantUseSecurityForReceivedMail, Properties.Resources.AppName, MessageBoxButton.OK, MessageBoxImage.Warning);
+                        }
+                        else
+                        {
+                            _excludedFolderNames = new HashSet<string>{
+                                _mapiNamespace.GetDefaultFolder(Outlook.OlDefaultFolders.olFolderCalendar).Name,
+                                _mapiNamespace.GetDefaultFolder(Outlook.OlDefaultFolders.olFolderContacts).Name,
+                                _mapiNamespace.GetDefaultFolder(Outlook.OlDefaultFolders.olFolderDrafts).Name,
+                                _mapiNamespace.GetDefaultFolder(Outlook.OlDefaultFolders.olFolderJournal).Name,
+                                _mapiNamespace.GetDefaultFolder(Outlook.OlDefaultFolders.olFolderNotes).Name,
+                                _mapiNamespace.GetDefaultFolder(Outlook.OlDefaultFolders.olFolderOutbox).Name,
+                                _mapiNamespace.GetDefaultFolder(Outlook.OlDefaultFolders.olFolderRssFeeds).Name,
+                                _mapiNamespace.GetDefaultFolder(Outlook.OlDefaultFolders.olFolderSentMail).Name,
+                                _mapiNamespace.GetDefaultFolder(Outlook.OlDefaultFolders.olFolderServerFailures).Name,
+                                _mapiNamespace.GetDefaultFolder(Outlook.OlDefaultFolders.olFolderLocalFailures).Name,
+                                _mapiNamespace.GetDefaultFolder(Outlook.OlDefaultFolders.olFolderSyncIssues).Name,
+                                _mapiNamespace.GetDefaultFolder(Outlook.OlDefaultFolders.olFolderTasks).Name,
+                                _mapiNamespace.GetDefaultFolder(Outlook.OlDefaultFolders.olFolderToDo).Name
+                            };
+
+                            LoadAlertKeywordOfSubjectWhenOpeningMailsData();
+                            _currentExplorer.SelectionChange += CurrentExplorer_SelectionChange;
+
+                        }
+                    }
                 }
-                catch (Exception)
+                catch (Exception exception)
                 {
-                    MessageBox.Show(Properties.Resources.IsNoInternetCantUseSecurityForReceivedMail, Properties.Resources.AppName, MessageBoxButton.OK, MessageBoxImage.Error);
+                    MessageBox.Show(
+                        exception.HResult == -2147221219
+                            ? Properties.Resources.IsNoInternetCantUseSecurityForReceivedMail
+                            : Properties.Resources.CantUseSecurityForReceivedMail, Properties.Resources.AppName,
+                        MessageBoxButton.OK, MessageBoxImage.Warning);
                 }
             }
 

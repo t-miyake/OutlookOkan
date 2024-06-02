@@ -979,6 +979,9 @@ Risiko einer Infektion mit einem Virus.</value>
   <data name="IsNoInternetCantUseSecurityForReceivedMail" xml:space="preserve">
     <value>Da keine Internetverbindung besteht, ist die Sicherheitsüberprüfung beim Öffnen von E-Mails nicht verfügbar.</value>
   </data>
+  <data name="CantUseSecurityForReceivedMail" xml:space="preserve">
+    <value>Aufgrund eines Problems ist die Sicherheitsüberprüfungsfunktion beim Öffnen von E-Mails nicht verfügbar.</value>
+  </data>
   <data name="AutoDeleteRecipients" xml:space="preserve">
     <value>Automatische Empfängerentfernung</value>
   </data>

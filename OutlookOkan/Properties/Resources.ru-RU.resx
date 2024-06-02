@@ -976,6 +976,9 @@ ZIP-файл содержит файл Office, содержащий макрос
   <data name="IsNoInternetCantUseSecurityForReceivedMail" xml:space="preserve">
     <value>Поскольку подключение к Интернету отсутствует, функция проверки безопасности недоступна при открытии электронной почты.</value>
   </data>
+  <data name="CantUseSecurityForReceivedMail" xml:space="preserve">
+    <value>Из-за какой-либо проблемы функция проверки безопасности недоступна при открытии электронной почты.</value>
+  </data>
   <data name="AutoDeleteRecipients" xml:space="preserve">
     <value>Автоматическое удаление получателей</value>
   </data>

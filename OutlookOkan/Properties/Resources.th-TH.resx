@@ -971,6 +971,9 @@ bcc โดยอัตโนมัติ</value>
   <data name="IsNoInternetCantUseSecurityForReceivedMail" xml:space="preserve">
     <value>เนื่องจากไม่มีการเชื่อมต่ออินเทอร์เน็ตคุณสมบัติการตรวจสอบความปลอดภัยจึงไม่สามารถใช้งานได้เมื่อเปิดอีเมล</value>
   </data>
+  <data name="CantUseSecurityForReceivedMail" xml:space="preserve">
+    <value>เนื่องจากปัญหาบางอย่างคุณลักษณะการตรวจสอบความปลอดภัยไม่สามารถใช้งานได้เมื่อเปิดอีเมล</value>
+  </data>
   <data name="AutoDeleteRecipients" xml:space="preserve">
     <value>การลบผู้รับอัตโนมัติ</value>
   </data>

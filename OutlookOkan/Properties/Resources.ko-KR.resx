@@ -970,6 +970,9 @@ zip 파일에는 매크로가 포함 된 Office 파일이 포함되어 있습니
   <data name="IsNoInternetCantUseSecurityForReceivedMail" xml:space="preserve">
     <value>인터넷에 연결되어 있지 않기 때문에 이메일을 열 때 안전 확인 기능을 사용할 수 없습니다.</value>
   </data>
+  <data name="CantUseSecurityForReceivedMail" xml:space="preserve">
+    <value>일부 문제로 인해 이메일을 열 때 안전 확인 기능을 사용할 수 없습니다.</value>
+  </data>
   <data name="AutoDeleteRecipients" xml:space="preserve">
     <value>수신자 자동 제거</value>
   </data>
