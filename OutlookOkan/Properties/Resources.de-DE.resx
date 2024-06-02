@@ -300,7 +300,7 @@ Möchten Sie es herunterladen?</value>
     <value>Kontakt Gruppe</value>
   </data>
   <data name="Copyright" xml:space="preserve">
-    <value>Copyright (C) 2023 Noraneko Inc.</value>
+    <value>Copyright (C) 2024 Noraneko Inc.</value>
   </data>
   <data name="CSVExport" xml:space="preserve">
     <value>CSV exportieren</value>
@@ -840,7 +840,7 @@ wird diese Funktion angewendet.</value>
     <value>Unbekannt</value>
   </data>
   <data name="Version" xml:space="preserve">
-    <value>Version 2.8.1</value>
+    <value>Version 2.8.2</value>
   </data>
   <data name="VersionInfo" xml:space="preserve">
     <value>Über das Programm</value>

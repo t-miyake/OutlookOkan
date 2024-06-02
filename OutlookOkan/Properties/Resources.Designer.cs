@@ -651,7 +651,7 @@ namespace OutlookOkan.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Copyright (C) 2023 Noraneko Inc..
+        ///   Looks up a localized string similar to Copyright (C) 2024 Noraneko Inc..
         /// </summary>
         public static string Copyright {
             get {
