@@ -21,7 +21,6 @@ namespace OutlookOkan
         private readonly GeneralSetting _generalSetting = new GeneralSetting();
         private readonly SecurityForReceivedMail _securityForReceivedMail = new SecurityForReceivedMail();
         private readonly List<AlertKeywordOfSubjectWhenOpeningMail> _alertKeywordOfSubjectWhenOpeningMail = new List<AlertKeywordOfSubjectWhenOpeningMail>();
-        private readonly List<AutoDeleteRecipient> _autoDeleteRecipients = new List<AutoDeleteRecipient>();
 
         private Outlook.Inspectors _inspectors;
         private Outlook.Explorer _currentExplorer;
@@ -670,15 +669,6 @@ namespace OutlookOkan
         {
             var alertKeywordOfSubjectWhenOpeningMails = CsvFileHandler.ReadCsv<AlertKeywordOfSubjectWhenOpeningMail>(typeof(AlertKeywordOfSubjectWhenOpeningMailMap), "AlertKeywordOfSubjectWhenOpeningMailList.csv").Where(x => !string.IsNullOrEmpty(x.AlertKeyword));
             _alertKeywordOfSubjectWhenOpeningMail.AddRange(alertKeywordOfSubjectWhenOpeningMails);
-        }
-
-        /// <summary>
-        /// 宛先から自動削除するドメインやメールアドレスの設定を読み込む。
-        /// </summary>
-        private void LoadAutoDeleteRecipientsList()
-        {
-            var autoDeleteRecipients = CsvFileHandler.ReadCsv<AutoDeleteRecipient>(typeof(AutoDeleteRecipientMap), "AutoDeleteRecipientList.csv").Where(x => !string.IsNullOrEmpty(x.Recipient));
-            _autoDeleteRecipients.AddRange(autoDeleteRecipients);
         }
 
         /// <summary>
