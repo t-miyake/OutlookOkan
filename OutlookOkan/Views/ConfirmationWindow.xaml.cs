@@ -28,6 +28,20 @@ namespace OutlookOkan.Views
 
             //送信遅延時間を表示(設定)欄に入れる。
             DeferredDeliveryMinutesBox.Text = checkList.DeferredMinutes.ToString();
+            
+            //縦方向の最大サイズを制限
+            MaxHeight = SystemParameters.WorkArea.Height;
+
+            //ウィンドウサイズのロード
+            if (Properties.Settings.Default.ConfirmationWindowWidth != 0)
+            {
+                Width = Properties.Settings.Default.ConfirmationWindowWidth;
+            }
+
+            if (Properties.Settings.Default.ConfirmationWindowHeight != 0)
+            {
+                Height = Properties.Settings.Default.ConfirmationWindowHeight;
+            }
         }
 
         /// <summary>
@@ -238,6 +252,11 @@ namespace OutlookOkan.Views
 
         private void ConfirmationWindow_OnClosing(object sender, CancelEventArgs e)
         {
+            // ウインドウサイズを保存
+            Properties.Settings.Default.ConfirmationWindowWidth = Width;
+            Properties.Settings.Default.ConfirmationWindowHeight = Height;
+            Properties.Settings.Default.Save();
+            
             if (string.IsNullOrEmpty(_tempFilePath)) return;
 
             try

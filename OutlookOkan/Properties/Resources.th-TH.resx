@@ -862,7 +862,7 @@ bcc โดยอัตโนมัติ</value>
     <value>ไม่จําเป็นหากผู้รับทั้งหมดเป็นโดเมนภายใน</value>
   </data>
   <data name="AlertKeywordOfSubjectWhenOpeningMails" xml:space="preserve">
-    <value>แจ้งเตือนเมื่อเปิดอีเมล (หัวเรื่อง)</value>
+    <value>┗ แจ้งเตือนเมื่อเปิดอีเมล (หัวเรื่อง)</value>
   </data>
   <data name="IsEnableAlertKeywordOfSubjectWhenOpeningMailsData" xml:space="preserve">
     <value>ใช้ฟังก์ชันคําเตือนเมื่อบรรทัดหัวเรื่องมีคําหลักที่ระบุ</value>

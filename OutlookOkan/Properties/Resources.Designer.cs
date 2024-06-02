@@ -133,7 +133,7 @@ namespace OutlookOkan.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Alert when opening email (subject).
+        ///   Looks up a localized string similar to ┗ Alert when opening email (subject).
         /// </summary>
         public static string AlertKeywordOfSubjectWhenOpeningMails {
             get {

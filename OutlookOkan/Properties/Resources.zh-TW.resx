@@ -861,7 +861,7 @@
     <value>如果所有收件者都是內部域，則不需要。</value>
   </data>
   <data name="AlertKeywordOfSubjectWhenOpeningMails" xml:space="preserve">
-    <value>打開電子郵件時發出警報（主題）</value>
+    <value>┗ 打開電子郵件時發出警報（主題）</value>
   </data>
   <data name="IsEnableAlertKeywordOfSubjectWhenOpeningMailsData" xml:space="preserve">
     <value>當主題行包含指定的關鍵字時，使用警告功能。</value>

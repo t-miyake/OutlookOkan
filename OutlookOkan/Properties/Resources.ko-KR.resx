@@ -861,7 +861,7 @@
     <value>모든 받는 사람이 내부 도메인인 경우에는 필요하지 않습니다.</value>
   </data>
   <data name="AlertKeywordOfSubjectWhenOpeningMails" xml:space="preserve">
-    <value>이메일을 열 때 경고 (제목)</value>
+    <value>┗ 이메일을 열 때 경고 (제목)</value>
   </data>
   <data name="IsEnableAlertKeywordOfSubjectWhenOpeningMailsData" xml:space="preserve">
     <value>제목 줄에 지정된 키워드가 포함된 경우 경고 함수를 사용합니다.</value>

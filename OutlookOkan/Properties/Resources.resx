@@ -859,7 +859,7 @@ If there is no recipient corresponding to the keywords in the body of the e-mail
     <value>Not required if all recipients are internal domains.</value>
   </data>
   <data name="AlertKeywordOfSubjectWhenOpeningMails" xml:space="preserve">
-    <value>Alert when opening email (subject)</value>
+    <value>┗ Alert when opening email (subject)</value>
   </data>
   <data name="AlertOfReceivedMailSubject" xml:space="preserve">
     <value>The subject line contains the keyword subject to the warning.</value>

@@ -868,7 +868,7 @@ se aplicará esta función.</value>
     <value>No es necesario si todos los destinatarios son dominios internos.</value>
   </data>
   <data name="AlertKeywordOfSubjectWhenOpeningMails" xml:space="preserve">
-    <value>Alerta al abrir un correo electrónico (asunto)</value>
+    <value>┗ Alerta al abrir un correo electrónico (asunto)</value>
   </data>
   <data name="IsEnableAlertKeywordOfSubjectWhenOpeningMailsData" xml:space="preserve">
     <value>Utilice la función de advertencia cuando la línea de asunto contenga las palabras clave especificadas.</value>

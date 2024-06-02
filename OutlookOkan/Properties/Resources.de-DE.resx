@@ -870,7 +870,7 @@ wird diese Funktion angewendet.</value>
     <value>Nicht erforderlich, wenn es sich bei allen Empfängern um interne Domänen handelt.</value>
   </data>
   <data name="AlertKeywordOfSubjectWhenOpeningMails" xml:space="preserve">
-    <value>Warnung beim Öffnen einer E-Mail (Betreff)</value>
+    <value>┗ Warnung beim Öffnen einer E-Mail (Betreff)</value>
   </data>
   <data name="IsEnableAlertKeywordOfSubjectWhenOpeningMailsData" xml:space="preserve">
     <value>Verwenden Sie die Warnfunktion, wenn die Betreffzeile die angegebenen Schlüsselwörter enthält.</value>

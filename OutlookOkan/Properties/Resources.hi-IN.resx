@@ -863,7 +863,7 @@
     <value>यदि सभी प्राप्तकर्ता आंतरिक डोमेन हैं तो आवश्यक नहीं है.</value>
   </data>
   <data name="AlertKeywordOfSubjectWhenOpeningMails" xml:space="preserve">
-    <value>ईमेल खोलते समय अलर्ट (विषय)</value>
+    <value>┗ ईमेल खोलते समय अलर्ट (विषय)</value>
   </data>
   <data name="IsEnableAlertKeywordOfSubjectWhenOpeningMailsData" xml:space="preserve">
     <value>जब विषय पंक्ति में निर्दिष्ट कीवर्ड हों तो चेतावनी फ़ंक्शन का उपयोग करें.</value>

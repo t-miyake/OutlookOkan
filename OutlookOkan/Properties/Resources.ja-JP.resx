@@ -856,7 +856,7 @@
     <value>宛先が全て内部ドメインの場合、必須とはしない。</value>
   </data>
   <data name="AlertKeywordOfSubjectWhenOpeningMails" xml:space="preserve">
-    <value>メールを開く際の警告(件名)</value>
+    <value>┗ メールを開く際の警告(件名)</value>
   </data>
   <data name="AlertOfReceivedMailSubject" xml:space="preserve">
     <value>件名に警告対象のキーワードが含まれています。</value>

@@ -240,6 +240,7 @@
     </Compile>
     <Compile Include="Ribbon.cs" />
     <Compile Include="Services\ResourceService.cs" />
+    <Compile Include="Properties\Settings.cs" />
     <Compile Include="Types\AlertAddress.cs" />
     <Compile Include="Types\AlertKeywordAndMessage.cs" />
     <Compile Include="Types\AlertKeywordAndMessageForSubject.cs" />
@@ -313,6 +314,7 @@
     <Compile Include="Properties\Settings.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
     <Compile Include="ThisAddIn.cs">
       <SubType>Code</SubType>

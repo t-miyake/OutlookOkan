@@ -867,7 +867,7 @@
     <value>Не требуется, если все получатели являются внутренними доменами.</value>
   </data>
   <data name="AlertKeywordOfSubjectWhenOpeningMails" xml:space="preserve">
-    <value>Оповещение при открытии электронной почты (тема)</value>
+    <value>┗ Оповещение при открытии электронной почты (тема)</value>
   </data>
   <data name="IsEnableAlertKeywordOfSubjectWhenOpeningMailsData" xml:space="preserve">
     <value>Используйте функцию предупреждения, если строка темы содержит указанные ключевые слова.</value>

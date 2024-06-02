@@ -9,15 +9,24 @@
              mc:Ignorable="d"
              Closing="ConfirmationWindow_OnClosing"
         Title="{Binding Source={x:Static services:ResourceService.Instance}, Path=Resources.Confirmation, Mode=OneWay}"
-        ResizeMode="NoResize" ShowInTaskbar="False" WindowStartupLocation="CenterOwner" Height="{Binding WindowHeight}" Width="810">
-    <StackPanel Margin="5,8">
-        <StackPanel Margin="5,0,0,0">
-            <Label Content="{Binding Source={x:Static services:ResourceService.Instance}, Path=Resources.ConfirmationMessage1, Mode=OneWay}" FontSize="12" Padding="0" />
-            <Label Content="{Binding Source={x:Static services:ResourceService.Instance}, Path=Resources.ConfirmationMessage2, Mode=OneWay}" FontSize="11" Padding="0" Margin="0,3" />
+        ResizeMode="CanResizeWithGrip" ShowInTaskbar="False" WindowStartupLocation="CenterOwner" Height="590" Width="810" MinHeight="590" MinWidth="810">
+    <Grid Margin="5,8">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <StackPanel Grid.Column="0" Grid.Row="0" Margin="5,0,0,0">
+            <Label Content="{Binding Source={x:Static services:ResourceService.Instance}, Path=Resources.ConfirmationMessage1, Mode=OneWay}" FontSize="12.5" Padding="0" />
+            <Label Content="{Binding Source={x:Static services:ResourceService.Instance}, Path=Resources.ConfirmationMessage2, Mode=OneWay}" FontSize="11.5" Padding="0" Margin="0,3" />
         </StackPanel>
-        <StackPanel Margin="8,7,8,8">
-            <GroupBox Header="{Binding AlertCount}" FontSize="11" Padding="3,3,3,3">
-                <DataGrid x:Name="AlertGrid" Height="64" VerticalScrollBarVisibility="Visible" HorizontalScrollBarVisibility="Auto" BorderBrush="#FFD5DFE5" HeadersVisibility="None" ItemsSource="{Binding Alerts,Mode=TwoWay}" AutoGenerateColumns="False" CanUserAddRows="false" CanUserDeleteRows="false" CanUserResizeColumns="false" CanUserResizeRows="false" CanUserSortColumns="false" HorizontalGridLinesBrush="#FFD5DFE5" VerticalGridLinesBrush="#FFD5DFE5">
+        <Grid Grid.Column="0" Grid.Row="1" Margin="8,7,8,8">
+            <GroupBox Header="{Binding AlertCount}" FontSize="11.5" Padding="3,3,3,3">
+                <DataGrid x:Name="AlertGrid" VerticalScrollBarVisibility="Visible" HorizontalScrollBarVisibility="Auto" BorderBrush="#FFD5DFE5" HeadersVisibility="None" ItemsSource="{Binding Alerts,Mode=TwoWay}" AutoGenerateColumns="False" CanUserAddRows="false" CanUserDeleteRows="false" CanUserResizeColumns="false" CanUserResizeRows="false" CanUserSortColumns="false" HorizontalGridLinesBrush="#FFD5DFE5" VerticalGridLinesBrush="#FFD5DFE5">
                     <DataGrid.ItemContainerStyle>
                         <Style TargetType="DataGridRow">
                             <EventSetter Event="MouseUp" Handler="AlertGridMouseUpEvent_OnHandler" />
@@ -58,23 +67,31 @@
                     </DataGrid.Resources>
                 </DataGrid>
             </GroupBox>
-        </StackPanel>
-        <Grid>
+        </Grid>
+        <Grid Grid.Column="0" Grid.Row="2">
             <Grid.ColumnDefinitions>
-                <ColumnDefinition/>
+                <ColumnDefinition Width="*"/>
                 <ColumnDefinition Width="Auto" />
-                <ColumnDefinition/>
+                <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
-            <StackPanel Grid.Column="0" Margin="8,2,8,8">
-                <GroupBox Header="{Binding AddressCount}" FontSize="11" Padding="3,3,3,3">
-                    <StackPanel>
-                        <StackPanel Orientation="Horizontal" Margin="0,5,0,0">
-                            <Label Content="{Binding Source={x:Static services:ResourceService.Instance}, Path=Resources.To, Mode=OneWay}" Margin="0" Padding="0" VerticalAlignment="Bottom" FontSize="11" />
-                            <Label Content=" (" Margin="0" Padding="0" VerticalAlignment="Bottom" FontSize="11" />
-                            <Label Content="{Binding ToAddressCount}" Margin="0" Padding="0" VerticalAlignment="Bottom" FontSize="11" />
-                            <Label Content=")" Margin="0" Padding="0" VerticalAlignment="Bottom" FontSize="11" />
+            <Grid Grid.Column="0" Margin="8,2,8,8">
+                <GroupBox Header="{Binding AddressCount}" FontSize="11.5" Padding="3,3,3,3">
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="*" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="*" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="*" />
+                        </Grid.RowDefinitions>
+                        <StackPanel Grid.Row="0" Orientation="Horizontal" Margin="0,5,0,0">
+                            <Label Content="{Binding Source={x:Static services:ResourceService.Instance}, Path=Resources.To, Mode=OneWay}" Margin="0" Padding="0" VerticalAlignment="Bottom" FontSize="11.5" />
+                            <Label Content=" (" Margin="0" Padding="0" VerticalAlignment="Bottom" FontSize="11.5" />
+                            <Label Content="{Binding ToAddressCount}" Margin="0" Padding="0" VerticalAlignment="Bottom" FontSize="11.5" />
+                            <Label Content=")" Margin="0" Padding="0" VerticalAlignment="Bottom" FontSize="11.5" />
                         </StackPanel>
-                        <DataGrid Name="ToGrid" Height="{Binding ToGridHeight}" VerticalScrollBarVisibility="Visible" HorizontalScrollBarVisibility="Auto" BorderBrush="#FFD5DFE5" HeadersVisibility="None" ItemsSource="{Binding ToAddresses,Mode=TwoWay}" AutoGenerateColumns="False" CanUserAddRows="false" CanUserDeleteRows="false" CanUserResizeColumns="false" CanUserResizeRows="false" CanUserSortColumns="false" HorizontalGridLinesBrush="#FFD5DFE5" VerticalGridLinesBrush="#FFD5DFE5">
+                        <DataGrid Grid.Row="1" Name="ToGrid" VerticalScrollBarVisibility="Visible" HorizontalScrollBarVisibility="Auto" BorderBrush="#FFD5DFE5" HeadersVisibility="None" ItemsSource="{Binding ToAddresses,Mode=TwoWay}" AutoGenerateColumns="False" CanUserAddRows="false" CanUserDeleteRows="false" CanUserResizeColumns="false" CanUserResizeRows="false" CanUserSortColumns="false" HorizontalGridLinesBrush="#FFD5DFE5" VerticalGridLinesBrush="#FFD5DFE5">
                             <DataGrid.ItemContainerStyle>
                                 <Style TargetType="DataGridRow">
                                     <EventSetter Event="MouseUp" Handler="ToGridMouseUpEvent_OnHandler" />
@@ -128,13 +145,13 @@
                                 <SolidColorBrush x:Key="{x:Static SystemColors.InactiveSelectionHighlightBrushKey}" Color="Transparent" />
                             </DataGrid.Resources>
                         </DataGrid>
-                        <StackPanel Orientation="Horizontal" Margin="0,6,0,0">
-                            <Label Content="{Binding Source={x:Static services:ResourceService.Instance}, Path=Resources.Cc, Mode=OneWay}" Margin="0" Padding="0" VerticalAlignment="Bottom" FontSize="11" />
-                            <Label Content=" (" Margin="0" Padding="0" VerticalAlignment="Bottom" FontSize="11" />
-                            <Label Content="{Binding CcAddressCount}" Margin="0" Padding="0" VerticalAlignment="Bottom" FontSize="11" />
-                            <Label Content=")" Margin="0" Padding="0" VerticalAlignment="Bottom" FontSize="11" />
+                        <StackPanel Grid.Row="2" Orientation="Horizontal" Margin="0,6,0,0">
+                            <Label Content="{Binding Source={x:Static services:ResourceService.Instance}, Path=Resources.Cc, Mode=OneWay}" Margin="0" Padding="0" VerticalAlignment="Bottom" FontSize="11.5" />
+                            <Label Content=" (" Margin="0" Padding="0" VerticalAlignment="Bottom" FontSize="11.5" />
+                            <Label Content="{Binding CcAddressCount}" Margin="0" Padding="0" VerticalAlignment="Bottom" FontSize="11.5" />
+                            <Label Content=")" Margin="0" Padding="0" VerticalAlignment="Bottom" FontSize="11.5" />
                         </StackPanel>
-                        <DataGrid Name="CcGrid" Height="{Binding CcGridHeight}" VerticalScrollBarVisibility="Visible" HorizontalScrollBarVisibility="Auto" BorderBrush="#FFD5DFE5" HeadersVisibility="None" ItemsSource="{Binding CcAddresses,Mode=TwoWay}" AutoGenerateColumns="False" CanUserAddRows="false" CanUserDeleteRows="false" CanUserResizeColumns="false" CanUserResizeRows="false" CanUserSortColumns="false" HorizontalGridLinesBrush="#FFD5DFE5" VerticalGridLinesBrush="#FFD5DFE5">
+                        <DataGrid Grid.Row="3" Name="CcGrid" VerticalScrollBarVisibility="Visible" HorizontalScrollBarVisibility="Auto" BorderBrush="#FFD5DFE5" HeadersVisibility="None" ItemsSource="{Binding CcAddresses,Mode=TwoWay}" AutoGenerateColumns="False" CanUserAddRows="false" CanUserDeleteRows="false" CanUserResizeColumns="false" CanUserResizeRows="false" CanUserSortColumns="false" HorizontalGridLinesBrush="#FFD5DFE5" VerticalGridLinesBrush="#FFD5DFE5">
                             <DataGrid.ItemContainerStyle>
                                 <Style TargetType="DataGridRow">
                                     <EventSetter Event="MouseUp" Handler="CcGridMouseUpEvent_OnHandler" />
@@ -188,13 +205,13 @@
                                 <SolidColorBrush x:Key="{x:Static SystemColors.InactiveSelectionHighlightBrushKey}" Color="Transparent" />
                             </DataGrid.Resources>
                         </DataGrid>
-                        <StackPanel Orientation="Horizontal" Margin="0,6,0,0">
-                            <Label Content="{Binding Source={x:Static services:ResourceService.Instance}, Path=Resources.Bcc, Mode=OneWay}" Margin="0" Padding="0" VerticalAlignment="Bottom" FontSize="11" />
-                            <Label Content=" (" Margin="0" Padding="0" VerticalAlignment="Bottom" FontSize="11" />
-                            <Label Content="{Binding BccAddressCount}" Margin="0" Padding="0" VerticalAlignment="Bottom" FontSize="11" />
-                            <Label Content=")" Margin="0" Padding="0" VerticalAlignment="Bottom" FontSize="11" />
+                        <StackPanel Grid.Row="4" Orientation="Horizontal" Margin="0,6,0,0">
+                            <Label Content="{Binding Source={x:Static services:ResourceService.Instance}, Path=Resources.Bcc, Mode=OneWay}" Margin="0" Padding="0" VerticalAlignment="Bottom" FontSize="11.5" />
+                            <Label Content=" (" Margin="0" Padding="0" VerticalAlignment="Bottom" FontSize="11.5" />
+                            <Label Content="{Binding BccAddressCount}" Margin="0" Padding="0" VerticalAlignment="Bottom" FontSize="11.5" />
+                            <Label Content=")" Margin="0" Padding="0" VerticalAlignment="Bottom" FontSize="11.5" />
                         </StackPanel>
-                        <DataGrid Name="BccGrid" Height="{Binding BccGridHeight}" VerticalScrollBarVisibility="Visible" HorizontalScrollBarVisibility="Auto" BorderBrush="#FFD5DFE5" HeadersVisibility="None" ItemsSource="{Binding BccAddresses,Mode=TwoWay}" AutoGenerateColumns="False" CanUserAddRows="false" CanUserDeleteRows="false" CanUserResizeColumns="false" CanUserResizeRows="false" CanUserSortColumns="false" HorizontalGridLinesBrush="#FFD5DFE5" VerticalGridLinesBrush="#FFD5DFE5">
+                        <DataGrid Grid.Row="5" Name="BccGrid" VerticalScrollBarVisibility="Visible" HorizontalScrollBarVisibility="Auto" BorderBrush="#FFD5DFE5" HeadersVisibility="None" ItemsSource="{Binding BccAddresses,Mode=TwoWay}" AutoGenerateColumns="False" CanUserAddRows="false" CanUserDeleteRows="false" CanUserResizeColumns="false" CanUserResizeRows="false" CanUserSortColumns="false" HorizontalGridLinesBrush="#FFD5DFE5" VerticalGridLinesBrush="#FFD5DFE5">
                             <DataGrid.ItemContainerStyle>
                                 <Style TargetType="DataGridRow">
                                     <EventSetter Event="MouseUp" Handler="BccGridMouseUpEvent_OnHandler" />
@@ -248,13 +265,18 @@
                                 <SolidColorBrush x:Key="{x:Static SystemColors.InactiveSelectionHighlightBrushKey}" Color="Transparent" />
                             </DataGrid.Resources>
                         </DataGrid>
-                    </StackPanel>
+                    </Grid>
                 </GroupBox>
-            </StackPanel>
+            </Grid>
             <GridSplitter Grid.Column="1" IsTabStop="False" />
-            <StackPanel Grid.Column="2" Margin="0,2,8,0">
-                <GroupBox Header="{Binding AttachmentCount}" FontSize="11" Padding="3,3,3,3">
-                    <DataGrid Name="AttachmentGrid" Height="88" VerticalScrollBarVisibility="Visible" HorizontalScrollBarVisibility="Auto" BorderBrush="#FFD5DFE5" HeadersVisibility="None" ItemsSource="{Binding Attachments,Mode=TwoWay}" AutoGenerateColumns="False" CanUserAddRows="false" CanUserDeleteRows="false" CanUserResizeColumns="false" CanUserResizeRows="false" CanUserSortColumns="false" HorizontalGridLinesBrush="#FFD5DFE5" VerticalGridLinesBrush="#FFD5DFE5">
+            <Grid Grid.Column="2" Margin="0,2,8,0">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="0.5*"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+                <GroupBox Grid.Row="0" Header="{Binding AttachmentCount}" FontSize="11.5" Padding="3,3,3,3">
+                    <DataGrid Name="AttachmentGrid" VerticalScrollBarVisibility="Visible" HorizontalScrollBarVisibility="Auto" BorderBrush="#FFD5DFE5" HeadersVisibility="None" ItemsSource="{Binding Attachments,Mode=TwoWay}" AutoGenerateColumns="False" CanUserAddRows="false" CanUserDeleteRows="false" CanUserResizeColumns="false" CanUserResizeRows="false" CanUserSortColumns="false" HorizontalGridLinesBrush="#FFD5DFE5" VerticalGridLinesBrush="#FFD5DFE5">
                         <DataGrid.ItemContainerStyle>
                             <Style TargetType="DataGridRow">
                                 <EventSetter Event="MouseUp" Handler="AttachmentGridMouseUpEvent_OnHandler" />
@@ -332,36 +354,48 @@
                         </DataGrid.Resources>
                     </DataGrid>
                 </GroupBox>
-                <GroupBox Header="{Binding Source={x:Static services:ResourceService.Instance}, Path=Resources.MailInfo, Mode=OneWay}" FontSize="11" Padding="3,3,3,3" Margin="0,1.5,0,0">
+                <GroupBox Grid.Row="1" Header="{Binding Source={x:Static services:ResourceService.Instance}, Path=Resources.MailInfo, Mode=OneWay}" FontSize="11.5" Padding="3,3,3,3" Margin="0,1.5,0,0">
                     <StackPanel>
-                        <StackPanel Orientation="Horizontal" Margin="0,8,0,0">
-                            <Label Content="{Binding Source={x:Static services:ResourceService.Instance}, Path=Resources.Sender, Mode=OneWay}" FontSize="11" Padding="0" Width="42" />
-                            <TextBox Width="304" Padding="0" Margin="5,0,0,0" IsReadOnly="True" Text="{Binding Sender, Mode=OneWay}" />
-                        </StackPanel>
-                        <StackPanel Orientation="Horizontal" Margin="0,12,0,0">
-                            <Label Content="{Binding Source={x:Static services:ResourceService.Instance}, Path=Resources.Subject, Mode=OneWay}" FontSize="11" Padding="0" Width="42" />
-                            <TextBox Width="304" Padding="0" Margin="5,0,0,0" IsReadOnly="True" Text="{Binding Subject, Mode=OneWay}" />
-                        </StackPanel>
-                        <StackPanel Orientation="Horizontal" Margin="0,12,0,0">
-                            <StackPanel Orientation="Horizontal">
-                                <Label Content="{Binding Source={x:Static services:ResourceService.Instance}, Path=Resources.MailType, Mode=OneWay}" FontSize="11" Padding="0" Width="42" />
-                                <TextBox Width="108" Padding="0" Margin="5,0,0,0" IsReadOnly="True" Text="{Binding MailType, Mode=OneWay}" />
-                            </StackPanel>
-                            <StackPanel Orientation="Horizontal">
-                                <Label Content="{Binding Source={x:Static services:ResourceService.Instance}, Path=Resources.DeferredDeliveryMinutes, Mode=OneWay}" FontSize="11" Padding="0" Width="148" Margin="11,0,0,0" />
-                                <TextBox x:Name="DeferredDeliveryMinutesBox" Width="32" Padding="0" Margin="5,0,0,0" IsReadOnly="false" TextAlignment="Right" Text="{Binding DeferredDeliveryMinutes, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" PreviewTextInput="DeferredDeliveryMinutesBox_OnPreviewTextInput" CommandManager.PreviewExecuted="DeferredDeliveryMinutesBox_OnPreviewExecuted" InputMethod.IsInputMethodEnabled="False" />
-                            </StackPanel>
-                        </StackPanel>
+                        <Grid Margin="0,8,0,0">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto"></ColumnDefinition>
+                                <ColumnDefinition Width="*"></ColumnDefinition>
+                            </Grid.ColumnDefinitions>
+                            <Label Grid.Column="0" Content="{Binding Source={x:Static services:ResourceService.Instance}, Path=Resources.Sender, Mode=OneWay}" FontSize="11.5" Padding="0" Width="42" />
+                            <TextBox Grid.Column="1" Padding="0" Margin="5,0,0,0" IsReadOnly="True" Text="{Binding Sender, Mode=OneWay}" />
+                        </Grid>
+                        <Grid Margin="0,12,0,0">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto"></ColumnDefinition>
+                                <ColumnDefinition Width="*"></ColumnDefinition>
+                            </Grid.ColumnDefinitions>
+                            <Label Grid.Column="0" Content="{Binding Source={x:Static services:ResourceService.Instance}, Path=Resources.Subject, Mode=OneWay}" FontSize="11.5" Padding="0" Width="42" />
+                            <TextBox Grid.Column="1" Padding="0" Margin="5,0,0,0" IsReadOnly="True" Text="{Binding Subject, Mode=OneWay}" TextWrapping="Wrap" AcceptsReturn="True" />
+                        </Grid>
+                        <Grid Margin="0,12,0,0">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto"></ColumnDefinition>
+                                <ColumnDefinition Width="*"></ColumnDefinition>
+                                <ColumnDefinition Width="Auto"></ColumnDefinition>
+                                <ColumnDefinition Width="Auto"></ColumnDefinition>
+                            </Grid.ColumnDefinitions>
+                            <Label Grid.Column="0" Content="{Binding Source={x:Static services:ResourceService.Instance}, Path=Resources.MailType, Mode=OneWay}" FontSize="11.5" Padding="0" Width="42" />
+                            <TextBox Grid.Column="1" Padding="0" Margin="5,0,0,0" IsReadOnly="True" Text="{Binding MailType, Mode=OneWay}" />
+                            <Label Grid.Column="2" Content="{Binding Source={x:Static services:ResourceService.Instance}, Path=Resources.DeferredDeliveryMinutes, Mode=OneWay}" FontSize="11.5" Padding="0" Margin="10,0,0,0" />
+                            <TextBox Grid.Column="3" x:Name="DeferredDeliveryMinutesBox" Width="32" Padding="0" Margin="5,0,0,0" IsReadOnly="false" TextAlignment="Right" Text="{Binding DeferredDeliveryMinutes, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" PreviewTextInput="DeferredDeliveryMinutesBox_OnPreviewTextInput" CommandManager.PreviewExecuted="DeferredDeliveryMinutesBox_OnPreviewExecuted" InputMethod.IsInputMethodEnabled="False" />
+                        </Grid>
                     </StackPanel>
                 </GroupBox>
-                <GroupBox Header="{Binding Source={x:Static services:ResourceService.Instance}, Path=Resources.MailBody, Mode=OneWay}" FontSize="11" Padding="3,3,3,3" Margin="0,1.5,0,0">
-                    <TextBox Height="{Binding MailBodyTextBoxHeight}" VerticalScrollBarVisibility="Visible" HorizontalScrollBarVisibility="Auto" IsReadOnly="True" Text="{Binding MailBody, Mode=OneWay}" />
+                <GroupBox Grid.Row="2" Header="{Binding Source={x:Static services:ResourceService.Instance}, Path=Resources.MailBody, Mode=OneWay}" FontSize="11.5" Padding="3,3,3,3" Margin="0,1.5,0,0">
+                    <TextBox VerticalScrollBarVisibility="Visible" HorizontalScrollBarVisibility="Auto" IsReadOnly="True" Text="{Binding MailBody, Mode=OneWay}" />
                 </GroupBox>
+            </Grid>
+        </Grid>
+        <Grid Grid.Column="0" Grid.Row="3">
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Margin="0,6,8,2.5">
+                <Button Content="{Binding Source={x:Static services:ResourceService.Instance}, Path=Resources.Send, Mode=OneWay}" Width="48" Margin="0,0,10,0" IsEnabled="{Binding IsCanSendMail}" Click="SendButton_OnClick" />
+                <Button Content="{Binding Source={x:Static services:ResourceService.Instance}, Path=Resources.Cancel, Mode=OneWay}" Width="100" Margin="3,0,0,0" IsDefault="True" IsCancel="True" Click="CancelButton_OnClick" />
             </StackPanel>
         </Grid>
-        <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Margin="0,6,8,0">
-            <Button Content="{Binding Source={x:Static services:ResourceService.Instance}, Path=Resources.Send, Mode=OneWay}" Width="48" Margin="0,0,10,0" IsEnabled="{Binding IsCanSendMail}" Click="SendButton_OnClick" />
-            <Button Content="{Binding Source={x:Static services:ResourceService.Instance}, Path=Resources.Cancel, Mode=OneWay}" Width="100" Margin="3,0,0,0" IsDefault="True" IsCancel="True" Click="CancelButton_OnClick" />
-        </StackPanel>
-    </StackPanel>
+    </Grid>
 </Window>   
