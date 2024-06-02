@@ -238,6 +238,24 @@ namespace OutlookOkan.Views
             }
         }
 
+        private void DataGrid_AutoDeleteRecipients_OnCellEditEnding(object sender, DataGridCellEditEndingEventArgs e)
+        {
+            var inputText = ((TextBox)e.EditingElement).Text;
+            if (string.IsNullOrEmpty(inputText))
+            {
+                _ = MessageBox.Show(Properties.Resources.InputMailaddressOrDomain, Properties.Resources.AppName, MessageBoxButton.OK);
+                e.Cancel = true;
+            }
+            else
+            {
+                //@のみで登録すると全てのメールアドレスが対象になるため、それを禁止。
+                if (!inputText.Equals("@")) return;
+
+                _ = MessageBox.Show(Properties.Resources.InputMailaddressOrDomain, Properties.Resources.AppName, MessageBoxButton.OK);
+                e.Cancel = true;
+            }
+        }
+        
         #endregion
 
         #region Buttons

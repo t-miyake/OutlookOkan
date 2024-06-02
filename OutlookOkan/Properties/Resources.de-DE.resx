@@ -979,4 +979,23 @@ Risiko einer Infektion mit einem Virus.</value>
   <data name="IsNoInternetCantUseSecurityForReceivedMail" xml:space="preserve">
     <value>Da keine Internetverbindung besteht, ist die Sicherheitsüberprüfung beim Öffnen von E-Mails nicht verfügbar.</value>
   </data>
+  <data name="AutoDeleteRecipients" xml:space="preserve">
+    <value>Automatische Empfängerentfernung</value>
+  </data>
+  <data name="ErrorByAutoDeleteReRecipients" xml:space="preserve">
+    <value>Alle Empfänger wurden aufgrund der automatischen Löschung entfernt.
+Zurück zur E-Mail-Bearbeitung.</value>
+  </data>
+  <data name="SettingExampleAutoDeleteRecipients" xml:space="preserve">
+    <value>E-Mail-Adresse: info@noraneko.co.jp
+oder
+Domäne: @noraneko.co.jp
+
+Registrieren Sie die Domains oder E-Mail-Adressen, die Sie automatisch von Empfängern entfernen möchten.
+
+Wenn das automatische Entfernen dazu führt, dass keine Empfänger vorhanden sind, wird eine Fehlermeldung angezeigt und die E-Mail wird nicht gesendet.</value>
+  </data>
+  <data name="RemovedRecipietnsMessage" xml:space="preserve">
+    <value>Der Empfänger wurde aufgrund der automatischen Entfernungsfunktion gelöscht.</value>
+  </data>
 </root>

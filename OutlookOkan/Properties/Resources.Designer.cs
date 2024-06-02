@@ -439,6 +439,15 @@ namespace OutlookOkan.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Automatic Recipient Removal.
+        /// </summary>
+        public static string AutoDeleteRecipients {
+            get {
+                return ResourceManager.GetString("AutoDeleteRecipients", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Basic Settings.
         /// </summary>
         public static string BasicSettings {
@@ -773,6 +782,16 @@ namespace OutlookOkan.Properties {
         public static string EncryptedZipBeta {
             get {
                 return ResourceManager.GetString("EncryptedZipBeta", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to All recipients have been removed due to automatic deletion.
+        ///Returning to the email editing..
+        /// </summary>
+        public static string ErrorByAutoDeleteReRecipients {
+            get {
+                return ResourceManager.GetString("ErrorByAutoDeleteReRecipients", resourceCulture);
             }
         }
         
@@ -1754,6 +1773,15 @@ namespace OutlookOkan.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to The recipient has been deleted due to the automatic removal function..
+        /// </summary>
+        public static string RemovedRecipietnsMessage {
+            get {
+                return ResourceManager.GetString("RemovedRecipietnsMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Rich-text.
         /// </summary>
         public static string RichText {
@@ -2026,6 +2054,21 @@ namespace OutlookOkan.Properties {
         public static string SettingExampleAutoAddMessage {
             get {
                 return ResourceManager.GetString("SettingExampleAutoAddMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Email address: info@noraneko.co.jp
+        ///or
+        ///Domain: @noraneko.co.jp
+        ///
+        ///Register the domains or email addresses you want to automatically remove from recipients.
+        ///
+        ///If automatic removal results in no recipients, an error message will appear, and the email will not be sent..
+        /// </summary>
+        public static string SettingExampleAutoDeleteRecipients {
+            get {
+                return ResourceManager.GetString("SettingExampleAutoDeleteRecipients", resourceCulture);
             }
         }
         

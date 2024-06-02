@@ -972,4 +972,23 @@
   <data name="IsNoInternetCantUseSecurityForReceivedMail" xml:space="preserve">
     <value>चूंकि कोई इंटरनेट कनेक्शन नहीं है, इसलिए ई-मेल खोलते समय सुरक्षा जाँच सुविधा उपलब्ध नहीं है।</value>
   </data>
+  <data name="AutoDeleteRecipients" xml:space="preserve">
+    <value>स्वचालित प्राप्तकर्ता हटाना</value>
+  </data>
+  <data name="ErrorByAutoDeleteReRecipients" xml:space="preserve">
+    <value>स्वचालित विलोपन के कारण सभी प्राप्तकर्ताओं को हटा दिया गया है।
+ईमेल संपादन पर लौटना।</value>
+  </data>
+  <data name="SettingExampleAutoDeleteRecipients" xml:space="preserve">
+    <value>ईमेल पता: info@noraneko.co.jp
+नहीं तो
+डोमेन: @noraneko.co.jp
+
+उन डोमेन या ईमेल पतों को पंजीकृत करें जिन्हें आप प्राप्तकर्ताओं से स्वचालित रूप से निकालना चाहते हैं।
+
+यदि स्वचालित निष्कासन का परिणाम कोई प्राप्तकर्ता नहीं है, तो एक त्रुटि संदेश दिखाई देगा, और ईमेल नहीं भेजा जाएगा।</value>
+  </data>
+  <data name="RemovedRecipietnsMessage" xml:space="preserve">
+    <value>प्राप्तकर्ता को स्वचालित हटाने के फ़ंक्शन के कारण हटा दिया गया है।</value>
+  </data>
 </root>

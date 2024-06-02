@@ -977,4 +977,23 @@ riesgo de infección con un virus.</value>
   <data name="IsNoInternetCantUseSecurityForReceivedMail" xml:space="preserve">
     <value>Dado que no hay conexión a Internet, la función de comprobación de seguridad no está disponible al abrir el correo electrónico.</value>
   </data>
+  <data name="AutoDeleteRecipients" xml:space="preserve">
+    <value>Eliminación automática de destinatarios</value>
+  </data>
+  <data name="ErrorByAutoDeleteReRecipients" xml:space="preserve">
+    <value>Todos los destinatarios se han eliminado debido a la eliminación automática.
+Volviendo a la edición del correo electrónico.</value>
+  </data>
+  <data name="SettingExampleAutoDeleteRecipients" xml:space="preserve">
+    <value>Dirección de correo electrónico: info@noraneko.co.jp
+o
+Dominio: @noraneko.co.jp
+
+Registre los dominios o direcciones de correo electrónico que desea eliminar automáticamente de los destinatarios.
+
+Si la eliminación automática da como resultado que no haya destinatarios, aparecerá un mensaje de error y el correo electrónico no se enviará.</value>
+  </data>
+  <data name="RemovedRecipietnsMessage" xml:space="preserve">
+    <value>El destinatario se ha eliminado gracias a la función de eliminación automática.</value>
+  </data>
 </root>

@@ -970,4 +970,23 @@ zip 파일에는 매크로가 포함 된 Office 파일이 포함되어 있습니
   <data name="IsNoInternetCantUseSecurityForReceivedMail" xml:space="preserve">
     <value>인터넷에 연결되어 있지 않기 때문에 이메일을 열 때 안전 확인 기능을 사용할 수 없습니다.</value>
   </data>
+  <data name="AutoDeleteRecipients" xml:space="preserve">
+    <value>수신자 자동 제거</value>
+  </data>
+  <data name="ErrorByAutoDeleteReRecipients" xml:space="preserve">
+    <value>자동 삭제로 인해 모든 수신자가 제거되었습니다.
+이메일 편집으로 돌아갑니다.</value>
+  </data>
+  <data name="SettingExampleAutoDeleteRecipients" xml:space="preserve">
+    <value>메일 주소: info@noraneko.co.jp
+또는
+도메인: @noraneko.co.jp
+
+수신자로부터 자동으로 제거할 도메인 또는 이메일 주소를 등록합니다.
+
+자동 제거로 수신자가 없으면 오류 메시지가 나타나고 이메일이 전송되지 않습니다.</value>
+  </data>
+  <data name="RemovedRecipietnsMessage" xml:space="preserve">
+    <value>자동 제거 기능으로 인해 수신자가 삭제되었습니다.</value>
+  </data>
 </root>

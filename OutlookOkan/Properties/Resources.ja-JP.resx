@@ -972,4 +972,23 @@ ZIPファイル内に.oneファイルが含まれており、
     <value>インターネットに接続されていないため、メールを開く際の安全確認機能は利用できません。
 ※インターネットに接続した状態で、Outlookを再起動してください。</value>
   </data>
+  <data name="AutoDeleteRecipients" xml:space="preserve">
+    <value>宛先の自動削除</value>
+  </data>
+  <data name="ErrorByAutoDeleteReRecipients" xml:space="preserve">
+    <value>宛先の自動削除により、すべての宛先が削除されました。
+メールの編集画面に戻ります。</value>
+  </data>
+  <data name="SettingExampleAutoDeleteRecipients" xml:space="preserve">
+    <value>アドレス：info@noraneko.co.jp
+または、
+ドメイン：@noraneko.co.jp
+
+宛先から自動で削除したいドメインやメールアドレスを登録します。
+
+※自動削除により、すべての宛先が削除される場合、エラーメッセージが表示され、メール送信がキャンセルされます。</value>
+  </data>
+  <data name="RemovedRecipietnsMessage" xml:space="preserve">
+    <value>自動削除機能により、宛先が削除されました。</value>
+  </data>
 </root>

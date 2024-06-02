@@ -971,4 +971,23 @@ bcc โดยอัตโนมัติ</value>
   <data name="IsNoInternetCantUseSecurityForReceivedMail" xml:space="preserve">
     <value>เนื่องจากไม่มีการเชื่อมต่ออินเทอร์เน็ตคุณสมบัติการตรวจสอบความปลอดภัยจึงไม่สามารถใช้งานได้เมื่อเปิดอีเมล</value>
   </data>
+  <data name="AutoDeleteRecipients" xml:space="preserve">
+    <value>การลบผู้รับอัตโนมัติ</value>
+  </data>
+  <data name="ErrorByAutoDeleteReRecipients" xml:space="preserve">
+    <value>ผู้รับทั้งหมดถูกลบออกเนื่องจากการลบอัตโนมัติ
+กลับไปที่การแก้ไขอีเมล</value>
+  </data>
+  <data name="SettingExampleAutoDeleteRecipients" xml:space="preserve">
+    <value>ที่อยู่อีเมล: info@noraneko.co.jp
+หรือ
+โดเมน: @noraneko.co.jp
+
+จดทะเบียนโดเมนหรือที่อยู่อีเมลที่คุณต้องการลบออกจากผู้รับโดยอัตโนมัติ
+
+หากการลบอัตโนมัติส่งผลให้ไม่มีผู้รับข้อความแสดงข้อผิดพลาดจะปรากฏขึ้นและอีเมลจะไม่ถูกส่ง</value>
+  </data>
+  <data name="RemovedRecipietnsMessage" xml:space="preserve">
+    <value>ผู้รับถูกลบเนื่องจากฟังก์ชันการลบอัตโนมัติ</value>
+  </data>
 </root>

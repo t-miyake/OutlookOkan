@@ -976,4 +976,23 @@ ZIP-файл содержит файл Office, содержащий макрос
   <data name="IsNoInternetCantUseSecurityForReceivedMail" xml:space="preserve">
     <value>Поскольку подключение к Интернету отсутствует, функция проверки безопасности недоступна при открытии электронной почты.</value>
   </data>
+  <data name="AutoDeleteRecipients" xml:space="preserve">
+    <value>Автоматическое удаление получателей</value>
+  </data>
+  <data name="ErrorByAutoDeleteReRecipients" xml:space="preserve">
+    <value>Все получатели были удалены из-за автоматического удаления.
+Возвращаемся к редактированию письма.</value>
+  </data>
+  <data name="SettingExampleAutoDeleteRecipients" xml:space="preserve">
+    <value>Адрес электронной почты: info@noraneko.co.jp
+или
+Домен: @noraneko.co.jp
+
+Зарегистрируйте домены или адреса электронной почты, которые вы хотите автоматически удалять из получателей.
+
+Если автоматическое удаление приведет к отсутствию получателей, появится сообщение об ошибке, и электронное письмо не будет отправлено.</value>
+  </data>
+  <data name="RemovedRecipietnsMessage" xml:space="preserve">
+    <value>Получатель был удален благодаря функции автоматического удаления.</value>
+  </data>
 </root>

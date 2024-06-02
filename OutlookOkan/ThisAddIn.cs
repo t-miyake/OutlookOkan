@@ -9,7 +9,6 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices;
-using System.Threading;
 using System.Windows;
 using System.Windows.Interop;
 using Outlook = Microsoft.Office.Interop.Outlook;
@@ -22,6 +21,7 @@ namespace OutlookOkan
         private readonly GeneralSetting _generalSetting = new GeneralSetting();
         private readonly SecurityForReceivedMail _securityForReceivedMail = new SecurityForReceivedMail();
         private readonly List<AlertKeywordOfSubjectWhenOpeningMail> _alertKeywordOfSubjectWhenOpeningMail = new List<AlertKeywordOfSubjectWhenOpeningMail>();
+        private readonly List<AutoDeleteRecipient> _autoDeleteRecipients = new List<AutoDeleteRecipient>();
 
         private Outlook.Inspectors _inspectors;
         private Outlook.Explorer _currentExplorer;
@@ -407,6 +407,7 @@ namespace OutlookOkan
             var autoAddMessageSettingList = CsvFileHandler.ReadCsv<AutoAddMessage>(typeof(AutoAddMessageMap), "AutoAddMessage.csv");
             if (autoAddMessageSettingList.Count > 0) autoAddMessageSetting = autoAddMessageSettingList[0];
 
+            var autoDeleteRecipients = CsvFileHandler.ReadCsv<AutoDeleteRecipient>(typeof(AutoDeleteRecipientMap), "AutoDeleteRecipientList.csv").Where(x => !string.IsNullOrEmpty(x.Recipient)).ToList();
 
             var type = typeof(Outlook.MailItem);
             //何らかの問題で確認画面が表示されないと、意図せずメールが送られてしまう恐れがあるため、念のための処理。
@@ -441,12 +442,49 @@ namespace OutlookOkan
                 switch (item)
                 {
                     case Outlook.MailItem mailItem:
+                        var isRemovedOfMailItem = DeleteRecipients(mailItem.Recipients, autoDeleteRecipients);
+                        if (mailItem.Recipients.Count == 0)
+                        {
+                            _ = MessageBox.Show(Properties.Resources.ErrorByAutoDeleteReRecipients, Properties.Resources.AppName, MessageBoxButton.OK, MessageBoxImage.Warning);
+                            cancel = true;
+                            return;
+                        }
+
                         type = typeof(Outlook.MailItem);
                         checklist = generateCheckList.GenerateCheckListFromMail(mailItem, _generalSetting, contacts, autoAddMessageSetting);
+                        if (isRemovedOfMailItem)
+                        {
+                            checklist.Alerts.Add(new Alert
+                            {
+                                AlertMessage = Properties.Resources.RemovedRecipietnsMessage,
+                                IsImportant = true,
+                                IsWhite = true,
+                                IsChecked = true
+                            });
+                        }
                         break;
                     case Outlook.MeetingItem meetingItem when _generalSetting.IsShowConfirmationAtSendMeetingRequest:
+                        var isRemovedOfMeetingItem = DeleteRecipients(meetingItem.Recipients, autoDeleteRecipients);
+                        if (meetingItem.Recipients.Count == 0)
+                        {
+                            _ = MessageBox.Show(Properties.Resources.ErrorByAutoDeleteReRecipients, Properties.Resources.AppName, MessageBoxButton.OK, MessageBoxImage.Warning);
+                            cancel = true;
+                            return;
+                        }
+
                         type = typeof(Outlook.MeetingItem);
                         checklist = generateCheckList.GenerateCheckListFromMail(meetingItem, _generalSetting, contacts, autoAddMessageSetting);
+
+                        if (isRemovedOfMeetingItem)
+                        {
+                            checklist.Alerts.Add(new Alert
+                            {
+                                AlertMessage = Properties.Resources.RemovedRecipietnsMessage,
+                                IsImportant = true,
+                                IsWhite = true,
+                                IsChecked = true
+                            });
+                        }
                         break;
                     case Outlook.MeetingItem _:
                         return;
@@ -583,6 +621,15 @@ namespace OutlookOkan
         }
 
         /// <summary>
+        /// 宛先から自動削除するドメインやメールアドレスの設定を読み込む。
+        /// </summary>
+        private void LoadAutoDeleteRecipientsList()
+        {
+            var autoDeleteRecipients = CsvFileHandler.ReadCsv<AutoDeleteRecipient>(typeof(AutoDeleteRecipientMap), "AutoDeleteRecipientList.csv").Where(x => !string.IsNullOrEmpty(x.Recipient));
+            _autoDeleteRecipients.AddRange(autoDeleteRecipients);
+        }
+
+        /// <summary>
         /// 一般設定を設定ファイルから読み込む。
         /// </summary>
         /// <param name="isLaunch">Outlookの起動時か否か</param>
@@ -714,6 +761,48 @@ namespace OutlookOkan
                 var range = mailItemWordEditor.Range();
                 range.InsertAfter(Environment.NewLine + Environment.NewLine + autoAddMessageSetting.MessageOfAddToEnd);
             }
+        }
+
+        /// <summary>
+        /// 受信メールの宛先を削除する。
+        /// </summary>
+        /// <param name="recipients">mailItem.Recipients</param>
+        /// <param name="autoDeleteRecipients">対象のドメインやメールアドレス</param>
+        private bool DeleteRecipients(Outlook.Recipients recipients, List<AutoDeleteRecipient> autoDeleteRecipients)
+        {
+            var isRemoved = false;
+            if (recipients is null || autoDeleteRecipients is null || !autoDeleteRecipients.Any())
+            {
+                return false;
+            }
+
+            for (var i = recipients.Count; i >= 1; i--)
+            {
+                var recipient = recipients[i];
+                var address = recipient.Address.ToLower();
+
+                foreach (var recipientToDelete in autoDeleteRecipients.Select(settings => settings.Recipient.ToLower()))
+                {
+                    if (recipientToDelete.StartsWith("@") && address.EndsWith(recipientToDelete))
+                    {
+                        recipients.Remove(i);
+                        isRemoved = true;
+                        break;
+                    }
+
+                    if (address.Equals(recipientToDelete))
+                    {
+                        recipients.Remove(i);
+                        isRemoved = true;
+                        break;
+                    }
+                }
+            }
+
+            if (!isRemoved) return false;
+
+            recipients.ResolveAll();
+            return true;
         }
 
         #region VSTO generated code

@@ -971,4 +971,23 @@ risk of infection with a virus.</value>
   <data name="IsNoInternetCantUseSecurityForReceivedMail" xml:space="preserve">
     <value>Since there is no Internet connection, the safety check feature is not available when opening e-mail.</value>
   </data>
+  <data name="AutoDeleteRecipients" xml:space="preserve">
+    <value>Automatic Recipient Removal</value>
+  </data>
+  <data name="ErrorByAutoDeleteReRecipients" xml:space="preserve">
+    <value>All recipients have been removed due to automatic deletion.
+Returning to the email editing.</value>
+  </data>
+  <data name="SettingExampleAutoDeleteRecipients" xml:space="preserve">
+    <value>Email address: info@noraneko.co.jp
+or
+Domain: @noraneko.co.jp
+
+Register the domains or email addresses you want to automatically remove from recipients.
+
+If automatic removal results in no recipients, an error message will appear, and the email will not be sent.</value>
+  </data>
+  <data name="RemovedRecipietnsMessage" xml:space="preserve">
+    <value>The recipient has been deleted due to the automatic removal function.</value>
+  </data>
 </root>

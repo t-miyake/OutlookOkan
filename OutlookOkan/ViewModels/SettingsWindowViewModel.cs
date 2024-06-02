@@ -6,9 +6,10 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Globalization;
 using System.Linq;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Input;
+using Languages = OutlookOkan.Types.Languages;
+using Task = System.Threading.Tasks.Task;
 
 namespace OutlookOkan.ViewModels
 {
@@ -62,6 +63,9 @@ namespace OutlookOkan.ViewModels
             ImportAlertKeywordOfSubjectWhenOpeningMailsList = new RelayCommand(ImportAlertKeywordOfSubjectWhenOpeningMailsFromCsv);
             ExportAlertKeywordOfSubjectWhenOpeningMailsList = new RelayCommand(ExportAlertKeywordOfSubjectWhenOpeningMailsToCsv);
 
+            ImportAutoDeleteRecipientsList = new RelayCommand(ImportAutoDeleteRecipientsFromCsv);
+            ExportAutoDeleteRecipientsList = new RelayCommand(ExportAutoDeleteRecipientsToCsv);
+
             //Load language code and name.
             var languages = new Languages();
             Languages = languages.Language;
@@ -86,6 +90,7 @@ namespace OutlookOkan.ViewModels
             LoadAttachmentAlertRecipientsData();
             LoadForceAutoChangeRecipientsToBccData();
             LoadAlertKeywordOfSubjectWhenOpeningMailsData();
+            LoadAutoDeleteRecipientsData();
             LoadAutoAddMessageData();
             LoadSecurityForReceivedMailData();
         }
@@ -113,6 +118,7 @@ namespace OutlookOkan.ViewModels
                     SaveAttachmentAlertRecipientsToCsv(),
                     SaveForceAutoChangeRecipientsToBccToCsv(),
                     SaveAlertKeywordOfSubjectWhenOpeningMailToCsv(),
+                    SaveAutoDeleteRecipientToCsv(),
                     SaveAutoAddMessageToCsv(),
                     SecurityForReceivedMailToCsv()
                 };
@@ -1379,6 +1385,63 @@ namespace OutlookOkan.ViewModels
             {
                 _alertKeywordOfSubjectWhenOpeningMails = value;
                 OnPropertyChanged(nameof(AlertKeywordOfSubjectWhenOpeningMails));
+            }
+        }
+
+        #endregion
+
+        #region AutoDeleteRecipient
+
+        public ICommand ImportAutoDeleteRecipientsList { get; }
+        public ICommand ExportAutoDeleteRecipientsList { get; }
+
+        private void LoadAutoDeleteRecipientsData()
+        {
+            var autoDeleteRecipients = CsvFileHandler.ReadCsv<AutoDeleteRecipient>(typeof(AutoDeleteRecipientMap), "AutoDeleteRecipientList.csv");
+            foreach (var data in autoDeleteRecipients.Where(x => !string.IsNullOrEmpty(x.Recipient)))
+            {
+                AutoDeleteRecipients.Add(data);
+            }
+        }
+
+        private async Task SaveAutoDeleteRecipientToCsv()
+        {
+            var list = AutoDeleteRecipients.Where(x => !string.IsNullOrEmpty(x.Recipient)).Cast<object>().ToList();
+            await Task.Run(() => CsvFileHandler.CreateOrReplaceCsv(typeof(AutoDeleteRecipientMap), "AutoDeleteRecipientList.csv", list));
+        }
+
+        private void ImportAutoDeleteRecipientsFromCsv()
+        {
+            try
+            {
+                var importData = CsvFileHandler.ImportCsv<AutoDeleteRecipient>(typeof(AutoDeleteRecipientMap));
+                foreach (var data in importData.Where(x => !string.IsNullOrEmpty(x.Recipient)))
+                {
+                    AutoDeleteRecipients.Add(data);
+                }
+
+                _ = MessageBox.Show(Properties.Resources.SuccessfulImport, Properties.Resources.AppName, MessageBoxButton.OK);
+            }
+            catch (Exception)
+            {
+                _ = MessageBox.Show(Properties.Resources.ImportFailed, Properties.Resources.AppName, MessageBoxButton.OK);
+            }
+        }
+
+        private void ExportAutoDeleteRecipientsToCsv()
+        {
+            var list = AutoDeleteRecipients.Where(x => !string.IsNullOrEmpty(x.Recipient)).Cast<object>().ToList();
+            CsvFileHandler.ExportCsv(typeof(AutoDeleteRecipientMap), list, "AutoDeleteRecipientList.csv");
+        }
+
+        private ObservableCollection<AutoDeleteRecipient> _autoDeleteRecipients = new ObservableCollection<AutoDeleteRecipient>();
+        public ObservableCollection<AutoDeleteRecipient> AutoDeleteRecipients
+        {
+            get => _autoDeleteRecipients;
+            set
+            {
+                _autoDeleteRecipients = value;
+                OnPropertyChanged(nameof(AutoDeleteRecipient));
             }
         }
 

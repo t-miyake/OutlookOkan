@@ -970,4 +970,23 @@ zip 檔包含一個包含宏和
   <data name="IsNoInternetCantUseSecurityForReceivedMail" xml:space="preserve">
     <value>由於沒有互聯網連接，因此打開電子郵件時無法使用安全檢查功能。</value>
   </data>
+  <data name="AutoDeleteRecipients" xml:space="preserve">
+    <value>自動刪除收件者</value>
+  </data>
+  <data name="ErrorByAutoDeleteReRecipients" xml:space="preserve">
+    <value>由於自動刪除，所有收件人都已被刪除。
+返回到電子郵件編輯。</value>
+  </data>
+  <data name="SettingExampleAutoDeleteRecipients" xml:space="preserve">
+    <value>電子郵件： info@noraneko.co.jp
+或
+功能變數名稱：@noraneko.co.jp
+
+註冊要從收件者中自動刪除的域或電子郵件位址。
+
+如果自動刪除導致沒有收件者，則會顯示一條錯誤消息，並且不會發送電子郵件。</value>
+  </data>
+  <data name="RemovedRecipietnsMessage" xml:space="preserve">
+    <value>由於自動刪除功能，收件者已被刪除。</value>
+  </data>
 </root>
