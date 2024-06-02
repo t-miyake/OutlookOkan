@@ -439,7 +439,6 @@ namespace OutlookOkan
                 CheckList checklist;
                 switch (item)
                 {
-                    //MailItem(通常のメール)とMeetingItem(会議招待)の場合にのみ動作させる。
                     case Outlook.MailItem mailItem:
                         type = typeof(Outlook.MailItem);
                         checklist = generateCheckList.GenerateCheckListFromMail(mailItem, _generalSetting, contacts, autoAddMessageSetting);
@@ -552,7 +551,7 @@ namespace OutlookOkan
         }
 
         /// <summary>
-        /// 受信メールの関するセキュリティ機能の設定を読み込む
+        /// 受信メールに関するセキュリティ機能の設定を読み込む
         /// </summary>
         private void LoadSecurityForReceivedMail()
         {
@@ -691,11 +690,11 @@ namespace OutlookOkan
         }
 
         /// <summary>
-        /// メール本文への文言の自動追加
+        /// メール本文へ文言を自動追加する。
         /// </summary>
-        /// <param name="autoAddMessageSetting"></param>
-        /// <param name="item"></param>
-        /// <param name="isMailItem"></param>
+        /// <param name="autoAddMessageSetting">自動追加する文言の設定</param>
+        /// <param name="item">mailItem</param>
+        /// <param name="isMailItem">mailItemか否か</param>
         private void AutoAddMessageToBody(AutoAddMessage autoAddMessageSetting, object item, bool isMailItem)
         {
             //一旦、通常のメールのみ対象とする。
