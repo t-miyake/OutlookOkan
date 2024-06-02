@@ -982,6 +982,9 @@ zip 檔包含一個包含宏和
   <data name="WarnIfTheReceivedEmailIsAtRiskOfSpoofing" xml:space="preserve">
     <value>如果收到的電子郵件存在欺騙（寄件者偽造）的風險，則發出警告。</value>
   </data>
+  <data name="VerifyEmailHeader" xml:space="preserve">
+    <value>驗證標頭</value>
+  </data>
   <data name="AutoDeleteRecipients" xml:space="preserve">
     <value>自動刪除收件者</value>
   </data>

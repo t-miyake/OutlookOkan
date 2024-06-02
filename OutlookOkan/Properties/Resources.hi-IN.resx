@@ -983,6 +983,9 @@
   <data name="WarnIfTheReceivedEmailIsAtRiskOfSpoofing" xml:space="preserve">
     <value>चेतावनी दें कि क्या प्राप्त ईमेल को स्पूफिंग (प्रेषक जालसाजी) का खतरा है।</value>
   </data>
+  <data name="VerifyEmailHeader" xml:space="preserve">
+    <value>शीर्ष लेख सत्यापित करें</value>
+  </data>
   <data name="AutoDeleteRecipients" xml:space="preserve">
     <value>स्वचालित प्राप्तकर्ता हटाना</value>
   </data>

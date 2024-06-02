@@ -982,6 +982,9 @@ zip 파일에는 매크로가 포함 된 Office 파일이 포함되어 있습니
   <data name="WarnIfTheReceivedEmailIsAtRiskOfSpoofing" xml:space="preserve">
     <value>수신된 이메일이 스푸핑(발신자 위조)의 위험이 있는 경우 경고합니다.</value>
   </data>
+  <data name="VerifyEmailHeader" xml:space="preserve">
+    <value>헤더 확인</value>
+  </data>
   <data name="AutoDeleteRecipients" xml:space="preserve">
     <value>수신자 자동 제거</value>
   </data>

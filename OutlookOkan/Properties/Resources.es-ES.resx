@@ -986,6 +986,9 @@ riesgo de infección con un virus.</value>
   <data name="WarnIfTheReceivedEmailIsAtRiskOfSpoofing" xml:space="preserve">
     <value>Advertir si el correo electrónico recibido corre el riesgo de ser suplantado (falsificación del remitente).</value>
   </data>
+  <data name="VerifyEmailHeader" xml:space="preserve">
+    <value>Verificar encabezado</value>
+  </data>
   <data name="AutoDeleteRecipients" xml:space="preserve">
     <value>Eliminación automática de destinatarios</value>
   </data>

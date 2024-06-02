@@ -985,6 +985,9 @@ Outlookを再起動してください。</value>
   <data name="WarnIfTheReceivedEmailIsAtRiskOfSpoofing" xml:space="preserve">
     <value>なりすまし(送信元偽装)の危険性がある場合に警告を表示する。</value>
   </data>
+  <data name="VerifyEmailHeader" xml:space="preserve">
+    <value>ヘッダ検証</value>
+  </data>
   <data name="AutoDeleteRecipients" xml:space="preserve">
     <value>宛先の自動削除</value>
   </data>

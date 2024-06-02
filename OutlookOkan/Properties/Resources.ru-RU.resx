@@ -987,6 +987,9 @@ ZIP-файл содержит файл Office, содержащий макрос
   <data name="WarnIfTheReceivedEmailIsAtRiskOfSpoofing" xml:space="preserve">
     <value>Предупредить, если полученное письмо подвержено риску подмены (подделки отправителем).</value>
   </data>
+  <data name="VerifyEmailHeader" xml:space="preserve">
+    <value>Проверка заголовка</value>
+  </data>
   <data name="AutoDeleteRecipients" xml:space="preserve">
     <value>Автоматическое удаление получателей</value>
   </data>

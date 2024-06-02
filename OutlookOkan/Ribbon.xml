@@ -4,9 +4,10 @@
     <tabs>
       <tab idMso="TabSendReceive">
         <group id="MyAddinGroup" insertAfterMso="GroupPreferences" getLabel="GetLabel" autoScale="true">
-          <button id="Settings" getLabel="GetLabel" size="normal" imageMso="AssetSettings" onAction="ShowSettings"/>
-          <button id="About" getLabel="GetLabel" size="normal" imageMso="Info" onAction="ShowAbout"/>
+          <button id="Settings" getLabel="GetLabel" size="large" imageMso="AssetSettings" onAction="ShowSettings"/>
+          <button id="VerifyEmailHeader" getLabel="GetLabel" size="normal" imageMso="MessageOptions" onAction="VerifyEmailHeader"/>
           <button id="Help" getLabel="GetLabel" size="normal" imageMso="Help" onAction="ShowHelp"/>
+          <button id="About" getLabel="GetLabel" size="normal" imageMso="Info" onAction="ShowAbout"/>
         </group>
       </tab>
     </tabs>

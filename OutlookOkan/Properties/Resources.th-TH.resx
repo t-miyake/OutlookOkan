@@ -982,6 +982,9 @@
   <data name="WarnIfTheReceivedEmailIsAtRiskOfSpoofing" xml:space="preserve">
     <value>เตือนหากอีเมลที่ได้รับมีความเสี่ยงที่จะปลอมแปลง (การปลอมแปลงผู้ส่ง)</value>
   </data>
+  <data name="VerifyEmailHeader" xml:space="preserve">
+    <value>ตรวจสอบส่วนหัว</value>
+  </data>
   <data name="AutoDeleteRecipients" xml:space="preserve">
     <value>การลบผู้รับอัตโนมัติ</value>
   </data>

@@ -2401,7 +2401,16 @@ namespace OutlookOkan.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Version 2.8.1.
+        ///   Looks up a localized string similar to Verify Header.
+        /// </summary>
+        public static string VerifyEmailHeader {
+            get {
+                return ResourceManager.GetString("VerifyEmailHeader", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Version 2.8.2.
         /// </summary>
         public static string Version {
             get {
