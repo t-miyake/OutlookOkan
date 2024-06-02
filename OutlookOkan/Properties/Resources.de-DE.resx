@@ -354,8 +354,7 @@ Möchten Sie es herunterladen?</value>
     <value>Da die externen Domänen von To und Cc über dem Schwellenwert liegen, wurde die externe Domäne der Empfänger in Bcc geändert.</value>
   </data>
   <data name="ExternalDomainsWarningAndAutoChangeToBcc" xml:space="preserve">
-    <value>Warnung vor externen Domänen und
-automatischer Wechsel zu Bcc</value>
+    <value>xterne Domänenwarnung und Bcc</value>
   </data>
   <data name="ExternalRecipient" xml:space="preserve">
     <value>Externer Empfänger</value>
@@ -543,8 +542,7 @@ wird auf dem Bestätigungsbildschirm eine Warnung angezeigt.</value>
     <value>Schlüsselwörter</value>
   </data>
   <data name="KeywordAndRecipients" xml:space="preserve">
-    <value>Verknüpfung von Schlüsselwörtern 
-und Empfängern</value>
+    <value>Schlüsselwörter und Empfänger</value>
   </data>
   <data name="KeywordAndRecipientsAlert1" xml:space="preserve">
     <value>Das Schlüsselwort "</value>
@@ -577,8 +575,7 @@ und Empfängern</value>
     <value>Name</value>
   </data>
   <data name="NameAndDomain" xml:space="preserve">
-    <value>Name und Domäne des Empfängers im
-Zusammenhang</value>
+    <value>Empfängername und Domäne</value>
   </data>
   <data name="NoAlert" xml:space="preserve">
     <value>Es gibt keine wichtigen Warnmeldungen.</value>

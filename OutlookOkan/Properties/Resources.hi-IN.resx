@@ -352,8 +352,7 @@
     <value>चूंकि To और Cc के बाहरी डोमेन थ्रेशोल्ड से ऊपर हैं, बाहरी डोमेन प्राप्तकर्ताओं को Bcc में बदल दिया गया है।</value>
   </data>
   <data name="ExternalDomainsWarningAndAutoChangeToBcc" xml:space="preserve">
-    <value>बाहरी डोमेन अलर्ट और
-गुप्त प्रतिलिपि में स्वतः परिवर्तन</value>
+    <value>बाहरी डोमेन अलर्ट और Bcc</value>
   </data>
   <data name="ExternalRecipient" xml:space="preserve">
     <value>बाहरी प्राप्तकर्ता</value>

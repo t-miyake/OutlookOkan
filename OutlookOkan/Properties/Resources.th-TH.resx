@@ -351,8 +351,7 @@
     <value>เนื่องจากโดเมนภายนอกของ To และ Cc อยู่เหนือขีดจำกัด ผู้รับโดเมนภายนอกจึงถูกเปลี่ยนเป็น Bcc</value>
   </data>
   <data name="ExternalDomainsWarningAndAutoChangeToBcc" xml:space="preserve">
-    <value>คำเตือนโดเมนภายนอกและเปลี่ยนเป็น
-bcc โดยอัตโนมัติ</value>
+    <value>เตือนโดเมนภายนอกและ Bcc</value>
   </data>
   <data name="ExternalRecipient" xml:space="preserve">
     <value>ผู้รับภายนอก</value>

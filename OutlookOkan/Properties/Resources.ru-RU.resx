@@ -353,8 +353,7 @@
     <value>Поскольку внешние домены To и Cc превышают пороговое значение, внешний домен получателей был изменен на Bcc.</value>
   </data>
   <data name="ExternalDomainsWarningAndAutoChangeToBcc" xml:space="preserve">
-    <value>Предупреждение о внешних доменах и
-автоматическое изменение на Bcc</value>
+    <value>Внешние домены и Bcc</value>
   </data>
   <data name="ExternalRecipient" xml:space="preserve">
     <value>Внешний адресат</value>
