@@ -150,28 +150,59 @@ namespace OutlookOkan
                 var analysisResults = MailHeaderHandler.ValidateEmailHeader(header.ToString());
                 if (!(analysisResults is null))
                 {
-                    var message = "";
-                    foreach (KeyValuePair<string, string> entry in analysisResults)
-                    {
-                        message += ($"{entry.Key}: {entry.Value}") + Environment.NewLine;
-                    }
+                    var isInternalMail = analysisResults["SPF"] == "NONE" && analysisResults["DKIM"] == "NONE" && analysisResults["DMARC"] == "NONE" && analysisResults["Internal"] == "TRUE";
 
-                    //SPFレコードの検証に失敗した場合に警告を表示する。
-                    if (_securityForReceivedMail.IsShowWarningWhenSpfFails)
+                    //内部から内部へのメールの場合、警告は行わない。
+                    if (!isInternalMail)
                     {
-                        if (analysisResults["SPF"] == "FAIL" || analysisResults["SPF"] == "NONE")
+                        var message = "";
+                        foreach (KeyValuePair<string, string> entry in analysisResults)
                         {
-
-                            _ = MessageBox.Show(Properties.Resources.SpfWarning1 + Environment.NewLine + Properties.Resources.SpfDkimWaring2 + Environment.NewLine + Environment.NewLine + message, Properties.Resources.Warning, MessageBoxButton.OK, MessageBoxImage.Error);
+                            message += ($"{entry.Key}: {entry.Value}") + Environment.NewLine;
                         }
-                    }
 
-                    //DKIMレコードの検証に失敗した場合に警告を表示する。
-                    if (_securityForReceivedMail.IsShowWarningWhenDkimFails)
-                    {
-                        if (analysisResults["DKIM"] == "FAIL")
+                        if (_securityForReceivedMail.IsShowWarningWhenSpoofingRisk)
                         {
-                            _ = MessageBox.Show(Properties.Resources.DkimWarning1 + Environment.NewLine + Properties.Resources.SpfDkimWaring2 + Environment.NewLine + Environment.NewLine + message, Properties.Resources.Warning, MessageBoxButton.OK, MessageBoxImage.Error);
+                            if (_securityForReceivedMail.IsShowWarningWhenDmarcNotImplemented)
+                            {
+                                //DMARCがPASSでない場合、常に警告
+                                if (analysisResults["DMARC"] != "PASS")
+                                {
+                                    _ = MessageBox.Show(Properties.Resources.SpoofingRiskWaring + Environment.NewLine + Properties.Resources.SpfDkimWaring2 + Environment.NewLine + Environment.NewLine + message, Properties.Resources.Warning, MessageBoxButton.OK, MessageBoxImage.Error);
+                                }
+                            }
+                            else
+                            {
+                                var selfGeneratedDmarcResult = MailHeaderHandler.DetermineDmarcResult(analysisResults["SPF"], analysisResults["SPF Alignment"], analysisResults["DKIM"], analysisResults["DKIM Alignment"]);
+
+                                if (analysisResults["DMARC"] != "PASS" && analysisResults["DMARC"] != "BESTGUESSPASS" && selfGeneratedDmarcResult == "FAIL")
+                                {
+                                    _ = MessageBox.Show(Properties.Resources.SpoofingRiskWaring + Environment.NewLine + Properties.Resources.SpfDkimWaring2 + Environment.NewLine + Environment.NewLine + message, Properties.Resources.Warning, MessageBoxButton.OK, MessageBoxImage.Error);
+                                }
+                            }
+                        }
+                        else
+                        {
+                            //「なりすまし(送信元偽装)の危険性がある場合に警告する。」機能が有効な場合、SPFやDKIM単独の確認は行わない。
+
+                            //SPFレコードの検証に失敗した場合に警告を表示する。
+                            if (_securityForReceivedMail.IsShowWarningWhenSpfFails)
+                            {
+                                if (analysisResults["SPF"] == "FAIL" || analysisResults["SPF"] == "NONE")
+                                {
+
+                                    _ = MessageBox.Show(Properties.Resources.SpfWarning1 + Environment.NewLine + Properties.Resources.SpfDkimWaring2 + Environment.NewLine + Environment.NewLine + message, Properties.Resources.Warning, MessageBoxButton.OK, MessageBoxImage.Error);
+                                }
+                            }
+
+                            //DKIMレコードの検証に失敗した場合に警告を表示する。
+                            if (_securityForReceivedMail.IsShowWarningWhenDkimFails)
+                            {
+                                if (analysisResults["DKIM"] == "FAIL")
+                                {
+                                    _ = MessageBox.Show(Properties.Resources.DkimWarning1 + Environment.NewLine + Properties.Resources.SpfDkimWaring2 + Environment.NewLine + Environment.NewLine + message, Properties.Resources.Warning, MessageBoxButton.OK, MessageBoxImage.Error);
+                                }
+                            }
                         }
                     }
                 }
@@ -628,6 +659,8 @@ namespace OutlookOkan
             _securityForReceivedMail.IsWarnOneFileInTheZip = securityForReceivedMail[0].IsWarnOneFileInTheZip;
             _securityForReceivedMail.IsWarnOfficeFileWithMacroInTheZip = securityForReceivedMail[0].IsWarnOfficeFileWithMacroInTheZip;
             _securityForReceivedMail.IsWarnBeforeOpeningAttachmentsThatContainMacros = securityForReceivedMail[0].IsWarnBeforeOpeningAttachmentsThatContainMacros;
+            _securityForReceivedMail.IsShowWarningWhenSpoofingRisk = securityForReceivedMail[0].IsShowWarningWhenSpoofingRisk;
+            _securityForReceivedMail.IsShowWarningWhenDmarcNotImplemented = securityForReceivedMail[0].IsShowWarningWhenDmarcNotImplemented;
         }
 
         /// <summary>

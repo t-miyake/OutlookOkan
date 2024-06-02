@@ -976,6 +976,15 @@ ZIPファイル内に.oneファイルが含まれており、
     <value>何らかの問題が発生したため、メールを開く際の安全確認機能は利用できません。
 Outlookを再起動してください。</value>
   </data>
+  <data name="SpoofingRiskWaring" xml:space="preserve">
+    <value>なりすまし(送信元偽装)の危険性があります。</value>
+  </data>
+  <data name="DisplayWarningIfTheSenderHasNotImplementedDmarc" xml:space="preserve">
+    <value>送信元で「DMARC」が未導入の場合にも警告を表示する。</value>
+  </data>
+  <data name="WarnIfTheReceivedEmailIsAtRiskOfSpoofing" xml:space="preserve">
+    <value>なりすまし(送信元偽装)の危険性がある場合に警告を表示する。</value>
+  </data>
   <data name="AutoDeleteRecipients" xml:space="preserve">
     <value>宛先の自動削除</value>
   </data>

@@ -1469,6 +1469,8 @@ namespace OutlookOkan.ViewModels
             IsWarnOneFileInTheZip = _securityForReceivedMail[0].IsWarnOneFileInTheZip;
             IsWarnOfficeFileWithMacroInTheZip = _securityForReceivedMail[0].IsWarnOfficeFileWithMacroInTheZip;
             IsWarnBeforeOpeningAttachmentsThatContainMacros = _securityForReceivedMail[0].IsWarnBeforeOpeningAttachmentsThatContainMacros;
+            IsShowWarningWhenSpoofingRisk = _securityForReceivedMail[0].IsShowWarningWhenSpoofingRisk;
+            IsShowWarningWhenDmarcNotImplemented = _securityForReceivedMail[0].IsShowWarningWhenDmarcNotImplemented;
         }
 
         private async Task SecurityForReceivedMailToCsv()
@@ -1488,8 +1490,10 @@ namespace OutlookOkan.ViewModels
                     IsWarnLinkFileInTheZip = IsWarnLinkFileInTheZip,
                     IsWarnOneFileInTheZip = IsWarnOneFileInTheZip,
                     IsWarnOfficeFileWithMacroInTheZip = IsWarnOfficeFileWithMacroInTheZip,
-                    IsWarnBeforeOpeningAttachmentsThatContainMacros = IsWarnBeforeOpeningAttachmentsThatContainMacros
-        }
+                    IsWarnBeforeOpeningAttachmentsThatContainMacros = IsWarnBeforeOpeningAttachmentsThatContainMacros,
+                    IsShowWarningWhenSpoofingRisk = IsShowWarningWhenSpoofingRisk,
+                    IsShowWarningWhenDmarcNotImplemented = IsShowWarningWhenDmarcNotImplemented
+                }
             };
 
             var list = tempSecurityForReceivedMail.Cast<object>().ToList();
@@ -1506,6 +1510,9 @@ namespace OutlookOkan.ViewModels
             {
                 _isEnableSecurityForReceivedMail = value;
                 OnPropertyChanged(nameof(IsEnableSecurityForReceivedMail));
+                OnPropertyChanged(nameof(IsEnableIsShowWarningWhenSpoofingRiskSettings));
+                OnPropertyChanged(nameof(IsEnablesShowWarningWhenDmarcNotImplementedSettings));
+                OnPropertyChanged(nameof(IsEnableIsShowWarningWhenSpfAndDkimFailsSettings));
             }
         }
 
@@ -1528,6 +1535,9 @@ namespace OutlookOkan.ViewModels
             {
                 _isEnableMailHeaderAnalysis = value;
                 OnPropertyChanged(nameof(IsEnableMailHeaderAnalysis));
+                OnPropertyChanged(nameof(IsEnableIsShowWarningWhenSpoofingRiskSettings));
+                OnPropertyChanged(nameof(IsEnableIsShowWarningWhenSpfAndDkimFailsSettings));
+                OnPropertyChanged(nameof(IsEnablesShowWarningWhenDmarcNotImplementedSettings));
             }
         }
 
@@ -1630,7 +1640,44 @@ namespace OutlookOkan.ViewModels
             }
         }
 
-        #endregion  
+        private bool _isShowWarningWhenSpoofingRisk;
+        public bool IsShowWarningWhenSpoofingRisk
+        {
+            get => _isShowWarningWhenSpoofingRisk;
+            set
+            {
+                _isShowWarningWhenSpoofingRisk = value;
+                if (value)
+                {
+                    IsShowWarningWhenSpfFails = false;
+                    IsShowWarningWhenDkimFails = false;
+                }
+
+                OnPropertyChanged(nameof(IsShowWarningWhenSpoofingRisk));
+                OnPropertyChanged(nameof(IsEnablesShowWarningWhenDmarcNotImplementedSettings));
+
+                OnPropertyChanged(nameof(IsShowWarningWhenSpfFails));
+                OnPropertyChanged(nameof(IsShowWarningWhenDkimFails));
+                OnPropertyChanged(nameof(IsEnableIsShowWarningWhenSpfAndDkimFailsSettings));
+            }
+        }
+
+        private bool _isShowWarningWhenDmarcNotImplemented;
+        public bool IsShowWarningWhenDmarcNotImplemented
+        {
+            get => _isShowWarningWhenDmarcNotImplemented;
+            set
+            {
+                _isShowWarningWhenDmarcNotImplemented = value;
+                OnPropertyChanged(nameof(IsShowWarningWhenDmarcNotImplemented));
+            }
+        }
+
+        public bool IsEnableIsShowWarningWhenSpoofingRiskSettings => IsEnableMailHeaderAnalysis && IsEnableSecurityForReceivedMail;
+        public bool IsEnablesShowWarningWhenDmarcNotImplementedSettings => IsShowWarningWhenSpoofingRisk && IsEnableMailHeaderAnalysis && IsEnableSecurityForReceivedMail;
+        public bool IsEnableIsShowWarningWhenSpfAndDkimFailsSettings => !IsShowWarningWhenSpoofingRisk && IsEnableMailHeaderAnalysis && IsEnableSecurityForReceivedMail;
+
+        #endregion
 
         #region GeneralSetting
 

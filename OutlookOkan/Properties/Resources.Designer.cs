@@ -741,6 +741,15 @@ namespace OutlookOkan.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Display a warning if the sender has not implemented DMARC..
+        /// </summary>
+        public static string DisplayWarningIfTheSenderHasNotImplementedDmarc {
+            get {
+                return ResourceManager.GetString("DisplayWarningIfTheSenderHasNotImplementedDmarc", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Distribution list.
         /// </summary>
         public static string DistributionList {
@@ -2242,6 +2251,15 @@ namespace OutlookOkan.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to This email is at risk of being spoofed (sender forgery)..
+        /// </summary>
+        public static string SpoofingRiskWaring {
+            get {
+                return ResourceManager.GetString("SpoofingRiskWaring", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Subject.
         /// </summary>
         public static string Subject {
@@ -2397,6 +2415,15 @@ namespace OutlookOkan.Properties {
         public static string VersionInfo {
             get {
                 return ResourceManager.GetString("VersionInfo", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Warn if the received email is at risk of spoofing (sender forgery)..
+        /// </summary>
+        public static string WarnIfTheReceivedEmailIsAtRiskOfSpoofing {
+            get {
+                return ResourceManager.GetString("WarnIfTheReceivedEmailIsAtRiskOfSpoofing", resourceCulture);
             }
         }
         

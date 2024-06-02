@@ -974,6 +974,15 @@ risk of infection with a virus.</value>
   <data name="CantUseSecurityForReceivedMail" xml:space="preserve">
     <value>Due to some problem, the safety check feature is not available when opening e-mail.</value>
   </data>
+  <data name="SpoofingRiskWaring" xml:space="preserve">
+    <value>This email is at risk of being spoofed (sender forgery).</value>
+  </data>
+  <data name="DisplayWarningIfTheSenderHasNotImplementedDmarc" xml:space="preserve">
+    <value>Display a warning if the sender has not implemented DMARC.</value>
+  </data>
+  <data name="WarnIfTheReceivedEmailIsAtRiskOfSpoofing" xml:space="preserve">
+    <value>Warn if the received email is at risk of spoofing (sender forgery).</value>
+  </data>
   <data name="AutoDeleteRecipients" xml:space="preserve">
     <value>Automatic Recipient Removal</value>
   </data>

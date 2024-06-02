@@ -974,6 +974,15 @@
   <data name="CantUseSecurityForReceivedMail" xml:space="preserve">
     <value>कुछ समस्या के कारण, ई-मेल खोलते समय सुरक्षा जाँच सुविधा उपलब्ध नहीं होती है.</value>
   </data>
+  <data name="SpoofingRiskWaring" xml:space="preserve">
+    <value>इस ईमेल के स्पूफ (प्रेषक जालसाजी) होने का खतरा है।</value>
+  </data>
+  <data name="DisplayWarningIfTheSenderHasNotImplementedDmarc" xml:space="preserve">
+    <value>यदि प्रेषक ने DMARC कार्यान्वित नहीं किया है, तो चेतावनी प्रदर्शित करें।</value>
+  </data>
+  <data name="WarnIfTheReceivedEmailIsAtRiskOfSpoofing" xml:space="preserve">
+    <value>चेतावनी दें कि क्या प्राप्त ईमेल को स्पूफिंग (प्रेषक जालसाजी) का खतरा है।</value>
+  </data>
   <data name="AutoDeleteRecipients" xml:space="preserve">
     <value>स्वचालित प्राप्तकर्ता हटाना</value>
   </data>

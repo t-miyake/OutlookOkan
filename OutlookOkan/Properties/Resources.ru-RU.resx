@@ -978,6 +978,15 @@ ZIP-файл содержит файл Office, содержащий макрос
   <data name="CantUseSecurityForReceivedMail" xml:space="preserve">
     <value>Из-за какой-либо проблемы функция проверки безопасности недоступна при открытии электронной почты.</value>
   </data>
+  <data name="SpoofingRiskWaring" xml:space="preserve">
+    <value>Это электронное письмо подвержено риску подделки (подделки отправителя).</value>
+  </data>
+  <data name="DisplayWarningIfTheSenderHasNotImplementedDmarc" xml:space="preserve">
+    <value>Отображение предупреждения, если отправитель не реализовал DMARC.</value>
+  </data>
+  <data name="WarnIfTheReceivedEmailIsAtRiskOfSpoofing" xml:space="preserve">
+    <value>Предупредить, если полученное письмо подвержено риску подмены (подделки отправителем).</value>
+  </data>
   <data name="AutoDeleteRecipients" xml:space="preserve">
     <value>Автоматическое удаление получателей</value>
   </data>

@@ -973,6 +973,15 @@ zip 文件包含一个包含宏和
   <data name="CantUseSecurityForReceivedMail" xml:space="preserve">
     <value>由于某些问题，打开电子邮件时安全检查功能不可用。</value>
   </data>
+  <data name="SpoofingRiskWaring" xml:space="preserve">
+    <value>此电子邮件存在被欺骗（发件人伪造）的风险。</value>
+  </data>
+  <data name="DisplayWarningIfTheSenderHasNotImplementedDmarc" xml:space="preserve">
+    <value>如果发件人没有实施 DMARC，则显示警告。</value>
+  </data>
+  <data name="WarnIfTheReceivedEmailIsAtRiskOfSpoofing" xml:space="preserve">
+    <value>如果收到的电子邮件存在欺骗（发件人伪造）的风险，则发出警告。</value>
+  </data>
   <data name="AutoDeleteRecipients" xml:space="preserve">
     <value>自动删除收件人</value>
   </data>

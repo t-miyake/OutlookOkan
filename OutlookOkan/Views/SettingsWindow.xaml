@@ -1269,12 +1269,22 @@
                                 </StackPanel>
                                 <StackPanel Orientation="Horizontal" Margin="31,5,0,0">
                                     <TextBlock Text="┗━━ " />
-                                    <CheckBox Margin="0,0,8,0" IsChecked="{Binding IsShowWarningWhenSpfFails, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Center" IsEnabled="{Binding IsEnableMailHeaderAnalysis, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}" />
+                                    <CheckBox Margin="0,0,8,0" IsChecked="{Binding IsShowWarningWhenSpoofingRisk, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Center" IsEnabled="{Binding IsEnableIsShowWarningWhenSpoofingRiskSettings, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}" />
+                                    <TextBlock Text="{Binding Source={x:Static services:ResourceService.Instance}, Path=Resources.WarnIfTheReceivedEmailIsAtRiskOfSpoofing, Mode=OneWay}" VerticalAlignment="Center" TextWrapping="Wrap" Width="435" />
+                                </StackPanel>
+                                <StackPanel Orientation="Horizontal" Margin="56,5,0,0">
+                                    <TextBlock Text="┗━━ " />
+                                    <CheckBox Margin="0,0,8,0" IsChecked="{Binding IsShowWarningWhenDmarcNotImplemented, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Center" IsEnabled="{Binding IsEnablesShowWarningWhenDmarcNotImplementedSettings, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}" />
+                                    <TextBlock Text="{Binding Source={x:Static services:ResourceService.Instance}, Path=Resources.DisplayWarningIfTheSenderHasNotImplementedDmarc, Mode=OneWay}" VerticalAlignment="Center" TextWrapping="Wrap" Width="435" />
+                                </StackPanel>
+                                <StackPanel Orientation="Horizontal" Margin="31,5,0,0">
+                                    <TextBlock Text="┗━━ " />
+                                    <CheckBox Margin="0,0,8,0" IsChecked="{Binding IsShowWarningWhenSpfFails, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Center" IsEnabled="{Binding IsEnableIsShowWarningWhenSpfAndDkimFailsSettings, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}" />
                                     <TextBlock Text="{Binding Source={x:Static services:ResourceService.Instance}, Path=Resources.IsShowWarningWhenSpfFails, Mode=OneWay}" VerticalAlignment="Center" TextWrapping="Wrap" Width="435" />
                                 </StackPanel>
                                 <StackPanel Orientation="Horizontal" Margin="31,5,0,0">
                                     <TextBlock Text="┗━━ " />
-                                    <CheckBox Margin="0,0,8,0" IsChecked="{Binding IsShowWarningWhenDkimFails, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Center" IsEnabled="{Binding IsEnableMailHeaderAnalysis, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}" />
+                                    <CheckBox Margin="0,0,8,0" IsChecked="{Binding IsShowWarningWhenDkimFails, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Center" IsEnabled="{Binding IsEnableIsShowWarningWhenSpfAndDkimFailsSettings, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}" />
                                     <TextBlock Text="{Binding Source={x:Static services:ResourceService.Instance}, Path=Resources.IsShowWarningWhenDkimFails, Mode=OneWay}" VerticalAlignment="Center" TextWrapping="Wrap" Width="435" />
                                 </StackPanel>
                                 <StackPanel Orientation="Horizontal" Margin="6,8,0,0">

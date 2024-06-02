@@ -16,6 +16,8 @@ namespace OutlookOkan.Types
         public bool IsWarnOneFileInTheZip { get; set; }
         public bool IsWarnOfficeFileWithMacroInTheZip { get; set; }
         public bool IsWarnBeforeOpeningAttachmentsThatContainMacros { get; set; }
+        public bool IsShowWarningWhenSpoofingRisk { get; set; }
+        public bool IsShowWarningWhenDmarcNotImplemented { get; set; }
     }
 
     public sealed class SecurityForReceivedMailMap : ClassMap<SecurityForReceivedMail>
@@ -56,6 +58,12 @@ namespace OutlookOkan.Types
                 .BooleanValues(true, true, "Yes", "Y").TypeConverterOption.BooleanValues(false, true, "No", "N").Default(false);
 
             _ = Map(m => m.IsWarnBeforeOpeningAttachmentsThatContainMacros).Index(11).TypeConverterOption
+                .BooleanValues(true, true, "Yes", "Y").TypeConverterOption.BooleanValues(false, true, "No", "N").Default(false);
+
+            _ = Map(m => m.IsShowWarningWhenSpoofingRisk).Index(12).TypeConverterOption
+                .BooleanValues(true, true, "Yes", "Y").TypeConverterOption.BooleanValues(false, true, "No", "N").Default(false);
+
+            _ = Map(m => m.IsShowWarningWhenDmarcNotImplemented).Index(13).TypeConverterOption
                 .BooleanValues(true, true, "Yes", "Y").TypeConverterOption.BooleanValues(false, true, "No", "N").Default(false);
         }
     }

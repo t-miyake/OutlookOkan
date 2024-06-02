@@ -977,6 +977,15 @@ riesgo de infección con un virus.</value>
   <data name="CantUseSecurityForReceivedMail" xml:space="preserve">
     <value>Debido a algún problema, la función de comprobación de seguridad no está disponible al abrir el correo electrónico.</value>
   </data>
+  <data name="SpoofingRiskWaring" xml:space="preserve">
+    <value>Este correo electrónico corre el riesgo de ser suplantado (falsificación del remitente).</value>
+  </data>
+  <data name="DisplayWarningIfTheSenderHasNotImplementedDmarc" xml:space="preserve">
+    <value>Mostrar una advertencia si el remitente no ha implementado DMARC.</value>
+  </data>
+  <data name="WarnIfTheReceivedEmailIsAtRiskOfSpoofing" xml:space="preserve">
+    <value>Advertir si el correo electrónico recibido corre el riesgo de ser suplantado (falsificación del remitente).</value>
+  </data>
   <data name="AutoDeleteRecipients" xml:space="preserve">
     <value>Eliminación automática de destinatarios</value>
   </data>

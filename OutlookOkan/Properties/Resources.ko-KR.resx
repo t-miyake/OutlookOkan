@@ -973,6 +973,15 @@ zip 파일에는 매크로가 포함 된 Office 파일이 포함되어 있습니
   <data name="CantUseSecurityForReceivedMail" xml:space="preserve">
     <value>일부 문제로 인해 이메일을 열 때 안전 확인 기능을 사용할 수 없습니다.</value>
   </data>
+  <data name="SpoofingRiskWaring" xml:space="preserve">
+    <value>이 이메일은 스푸핑(발신자 위조)의 위험이 있습니다.</value>
+  </data>
+  <data name="DisplayWarningIfTheSenderHasNotImplementedDmarc" xml:space="preserve">
+    <value>발신자가 DMARC를 구현하지 않은 경우 경고를 표시합니다.</value>
+  </data>
+  <data name="WarnIfTheReceivedEmailIsAtRiskOfSpoofing" xml:space="preserve">
+    <value>수신된 이메일이 스푸핑(발신자 위조)의 위험이 있는 경우 경고합니다.</value>
+  </data>
   <data name="AutoDeleteRecipients" xml:space="preserve">
     <value>수신자 자동 제거</value>
   </data>

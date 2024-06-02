@@ -979,6 +979,15 @@ Risiko einer Infektion mit einem Virus.</value>
   <data name="CantUseSecurityForReceivedMail" xml:space="preserve">
     <value>Aufgrund eines Problems ist die Sicherheitsüberprüfungsfunktion beim Öffnen von E-Mails nicht verfügbar.</value>
   </data>
+  <data name="SpoofingRiskWaring" xml:space="preserve">
+    <value>Diese E-Mail besteht die Gefahr, gefälscht zu werden (Absenderfälschung).</value>
+  </data>
+  <data name="DisplayWarningIfTheSenderHasNotImplementedDmarc" xml:space="preserve">
+    <value>Zeigen Sie eine Warnung an, wenn der Absender DMARC nicht implementiert hat.</value>
+  </data>
+  <data name="WarnIfTheReceivedEmailIsAtRiskOfSpoofing" xml:space="preserve">
+    <value>Warnen Sie, wenn die empfangene E-Mail von Spoofing (Absenderfälschung) bedroht ist.</value>
+  </data>
   <data name="AutoDeleteRecipients" xml:space="preserve">
     <value>Automatische Empfängerentfernung</value>
   </data>

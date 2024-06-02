@@ -973,6 +973,15 @@
   <data name="CantUseSecurityForReceivedMail" xml:space="preserve">
     <value>เนื่องจากปัญหาบางอย่างคุณลักษณะการตรวจสอบความปลอดภัยไม่สามารถใช้งานได้เมื่อเปิดอีเมล</value>
   </data>
+  <data name="SpoofingRiskWaring" xml:space="preserve">
+    <value>อีเมลนี้มีความเสี่ยงที่จะถูกปลอมแปลง (การปลอมแปลงผู้ส่ง)</value>
+  </data>
+  <data name="DisplayWarningIfTheSenderHasNotImplementedDmarc" xml:space="preserve">
+    <value>แสดงคําเตือนหากผู้ส่งไม่ได้ใช้ DMARC</value>
+  </data>
+  <data name="WarnIfTheReceivedEmailIsAtRiskOfSpoofing" xml:space="preserve">
+    <value>เตือนหากอีเมลที่ได้รับมีความเสี่ยงที่จะปลอมแปลง (การปลอมแปลงผู้ส่ง)</value>
+  </data>
   <data name="AutoDeleteRecipients" xml:space="preserve">
     <value>การลบผู้รับอัตโนมัติ</value>
   </data>
