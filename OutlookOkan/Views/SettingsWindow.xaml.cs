@@ -2,6 +2,7 @@
 using Microsoft.Win32;
 using OutlookOkan.ViewModels;
 using System;
+using System.ComponentModel;
 using System.IO;
 using System.Text.RegularExpressions;
 using System.Windows;
@@ -17,6 +18,25 @@ namespace OutlookOkan.Views
             DataContext = new SettingsWindowViewModel();
 
             InitializeComponent();
+
+            //ウィンドウサイズのロード
+            if (Properties.Settings.Default.SettingsWindowWidth != 0)
+            {
+                Width = Properties.Settings.Default.SettingsWindowWidth;
+            }
+
+            if (Properties.Settings.Default.SettingsWindowHeight != 0)
+            {
+                Height = Properties.Settings.Default.SettingsWindowHeight;
+            }
+        }
+
+        private void SettingsWindow_OnClosing(object sender, CancelEventArgs e)
+        {
+            //ウインドウサイズを保存
+            Properties.Settings.Default.SettingsWindowWidth = Width;
+            Properties.Settings.Default.SettingsWindowHeight = Height;
+            Properties.Settings.Default.Save();
         }
 
         #region Validations
@@ -218,6 +238,24 @@ namespace OutlookOkan.Views
             }
         }
 
+        private void DataGrid_AutoDeleteRecipients_OnCellEditEnding(object sender, DataGridCellEditEndingEventArgs e)
+        {
+            var inputText = ((TextBox)e.EditingElement).Text;
+            if (string.IsNullOrEmpty(inputText))
+            {
+                _ = MessageBox.Show(Properties.Resources.InputMailaddressOrDomain, Properties.Resources.AppName, MessageBoxButton.OK);
+                e.Cancel = true;
+            }
+            else
+            {
+                //@のみで登録すると全てのメールアドレスが対象になるため、それを禁止。
+                if (!inputText.Equals("@")) return;
+
+                _ = MessageBox.Show(Properties.Resources.InputMailaddressOrDomain, Properties.Resources.AppName, MessageBoxButton.OK);
+                e.Cancel = true;
+            }
+        }
+        
         #endregion
 
         #region Buttons

@@ -6,9 +6,10 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Globalization;
 using System.Linq;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Input;
+using Languages = OutlookOkan.Types.Languages;
+using Task = System.Threading.Tasks.Task;
 
 namespace OutlookOkan.ViewModels
 {
@@ -62,6 +63,9 @@ namespace OutlookOkan.ViewModels
             ImportAlertKeywordOfSubjectWhenOpeningMailsList = new RelayCommand(ImportAlertKeywordOfSubjectWhenOpeningMailsFromCsv);
             ExportAlertKeywordOfSubjectWhenOpeningMailsList = new RelayCommand(ExportAlertKeywordOfSubjectWhenOpeningMailsToCsv);
 
+            ImportAutoDeleteRecipientsList = new RelayCommand(ImportAutoDeleteRecipientsFromCsv);
+            ExportAutoDeleteRecipientsList = new RelayCommand(ExportAutoDeleteRecipientsToCsv);
+
             //Load language code and name.
             var languages = new Languages();
             Languages = languages.Language;
@@ -86,6 +90,7 @@ namespace OutlookOkan.ViewModels
             LoadAttachmentAlertRecipientsData();
             LoadForceAutoChangeRecipientsToBccData();
             LoadAlertKeywordOfSubjectWhenOpeningMailsData();
+            LoadAutoDeleteRecipientsData();
             LoadAutoAddMessageData();
             LoadSecurityForReceivedMailData();
         }
@@ -113,6 +118,7 @@ namespace OutlookOkan.ViewModels
                     SaveAttachmentAlertRecipientsToCsv(),
                     SaveForceAutoChangeRecipientsToBccToCsv(),
                     SaveAlertKeywordOfSubjectWhenOpeningMailToCsv(),
+                    SaveAutoDeleteRecipientToCsv(),
                     SaveAutoAddMessageToCsv(),
                     SecurityForReceivedMailToCsv()
                 };
@@ -1384,6 +1390,63 @@ namespace OutlookOkan.ViewModels
 
         #endregion
 
+        #region AutoDeleteRecipient
+
+        public ICommand ImportAutoDeleteRecipientsList { get; }
+        public ICommand ExportAutoDeleteRecipientsList { get; }
+
+        private void LoadAutoDeleteRecipientsData()
+        {
+            var autoDeleteRecipients = CsvFileHandler.ReadCsv<AutoDeleteRecipient>(typeof(AutoDeleteRecipientMap), "AutoDeleteRecipientList.csv");
+            foreach (var data in autoDeleteRecipients.Where(x => !string.IsNullOrEmpty(x.Recipient)))
+            {
+                AutoDeleteRecipients.Add(data);
+            }
+        }
+
+        private async Task SaveAutoDeleteRecipientToCsv()
+        {
+            var list = AutoDeleteRecipients.Where(x => !string.IsNullOrEmpty(x.Recipient)).Cast<object>().ToList();
+            await Task.Run(() => CsvFileHandler.CreateOrReplaceCsv(typeof(AutoDeleteRecipientMap), "AutoDeleteRecipientList.csv", list));
+        }
+
+        private void ImportAutoDeleteRecipientsFromCsv()
+        {
+            try
+            {
+                var importData = CsvFileHandler.ImportCsv<AutoDeleteRecipient>(typeof(AutoDeleteRecipientMap));
+                foreach (var data in importData.Where(x => !string.IsNullOrEmpty(x.Recipient)))
+                {
+                    AutoDeleteRecipients.Add(data);
+                }
+
+                _ = MessageBox.Show(Properties.Resources.SuccessfulImport, Properties.Resources.AppName, MessageBoxButton.OK);
+            }
+            catch (Exception)
+            {
+                _ = MessageBox.Show(Properties.Resources.ImportFailed, Properties.Resources.AppName, MessageBoxButton.OK);
+            }
+        }
+
+        private void ExportAutoDeleteRecipientsToCsv()
+        {
+            var list = AutoDeleteRecipients.Where(x => !string.IsNullOrEmpty(x.Recipient)).Cast<object>().ToList();
+            CsvFileHandler.ExportCsv(typeof(AutoDeleteRecipientMap), list, "AutoDeleteRecipientList.csv");
+        }
+
+        private ObservableCollection<AutoDeleteRecipient> _autoDeleteRecipients = new ObservableCollection<AutoDeleteRecipient>();
+        public ObservableCollection<AutoDeleteRecipient> AutoDeleteRecipients
+        {
+            get => _autoDeleteRecipients;
+            set
+            {
+                _autoDeleteRecipients = value;
+                OnPropertyChanged(nameof(AutoDeleteRecipient));
+            }
+        }
+
+        #endregion
+
         #region SecurityForReceivedMail
 
         private void LoadSecurityForReceivedMailData()
@@ -1406,6 +1469,8 @@ namespace OutlookOkan.ViewModels
             IsWarnOneFileInTheZip = _securityForReceivedMail[0].IsWarnOneFileInTheZip;
             IsWarnOfficeFileWithMacroInTheZip = _securityForReceivedMail[0].IsWarnOfficeFileWithMacroInTheZip;
             IsWarnBeforeOpeningAttachmentsThatContainMacros = _securityForReceivedMail[0].IsWarnBeforeOpeningAttachmentsThatContainMacros;
+            IsShowWarningWhenSpoofingRisk = _securityForReceivedMail[0].IsShowWarningWhenSpoofingRisk;
+            IsShowWarningWhenDmarcNotImplemented = _securityForReceivedMail[0].IsShowWarningWhenDmarcNotImplemented;
         }
 
         private async Task SecurityForReceivedMailToCsv()
@@ -1425,8 +1490,10 @@ namespace OutlookOkan.ViewModels
                     IsWarnLinkFileInTheZip = IsWarnLinkFileInTheZip,
                     IsWarnOneFileInTheZip = IsWarnOneFileInTheZip,
                     IsWarnOfficeFileWithMacroInTheZip = IsWarnOfficeFileWithMacroInTheZip,
-                    IsWarnBeforeOpeningAttachmentsThatContainMacros = IsWarnBeforeOpeningAttachmentsThatContainMacros
-        }
+                    IsWarnBeforeOpeningAttachmentsThatContainMacros = IsWarnBeforeOpeningAttachmentsThatContainMacros,
+                    IsShowWarningWhenSpoofingRisk = IsShowWarningWhenSpoofingRisk,
+                    IsShowWarningWhenDmarcNotImplemented = IsShowWarningWhenDmarcNotImplemented
+                }
             };
 
             var list = tempSecurityForReceivedMail.Cast<object>().ToList();
@@ -1443,6 +1510,9 @@ namespace OutlookOkan.ViewModels
             {
                 _isEnableSecurityForReceivedMail = value;
                 OnPropertyChanged(nameof(IsEnableSecurityForReceivedMail));
+                OnPropertyChanged(nameof(IsEnableIsShowWarningWhenSpoofingRiskSettings));
+                OnPropertyChanged(nameof(IsEnablesShowWarningWhenDmarcNotImplementedSettings));
+                OnPropertyChanged(nameof(IsEnableIsShowWarningWhenSpfAndDkimFailsSettings));
             }
         }
 
@@ -1465,6 +1535,9 @@ namespace OutlookOkan.ViewModels
             {
                 _isEnableMailHeaderAnalysis = value;
                 OnPropertyChanged(nameof(IsEnableMailHeaderAnalysis));
+                OnPropertyChanged(nameof(IsEnableIsShowWarningWhenSpoofingRiskSettings));
+                OnPropertyChanged(nameof(IsEnableIsShowWarningWhenSpfAndDkimFailsSettings));
+                OnPropertyChanged(nameof(IsEnablesShowWarningWhenDmarcNotImplementedSettings));
             }
         }
 
@@ -1567,7 +1640,44 @@ namespace OutlookOkan.ViewModels
             }
         }
 
-        #endregion  
+        private bool _isShowWarningWhenSpoofingRisk;
+        public bool IsShowWarningWhenSpoofingRisk
+        {
+            get => _isShowWarningWhenSpoofingRisk;
+            set
+            {
+                _isShowWarningWhenSpoofingRisk = value;
+                if (value)
+                {
+                    IsShowWarningWhenSpfFails = false;
+                    IsShowWarningWhenDkimFails = false;
+                }
+
+                OnPropertyChanged(nameof(IsShowWarningWhenSpoofingRisk));
+                OnPropertyChanged(nameof(IsEnablesShowWarningWhenDmarcNotImplementedSettings));
+
+                OnPropertyChanged(nameof(IsShowWarningWhenSpfFails));
+                OnPropertyChanged(nameof(IsShowWarningWhenDkimFails));
+                OnPropertyChanged(nameof(IsEnableIsShowWarningWhenSpfAndDkimFailsSettings));
+            }
+        }
+
+        private bool _isShowWarningWhenDmarcNotImplemented;
+        public bool IsShowWarningWhenDmarcNotImplemented
+        {
+            get => _isShowWarningWhenDmarcNotImplemented;
+            set
+            {
+                _isShowWarningWhenDmarcNotImplemented = value;
+                OnPropertyChanged(nameof(IsShowWarningWhenDmarcNotImplemented));
+            }
+        }
+
+        public bool IsEnableIsShowWarningWhenSpoofingRiskSettings => IsEnableMailHeaderAnalysis && IsEnableSecurityForReceivedMail;
+        public bool IsEnablesShowWarningWhenDmarcNotImplementedSettings => IsShowWarningWhenSpoofingRisk && IsEnableMailHeaderAnalysis && IsEnableSecurityForReceivedMail;
+        public bool IsEnableIsShowWarningWhenSpfAndDkimFailsSettings => !IsShowWarningWhenSpoofingRisk && IsEnableMailHeaderAnalysis && IsEnableSecurityForReceivedMail;
+
+        #endregion
 
         #region GeneralSetting
 

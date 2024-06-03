@@ -9,7 +9,6 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices;
-using System.Threading;
 using System.Windows;
 using System.Windows.Interop;
 using Outlook = Microsoft.Office.Interop.Outlook;
@@ -53,30 +52,49 @@ namespace OutlookOkan
             {
                 try
                 {
-                    _mapiNamespace = Application.GetNamespace("MAPI");
-                    _excludedFolderNames = new HashSet<string>{
-                        _mapiNamespace.GetDefaultFolder(Outlook.OlDefaultFolders.olFolderCalendar).Name,
-                        _mapiNamespace.GetDefaultFolder(Outlook.OlDefaultFolders.olFolderContacts).Name,
-                        _mapiNamespace.GetDefaultFolder(Outlook.OlDefaultFolders.olFolderDrafts).Name,
-                        _mapiNamespace.GetDefaultFolder(Outlook.OlDefaultFolders.olFolderJournal).Name,
-                        _mapiNamespace.GetDefaultFolder(Outlook.OlDefaultFolders.olFolderNotes).Name,
-                        _mapiNamespace.GetDefaultFolder(Outlook.OlDefaultFolders.olFolderOutbox).Name,
-                        _mapiNamespace.GetDefaultFolder(Outlook.OlDefaultFolders.olFolderRssFeeds).Name,
-                        _mapiNamespace.GetDefaultFolder(Outlook.OlDefaultFolders.olFolderSentMail).Name,
-                        _mapiNamespace.GetDefaultFolder(Outlook.OlDefaultFolders.olFolderServerFailures).Name,
-                        _mapiNamespace.GetDefaultFolder(Outlook.OlDefaultFolders.olFolderLocalFailures).Name,
-                        _mapiNamespace.GetDefaultFolder(Outlook.OlDefaultFolders.olFolderSyncIssues).Name,
-                        _mapiNamespace.GetDefaultFolder(Outlook.OlDefaultFolders.olFolderTasks).Name,
-                        _mapiNamespace.GetDefaultFolder(Outlook.OlDefaultFolders.olFolderToDo).Name
-                    };
-
-                    LoadAlertKeywordOfSubjectWhenOpeningMailsData();
                     _currentExplorer = Application.ActiveExplorer();
-                    _currentExplorer.SelectionChange += CurrentExplorer_SelectionChange;
+                    if (_currentExplorer is null)
+                    {
+                        //Do Nothing.
+                    }
+                    else
+                    {
+                        _mapiNamespace = Application.GetNamespace("MAPI");
+                        if (_mapiNamespace is null)
+                        {
+                            MessageBox.Show(Properties.Resources.IsNoInternetCantUseSecurityForReceivedMail, Properties.Resources.AppName, MessageBoxButton.OK, MessageBoxImage.Warning);
+                        }
+                        else
+                        {
+                            _excludedFolderNames = new HashSet<string>{
+                                _mapiNamespace.GetDefaultFolder(Outlook.OlDefaultFolders.olFolderCalendar).Name,
+                                _mapiNamespace.GetDefaultFolder(Outlook.OlDefaultFolders.olFolderContacts).Name,
+                                _mapiNamespace.GetDefaultFolder(Outlook.OlDefaultFolders.olFolderDrafts).Name,
+                                _mapiNamespace.GetDefaultFolder(Outlook.OlDefaultFolders.olFolderJournal).Name,
+                                _mapiNamespace.GetDefaultFolder(Outlook.OlDefaultFolders.olFolderNotes).Name,
+                                _mapiNamespace.GetDefaultFolder(Outlook.OlDefaultFolders.olFolderOutbox).Name,
+                                _mapiNamespace.GetDefaultFolder(Outlook.OlDefaultFolders.olFolderRssFeeds).Name,
+                                _mapiNamespace.GetDefaultFolder(Outlook.OlDefaultFolders.olFolderSentMail).Name,
+                                _mapiNamespace.GetDefaultFolder(Outlook.OlDefaultFolders.olFolderServerFailures).Name,
+                                _mapiNamespace.GetDefaultFolder(Outlook.OlDefaultFolders.olFolderLocalFailures).Name,
+                                _mapiNamespace.GetDefaultFolder(Outlook.OlDefaultFolders.olFolderSyncIssues).Name,
+                                _mapiNamespace.GetDefaultFolder(Outlook.OlDefaultFolders.olFolderTasks).Name,
+                                _mapiNamespace.GetDefaultFolder(Outlook.OlDefaultFolders.olFolderToDo).Name
+                            };
+
+                            LoadAlertKeywordOfSubjectWhenOpeningMailsData();
+                            _currentExplorer.SelectionChange += CurrentExplorer_SelectionChange;
+
+                        }
+                    }
                 }
-                catch (Exception)
+                catch (Exception exception)
                 {
-                    MessageBox.Show(Properties.Resources.IsNoInternetCantUseSecurityForReceivedMail, Properties.Resources.AppName, MessageBoxButton.OK, MessageBoxImage.Error);
+                    MessageBox.Show(
+                        exception.HResult == -2147221219
+                            ? Properties.Resources.IsNoInternetCantUseSecurityForReceivedMail
+                            : Properties.Resources.CantUseSecurityForReceivedMail, Properties.Resources.AppName,
+                        MessageBoxButton.OK, MessageBoxImage.Warning);
                 }
             }
 
@@ -131,28 +149,59 @@ namespace OutlookOkan
                 var analysisResults = MailHeaderHandler.ValidateEmailHeader(header.ToString());
                 if (!(analysisResults is null))
                 {
-                    var message = "";
-                    foreach (KeyValuePair<string, string> entry in analysisResults)
-                    {
-                        message += ($"{entry.Key}: {entry.Value}") + Environment.NewLine;
-                    }
+                    var isInternalMail = analysisResults["SPF"] == "NONE" && analysisResults["DKIM"] == "NONE" && analysisResults["DMARC"] == "NONE" && analysisResults["Internal"] == "TRUE";
 
-                    //SPFレコードの検証に失敗した場合に警告を表示する。
-                    if (_securityForReceivedMail.IsShowWarningWhenSpfFails)
+                    //内部から内部へのメールの場合、警告は行わない。
+                    if (!isInternalMail)
                     {
-                        if (analysisResults["SPF"] == "FAIL" || analysisResults["SPF"] == "NONE")
+                        var message = "";
+                        foreach (KeyValuePair<string, string> entry in analysisResults)
                         {
-
-                            _ = MessageBox.Show(Properties.Resources.SpfWarning1 + Environment.NewLine + Properties.Resources.SpfDkimWaring2 + Environment.NewLine + Environment.NewLine + message, Properties.Resources.Warning, MessageBoxButton.OK, MessageBoxImage.Error);
+                            message += ($"{entry.Key}: {entry.Value}") + Environment.NewLine;
                         }
-                    }
 
-                    //DKIMレコードの検証に失敗した場合に警告を表示する。
-                    if (_securityForReceivedMail.IsShowWarningWhenDkimFails)
-                    {
-                        if (analysisResults["DKIM"] == "FAIL")
+                        if (_securityForReceivedMail.IsShowWarningWhenSpoofingRisk)
                         {
-                            _ = MessageBox.Show(Properties.Resources.DkimWarning1 + Environment.NewLine + Properties.Resources.SpfDkimWaring2 + Environment.NewLine + Environment.NewLine + message, Properties.Resources.Warning, MessageBoxButton.OK, MessageBoxImage.Error);
+                            if (_securityForReceivedMail.IsShowWarningWhenDmarcNotImplemented)
+                            {
+                                //DMARCがPASSでない場合、常に警告
+                                if (analysisResults["DMARC"] != "PASS")
+                                {
+                                    _ = MessageBox.Show(Properties.Resources.SpoofingRiskWaring + Environment.NewLine + Properties.Resources.SpfDkimWaring2 + Environment.NewLine + Environment.NewLine + message, Properties.Resources.Warning, MessageBoxButton.OK, MessageBoxImage.Error);
+                                }
+                            }
+                            else
+                            {
+                                var selfGeneratedDmarcResult = MailHeaderHandler.DetermineDmarcResult(analysisResults["SPF"], analysisResults["SPF Alignment"], analysisResults["DKIM"], analysisResults["DKIM Alignment"]);
+
+                                if (analysisResults["DMARC"] != "PASS" && analysisResults["DMARC"] != "BESTGUESSPASS" && selfGeneratedDmarcResult == "FAIL")
+                                {
+                                    _ = MessageBox.Show(Properties.Resources.SpoofingRiskWaring + Environment.NewLine + Properties.Resources.SpfDkimWaring2 + Environment.NewLine + Environment.NewLine + message, Properties.Resources.Warning, MessageBoxButton.OK, MessageBoxImage.Error);
+                                }
+                            }
+                        }
+                        else
+                        {
+                            //「なりすまし(送信元偽装)の危険性がある場合に警告する。」機能が有効な場合、SPFやDKIM単独の確認は行わない。
+
+                            //SPFレコードの検証に失敗した場合に警告を表示する。
+                            if (_securityForReceivedMail.IsShowWarningWhenSpfFails)
+                            {
+                                if (analysisResults["SPF"] == "FAIL" || analysisResults["SPF"] == "NONE")
+                                {
+
+                                    _ = MessageBox.Show(Properties.Resources.SpfWarning1 + Environment.NewLine + Properties.Resources.SpfDkimWaring2 + Environment.NewLine + Environment.NewLine + message, Properties.Resources.Warning, MessageBoxButton.OK, MessageBoxImage.Error);
+                                }
+                            }
+
+                            //DKIMレコードの検証に失敗した場合に警告を表示する。
+                            if (_securityForReceivedMail.IsShowWarningWhenDkimFails)
+                            {
+                                if (analysisResults["DKIM"] == "FAIL")
+                                {
+                                    _ = MessageBox.Show(Properties.Resources.DkimWarning1 + Environment.NewLine + Properties.Resources.SpfDkimWaring2 + Environment.NewLine + Environment.NewLine + message, Properties.Resources.Warning, MessageBoxButton.OK, MessageBoxImage.Error);
+                                }
+                            }
                         }
                     }
                 }
@@ -391,6 +440,11 @@ namespace OutlookOkan
                 return;
             }
 
+            //Moderationでの返信には何もしない。(キャンセルすると、承認や非承認ができなくなる場合があるため)
+            if (((dynamic)item).MessageClass == "IPM.Note.Microsoft.Approval.Reply.Approve" || ((dynamic)item).MessageClass == "IPM.Note.Microsoft.Approval.Reply.Reject") return;
+            //会議の出欠の返信には何もしない。
+            if (((dynamic)item).MessageClass == "IPM.Schedule.Meeting.Resp.Pos" || ((dynamic)item).MessageClass == "IPM.Schedule.Meeting.Resp.Tent" || ((dynamic)item).MessageClass == "IPM.Schedule.Meeting.Resp.Neg") return;
+
             //Outlook起動後にユーザが設定を変更する可能性があるため、毎回ユーザ設定をロード。
             LoadGeneralSetting(false);
             if (!(_generalSetting.LanguageCode is null))
@@ -402,10 +456,7 @@ namespace OutlookOkan
             var autoAddMessageSettingList = CsvFileHandler.ReadCsv<AutoAddMessage>(typeof(AutoAddMessageMap), "AutoAddMessage.csv");
             if (autoAddMessageSettingList.Count > 0) autoAddMessageSetting = autoAddMessageSettingList[0];
 
-            //Moderationでの返信には何もしない。(キャンセルすると、承認や非承認ができなくなる場合があるため)
-            if (((dynamic)item).MessageClass == "IPM.Note.Microsoft.Approval.Reply.Approve" || ((dynamic)item).MessageClass == "IPM.Note.Microsoft.Approval.Reply.Reject") return;
-            //会議の出欠の返信には何もしない。
-            if (((dynamic)item).MessageClass == "IPM.Schedule.Meeting.Resp.Pos" || ((dynamic)item).MessageClass == "IPM.Schedule.Meeting.Resp.Tent" || ((dynamic)item).MessageClass == "IPM.Schedule.Meeting.Resp.Neg") return;
+            var autoDeleteRecipients = CsvFileHandler.ReadCsv<AutoDeleteRecipient>(typeof(AutoDeleteRecipientMap), "AutoDeleteRecipientList.csv").Where(x => !string.IsNullOrEmpty(x.Recipient)).ToList();
 
             var type = typeof(Outlook.MailItem);
             //何らかの問題で確認画面が表示されないと、意図せずメールが送られてしまう恐れがあるため、念のための処理。
@@ -439,14 +490,50 @@ namespace OutlookOkan
                 CheckList checklist;
                 switch (item)
                 {
-                    //MailItem(通常のメール)とMeetingItem(会議招待)の場合にのみ動作させる。
                     case Outlook.MailItem mailItem:
+                        var isRemovedOfMailItem = DeleteRecipients(mailItem.Recipients, autoDeleteRecipients);
+                        if (mailItem.Recipients.Count == 0)
+                        {
+                            _ = MessageBox.Show(Properties.Resources.ErrorByAutoDeleteReRecipients, Properties.Resources.AppName, MessageBoxButton.OK, MessageBoxImage.Warning);
+                            cancel = true;
+                            return;
+                        }
+
                         type = typeof(Outlook.MailItem);
                         checklist = generateCheckList.GenerateCheckListFromMail(mailItem, _generalSetting, contacts, autoAddMessageSetting);
+                        if (isRemovedOfMailItem)
+                        {
+                            checklist.Alerts.Add(new Alert
+                            {
+                                AlertMessage = Properties.Resources.RemovedRecipietnsMessage,
+                                IsImportant = true,
+                                IsWhite = true,
+                                IsChecked = true
+                            });
+                        }
                         break;
                     case Outlook.MeetingItem meetingItem when _generalSetting.IsShowConfirmationAtSendMeetingRequest:
+                        var isRemovedOfMeetingItem = DeleteRecipients(meetingItem.Recipients, autoDeleteRecipients);
+                        if (meetingItem.Recipients.Count == 0)
+                        {
+                            _ = MessageBox.Show(Properties.Resources.ErrorByAutoDeleteReRecipients, Properties.Resources.AppName, MessageBoxButton.OK, MessageBoxImage.Warning);
+                            cancel = true;
+                            return;
+                        }
+
                         type = typeof(Outlook.MeetingItem);
                         checklist = generateCheckList.GenerateCheckListFromMail(meetingItem, _generalSetting, contacts, autoAddMessageSetting);
+
+                        if (isRemovedOfMeetingItem)
+                        {
+                            checklist.Alerts.Add(new Alert
+                            {
+                                AlertMessage = Properties.Resources.RemovedRecipietnsMessage,
+                                IsImportant = true,
+                                IsWhite = true,
+                                IsChecked = true
+                            });
+                        }
                         break;
                     case Outlook.MeetingItem _:
                         return;
@@ -552,7 +639,7 @@ namespace OutlookOkan
         }
 
         /// <summary>
-        /// 受信メールの関するセキュリティ機能の設定を読み込む
+        /// 受信メールに関するセキュリティ機能の設定を読み込む
         /// </summary>
         private void LoadSecurityForReceivedMail()
         {
@@ -571,6 +658,8 @@ namespace OutlookOkan
             _securityForReceivedMail.IsWarnOneFileInTheZip = securityForReceivedMail[0].IsWarnOneFileInTheZip;
             _securityForReceivedMail.IsWarnOfficeFileWithMacroInTheZip = securityForReceivedMail[0].IsWarnOfficeFileWithMacroInTheZip;
             _securityForReceivedMail.IsWarnBeforeOpeningAttachmentsThatContainMacros = securityForReceivedMail[0].IsWarnBeforeOpeningAttachmentsThatContainMacros;
+            _securityForReceivedMail.IsShowWarningWhenSpoofingRisk = securityForReceivedMail[0].IsShowWarningWhenSpoofingRisk;
+            _securityForReceivedMail.IsShowWarningWhenDmarcNotImplemented = securityForReceivedMail[0].IsShowWarningWhenDmarcNotImplemented;
         }
 
         /// <summary>
@@ -691,11 +780,11 @@ namespace OutlookOkan
         }
 
         /// <summary>
-        /// メール本文への文言の自動追加
+        /// メール本文へ文言を自動追加する。
         /// </summary>
-        /// <param name="autoAddMessageSetting"></param>
-        /// <param name="item"></param>
-        /// <param name="isMailItem"></param>
+        /// <param name="autoAddMessageSetting">自動追加する文言の設定</param>
+        /// <param name="item">mailItem</param>
+        /// <param name="isMailItem">mailItemか否か</param>
         private void AutoAddMessageToBody(AutoAddMessage autoAddMessageSetting, object item, bool isMailItem)
         {
             //一旦、通常のメールのみ対象とする。
@@ -714,6 +803,48 @@ namespace OutlookOkan
                 var range = mailItemWordEditor.Range();
                 range.InsertAfter(Environment.NewLine + Environment.NewLine + autoAddMessageSetting.MessageOfAddToEnd);
             }
+        }
+
+        /// <summary>
+        /// 受信メールの宛先を削除する。
+        /// </summary>
+        /// <param name="recipients">mailItem.Recipients</param>
+        /// <param name="autoDeleteRecipients">対象のドメインやメールアドレス</param>
+        private bool DeleteRecipients(Outlook.Recipients recipients, List<AutoDeleteRecipient> autoDeleteRecipients)
+        {
+            var isRemoved = false;
+            if (recipients is null || autoDeleteRecipients is null || !autoDeleteRecipients.Any())
+            {
+                return false;
+            }
+
+            for (var i = recipients.Count; i >= 1; i--)
+            {
+                var recipient = recipients[i];
+                var address = recipient.Address.ToLower();
+
+                foreach (var recipientToDelete in autoDeleteRecipients.Select(settings => settings.Recipient.ToLower()))
+                {
+                    if (recipientToDelete.StartsWith("@") && address.EndsWith(recipientToDelete))
+                    {
+                        recipients.Remove(i);
+                        isRemoved = true;
+                        break;
+                    }
+
+                    if (address.Equals(recipientToDelete))
+                    {
+                        recipients.Remove(i);
+                        isRemoved = true;
+                        break;
+                    }
+                }
+            }
+
+            if (!isRemoved) return false;
+
+            recipients.ResolveAll();
+            return true;
         }
 
         #region VSTO generated code

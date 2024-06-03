@@ -297,7 +297,7 @@
     <value>联系小组</value>
   </data>
   <data name="Copyright" xml:space="preserve">
-    <value>Copyright (C) 2023 Noraneko Inc.</value>
+    <value>Copyright (C) 2024 Noraneko Inc.</value>
   </data>
   <data name="CSVExport" xml:space="preserve">
     <value>导出CSV</value>
@@ -834,7 +834,7 @@
     <value>不详</value>
   </data>
   <data name="Version" xml:space="preserve">
-    <value>Version 2.8.1</value>
+    <value>Version 2.8.2</value>
   </data>
   <data name="VersionInfo" xml:space="preserve">
     <value>软件信息</value>
@@ -861,7 +861,7 @@
     <value>如果所有收件人都是内部域，则不需要。</value>
   </data>
   <data name="AlertKeywordOfSubjectWhenOpeningMails" xml:space="preserve">
-    <value>打开电子邮件时发出警报（主题）</value>
+    <value>┗ 打开电子邮件时发出警报（主题）</value>
   </data>
   <data name="IsEnableAlertKeywordOfSubjectWhenOpeningMailsData" xml:space="preserve">
     <value>当主题行包含指定的关键字时，使用警告功能。</value>
@@ -969,5 +969,39 @@ zip 文件包含一个包含宏和
   </data>
   <data name="IsNoInternetCantUseSecurityForReceivedMail" xml:space="preserve">
     <value>由于没有互联网连接，因此打开电子邮件时无法使用安全检查功能。</value>
+  </data>
+  <data name="CantUseSecurityForReceivedMail" xml:space="preserve">
+    <value>由于某些问题，打开电子邮件时安全检查功能不可用。</value>
+  </data>
+  <data name="SpoofingRiskWaring" xml:space="preserve">
+    <value>此电子邮件存在被欺骗（发件人伪造）的风险。</value>
+  </data>
+  <data name="DisplayWarningIfTheSenderHasNotImplementedDmarc" xml:space="preserve">
+    <value>如果发件人没有实施 DMARC，则显示警告。</value>
+  </data>
+  <data name="WarnIfTheReceivedEmailIsAtRiskOfSpoofing" xml:space="preserve">
+    <value>如果收到的电子邮件存在欺骗（发件人伪造）的风险，则发出警告。</value>
+  </data>
+  <data name="VerifyEmailHeader" xml:space="preserve">
+    <value>验证标头</value>
+  </data>
+  <data name="AutoDeleteRecipients" xml:space="preserve">
+    <value>自动删除收件人</value>
+  </data>
+  <data name="ErrorByAutoDeleteReRecipients" xml:space="preserve">
+    <value>由于自动删除，所有收件人都已被删除。
+返回到电子邮件编辑。</value>
+  </data>
+  <data name="SettingExampleAutoDeleteRecipients" xml:space="preserve">
+    <value>电子邮件： info@noraneko.co.jp
+或
+域名：@noraneko.co.jp
+
+注册要从收件人中自动删除的域或电子邮件地址。
+
+如果自动删除导致没有收件人，则会显示一条错误消息，并且不会发送电子邮件。</value>
+  </data>
+  <data name="RemovedRecipietnsMessage" xml:space="preserve">
+    <value>由于自动删除功能，收件人已被删除。</value>
   </data>
 </root>

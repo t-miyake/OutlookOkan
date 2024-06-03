@@ -299,7 +299,7 @@
     <value>Контактная группа</value>
   </data>
   <data name="Copyright" xml:space="preserve">
-    <value>Copyright (C) 2023 Noraneko Inc.</value>
+    <value>Copyright (C) 2024 Noraneko Inc.</value>
   </data>
   <data name="CSVExport" xml:space="preserve">
     <value>Экспорт CSV</value>
@@ -353,8 +353,7 @@
     <value>Поскольку внешние домены To и Cc превышают пороговое значение, внешний домен получателей был изменен на Bcc.</value>
   </data>
   <data name="ExternalDomainsWarningAndAutoChangeToBcc" xml:space="preserve">
-    <value>Предупреждение о внешних доменах и
-автоматическое изменение на Bcc</value>
+    <value>Внешние домены и Bcc</value>
   </data>
   <data name="ExternalRecipient" xml:space="preserve">
     <value>Внешний адресат</value>
@@ -840,7 +839,7 @@
     <value>Неизвестно</value>
   </data>
   <data name="Version" xml:space="preserve">
-    <value>Version 2.8.1</value>
+    <value>Version 2.8.2</value>
   </data>
   <data name="VersionInfo" xml:space="preserve">
     <value>О программе.</value>
@@ -867,7 +866,7 @@
     <value>Не требуется, если все получатели являются внутренними доменами.</value>
   </data>
   <data name="AlertKeywordOfSubjectWhenOpeningMails" xml:space="preserve">
-    <value>Оповещение при открытии электронной почты (тема)</value>
+    <value>┗ Оповещение при открытии электронной почты (тема)</value>
   </data>
   <data name="IsEnableAlertKeywordOfSubjectWhenOpeningMailsData" xml:space="preserve">
     <value>Используйте функцию предупреждения, если строка темы содержит указанные ключевые слова.</value>
@@ -975,5 +974,39 @@ ZIP-файл содержит файл Office, содержащий макрос
   </data>
   <data name="IsNoInternetCantUseSecurityForReceivedMail" xml:space="preserve">
     <value>Поскольку подключение к Интернету отсутствует, функция проверки безопасности недоступна при открытии электронной почты.</value>
+  </data>
+  <data name="CantUseSecurityForReceivedMail" xml:space="preserve">
+    <value>Из-за какой-либо проблемы функция проверки безопасности недоступна при открытии электронной почты.</value>
+  </data>
+  <data name="SpoofingRiskWaring" xml:space="preserve">
+    <value>Это электронное письмо подвержено риску подделки (подделки отправителя).</value>
+  </data>
+  <data name="DisplayWarningIfTheSenderHasNotImplementedDmarc" xml:space="preserve">
+    <value>Отображение предупреждения, если отправитель не реализовал DMARC.</value>
+  </data>
+  <data name="WarnIfTheReceivedEmailIsAtRiskOfSpoofing" xml:space="preserve">
+    <value>Предупредить, если полученное письмо подвержено риску подмены (подделки отправителем).</value>
+  </data>
+  <data name="VerifyEmailHeader" xml:space="preserve">
+    <value>Проверка заголовка</value>
+  </data>
+  <data name="AutoDeleteRecipients" xml:space="preserve">
+    <value>Автоматическое удаление получателей</value>
+  </data>
+  <data name="ErrorByAutoDeleteReRecipients" xml:space="preserve">
+    <value>Все получатели были удалены из-за автоматического удаления.
+Возвращаемся к редактированию письма.</value>
+  </data>
+  <data name="SettingExampleAutoDeleteRecipients" xml:space="preserve">
+    <value>Адрес электронной почты: info@noraneko.co.jp
+или
+Домен: @noraneko.co.jp
+
+Зарегистрируйте домены или адреса электронной почты, которые вы хотите автоматически удалять из получателей.
+
+Если автоматическое удаление приведет к отсутствию получателей, появится сообщение об ошибке, и электронное письмо не будет отправлено.</value>
+  </data>
+  <data name="RemovedRecipietnsMessage" xml:space="preserve">
+    <value>Получатель был удален благодаря функции автоматического удаления.</value>
   </data>
 </root>

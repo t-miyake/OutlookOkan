@@ -299,7 +299,7 @@ Al cerrar la pantalla de edición no se enviará este correo electrónico.</valu
     <value>Grupo de contacto</value>
   </data>
   <data name="Copyright" xml:space="preserve">
-    <value>Copyright (C) 2023 Noraneko Inc.</value>
+    <value>Copyright (C) 2024 Noraneko Inc.</value>
   </data>
   <data name="CSVExport" xml:space="preserve">
     <value>Exportación de CSV</value>
@@ -353,8 +353,7 @@ Al cerrar la pantalla de edición no se enviará este correo electrónico.</valu
     <value>Como los dominios externos de To y Cc están por encima del umbral, los destinatarios del dominio externo se han cambiado a Bcc.</value>
   </data>
   <data name="ExternalDomainsWarningAndAutoChangeToBcc" xml:space="preserve">
-    <value>Aviso de dominios externos y
-cambio automático a Bcc</value>
+    <value>Aviso de dominios externos y Bcc</value>
   </data>
   <data name="ExternalRecipient" xml:space="preserve">
     <value>Receptor externo</value>
@@ -541,8 +540,7 @@ cuando los destinatarios (To/Cc) tienen un gran número de dominios externos.</v
     <value>Palabras clave</value>
   </data>
   <data name="KeywordAndRecipients" xml:space="preserve">
-    <value>Relacionar palabras clave
- y destinatarios</value>
+    <value>Palabras clave y destinatarios</value>
   </data>
   <data name="KeywordAndRecipientsAlert1" xml:space="preserve">
     <value>La palabra clave "</value>
@@ -575,8 +573,7 @@ cuando los destinatarios (To/Cc) tienen un gran número de dominios externos.</v
     <value>Nombre</value>
   </data>
   <data name="NameAndDomain" xml:space="preserve">
-    <value>Relacionar el nombre y
-el dominio del destinatario</value>
+    <value>Nombre y dominio del destinatario</value>
   </data>
   <data name="NoAlert" xml:space="preserve">
     <value>No hay alertas importantes.</value>
@@ -841,7 +838,7 @@ se aplicará esta función.</value>
     <value>Desconocido</value>
   </data>
   <data name="Version" xml:space="preserve">
-    <value>Version 2.8.1</value>
+    <value>Version 2.8.2</value>
   </data>
   <data name="VersionInfo" xml:space="preserve">
     <value>Sobre el programa</value>
@@ -868,7 +865,7 @@ se aplicará esta función.</value>
     <value>No es necesario si todos los destinatarios son dominios internos.</value>
   </data>
   <data name="AlertKeywordOfSubjectWhenOpeningMails" xml:space="preserve">
-    <value>Alerta al abrir un correo electrónico (asunto)</value>
+    <value>┗ Alerta al abrir un correo electrónico (asunto)</value>
   </data>
   <data name="IsEnableAlertKeywordOfSubjectWhenOpeningMailsData" xml:space="preserve">
     <value>Utilice la función de advertencia cuando la línea de asunto contenga las palabras clave especificadas.</value>
@@ -976,5 +973,39 @@ riesgo de infección con un virus.</value>
   </data>
   <data name="IsNoInternetCantUseSecurityForReceivedMail" xml:space="preserve">
     <value>Dado que no hay conexión a Internet, la función de comprobación de seguridad no está disponible al abrir el correo electrónico.</value>
+  </data>
+  <data name="CantUseSecurityForReceivedMail" xml:space="preserve">
+    <value>Debido a algún problema, la función de comprobación de seguridad no está disponible al abrir el correo electrónico.</value>
+  </data>
+  <data name="SpoofingRiskWaring" xml:space="preserve">
+    <value>Este correo electrónico corre el riesgo de ser suplantado (falsificación del remitente).</value>
+  </data>
+  <data name="DisplayWarningIfTheSenderHasNotImplementedDmarc" xml:space="preserve">
+    <value>Mostrar una advertencia si el remitente no ha implementado DMARC.</value>
+  </data>
+  <data name="WarnIfTheReceivedEmailIsAtRiskOfSpoofing" xml:space="preserve">
+    <value>Advertir si el correo electrónico recibido corre el riesgo de ser suplantado (falsificación del remitente).</value>
+  </data>
+  <data name="VerifyEmailHeader" xml:space="preserve">
+    <value>Verificar encabezado</value>
+  </data>
+  <data name="AutoDeleteRecipients" xml:space="preserve">
+    <value>Eliminación automática de destinatarios</value>
+  </data>
+  <data name="ErrorByAutoDeleteReRecipients" xml:space="preserve">
+    <value>Todos los destinatarios se han eliminado debido a la eliminación automática.
+Volviendo a la edición del correo electrónico.</value>
+  </data>
+  <data name="SettingExampleAutoDeleteRecipients" xml:space="preserve">
+    <value>Dirección de correo electrónico: info@noraneko.co.jp
+o
+Dominio: @noraneko.co.jp
+
+Registre los dominios o direcciones de correo electrónico que desea eliminar automáticamente de los destinatarios.
+
+Si la eliminación automática da como resultado que no haya destinatarios, aparecerá un mensaje de error y el correo electrónico no se enviará.</value>
+  </data>
+  <data name="RemovedRecipietnsMessage" xml:space="preserve">
+    <value>El destinatario se ha eliminado gracias a la función de eliminación automática.</value>
   </data>
 </root>

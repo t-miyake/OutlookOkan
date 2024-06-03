@@ -359,10 +359,10 @@
     <value>Noraneko Inc.</value>
   </data>
   <data name="Copyright" xml:space="preserve">
-    <value>Copyright (C) 2023 Noraneko Inc.</value>
+    <value>Copyright (C) 2024 Noraneko Inc.</value>
   </data>
   <data name="Version" xml:space="preserve">
-    <value>Version 2.8.1</value>
+    <value>Version 2.8.2</value>
   </data>
   <data name="VersionInfo" xml:space="preserve">
     <value>About</value>
@@ -859,7 +859,7 @@ If there is no recipient corresponding to the keywords in the body of the e-mail
     <value>Not required if all recipients are internal domains.</value>
   </data>
   <data name="AlertKeywordOfSubjectWhenOpeningMails" xml:space="preserve">
-    <value>Alert when opening email (subject)</value>
+    <value>┗ Alert when opening email (subject)</value>
   </data>
   <data name="AlertOfReceivedMailSubject" xml:space="preserve">
     <value>The subject line contains the keyword subject to the warning.</value>
@@ -970,5 +970,39 @@ risk of infection with a virus.</value>
   </data>
   <data name="IsNoInternetCantUseSecurityForReceivedMail" xml:space="preserve">
     <value>Since there is no Internet connection, the safety check feature is not available when opening e-mail.</value>
+  </data>
+  <data name="CantUseSecurityForReceivedMail" xml:space="preserve">
+    <value>Due to some problem, the safety check feature is not available when opening e-mail.</value>
+  </data>
+  <data name="SpoofingRiskWaring" xml:space="preserve">
+    <value>This email is at risk of being spoofed (sender forgery).</value>
+  </data>
+  <data name="DisplayWarningIfTheSenderHasNotImplementedDmarc" xml:space="preserve">
+    <value>Display a warning if the sender has not implemented DMARC.</value>
+  </data>
+  <data name="WarnIfTheReceivedEmailIsAtRiskOfSpoofing" xml:space="preserve">
+    <value>Warn if the received email is at risk of spoofing (sender forgery).</value>
+  </data>
+  <data name="VerifyEmailHeader" xml:space="preserve">
+    <value>Verify Header</value>
+  </data>
+  <data name="AutoDeleteRecipients" xml:space="preserve">
+    <value>Automatic Recipient Removal</value>
+  </data>
+  <data name="ErrorByAutoDeleteReRecipients" xml:space="preserve">
+    <value>All recipients have been removed due to automatic deletion.
+Returning to the email editing.</value>
+  </data>
+  <data name="SettingExampleAutoDeleteRecipients" xml:space="preserve">
+    <value>Email address: info@noraneko.co.jp
+or
+Domain: @noraneko.co.jp
+
+Register the domains or email addresses you want to automatically remove from recipients.
+
+If automatic removal results in no recipients, an error message will appear, and the email will not be sent.</value>
+  </data>
+  <data name="RemovedRecipietnsMessage" xml:space="preserve">
+    <value>The recipient has been deleted due to the automatic removal function.</value>
   </data>
 </root>

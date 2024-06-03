@@ -297,7 +297,7 @@
     <value>ติดต่อกลุ่ม</value>
   </data>
   <data name="Copyright" xml:space="preserve">
-    <value>Copyright (C) 2023 Noraneko Inc.</value>
+    <value>Copyright (C) 2024 Noraneko Inc.</value>
   </data>
   <data name="CSVExport" xml:space="preserve">
     <value>ส่งออก CSV</value>
@@ -351,8 +351,7 @@
     <value>เนื่องจากโดเมนภายนอกของ To และ Cc อยู่เหนือขีดจำกัด ผู้รับโดเมนภายนอกจึงถูกเปลี่ยนเป็น Bcc</value>
   </data>
   <data name="ExternalDomainsWarningAndAutoChangeToBcc" xml:space="preserve">
-    <value>คำเตือนโดเมนภายนอกและเปลี่ยนเป็น
-bcc โดยอัตโนมัติ</value>
+    <value>เตือนโดเมนภายนอกและ Bcc</value>
   </data>
   <data name="ExternalRecipient" xml:space="preserve">
     <value>ผู้รับภายนอก</value>
@@ -835,7 +834,7 @@ bcc โดยอัตโนมัติ</value>
     <value>ไม่รู้จัก</value>
   </data>
   <data name="Version" xml:space="preserve">
-    <value>Version 2.8.1</value>
+    <value>Version 2.8.2</value>
   </data>
   <data name="VersionInfo" xml:space="preserve">
     <value>เกี่ยวกับโปรแกรมนี้</value>
@@ -862,7 +861,7 @@ bcc โดยอัตโนมัติ</value>
     <value>ไม่จําเป็นหากผู้รับทั้งหมดเป็นโดเมนภายใน</value>
   </data>
   <data name="AlertKeywordOfSubjectWhenOpeningMails" xml:space="preserve">
-    <value>แจ้งเตือนเมื่อเปิดอีเมล (หัวเรื่อง)</value>
+    <value>┗ แจ้งเตือนเมื่อเปิดอีเมล (หัวเรื่อง)</value>
   </data>
   <data name="IsEnableAlertKeywordOfSubjectWhenOpeningMailsData" xml:space="preserve">
     <value>ใช้ฟังก์ชันคําเตือนเมื่อบรรทัดหัวเรื่องมีคําหลักที่ระบุ</value>
@@ -970,5 +969,39 @@ bcc โดยอัตโนมัติ</value>
   </data>
   <data name="IsNoInternetCantUseSecurityForReceivedMail" xml:space="preserve">
     <value>เนื่องจากไม่มีการเชื่อมต่ออินเทอร์เน็ตคุณสมบัติการตรวจสอบความปลอดภัยจึงไม่สามารถใช้งานได้เมื่อเปิดอีเมล</value>
+  </data>
+  <data name="CantUseSecurityForReceivedMail" xml:space="preserve">
+    <value>เนื่องจากปัญหาบางอย่างคุณลักษณะการตรวจสอบความปลอดภัยไม่สามารถใช้งานได้เมื่อเปิดอีเมล</value>
+  </data>
+  <data name="SpoofingRiskWaring" xml:space="preserve">
+    <value>อีเมลนี้มีความเสี่ยงที่จะถูกปลอมแปลง (การปลอมแปลงผู้ส่ง)</value>
+  </data>
+  <data name="DisplayWarningIfTheSenderHasNotImplementedDmarc" xml:space="preserve">
+    <value>แสดงคําเตือนหากผู้ส่งไม่ได้ใช้ DMARC</value>
+  </data>
+  <data name="WarnIfTheReceivedEmailIsAtRiskOfSpoofing" xml:space="preserve">
+    <value>เตือนหากอีเมลที่ได้รับมีความเสี่ยงที่จะปลอมแปลง (การปลอมแปลงผู้ส่ง)</value>
+  </data>
+  <data name="VerifyEmailHeader" xml:space="preserve">
+    <value>ตรวจสอบส่วนหัว</value>
+  </data>
+  <data name="AutoDeleteRecipients" xml:space="preserve">
+    <value>การลบผู้รับอัตโนมัติ</value>
+  </data>
+  <data name="ErrorByAutoDeleteReRecipients" xml:space="preserve">
+    <value>ผู้รับทั้งหมดถูกลบออกเนื่องจากการลบอัตโนมัติ
+กลับไปที่การแก้ไขอีเมล</value>
+  </data>
+  <data name="SettingExampleAutoDeleteRecipients" xml:space="preserve">
+    <value>ที่อยู่อีเมล: info@noraneko.co.jp
+หรือ
+โดเมน: @noraneko.co.jp
+
+จดทะเบียนโดเมนหรือที่อยู่อีเมลที่คุณต้องการลบออกจากผู้รับโดยอัตโนมัติ
+
+หากการลบอัตโนมัติส่งผลให้ไม่มีผู้รับข้อความแสดงข้อผิดพลาดจะปรากฏขึ้นและอีเมลจะไม่ถูกส่ง</value>
+  </data>
+  <data name="RemovedRecipietnsMessage" xml:space="preserve">
+    <value>ผู้รับถูกลบเนื่องจากฟังก์ชันการลบอัตโนมัติ</value>
   </data>
 </root>

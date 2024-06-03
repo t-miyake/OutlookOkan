@@ -133,7 +133,7 @@ namespace OutlookOkan.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Alert when opening email (subject).
+        ///   Looks up a localized string similar to ┗ Alert when opening email (subject).
         /// </summary>
         public static string AlertKeywordOfSubjectWhenOpeningMails {
             get {
@@ -439,6 +439,15 @@ namespace OutlookOkan.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Automatic Recipient Removal.
+        /// </summary>
+        public static string AutoDeleteRecipients {
+            get {
+                return ResourceManager.GetString("AutoDeleteRecipients", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Basic Settings.
         /// </summary>
         public static string BasicSettings {
@@ -512,6 +521,15 @@ namespace OutlookOkan.Properties {
         public static string CanNotFindTheLinkedNameInSubject {
             get {
                 return ResourceManager.GetString("CanNotFindTheLinkedNameInSubject", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Due to some problem, the safety check feature is not available when opening e-mail..
+        /// </summary>
+        public static string CantUseSecurityForReceivedMail {
+            get {
+                return ResourceManager.GetString("CantUseSecurityForReceivedMail", resourceCulture);
             }
         }
         
@@ -633,7 +651,7 @@ namespace OutlookOkan.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Copyright (C) 2023 Noraneko Inc..
+        ///   Looks up a localized string similar to Copyright (C) 2024 Noraneko Inc..
         /// </summary>
         public static string Copyright {
             get {
@@ -723,6 +741,15 @@ namespace OutlookOkan.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Display a warning if the sender has not implemented DMARC..
+        /// </summary>
+        public static string DisplayWarningIfTheSenderHasNotImplementedDmarc {
+            get {
+                return ResourceManager.GetString("DisplayWarningIfTheSenderHasNotImplementedDmarc", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Distribution list.
         /// </summary>
         public static string DistributionList {
@@ -773,6 +800,16 @@ namespace OutlookOkan.Properties {
         public static string EncryptedZipBeta {
             get {
                 return ResourceManager.GetString("EncryptedZipBeta", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to All recipients have been removed due to automatic deletion.
+        ///Returning to the email editing..
+        /// </summary>
+        public static string ErrorByAutoDeleteReRecipients {
+            get {
+                return ResourceManager.GetString("ErrorByAutoDeleteReRecipients", resourceCulture);
             }
         }
         
@@ -1754,6 +1791,15 @@ namespace OutlookOkan.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to The recipient has been deleted due to the automatic removal function..
+        /// </summary>
+        public static string RemovedRecipietnsMessage {
+            get {
+                return ResourceManager.GetString("RemovedRecipietnsMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Rich-text.
         /// </summary>
         public static string RichText {
@@ -2034,6 +2080,21 @@ namespace OutlookOkan.Properties {
         ///or
         ///Domain: @noraneko.co.jp
         ///
+        ///Register the domains or email addresses you want to automatically remove from recipients.
+        ///
+        ///If automatic removal results in no recipients, an error message will appear, and the email will not be sent..
+        /// </summary>
+        public static string SettingExampleAutoDeleteRecipients {
+            get {
+                return ResourceManager.GetString("SettingExampleAutoDeleteRecipients", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Email address: info@noraneko.co.jp
+        ///or
+        ///Domain: @noraneko.co.jp
+        ///
         ///Register your email address or domain and register the deferred time by the minute.
         ///
         ///* If you register only @, you can register the standard deferred time of all mails.
@@ -2190,6 +2251,15 @@ namespace OutlookOkan.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to This email is at risk of being spoofed (sender forgery)..
+        /// </summary>
+        public static string SpoofingRiskWaring {
+            get {
+                return ResourceManager.GetString("SpoofingRiskWaring", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Subject.
         /// </summary>
         public static string Subject {
@@ -2331,7 +2401,16 @@ namespace OutlookOkan.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Version 2.8.1.
+        ///   Looks up a localized string similar to Verify Header.
+        /// </summary>
+        public static string VerifyEmailHeader {
+            get {
+                return ResourceManager.GetString("VerifyEmailHeader", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Version 2.8.2.
         /// </summary>
         public static string Version {
             get {
@@ -2345,6 +2424,15 @@ namespace OutlookOkan.Properties {
         public static string VersionInfo {
             get {
                 return ResourceManager.GetString("VersionInfo", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Warn if the received email is at risk of spoofing (sender forgery)..
+        /// </summary>
+        public static string WarnIfTheReceivedEmailIsAtRiskOfSpoofing {
+            get {
+                return ResourceManager.GetString("WarnIfTheReceivedEmailIsAtRiskOfSpoofing", resourceCulture);
             }
         }
         

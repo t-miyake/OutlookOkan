@@ -297,7 +297,7 @@
     <value>연락처 그룹</value>
   </data>
   <data name="Copyright" xml:space="preserve">
-    <value>Copyright (C) 2023 Noraneko Inc.</value>
+    <value>Copyright (C) 2024 Noraneko Inc.</value>
   </data>
   <data name="CSVExport" xml:space="preserve">
     <value>CSV 내보내기</value>
@@ -831,7 +831,7 @@
     <value>알려지지 않은</value>
   </data>
   <data name="Version" xml:space="preserve">
-    <value>Version 2.8.1</value>
+    <value>Version 2.8.2</value>
   </data>
   <data name="VersionInfo" xml:space="preserve">
     <value>이 프로그램에 대해</value>
@@ -861,7 +861,7 @@
     <value>모든 받는 사람이 내부 도메인인 경우에는 필요하지 않습니다.</value>
   </data>
   <data name="AlertKeywordOfSubjectWhenOpeningMails" xml:space="preserve">
-    <value>이메일을 열 때 경고 (제목)</value>
+    <value>┗ 이메일을 열 때 경고 (제목)</value>
   </data>
   <data name="IsEnableAlertKeywordOfSubjectWhenOpeningMailsData" xml:space="preserve">
     <value>제목 줄에 지정된 키워드가 포함된 경우 경고 함수를 사용합니다.</value>
@@ -969,5 +969,39 @@ zip 파일에는 매크로가 포함 된 Office 파일이 포함되어 있습니
   </data>
   <data name="IsNoInternetCantUseSecurityForReceivedMail" xml:space="preserve">
     <value>인터넷에 연결되어 있지 않기 때문에 이메일을 열 때 안전 확인 기능을 사용할 수 없습니다.</value>
+  </data>
+  <data name="CantUseSecurityForReceivedMail" xml:space="preserve">
+    <value>일부 문제로 인해 이메일을 열 때 안전 확인 기능을 사용할 수 없습니다.</value>
+  </data>
+  <data name="SpoofingRiskWaring" xml:space="preserve">
+    <value>이 이메일은 스푸핑(발신자 위조)의 위험이 있습니다.</value>
+  </data>
+  <data name="DisplayWarningIfTheSenderHasNotImplementedDmarc" xml:space="preserve">
+    <value>발신자가 DMARC를 구현하지 않은 경우 경고를 표시합니다.</value>
+  </data>
+  <data name="WarnIfTheReceivedEmailIsAtRiskOfSpoofing" xml:space="preserve">
+    <value>수신된 이메일이 스푸핑(발신자 위조)의 위험이 있는 경우 경고합니다.</value>
+  </data>
+  <data name="VerifyEmailHeader" xml:space="preserve">
+    <value>헤더 확인</value>
+  </data>
+  <data name="AutoDeleteRecipients" xml:space="preserve">
+    <value>수신자 자동 제거</value>
+  </data>
+  <data name="ErrorByAutoDeleteReRecipients" xml:space="preserve">
+    <value>자동 삭제로 인해 모든 수신자가 제거되었습니다.
+이메일 편집으로 돌아갑니다.</value>
+  </data>
+  <data name="SettingExampleAutoDeleteRecipients" xml:space="preserve">
+    <value>메일 주소: info@noraneko.co.jp
+또는
+도메인: @noraneko.co.jp
+
+수신자로부터 자동으로 제거할 도메인 또는 이메일 주소를 등록합니다.
+
+자동 제거로 수신자가 없으면 오류 메시지가 나타나고 이메일이 전송되지 않습니다.</value>
+  </data>
+  <data name="RemovedRecipietnsMessage" xml:space="preserve">
+    <value>자동 제거 기능으로 인해 수신자가 삭제되었습니다.</value>
   </data>
 </root>
