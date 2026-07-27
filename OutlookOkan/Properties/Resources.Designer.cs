@@ -19,7 +19,7 @@ namespace OutlookOkan.Properties {
     // class via a tool like ResGen or Visual Studio.
     // To add or remove a member, edit your .ResX file then rerun ResGen
     // with the /str option, or rebuild your VS project.
-    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "17.0.0.0")]
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "18.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
     public class Resources {
@@ -651,7 +651,7 @@ namespace OutlookOkan.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Copyright (C) 2024 Noraneko Inc..
+        ///   Looks up a localized string similar to Copyright (C) 2026 Noraneko Inc..
         /// </summary>
         public static string Copyright {
             get {
@@ -1602,6 +1602,15 @@ namespace OutlookOkan.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Mail address.
+        /// </summary>
+        public static string MailAddress {
+            get {
+                return ResourceManager.GetString("MailAddress", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Recipient address/domain.
         /// </summary>
         public static string MailAddressAndDomain {
@@ -1616,6 +1625,15 @@ namespace OutlookOkan.Properties {
         public static string MailBody {
             get {
                 return ResourceManager.GetString("MailBody", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Header analysis exception address.
+        /// </summary>
+        public static string MailHeaderAnalysisExceptionAddress {
+            get {
+                return ResourceManager.GetString("MailHeaderAnalysisExceptionAddress", resourceCulture);
             }
         }
         
@@ -2150,6 +2168,17 @@ namespace OutlookOkan.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Register sender mail addresses to be excluded from the mail header analysis (spoofing) warning.
+        ///Mail from an exactly-matching address will not trigger the warning.
+        ///e.g.) no-reply@example.com.
+        /// </summary>
+        public static string SettingExampleMailHeaderAnalysisExceptionAddress {
+            get {
+                return ResourceManager.GetString("SettingExampleMailHeaderAnalysisExceptionAddress", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Name: Noraneko Inc
         ///Domain: @noraneko.co.jp
         ///
@@ -2410,7 +2439,7 @@ namespace OutlookOkan.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Version 2.8.2.
+        ///   Looks up a localized string similar to Version 2.8.3.
         /// </summary>
         public static string Version {
             get {

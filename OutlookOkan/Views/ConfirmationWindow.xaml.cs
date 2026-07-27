@@ -8,6 +8,7 @@ using System.Text.RegularExpressions;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
+using System.Windows.Interop;
 using System.Windows.Media;
 
 namespace OutlookOkan.Views
@@ -28,9 +29,6 @@ namespace OutlookOkan.Views
 
             //送信遅延時間を表示(設定)欄に入れる。
             DeferredDeliveryMinutesBox.Text = checkList.DeferredMinutes.ToString();
-            
-            //縦方向の最大サイズを制限
-            MaxHeight = SystemParameters.WorkArea.Height;
 
             //ウィンドウサイズのロード
             if (Properties.Settings.Default.ConfirmationWindowWidth != 0)
@@ -42,6 +40,31 @@ namespace OutlookOkan.Views
             {
                 Height = Properties.Settings.Default.ConfirmationWindowHeight;
             }
+        }
+
+        private void ConfirmationWindow_OnSizeChanged(object sender, SizeChangedEventArgs e)
+        {
+            AlertGrid.MaxHeight = e.NewSize.Height * 0.35;
+        }
+
+        private void LimitMaxHeightToCurrentScreenWorkArea()
+        {
+            var handle = new WindowInteropHelper(this).Handle;
+            if (handle == IntPtr.Zero) return;
+
+            //Screenはピクセル単位のため、DPIスケールで割ってWPFのDIPに変換
+            var workingAreaHeight = System.Windows.Forms.Screen.FromHandle(handle).WorkingArea.Height;
+            MaxHeight = workingAreaHeight / VisualTreeHelper.GetDpi(this).DpiScaleY;
+        }
+
+        private void ConfirmationWindow_OnLoaded(object sender, RoutedEventArgs e)
+        {
+            LimitMaxHeightToCurrentScreenWorkArea();
+        }
+
+        private void ConfirmationWindow_OnLocationChanged(object sender, EventArgs e)
+        {
+            LimitMaxHeightToCurrentScreenWorkArea();
         }
 
         /// <summary>
@@ -261,7 +284,7 @@ namespace OutlookOkan.Views
 
             try
             {
-                File.Delete(_tempFilePath);
+                Directory.Delete(_tempFilePath, true);
             }
             catch (Exception)
             {

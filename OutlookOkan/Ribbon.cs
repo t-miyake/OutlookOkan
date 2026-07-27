@@ -53,7 +53,7 @@ namespace OutlookOkan
                 var explorer = Globals.ThisAddIn.Application.ActiveExplorer();
                 if (!(explorer.Selection[1] is Outlook.MailItem mailItem)) return;
 
-                var headers = mailItem.PropertyAccessor.GetProperty("http://schemas.microsoft.com/mapi/proptag/0x007D001E").ToString();
+                var headers = OutlookItemHelper.TryGetTransportHeaders(mailItem);
                 if (string.IsNullOrEmpty(headers)) return;
 
                 var analysisResults = MailHeaderHandler.ValidateEmailHeader(headers);

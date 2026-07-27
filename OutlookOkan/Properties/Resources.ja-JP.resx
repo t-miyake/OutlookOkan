@@ -359,10 +359,10 @@
     <value>株式会社のらねこ</value>
   </data>
   <data name="Copyright" xml:space="preserve">
-    <value>Copyright (C) 2024 Noraneko Inc.</value>
+    <value>Copyright (C) 2026 Noraneko Inc.</value>
   </data>
   <data name="Version" xml:space="preserve">
-    <value>バージョン 2.8.2</value>
+    <value>バージョン 2.8.3</value>
   </data>
   <data name="VersionInfo" xml:space="preserve">
     <value>バージョン情報</value>
@@ -857,6 +857,17 @@
   </data>
   <data name="AlertKeywordOfSubjectWhenOpeningMails" xml:space="preserve">
     <value>┗ メールを開く際の警告(件名)</value>
+  </data>
+  <data name="MailHeaderAnalysisExceptionAddress" xml:space="preserve">
+    <value>ヘッダ解析の例外アドレス</value>
+  </data>
+  <data name="MailAddress" xml:space="preserve">
+    <value>メールアドレス</value>
+  </data>
+  <data name="SettingExampleMailHeaderAnalysisExceptionAddress" xml:space="preserve">
+    <value>メールヘッダ解析(なりすまし)警告の対象外とする送信者メールアドレスを登録します。
+完全一致したアドレスからのメールは警告を表示しません。
+例) no-reply@example.com</value>
   </data>
   <data name="AlertOfReceivedMailSubject" xml:space="preserve">
     <value>件名に警告対象のキーワードが含まれています。</value>

@@ -21,6 +21,7 @@ namespace OutlookOkan
         private readonly GeneralSetting _generalSetting = new GeneralSetting();
         private readonly SecurityForReceivedMail _securityForReceivedMail = new SecurityForReceivedMail();
         private readonly List<AlertKeywordOfSubjectWhenOpeningMail> _alertKeywordOfSubjectWhenOpeningMail = new List<AlertKeywordOfSubjectWhenOpeningMail>();
+        private readonly HashSet<string> _mailHeaderAnalysisExceptionAddresses = new HashSet<string>();
 
         private Outlook.Inspectors _inspectors;
         private Outlook.Explorer _currentExplorer;
@@ -83,6 +84,7 @@ namespace OutlookOkan
                             };
 
                             LoadAlertKeywordOfSubjectWhenOpeningMailsData();
+                            LoadMailHeaderAnalysisExceptionAddressData();
                             _currentExplorer.SelectionChange += CurrentExplorer_SelectionChange;
 
                         }
@@ -128,90 +130,136 @@ namespace OutlookOkan
             //件名にキーワードが含まれている場合の警告機能
             if (_securityForReceivedMail.IsEnableAlertKeywordOfSubjectWhenOpeningMailsData)
             {
-                var subject = selectedMail.Subject;
-                var settings = _alertKeywordOfSubjectWhenOpeningMail.FirstOrDefault(x => subject.Contains(x.AlertKeyword));
-
-                if (!(settings is null))
+                try
                 {
-                    var message = Properties.Resources.AlertOfReceivedMailSubject + Environment.NewLine + "[" + settings.AlertKeyword + "]";
-                    if (!string.IsNullOrEmpty(settings.Message))
+                    var subject = selectedMail.Subject;
+                    if (!string.IsNullOrEmpty(subject))
                     {
-                        message = settings.Message;
+                        var settings = _alertKeywordOfSubjectWhenOpeningMail.FirstOrDefault(x => subject.Contains(x.AlertKeyword));
+                        if (!(settings is null))
+                        {
+                            var message = Properties.Resources.AlertOfReceivedMailSubject + Environment.NewLine + "[" + settings.AlertKeyword + "]";
+                            if (!string.IsNullOrEmpty(settings.Message))
+                            {
+                                message = settings.Message;
+                            }
+                            MessageBox.Show(message, Properties.Resources.Warning, MessageBoxButton.OK, MessageBoxImage.Exclamation);
+                        }
                     }
-                    MessageBox.Show(message, Properties.Resources.Warning, MessageBoxButton.OK, MessageBoxImage.Exclamation);
+                }
+                catch (Exception)
+                {
+                    //この警告機能の失敗は他の警告機能に影響させない。
                 }
             }
 
             //メールヘッダの解析と警告機能
             if (_securityForReceivedMail.IsEnableMailHeaderAnalysis)
             {
-                var header = selectedMail.PropertyAccessor.GetProperty("http://schemas.microsoft.com/mapi/proptag/0x007D001E");
-                var analysisResults = MailHeaderHandler.ValidateEmailHeader(header.ToString());
-                if (!(analysisResults is null))
+                try
                 {
-                    var isInternalMail = analysisResults["SPF"] == "NONE" && analysisResults["DKIM"] == "NONE" && analysisResults["DMARC"] == "NONE" && analysisResults["Internal"] == "TRUE";
-
-                    //内部から内部へのメールの場合、警告は行わない。
-                    if (!isInternalMail)
-                    {
-                        var message = "";
-                        foreach (KeyValuePair<string, string> entry in analysisResults)
-                        {
-                            message += ($"{entry.Key}: {entry.Value}") + Environment.NewLine;
-                        }
-
-                        if (_securityForReceivedMail.IsShowWarningWhenSpoofingRisk)
-                        {
-                            if (_securityForReceivedMail.IsShowWarningWhenDmarcNotImplemented)
-                            {
-                                //DMARCがPASSでない場合、常に警告
-                                if (analysisResults["DMARC"] != "PASS")
-                                {
-                                    _ = MessageBox.Show(Properties.Resources.SpoofingRiskWaring + Environment.NewLine + Properties.Resources.SpfDkimWaring2 + Environment.NewLine + Environment.NewLine + message, Properties.Resources.Warning, MessageBoxButton.OK, MessageBoxImage.Error);
-                                }
-                            }
-                            else
-                            {
-                                var selfGeneratedDmarcResult = MailHeaderHandler.DetermineDmarcResult(analysisResults["SPF"], analysisResults["SPF Alignment"], analysisResults["DKIM"], analysisResults["DKIM Alignment"]);
-
-                                if (analysisResults["DMARC"] != "PASS" && analysisResults["DMARC"] != "BESTGUESSPASS" && selfGeneratedDmarcResult == "FAIL")
-                                {
-                                    _ = MessageBox.Show(Properties.Resources.SpoofingRiskWaring + Environment.NewLine + Properties.Resources.SpfDkimWaring2 + Environment.NewLine + Environment.NewLine + message, Properties.Resources.Warning, MessageBoxButton.OK, MessageBoxImage.Error);
-                                }
-                            }
-                        }
-                        else
-                        {
-                            //「なりすまし(送信元偽装)の危険性がある場合に警告する。」機能が有効な場合、SPFやDKIM単独の確認は行わない。
-
-                            //SPFレコードの検証に失敗した場合に警告を表示する。
-                            if (_securityForReceivedMail.IsShowWarningWhenSpfFails)
-                            {
-                                if (analysisResults["SPF"] == "FAIL" || analysisResults["SPF"] == "NONE")
-                                {
-
-                                    _ = MessageBox.Show(Properties.Resources.SpfWarning1 + Environment.NewLine + Properties.Resources.SpfDkimWaring2 + Environment.NewLine + Environment.NewLine + message, Properties.Resources.Warning, MessageBoxButton.OK, MessageBoxImage.Error);
-                                }
-                            }
-
-                            //DKIMレコードの検証に失敗した場合に警告を表示する。
-                            if (_securityForReceivedMail.IsShowWarningWhenDkimFails)
-                            {
-                                if (analysisResults["DKIM"] == "FAIL")
-                                {
-                                    _ = MessageBox.Show(Properties.Resources.DkimWarning1 + Environment.NewLine + Properties.Resources.SpfDkimWaring2 + Environment.NewLine + Environment.NewLine + message, Properties.Resources.Warning, MessageBoxButton.OK, MessageBoxImage.Error);
-                                }
-                            }
-                        }
-                    }
+                    AnalyzeMailHeaderAndWarn(selectedMail);
+                }
+                catch (Exception)
+                {
+                    //この警告機能の失敗は他の警告機能に影響させない。
                 }
             }
 
             //添付ファイルを開くときの警告機能
-            if (_securityForReceivedMail.IsEnableWarningFeatureWhenOpeningAttachments && selectedMail.Attachments.Count != 0)
+            try
             {
-                _currentMailItem.BeforeAttachmentRead -= BeforeAttachmentRead;
-                _currentMailItem.BeforeAttachmentRead += BeforeAttachmentRead;
+                if (_securityForReceivedMail.IsEnableWarningFeatureWhenOpeningAttachments && selectedMail.Attachments.Count != 0)
+                {
+                    _currentMailItem.BeforeAttachmentRead -= BeforeAttachmentRead;
+                    _currentMailItem.BeforeAttachmentRead += BeforeAttachmentRead;
+                }
+            }
+            catch (Exception)
+            {
+                //この警告機能の失敗は他の警告機能に影響させない。
+            }
+        }
+
+        /// <summary>
+        /// 選択された受信メールのヘッダを解析し、なりすまし等の危険がある場合に警告する。
+        /// ヘッダ・送信者アドレスの取得は OutlookItemHelper を用い、Exchange以外やヘッダを持たないメールでも例外で落ちないようにする。
+        /// </summary>
+        /// <param name="selectedMail">対象のメールアイテム</param>
+        private void AnalyzeMailHeaderAndWarn(Outlook.MailItem selectedMail)
+        {
+            //例外アドレス(なりすまし判定の対象外)からの受信メールは警告しない。
+            var senderAddress = OutlookItemHelper.TryGetSenderSmtpAddress(selectedMail);
+            if (!(senderAddress is null) && _mailHeaderAnalysisExceptionAddresses.Contains(senderAddress.Trim().ToLowerInvariant()))
+            {
+                return;
+            }
+
+            //Exchange以外やヘッダを持たないメールでは取得できないため、解析をスキップする。
+            var header = OutlookItemHelper.TryGetTransportHeaders(selectedMail);
+            if (string.IsNullOrEmpty(header)) return;
+
+            var analysisResults = MailHeaderHandler.ValidateEmailHeader(header);
+            if (analysisResults is null) return;
+
+            //送信者SMTPが取得できなかった場合の保険として、ヘッダ上のFromアドレスでも例外判定する。
+            if (analysisResults.TryGetValue("From Address", out var fromAddress) && !string.IsNullOrEmpty(fromAddress) && _mailHeaderAnalysisExceptionAddresses.Contains(fromAddress.Trim().ToLowerInvariant()))
+            {
+                return;
+            }
+
+            var isInternalMail = analysisResults["SPF"] == "NONE" && analysisResults["DKIM"] == "NONE" && analysisResults["DMARC"] == "NONE" && analysisResults["Internal"] == "TRUE";
+
+            //内部から内部へのメールの場合、警告は行わない。
+            if (isInternalMail) return;
+
+            var message = "";
+            foreach (KeyValuePair<string, string> entry in analysisResults)
+            {
+                message += ($"{entry.Key}: {entry.Value}") + Environment.NewLine;
+            }
+
+            if (_securityForReceivedMail.IsShowWarningWhenSpoofingRisk)
+            {
+                if (_securityForReceivedMail.IsShowWarningWhenDmarcNotImplemented)
+                {
+                    //DMARCがPASSでない場合、常に警告
+                    if (analysisResults["DMARC"] != "PASS")
+                    {
+                        _ = MessageBox.Show(Properties.Resources.SpoofingRiskWaring + Environment.NewLine + Properties.Resources.SpfDkimWaring2 + Environment.NewLine + Environment.NewLine + message, Properties.Resources.Warning, MessageBoxButton.OK, MessageBoxImage.Error);
+                    }
+                }
+                else
+                {
+                    var selfGeneratedDmarcResult = MailHeaderHandler.DetermineDmarcResult(analysisResults["SPF"], analysisResults["SPF Alignment"], analysisResults["DKIM"], analysisResults["DKIM Alignment"]);
+
+                    if (analysisResults["DMARC"] != "PASS" && analysisResults["DMARC"] != "BESTGUESSPASS" && selfGeneratedDmarcResult == "FAIL")
+                    {
+                        _ = MessageBox.Show(Properties.Resources.SpoofingRiskWaring + Environment.NewLine + Properties.Resources.SpfDkimWaring2 + Environment.NewLine + Environment.NewLine + message, Properties.Resources.Warning, MessageBoxButton.OK, MessageBoxImage.Error);
+                    }
+                }
+            }
+            else
+            {
+                //「なりすまし(送信元偽装)の危険性がある場合に警告する。」機能が有効な場合、SPFやDKIM単独の確認は行わない。
+
+                //SPFレコードの検証に失敗した場合に警告を表示する。
+                if (_securityForReceivedMail.IsShowWarningWhenSpfFails)
+                {
+                    if (analysisResults["SPF"] == "FAIL" || analysisResults["SPF"] == "NONE")
+                    {
+                        _ = MessageBox.Show(Properties.Resources.SpfWarning1 + Environment.NewLine + Properties.Resources.SpfDkimWaring2 + Environment.NewLine + Environment.NewLine + message, Properties.Resources.Warning, MessageBoxButton.OK, MessageBoxImage.Error);
+                    }
+                }
+
+                //DKIMレコードの検証に失敗した場合に警告を表示する。
+                if (_securityForReceivedMail.IsShowWarningWhenDkimFails)
+                {
+                    if (analysisResults["DKIM"] == "FAIL")
+                    {
+                        _ = MessageBox.Show(Properties.Resources.DkimWarning1 + Environment.NewLine + Properties.Resources.SpfDkimWaring2 + Environment.NewLine + Environment.NewLine + message, Properties.Resources.Warning, MessageBoxButton.OK, MessageBoxImage.Error);
+                    }
+                }
             }
         }
 
@@ -669,6 +717,18 @@ namespace OutlookOkan
         {
             var alertKeywordOfSubjectWhenOpeningMails = CsvFileHandler.ReadCsv<AlertKeywordOfSubjectWhenOpeningMail>(typeof(AlertKeywordOfSubjectWhenOpeningMailMap), "AlertKeywordOfSubjectWhenOpeningMailList.csv").Where(x => !string.IsNullOrEmpty(x.AlertKeyword));
             _alertKeywordOfSubjectWhenOpeningMail.AddRange(alertKeywordOfSubjectWhenOpeningMails);
+        }
+
+        /// <summary>
+        /// メールヘッダ解析(なりすまし)警告の例外とする送信者メールアドレスを読み込む。
+        /// </summary>
+        private void LoadMailHeaderAnalysisExceptionAddressData()
+        {
+            var exceptionAddresses = CsvFileHandler.ReadCsv<MailHeaderAnalysisExceptionAddress>(typeof(MailHeaderAnalysisExceptionAddressMap), "MailHeaderAnalysisExceptionAddressList.csv").Where(x => !string.IsNullOrWhiteSpace(x.TargetAddress));
+            foreach (var data in exceptionAddresses)
+            {
+                _ = _mailHeaderAnalysisExceptionAddresses.Add(data.TargetAddress.Trim().ToLowerInvariant());
+            }
         }
 
         /// <summary>

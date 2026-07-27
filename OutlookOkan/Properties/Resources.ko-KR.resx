@@ -120,23 +120,8 @@
   <data name="About" xml:space="preserve">
     <value>이 프로그램에 대해</value>
   </data>
-  <data name="AddedTextAtTheBeginning" xml:space="preserve">
-    <value>메일 시작 부분에 텍스트를 추가했습니다.</value>
-  </data>
-  <data name="AddedTextAtTheEnd" xml:space="preserve">
-    <value>메일 끝에 텍스트를 추가했습니다.</value>
-  </data>
-  <data name="AddressBook" xml:space="preserve">
-    <value>연락처</value>
-  </data>
   <data name="AlertKeyword" xml:space="preserve">
     <value>경고 키워드</value>
-  </data>
-  <data name="AlertKeywordForBody" xml:space="preserve">
-    <value>경고 키워드 (본문)</value>
-  </data>
-  <data name="AlertKeywordForSubject" xml:space="preserve">
-    <value>경고 키워드 (제목)</value>
   </data>
   <data name="AlertKeywordInfo" xml:space="preserve">
     <value>경고할 키워드</value>
@@ -146,12 +131,6 @@
   </data>
   <data name="AlertMailAddressAndDomain" xml:space="preserve">
     <value>수신자 또는 도메인 알림</value>
-  </data>
-  <data name="AlwaysAddTheSendersAddressToBcc" xml:space="preserve">
-    <value>발신자의 주소를 항상 숨은 참조에 자동으로 추가하십시오.</value>
-  </data>
-  <data name="AlwaysAddTheSendersAddressToCc" xml:space="preserve">
-    <value>항상 보낸 사람의 주소를 참조에 자동으로 추가합니다.</value>
   </data>
   <data name="ApplicableDestination" xml:space="preserve">
     <value>적용 대상</value>
@@ -165,35 +144,8 @@
   <data name="AppName" xml:space="preserve">
     <value>OutlookOkan</value>
   </data>
-  <data name="AttachedIsAnEncryptedZipFile" xml:space="preserve">
-    <value>첨부 파일은 암호화된 ZIP 파일입니다.</value>
-  </data>
-  <data name="AttachmentAlertRecipients" xml:space="preserve">
-    <value>첨부 파일 알림 주소</value>
-  </data>
-  <data name="AttachmentAlertRecipientsMessage" xml:space="preserve">
-    <value>첨부 파일 전송 경고를 받는 사람입니다.</value>
-  </data>
-  <data name="AttachmentProhibitedRecipients" xml:space="preserve">
-    <value>첨부 금지 주소</value>
-  </data>
-  <data name="AttachmentProhibitedRecipientsMessage" xml:space="preserve">
-    <value>첨부파일 전송이 금지된 수신자입니다.</value>
-  </data>
   <data name="Attachments" xml:space="preserve">
     <value>첨부 파일</value>
-  </data>
-  <data name="AttachmentsKeyword" xml:space="preserve">
-    <value>첨부 파일</value>
-  </data>
-  <data name="AttachmentsName" xml:space="preserve">
-    <value>첨부 파일 이름/키워드</value>
-  </data>
-  <data name="AttachmentsProhibitedMessage" xml:space="preserve">
-    <value>첨부된 이메일을 보내는 것은 금지되어 있습니다.</value>
-  </data>
-  <data name="AutoAddCCorBCCByAttachedFile" xml:space="preserve">
-    <value>Cc/Bcc 자동추가 (첨부파일로)</value>
   </data>
   <data name="AutoAddCCorBCCByKeyword" xml:space="preserve">
     <value>자동 참조/숨은 참조 추가 (키워드별)</value>
@@ -213,76 +165,23 @@
   <data name="AutoAddMailAddress" xml:space="preserve">
     <value>받는 사람을 자동으로 추가합니다.</value>
   </data>
-  <data name="AutoAddMessage" xml:space="preserve">
-    <value>자동 본문 추가</value>
-  </data>
-  <data name="AutoAddSendersAddressToAlert" xml:space="preserve">
-    <value>보낸 사람의 이메일 주소가 받는 사람에 자동으로 추가되었습니다. (숨은 참조로 자동 변경되어 To가 더 이상 존재하지 않기 때문입니다.)</value>
-  </data>
-  <data name="AutoAddToRecipientByForceAutoChangeRecipientsToBccAddressToAlert" xml:space="preserve">
-    <value>지정한 이메일 주소가 받는 사람에 자동으로 추가되었습니다. (숨은 참조로 자동 변경되어 To가 더 이상 존재하지 않기 때문입니다.)</value>
-  </data>
-  <data name="AutoCheckAttachments" xml:space="preserve">
-    <value>첨부 파일이 자동으로 확인됩니다.</value>
-  </data>
   <data name="AutoCheckConfig" xml:space="preserve">
     <value>자동 확인 설정</value>
-  </data>
-  <data name="AutoCheckMembersAddress" xml:space="preserve">
-    <value>회원의 이메일 주소는 자동으로 확인됩니다.</value>
   </data>
   <data name="AutoCheckSameDomain" xml:space="preserve">
     <value>내부 도메인 수신자는 자동으로 확인됩니다.</value>
   </data>
-  <data name="BasicSettings" xml:space="preserve">
-    <value>일반적인 설정</value>
-  </data>
-  <data name="Bcc" xml:space="preserve">
-    <value>Bcc</value>
+  <data name="CSVImportAlert" xml:space="preserve">
+    <value>잘못된 형식의 CSV 파일을 가져오지 마십시오.</value>
   </data>
   <data name="Cancel" xml:space="preserve">
     <value>취소</value>
-  </data>
-  <data name="CanceledSendingMail" xml:space="preserve">
-    <value>이 이메일 전송을 취소했습니다.</value>
-  </data>
-  <data name="CanceledSendingMailMessage" xml:space="preserve">
-    <value>이 이메일 전송을 취소했습니다. 이것을 다시 편집할 수 있습니다.
-이 이메일을 보낼 예상 시간이 삭제되었습니다.
-
-이 이메일을 보내려면 보내기 버튼을 클릭해야 합니다.
-편집 화면을 닫아도 이 이메일이 전송되지 않습니다.</value>
-  </data>
-  <data name="CanGetNewVersion" xml:space="preserve">
-    <value>이 추가 기능의 새 버전이 있습니다.
-다운로드하시겠습니까?</value>
-  </data>
-  <data name="CanNotFindTheLinkedName" xml:space="preserve">
-    <value>메일 본문에서 연결된 이름을 찾을 수 없습니다.</value>
-  </data>
-  <data name="CanNotFindTheLinkedNameInSubject" xml:space="preserve">
-    <value>메일 제목에서 연결된 이름을 찾을 수 없습니다.</value>
-  </data>
-  <data name="Cc" xml:space="preserve">
-    <value>Cc</value>
   </data>
   <data name="CCorBCC" xml:space="preserve">
     <value>참조/숨은 참조</value>
   </data>
   <data name="ChangeLanguage" xml:space="preserve">
     <value>표시 언어 변경</value>
-  </data>
-  <data name="ChangeRibbonLanguageInfo" xml:space="preserve">
-    <value>Outlook을 다시 시작하면 리본(메뉴)의 표시 언어가 업데이트됩니다.</value>
-  </data>
-  <data name="ChangesInTheFileWillNotBeSaved" xml:space="preserve">
-    <value>*파일의 변경 사항은 저장되지 않습니다.</value>
-  </data>
-  <data name="CheckNewVersion" xml:space="preserve">
-    <value>새 버전을 확인하십시오.</value>
-  </data>
-  <data name="CompanyName" xml:space="preserve">
-    <value>Noraneko Inc.</value>
   </data>
   <data name="Confirmation" xml:space="preserve">
     <value>이메일을 보내기 전에 확인합니다.</value>
@@ -293,41 +192,14 @@
   <data name="ConfirmationMessage2" xml:space="preserve">
     <value>모든 항목을 확인하신 후 보내기 버튼을 누르시면 됩니다.</value>
   </data>
-  <data name="ContactGroup" xml:space="preserve">
-    <value>연락처 그룹</value>
-  </data>
-  <data name="Copyright" xml:space="preserve">
-    <value>Copyright (C) 2024 Noraneko Inc.</value>
-  </data>
   <data name="CSVExport" xml:space="preserve">
     <value>CSV 내보내기</value>
   </data>
   <data name="CSVImport" xml:space="preserve">
     <value>CSV 가져오기</value>
   </data>
-  <data name="CSVImportAlert" xml:space="preserve">
-    <value>잘못된 형식의 CSV 파일을 가져오지 마십시오.</value>
-  </data>
-  <data name="DefaultAlertMessage" xml:space="preserve">
-    <value>경고 키워드는 이메일 본문에 포함됩니다.</value>
-  </data>
-  <data name="DeferredDelivery" xml:space="preserve">
-    <value>지연 배송</value>
-  </data>
-  <data name="DeferredDeliveryEmailAddressOrDomainInfo" xml:space="preserve">
-    <value>배송을 연기할 이메일 주소 또는 도메인을 입력합니다.</value>
-  </data>
-  <data name="DeferredDeliveryMinutes" xml:space="preserve">
-    <value>지연 배달 시간.(분)</value>
-  </data>
-  <data name="DeferredDeliveryTime" xml:space="preserve">
-    <value>지연 배달 시간.(분)</value>
-  </data>
   <data name="DestinationEmailaddress" xml:space="preserve">
     <value>수신자</value>
-  </data>
-  <data name="DistributionList" xml:space="preserve">
-    <value>배포 목록</value>
   </data>
   <data name="Domain" xml:space="preserve">
     <value>도메인</value>
@@ -335,54 +207,17 @@
   <data name="DoNotShowConfirmationScreen" xml:space="preserve">
     <value>확인 창 건너뛰기</value>
   </data>
-  <data name="EnableForgottenToAttachAlert" xml:space="preserve">
-    <value>본문에 '첨부파일'이라는 문장이 있는데 첨부파일이 없는 경우에는 이에 대해 경고합니다.</value>
-  </data>
-  <data name="EncryptedZipBeta" xml:space="preserve">
-    <value>암호화된 Zip 첨부 파일 경고</value>
-  </data>
-  <data name="ExclusionSettings" xml:space="preserve">
-    <value>제외 설정</value>
-  </data>
   <data name="ExportFailed" xml:space="preserve">
     <value>내보내기에 실패했습니다.</value>
   </data>
-  <data name="ExternalDomainsChangeToBccAlert" xml:space="preserve">
-    <value>받는 사람과 참조의 외부 도메인이 임계값 이상이므로 외부 도메인 수신자가 숨은 참조로 변경되었습니다.</value>
-  </data>
-  <data name="ExternalDomainsWarningAndAutoChangeToBcc" xml:space="preserve">
-    <value>외부 도메인 경고
-및 숨은 참조로자동 변경</value>
-  </data>
-  <data name="ExternalRecipient" xml:space="preserve">
-    <value>외부 수신자</value>
-  </data>
   <data name="FailedToGetInformation" xml:space="preserve">
     <value>정보를 가져오지 못했습니다.</value>
-  </data>
-  <data name="ForceAutoChangeRecipientsToBcc" xml:space="preserve">
-    <value>숨은 참조로 강제 자동 변경</value>
-  </data>
-  <data name="ForceAutoChangeRecipientsToBccAlert" xml:space="preserve">
-    <value>받는 사람은 자동으로 숨은 참조로 변환되었습니다.</value>
-  </data>
-  <data name="ForceAutoChangeRecipientsToBccNotes" xml:space="preserve">
-    <value>다음 설정이 위의 설정보다 우선합니다.</value>
   </data>
   <data name="ForgottenToAttachAlert" xml:space="preserve">
     <value>본문에 "첨부파일"이라는 단어가 있는데 첨부파일이 없습니다.</value>
   </data>
   <data name="General" xml:space="preserve">
     <value>일반적인</value>
-  </data>
-  <data name="GetMembersOfTheContactGroup" xml:space="preserve">
-    <value>연락처 그룹의 구성원을 표시합니다.</value>
-  </data>
-  <data name="GetMembersOfTheExDistList" xml:space="preserve">
-    <value>Exchange 메일 그룹의 구성원을 표시합니다. (시간이 오래 걸릴 수 있습니다.)</value>
-  </data>
-  <data name="GetMembersOfTheList" xml:space="preserve">
-    <value>Exchange 메일 그룹 또는 연락처 그룹의 구성원 표시</value>
   </data>
   <data name="Help" xml:space="preserve">
     <value>설명서</value>
@@ -412,12 +247,6 @@
   <data name="InputCCorBCC" xml:space="preserve">
     <value>"참조" 또는 "숨은참조"를 입력합니다.</value>
   </data>
-  <data name="InputDeferredDeliveryTime" xml:space="preserve">
-    <value>지연된 시간을 분 단위로 입력합니다.</value>
-  </data>
-  <data name="InputDomain" xml:space="preserve">
-    <value>도메인을 입력합니다.</value>
-  </data>
   <data name="InputDomainInfo" xml:space="preserve">
     <value>@에서 도메인을 입력합니다.</value>
   </data>
@@ -426,15 +255,6 @@
   </data>
   <data name="InputNameInfo" xml:space="preserve">
     <value>이름을 입력합니다. (ex. 회사명)</value>
-  </data>
-  <data name="InternalDomain" xml:space="preserve">
-    <value>내부 도메인</value>
-  </data>
-  <data name="IsAddMessageToEnd" xml:space="preserve">
-    <value>다음 텍스트는 본문 끝에 자동으로 추가됩니다.</value>
-  </data>
-  <data name="IsAddMessageToStart" xml:space="preserve">
-    <value>다음 텍스트는 본문 시작 부분에 자동으로 추가됩니다.</value>
   </data>
   <data name="IsAlertAddressBccAlert" xml:space="preserve">
     <value>받는 사람(숨은 참조)에 경고로 등록된 주소 또는 도메인이 포함되어 있습니다.</value>
@@ -451,122 +271,23 @@
   <data name="IsAttachedExe" xml:space="preserve">
     <value>실행 파일(.exe)이 첨부되어 있습니다.</value>
   </data>
-  <data name="IsAttachmentsProhibited" xml:space="preserve">
-    <value>파일이 첨부된 상태에서는 전송이 금지됩니다.</value>
-  </data>
-  <data name="IsAutoChangeToBccWhenLargeNumberOfExternalDomains" xml:space="preserve">
-    <value>받는 사람과 참조의 외부 수신자는 자동으로 숨은 참조로 변환됩니다.
-받는 사람(받는 사람/참조)에 외부 도메인이 많은 경우.</value>
-  </data>
-  <data name="IsAutoCheckRegisteredInContacts" xml:space="preserve">
-    <value>연락처에 등록된 수신자는 자동으로 확인됩니다. (시간이 오래 걸릴 수 있습니다.)</value>
-  </data>
-  <data name="IsAutoCheckRegisteredInContactsAndMemberOfContactLists" xml:space="preserve">
-    <value>연락처 목록의 구성원으로 등록된 수신자를 포함합니다.
-(연락처 그룹이 많을 경우 처리 시간이 더 오래 걸릴 수 있습니다.)</value>
-  </data>
   <data name="IsBigAttachedFile" xml:space="preserve">
     <value>이 이메일에는 10Mbyte 이상의 파일이 첨부되어 있습니다.</value>
-  </data>
-  <data name="IsCanNotShowConfirmation" xml:space="preserve">
-    <value>확인 창을 표시할 수 없습니다.</value>
-  </data>
-  <data name="IsCheckNameAndDomainsFromRecipients" xml:space="preserve">
-    <value>메일 본문에 받는 사람 이름이 없는 경우에도 경고가 표시됩니다.</value>
-  </data>
-  <data name="IsCheckNameAndDomainsFromSubject" xml:space="preserve">
-    <value>제목에 받는 사람 이름이 없는 경우에도 경고가 표시됩니다.</value>
-  </data>
-  <data name="IsCheckNameAndDomainsIncludeSubject" xml:space="preserve">
-    <value>대상에 주제를 포함합니다. *대상은 본체와 함께 대상에 포함됩니다.</value>
-  </data>
-  <data name="IsDoNotUseXIfAllRecipientsAreInternalDomain" xml:space="preserve">
-    <value>받는 사람의 도메인이 모두 내부 도메인인 경우 이 기능을 비활성화합니다.</value>
-  </data>
-  <data name="IsEnableAllAttachedFilesAreDetectEncryptedZip" xml:space="preserve">
-    <value>확장자가 ".zip"이 아닌 첨부 파일도 ZIP 암호화 여부를 감지합니다.</value>
-  </data>
-  <data name="IsEnableOpenAttachedFiles" xml:space="preserve">
-    <value>확인 화면에서 첨부 파일 열기를 활성화합니다.</value>
-  </data>
-  <data name="IsEnableRecipientsAreSortedByDomain" xml:space="preserve">
-    <value>수신인은 확인 화면에서 도메인별로 정렬됩니다.</value>
-  </data>
-  <data name="IsForceAutoChangeRecipientsToBcc" xml:space="preserve">
-    <value>모든 외부 수신자를 숨은 참조로 설정합니다.</value>
-  </data>
-  <data name="IsIncludeInternalDomain" xml:space="preserve">
-    <value>내부 도메인을 포함합니다. *모든 수신자는 숨은 참조로 변경됩니다.</value>
-  </data>
-  <data name="IsMustOpenBeforeCheckTheAttachedFiles" xml:space="preserve">
-    <value>확인 화면에서는 대상 첨부파일을 반드시 열어야 합니다.</value>
-  </data>
-  <data name="IsNotTreatedAsAttachmentsAtHtmlEmbeddedFiles" xml:space="preserve">
-    <value>HTML 메일에 포함된 파일은 첨부 파일로 처리되지 않습니다.</value>
-  </data>
-  <data name="IsProhibitedWhenEncryptedZipIsAttached" xml:space="preserve">
-    <value>암호화된 ZIP 파일이 첨부된 경우 전송이 금지됩니다.</value>
-  </data>
-  <data name="IsProhibitedWhenLargeNumberOfExternalDomains" xml:space="preserve">
-    <value>수신자(To/Cc)가 다수의 외부 도메인을 가지고 있는 경우 전송이 금지됩니다.</value>
-  </data>
-  <data name="IsProhibitsSendingMailIfRecipientsIsNotRegistered" xml:space="preserve">
-    <value>수신인이 주소록 에 등록되어 있지 않은 경우 메일 발송을 금지합니다.</value>
-  </data>
-  <data name="IsShowConfirmationToMultipleDomain" xml:space="preserve">
-    <value>수신자가 여러 외부 도메인을 포함하는 경우 확인 창을 표시합니다.
-(확인 창을 건너뛰지 않습니다.)</value>
-  </data>
-  <data name="IsSkipConfirmation" xml:space="preserve">
-    <value>확인 창을 건너뜁니다.</value>
-  </data>
-  <data name="IsSkipConfirmationInfo" xml:space="preserve">
-    <value>선택한 수신자에게만 이메일을 보낼 경우 확인 창을 건너뜁니다.</value>
-  </data>
-  <data name="IsWarningIfRecipientsIsNotRegistered" xml:space="preserve">
-    <value>연락처 에 수신자가 등록되어 있지 않으면 확인 화면에 경고가 표시됩니다.</value>
-  </data>
-  <data name="IsWarningWhenAttachedRealFile" xml:space="preserve">
-    <value>파일이 첨부된 경우 확인 화면에서 링크로 첨부하는 것을 권장합니다.</value>
-  </data>
-  <data name="IsWarningWhenEncryptedZipIsAttached" xml:space="preserve">
-    <value>암호화된 ZIP 파일이 첨부될 때 경고를 표시합니다.</value>
-  </data>
-  <data name="IsWarningWhenLargeNumberOfExternalDomains" xml:space="preserve">
-    <value>받는 사람(받는 사람/참조)의 외부 도메인이 많은 경우 경고를 표시합니다.</value>
   </data>
   <data name="Keyword" xml:space="preserve">
     <value>키워드</value>
   </data>
-  <data name="KeywordAndRecipients" xml:space="preserve">
-    <value>키워드 및 수신자 관련성</value>
-  </data>
-  <data name="KeywordAndRecipientsAlert1" xml:space="preserve">
-    <value>키워드 "</value>
-  </data>
-  <data name="KeywordAndRecipientsAlert2" xml:space="preserve">
-    <value>"와 관련된 "</value>
-  </data>
-  <data name="KeywordAndRecipientsAlert3" xml:space="preserve">
-    <value>" मौजूद नहीं है</value>
-  </data>
-  <data name="LargeNumberOfExternalDomainAlert" xml:space="preserve">
-    <value>To 및 Cc의 외부 도메인 수가 임계값보다 높습니다. 발송의 장단점을 재확인하시기 바랍니다.</value>
+  <data name="MailBody" xml:space="preserve">
+    <value>메시지 본문(일반 텍스트)</value>
   </data>
   <data name="MailAddressAndDomain" xml:space="preserve">
     <value>받는 사람 주소/도메인</value>
-  </data>
-  <data name="MailBody" xml:space="preserve">
-    <value>메시지 본문(일반 텍스트)</value>
   </data>
   <data name="MailInfo" xml:space="preserve">
     <value>메일 정보</value>
   </data>
   <data name="MailType" xml:space="preserve">
     <value>유형</value>
-  </data>
-  <data name="MeetingRequest" xml:space="preserve">
-    <value>미팅 요청</value>
   </data>
   <data name="Name" xml:space="preserve">
     <value>이름</value>
@@ -577,38 +298,8 @@
   <data name="NoAlert" xml:space="preserve">
     <value>중요한 알림이 없습니다.</value>
   </data>
-  <data name="NotApplicableToMeetingRequests" xml:space="preserve">
-    <value>*회의 요청에는 적용되지 않습니다.</value>
-  </data>
-  <data name="NoticeOfIsEnableAllAttachedFilesAreDetectEncryptedZip" xml:space="preserve">
-    <value>* 첨부파일이 있는 이메일은 처리 시간이 더 오래 걸릴 수 있습니다.</value>
-  </data>
   <data name="OK" xml:space="preserve">
     <value>승인</value>
-  </data>
-  <data name="Open" xml:space="preserve">
-    <value>열려 있는</value>
-  </data>
-  <data name="OpenTheAttachedFile" xml:space="preserve">
-    <value>첨부파일을 열어보시겠습니까?</value>
-  </data>
-  <data name="OpenTheAttachedFileOnTheConfirmationScreen" xml:space="preserve">
-    <value>확인 화면에서 첨부 파일을 엽니다.</value>
-  </data>
-  <data name="ProhibitedWhenLargeNumberOfExternalDomainsAlert" xml:space="preserve">
-    <value>To 및 Cc의 외부 도메인 수가 임계값을 초과합니다.</value>
-  </data>
-  <data name="ProhibitsSendingMailIfRecipientsIsNotRegisteredMessage" xml:space="preserve">
-    <value>등록되지 않은 연락처 로 이메일을 보내는 것은 금지되어 있습니다.</value>
-  </data>
-  <data name="RecipientsAndAttachmentsName" xml:space="preserve">
-    <value>수신자 및 첨부 파일 이름 연결</value>
-  </data>
-  <data name="RecipientsAndAttachmentsNameMessage" xml:space="preserve">
-    <value>관련 없는 수신자 및 첨부 파일.</value>
-  </data>
-  <data name="RecommendationOfAttachFileAsLink" xml:space="preserve">
-    <value>파일을 링크로 첨부하는 것을 권장합니다.</value>
   </data>
   <data name="RichText" xml:space="preserve">
     <value>서식 있는 텍스트</value>
@@ -628,38 +319,58 @@
   <data name="Sender" xml:space="preserve">
     <value>보내는 사람</value>
   </data>
-  <data name="SendersDomainAndInternalDomainAreNotCovered" xml:space="preserve">
-    <value>*발신인의 도메인과 내부 도메인은 모두 적용되지 않습니다.</value>
-  </data>
   <data name="SendingForbid" xml:space="preserve">
     <value>전송 금지</value>
-  </data>
-  <data name="SendingForbidAddress" xml:space="preserve">
-    <value>금지된 수신자.</value>
   </data>
   <data name="SendingForbidInfo" xml:space="preserve">
     <value>이 확인란을 선택하면 수신자에게 이메일을 보내거나 키워드를 포함할 수 없습니다.</value>
   </data>
-  <data name="SendMailConfirmation" xml:space="preserve">
-    <value>이 이메일을 보내시겠습니까?</value>
-  </data>
-  <data name="SentOnBehalf" xml:space="preserve">
-    <value>대신 보내기 또는 다른 이름으로 보내기.</value>
-  </data>
   <data name="SettingExample" xml:space="preserve">
     <value>설정의 예</value>
   </data>
-  <data name="SettingExampleAlertKeyword" xml:space="preserve">
-    <value>키워드: 기밀
-경고 텍스트: "기밀"이라는 문구가 포함됩니다.
-
-경고할 키워드와 경고 문구를 등록합니다.
-
-키워드가 제목에 포함된 경우 경고를 표시하거나 해당 이메일의 전송을 금지할 수 있습니다.
-
-경고 텍스트가 비어 있으면 확인 화면에 기본 경고 텍스트가 표시됩니다.</value>
+  <data name="Settings" xml:space="preserve">
+    <value>설정</value>
   </data>
-  <data name="SettingExampleAlertKeywordForSubject" xml:space="preserve">
+  <data name="Subject" xml:space="preserve">
+    <value>주제</value>
+  </data>
+  <data name="SuccessfulExport" xml:space="preserve">
+    <value>이제 내보내기가 완료되었습니다.</value>
+  </data>
+  <data name="SuccessfulImport" xml:space="preserve">
+    <value>이제 가져오기가 완료되었습니다.</value>
+  </data>
+  <data name="Text" xml:space="preserve">
+    <value>일반 텍스트</value>
+  </data>
+  <data name="Unknown" xml:space="preserve">
+    <value>알려지지 않은</value>
+  </data>
+  <data name="WarningText" xml:space="preserve">
+    <value>경고 텍스트</value>
+  </data>
+  <data name="WarningTextInfo" xml:space="preserve">
+    <value>확인 창의 경고 텍스트입니다.</value>
+  </data>
+  <data name="WhiteList" xml:space="preserve">
+    <value>허용 목록</value>
+  </data>
+  <data name="CompanyName" xml:space="preserve">
+    <value>Noraneko Inc.</value>
+  </data>
+  <data name="Copyright" xml:space="preserve">
+    <value>Copyright (C) 2026 Noraneko Inc.</value>
+  </data>
+  <data name="Version" xml:space="preserve">
+    <value>Version 2.8.3</value>
+  </data>
+  <data name="VersionInfo" xml:space="preserve">
+    <value>이 프로그램에 대해</value>
+  </data>
+  <data name="SendingForbidAddress" xml:space="preserve">
+    <value>금지된 수신자.</value>
+  </data>
+  <data name="SettingExampleAlertKeyword" xml:space="preserve">
     <value>키워드: 기밀
 경고 텍스트: "기밀"이라는 문구가 포함됩니다.
 
@@ -680,37 +391,6 @@
 
 경고 텍스트가 비어 있으면 확인 화면에 기본 경고 텍스트가 표시됩니다.</value>
   </data>
-  <data name="SettingExampleAttachmentAlertRecipients" xml:space="preserve">
-    <value>주소: info@noraneko.co.jp
-또는.
-도메인 이름: @noraneko.co.jp
-
-이메일 주소 또는 도메인 이름 및 해당 경고 텍스트를 등록합니다.
-
-등록된 경우 첨부 파일이 있는 이메일이 이 주소로 전송될 때 경고가 표시됩니다.
-
-경고 텍스트가 비어 있으면 기본 경고 텍스트가 표시됩니다.</value>
-  </data>
-  <data name="SettingExampleAttachmentProhibitedRecipients" xml:space="preserve">
-    <value>이메일 주소: info@noraneko.co.jp
-또는
-도메인: @noraneko.co.jp
-
-이메일 주소 또는 도메인을 등록합니다.
-
-해당 수신자에게 첨부 파일이 있는 이메일을 보낼 수 없습니다.</value>
-  </data>
-  <data name="SettingExampleAttachments" xml:space="preserve">
-    <value>첨부 파일이 있는 이메일이 전송되지 않도록 하거나 파일을 링크로 첨부할 것을 권장하는 경고를 표시할 수 있습니다.
-
-암호화된 ZIP 파일(암호가 있는 ZIP 파일)이 첨부될 때 경고를 표시하거나 이메일 전송을 금지할 수도 있습니다.</value>
-  </data>
-  <data name="SettingExampleAutoAddCCorBCCByAttachedFile" xml:space="preserve">
-    <value>유형: 참조 또는 숨은 참조
-이메일 주소: boss@noraneko.co.jp
-
-파일이 첨부된 이메일을 보내면 지정된 주소가 자동으로 참조 또는 숨은 참조에 추가됩니다.</value>
-  </data>
   <data name="SettingExampleAutoAddCCorBCCByKeyword" xml:space="preserve">
     <value>유형: 참조 또는 숨은 참조
 키워드: 기밀
@@ -725,8 +405,64 @@
 
 등록된 수신자 및 도메인으로 메일을 보낼 때 Cc 또는 Bcc에 지정된 주소가 자동으로 추가됩니다.</value>
   </data>
-  <data name="SettingExampleAutoAddMessage" xml:space="preserve">
-    <value>이메일의 시작이나 끝에 지정된 문구를 자동으로 추가할 수 있습니다.</value>
+  <data name="SettingExampleNameAndDomain" xml:space="preserve">
+    <value>이름: 주식회사 노라네코
+도메인: @noraneko.co.jp
+
+이름(예: 회사명)과 도메인을 등록합니다.
+
+이메일 본문과 수신자 도메인의 이름이 일치하지 않으면 경고를 표시합니다.
+
+*수표에 과목도 포함될 수 있습니다.</value>
+  </data>
+  <data name="SettingExampleWhiteList" xml:space="preserve">
+    <value>이메일 주소: info@noraneko.co.jp
+또는
+도메인: @noraneko.co.jp
+
+이메일 주소 또는 도메인을 등록합니다.
+
+해당 수신자는 확인 화면에서 사전 확인됩니다.</value>
+  </data>
+  <data name="ChangeRibbonLanguageInfo" xml:space="preserve">
+    <value>Outlook을 다시 시작하면 리본(메뉴)의 표시 언어가 업데이트됩니다.</value>
+  </data>
+  <data name="IsCanNotShowConfirmation" xml:space="preserve">
+    <value>확인 창을 표시할 수 없습니다.</value>
+  </data>
+  <data name="SendMailConfirmation" xml:space="preserve">
+    <value>이 이메일을 보내시겠습니까?</value>
+  </data>
+  <data name="IsShowConfirmationToMultipleDomain" xml:space="preserve">
+    <value>수신자가 여러 외부 도메인을 포함하는 경우 확인 창을 표시합니다.
+(확인 창을 건너뛰지 않습니다.)</value>
+  </data>
+  <data name="IsSkipConfirmation" xml:space="preserve">
+    <value>확인 창을 건너뜁니다.</value>
+  </data>
+  <data name="IsSkipConfirmationInfo" xml:space="preserve">
+    <value>선택한 수신자에게만 이메일을 보낼 경우 확인 창을 건너뜁니다.</value>
+  </data>
+  <data name="SentOnBehalf" xml:space="preserve">
+    <value>대신 보내기 또는 다른 이름으로 보내기.</value>
+  </data>
+  <data name="DeferredDelivery" xml:space="preserve">
+    <value>지연 배송</value>
+  </data>
+  <data name="DeferredDeliveryMinutes" xml:space="preserve">
+    <value>지연 배달 시간.(분)</value>
+  </data>
+  <data name="EnableForgottenToAttachAlert" xml:space="preserve">
+    <value>본문에 '첨부파일'이라는 문장이 있는데 첨부파일이 없는 경우에는 이에 대해 경고합니다.</value>
+  </data>
+  <data name="DeferredDeliveryEmailAddressOrDomainInfo" xml:space="preserve">
+    <value>배송을 연기할 이메일 주소 또는 도메인을 입력합니다.</value>
+  </data>
+  <data name="DeferredDeliveryTime" xml:space="preserve">
+    <value>지연 배달 시간.(분)</value>
+  </data>
+  <data name="InputDeferredDeliveryTime" xml:space="preserve">
+    <value>지연된 시간을 분 단위로 입력합니다.</value>
   </data>
   <data name="SettingExampleDeferredDelivery" xml:space="preserve">
     <value>이메일 주소: info@noraneko.co.jp
@@ -739,11 +475,58 @@
 
 * 여러 조건이 충족되는 경우 가장 긴 지연 시간이 적용됩니다.</value>
   </data>
-  <data name="SettingExampleExternalDomainsWarningAndAutoChangeToBcc" xml:space="preserve">
-    <value>경고 및 숨은 참조 자동 변경의 기준으로 사용할 외부 도메인의 수를 설정하고 각각을 켜거나 끕니다.
-숨은 참조로 자동 변경 후 받는 사람이 없으면 받는 사람에 보낸 사람의 주소가 자동으로 추가됩니다.
+  <data name="ContactGroup" xml:space="preserve">
+    <value>연락처 그룹</value>
+  </data>
+  <data name="AutoCheckMembersAddress" xml:space="preserve">
+    <value>회원의 이메일 주소는 자동으로 확인됩니다.</value>
+  </data>
+  <data name="GetMembersOfTheContactGroup" xml:space="preserve">
+    <value>연락처 그룹의 구성원을 표시합니다.</value>
+  </data>
+  <data name="GetMembersOfTheExDistList" xml:space="preserve">
+    <value>Exchange 메일 그룹의 구성원을 표시합니다. (시간이 오래 걸릴 수 있습니다.)</value>
+  </data>
+  <data name="GetMembersOfTheList" xml:space="preserve">
+    <value>Exchange 메일 그룹 또는 연락처 그룹의 구성원 표시</value>
+  </data>
+  <data name="CanGetNewVersion" xml:space="preserve">
+    <value>이 추가 기능의 새 버전이 있습니다.
+다운로드하시겠습니까?</value>
+  </data>
+  <data name="CheckNewVersion" xml:space="preserve">
+    <value>새 버전을 확인하십시오.</value>
+  </data>
+  <data name="YouHaveLatest" xml:space="preserve">
+    <value>이 추가 기능은 최신 버전입니다.</value>
+  </data>
+  <data name="AutoAddCCorBCCByAttachedFile" xml:space="preserve">
+    <value>Cc/Bcc 자동추가 (첨부파일로)</value>
+  </data>
+  <data name="IsNotTreatedAsAttachmentsAtHtmlEmbeddedFiles" xml:space="preserve">
+    <value>HTML 메일에 포함된 파일은 첨부 파일로 처리되지 않습니다.</value>
+  </data>
+  <data name="SettingExampleAutoAddCCorBCCByAttachedFile" xml:space="preserve">
+    <value>유형: 참조 또는 숨은 참조
+이메일 주소: boss@noraneko.co.jp
 
-또한 모든 받는 사람이 숨은 참조로 변환되도록 강제할 수도 있습니다.</value>
+파일이 첨부된 이메일을 보내면 지정된 주소가 자동으로 참조 또는 숨은 참조에 추가됩니다.</value>
+  </data>
+  <data name="CanceledSendingMail" xml:space="preserve">
+    <value>이 이메일 전송을 취소했습니다.</value>
+  </data>
+  <data name="CanceledSendingMailMessage" xml:space="preserve">
+    <value>이 이메일 전송을 취소했습니다. 이것을 다시 편집할 수 있습니다.
+이 이메일을 보낼 예상 시간이 삭제되었습니다.
+
+이 이메일을 보내려면 보내기 버튼을 클릭해야 합니다.
+편집 화면을 닫아도 이 이메일이 전송되지 않습니다.</value>
+  </data>
+  <data name="InputDomain" xml:space="preserve">
+    <value>도메인을 입력합니다.</value>
+  </data>
+  <data name="InternalDomain" xml:space="preserve">
+    <value>내부 도메인</value>
   </data>
   <data name="SettingExampleInternalDomainList" xml:space="preserve">
     <value>도메인: @noraneko.co.jp
@@ -751,25 +534,141 @@
 
 보낸 사람의 이메일 주소 도메인은 항상 내부 도메인으로 취급됩니다.</value>
   </data>
-  <data name="SettingExampleKeywordAndRecipients" xml:space="preserve">
-    <value>이름: 주식회사 노라네코
-도메인: @noraneko.co.jp
-
-키워드(회사명 등)와 수신자(도메인 등)를 등록합니다.
-
-이메일 본문에 키워드에 해당하는 수신자가 없으면 경고가 표시됩니다.
-
-*수표에 과목도 포함될 수 있습니다.</value>
+  <data name="ExclusionSettings" xml:space="preserve">
+    <value>제외 설정</value>
   </data>
-  <data name="SettingExampleNameAndDomain" xml:space="preserve">
-    <value>이름: 주식회사 노라네코
+  <data name="IsDoNotUseXIfAllRecipientsAreInternalDomain" xml:space="preserve">
+    <value>받는 사람의 도메인이 모두 내부 도메인인 경우 이 기능을 비활성화합니다.</value>
+  </data>
+  <data name="BasicSettings" xml:space="preserve">
+    <value>일반적인 설정</value>
+  </data>
+  <data name="ExternalDomainsWarningAndAutoChangeToBcc" xml:space="preserve">
+    <value>외부 도메인 경고
+및 숨은 참조로자동 변경</value>
+  </data>
+  <data name="IsAutoChangeToBccWhenLargeNumberOfExternalDomains" xml:space="preserve">
+    <value>받는 사람과 참조의 외부 수신자는 자동으로 숨은 참조로 변환됩니다.
+받는 사람(받는 사람/참조)에 외부 도메인이 많은 경우.</value>
+  </data>
+  <data name="IsProhibitedWhenLargeNumberOfExternalDomains" xml:space="preserve">
+    <value>수신자(To/Cc)가 다수의 외부 도메인을 가지고 있는 경우 전송이 금지됩니다.</value>
+  </data>
+  <data name="IsWarningWhenLargeNumberOfExternalDomains" xml:space="preserve">
+    <value>받는 사람(받는 사람/참조)의 외부 도메인이 많은 경우 경고를 표시합니다.</value>
+  </data>
+  <data name="SettingExampleExternalDomainsWarningAndAutoChangeToBcc" xml:space="preserve">
+    <value>경고 및 숨은 참조 자동 변경의 기준으로 사용할 외부 도메인의 수를 설정하고 각각을 켜거나 끕니다.
+숨은 참조로 자동 변경 후 받는 사람이 없으면 받는 사람에 보낸 사람의 주소가 자동으로 추가됩니다.
+
+또한 모든 받는 사람이 숨은 참조로 변환되도록 강제할 수도 있습니다.</value>
+  </data>
+  <data name="TargetToAndCcExternalDomainsNum" xml:space="preserve">
+    <value>이 기능이 적용되는 수신자(To/Cc)의 외부 도메인 수입니다.</value>
+  </data>
+  <data name="TargetToAndCcExternalDomainsNumInfo" xml:space="preserve">
+    <value>* 이메일의 받는 사람과 참조에 포함된 외부 도메인이 이 설정보다 크거나 같을 경우,
+이 기능이 적용됩니다.</value>
+  </data>
+  <data name="AutoAddSendersAddressToAlert" xml:space="preserve">
+    <value>보낸 사람의 이메일 주소가 받는 사람에 자동으로 추가되었습니다. (숨은 참조로 자동 변경되어 To가 더 이상 존재하지 않기 때문입니다.)</value>
+  </data>
+  <data name="ExternalDomainsChangeToBccAlert" xml:space="preserve">
+    <value>받는 사람과 참조의 외부 도메인이 임계값 이상이므로 외부 도메인 수신자가 숨은 참조로 변경되었습니다.</value>
+  </data>
+  <data name="LargeNumberOfExternalDomainAlert" xml:space="preserve">
+    <value>To 및 Cc의 외부 도메인 수가 임계값보다 높습니다. 발송의 장단점을 재확인하시기 바랍니다.</value>
+  </data>
+  <data name="ProhibitedWhenLargeNumberOfExternalDomainsAlert" xml:space="preserve">
+    <value>To 및 Cc의 외부 도메인 수가 임계값을 초과합니다.</value>
+  </data>
+  <data name="DefaultAlertMessage" xml:space="preserve">
+    <value>경고 키워드는 이메일 본문에 포함됩니다.</value>
+  </data>
+  <data name="IsEnableRecipientsAreSortedByDomain" xml:space="preserve">
+    <value>수신인은 확인 화면에서 도메인별로 정렬됩니다.</value>
+  </data>
+  <data name="AttachedIsAnEncryptedZipFile" xml:space="preserve">
+    <value>첨부 파일은 암호화된 ZIP 파일입니다.</value>
+  </data>
+  <data name="EncryptedZipBeta" xml:space="preserve">
+    <value>암호화된 Zip 첨부 파일 경고</value>
+  </data>
+  <data name="IsEnableAllAttachedFilesAreDetectEncryptedZip" xml:space="preserve">
+    <value>확장자가 ".zip"이 아닌 첨부 파일도 ZIP 암호화 여부를 감지합니다.</value>
+  </data>
+  <data name="IsProhibitedWhenEncryptedZipIsAttached" xml:space="preserve">
+    <value>암호화된 ZIP 파일이 첨부된 경우 전송이 금지됩니다.</value>
+  </data>
+  <data name="IsWarningWhenEncryptedZipIsAttached" xml:space="preserve">
+    <value>암호화된 ZIP 파일이 첨부될 때 경고를 표시합니다.</value>
+  </data>
+  <data name="NoticeOfIsEnableAllAttachedFilesAreDetectEncryptedZip" xml:space="preserve">
+    <value>* 첨부파일이 있는 이메일은 처리 시간이 더 오래 걸릴 수 있습니다.</value>
+  </data>
+  <data name="SettingExampleAttachments" xml:space="preserve">
+    <value>첨부 파일이 있는 이메일이 전송되지 않도록 하거나 파일을 링크로 첨부할 것을 권장하는 경고를 표시할 수 있습니다.
+
+암호화된 ZIP 파일(암호가 있는 ZIP 파일)이 첨부될 때 경고를 표시하거나 이메일 전송을 금지할 수도 있습니다.</value>
+  </data>
+  <data name="ExternalRecipient" xml:space="preserve">
+    <value>외부 수신자</value>
+  </data>
+  <data name="AlwaysAddTheSendersAddressToBcc" xml:space="preserve">
+    <value>발신자의 주소를 항상 숨은 참조에 자동으로 추가하십시오.</value>
+  </data>
+  <data name="AlertKeywordForBody" xml:space="preserve">
+    <value>경고 키워드 (본문)</value>
+  </data>
+  <data name="AlertKeywordForSubject" xml:space="preserve">
+    <value>경고 키워드 (제목)</value>
+  </data>
+  <data name="SettingExampleAlertKeywordForSubject" xml:space="preserve">
+    <value>키워드: 기밀
+경고 텍스트: "기밀"이라는 문구가 포함됩니다.
+
+경고할 키워드와 경고 문구를 등록합니다.
+
+키워드가 제목에 포함된 경우 경고를 표시하거나 해당 이메일의 전송을 금지할 수 있습니다.
+
+경고 텍스트가 비어 있으면 확인 화면에 기본 경고 텍스트가 표시됩니다.</value>
+  </data>
+  <data name="DistributionList" xml:space="preserve">
+    <value>배포 목록</value>
+  </data>
+  <data name="IsAutoCheckRegisteredInContacts" xml:space="preserve">
+    <value>연락처에 등록된 수신자는 자동으로 확인됩니다. (시간이 오래 걸릴 수 있습니다.)</value>
+  </data>
+  <data name="IsAutoCheckRegisteredInContactsAndMemberOfContactLists" xml:space="preserve">
+    <value>연락처 목록의 구성원으로 등록된 수신자를 포함합니다.
+(연락처 그룹이 많을 경우 처리 시간이 더 오래 걸릴 수 있습니다.)</value>
+  </data>
+  <data name="AttachmentsKeyword" xml:space="preserve">
+    <value>첨부 파일</value>
+  </data>
+  <data name="IsAttachmentsProhibited" xml:space="preserve">
+    <value>파일이 첨부된 상태에서는 전송이 금지됩니다.</value>
+  </data>
+  <data name="IsWarningWhenAttachedRealFile" xml:space="preserve">
+    <value>파일이 첨부된 경우 확인 화면에서 링크로 첨부하는 것을 권장합니다.</value>
+  </data>
+  <data name="AttachmentProhibitedRecipients" xml:space="preserve">
+    <value>첨부 금지 주소</value>
+  </data>
+  <data name="AttachmentsName" xml:space="preserve">
+    <value>첨부 파일 이름/키워드</value>
+  </data>
+  <data name="RecipientsAndAttachmentsName" xml:space="preserve">
+    <value>수신자 및 첨부 파일 이름 연결</value>
+  </data>
+  <data name="SettingExampleAttachmentProhibitedRecipients" xml:space="preserve">
+    <value>이메일 주소: info@noraneko.co.jp
+또는
 도메인: @noraneko.co.jp
 
-이름(예: 회사명)과 도메인을 등록합니다.
+이메일 주소 또는 도메인을 등록합니다.
 
-이메일 본문과 수신자 도메인의 이름이 일치하지 않으면 경고를 표시합니다.
-
-*수표에 과목도 포함될 수 있습니다.</value>
+해당 수신자에게 첨부 파일이 있는 이메일을 보낼 수 없습니다.</value>
   </data>
   <data name="SettingExampleRecipientsAndAttachmentsName" xml:space="preserve">
     <value>이메일 주소: info@noraneko.co.jp
@@ -781,87 +680,205 @@
 
 받는 사람과 첨부 파일 이름이 일치하지 않으면 경고가 표시됩니다.</value>
   </data>
-  <data name="SettingExampleWhiteList" xml:space="preserve">
-    <value>이메일 주소: info@noraneko.co.jp
-또는
-도메인: @noraneko.co.jp
-
-이메일 주소 또는 도메인을 등록합니다.
-
-해당 수신자는 확인 화면에서 사전 확인됩니다.</value>
+  <data name="RecommendationOfAttachFileAsLink" xml:space="preserve">
+    <value>파일을 링크로 첨부하는 것을 권장합니다.</value>
   </data>
-  <data name="Settings" xml:space="preserve">
-    <value>설정</value>
+  <data name="AttachmentProhibitedRecipientsMessage" xml:space="preserve">
+    <value>첨부파일 전송이 금지된 수신자입니다.</value>
   </data>
-  <data name="ShowConfirmationAtSendTaskRequest" xml:space="preserve">
-    <value>작업 할당에 대한 확인 화면도 표시됩니다.</value>
+  <data name="AttachmentsProhibitedMessage" xml:space="preserve">
+    <value>첨부된 이메일을 보내는 것은 금지되어 있습니다.</value>
   </data>
-  <data name="Subject" xml:space="preserve">
-    <value>주제</value>
+  <data name="RecipientsAndAttachmentsNameMessage" xml:space="preserve">
+    <value>관련 없는 수신자 및 첨부 파일.</value>
   </data>
-  <data name="SuccessfulExport" xml:space="preserve">
-    <value>이제 내보내기가 완료되었습니다.</value>
+  <data name="Bcc" xml:space="preserve">
+    <value>Bcc</value>
   </data>
-  <data name="SuccessfulImport" xml:space="preserve">
-    <value>이제 가져오기가 완료되었습니다.</value>
-  </data>
-  <data name="TargetAttachmentFileExtensionOfOpen" xml:space="preserve">
-    <value>대상 첨부 파일 확장자:</value>
-  </data>
-  <data name="TargetToAndCcExternalDomainsNum" xml:space="preserve">
-    <value>이 기능이 적용되는 수신자(To/Cc)의 외부 도메인 수입니다.</value>
-  </data>
-  <data name="TargetToAndCcExternalDomainsNumInfo" xml:space="preserve">
-    <value>* 이메일의 받는 사람과 참조에 포함된 외부 도메인이 이 설정보다 크거나 같을 경우,
-이 기능이 적용됩니다.</value>
-  </data>
-  <data name="TaskRequest" xml:space="preserve">
-    <value>작업 할당</value>
-  </data>
-  <data name="Text" xml:space="preserve">
-    <value>일반 텍스트</value>
+  <data name="Cc" xml:space="preserve">
+    <value>Cc</value>
   </data>
   <data name="To" xml:space="preserve">
     <value>To</value>
   </data>
-  <data name="ToRecipient" xml:space="preserve">
-    <value>받는 사람으로 설정할 메일 주소 *설정하지 않으면 보내는 사람 주소가 받는 사람으로 자동 설정됩니다.</value>
+  <data name="CanNotFindTheLinkedName" xml:space="preserve">
+    <value>메일 본문에서 연결된 이름을 찾을 수 없습니다.</value>
   </data>
-  <data name="Unknown" xml:space="preserve">
-    <value>알려지지 않은</value>
+  <data name="IsCheckNameAndDomainsFromRecipients" xml:space="preserve">
+    <value>메일 본문에 받는 사람 이름이 없는 경우에도 경고가 표시됩니다.</value>
   </data>
-  <data name="Version" xml:space="preserve">
-    <value>Version 2.8.2</value>
+  <data name="AddressBook" xml:space="preserve">
+    <value>연락처</value>
   </data>
-  <data name="VersionInfo" xml:space="preserve">
-    <value>이 프로그램에 대해</value>
+  <data name="IsProhibitsSendingMailIfRecipientsIsNotRegistered" xml:space="preserve">
+    <value>수신인이 주소록 에 등록되어 있지 않은 경우 메일 발송을 금지합니다.</value>
+  </data>
+  <data name="IsWarningIfRecipientsIsNotRegistered" xml:space="preserve">
+    <value>연락처 에 수신자가 등록되어 있지 않으면 확인 화면에 경고가 표시됩니다.</value>
+  </data>
+  <data name="ProhibitsSendingMailIfRecipientsIsNotRegisteredMessage" xml:space="preserve">
+    <value>등록되지 않은 연락처 로 이메일을 보내는 것은 금지되어 있습니다.</value>
+  </data>
+  <data name="SendersDomainAndInternalDomainAreNotCovered" xml:space="preserve">
+    <value>*발신인의 도메인과 내부 도메인은 모두 적용되지 않습니다.</value>
   </data>
   <data name="WarningIfRecipientsIsNotRegisteredMessage" xml:space="preserve">
     <value>이 주소는 연락처 에 등록되어 있지 않습니다.</value>
   </data>
-  <data name="WarningText" xml:space="preserve">
-    <value>경고 텍스트</value>
-  </data>
-  <data name="WarningTextInfo" xml:space="preserve">
-    <value>확인 창의 경고 텍스트입니다.</value>
-  </data>
-  <data name="WhiteList" xml:space="preserve">
-    <value>허용 목록</value>
-  </data>
-  <data name="YouHaveLatest" xml:space="preserve">
-    <value>이 추가 기능은 최신 버전입니다.</value>
-  </data>
-  <data name="General2" xml:space="preserve">
-    <value>일반적인 2</value>
+  <data name="MeetingRequest" xml:space="preserve">
+    <value>미팅 요청</value>
   </data>
   <data name="ShowConfirmationAtSendMeetingRequest" xml:space="preserve">
     <value>모임 요청에 대한 확인 화면도 표시됩니다.</value>
+  </data>
+  <data name="AlwaysAddTheSendersAddressToCc" xml:space="preserve">
+    <value>항상 보낸 사람의 주소를 참조에 자동으로 추가합니다.</value>
+  </data>
+  <data name="AttachmentAlertRecipients" xml:space="preserve">
+    <value>첨부 파일 알림 주소</value>
+  </data>
+  <data name="AutoAddMessage" xml:space="preserve">
+    <value>자동 본문 추가</value>
+  </data>
+  <data name="ForceAutoChangeRecipientsToBcc" xml:space="preserve">
+    <value>숨은 참조로 강제 자동 변경</value>
+  </data>
+  <data name="ForceAutoChangeRecipientsToBccNotes" xml:space="preserve">
+    <value>다음 설정이 위의 설정보다 우선합니다.</value>
+  </data>
+  <data name="IsAddMessageToEnd" xml:space="preserve">
+    <value>다음 텍스트는 본문 끝에 자동으로 추가됩니다.</value>
+  </data>
+  <data name="IsAddMessageToStart" xml:space="preserve">
+    <value>다음 텍스트는 본문 시작 부분에 자동으로 추가됩니다.</value>
+  </data>
+  <data name="IsCheckNameAndDomainsFromSubject" xml:space="preserve">
+    <value>제목에 받는 사람 이름이 없는 경우에도 경고가 표시됩니다.</value>
+  </data>
+  <data name="IsCheckNameAndDomainsIncludeSubject" xml:space="preserve">
+    <value>대상에 주제를 포함합니다. *대상은 본체와 함께 대상에 포함됩니다.</value>
+  </data>
+  <data name="IsForceAutoChangeRecipientsToBcc" xml:space="preserve">
+    <value>모든 외부 수신자를 숨은 참조로 설정합니다.</value>
+  </data>
+  <data name="IsIncludeInternalDomain" xml:space="preserve">
+    <value>내부 도메인을 포함합니다. *모든 수신자는 숨은 참조로 변경됩니다.</value>
+  </data>
+  <data name="SettingExampleAttachmentAlertRecipients" xml:space="preserve">
+    <value>주소: info@noraneko.co.jp
+또는.
+도메인 이름: @noraneko.co.jp
+
+이메일 주소 또는 도메인 이름 및 해당 경고 텍스트를 등록합니다.
+
+등록된 경우 첨부 파일이 있는 이메일이 이 주소로 전송될 때 경고가 표시됩니다.
+
+경고 텍스트가 비어 있으면 기본 경고 텍스트가 표시됩니다.</value>
+  </data>
+  <data name="SettingExampleAutoAddMessage" xml:space="preserve">
+    <value>이메일의 시작이나 끝에 지정된 문구를 자동으로 추가할 수 있습니다.</value>
+  </data>
+  <data name="ToRecipient" xml:space="preserve">
+    <value>받는 사람으로 설정할 메일 주소 *설정하지 않으면 보내는 사람 주소가 받는 사람으로 자동 설정됩니다.</value>
+  </data>
+  <data name="AddedTextAtTheBeginning" xml:space="preserve">
+    <value>메일 시작 부분에 텍스트를 추가했습니다.</value>
+  </data>
+  <data name="AddedTextAtTheEnd" xml:space="preserve">
+    <value>메일 끝에 텍스트를 추가했습니다.</value>
+  </data>
+  <data name="CanNotFindTheLinkedNameInSubject" xml:space="preserve">
+    <value>메일 제목에서 연결된 이름을 찾을 수 없습니다.</value>
+  </data>
+  <data name="AttachmentAlertRecipientsMessage" xml:space="preserve">
+    <value>첨부 파일 전송 경고를 받는 사람입니다.</value>
+  </data>
+  <data name="AutoAddToRecipientByForceAutoChangeRecipientsToBccAddressToAlert" xml:space="preserve">
+    <value>지정한 이메일 주소가 받는 사람에 자동으로 추가되었습니다. (숨은 참조로 자동 변경되어 To가 더 이상 존재하지 않기 때문입니다.)</value>
+  </data>
+  <data name="ForceAutoChangeRecipientsToBccAlert" xml:space="preserve">
+    <value>받는 사람은 자동으로 숨은 참조로 변환되었습니다.</value>
+  </data>
+  <data name="NotApplicableToMeetingRequests" xml:space="preserve">
+    <value>*회의 요청에는 적용되지 않습니다.</value>
+  </data>
+  <data name="Open" xml:space="preserve">
+    <value>열려 있는</value>
+  </data>
+  <data name="ChangesInTheFileWillNotBeSaved" xml:space="preserve">
+    <value>*파일의 변경 사항은 저장되지 않습니다.</value>
+  </data>
+  <data name="OpenTheAttachedFile" xml:space="preserve">
+    <value>첨부파일을 열어보시겠습니까?</value>
+  </data>
+  <data name="IsEnableOpenAttachedFiles" xml:space="preserve">
+    <value>확인 화면에서 첨부 파일 열기를 활성화합니다.</value>
+  </data>
+  <data name="IsMustOpenBeforeCheckTheAttachedFiles" xml:space="preserve">
+    <value>확인 화면에서는 대상 첨부파일을 반드시 열어야 합니다.</value>
+  </data>
+  <data name="OpenTheAttachedFileOnTheConfirmationScreen" xml:space="preserve">
+    <value>확인 화면에서 첨부 파일을 엽니다.</value>
+  </data>
+  <data name="TargetAttachmentFileExtensionOfOpen" xml:space="preserve">
+    <value>대상 첨부 파일 확장자:</value>
+  </data>
+  <data name="TaskRequest" xml:space="preserve">
+    <value>작업 할당</value>
+  </data>
+  <data name="ShowConfirmationAtSendTaskRequest" xml:space="preserve">
+    <value>작업 할당에 대한 확인 화면도 표시됩니다.</value>
+  </data>
+  <data name="AutoCheckAttachments" xml:space="preserve">
+    <value>첨부 파일이 자동으로 확인됩니다.</value>
+  </data>
+  <data name="KeywordAndRecipients" xml:space="preserve">
+    <value>키워드 및 수신자 관련성</value>
+  </data>
+  <data name="SettingExampleKeywordAndRecipients" xml:space="preserve">
+    <value>이름: 주식회사 노라네코
+도메인: @noraneko.co.jp
+
+키워드(회사명 등)와 수신자(도메인 등)를 등록합니다.
+
+이메일 본문에 키워드에 해당하는 수신자가 없으면 경고가 표시됩니다.
+
+*수표에 과목도 포함될 수 있습니다.</value>
+  </data>
+  <data name="KeywordAndRecipientsAlert1" xml:space="preserve">
+    <value>키워드 "</value>
+  </data>
+  <data name="KeywordAndRecipientsAlert2" xml:space="preserve">
+    <value>"와 관련된 "</value>
+  </data>
+  <data name="KeywordAndRecipientsAlert3" xml:space="preserve">
+    <value>" मौजूद नहीं है</value>
   </data>
   <data name="IsIgnoreMustOpenBeforeCheckTheAttachedFilesIfInternalDomain" xml:space="preserve">
     <value>모든 받는 사람이 내부 도메인인 경우에는 필요하지 않습니다.</value>
   </data>
   <data name="AlertKeywordOfSubjectWhenOpeningMails" xml:space="preserve">
     <value>┗ 이메일을 열 때 경고 (제목)</value>
+  </data>
+  <data name="MailHeaderAnalysisExceptionAddress" xml:space="preserve">
+    <value>헤더 분석 예외 주소</value>
+  </data>
+  <data name="MailAddress" xml:space="preserve">
+    <value>이메일 주소</value>
+  </data>
+  <data name="SettingExampleMailHeaderAnalysisExceptionAddress" xml:space="preserve">
+    <value>메일 헤더 분석(스푸핑) 경고의 대상에서 제외할 발신자 이메일 주소를 등록합니다.
+완전히 일치하는 주소에서 온 메일에는 경고가 표시되지 않습니다.
+예) no-reply@example.com</value>
+  </data>
+  <data name="AlertOfReceivedMailSubject" xml:space="preserve">
+    <value>제목 줄에는 경고 대상 키워드가 포함되어 있습니다.</value>
+  </data>
+  <data name="AttatchmentIsEncryptedZip" xml:space="preserve">
+    <value>이 파일은 암호화된 ZIP 파일입니다.</value>
+  </data>
+  <data name="DkimWarning1" xml:space="preserve">
+    <value>DKIM 확인에 실패했습니다. 보낸 사람이 스푸핑되었을 수 있습니다.</value>
   </data>
   <data name="IsEnableAlertKeywordOfSubjectWhenOpeningMailsData" xml:space="preserve">
     <value>제목 줄에 지정된 키워드가 포함된 경우 경고 함수를 사용합니다.</value>
@@ -872,11 +889,38 @@
   <data name="IsEnableSecurityForReceivedMail" xml:space="preserve">
     <value>메일 및 첨부 파일을 열 때 경고 기능을 사용합니다.</value>
   </data>
+  <data name="IsEnableWarningFeatureWhenOpeningAttachments" xml:space="preserve">
+    <value>첨부 파일을 열 때 경고 기능을 사용하십시오.</value>
+  </data>
   <data name="IsShowWarningWhenDkimFails" xml:space="preserve">
     <value>DKIM 레코드 확인이 실패하면 경고를 표시합니다.</value>
   </data>
   <data name="IsShowWarningWhenSpfFails" xml:space="preserve">
     <value>SPF 레코드 유효성 검사가 실패하면 경고를 표시합니다.</value>
+  </data>
+  <data name="IsWarnBeforeOpeningAttachments" xml:space="preserve">
+    <value>첨부 파일을 열기 전에 경고하십시오.</value>
+  </data>
+  <data name="IsWarnBeforeOpeningAttachmentsThatContainMacros" xml:space="preserve">
+    <value>매크로가 포함된 첨부 파일을 열 때 경고합니다.</value>
+  </data>
+  <data name="IsWarnBeforeOpeningEncryptedZip" xml:space="preserve">
+    <value>암호화된 ZIP 파일을 열 때 경고합니다.</value>
+  </data>
+  <data name="IsWarnLinkFileInTheZip" xml:space="preserve">
+    <value>ZIP에 .lnk 파일이 있으면 경고합니다.</value>
+  </data>
+  <data name="IsWarnOfficeFileWithMacroInTheZip" xml:space="preserve">
+    <value>ZIP에 .docm, .xlsm 또는 .pptm 파일이 있는 경우 경고합니다.</value>
+  </data>
+  <data name="IsWarnOneFileInTheZip" xml:space="preserve">
+    <value>ZIP에 .one 파일이 있으면 경고합니다.</value>
+  </data>
+  <data name="OpenAttachmentWarning1" xml:space="preserve">
+    <value>첨부 파일을 정말로 열겠습니까?</value>
+  </data>
+  <data name="OpenAttachmentWarning2" xml:space="preserve">
+    <value>의심스러운 파일에 매우주의하십시오.</value>
   </data>
   <data name="SecurityForReceivedMail" xml:space="preserve">
     <value>수신된 메일 보안</value>
@@ -889,59 +933,15 @@
   <data name="SettingExampleSecurityForReceivedMail" xml:space="preserve">
     <value>Outlook을 다시 시작하면 설정이 반영됩니다.</value>
   </data>
-  <data name="IsEnableWarningFeatureWhenOpeningAttachments" xml:space="preserve">
-    <value>첨부 파일을 열 때 경고 기능을 사용하십시오.</value>
-  </data>
-  <data name="IsWarnBeforeOpeningAttachments" xml:space="preserve">
-    <value>첨부 파일을 열기 전에 경고하십시오.</value>
-  </data>
-  <data name="IsWarnBeforeOpeningEncryptedZip" xml:space="preserve">
-    <value>암호화된 ZIP 파일을 열 때 경고합니다.</value>
-  </data>
-  <data name="IsWarnLinkFileInTheZip" xml:space="preserve">
-    <value>ZIP에 .lnk 파일이 있으면 경고합니다.</value>
-  </data>
-  <data name="IsWarnOneFileInTheZip" xml:space="preserve">
-    <value>ZIP에 .one 파일이 있으면 경고합니다.</value>
-  </data>
-  <data name="IsWarnOfficeFileWithMacroInTheZip" xml:space="preserve">
-    <value>ZIP에 .docm, .xlsm 또는 .pptm 파일이 있는 경우 경고합니다.</value>
-  </data>
-  <data name="IsWarnBeforeOpeningAttachmentsThatContainMacros" xml:space="preserve">
-    <value>매크로가 포함된 첨부 파일을 열 때 경고합니다.</value>
-  </data>
-  <data name="Warning" xml:space="preserve">
-    <value>경고</value>
-  </data>
-  <data name="AlertOfReceivedMailSubject" xml:space="preserve">
-    <value>제목 줄에는 경고 대상 키워드가 포함되어 있습니다.</value>
+  <data name="SpfDkimWaring2" xml:space="preserve">
+    <value>이 이메일의 내용과 첨부 파일에주의하십시오.</value>
   </data>
   <data name="SpfWarning1" xml:space="preserve">
     <value>SPF 확인에 실패했습니다. 보낸 사람이 스푸핑되었을 수 있습니다.</value>
   </data>
-  <data name="DkimWarning1" xml:space="preserve">
-    <value>DKIM 확인에 실패했습니다. 보낸 사람이 스푸핑되었을 수 있습니다.</value>
-  </data>
-  <data name="SpfDkimWaring2" xml:space="preserve">
-    <value>이 이메일의 내용과 첨부 파일에주의하십시오.</value>
-  </data>
-  <data name="OpenAttachmentWarning1" xml:space="preserve">
-    <value>첨부 파일을 정말로 열겠습니까?</value>
-  </data>
-  <data name="OpenAttachmentWarning2" xml:space="preserve">
-    <value>의심스러운 파일에 매우주의하십시오.</value>
-  </data>
-  <data name="AttatchmentIsEncryptedZip" xml:space="preserve">
-    <value>이 파일은 암호화된 ZIP 파일입니다.</value>
-  </data>
   <data name="SuspiciousAttachmentZip_link" xml:space="preserve">
     <value>의심스러운 첨부 파일.
 .lnk 파일은 ZIP 파일에 포함되어 있습니다.
-바이러스 감염 위험.</value>
-  </data>
-  <data name="SuspiciousAttachmentZip_one" xml:space="preserve">
-    <value>의심스러운 첨부 파일.
-.one 파일은 ZIP 파일에 포함되어 있습니다.
 바이러스 감염 위험.</value>
   </data>
   <data name="SuspiciousAttachmentZip_macro" xml:space="preserve">
@@ -949,20 +949,31 @@
 zip 파일에는 매크로가 포함 된 Office 파일이 포함되어 있습니다.
 바이러스 감염 위험.</value>
   </data>
+  <data name="SuspiciousAttachmentZip_one" xml:space="preserve">
+    <value>의심스러운 첨부 파일.
+.one 파일은 ZIP 파일에 포함되어 있습니다.
+바이러스 감염 위험.</value>
+  </data>
   <data name="SuspiciousAttachment_macro" xml:space="preserve">
     <value>이것은 매크로, 바이러스 감염 위험이 포함 된 첨부 파일입니다.</value>
   </data>
-  <data name="ExportAllSettings" xml:space="preserve">
-    <value>모든 구성을 내보냅니다.</value>
+  <data name="Warning" xml:space="preserve">
+    <value>경고</value>
   </data>
-  <data name="ImportAllSettings" xml:space="preserve">
-    <value>구성을 가져옵니다.</value>
+  <data name="General2" xml:space="preserve">
+    <value>일반적인 2</value>
   </data>
   <data name="CompletedExport" xml:space="preserve">
     <value>구성 파일 내보내기가 완료되었습니다.</value>
   </data>
   <data name="CompletedImport" xml:space="preserve">
     <value>가져오기가 완료되었습니다. 설정 창을 닫습니다.</value>
+  </data>
+  <data name="ExportAllSettings" xml:space="preserve">
+    <value>모든 구성을 내보냅니다.</value>
+  </data>
+  <data name="ImportAllSettings" xml:space="preserve">
+    <value>구성을 가져옵니다.</value>
   </data>
   <data name="ImportErrorOfAllSettings" xml:space="preserve">
     <value>올바른 파일을 선택하십시오. 오류:</value>

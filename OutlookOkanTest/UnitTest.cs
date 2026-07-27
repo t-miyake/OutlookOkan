@@ -68,6 +68,68 @@ namespace OutlookOkanTest
 
         #endregion
 
+        #region MailHeaderHandler
+
+        private static Dictionary<string, string> InvokeValidateEmailHeader(string header)
+        {
+            var privateType = new PrivateType("OutlookOkan", "OutlookOkan.Handlers.MailHeaderHandler");
+            return (Dictionary<string, string>)privateType.InvokeStatic("ValidateEmailHeader", new object[] { header });
+        }
+
+        [TestMethod, TestCategory("MailHeaderHandler")]
+        public void ヘッダ解析_From行から表示名付きアドレスとドメインを抽出()
+        {
+            const string header = "Received: from mail.example.com (mail.example.com [192.0.2.1])\r\n" +
+                                  "From: \"Example User\" <user@example.com>\r\n" +
+                                  "To: me@contoso.com\r\n" +
+                                  "Subject: test\r\n";
+
+            var result = InvokeValidateEmailHeader(header);
+
+            Assert.IsNotNull(result);
+            Assert.AreEqual("user@example.com", result["From Address"]);
+            Assert.AreEqual("example.com", result["From Domain"]);
+        }
+
+        [TestMethod, TestCategory("MailHeaderHandler")]
+        public void ヘッダ解析_From行が裸のアドレスでもアドレスを抽出()
+        {
+            const string header = "From: noreply@notice.microsoft.com\r\n" +
+                                  "To: me@contoso.com\r\n" +
+                                  "Subject: test\r\n";
+
+            var result = InvokeValidateEmailHeader(header);
+
+            Assert.IsNotNull(result);
+            Assert.AreEqual("noreply@notice.microsoft.com", result["From Address"]);
+            Assert.AreEqual("notice.microsoft.com", result["From Domain"]);
+        }
+
+        [TestMethod, TestCategory("MailHeaderHandler")]
+        public void ヘッダ解析_空ヘッダはnullを返す()
+        {
+            var result = InvokeValidateEmailHeader("");
+            Assert.IsNull(result);
+        }
+
+        [TestMethod, TestCategory("MailHeaderHandler")]
+        public void DMARC独自判定_SPFの認証とアライメントが成功ならPASS()
+        {
+            var privateType = new PrivateType("OutlookOkan", "OutlookOkan.Handlers.MailHeaderHandler");
+            var result = (string)privateType.InvokeStatic("DetermineDmarcResult", new object[] { "PASS", "PASS", "FAIL", "FAIL" });
+            Assert.AreEqual("PASS", result);
+        }
+
+        [TestMethod, TestCategory("MailHeaderHandler")]
+        public void DMARC独自判定_全て失敗ならFAIL()
+        {
+            var privateType = new PrivateType("OutlookOkan", "OutlookOkan.Handlers.MailHeaderHandler");
+            var result = (string)privateType.InvokeStatic("DetermineDmarcResult", new object[] { "FAIL", "FAIL", "FAIL", "FAIL" });
+            Assert.AreEqual("FAIL", result);
+        }
+
+        #endregion
+
         #region MakeEmbeddedAttachmentsList
 
         [TestMethod, TestCategory("_GenerateCheckList"), TestCategory("MakeEmbeddedAttachmentsList")]

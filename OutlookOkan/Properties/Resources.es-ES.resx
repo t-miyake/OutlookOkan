@@ -120,23 +120,8 @@
   <data name="About" xml:space="preserve">
     <value>Sobre el programa</value>
   </data>
-  <data name="AddedTextAtTheBeginning" xml:space="preserve">
-    <value>Se ha añadido un texto al principio del correo.</value>
-  </data>
-  <data name="AddedTextAtTheEnd" xml:space="preserve">
-    <value>Texto añadido al final del correo.</value>
-  </data>
-  <data name="AddressBook" xml:space="preserve">
-    <value>Contactos</value>
-  </data>
   <data name="AlertKeyword" xml:space="preserve">
     <value>AlertaPalabra clave</value>
-  </data>
-  <data name="AlertKeywordForBody" xml:space="preserve">
-    <value>Palabras clave de la alerta (Cuerpo)</value>
-  </data>
-  <data name="AlertKeywordForSubject" xml:space="preserve">
-    <value>Palabras clave de la alerta (Asunto)</value>
   </data>
   <data name="AlertKeywordInfo" xml:space="preserve">
     <value>Palabras clave para alertar</value>
@@ -146,12 +131,6 @@
   </data>
   <data name="AlertMailAddressAndDomain" xml:space="preserve">
     <value>Alertar a los destinatarios o dominios</value>
-  </data>
-  <data name="AlwaysAddTheSendersAddressToBcc" xml:space="preserve">
-    <value>Añade siempre la dirección del remitente a Bcc automáticamente.</value>
-  </data>
-  <data name="AlwaysAddTheSendersAddressToCc" xml:space="preserve">
-    <value>Añade siempre la dirección del remitente a Cc automáticamente.</value>
   </data>
   <data name="ApplicableDestination" xml:space="preserve">
     <value>Destinatarios aplicables</value>
@@ -165,36 +144,8 @@
   <data name="AppName" xml:space="preserve">
     <value>OutlookOkan</value>
   </data>
-  <data name="AttachedIsAnEncryptedZipFile" xml:space="preserve">
-    <value>Se adjunta un archivo ZIP cifrado.</value>
-  </data>
-  <data name="AttachmentAlertRecipients" xml:space="preserve">
-    <value>Dirección de alerta de los archivos adjuntos</value>
-  </data>
-  <data name="AttachmentAlertRecipientsMessage" xml:space="preserve">
-    <value>Destinatario para el aviso de envío de archivos adjuntos.</value>
-  </data>
-  <data name="AttachmentProhibitedRecipients" xml:space="preserve">
-    <value>Dirección prohibida del anexo</value>
-  </data>
-  <data name="AttachmentProhibitedRecipientsMessage" xml:space="preserve">
-    <value>Esta es la dirección a la que no se pueden enviar archivos adjuntos.</value>
-  </data>
   <data name="Attachments" xml:space="preserve">
     <value>Adjuntos</value>
-  </data>
-  <data name="AttachmentsKeyword" xml:space="preserve">
-    <value>archivo adjunto</value>
-  </data>
-  <data name="AttachmentsName" xml:space="preserve">
-    <value>Nombre de los archivos adjuntos/palabra clave</value>
-  </data>
-  <data name="AttachmentsProhibitedMessage" xml:space="preserve">
-    <value>Se prohíbe el envío de correos electrónicos con archivos adjuntos.</value>
-  </data>
-  <data name="AutoAddCCorBCCByAttachedFile" xml:space="preserve">
-    <value>Adición automática de Cc/Bcc
-(por medio de archivos adjuntos)</value>
   </data>
   <data name="AutoAddCCorBCCByKeyword" xml:space="preserve">
     <value>Adición automática de Cc/Bcc
@@ -216,75 +167,23 @@
   <data name="AutoAddMailAddress" xml:space="preserve">
     <value>Añadir automáticamente los destinatarios.</value>
   </data>
-  <data name="AutoAddMessage" xml:space="preserve">
-    <value>Adición automática del cuerpo del texto</value>
-  </data>
-  <data name="AutoAddSendersAddressToAlert" xml:space="preserve">
-    <value>La dirección de correo electrónico del remitente se ha añadido automáticamente a To. (porque el To ya no existe debido al cambio automático a Bcc.)</value>
-  </data>
-  <data name="AutoAddToRecipientByForceAutoChangeRecipientsToBccAddressToAlert" xml:space="preserve">
-    <value>La dirección de correo electrónico especificada se ha añadido automáticamente a Para. (porque el Para ya no existe debido al cambio automático a Bcc).</value>
-  </data>
-  <data name="AutoCheckAttachments" xml:space="preserve">
-    <value>Los archivos adjuntos se comprobarán automáticamente.</value>
-  </data>
   <data name="AutoCheckConfig" xml:space="preserve">
     <value>Ajuste de la autocomprobación</value>
-  </data>
-  <data name="AutoCheckMembersAddress" xml:space="preserve">
-    <value>Las direcciones de correo electrónico de los miembros se comprobarán automáticamente.</value>
   </data>
   <data name="AutoCheckSameDomain" xml:space="preserve">
     <value>Los destinatarios del dominio interno se comprobarán automáticamente.</value>
   </data>
-  <data name="BasicSettings" xml:space="preserve">
-    <value>Configuración básica</value>
-  </data>
-  <data name="Bcc" xml:space="preserve">
-    <value>Bcc</value>
+  <data name="CSVImportAlert" xml:space="preserve">
+    <value>No importes un archivo CSV con un formato incorrecto.</value>
   </data>
   <data name="Cancel" xml:space="preserve">
     <value>Cancelar</value>
-  </data>
-  <data name="CanceledSendingMail" xml:space="preserve">
-    <value>Cancelado el envío de este correo electrónico.</value>
-  </data>
-  <data name="CanceledSendingMailMessage" xml:space="preserve">
-    <value>Cancelado el envío de este correo electrónico. Puedes reeditarlo.
-La hora estimada de envío de este correo electrónico se ha borrado.
-Para enviar este correo electrónico, debe hacer clic en el botón Enviar.
-Al cerrar la pantalla de edición no se enviará este correo electrónico.</value>
-  </data>
-  <data name="CanGetNewVersion" xml:space="preserve">
-    <value>Hay una nueva versión de este complemento.
-¿Quiere descargarla?</value>
-  </data>
-  <data name="CanNotFindTheLinkedName" xml:space="preserve">
-    <value>No se puede encontrar el nombre vinculado en el cuerpo del correo.</value>
-  </data>
-  <data name="CanNotFindTheLinkedNameInSubject" xml:space="preserve">
-    <value>No se puede encontrar el nombre vinculado en el asunto del correo.</value>
-  </data>
-  <data name="Cc" xml:space="preserve">
-    <value>Cc</value>
   </data>
   <data name="CCorBCC" xml:space="preserve">
     <value>Cc/Bcc</value>
   </data>
   <data name="ChangeLanguage" xml:space="preserve">
     <value>Cambiar el idioma de la pantalla</value>
-  </data>
-  <data name="ChangeRibbonLanguageInfo" xml:space="preserve">
-    <value>El idioma de visualización de la cinta (menú) se actualiza cuando se reinicia Outlook.</value>
-  </data>
-  <data name="ChangesInTheFileWillNotBeSaved" xml:space="preserve">
-    <value>*Los cambios en el archivo no se guardarán.</value>
-  </data>
-  <data name="CheckNewVersion" xml:space="preserve">
-    <value>Comprueba la nueva versión.</value>
-  </data>
-  <data name="CompanyName" xml:space="preserve">
-    <value>Noraneko Inc.</value>
   </data>
   <data name="Confirmation" xml:space="preserve">
     <value>Confirmación antes de enviar un correo electrónico.</value>
@@ -295,41 +194,14 @@ Al cerrar la pantalla de edición no se enviará este correo electrónico.</valu
   <data name="ConfirmationMessage2" xml:space="preserve">
     <value>Después de comprobar todos los elementos, puede pulsar el botón de envío.</value>
   </data>
-  <data name="ContactGroup" xml:space="preserve">
-    <value>Grupo de contacto</value>
-  </data>
-  <data name="Copyright" xml:space="preserve">
-    <value>Copyright (C) 2024 Noraneko Inc.</value>
-  </data>
   <data name="CSVExport" xml:space="preserve">
     <value>Exportación de CSV</value>
   </data>
   <data name="CSVImport" xml:space="preserve">
     <value>Importación de CSV</value>
   </data>
-  <data name="CSVImportAlert" xml:space="preserve">
-    <value>No importes un archivo CSV con un formato incorrecto.</value>
-  </data>
-  <data name="DefaultAlertMessage" xml:space="preserve">
-    <value>La palabra clave de advertencia se incluye en el cuerpo del correo electrónico.</value>
-  </data>
-  <data name="DeferredDelivery" xml:space="preserve">
-    <value>Entrega diferida</value>
-  </data>
-  <data name="DeferredDeliveryEmailAddressOrDomainInfo" xml:space="preserve">
-    <value>Introduzca la dirección de correo electrónico o el dominio que desea aplazar la entrega.</value>
-  </data>
-  <data name="DeferredDeliveryMinutes" xml:space="preserve">
-    <value>Tiempo de entrega diferido.(min)</value>
-  </data>
-  <data name="DeferredDeliveryTime" xml:space="preserve">
-    <value>Tiempo de entrega diferido.(min)</value>
-  </data>
   <data name="DestinationEmailaddress" xml:space="preserve">
     <value>Destinatarios</value>
-  </data>
-  <data name="DistributionList" xml:space="preserve">
-    <value>Lista de distribución</value>
   </data>
   <data name="Domain" xml:space="preserve">
     <value>Dominio</value>
@@ -337,53 +209,17 @@ Al cerrar la pantalla de edición no se enviará este correo electrónico.</valu
   <data name="DoNotShowConfirmationScreen" xml:space="preserve">
     <value>Saltar la ventana de confirmación</value>
   </data>
-  <data name="EnableForgottenToAttachAlert" xml:space="preserve">
-    <value>Si hay una frase "archivo adjunto" en el texto y no hay ningún archivo adjunto, avisa de ello.</value>
-  </data>
-  <data name="EncryptedZipBeta" xml:space="preserve">
-    <value>Advertencia de archivo adjunto Zip encriptado</value>
-  </data>
-  <data name="ExclusionSettings" xml:space="preserve">
-    <value>Ajustes de exclusión</value>
-  </data>
   <data name="ExportFailed" xml:space="preserve">
     <value>No se ha podido exportación.</value>
   </data>
-  <data name="ExternalDomainsChangeToBccAlert" xml:space="preserve">
-    <value>Como los dominios externos de To y Cc están por encima del umbral, los destinatarios del dominio externo se han cambiado a Bcc.</value>
-  </data>
-  <data name="ExternalDomainsWarningAndAutoChangeToBcc" xml:space="preserve">
-    <value>Aviso de dominios externos y Bcc</value>
-  </data>
-  <data name="ExternalRecipient" xml:space="preserve">
-    <value>Receptor externo</value>
-  </data>
   <data name="FailedToGetInformation" xml:space="preserve">
     <value>No se ha conseguido la información.</value>
-  </data>
-  <data name="ForceAutoChangeRecipientsToBcc" xml:space="preserve">
-    <value>Forzar el cambio automático a Bcc</value>
-  </data>
-  <data name="ForceAutoChangeRecipientsToBccAlert" xml:space="preserve">
-    <value>Los destinatarios se convirtieron automáticamente en Bcc.</value>
-  </data>
-  <data name="ForceAutoChangeRecipientsToBccNotes" xml:space="preserve">
-    <value>Los siguientes ajustes tienen prioridad sobre los anteriores.</value>
   </data>
   <data name="ForgottenToAttachAlert" xml:space="preserve">
     <value>La palabra "archivo adjunto" está en el texto, pero no hay ningún archivo adjunto.</value>
   </data>
   <data name="General" xml:space="preserve">
     <value>General</value>
-  </data>
-  <data name="GetMembersOfTheContactGroup" xml:space="preserve">
-    <value>Mostrar los miembros de un grupo de Contacto.</value>
-  </data>
-  <data name="GetMembersOfTheExDistList" xml:space="preserve">
-    <value>Mostrar los miembros de una lista de distribución de Exchange. (Puede tardar mucho tiempo).</value>
-  </data>
-  <data name="GetMembersOfTheList" xml:space="preserve">
-    <value>Mostrar los miembros de una lista de distribución de Exchange o de un grupo de Contacto</value>
   </data>
   <data name="Help" xml:space="preserve">
     <value>Instrucciones</value>
@@ -413,12 +249,6 @@ Al cerrar la pantalla de edición no se enviará este correo electrónico.</valu
   <data name="InputCCorBCC" xml:space="preserve">
     <value>Introduzca "Cc" o "Bcc".</value>
   </data>
-  <data name="InputDeferredDeliveryTime" xml:space="preserve">
-    <value>Introduzca el tiempo diferido en minutos.</value>
-  </data>
-  <data name="InputDomain" xml:space="preserve">
-    <value>Introduzca el dominio.</value>
-  </data>
   <data name="InputDomainInfo" xml:space="preserve">
     <value>Introduzca el dominio de @.</value>
   </data>
@@ -427,15 +257,6 @@ Al cerrar la pantalla de edición no se enviará este correo electrónico.</valu
   </data>
   <data name="InputNameInfo" xml:space="preserve">
     <value>Introduzca el nombre. (ej. Nombre de la empresa)</value>
-  </data>
-  <data name="InternalDomain" xml:space="preserve">
-    <value>Dominio interno</value>
-  </data>
-  <data name="IsAddMessageToEnd" xml:space="preserve">
-    <value>El siguiente texto se añade automáticamente al final del cuerpo.</value>
-  </data>
-  <data name="IsAddMessageToStart" xml:space="preserve">
-    <value>El siguiente texto se añade automáticamente al principio del cuerpo.</value>
   </data>
   <data name="IsAlertAddressBccAlert" xml:space="preserve">
     <value>Los destinatarios (Bcc) contienen una dirección o dominio que se ha registrado como alerta.</value>
@@ -452,122 +273,23 @@ Al cerrar la pantalla de edición no se enviará este correo electrónico.</valu
   <data name="IsAttachedExe" xml:space="preserve">
     <value>Se adjunta un archivo ejecutable (.exe).</value>
   </data>
-  <data name="IsAttachmentsProhibited" xml:space="preserve">
-    <value>El envío está prohibido cuando se adjunta un archivo.</value>
-  </data>
-  <data name="IsAutoChangeToBccWhenLargeNumberOfExternalDomains" xml:space="preserve">
-    <value>Los destinatarios externos de Para y Cc se convierten automáticamente en Bcc
-cuando los destinatarios (To/Cc) tienen un gran número de dominios externos.</value>
-  </data>
-  <data name="IsAutoCheckRegisteredInContacts" xml:space="preserve">
-    <value>Los destinatarios registrados en Contactos se comprobarán automáticamente. (Puede tardar mucho tiempo).</value>
-  </data>
-  <data name="IsAutoCheckRegisteredInContactsAndMemberOfContactLists" xml:space="preserve">
-    <value>Incluir a los destinatarios que están registrados como miembros de una lista de contactos.
-(Si tiene muchos grupos de contacto, el proceso puede tardar más).</value>
-  </data>
   <data name="IsBigAttachedFile" xml:space="preserve">
     <value>Hay un archivo de 10Mbytes o más adjunto a este correo electrónico.</value>
-  </data>
-  <data name="IsCanNotShowConfirmation" xml:space="preserve">
-    <value>No se ha podido mostrar la ventana de confirmación.</value>
-  </data>
-  <data name="IsCheckNameAndDomainsFromRecipients" xml:space="preserve">
-    <value>También se muestra una advertencia cuando no hay un nombre de destinatario en el cuerpo del correo.</value>
-  </data>
-  <data name="IsCheckNameAndDomainsFromSubject" xml:space="preserve">
-    <value>La advertencia también se muestra cuando no hay un nombre de destinatario en el asunto.</value>
-  </data>
-  <data name="IsCheckNameAndDomainsIncludeSubject" xml:space="preserve">
-    <value>Incluir el asunto en el objetivo. *El sujeto, así como el cuerpo, se incluirá en el objetivo.</value>
-  </data>
-  <data name="IsDoNotUseXIfAllRecipientsAreInternalDomain" xml:space="preserve">
-    <value>Desactive esta función si los dominios del destinatario son todos dominios internos.</value>
-  </data>
-  <data name="IsEnableAllAttachedFilesAreDetectEncryptedZip" xml:space="preserve">
-    <value>Los archivos adjuntos con una extensión distinta a ".zip" también detectan si son ZIP cifrados o no.</value>
-  </data>
-  <data name="IsEnableOpenAttachedFiles" xml:space="preserve">
-    <value>Habilitar la apertura de archivos adjuntos en la pantalla de confirmación.</value>
-  </data>
-  <data name="IsEnableRecipientsAreSortedByDomain" xml:space="preserve">
-    <value>Los destinatarios se clasifican por dominio en la pantalla de confirmación.</value>
-  </data>
-  <data name="IsForceAutoChangeRecipientsToBcc" xml:space="preserve">
-    <value>Forzar a todos los destinatarios externos a Bcc.</value>
-  </data>
-  <data name="IsIncludeInternalDomain" xml:space="preserve">
-    <value>Incluir dominios internos en el ámbito. *Todos los destinatarios se cambiarán a Bcc.</value>
-  </data>
-  <data name="IsMustOpenBeforeCheckTheAttachedFiles" xml:space="preserve">
-    <value>En la pantalla de confirmación, es obligatorio abrir el archivo adjunto de destino.</value>
-  </data>
-  <data name="IsNotTreatedAsAttachmentsAtHtmlEmbeddedFiles" xml:space="preserve">
-    <value>Un archivo incrustado en un correo HTML no se trata como un adjunto.</value>
-  </data>
-  <data name="IsProhibitedWhenEncryptedZipIsAttached" xml:space="preserve">
-    <value>El envío está prohibido cuando se adjunta un archivo ZIP cifrado.</value>
-  </data>
-  <data name="IsProhibitedWhenLargeNumberOfExternalDomains" xml:space="preserve">
-    <value>El envío está prohibido cuando los destinatarios (To/Cc) tienen un gran número de dominios externos.</value>
-  </data>
-  <data name="IsProhibitsSendingMailIfRecipientsIsNotRegistered" xml:space="preserve">
-    <value>Prohíbe el envío de correo si el destinatario no está registrado en la Guía.</value>
-  </data>
-  <data name="IsShowConfirmationToMultipleDomain" xml:space="preserve">
-    <value>Si los destinatarios contienen varios dominios externos, muestra la ventana de confirmación.
-(No omite la ventana de confirmación.)</value>
-  </data>
-  <data name="IsSkipConfirmation" xml:space="preserve">
-    <value>Saltar la ventana de confirmación.</value>
-  </data>
-  <data name="IsSkipConfirmationInfo" xml:space="preserve">
-    <value>Omita la ventana de confirmación cuando envíe un correo electrónico sólo a los destinatarios seleccionados.</value>
-  </data>
-  <data name="IsWarningIfRecipientsIsNotRegistered" xml:space="preserve">
-    <value>Si el destinatario no está registrado en los contactos, aparece un aviso en la pantalla de confirmación.</value>
-  </data>
-  <data name="IsWarningWhenAttachedRealFile" xml:space="preserve">
-    <value>Si se adjunta un archivo, se recomienda adjuntarlo como enlace en la pantalla de confirmación.</value>
-  </data>
-  <data name="IsWarningWhenEncryptedZipIsAttached" xml:space="preserve">
-    <value>Mostrar una advertencia cuando se adjunta un archivo ZIP cifrado.</value>
-  </data>
-  <data name="IsWarningWhenLargeNumberOfExternalDomains" xml:space="preserve">
-    <value>Muestra una advertencia cuando los destinatarios (To/Cc) tienen un gran número de dominios externos.</value>
   </data>
   <data name="Keyword" xml:space="preserve">
     <value>Palabras clave</value>
   </data>
-  <data name="KeywordAndRecipients" xml:space="preserve">
-    <value>Palabras clave y destinatarios</value>
-  </data>
-  <data name="KeywordAndRecipientsAlert1" xml:space="preserve">
-    <value>La palabra clave "</value>
-  </data>
-  <data name="KeywordAndRecipientsAlert2" xml:space="preserve">
-    <value>" relacionada con "</value>
-  </data>
-  <data name="KeywordAndRecipientsAlert3" xml:space="preserve">
-    <value>" no existe.</value>
-  </data>
-  <data name="LargeNumberOfExternalDomainAlert" xml:space="preserve">
-    <value>El número de dominios externos en To y Cc es superior al umbral. Por favor, reconfirme los pros y los contras del envío.</value>
+  <data name="MailBody" xml:space="preserve">
+    <value>Cuerpo del mensaje (texto sin formato)</value>
   </data>
   <data name="MailAddressAndDomain" xml:space="preserve">
     <value>Dirección/dominio del destinatario</value>
-  </data>
-  <data name="MailBody" xml:space="preserve">
-    <value>Cuerpo del mensaje (texto sin formato)</value>
   </data>
   <data name="MailInfo" xml:space="preserve">
     <value>Información de correo</value>
   </data>
   <data name="MailType" xml:space="preserve">
     <value>Tipo</value>
-  </data>
-  <data name="MeetingRequest" xml:space="preserve">
-    <value>Solicitud de reunión</value>
   </data>
   <data name="Name" xml:space="preserve">
     <value>Nombre</value>
@@ -578,39 +300,8 @@ cuando los destinatarios (To/Cc) tienen un gran número de dominios externos.</v
   <data name="NoAlert" xml:space="preserve">
     <value>No hay alertas importantes.</value>
   </data>
-  <data name="NotApplicableToMeetingRequests" xml:space="preserve">
-    <value>*No aplicable a las solicitudes de reunión.</value>
-  </data>
-  <data name="NoticeOfIsEnableAllAttachedFilesAreDetectEncryptedZip" xml:space="preserve">
-    <value>* El procesamiento de los correos electrónicos con archivos adjuntos puede tardar más.</value>
-  </data>
   <data name="OK" xml:space="preserve">
     <value>OK</value>
-  </data>
-  <data name="Open" xml:space="preserve">
-    <value>Abrir</value>
-  </data>
-  <data name="OpenTheAttachedFile" xml:space="preserve">
-    <value>¿Quiere abrir el archivo adjunto?</value>
-  </data>
-  <data name="OpenTheAttachedFileOnTheConfirmationScreen" xml:space="preserve">
-    <value>Abra el archivo adjunto en la pantalla de confirmación.</value>
-  </data>
-  <data name="ProhibitedWhenLargeNumberOfExternalDomainsAlert" xml:space="preserve">
-    <value>El número de dominios externos en To y Cc está por encima del umbral.</value>
-  </data>
-  <data name="ProhibitsSendingMailIfRecipientsIsNotRegisteredMessage" xml:space="preserve">
-    <value>Está prohibido enviar correos electrónicos a un contacto no registrado.</value>
-  </data>
-  <data name="RecipientsAndAttachmentsName" xml:space="preserve">
-    <value>Relacionar nombres de
-destinatarios y anexos</value>
-  </data>
-  <data name="RecipientsAndAttachmentsNameMessage" xml:space="preserve">
-    <value>Destinatarios y anexos no relacionados.</value>
-  </data>
-  <data name="RecommendationOfAttachFileAsLink" xml:space="preserve">
-    <value>Se recomienda adjuntar el archivo como un enlace.</value>
   </data>
   <data name="RichText" xml:space="preserve">
     <value>Texto rico</value>
@@ -630,26 +321,56 @@ destinatarios y anexos</value>
   <data name="Sender" xml:space="preserve">
     <value>Remitente</value>
   </data>
-  <data name="SendersDomainAndInternalDomainAreNotCovered" xml:space="preserve">
-    <value>*El dominio del remitente y el dominio interno no están cubiertos.</value>
-  </data>
   <data name="SendingForbid" xml:space="preserve">
     <value>Envío prohibido</value>
-  </data>
-  <data name="SendingForbidAddress" xml:space="preserve">
-    <value>Destinatarios prohibidos.</value>
   </data>
   <data name="SendingForbidInfo" xml:space="preserve">
     <value>Si marca esta casilla, no podrá enviar un correo electrónico al destinatario ni incluir la palabra clave.</value>
   </data>
-  <data name="SendMailConfirmation" xml:space="preserve">
-    <value>¿Desea enviar este correo electrónico?</value>
-  </data>
-  <data name="SentOnBehalf" xml:space="preserve">
-    <value>Enviar en nombre o Enviar como.</value>
-  </data>
   <data name="SettingExample" xml:space="preserve">
     <value>Ejemplo de configuración.</value>
+  </data>
+  <data name="Settings" xml:space="preserve">
+    <value>Ajustes</value>
+  </data>
+  <data name="Subject" xml:space="preserve">
+    <value>Asunto</value>
+  </data>
+  <data name="SuccessfulExport" xml:space="preserve">
+    <value>La exportación se ha completado.</value>
+  </data>
+  <data name="SuccessfulImport" xml:space="preserve">
+    <value>La importación se ha completado.</value>
+  </data>
+  <data name="Text" xml:space="preserve">
+    <value>Texto plano</value>
+  </data>
+  <data name="Unknown" xml:space="preserve">
+    <value>Desconocido</value>
+  </data>
+  <data name="WarningText" xml:space="preserve">
+    <value>Texto de alerta</value>
+  </data>
+  <data name="WarningTextInfo" xml:space="preserve">
+    <value>Texto de alerta en la ventana de confirmación.</value>
+  </data>
+  <data name="WhiteList" xml:space="preserve">
+    <value>Lista de permisos</value>
+  </data>
+  <data name="CompanyName" xml:space="preserve">
+    <value>Noraneko Inc.</value>
+  </data>
+  <data name="Copyright" xml:space="preserve">
+    <value>Copyright (C) 2026 Noraneko Inc.</value>
+  </data>
+  <data name="Version" xml:space="preserve">
+    <value>Version 2.8.3</value>
+  </data>
+  <data name="VersionInfo" xml:space="preserve">
+    <value>Sobre el programa</value>
+  </data>
+  <data name="SendingForbidAddress" xml:space="preserve">
+    <value>Destinatarios prohibidos.</value>
   </data>
   <data name="SettingExampleAlertKeyword" xml:space="preserve">
     <value>Palabras clave: Confidencial
@@ -658,16 +379,6 @@ Texto de alerta: Incluye la frase "Confidencial".
 Registre las palabras clave a alertar y su texto de alerta.
 
 Si la palabra clave se incluye en el cuerpo, puede mostrar una advertencia o prohibir el envío de ese correo electrónico.
-
-Si el texto de alerta está en blanco, la pantalla de confirmación mostrará el texto de alerta por defecto.</value>
-  </data>
-  <data name="SettingExampleAlertKeywordForSubject" xml:space="preserve">
-    <value>Palabras clave: Confidencial
-Texto de alerta: Incluye la frase "Confidencial".
-
-Registre las palabras clave a alertar y su texto de alerta.
-
-Si la palabra clave se incluye en el asunto, puede mostrar una advertencia o prohibir el envío de ese correo electrónico.
 
 Si el texto de alerta está en blanco, la pantalla de confirmación mostrará el texto de alerta por defecto.</value>
   </data>
@@ -681,37 +392,6 @@ Registre una dirección de correo electrónico o un dominio y su texto de alerta
 Si envía un correo electrónico a una dirección de correo electrónico o dominio que haya registrado aquí, recibirá una alerta por adelantado.
 
 Si el texto de alerta está en blanco, la pantalla de confirmación mostrará el texto de alerta por defecto.</value>
-  </data>
-  <data name="SettingExampleAttachmentAlertRecipients" xml:space="preserve">
-    <value>Dirección: info@noraneko.co.jp
-O
-Dominio: @noraneko.co.jp
-
-Registre una dirección de correo electrónico o un dominio y su texto de advertencia.
-
-Una vez registrado, se mostrará una advertencia cuando se envíe un correo electrónico con archivos adjuntos a ese destino.
-
-Si el texto de advertencia se deja en blanco, se mostrará el texto de advertencia por defecto.</value>
-  </data>
-  <data name="SettingExampleAttachmentProhibitedRecipients" xml:space="preserve">
-    <value>Dirección de correo electrónico: info@noraneko.co.jp
-o
-Dominio: @noraneko.co.jp
-
-Registre la dirección de correo electrónico o el dominio.
-
-No podrá enviar correos electrónicos con archivos adjuntos a esos destinatarios.</value>
-  </data>
-  <data name="SettingExampleAttachments" xml:space="preserve">
-    <value>Puede impedir el envío de correos electrónicos con archivos adjuntos o mostrar una advertencia que recomiende adjuntar el archivo como un enlace.
-
-También puede mostrar una advertencia o prohibir el envío de un correo electrónico cuando se adjunta un archivo ZIP cifrado. (archivo ZIP con contraseña.)</value>
-  </data>
-  <data name="SettingExampleAutoAddCCorBCCByAttachedFile" xml:space="preserve">
-    <value>Tipo: Cc o Bcc
-Dirección de correo electrónico: boss@noraneko.co.jp
-
-Cuando envíe un correo electrónico con un archivo adjunto, la dirección especificada se añadirá automáticamente al CC o Bcc.</value>
   </data>
   <data name="SettingExampleAutoAddCCorBCCByKeyword" xml:space="preserve">
     <value>Tipo: Cc o Bcc
@@ -727,8 +407,64 @@ Dirección de correo electrónico: boss@noraneko.co.jp
 
 Cuando se envía un correo a destinatarios y dominios registrados, la dirección especificada se añade automáticamente al Cc o Bcc.</value>
   </data>
-  <data name="SettingExampleAutoAddMessage" xml:space="preserve">
-    <value>Puede añadir automáticamente el texto especificado al principio o al final de un correo electrónico.</value>
+  <data name="SettingExampleNameAndDomain" xml:space="preserve">
+    <value>Nombre: Noraneko Inc.
+Dominio: @noraneko.co.jp
+
+Registra el nombre (por ejemplo, el nombre de la empresa) y el dominio.
+
+Muestra una advertencia si el nombre en el cuerpo del correo electrónico y el dominio del destinatario no coinciden.
+
+*También puede incluirse en el cheque.</value>
+  </data>
+  <data name="SettingExampleWhiteList" xml:space="preserve">
+    <value>Dirección de correo electrónico: info@noraneko.co.jp
+o
+Dominio: @noraneko.co.jp
+
+Registre la dirección de correo electrónico o el dominio.
+
+Los destinatarios correspondientes se marcarán previamente en la pantalla de confirmación.</value>
+  </data>
+  <data name="ChangeRibbonLanguageInfo" xml:space="preserve">
+    <value>El idioma de visualización de la cinta (menú) se actualiza cuando se reinicia Outlook.</value>
+  </data>
+  <data name="IsCanNotShowConfirmation" xml:space="preserve">
+    <value>No se ha podido mostrar la ventana de confirmación.</value>
+  </data>
+  <data name="SendMailConfirmation" xml:space="preserve">
+    <value>¿Desea enviar este correo electrónico?</value>
+  </data>
+  <data name="IsShowConfirmationToMultipleDomain" xml:space="preserve">
+    <value>Si los destinatarios contienen varios dominios externos, muestra la ventana de confirmación.
+(No omite la ventana de confirmación.)</value>
+  </data>
+  <data name="IsSkipConfirmation" xml:space="preserve">
+    <value>Saltar la ventana de confirmación.</value>
+  </data>
+  <data name="IsSkipConfirmationInfo" xml:space="preserve">
+    <value>Omita la ventana de confirmación cuando envíe un correo electrónico sólo a los destinatarios seleccionados.</value>
+  </data>
+  <data name="SentOnBehalf" xml:space="preserve">
+    <value>Enviar en nombre o Enviar como.</value>
+  </data>
+  <data name="DeferredDelivery" xml:space="preserve">
+    <value>Entrega diferida</value>
+  </data>
+  <data name="DeferredDeliveryMinutes" xml:space="preserve">
+    <value>Tiempo de entrega diferido.(min)</value>
+  </data>
+  <data name="EnableForgottenToAttachAlert" xml:space="preserve">
+    <value>Si hay una frase "archivo adjunto" en el texto y no hay ningún archivo adjunto, avisa de ello.</value>
+  </data>
+  <data name="DeferredDeliveryEmailAddressOrDomainInfo" xml:space="preserve">
+    <value>Introduzca la dirección de correo electrónico o el dominio que desea aplazar la entrega.</value>
+  </data>
+  <data name="DeferredDeliveryTime" xml:space="preserve">
+    <value>Tiempo de entrega diferido.(min)</value>
+  </data>
+  <data name="InputDeferredDeliveryTime" xml:space="preserve">
+    <value>Introduzca el tiempo diferido en minutos.</value>
   </data>
   <data name="SettingExampleDeferredDelivery" xml:space="preserve">
     <value>Dirección de correo electrónico: info@noraneko.co.jp
@@ -741,12 +477,58 @@ Registre su dirección de correo electrónico o dominio y registre el tiempo dif
 
 * Si se cumplen varias condiciones, se aplicará el tiempo diferido más largo.</value>
   </data>
-  <data name="SettingExampleExternalDomainsWarningAndAutoChangeToBcc" xml:space="preserve">
-    <value>Establezca el número de dominios externos que se utilizarán como base para los avisos y el cambio automático a Bcc, y active o desactive cada uno de ellos.
+  <data name="ContactGroup" xml:space="preserve">
+    <value>Grupo de contacto</value>
+  </data>
+  <data name="AutoCheckMembersAddress" xml:space="preserve">
+    <value>Las direcciones de correo electrónico de los miembros se comprobarán automáticamente.</value>
+  </data>
+  <data name="GetMembersOfTheContactGroup" xml:space="preserve">
+    <value>Mostrar los miembros de un grupo de Contacto.</value>
+  </data>
+  <data name="GetMembersOfTheExDistList" xml:space="preserve">
+    <value>Mostrar los miembros de una lista de distribución de Exchange. (Puede tardar mucho tiempo).</value>
+  </data>
+  <data name="GetMembersOfTheList" xml:space="preserve">
+    <value>Mostrar los miembros de una lista de distribución de Exchange o de un grupo de Contacto</value>
+  </data>
+  <data name="CanGetNewVersion" xml:space="preserve">
+    <value>Hay una nueva versión de este complemento.
+¿Quiere descargarla?</value>
+  </data>
+  <data name="CheckNewVersion" xml:space="preserve">
+    <value>Comprueba la nueva versión.</value>
+  </data>
+  <data name="YouHaveLatest" xml:space="preserve">
+    <value>Este complemento es la última versión.</value>
+  </data>
+  <data name="AutoAddCCorBCCByAttachedFile" xml:space="preserve">
+    <value>Adición automática de Cc/Bcc
+(por medio de archivos adjuntos)</value>
+  </data>
+  <data name="IsNotTreatedAsAttachmentsAtHtmlEmbeddedFiles" xml:space="preserve">
+    <value>Un archivo incrustado en un correo HTML no se trata como un adjunto.</value>
+  </data>
+  <data name="SettingExampleAutoAddCCorBCCByAttachedFile" xml:space="preserve">
+    <value>Tipo: Cc o Bcc
+Dirección de correo electrónico: boss@noraneko.co.jp
 
-Si el To no existe después del cambio automático a Bcc, la dirección del remitente se añadirá automáticamente al To.
-
-También es posible forzar que todos los destinatarios se conviertan en Bcc.</value>
+Cuando envíe un correo electrónico con un archivo adjunto, la dirección especificada se añadirá automáticamente al CC o Bcc.</value>
+  </data>
+  <data name="CanceledSendingMail" xml:space="preserve">
+    <value>Cancelado el envío de este correo electrónico.</value>
+  </data>
+  <data name="CanceledSendingMailMessage" xml:space="preserve">
+    <value>Cancelado el envío de este correo electrónico. Puedes reeditarlo.
+La hora estimada de envío de este correo electrónico se ha borrado.
+Para enviar este correo electrónico, debe hacer clic en el botón Enviar.
+Al cerrar la pantalla de edición no se enviará este correo electrónico.</value>
+  </data>
+  <data name="InputDomain" xml:space="preserve">
+    <value>Introduzca el dominio.</value>
+  </data>
+  <data name="InternalDomain" xml:space="preserve">
+    <value>Dominio interno</value>
   </data>
   <data name="SettingExampleInternalDomainList" xml:space="preserve">
     <value>Dominio: @noraneko.co.jp
@@ -755,25 +537,142 @@ Registre un dominio para que sea tratado como un dominio interno (de la empresa)
 
 El dominio de la dirección de correo electrónico del remitente siempre se trata como un dominio interno.</value>
   </data>
-  <data name="SettingExampleKeywordAndRecipients" xml:space="preserve">
-    <value>Nombre: Noraneko Inc.
-Dominio: @noraneko.co.jp
-
-Registre las palabras clave (por ejemplo, el nombre de la empresa) y el destino (por ejemplo, el dominio).
-
-Si no hay ningún destinatario que corresponda a las palabras clave en el cuerpo del correo electrónico, se muestra una advertencia..
-
-*También puede incluirse en el cheque.</value>
+  <data name="ExclusionSettings" xml:space="preserve">
+    <value>Ajustes de exclusión</value>
   </data>
-  <data name="SettingExampleNameAndDomain" xml:space="preserve">
-    <value>Nombre: Noraneko Inc.
+  <data name="IsDoNotUseXIfAllRecipientsAreInternalDomain" xml:space="preserve">
+    <value>Desactive esta función si los dominios del destinatario son todos dominios internos.</value>
+  </data>
+  <data name="BasicSettings" xml:space="preserve">
+    <value>Configuración básica</value>
+  </data>
+  <data name="ExternalDomainsWarningAndAutoChangeToBcc" xml:space="preserve">
+    <value>Aviso de dominios externos y Bcc</value>
+  </data>
+  <data name="IsAutoChangeToBccWhenLargeNumberOfExternalDomains" xml:space="preserve">
+    <value>Los destinatarios externos de Para y Cc se convierten automáticamente en Bcc
+cuando los destinatarios (To/Cc) tienen un gran número de dominios externos.</value>
+  </data>
+  <data name="IsProhibitedWhenLargeNumberOfExternalDomains" xml:space="preserve">
+    <value>El envío está prohibido cuando los destinatarios (To/Cc) tienen un gran número de dominios externos.</value>
+  </data>
+  <data name="IsWarningWhenLargeNumberOfExternalDomains" xml:space="preserve">
+    <value>Muestra una advertencia cuando los destinatarios (To/Cc) tienen un gran número de dominios externos.</value>
+  </data>
+  <data name="SettingExampleExternalDomainsWarningAndAutoChangeToBcc" xml:space="preserve">
+    <value>Establezca el número de dominios externos que se utilizarán como base para los avisos y el cambio automático a Bcc, y active o desactive cada uno de ellos.
+
+Si el To no existe después del cambio automático a Bcc, la dirección del remitente se añadirá automáticamente al To.
+
+También es posible forzar que todos los destinatarios se conviertan en Bcc.</value>
+  </data>
+  <data name="TargetToAndCcExternalDomainsNum" xml:space="preserve">
+    <value>El número de dominios externos de los destinatarios (To/Cc) que deben ser cubiertos por esta función.</value>
+  </data>
+  <data name="TargetToAndCcExternalDomainsNumInfo" xml:space="preserve">
+    <value>* Si el dominio externo incluido en el To y Cc del correo electrónico es mayor o igual a esta configuración, 
+se aplicará esta función.</value>
+  </data>
+  <data name="AutoAddSendersAddressToAlert" xml:space="preserve">
+    <value>La dirección de correo electrónico del remitente se ha añadido automáticamente a To. (porque el To ya no existe debido al cambio automático a Bcc.)</value>
+  </data>
+  <data name="ExternalDomainsChangeToBccAlert" xml:space="preserve">
+    <value>Como los dominios externos de To y Cc están por encima del umbral, los destinatarios del dominio externo se han cambiado a Bcc.</value>
+  </data>
+  <data name="LargeNumberOfExternalDomainAlert" xml:space="preserve">
+    <value>El número de dominios externos en To y Cc es superior al umbral. Por favor, reconfirme los pros y los contras del envío.</value>
+  </data>
+  <data name="ProhibitedWhenLargeNumberOfExternalDomainsAlert" xml:space="preserve">
+    <value>El número de dominios externos en To y Cc está por encima del umbral.</value>
+  </data>
+  <data name="DefaultAlertMessage" xml:space="preserve">
+    <value>La palabra clave de advertencia se incluye en el cuerpo del correo electrónico.</value>
+  </data>
+  <data name="IsEnableRecipientsAreSortedByDomain" xml:space="preserve">
+    <value>Los destinatarios se clasifican por dominio en la pantalla de confirmación.</value>
+  </data>
+  <data name="AttachedIsAnEncryptedZipFile" xml:space="preserve">
+    <value>Se adjunta un archivo ZIP cifrado.</value>
+  </data>
+  <data name="EncryptedZipBeta" xml:space="preserve">
+    <value>Advertencia de archivo adjunto Zip encriptado</value>
+  </data>
+  <data name="IsEnableAllAttachedFilesAreDetectEncryptedZip" xml:space="preserve">
+    <value>Los archivos adjuntos con una extensión distinta a ".zip" también detectan si son ZIP cifrados o no.</value>
+  </data>
+  <data name="IsProhibitedWhenEncryptedZipIsAttached" xml:space="preserve">
+    <value>El envío está prohibido cuando se adjunta un archivo ZIP cifrado.</value>
+  </data>
+  <data name="IsWarningWhenEncryptedZipIsAttached" xml:space="preserve">
+    <value>Mostrar una advertencia cuando se adjunta un archivo ZIP cifrado.</value>
+  </data>
+  <data name="NoticeOfIsEnableAllAttachedFilesAreDetectEncryptedZip" xml:space="preserve">
+    <value>* El procesamiento de los correos electrónicos con archivos adjuntos puede tardar más.</value>
+  </data>
+  <data name="SettingExampleAttachments" xml:space="preserve">
+    <value>Puede impedir el envío de correos electrónicos con archivos adjuntos o mostrar una advertencia que recomiende adjuntar el archivo como un enlace.
+
+También puede mostrar una advertencia o prohibir el envío de un correo electrónico cuando se adjunta un archivo ZIP cifrado. (archivo ZIP con contraseña.)</value>
+  </data>
+  <data name="ExternalRecipient" xml:space="preserve">
+    <value>Receptor externo</value>
+  </data>
+  <data name="AlwaysAddTheSendersAddressToBcc" xml:space="preserve">
+    <value>Añade siempre la dirección del remitente a Bcc automáticamente.</value>
+  </data>
+  <data name="AlertKeywordForBody" xml:space="preserve">
+    <value>Palabras clave de la alerta (Cuerpo)</value>
+  </data>
+  <data name="AlertKeywordForSubject" xml:space="preserve">
+    <value>Palabras clave de la alerta (Asunto)</value>
+  </data>
+  <data name="SettingExampleAlertKeywordForSubject" xml:space="preserve">
+    <value>Palabras clave: Confidencial
+Texto de alerta: Incluye la frase "Confidencial".
+
+Registre las palabras clave a alertar y su texto de alerta.
+
+Si la palabra clave se incluye en el asunto, puede mostrar una advertencia o prohibir el envío de ese correo electrónico.
+
+Si el texto de alerta está en blanco, la pantalla de confirmación mostrará el texto de alerta por defecto.</value>
+  </data>
+  <data name="DistributionList" xml:space="preserve">
+    <value>Lista de distribución</value>
+  </data>
+  <data name="IsAutoCheckRegisteredInContacts" xml:space="preserve">
+    <value>Los destinatarios registrados en Contactos se comprobarán automáticamente. (Puede tardar mucho tiempo).</value>
+  </data>
+  <data name="IsAutoCheckRegisteredInContactsAndMemberOfContactLists" xml:space="preserve">
+    <value>Incluir a los destinatarios que están registrados como miembros de una lista de contactos.
+(Si tiene muchos grupos de contacto, el proceso puede tardar más).</value>
+  </data>
+  <data name="AttachmentsKeyword" xml:space="preserve">
+    <value>archivo adjunto</value>
+  </data>
+  <data name="IsAttachmentsProhibited" xml:space="preserve">
+    <value>El envío está prohibido cuando se adjunta un archivo.</value>
+  </data>
+  <data name="IsWarningWhenAttachedRealFile" xml:space="preserve">
+    <value>Si se adjunta un archivo, se recomienda adjuntarlo como enlace en la pantalla de confirmación.</value>
+  </data>
+  <data name="AttachmentProhibitedRecipients" xml:space="preserve">
+    <value>Dirección prohibida del anexo</value>
+  </data>
+  <data name="AttachmentsName" xml:space="preserve">
+    <value>Nombre de los archivos adjuntos/palabra clave</value>
+  </data>
+  <data name="RecipientsAndAttachmentsName" xml:space="preserve">
+    <value>Relacionar nombres de
+destinatarios y anexos</value>
+  </data>
+  <data name="SettingExampleAttachmentProhibitedRecipients" xml:space="preserve">
+    <value>Dirección de correo electrónico: info@noraneko.co.jp
+o
 Dominio: @noraneko.co.jp
 
-Registra el nombre (por ejemplo, el nombre de la empresa) y el dominio.
+Registre la dirección de correo electrónico o el dominio.
 
-Muestra una advertencia si el nombre en el cuerpo del correo electrónico y el dominio del destinatario no coinciden.
-
-*También puede incluirse en el cheque.</value>
+No podrá enviar correos electrónicos con archivos adjuntos a esos destinatarios.</value>
   </data>
   <data name="SettingExampleRecipientsAndAttachmentsName" xml:space="preserve">
     <value>Dirección de correo electrónico: info@noraneko.co.jp
@@ -785,87 +684,205 @@ Registre la dirección de correo electrónico o el dominio y el nombre del archi
 
 Si los destinatarios y el nombre del archivo adjunto no coinciden, se mostrará una advertencia.</value>
   </data>
-  <data name="SettingExampleWhiteList" xml:space="preserve">
-    <value>Dirección de correo electrónico: info@noraneko.co.jp
-o
-Dominio: @noraneko.co.jp
-
-Registre la dirección de correo electrónico o el dominio.
-
-Los destinatarios correspondientes se marcarán previamente en la pantalla de confirmación.</value>
+  <data name="RecommendationOfAttachFileAsLink" xml:space="preserve">
+    <value>Se recomienda adjuntar el archivo como un enlace.</value>
   </data>
-  <data name="Settings" xml:space="preserve">
-    <value>Ajustes</value>
+  <data name="AttachmentProhibitedRecipientsMessage" xml:space="preserve">
+    <value>Esta es la dirección a la que no se pueden enviar archivos adjuntos.</value>
   </data>
-  <data name="ShowConfirmationAtSendMeetingRequest" xml:space="preserve">
-    <value>También se muestra una pantalla de confirmación para la solicitud de reunión.</value>
+  <data name="AttachmentsProhibitedMessage" xml:space="preserve">
+    <value>Se prohíbe el envío de correos electrónicos con archivos adjuntos.</value>
   </data>
-  <data name="ShowConfirmationAtSendTaskRequest" xml:space="preserve">
-    <value>También se muestra la pantalla de confirmación para asignar la tarea.</value>
+  <data name="RecipientsAndAttachmentsNameMessage" xml:space="preserve">
+    <value>Destinatarios y anexos no relacionados.</value>
   </data>
-  <data name="Subject" xml:space="preserve">
-    <value>Asunto</value>
+  <data name="Bcc" xml:space="preserve">
+    <value>Bcc</value>
   </data>
-  <data name="SuccessfulExport" xml:space="preserve">
-    <value>La exportación se ha completado.</value>
-  </data>
-  <data name="SuccessfulImport" xml:space="preserve">
-    <value>La importación se ha completado.</value>
-  </data>
-  <data name="TargetAttachmentFileExtensionOfOpen" xml:space="preserve">
-    <value>Extensión de la fijación del objetivo:</value>
-  </data>
-  <data name="TargetToAndCcExternalDomainsNum" xml:space="preserve">
-    <value>El número de dominios externos de los destinatarios (To/Cc) que deben ser cubiertos por esta función.</value>
-  </data>
-  <data name="TargetToAndCcExternalDomainsNumInfo" xml:space="preserve">
-    <value>* Si el dominio externo incluido en el To y Cc del correo electrónico es mayor o igual a esta configuración, 
-se aplicará esta función.</value>
-  </data>
-  <data name="TaskRequest" xml:space="preserve">
-    <value>Asignar tarea</value>
-  </data>
-  <data name="Text" xml:space="preserve">
-    <value>Texto plano</value>
+  <data name="Cc" xml:space="preserve">
+    <value>Cc</value>
   </data>
   <data name="To" xml:space="preserve">
     <value>To</value>
   </data>
-  <data name="ToRecipient" xml:space="preserve">
-    <value>Dirección de correo que debe establecerse como Para *Si no se establece, la dirección del remitente se establece automáticamente como Para.</value>
+  <data name="CanNotFindTheLinkedName" xml:space="preserve">
+    <value>No se puede encontrar el nombre vinculado en el cuerpo del correo.</value>
   </data>
-  <data name="Unknown" xml:space="preserve">
-    <value>Desconocido</value>
+  <data name="IsCheckNameAndDomainsFromRecipients" xml:space="preserve">
+    <value>También se muestra una advertencia cuando no hay un nombre de destinatario en el cuerpo del correo.</value>
   </data>
-  <data name="Version" xml:space="preserve">
-    <value>Version 2.8.2</value>
+  <data name="AddressBook" xml:space="preserve">
+    <value>Contactos</value>
   </data>
-  <data name="VersionInfo" xml:space="preserve">
-    <value>Sobre el programa</value>
+  <data name="IsProhibitsSendingMailIfRecipientsIsNotRegistered" xml:space="preserve">
+    <value>Prohíbe el envío de correo si el destinatario no está registrado en la Guía.</value>
+  </data>
+  <data name="IsWarningIfRecipientsIsNotRegistered" xml:space="preserve">
+    <value>Si el destinatario no está registrado en los contactos, aparece un aviso en la pantalla de confirmación.</value>
+  </data>
+  <data name="ProhibitsSendingMailIfRecipientsIsNotRegisteredMessage" xml:space="preserve">
+    <value>Está prohibido enviar correos electrónicos a un contacto no registrado.</value>
+  </data>
+  <data name="SendersDomainAndInternalDomainAreNotCovered" xml:space="preserve">
+    <value>*El dominio del remitente y el dominio interno no están cubiertos.</value>
   </data>
   <data name="WarningIfRecipientsIsNotRegisteredMessage" xml:space="preserve">
     <value>Esta dirección no está registrada en sus contactos.</value>
   </data>
-  <data name="WarningText" xml:space="preserve">
-    <value>Texto de alerta</value>
+  <data name="MeetingRequest" xml:space="preserve">
+    <value>Solicitud de reunión</value>
   </data>
-  <data name="WarningTextInfo" xml:space="preserve">
-    <value>Texto de alerta en la ventana de confirmación.</value>
+  <data name="ShowConfirmationAtSendMeetingRequest" xml:space="preserve">
+    <value>También se muestra una pantalla de confirmación para la solicitud de reunión.</value>
   </data>
-  <data name="WhiteList" xml:space="preserve">
-    <value>Lista de permisos</value>
+  <data name="AlwaysAddTheSendersAddressToCc" xml:space="preserve">
+    <value>Añade siempre la dirección del remitente a Cc automáticamente.</value>
   </data>
-  <data name="YouHaveLatest" xml:space="preserve">
-    <value>Este complemento es la última versión.</value>
+  <data name="AttachmentAlertRecipients" xml:space="preserve">
+    <value>Dirección de alerta de los archivos adjuntos</value>
   </data>
-  <data name="General2" xml:space="preserve">
-    <value>General 2</value>
+  <data name="AutoAddMessage" xml:space="preserve">
+    <value>Adición automática del cuerpo del texto</value>
+  </data>
+  <data name="ForceAutoChangeRecipientsToBcc" xml:space="preserve">
+    <value>Forzar el cambio automático a Bcc</value>
+  </data>
+  <data name="ForceAutoChangeRecipientsToBccNotes" xml:space="preserve">
+    <value>Los siguientes ajustes tienen prioridad sobre los anteriores.</value>
+  </data>
+  <data name="IsAddMessageToEnd" xml:space="preserve">
+    <value>El siguiente texto se añade automáticamente al final del cuerpo.</value>
+  </data>
+  <data name="IsAddMessageToStart" xml:space="preserve">
+    <value>El siguiente texto se añade automáticamente al principio del cuerpo.</value>
+  </data>
+  <data name="IsCheckNameAndDomainsFromSubject" xml:space="preserve">
+    <value>La advertencia también se muestra cuando no hay un nombre de destinatario en el asunto.</value>
+  </data>
+  <data name="IsCheckNameAndDomainsIncludeSubject" xml:space="preserve">
+    <value>Incluir el asunto en el objetivo. *El sujeto, así como el cuerpo, se incluirá en el objetivo.</value>
+  </data>
+  <data name="IsForceAutoChangeRecipientsToBcc" xml:space="preserve">
+    <value>Forzar a todos los destinatarios externos a Bcc.</value>
+  </data>
+  <data name="IsIncludeInternalDomain" xml:space="preserve">
+    <value>Incluir dominios internos en el ámbito. *Todos los destinatarios se cambiarán a Bcc.</value>
+  </data>
+  <data name="SettingExampleAttachmentAlertRecipients" xml:space="preserve">
+    <value>Dirección: info@noraneko.co.jp
+O
+Dominio: @noraneko.co.jp
+
+Registre una dirección de correo electrónico o un dominio y su texto de advertencia.
+
+Una vez registrado, se mostrará una advertencia cuando se envíe un correo electrónico con archivos adjuntos a ese destino.
+
+Si el texto de advertencia se deja en blanco, se mostrará el texto de advertencia por defecto.</value>
+  </data>
+  <data name="SettingExampleAutoAddMessage" xml:space="preserve">
+    <value>Puede añadir automáticamente el texto especificado al principio o al final de un correo electrónico.</value>
+  </data>
+  <data name="ToRecipient" xml:space="preserve">
+    <value>Dirección de correo que debe establecerse como Para *Si no se establece, la dirección del remitente se establece automáticamente como Para.</value>
+  </data>
+  <data name="AddedTextAtTheBeginning" xml:space="preserve">
+    <value>Se ha añadido un texto al principio del correo.</value>
+  </data>
+  <data name="AddedTextAtTheEnd" xml:space="preserve">
+    <value>Texto añadido al final del correo.</value>
+  </data>
+  <data name="CanNotFindTheLinkedNameInSubject" xml:space="preserve">
+    <value>No se puede encontrar el nombre vinculado en el asunto del correo.</value>
+  </data>
+  <data name="AttachmentAlertRecipientsMessage" xml:space="preserve">
+    <value>Destinatario para el aviso de envío de archivos adjuntos.</value>
+  </data>
+  <data name="AutoAddToRecipientByForceAutoChangeRecipientsToBccAddressToAlert" xml:space="preserve">
+    <value>La dirección de correo electrónico especificada se ha añadido automáticamente a Para. (porque el Para ya no existe debido al cambio automático a Bcc).</value>
+  </data>
+  <data name="ForceAutoChangeRecipientsToBccAlert" xml:space="preserve">
+    <value>Los destinatarios se convirtieron automáticamente en Bcc.</value>
+  </data>
+  <data name="NotApplicableToMeetingRequests" xml:space="preserve">
+    <value>*No aplicable a las solicitudes de reunión.</value>
+  </data>
+  <data name="Open" xml:space="preserve">
+    <value>Abrir</value>
+  </data>
+  <data name="ChangesInTheFileWillNotBeSaved" xml:space="preserve">
+    <value>*Los cambios en el archivo no se guardarán.</value>
+  </data>
+  <data name="OpenTheAttachedFile" xml:space="preserve">
+    <value>¿Quiere abrir el archivo adjunto?</value>
+  </data>
+  <data name="IsEnableOpenAttachedFiles" xml:space="preserve">
+    <value>Habilitar la apertura de archivos adjuntos en la pantalla de confirmación.</value>
+  </data>
+  <data name="IsMustOpenBeforeCheckTheAttachedFiles" xml:space="preserve">
+    <value>En la pantalla de confirmación, es obligatorio abrir el archivo adjunto de destino.</value>
+  </data>
+  <data name="OpenTheAttachedFileOnTheConfirmationScreen" xml:space="preserve">
+    <value>Abra el archivo adjunto en la pantalla de confirmación.</value>
+  </data>
+  <data name="TargetAttachmentFileExtensionOfOpen" xml:space="preserve">
+    <value>Extensión de la fijación del objetivo:</value>
+  </data>
+  <data name="TaskRequest" xml:space="preserve">
+    <value>Asignar tarea</value>
+  </data>
+  <data name="ShowConfirmationAtSendTaskRequest" xml:space="preserve">
+    <value>También se muestra la pantalla de confirmación para asignar la tarea.</value>
+  </data>
+  <data name="AutoCheckAttachments" xml:space="preserve">
+    <value>Los archivos adjuntos se comprobarán automáticamente.</value>
+  </data>
+  <data name="KeywordAndRecipients" xml:space="preserve">
+    <value>Palabras clave y destinatarios</value>
+  </data>
+  <data name="SettingExampleKeywordAndRecipients" xml:space="preserve">
+    <value>Nombre: Noraneko Inc.
+Dominio: @noraneko.co.jp
+
+Registre las palabras clave (por ejemplo, el nombre de la empresa) y el destino (por ejemplo, el dominio).
+
+Si no hay ningún destinatario que corresponda a las palabras clave en el cuerpo del correo electrónico, se muestra una advertencia..
+
+*También puede incluirse en el cheque.</value>
+  </data>
+  <data name="KeywordAndRecipientsAlert1" xml:space="preserve">
+    <value>La palabra clave "</value>
+  </data>
+  <data name="KeywordAndRecipientsAlert2" xml:space="preserve">
+    <value>" relacionada con "</value>
+  </data>
+  <data name="KeywordAndRecipientsAlert3" xml:space="preserve">
+    <value>" no existe.</value>
   </data>
   <data name="IsIgnoreMustOpenBeforeCheckTheAttachedFilesIfInternalDomain" xml:space="preserve">
     <value>No es necesario si todos los destinatarios son dominios internos.</value>
   </data>
   <data name="AlertKeywordOfSubjectWhenOpeningMails" xml:space="preserve">
     <value>┗ Alerta al abrir un correo electrónico (asunto)</value>
+  </data>
+  <data name="MailHeaderAnalysisExceptionAddress" xml:space="preserve">
+    <value>Dirección de excepción del análisis de encabezado</value>
+  </data>
+  <data name="MailAddress" xml:space="preserve">
+    <value>Dirección de correo electrónico</value>
+  </data>
+  <data name="SettingExampleMailHeaderAnalysisExceptionAddress" xml:space="preserve">
+    <value>Registre las direcciones de correo del remitente que se excluirán de la advertencia del análisis de encabezado (suplantación).
+Los correos de una dirección que coincida exactamente no mostrarán la advertencia.
+Ej.) no-reply@example.com</value>
+  </data>
+  <data name="AlertOfReceivedMailSubject" xml:space="preserve">
+    <value>La línea de asunto contiene la palabra clave sujeta a la advertencia.</value>
+  </data>
+  <data name="AttatchmentIsEncryptedZip" xml:space="preserve">
+    <value>Este archivo es un archivo ZIP cifrado.</value>
+  </data>
+  <data name="DkimWarning1" xml:space="preserve">
+    <value>Error en la verificación DKIM. El remitente puede ser falsificado.</value>
   </data>
   <data name="IsEnableAlertKeywordOfSubjectWhenOpeningMailsData" xml:space="preserve">
     <value>Utilice la función de advertencia cuando la línea de asunto contenga las palabras clave especificadas.</value>
@@ -876,11 +893,38 @@ se aplicará esta función.</value>
   <data name="IsEnableSecurityForReceivedMail" xml:space="preserve">
     <value>Utilice la función de advertencia al abrir correos y archivos adjuntos. </value>
   </data>
+  <data name="IsEnableWarningFeatureWhenOpeningAttachments" xml:space="preserve">
+    <value>Utilice la función de advertencia al abrir archivos adjuntos.</value>
+  </data>
   <data name="IsShowWarningWhenDkimFails" xml:space="preserve">
     <value>Mostrar una advertencia cuando falle la verificación del registro DKIM.</value>
   </data>
   <data name="IsShowWarningWhenSpfFails" xml:space="preserve">
     <value>Mostrar una advertencia cuando falle la validación del registro SPF.</value>
+  </data>
+  <data name="IsWarnBeforeOpeningAttachments" xml:space="preserve">
+    <value>Avisar antes de abrir archivos adjuntos.</value>
+  </data>
+  <data name="IsWarnBeforeOpeningAttachmentsThatContainMacros" xml:space="preserve">
+    <value>Avise al abrir datos adjuntos que contengan macros.</value>
+  </data>
+  <data name="IsWarnBeforeOpeningEncryptedZip" xml:space="preserve">
+    <value>Avisar al abrir archivos ZIP cifrados.</value>
+  </data>
+  <data name="IsWarnLinkFileInTheZip" xml:space="preserve">
+    <value>Avise si hay un archivo .lnk en el archivo ZIP.</value>
+  </data>
+  <data name="IsWarnOfficeFileWithMacroInTheZip" xml:space="preserve">
+    <value>Avise si hay archivos .docm, .xlsm o .pptm en el archivo ZIP.</value>
+  </data>
+  <data name="IsWarnOneFileInTheZip" xml:space="preserve">
+    <value>Avise si hay un archivo .one en el archivo ZIP.</value>
+  </data>
+  <data name="OpenAttachmentWarning1" xml:space="preserve">
+    <value>¿Realmente quieres abrir el archivo adjunto?</value>
+  </data>
+  <data name="OpenAttachmentWarning2" xml:space="preserve">
+    <value>Tenga mucho cuidado con los archivos sospechosos.</value>
   </data>
   <data name="SecurityForReceivedMail" xml:space="preserve">
     <value>Seguridad del correo recibido</value>
@@ -893,59 +937,15 @@ se aplicará esta función.</value>
   <data name="SettingExampleSecurityForReceivedMail" xml:space="preserve">
     <value>La configuración se reflejará después de reiniciar Outlook.</value>
   </data>
-  <data name="IsEnableWarningFeatureWhenOpeningAttachments" xml:space="preserve">
-    <value>Utilice la función de advertencia al abrir archivos adjuntos.</value>
-  </data>
-  <data name="IsWarnBeforeOpeningAttachments" xml:space="preserve">
-    <value>Avisar antes de abrir archivos adjuntos.</value>
-  </data>
-  <data name="IsWarnBeforeOpeningEncryptedZip" xml:space="preserve">
-    <value>Avisar al abrir archivos ZIP cifrados.</value>
-  </data>
-  <data name="IsWarnLinkFileInTheZip" xml:space="preserve">
-    <value>Avise si hay un archivo .lnk en el archivo ZIP.</value>
-  </data>
-  <data name="IsWarnOneFileInTheZip" xml:space="preserve">
-    <value>Avise si hay un archivo .one en el archivo ZIP.</value>
-  </data>
-  <data name="IsWarnOfficeFileWithMacroInTheZip" xml:space="preserve">
-    <value>Avise si hay archivos .docm, .xlsm o .pptm en el archivo ZIP.</value>
-  </data>
-  <data name="IsWarnBeforeOpeningAttachmentsThatContainMacros" xml:space="preserve">
-    <value>Avise al abrir datos adjuntos que contengan macros.</value>
-  </data>
-  <data name="Warning" xml:space="preserve">
-    <value>Advertencia</value>
-  </data>
-  <data name="AlertOfReceivedMailSubject" xml:space="preserve">
-    <value>La línea de asunto contiene la palabra clave sujeta a la advertencia.</value>
+  <data name="SpfDkimWaring2" xml:space="preserve">
+    <value>Tenga cuidado con el contenido y los archivos adjuntos de este correo electrónico.</value>
   </data>
   <data name="SpfWarning1" xml:space="preserve">
     <value>Error en la verificación de SPF. El remitente puede ser falsificado.</value>
   </data>
-  <data name="DkimWarning1" xml:space="preserve">
-    <value>Error en la verificación DKIM. El remitente puede ser falsificado.</value>
-  </data>
-  <data name="SpfDkimWaring2" xml:space="preserve">
-    <value>Tenga cuidado con el contenido y los archivos adjuntos de este correo electrónico.</value>
-  </data>
-  <data name="OpenAttachmentWarning1" xml:space="preserve">
-    <value>¿Realmente quieres abrir el archivo adjunto?</value>
-  </data>
-  <data name="OpenAttachmentWarning2" xml:space="preserve">
-    <value>Tenga mucho cuidado con los archivos sospechosos.</value>
-  </data>
-  <data name="AttatchmentIsEncryptedZip" xml:space="preserve">
-    <value>Este archivo es un archivo ZIP cifrado.</value>
-  </data>
   <data name="SuspiciousAttachmentZip_link" xml:space="preserve">
     <value>Apego sospechoso.
 El archivo .lnk se incluye en el archivo ZIP,
-riesgo de infección con un virus.</value>
-  </data>
-  <data name="SuspiciousAttachmentZip_one" xml:space="preserve">
-    <value>Apego sospechoso.
-El archivo .one se incluye en el archivo ZIP,
 riesgo de infección con un virus.</value>
   </data>
   <data name="SuspiciousAttachmentZip_macro" xml:space="preserve">
@@ -953,20 +953,31 @@ riesgo de infección con un virus.</value>
 El archivo zip contiene un archivo de Office que contiene macros y
 riesgo de infección con un virus.</value>
   </data>
+  <data name="SuspiciousAttachmentZip_one" xml:space="preserve">
+    <value>Apego sospechoso.
+El archivo .one se incluye en el archivo ZIP,
+riesgo de infección con un virus.</value>
+  </data>
   <data name="SuspiciousAttachment_macro" xml:space="preserve">
     <value>Se trata de archivos adjuntos que contienen macros, riesgo de infección con un virus.</value>
   </data>
-  <data name="ExportAllSettings" xml:space="preserve">
-    <value>Exportar toda la configuración.</value>
+  <data name="Warning" xml:space="preserve">
+    <value>Advertencia</value>
   </data>
-  <data name="ImportAllSettings" xml:space="preserve">
-    <value>Importe la configuración.</value>
+  <data name="General2" xml:space="preserve">
+    <value>General 2</value>
   </data>
   <data name="CompletedExport" xml:space="preserve">
     <value>Se ha completado la exportación del archivo de configuración.</value>
   </data>
   <data name="CompletedImport" xml:space="preserve">
     <value>La importación se ha completado. Cierre la ventana de configuración.</value>
+  </data>
+  <data name="ExportAllSettings" xml:space="preserve">
+    <value>Exportar toda la configuración.</value>
+  </data>
+  <data name="ImportAllSettings" xml:space="preserve">
+    <value>Importe la configuración.</value>
   </data>
   <data name="ImportErrorOfAllSettings" xml:space="preserve">
     <value>Seleccione el archivo correcto. Error:</value>

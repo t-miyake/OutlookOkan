@@ -8,6 +8,9 @@
              xmlns:viewmodels="clr-namespace:OutlookOkan.ViewModels" d:DataContext="{d:DesignInstance Type=viewmodels:ConfirmationWindowViewModel}"
              mc:Ignorable="d"
              Closing="ConfirmationWindow_OnClosing"
+             Loaded="ConfirmationWindow_OnLoaded"
+             LocationChanged="ConfirmationWindow_OnLocationChanged"
+             SizeChanged="ConfirmationWindow_OnSizeChanged"
         Title="{Binding Source={x:Static services:ResourceService.Instance}, Path=Resources.Confirmation, Mode=OneWay}"
         ResizeMode="CanResizeWithGrip" ShowInTaskbar="False" WindowStartupLocation="CenterOwner" Height="590" Width="810" MinHeight="590" MinWidth="810">
     <Grid Margin="5,8">
