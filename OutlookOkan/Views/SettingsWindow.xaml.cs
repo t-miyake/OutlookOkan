@@ -238,6 +238,16 @@ namespace OutlookOkan.Views
             }
         }
 
+        private void DataGrid_MailHeaderAnalysisExceptionAddress_OnCellEditEnding(object sender, DataGridCellEditEndingEventArgs e)
+        {
+            var inputText = ((TextBox)e.EditingElement).Text;
+            if (string.IsNullOrEmpty(inputText) || !inputText.Contains("@") || inputText.Equals("@"))
+            {
+                _ = MessageBox.Show(Properties.Resources.InputMailaddressOrDomain, Properties.Resources.AppName, MessageBoxButton.OK);
+                e.Cancel = true;
+            }
+        }
+
         private void DataGrid_AutoDeleteRecipients_OnCellEditEnding(object sender, DataGridCellEditEndingEventArgs e)
         {
             var inputText = ((TextBox)e.EditingElement).Text;

@@ -63,6 +63,9 @@ namespace OutlookOkan.ViewModels
             ImportAlertKeywordOfSubjectWhenOpeningMailsList = new RelayCommand(ImportAlertKeywordOfSubjectWhenOpeningMailsFromCsv);
             ExportAlertKeywordOfSubjectWhenOpeningMailsList = new RelayCommand(ExportAlertKeywordOfSubjectWhenOpeningMailsToCsv);
 
+            ImportMailHeaderAnalysisExceptionAddressList = new RelayCommand(ImportMailHeaderAnalysisExceptionAddressFromCsv);
+            ExportMailHeaderAnalysisExceptionAddressList = new RelayCommand(ExportMailHeaderAnalysisExceptionAddressToCsv);
+
             ImportAutoDeleteRecipientsList = new RelayCommand(ImportAutoDeleteRecipientsFromCsv);
             ExportAutoDeleteRecipientsList = new RelayCommand(ExportAutoDeleteRecipientsToCsv);
 
@@ -90,6 +93,7 @@ namespace OutlookOkan.ViewModels
             LoadAttachmentAlertRecipientsData();
             LoadForceAutoChangeRecipientsToBccData();
             LoadAlertKeywordOfSubjectWhenOpeningMailsData();
+            LoadMailHeaderAnalysisExceptionAddressData();
             LoadAutoDeleteRecipientsData();
             LoadAutoAddMessageData();
             LoadSecurityForReceivedMailData();
@@ -118,6 +122,7 @@ namespace OutlookOkan.ViewModels
                     SaveAttachmentAlertRecipientsToCsv(),
                     SaveForceAutoChangeRecipientsToBccToCsv(),
                     SaveAlertKeywordOfSubjectWhenOpeningMailToCsv(),
+                    SaveMailHeaderAnalysisExceptionAddressToCsv(),
                     SaveAutoDeleteRecipientToCsv(),
                     SaveAutoAddMessageToCsv(),
                     SecurityForReceivedMailToCsv()
@@ -1385,6 +1390,63 @@ namespace OutlookOkan.ViewModels
             {
                 _alertKeywordOfSubjectWhenOpeningMails = value;
                 OnPropertyChanged(nameof(AlertKeywordOfSubjectWhenOpeningMails));
+            }
+        }
+
+        #endregion
+
+        #region MailHeaderAnalysisExceptionAddress
+
+        public ICommand ImportMailHeaderAnalysisExceptionAddressList { get; }
+        public ICommand ExportMailHeaderAnalysisExceptionAddressList { get; }
+
+        private void LoadMailHeaderAnalysisExceptionAddressData()
+        {
+            var exceptionAddresses = CsvFileHandler.ReadCsv<MailHeaderAnalysisExceptionAddress>(typeof(MailHeaderAnalysisExceptionAddressMap), "MailHeaderAnalysisExceptionAddressList.csv");
+            foreach (var data in exceptionAddresses.Where(x => !string.IsNullOrWhiteSpace(x.TargetAddress)))
+            {
+                MailHeaderAnalysisExceptionAddresses.Add(data);
+            }
+        }
+
+        private async Task SaveMailHeaderAnalysisExceptionAddressToCsv()
+        {
+            var list = MailHeaderAnalysisExceptionAddresses.Where(x => !string.IsNullOrWhiteSpace(x.TargetAddress)).Cast<object>().ToList();
+            await Task.Run(() => CsvFileHandler.CreateOrReplaceCsv(typeof(MailHeaderAnalysisExceptionAddressMap), "MailHeaderAnalysisExceptionAddressList.csv", list));
+        }
+
+        private void ImportMailHeaderAnalysisExceptionAddressFromCsv()
+        {
+            try
+            {
+                var importData = CsvFileHandler.ImportCsv<MailHeaderAnalysisExceptionAddress>(typeof(MailHeaderAnalysisExceptionAddressMap));
+                foreach (var data in importData.Where(x => !string.IsNullOrWhiteSpace(x.TargetAddress)))
+                {
+                    MailHeaderAnalysisExceptionAddresses.Add(data);
+                }
+
+                _ = MessageBox.Show(Properties.Resources.SuccessfulImport, Properties.Resources.AppName, MessageBoxButton.OK);
+            }
+            catch (Exception)
+            {
+                _ = MessageBox.Show(Properties.Resources.ImportFailed, Properties.Resources.AppName, MessageBoxButton.OK);
+            }
+        }
+
+        private void ExportMailHeaderAnalysisExceptionAddressToCsv()
+        {
+            var list = MailHeaderAnalysisExceptionAddresses.Where(x => !string.IsNullOrWhiteSpace(x.TargetAddress)).Cast<object>().ToList();
+            CsvFileHandler.ExportCsv(typeof(MailHeaderAnalysisExceptionAddressMap), list, "MailHeaderAnalysisExceptionAddressList.csv");
+        }
+
+        private ObservableCollection<MailHeaderAnalysisExceptionAddress> _mailHeaderAnalysisExceptionAddresses = new ObservableCollection<MailHeaderAnalysisExceptionAddress>();
+        public ObservableCollection<MailHeaderAnalysisExceptionAddress> MailHeaderAnalysisExceptionAddresses
+        {
+            get => _mailHeaderAnalysisExceptionAddresses;
+            set
+            {
+                _mailHeaderAnalysisExceptionAddresses = value;
+                OnPropertyChanged(nameof(MailHeaderAnalysisExceptionAddresses));
             }
         }
 

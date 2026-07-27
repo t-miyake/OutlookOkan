@@ -359,10 +359,10 @@
     <value>Noraneko Inc.</value>
   </data>
   <data name="Copyright" xml:space="preserve">
-    <value>Copyright (C) 2024 Noraneko Inc.</value>
+    <value>Copyright (C) 2026 Noraneko Inc.</value>
   </data>
   <data name="Version" xml:space="preserve">
-    <value>Version 2.8.2</value>
+    <value>Version 2.8.3</value>
   </data>
   <data name="VersionInfo" xml:space="preserve">
     <value>About</value>
@@ -860,6 +860,17 @@ If there is no recipient corresponding to the keywords in the body of the e-mail
   </data>
   <data name="AlertKeywordOfSubjectWhenOpeningMails" xml:space="preserve">
     <value>┗ Alert when opening email (subject)</value>
+  </data>
+  <data name="MailHeaderAnalysisExceptionAddress" xml:space="preserve">
+    <value>Header analysis exception address</value>
+  </data>
+  <data name="MailAddress" xml:space="preserve">
+    <value>Mail address</value>
+  </data>
+  <data name="SettingExampleMailHeaderAnalysisExceptionAddress" xml:space="preserve">
+    <value>Register sender mail addresses to be excluded from the mail header analysis (spoofing) warning.
+Mail from an exactly-matching address will not trigger the warning.
+e.g.) no-reply@example.com</value>
   </data>
   <data name="AlertOfReceivedMailSubject" xml:space="preserve">
     <value>The subject line contains the keyword subject to the warning.</value>

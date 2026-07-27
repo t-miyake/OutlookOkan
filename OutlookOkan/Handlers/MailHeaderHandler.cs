@@ -20,6 +20,7 @@ namespace OutlookOkan.Handlers
             var results = new Dictionary<string, string>
             {
                 ["From Domain"] = "NONE",
+                ["From Address"] = "NONE",
                 ["ReturnPath Domain"] = "NONE",
                 ["SPF"] = "NONE",
                 ["SPF IP"] = "NONE",
@@ -58,6 +59,13 @@ namespace OutlookOkan.Handlers
 
                 fromDomain = domainMatch.Success ? domainMatch.Groups["domain"].Value : string.Empty;
                 results["From Domain"] = fromDomain;
+
+                //Fromヘッダから完全なメールアドレスを抽出する。(ヘッダ解析警告の例外アドレス判定に使用)
+                var addressMatch = new Regex(@"[^<>\s""']+@[^<>\s""']+", RegexOptions.IgnoreCase).Match(fromHeader);
+                if (addressMatch.Success)
+                {
+                    results["From Address"] = addressMatch.Value.Trim();
+                }
             }
 
             // SPF検証

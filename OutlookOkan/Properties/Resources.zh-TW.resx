@@ -120,23 +120,8 @@
   <data name="About" xml:space="preserve">
     <value>軟件信息</value>
   </data>
-  <data name="AddedTextAtTheBeginning" xml:space="preserve">
-    <value>在郵件的開頭添加了文字。</value>
-  </data>
-  <data name="AddedTextAtTheEnd" xml:space="preserve">
-    <value>在郵件的結尾處添加了文字。</value>
-  </data>
-  <data name="AddressBook" xml:space="preserve">
-    <value>聯繫人</value>
-  </data>
   <data name="AlertKeyword" xml:space="preserve">
     <value>警報關鍵詞</value>
-  </data>
-  <data name="AlertKeywordForBody" xml:space="preserve">
-    <value>警報關鍵詞（正文）</value>
-  </data>
-  <data name="AlertKeywordForSubject" xml:space="preserve">
-    <value>警報關鍵詞（主題）</value>
   </data>
   <data name="AlertKeywordInfo" xml:space="preserve">
     <value>提醒的關鍵詞</value>
@@ -146,12 +131,6 @@
   </data>
   <data name="AlertMailAddressAndDomain" xml:space="preserve">
     <value>向收件人或域發出警報</value>
-  </data>
-  <data name="AlwaysAddTheSendersAddressToBcc" xml:space="preserve">
-    <value>始終將發件人的地址自動添加到Bcc中。</value>
-  </data>
-  <data name="AlwaysAddTheSendersAddressToCc" xml:space="preserve">
-    <value>始終將發件人的地址自動添加到Cc中。</value>
   </data>
   <data name="ApplicableDestination" xml:space="preserve">
     <value>適用對象</value>
@@ -165,35 +144,8 @@
   <data name="AppName" xml:space="preserve">
     <value>OutlookOkan</value>
   </data>
-  <data name="AttachedIsAnEncryptedZipFile" xml:space="preserve">
-    <value>附件中是一個加密的ZIP文件。</value>
-  </data>
-  <data name="AttachmentAlertRecipients" xml:space="preserve">
-    <value>附件提醒地址</value>
-  </data>
-  <data name="AttachmentAlertRecipientsMessage" xml:space="preserve">
-    <value>發送附件警告的收件人。</value>
-  </data>
-  <data name="AttachmentProhibitedRecipients" xml:space="preserve">
-    <value>附件禁止的地址</value>
-  </data>
-  <data name="AttachmentProhibitedRecipientsMessage" xml:space="preserve">
-    <value>這個被禁止發送附件的收件人。</value>
-  </data>
   <data name="Attachments" xml:space="preserve">
     <value>附件</value>
-  </data>
-  <data name="AttachmentsKeyword" xml:space="preserve">
-    <value>附件</value>
-  </data>
-  <data name="AttachmentsName" xml:space="preserve">
-    <value>附件名稱/關鍵詞</value>
-  </data>
-  <data name="AttachmentsProhibitedMessage" xml:space="preserve">
-    <value>禁止發送帶有附件的電子郵件。</value>
-  </data>
-  <data name="AutoAddCCorBCCByAttachedFile" xml:space="preserve">
-    <value>自動添加Cc/Bcc（通過附件）</value>
   </data>
   <data name="AutoAddCCorBCCByKeyword" xml:space="preserve">
     <value>自動添加Cc/Bcc（按關鍵詞）</value>
@@ -213,76 +165,23 @@
   <data name="AutoAddMailAddress" xml:space="preserve">
     <value>自動添加收件人。</value>
   </data>
-  <data name="AutoAddMessage" xml:space="preserve">
-    <value>自動添加正文</value>
-  </data>
-  <data name="AutoAddSendersAddressToAlert" xml:space="preserve">
-    <value>發件人的電子郵件地址被自動添加到收件人中。 (因為收件人已經不存在了，因為自動改為Bcc。)</value>
-  </data>
-  <data name="AutoAddToRecipientByForceAutoChangeRecipientsToBccAddressToAlert" xml:space="preserve">
-    <value>指定的電子郵件地址被自動添加到收件人中。 (因為收件人已經不存在了，因為自動改為密件)。</value>
-  </data>
-  <data name="AutoCheckAttachments" xml:space="preserve">
-    <value>附件將被自動檢查。</value>
-  </data>
   <data name="AutoCheckConfig" xml:space="preserve">
     <value>自動檢查設置</value>
-  </data>
-  <data name="AutoCheckMembersAddress" xml:space="preserve">
-    <value>會員的電子郵件地址將被自動檢查。</value>
   </data>
   <data name="AutoCheckSameDomain" xml:space="preserve">
     <value>內部域名接收者將被自動檢查。</value>
   </data>
-  <data name="BasicSettings" xml:space="preserve">
-    <value>基本設置</value>
-  </data>
-  <data name="Bcc" xml:space="preserve">
-    <value>Bcc</value>
+  <data name="CSVImportAlert" xml:space="preserve">
+    <value>不要用錯誤的格式導入CSV文件。</value>
   </data>
   <data name="Cancel" xml:space="preserve">
     <value>取消</value>
-  </data>
-  <data name="CanceledSendingMail" xml:space="preserve">
-    <value>取消了發送這封電子郵件。</value>
-  </data>
-  <data name="CanceledSendingMailMessage" xml:space="preserve">
-    <value>取消了發送這封電子郵件。你可以重新編輯。
-發送此郵件的預計時間已被清除。
-
-要發送此郵件，你必須點擊發送按鈕。
-關閉編輯界面將不會發送此郵件。</value>
-  </data>
-  <data name="CanGetNewVersion" xml:space="preserve">
-    <value>這個插件有一個新的版本。
-你想下載它嗎？</value>
-  </data>
-  <data name="CanNotFindTheLinkedName" xml:space="preserve">
-    <value>無法在郵件正文中找到鏈接的名稱。</value>
-  </data>
-  <data name="CanNotFindTheLinkedNameInSubject" xml:space="preserve">
-    <value>無法在郵件主題中找到鏈接的名稱。</value>
-  </data>
-  <data name="Cc" xml:space="preserve">
-    <value>Cc</value>
   </data>
   <data name="CCorBCC" xml:space="preserve">
     <value>Cc/Bcc</value>
   </data>
   <data name="ChangeLanguage" xml:space="preserve">
     <value>改變顯示語言</value>
-  </data>
-  <data name="ChangeRibbonLanguageInfo" xml:space="preserve">
-    <value>當Outlook重新啟動時，功能區（菜單）的顯示語言會被更新。</value>
-  </data>
-  <data name="ChangesInTheFileWillNotBeSaved" xml:space="preserve">
-    <value>*文件中的變化將不會被保存。</value>
-  </data>
-  <data name="CheckNewVersion" xml:space="preserve">
-    <value>檢查新的版本。</value>
-  </data>
-  <data name="CompanyName" xml:space="preserve">
-    <value>Noraneko Inc.</value>
   </data>
   <data name="Confirmation" xml:space="preserve">
     <value>在發送電子郵件之前進行確認。</value>
@@ -293,41 +192,14 @@
   <data name="ConfirmationMessage2" xml:space="preserve">
     <value>檢查完所有項目後，你可以按下發送按鈕。</value>
   </data>
-  <data name="ContactGroup" xml:space="preserve">
-    <value>聯繫小組</value>
-  </data>
-  <data name="Copyright" xml:space="preserve">
-    <value>Copyright (C) 2024 Noraneko Inc.</value>
-  </data>
   <data name="CSVExport" xml:space="preserve">
     <value>導出CSV</value>
   </data>
   <data name="CSVImport" xml:space="preserve">
     <value>導入CSV</value>
   </data>
-  <data name="CSVImportAlert" xml:space="preserve">
-    <value>不要用錯誤的格式導入CSV文件。</value>
-  </data>
-  <data name="DefaultAlertMessage" xml:space="preserve">
-    <value>警告關鍵字包括在電子郵件的正文中。</value>
-  </data>
-  <data name="DeferredDelivery" xml:space="preserve">
-    <value>推遲交付</value>
-  </data>
-  <data name="DeferredDeliveryEmailAddressOrDomainInfo" xml:space="preserve">
-    <value>輸入你想延遲交付的電子郵件地址或域名。</value>
-  </data>
-  <data name="DeferredDeliveryMinutes" xml:space="preserve">
-    <value>延遲交貨時間（分鐘）</value>
-  </data>
-  <data name="DeferredDeliveryTime" xml:space="preserve">
-    <value>延遲交貨時間（分鐘）</value>
-  </data>
   <data name="DestinationEmailaddress" xml:space="preserve">
     <value>收件人</value>
-  </data>
-  <data name="DistributionList" xml:space="preserve">
-    <value>分發名單</value>
   </data>
   <data name="Domain" xml:space="preserve">
     <value>領域</value>
@@ -335,53 +207,17 @@
   <data name="DoNotShowConfirmationScreen" xml:space="preserve">
     <value>跳過確認窗口</value>
   </data>
-  <data name="EnableForgottenToAttachAlert" xml:space="preserve">
-    <value>如果文中有一句 "附件文件"，但沒有附件文件，則對此提出警告。</value>
-  </data>
-  <data name="EncryptedZipBeta" xml:space="preserve">
-    <value>加密的Zip文件附件警告</value>
-  </data>
-  <data name="ExclusionSettings" xml:space="preserve">
-    <value>排除設置</value>
-  </data>
   <data name="ExportFailed" xml:space="preserve">
     <value>導出失敗。</value>
   </data>
-  <data name="ExternalDomainsChangeToBccAlert" xml:space="preserve">
-    <value>由於收件人和抄送人的外部域超過了閾值，外部域的收件人已被改為Bcc。</value>
-  </data>
-  <data name="ExternalDomainsWarningAndAutoChangeToBcc" xml:space="preserve">
-    <value>外部域名警告和自動變更為Bcc</value>
-  </data>
-  <data name="ExternalRecipient" xml:space="preserve">
-    <value>外部收件人</value>
-  </data>
   <data name="FailedToGetInformation" xml:space="preserve">
     <value>沒能獲得信息。</value>
-  </data>
-  <data name="ForceAutoChangeRecipientsToBcc" xml:space="preserve">
-    <value>強制自動變更為密件</value>
-  </data>
-  <data name="ForceAutoChangeRecipientsToBccAlert" xml:space="preserve">
-    <value>收件人被自動轉換為Bcc。</value>
-  </data>
-  <data name="ForceAutoChangeRecipientsToBccNotes" xml:space="preserve">
-    <value>以下設置優先於上述設置。</value>
   </data>
   <data name="ForgottenToAttachAlert" xml:space="preserve">
     <value>文中有 "附件 "一詞，但沒有附件。</value>
   </data>
   <data name="General" xml:space="preserve">
     <value>一般</value>
-  </data>
-  <data name="GetMembersOfTheContactGroup" xml:space="preserve">
-    <value>顯示一個聯繫組的成員。</value>
-  </data>
-  <data name="GetMembersOfTheExDistList" xml:space="preserve">
-    <value>顯示一個Exchange分配列表的成員。 (這可能需要很長的時間）</value>
-  </data>
-  <data name="GetMembersOfTheList" xml:space="preserve">
-    <value>顯示Exchange分配列表或聯繫人組的成員</value>
   </data>
   <data name="Help" xml:space="preserve">
     <value>手冊</value>
@@ -411,12 +247,6 @@
   <data name="InputCCorBCC" xml:space="preserve">
     <value>輸入 "Cc "或 "Bcc"。</value>
   </data>
-  <data name="InputDeferredDeliveryTime" xml:space="preserve">
-    <value>輸入推遲的時間，以分鐘為單位。</value>
-  </data>
-  <data name="InputDomain" xml:space="preserve">
-    <value>輸入域名。</value>
-  </data>
   <data name="InputDomainInfo" xml:space="preserve">
     <value>從@進入。</value>
   </data>
@@ -425,15 +255,6 @@
   </data>
   <data name="InputNameInfo" xml:space="preserve">
     <value>輸入名稱。 (例如：公司名稱)</value>
-  </data>
-  <data name="InternalDomain" xml:space="preserve">
-    <value>內部領域</value>
-  </data>
-  <data name="IsAddMessageToEnd" xml:space="preserve">
-    <value>下面的文字會自動添加到正文的末尾。</value>
-  </data>
-  <data name="IsAddMessageToStart" xml:space="preserve">
-    <value>以下文字會自動添加到正文的開頭。</value>
   </data>
   <data name="IsAlertAddressBccAlert" xml:space="preserve">
     <value>收件人（Bcc）包含一個已經註冊為警報的地址或域名。</value>
@@ -450,121 +271,23 @@
   <data name="IsAttachedExe" xml:space="preserve">
     <value>附上一個可執行文件（.exe）。</value>
   </data>
-  <data name="IsAttachmentsProhibited" xml:space="preserve">
-    <value>當附加了一個文件時，禁止發送。</value>
-  </data>
-  <data name="IsAutoChangeToBccWhenLargeNumberOfExternalDomains" xml:space="preserve">
-    <value>當收件人(To/Cc)有大量的外部域名時，To和Cc的外部收件人會自動轉換為Bcc。</value>
-  </data>
-  <data name="IsAutoCheckRegisteredInContacts" xml:space="preserve">
-    <value>在聯繫人中登記的收件人將被自動檢查。 (這可能需要很長的時間）</value>
-  </data>
-  <data name="IsAutoCheckRegisteredInContactsAndMemberOfContactLists" xml:space="preserve">
-    <value>包括註冊為聯繫人名單成員的收件人。
-(如果你有許多聯絡小組，這個過程可能需要更長的時間）</value>
-  </data>
   <data name="IsBigAttachedFile" xml:space="preserve">
     <value>這封郵件中附有一個10M字節或更大的文件。</value>
-  </data>
-  <data name="IsCanNotShowConfirmation" xml:space="preserve">
-    <value>無法顯示確認窗口。</value>
-  </data>
-  <data name="IsCheckNameAndDomainsFromRecipients" xml:space="preserve">
-    <value>當郵件正文中沒有的名字時，還會顯示一個警告。</value>
-  </data>
-  <data name="IsCheckNameAndDomainsFromSubject" xml:space="preserve">
-    <value>當主題中沒有收件人姓名時，也會顯示該警告。</value>
-  </data>
-  <data name="IsCheckNameAndDomainsIncludeSubject" xml:space="preserve">
-    <value>在目標中包括主題。 *主題以及正文都將包括在目標中。</value>
-  </data>
-  <data name="IsDoNotUseXIfAllRecipientsAreInternalDomain" xml:space="preserve">
-    <value>如果收件人的網域都是內部網域，則禁用此功能。</value>
-  </data>
-  <data name="IsEnableAllAttachedFilesAreDetectEncryptedZip" xml:space="preserve">
-    <value>".zip "以外的擴展名附加的文件也會檢測它們是否是加密的ZIP。</value>
-  </data>
-  <data name="IsEnableOpenAttachedFiles" xml:space="preserve">
-    <value>啟用在確認屏幕上打開附件的功能。</value>
-  </data>
-  <data name="IsEnableRecipientsAreSortedByDomain" xml:space="preserve">
-    <value>收件人在確認屏幕上按域名排序。</value>
-  </data>
-  <data name="IsForceAutoChangeRecipientsToBcc" xml:space="preserve">
-    <value>強制所有外部收件人轉為密件。</value>
-  </data>
-  <data name="IsIncludeInternalDomain" xml:space="preserve">
-    <value>在範圍內包括內部域。 *所有收件人將被改為密件。</value>
-  </data>
-  <data name="IsMustOpenBeforeCheckTheAttachedFiles" xml:space="preserve">
-    <value>在確認屏幕上，必須要打開目標附件。</value>
-  </data>
-  <data name="IsNotTreatedAsAttachmentsAtHtmlEmbeddedFiles" xml:space="preserve">
-    <value>嵌入HTML郵件中的文件不被視為附件。</value>
-  </data>
-  <data name="IsProhibitedWhenEncryptedZipIsAttached" xml:space="preserve">
-    <value>當附上一個加密的ZIP文件時，禁止發送。</value>
-  </data>
-  <data name="IsProhibitedWhenLargeNumberOfExternalDomains" xml:space="preserve">
-    <value>當收件人（To/Cc）有大量的外部域名時，禁止發送。</value>
-  </data>
-  <data name="IsProhibitsSendingMailIfRecipientsIsNotRegistered" xml:space="preserve">
-    <value>如果收件人沒有在聯繫人中註冊，則禁止發送郵件。</value>
-  </data>
-  <data name="IsShowConfirmationToMultipleDomain" xml:space="preserve">
-    <value>如果收件人包含多個外部域，顯示確認窗口。
-(不會跳過確認窗口。)</value>
-  </data>
-  <data name="IsSkipConfirmation" xml:space="preserve">
-    <value>跳過確認窗口。</value>
-  </data>
-  <data name="IsSkipConfirmationInfo" xml:space="preserve">
-    <value>當你只向選定的收件人發送電子郵件時，跳過確認窗口。</value>
-  </data>
-  <data name="IsWarningIfRecipientsIsNotRegistered" xml:space="preserve">
-    <value>如果收件人沒有在聯繫人中登記，確認屏幕上會顯示一個警告。</value>
-  </data>
-  <data name="IsWarningWhenAttachedRealFile" xml:space="preserve">
-    <value>如果附上文件，建議在確認屏幕上以鏈接方式附上。</value>
-  </data>
-  <data name="IsWarningWhenEncryptedZipIsAttached" xml:space="preserve">
-    <value>當一個加密的ZIP文件被附加時，顯示一個警告。</value>
-  </data>
-  <data name="IsWarningWhenLargeNumberOfExternalDomains" xml:space="preserve">
-    <value>當收件人（To/Cc）有大量的外部域名時，顯示警告。</value>
   </data>
   <data name="Keyword" xml:space="preserve">
     <value>關鍵詞</value>
   </data>
-  <data name="KeywordAndRecipients" xml:space="preserve">
-    <value>將關鍵詞和收件人聯繫起來</value>
-  </data>
-  <data name="KeywordAndRecipientsAlert1" xml:space="preserve">
-    <value>關鍵詞"</value>
-  </data>
-  <data name="KeywordAndRecipientsAlert2" xml:space="preserve">
-    <value>"中的"</value>
-  </data>
-  <data name="KeywordAndRecipientsAlert3" xml:space="preserve">
-    <value>"不存在。</value>
-  </data>
-  <data name="LargeNumberOfExternalDomainAlert" xml:space="preserve">
-    <value>收件人和抄送人中的外部域的數量高於閾值。請再次確認發送的優點和缺點。</value>
+  <data name="MailBody" xml:space="preserve">
+    <value>信息正文（純文本）</value>
   </data>
   <data name="MailAddressAndDomain" xml:space="preserve">
     <value>收件人地址/域名</value>
-  </data>
-  <data name="MailBody" xml:space="preserve">
-    <value>信息正文（純文本）</value>
   </data>
   <data name="MailInfo" xml:space="preserve">
     <value>電子郵件信息</value>
   </data>
   <data name="MailType" xml:space="preserve">
     <value>類型</value>
-  </data>
-  <data name="MeetingRequest" xml:space="preserve">
-    <value>會議要求</value>
   </data>
   <data name="Name" xml:space="preserve">
     <value>名稱</value>
@@ -575,38 +298,8 @@
   <data name="NoAlert" xml:space="preserve">
     <value>沒有重要的警報。</value>
   </data>
-  <data name="NotApplicableToMeetingRequests" xml:space="preserve">
-    <value>*不適用於會議要求。</value>
-  </data>
-  <data name="NoticeOfIsEnableAllAttachedFilesAreDetectEncryptedZip" xml:space="preserve">
-    <value>* 有附件的電子郵件的處理可能需要更長的時間。</value>
-  </data>
   <data name="OK" xml:space="preserve">
     <value>認可</value>
-  </data>
-  <data name="Open" xml:space="preserve">
-    <value>打開</value>
-  </data>
-  <data name="OpenTheAttachedFile" xml:space="preserve">
-    <value>你想打開附件中的文件嗎？</value>
-  </data>
-  <data name="OpenTheAttachedFileOnTheConfirmationScreen" xml:space="preserve">
-    <value>在確認屏幕上打開所附文件。</value>
-  </data>
-  <data name="ProhibitedWhenLargeNumberOfExternalDomainsAlert" xml:space="preserve">
-    <value>收件人和抄送人中的外部域的數量高於閾值。</value>
-  </data>
-  <data name="ProhibitsSendingMailIfRecipientsIsNotRegisteredMessage" xml:space="preserve">
-    <value>禁止向未註冊的聯繫人發送電子郵件。</value>
-  </data>
-  <data name="RecipientsAndAttachmentsName" xml:space="preserve">
-    <value>有關收件人和附件的名稱</value>
-  </data>
-  <data name="RecipientsAndAttachmentsNameMessage" xml:space="preserve">
-    <value>不相關的收件人和附件。</value>
-  </data>
-  <data name="RecommendationOfAttachFileAsLink" xml:space="preserve">
-    <value>建議你將文件作為鏈接附上。</value>
   </data>
   <data name="RichText" xml:space="preserve">
     <value>Rich-text</value>
@@ -626,26 +319,56 @@
   <data name="Sender" xml:space="preserve">
     <value>寄件人</value>
   </data>
-  <data name="SendersDomainAndInternalDomainAreNotCovered" xml:space="preserve">
-    <value>*發件人的域名和內部域名都不包括在內。</value>
-  </data>
   <data name="SendingForbid" xml:space="preserve">
     <value>禁止發送</value>
-  </data>
-  <data name="SendingForbidAddress" xml:space="preserve">
-    <value>被禁止的收件人。</value>
   </data>
   <data name="SendingForbidInfo" xml:space="preserve">
     <value>如果你勾選了這個框，你就不能向收件人發送電子郵件，也不能包括關鍵詞。</value>
   </data>
-  <data name="SendMailConfirmation" xml:space="preserve">
-    <value>你想發送這封郵件嗎？</value>
-  </data>
-  <data name="SentOnBehalf" xml:space="preserve">
-    <value>代表發送或作為發送。</value>
-  </data>
   <data name="SettingExample" xml:space="preserve">
     <value>設置的例子</value>
+  </data>
+  <data name="Settings" xml:space="preserve">
+    <value>設置</value>
+  </data>
+  <data name="Subject" xml:space="preserve">
+    <value>主題</value>
+  </data>
+  <data name="SuccessfulExport" xml:space="preserve">
+    <value>現在導出已經完成。</value>
+  </data>
+  <data name="SuccessfulImport" xml:space="preserve">
+    <value>現在導入已經完成。</value>
+  </data>
+  <data name="Text" xml:space="preserve">
+    <value>Plain-text</value>
+  </data>
+  <data name="Unknown" xml:space="preserve">
+    <value>不詳</value>
+  </data>
+  <data name="WarningText" xml:space="preserve">
+    <value>警告文本</value>
+  </data>
+  <data name="WarningTextInfo" xml:space="preserve">
+    <value>確認窗口的提示文字。</value>
+  </data>
+  <data name="WhiteList" xml:space="preserve">
+    <value>允許列表</value>
+  </data>
+  <data name="CompanyName" xml:space="preserve">
+    <value>Noraneko Inc.</value>
+  </data>
+  <data name="Copyright" xml:space="preserve">
+    <value>Copyright (C) 2026 Noraneko Inc.</value>
+  </data>
+  <data name="Version" xml:space="preserve">
+    <value>Version 2.8.3</value>
+  </data>
+  <data name="VersionInfo" xml:space="preserve">
+    <value>軟件信息</value>
+  </data>
+  <data name="SendingForbidAddress" xml:space="preserve">
+    <value>被禁止的收件人。</value>
   </data>
   <data name="SettingExampleAlertKeyword" xml:space="preserve">
     <value>關鍵字。機密
@@ -654,16 +377,6 @@
 註冊要提醒的關鍵詞和它們的提醒文本。
 
 如果關鍵詞包含在正文中，你可以顯示一個警告或禁止發送該郵件。
-
-如果警報文本為空白，確認屏幕將顯示默認的警報文本。</value>
-  </data>
-  <data name="SettingExampleAlertKeywordForSubject" xml:space="preserve">
-    <value>關鍵字。機密
-警示性文本。它包括 "機密 "這一短語。
-
-註冊要提醒的關鍵詞和它們的提醒文本。
-
-如果關鍵詞包含在主題中，你可以顯示一個警告或禁止發送該郵件。
 
 如果警報文本為空白，確認屏幕將顯示默認的警報文本。</value>
   </data>
@@ -677,37 +390,6 @@
 如果你向你在這裡註冊的電子郵件地址或域名發送電子郵件，你會提前收到提醒。
 
 如果警報文本為空白，確認屏幕將顯示默認的警報文本。</value>
-  </data>
-  <data name="SettingExampleAttachmentAlertRecipients" xml:space="preserve">
-    <value>地址: info@noraneko.co.jp
-或者。
-域名: @noraneko.co.jp
-
-註冊一個電子郵件地址或域名以及其警告文字。
-
-如果註冊了，在向該地址發送帶有附件的電子郵件時，將顯示警告。
-
-如果警告文本留空，就會顯示默認的警告文本。</value>
-  </data>
-  <data name="SettingExampleAttachmentProhibitedRecipients" xml:space="preserve">
-    <value>電子郵件地址：info@noraneko.co.jp
-或
-域名。 @noraneko.co.jp
-
-註冊電子郵件地址或域名。
-
-你將無法向該收件人發送帶有附件的電子郵件。</value>
-  </data>
-  <data name="SettingExampleAttachments" xml:space="preserve">
-    <value>你可以防止發送帶有附件的電子郵件，或者顯示警告，建議將文件作為鏈接附加。
-
-你也可以在附上加密的ZIP文件（帶密碼的ZIP文件）時顯示警告或禁止發送電子郵件。</value>
-  </data>
-  <data name="SettingExampleAutoAddCCorBCCByAttachedFile" xml:space="preserve">
-    <value>類型。 Cc或Bcc
-電子郵件地址: boss@noraneko.co.jp
-
-當你發送附有文件的電子郵件時，指定的地址會被自動添加到抄送或密件中。</value>
   </data>
   <data name="SettingExampleAutoAddCCorBCCByKeyword" xml:space="preserve">
     <value>類型。 Cc或Bcc
@@ -723,8 +405,64 @@
 
 當發送郵件給註冊的收件人和域名時，指定的地址會自動添加到抄送或密件中。</value>
   </data>
-  <data name="SettingExampleAutoAddMessage" xml:space="preserve">
-    <value>你可以自動將指定的措辭添加到電子郵件的開頭或結尾。</value>
+  <data name="SettingExampleNameAndDomain" xml:space="preserve">
+    <value>名稱。 Noraneko Inc
+域名。 @noraneko.co.jp
+
+註冊名稱（例如：公司名稱）和域名。
+
+如果電子郵件正文中的名稱和收件人的域名不匹配，則顯示警告。
+
+*主題也可以包括在檢查中。</value>
+  </data>
+  <data name="SettingExampleWhiteList" xml:space="preserve">
+    <value>電子郵件地址：info@noraneko.co.jp
+或
+域名。 @noraneko.co.jp
+
+註冊電子郵件地址或域名。
+
+相關收件人將在確認屏幕中被預先選中。</value>
+  </data>
+  <data name="ChangeRibbonLanguageInfo" xml:space="preserve">
+    <value>當Outlook重新啟動時，功能區（菜單）的顯示語言會被更新。</value>
+  </data>
+  <data name="IsCanNotShowConfirmation" xml:space="preserve">
+    <value>無法顯示確認窗口。</value>
+  </data>
+  <data name="SendMailConfirmation" xml:space="preserve">
+    <value>你想發送這封郵件嗎？</value>
+  </data>
+  <data name="IsShowConfirmationToMultipleDomain" xml:space="preserve">
+    <value>如果收件人包含多個外部域，顯示確認窗口。
+(不會跳過確認窗口。)</value>
+  </data>
+  <data name="IsSkipConfirmation" xml:space="preserve">
+    <value>跳過確認窗口。</value>
+  </data>
+  <data name="IsSkipConfirmationInfo" xml:space="preserve">
+    <value>當你只向選定的收件人發送電子郵件時，跳過確認窗口。</value>
+  </data>
+  <data name="SentOnBehalf" xml:space="preserve">
+    <value>代表發送或作為發送。</value>
+  </data>
+  <data name="DeferredDelivery" xml:space="preserve">
+    <value>推遲交付</value>
+  </data>
+  <data name="DeferredDeliveryMinutes" xml:space="preserve">
+    <value>延遲交貨時間（分鐘）</value>
+  </data>
+  <data name="EnableForgottenToAttachAlert" xml:space="preserve">
+    <value>如果文中有一句 "附件文件"，但沒有附件文件，則對此提出警告。</value>
+  </data>
+  <data name="DeferredDeliveryEmailAddressOrDomainInfo" xml:space="preserve">
+    <value>輸入你想延遲交付的電子郵件地址或域名。</value>
+  </data>
+  <data name="DeferredDeliveryTime" xml:space="preserve">
+    <value>延遲交貨時間（分鐘）</value>
+  </data>
+  <data name="InputDeferredDeliveryTime" xml:space="preserve">
+    <value>輸入推遲的時間，以分鐘為單位。</value>
   </data>
   <data name="SettingExampleDeferredDelivery" xml:space="preserve">
     <value>電子郵件地址：info@noraneko.co.jp
@@ -737,12 +475,58 @@
 
 * 如果滿足多個條件，將應用最長的延時時間。</value>
   </data>
-  <data name="SettingExampleExternalDomainsWarningAndAutoChangeToBcc" xml:space="preserve">
-    <value>設置外部域名的數量，作為警告和自動變更為Bcc的依據，並將每個域名打開或關閉。
+  <data name="ContactGroup" xml:space="preserve">
+    <value>聯繫小組</value>
+  </data>
+  <data name="AutoCheckMembersAddress" xml:space="preserve">
+    <value>會員的電子郵件地址將被自動檢查。</value>
+  </data>
+  <data name="GetMembersOfTheContactGroup" xml:space="preserve">
+    <value>顯示一個聯繫組的成員。</value>
+  </data>
+  <data name="GetMembersOfTheExDistList" xml:space="preserve">
+    <value>顯示一個Exchange分配列表的成員。 (這可能需要很長的時間）</value>
+  </data>
+  <data name="GetMembersOfTheList" xml:space="preserve">
+    <value>顯示Exchange分配列表或聯繫人組的成員</value>
+  </data>
+  <data name="CanGetNewVersion" xml:space="preserve">
+    <value>這個插件有一個新的版本。
+你想下載它嗎？</value>
+  </data>
+  <data name="CheckNewVersion" xml:space="preserve">
+    <value>檢查新的版本。</value>
+  </data>
+  <data name="YouHaveLatest" xml:space="preserve">
+    <value>這個插件是最新版本。</value>
+  </data>
+  <data name="AutoAddCCorBCCByAttachedFile" xml:space="preserve">
+    <value>自動添加Cc/Bcc（通過附件）</value>
+  </data>
+  <data name="IsNotTreatedAsAttachmentsAtHtmlEmbeddedFiles" xml:space="preserve">
+    <value>嵌入HTML郵件中的文件不被視為附件。</value>
+  </data>
+  <data name="SettingExampleAutoAddCCorBCCByAttachedFile" xml:space="preserve">
+    <value>類型。 Cc或Bcc
+電子郵件地址: boss@noraneko.co.jp
 
-如果自動變更為Bcc後，收件人不存在，發件人的地址將被自動添加到收件人中。
+當你發送附有文件的電子郵件時，指定的地址會被自動添加到抄送或密件中。</value>
+  </data>
+  <data name="CanceledSendingMail" xml:space="preserve">
+    <value>取消了發送這封電子郵件。</value>
+  </data>
+  <data name="CanceledSendingMailMessage" xml:space="preserve">
+    <value>取消了發送這封電子郵件。你可以重新編輯。
+發送此郵件的預計時間已被清除。
 
-也可以強制將所有收件人轉換為密件。</value>
+要發送此郵件，你必須點擊發送按鈕。
+關閉編輯界面將不會發送此郵件。</value>
+  </data>
+  <data name="InputDomain" xml:space="preserve">
+    <value>輸入域名。</value>
+  </data>
+  <data name="InternalDomain" xml:space="preserve">
+    <value>內部領域</value>
   </data>
   <data name="SettingExampleInternalDomainList" xml:space="preserve">
     <value>域名。 @noraneko.co.jp
@@ -751,25 +535,140 @@
 
 發件人的電子郵件地址的域總是被當作內部域。</value>
   </data>
-  <data name="SettingExampleKeywordAndRecipients" xml:space="preserve">
-    <value>名稱。 Noraneko Inc
-域名。 @noraneko.co.jp
-
-註冊關鍵詞（如公司名稱）和目的地（如域名）。
-
-如果沒有與郵件正文中的關鍵詞相對應的收件人，將顯示警告。
-
-*主題也可以包括在檢查中。</value>
+  <data name="ExclusionSettings" xml:space="preserve">
+    <value>排除設置</value>
   </data>
-  <data name="SettingExampleNameAndDomain" xml:space="preserve">
-    <value>名稱。 Noraneko Inc
+  <data name="IsDoNotUseXIfAllRecipientsAreInternalDomain" xml:space="preserve">
+    <value>如果收件人的網域都是內部網域，則禁用此功能。</value>
+  </data>
+  <data name="BasicSettings" xml:space="preserve">
+    <value>基本設置</value>
+  </data>
+  <data name="ExternalDomainsWarningAndAutoChangeToBcc" xml:space="preserve">
+    <value>外部域名警告和自動變更為Bcc</value>
+  </data>
+  <data name="IsAutoChangeToBccWhenLargeNumberOfExternalDomains" xml:space="preserve">
+    <value>當收件人(To/Cc)有大量的外部域名時，To和Cc的外部收件人會自動轉換為Bcc。</value>
+  </data>
+  <data name="IsProhibitedWhenLargeNumberOfExternalDomains" xml:space="preserve">
+    <value>當收件人（To/Cc）有大量的外部域名時，禁止發送。</value>
+  </data>
+  <data name="IsWarningWhenLargeNumberOfExternalDomains" xml:space="preserve">
+    <value>當收件人（To/Cc）有大量的外部域名時，顯示警告。</value>
+  </data>
+  <data name="SettingExampleExternalDomainsWarningAndAutoChangeToBcc" xml:space="preserve">
+    <value>設置外部域名的數量，作為警告和自動變更為Bcc的依據，並將每個域名打開或關閉。
+
+如果自動變更為Bcc後，收件人不存在，發件人的地址將被自動添加到收件人中。
+
+也可以強制將所有收件人轉換為密件。</value>
+  </data>
+  <data name="TargetToAndCcExternalDomainsNum" xml:space="preserve">
+    <value>該功能要覆蓋的收件人（To/Cc）的外部域的數量。</value>
+  </data>
+  <data name="TargetToAndCcExternalDomainsNumInfo" xml:space="preserve">
+    <value>* 如果電子郵件的收件人和抄送人中包含的外部域大於或等於此設置。
+這個功能將被應用。</value>
+  </data>
+  <data name="AutoAddSendersAddressToAlert" xml:space="preserve">
+    <value>發件人的電子郵件地址被自動添加到收件人中。 (因為收件人已經不存在了，因為自動改為Bcc。)</value>
+  </data>
+  <data name="ExternalDomainsChangeToBccAlert" xml:space="preserve">
+    <value>由於收件人和抄送人的外部域超過了閾值，外部域的收件人已被改為Bcc。</value>
+  </data>
+  <data name="LargeNumberOfExternalDomainAlert" xml:space="preserve">
+    <value>收件人和抄送人中的外部域的數量高於閾值。請再次確認發送的優點和缺點。</value>
+  </data>
+  <data name="ProhibitedWhenLargeNumberOfExternalDomainsAlert" xml:space="preserve">
+    <value>收件人和抄送人中的外部域的數量高於閾值。</value>
+  </data>
+  <data name="DefaultAlertMessage" xml:space="preserve">
+    <value>警告關鍵字包括在電子郵件的正文中。</value>
+  </data>
+  <data name="IsEnableRecipientsAreSortedByDomain" xml:space="preserve">
+    <value>收件人在確認屏幕上按域名排序。</value>
+  </data>
+  <data name="AttachedIsAnEncryptedZipFile" xml:space="preserve">
+    <value>附件中是一個加密的ZIP文件。</value>
+  </data>
+  <data name="EncryptedZipBeta" xml:space="preserve">
+    <value>加密的Zip文件附件警告</value>
+  </data>
+  <data name="IsEnableAllAttachedFilesAreDetectEncryptedZip" xml:space="preserve">
+    <value>".zip "以外的擴展名附加的文件也會檢測它們是否是加密的ZIP。</value>
+  </data>
+  <data name="IsProhibitedWhenEncryptedZipIsAttached" xml:space="preserve">
+    <value>當附上一個加密的ZIP文件時，禁止發送。</value>
+  </data>
+  <data name="IsWarningWhenEncryptedZipIsAttached" xml:space="preserve">
+    <value>當一個加密的ZIP文件被附加時，顯示一個警告。</value>
+  </data>
+  <data name="NoticeOfIsEnableAllAttachedFilesAreDetectEncryptedZip" xml:space="preserve">
+    <value>* 有附件的電子郵件的處理可能需要更長的時間。</value>
+  </data>
+  <data name="SettingExampleAttachments" xml:space="preserve">
+    <value>你可以防止發送帶有附件的電子郵件，或者顯示警告，建議將文件作為鏈接附加。
+
+你也可以在附上加密的ZIP文件（帶密碼的ZIP文件）時顯示警告或禁止發送電子郵件。</value>
+  </data>
+  <data name="ExternalRecipient" xml:space="preserve">
+    <value>外部收件人</value>
+  </data>
+  <data name="AlwaysAddTheSendersAddressToBcc" xml:space="preserve">
+    <value>始終將發件人的地址自動添加到Bcc中。</value>
+  </data>
+  <data name="AlertKeywordForBody" xml:space="preserve">
+    <value>警報關鍵詞（正文）</value>
+  </data>
+  <data name="AlertKeywordForSubject" xml:space="preserve">
+    <value>警報關鍵詞（主題）</value>
+  </data>
+  <data name="SettingExampleAlertKeywordForSubject" xml:space="preserve">
+    <value>關鍵字。機密
+警示性文本。它包括 "機密 "這一短語。
+
+註冊要提醒的關鍵詞和它們的提醒文本。
+
+如果關鍵詞包含在主題中，你可以顯示一個警告或禁止發送該郵件。
+
+如果警報文本為空白，確認屏幕將顯示默認的警報文本。</value>
+  </data>
+  <data name="DistributionList" xml:space="preserve">
+    <value>分發名單</value>
+  </data>
+  <data name="IsAutoCheckRegisteredInContacts" xml:space="preserve">
+    <value>在聯繫人中登記的收件人將被自動檢查。 (這可能需要很長的時間）</value>
+  </data>
+  <data name="IsAutoCheckRegisteredInContactsAndMemberOfContactLists" xml:space="preserve">
+    <value>包括註冊為聯繫人名單成員的收件人。
+(如果你有許多聯絡小組，這個過程可能需要更長的時間）</value>
+  </data>
+  <data name="AttachmentsKeyword" xml:space="preserve">
+    <value>附件</value>
+  </data>
+  <data name="IsAttachmentsProhibited" xml:space="preserve">
+    <value>當附加了一個文件時，禁止發送。</value>
+  </data>
+  <data name="IsWarningWhenAttachedRealFile" xml:space="preserve">
+    <value>如果附上文件，建議在確認屏幕上以鏈接方式附上。</value>
+  </data>
+  <data name="AttachmentProhibitedRecipients" xml:space="preserve">
+    <value>附件禁止的地址</value>
+  </data>
+  <data name="AttachmentsName" xml:space="preserve">
+    <value>附件名稱/關鍵詞</value>
+  </data>
+  <data name="RecipientsAndAttachmentsName" xml:space="preserve">
+    <value>有關收件人和附件的名稱</value>
+  </data>
+  <data name="SettingExampleAttachmentProhibitedRecipients" xml:space="preserve">
+    <value>電子郵件地址：info@noraneko.co.jp
+或
 域名。 @noraneko.co.jp
 
-註冊名稱（例如：公司名稱）和域名。
+註冊電子郵件地址或域名。
 
-如果電子郵件正文中的名稱和收件人的域名不匹配，則顯示警告。
-
-*主題也可以包括在檢查中。</value>
+你將無法向該收件人發送帶有附件的電子郵件。</value>
   </data>
   <data name="SettingExampleRecipientsAndAttachmentsName" xml:space="preserve">
     <value>電子郵件地址：info@noraneko.co.jp
@@ -781,87 +680,205 @@
 
 如果收件人和附件文件名稱不匹配，將顯示警告。</value>
   </data>
-  <data name="SettingExampleWhiteList" xml:space="preserve">
-    <value>電子郵件地址：info@noraneko.co.jp
-或
-域名。 @noraneko.co.jp
-
-註冊電子郵件地址或域名。
-
-相關收件人將在確認屏幕中被預先選中。</value>
+  <data name="RecommendationOfAttachFileAsLink" xml:space="preserve">
+    <value>建議你將文件作為鏈接附上。</value>
   </data>
-  <data name="Settings" xml:space="preserve">
-    <value>設置</value>
+  <data name="AttachmentProhibitedRecipientsMessage" xml:space="preserve">
+    <value>這個被禁止發送附件的收件人。</value>
   </data>
-  <data name="ShowConfirmationAtSendMeetingRequest" xml:space="preserve">
-    <value>會議請求也顯示一個確認屏幕。</value>
+  <data name="AttachmentsProhibitedMessage" xml:space="preserve">
+    <value>禁止發送帶有附件的電子郵件。</value>
   </data>
-  <data name="ShowConfirmationAtSendTaskRequest" xml:space="preserve">
-    <value>分配任務時也會顯示確認屏幕。</value>
+  <data name="RecipientsAndAttachmentsNameMessage" xml:space="preserve">
+    <value>不相關的收件人和附件。</value>
   </data>
-  <data name="Subject" xml:space="preserve">
-    <value>主題</value>
+  <data name="Bcc" xml:space="preserve">
+    <value>Bcc</value>
   </data>
-  <data name="SuccessfulExport" xml:space="preserve">
-    <value>現在導出已經完成。</value>
-  </data>
-  <data name="SuccessfulImport" xml:space="preserve">
-    <value>現在導入已經完成。</value>
-  </data>
-  <data name="TargetAttachmentFileExtensionOfOpen" xml:space="preserve">
-    <value>目標附件擴展。</value>
-  </data>
-  <data name="TargetToAndCcExternalDomainsNum" xml:space="preserve">
-    <value>該功能要覆蓋的收件人（To/Cc）的外部域的數量。</value>
-  </data>
-  <data name="TargetToAndCcExternalDomainsNumInfo" xml:space="preserve">
-    <value>* 如果電子郵件的收件人和抄送人中包含的外部域大於或等於此設置。
-這個功能將被應用。</value>
-  </data>
-  <data name="TaskRequest" xml:space="preserve">
-    <value>指派任務</value>
-  </data>
-  <data name="Text" xml:space="preserve">
-    <value>Plain-text</value>
+  <data name="Cc" xml:space="preserve">
+    <value>Cc</value>
   </data>
   <data name="To" xml:space="preserve">
     <value>To</value>
   </data>
-  <data name="ToRecipient" xml:space="preserve">
-    <value>要設置為收件人的郵件地址 *如果不設置，發件人地址會自動設置為收件人。</value>
+  <data name="CanNotFindTheLinkedName" xml:space="preserve">
+    <value>無法在郵件正文中找到鏈接的名稱。</value>
   </data>
-  <data name="Unknown" xml:space="preserve">
-    <value>不詳</value>
+  <data name="IsCheckNameAndDomainsFromRecipients" xml:space="preserve">
+    <value>當郵件正文中沒有的名字時，還會顯示一個警告。</value>
   </data>
-  <data name="Version" xml:space="preserve">
-    <value>Version 2.8.2</value>
+  <data name="AddressBook" xml:space="preserve">
+    <value>聯繫人</value>
   </data>
-  <data name="VersionInfo" xml:space="preserve">
-    <value>軟件信息</value>
+  <data name="IsProhibitsSendingMailIfRecipientsIsNotRegistered" xml:space="preserve">
+    <value>如果收件人沒有在聯繫人中註冊，則禁止發送郵件。</value>
+  </data>
+  <data name="IsWarningIfRecipientsIsNotRegistered" xml:space="preserve">
+    <value>如果收件人沒有在聯繫人中登記，確認屏幕上會顯示一個警告。</value>
+  </data>
+  <data name="ProhibitsSendingMailIfRecipientsIsNotRegisteredMessage" xml:space="preserve">
+    <value>禁止向未註冊的聯繫人發送電子郵件。</value>
+  </data>
+  <data name="SendersDomainAndInternalDomainAreNotCovered" xml:space="preserve">
+    <value>*發件人的域名和內部域名都不包括在內。</value>
   </data>
   <data name="WarningIfRecipientsIsNotRegisteredMessage" xml:space="preserve">
     <value>這個地址沒有在你的聯繫人中登記。</value>
   </data>
-  <data name="WarningText" xml:space="preserve">
-    <value>警告文本</value>
+  <data name="MeetingRequest" xml:space="preserve">
+    <value>會議要求</value>
   </data>
-  <data name="WarningTextInfo" xml:space="preserve">
-    <value>確認窗口的提示文字。</value>
+  <data name="ShowConfirmationAtSendMeetingRequest" xml:space="preserve">
+    <value>會議請求也顯示一個確認屏幕。</value>
   </data>
-  <data name="WhiteList" xml:space="preserve">
-    <value>允許列表</value>
+  <data name="AlwaysAddTheSendersAddressToCc" xml:space="preserve">
+    <value>始終將發件人的地址自動添加到Cc中。</value>
   </data>
-  <data name="YouHaveLatest" xml:space="preserve">
-    <value>這個插件是最新版本。</value>
+  <data name="AttachmentAlertRecipients" xml:space="preserve">
+    <value>附件提醒地址</value>
   </data>
-  <data name="General2" xml:space="preserve">
-    <value>一般 2</value>
+  <data name="AutoAddMessage" xml:space="preserve">
+    <value>自動添加正文</value>
+  </data>
+  <data name="ForceAutoChangeRecipientsToBcc" xml:space="preserve">
+    <value>強制自動變更為密件</value>
+  </data>
+  <data name="ForceAutoChangeRecipientsToBccNotes" xml:space="preserve">
+    <value>以下設置優先於上述設置。</value>
+  </data>
+  <data name="IsAddMessageToEnd" xml:space="preserve">
+    <value>下面的文字會自動添加到正文的末尾。</value>
+  </data>
+  <data name="IsAddMessageToStart" xml:space="preserve">
+    <value>以下文字會自動添加到正文的開頭。</value>
+  </data>
+  <data name="IsCheckNameAndDomainsFromSubject" xml:space="preserve">
+    <value>當主題中沒有收件人姓名時，也會顯示該警告。</value>
+  </data>
+  <data name="IsCheckNameAndDomainsIncludeSubject" xml:space="preserve">
+    <value>在目標中包括主題。 *主題以及正文都將包括在目標中。</value>
+  </data>
+  <data name="IsForceAutoChangeRecipientsToBcc" xml:space="preserve">
+    <value>強制所有外部收件人轉為密件。</value>
+  </data>
+  <data name="IsIncludeInternalDomain" xml:space="preserve">
+    <value>在範圍內包括內部域。 *所有收件人將被改為密件。</value>
+  </data>
+  <data name="SettingExampleAttachmentAlertRecipients" xml:space="preserve">
+    <value>地址: info@noraneko.co.jp
+或者。
+域名: @noraneko.co.jp
+
+註冊一個電子郵件地址或域名以及其警告文字。
+
+如果註冊了，在向該地址發送帶有附件的電子郵件時，將顯示警告。
+
+如果警告文本留空，就會顯示默認的警告文本。</value>
+  </data>
+  <data name="SettingExampleAutoAddMessage" xml:space="preserve">
+    <value>你可以自動將指定的措辭添加到電子郵件的開頭或結尾。</value>
+  </data>
+  <data name="ToRecipient" xml:space="preserve">
+    <value>要設置為收件人的郵件地址 *如果不設置，發件人地址會自動設置為收件人。</value>
+  </data>
+  <data name="AddedTextAtTheBeginning" xml:space="preserve">
+    <value>在郵件的開頭添加了文字。</value>
+  </data>
+  <data name="AddedTextAtTheEnd" xml:space="preserve">
+    <value>在郵件的結尾處添加了文字。</value>
+  </data>
+  <data name="CanNotFindTheLinkedNameInSubject" xml:space="preserve">
+    <value>無法在郵件主題中找到鏈接的名稱。</value>
+  </data>
+  <data name="AttachmentAlertRecipientsMessage" xml:space="preserve">
+    <value>發送附件警告的收件人。</value>
+  </data>
+  <data name="AutoAddToRecipientByForceAutoChangeRecipientsToBccAddressToAlert" xml:space="preserve">
+    <value>指定的電子郵件地址被自動添加到收件人中。 (因為收件人已經不存在了，因為自動改為密件)。</value>
+  </data>
+  <data name="ForceAutoChangeRecipientsToBccAlert" xml:space="preserve">
+    <value>收件人被自動轉換為Bcc。</value>
+  </data>
+  <data name="NotApplicableToMeetingRequests" xml:space="preserve">
+    <value>*不適用於會議要求。</value>
+  </data>
+  <data name="Open" xml:space="preserve">
+    <value>打開</value>
+  </data>
+  <data name="ChangesInTheFileWillNotBeSaved" xml:space="preserve">
+    <value>*文件中的變化將不會被保存。</value>
+  </data>
+  <data name="OpenTheAttachedFile" xml:space="preserve">
+    <value>你想打開附件中的文件嗎？</value>
+  </data>
+  <data name="IsEnableOpenAttachedFiles" xml:space="preserve">
+    <value>啟用在確認屏幕上打開附件的功能。</value>
+  </data>
+  <data name="IsMustOpenBeforeCheckTheAttachedFiles" xml:space="preserve">
+    <value>在確認屏幕上，必須要打開目標附件。</value>
+  </data>
+  <data name="OpenTheAttachedFileOnTheConfirmationScreen" xml:space="preserve">
+    <value>在確認屏幕上打開所附文件。</value>
+  </data>
+  <data name="TargetAttachmentFileExtensionOfOpen" xml:space="preserve">
+    <value>目標附件擴展。</value>
+  </data>
+  <data name="TaskRequest" xml:space="preserve">
+    <value>指派任務</value>
+  </data>
+  <data name="ShowConfirmationAtSendTaskRequest" xml:space="preserve">
+    <value>分配任務時也會顯示確認屏幕。</value>
+  </data>
+  <data name="AutoCheckAttachments" xml:space="preserve">
+    <value>附件將被自動檢查。</value>
+  </data>
+  <data name="KeywordAndRecipients" xml:space="preserve">
+    <value>將關鍵詞和收件人聯繫起來</value>
+  </data>
+  <data name="SettingExampleKeywordAndRecipients" xml:space="preserve">
+    <value>名稱。 Noraneko Inc
+域名。 @noraneko.co.jp
+
+註冊關鍵詞（如公司名稱）和目的地（如域名）。
+
+如果沒有與郵件正文中的關鍵詞相對應的收件人，將顯示警告。
+
+*主題也可以包括在檢查中。</value>
+  </data>
+  <data name="KeywordAndRecipientsAlert1" xml:space="preserve">
+    <value>關鍵詞"</value>
+  </data>
+  <data name="KeywordAndRecipientsAlert2" xml:space="preserve">
+    <value>"中的"</value>
+  </data>
+  <data name="KeywordAndRecipientsAlert3" xml:space="preserve">
+    <value>"不存在。</value>
   </data>
   <data name="IsIgnoreMustOpenBeforeCheckTheAttachedFilesIfInternalDomain" xml:space="preserve">
     <value>如果所有收件者都是內部域，則不需要。</value>
   </data>
   <data name="AlertKeywordOfSubjectWhenOpeningMails" xml:space="preserve">
     <value>┗ 打開電子郵件時發出警報（主題）</value>
+  </data>
+  <data name="MailHeaderAnalysisExceptionAddress" xml:space="preserve">
+    <value>郵件頭分析例外地址</value>
+  </data>
+  <data name="MailAddress" xml:space="preserve">
+    <value>電子郵件地址</value>
+  </data>
+  <data name="SettingExampleMailHeaderAnalysisExceptionAddress" xml:space="preserve">
+    <value>註冊要從郵件頭分析（欺騙）警告中排除的寄件者電子郵件地址。
+來自完全匹配地址的郵件將不顯示警告。
+例) no-reply@example.com</value>
+  </data>
+  <data name="AlertOfReceivedMailSubject" xml:space="preserve">
+    <value>主題行包含受警告影響的關鍵字。</value>
+  </data>
+  <data name="AttatchmentIsEncryptedZip" xml:space="preserve">
+    <value>此檔案是加密的 ZIP 檔。</value>
+  </data>
+  <data name="DkimWarning1" xml:space="preserve">
+    <value>DKIM 驗證失敗。寄件者可能被欺騙。</value>
   </data>
   <data name="IsEnableAlertKeywordOfSubjectWhenOpeningMailsData" xml:space="preserve">
     <value>當主題行包含指定的關鍵字時，使用警告功能。</value>
@@ -872,11 +889,38 @@
   <data name="IsEnableSecurityForReceivedMail" xml:space="preserve">
     <value>打開郵件和附件時使用警告功能。</value>
   </data>
+  <data name="IsEnableWarningFeatureWhenOpeningAttachments" xml:space="preserve">
+    <value>打開附件時使用警告功能。</value>
+  </data>
   <data name="IsShowWarningWhenDkimFails" xml:space="preserve">
     <value>當 DKIM 記錄驗證失敗時顯示警告。</value>
   </data>
   <data name="IsShowWarningWhenSpfFails" xml:space="preserve">
     <value>當 SPF 記錄驗證失敗時顯示警告。</value>
+  </data>
+  <data name="IsWarnBeforeOpeningAttachments" xml:space="preserve">
+    <value>打開附件前發出警告。</value>
+  </data>
+  <data name="IsWarnBeforeOpeningAttachmentsThatContainMacros" xml:space="preserve">
+    <value>打開包含宏的附件時發出警告。</value>
+  </data>
+  <data name="IsWarnBeforeOpeningEncryptedZip" xml:space="preserve">
+    <value>打開加密的 ZIP 檔時發出警告。</value>
+  </data>
+  <data name="IsWarnLinkFileInTheZip" xml:space="preserve">
+    <value>如果 ZIP 中存在 .lnk 檔，則發出警告。</value>
+  </data>
+  <data name="IsWarnOfficeFileWithMacroInTheZip" xml:space="preserve">
+    <value>如果 ZIP 中有 .docm、.xlsm 或 .pptm 檔，則發出警告。</value>
+  </data>
+  <data name="IsWarnOneFileInTheZip" xml:space="preserve">
+    <value>如果 ZIP 中存在 .one 檔，則發出警告。</value>
+  </data>
+  <data name="OpenAttachmentWarning1" xml:space="preserve">
+    <value>是否確實要打開附件？</value>
+  </data>
+  <data name="OpenAttachmentWarning2" xml:space="preserve">
+    <value>要非常小心可疑檔。</value>
   </data>
   <data name="SecurityForReceivedMail" xml:space="preserve">
     <value>接收郵件安全</value>
@@ -889,59 +933,15 @@
   <data name="SettingExampleSecurityForReceivedMail" xml:space="preserve">
     <value>設置將在重新啟動 Outlook 后反映出來。</value>
   </data>
-  <data name="IsEnableWarningFeatureWhenOpeningAttachments" xml:space="preserve">
-    <value>打開附件時使用警告功能。</value>
-  </data>
-  <data name="IsWarnBeforeOpeningAttachments" xml:space="preserve">
-    <value>打開附件前發出警告。</value>
-  </data>
-  <data name="IsWarnBeforeOpeningEncryptedZip" xml:space="preserve">
-    <value>打開加密的 ZIP 檔時發出警告。</value>
-  </data>
-  <data name="IsWarnLinkFileInTheZip" xml:space="preserve">
-    <value>如果 ZIP 中存在 .lnk 檔，則發出警告。</value>
-  </data>
-  <data name="IsWarnOneFileInTheZip" xml:space="preserve">
-    <value>如果 ZIP 中存在 .one 檔，則發出警告。</value>
-  </data>
-  <data name="IsWarnOfficeFileWithMacroInTheZip" xml:space="preserve">
-    <value>如果 ZIP 中有 .docm、.xlsm 或 .pptm 檔，則發出警告。</value>
-  </data>
-  <data name="IsWarnBeforeOpeningAttachmentsThatContainMacros" xml:space="preserve">
-    <value>打開包含宏的附件時發出警告。</value>
-  </data>
-  <data name="Warning" xml:space="preserve">
-    <value>警告</value>
-  </data>
-  <data name="AlertOfReceivedMailSubject" xml:space="preserve">
-    <value>主題行包含受警告影響的關鍵字。</value>
+  <data name="SpfDkimWaring2" xml:space="preserve">
+    <value>請注意此電子郵件中的內容和附件。</value>
   </data>
   <data name="SpfWarning1" xml:space="preserve">
     <value>SPF 驗證失敗。寄件者可能被欺騙。</value>
   </data>
-  <data name="DkimWarning1" xml:space="preserve">
-    <value>DKIM 驗證失敗。寄件者可能被欺騙。</value>
-  </data>
-  <data name="SpfDkimWaring2" xml:space="preserve">
-    <value>請注意此電子郵件中的內容和附件。</value>
-  </data>
-  <data name="OpenAttachmentWarning1" xml:space="preserve">
-    <value>是否確實要打開附件？</value>
-  </data>
-  <data name="OpenAttachmentWarning2" xml:space="preserve">
-    <value>要非常小心可疑檔。</value>
-  </data>
-  <data name="AttatchmentIsEncryptedZip" xml:space="preserve">
-    <value>此檔案是加密的 ZIP 檔。</value>
-  </data>
   <data name="SuspiciousAttachmentZip_link" xml:space="preserve">
     <value>可疑附件。
 .lnk檔包含在 ZIP 檔中，
-感染病毒的風險。</value>
-  </data>
-  <data name="SuspiciousAttachmentZip_one" xml:space="preserve">
-    <value>可疑附件。
-.one 檔包含在 ZIP 檔中，
 感染病毒的風險。</value>
   </data>
   <data name="SuspiciousAttachmentZip_macro" xml:space="preserve">
@@ -949,20 +949,31 @@
 zip 檔包含一個包含宏和
 感染病毒的風險。</value>
   </data>
+  <data name="SuspiciousAttachmentZip_one" xml:space="preserve">
+    <value>可疑附件。
+.one 檔包含在 ZIP 檔中，
+感染病毒的風險。</value>
+  </data>
   <data name="SuspiciousAttachment_macro" xml:space="preserve">
     <value>這是包含宏的附件，感染病毒的風險。</value>
   </data>
-  <data name="ExportAllSettings" xml:space="preserve">
-    <value>匯出所有配置。</value>
+  <data name="Warning" xml:space="preserve">
+    <value>警告</value>
   </data>
-  <data name="ImportAllSettings" xml:space="preserve">
-    <value>匯入配置。</value>
+  <data name="General2" xml:space="preserve">
+    <value>一般 2</value>
   </data>
   <data name="CompletedExport" xml:space="preserve">
     <value>配置檔的匯出已完成。</value>
   </data>
   <data name="CompletedImport" xml:space="preserve">
     <value>匯入完成。關閉設置視窗。</value>
+  </data>
+  <data name="ExportAllSettings" xml:space="preserve">
+    <value>匯出所有配置。</value>
+  </data>
+  <data name="ImportAllSettings" xml:space="preserve">
+    <value>匯入配置。</value>
   </data>
   <data name="ImportErrorOfAllSettings" xml:space="preserve">
     <value>請選擇正確的檔。錯誤：</value>

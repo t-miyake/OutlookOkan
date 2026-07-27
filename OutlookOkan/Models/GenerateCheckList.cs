@@ -2302,6 +2302,7 @@ namespace OutlookOkan.Models
                 {
                     try
                     {
+                        errorCount++;
                         var tempRecipient = tempOutlookApp.Session.CreateRecipient(x500);
                         _ = tempRecipient.Resolve();
 
